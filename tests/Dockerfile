@@ -5,6 +5,6 @@ ARG BASE_URL
 ENV BASE_URL=${BASE_URL}
 
 COPY . .
-RUN npm install && npx playwright install && npm install -g npm
+RUN npm install -g npm && npm install && npx playwright install
 
 CMD ["/bin/bash", "entrypoint.sh"]
