@@ -10,13 +10,17 @@
   src: url("../assets/gsc.woff") format("woff");
 }
 
-@mixin primary-header-font {
-  font-family: Montserrat, sans-serif;
-  font-weight: 300;
-  font-size: sizes.$font-xxxl;
-  color: colors.$grey-2;
-  line-height: sizes.$font-xxxl;
-  margin-bottom: sizes.$baseline;
+@mixin hero-font {
+  font-family: "Gill Sans Condensed";
+  color: colors.$primary-5;
+  font-size: sizes.$font-xxxxl;
+  letter-spacing: -2px;
+}
+
+@mixin tagline-font {
+  font-family: "Gill Sans";
+  color: colors.$primary-1;
+  font-size: sizes.$font-baseline;
 }
 
 @mixin nav-item-font {
@@ -29,15 +33,21 @@
 }
 
 @mixin body-font {
-  font-family: Roboto, sans-serif;
+  font-family: "Gill Sans";
+  color: colors.$primary-1;
+  font-size: sizes.$font-large;
   font-weight: 400;
-  font-size: sizes.$font-xl;
-  color: colors.$grey-2;
-  line-height: sizes.$font-xxxl;
 }
 
-@mixin secondary-header-font {
-  font-family: Roboto, sans-serif;
+@mixin heading-font-1 {
+  font-family: "Gill Sans Condensed";
+  color: colors.$primary-5;
+  font-size: sizes.$font-xxxxxl;
+  letter-spacing: -2px;
+}
+
+@mixin heading-font-2 {
+  font-family: "Gill Sans", sans-serif;
   font-weight: 400;
   font-size: sizes.$font-xxl;
   color: colors.$grey-4;
@@ -46,12 +56,19 @@
   margin-bottom: sizes.$baseline;
 }
 
-@mixin tertiary-header-font {
-  font-family: Roboto, sans-serif;
+@mixin heading-font-3 {
+  font-family: "Gill Sans", sans-serif;
   font-weight: 700;
   font-size: sizes.$font-baseline;
   color: colors.$grey-4;
   line-height: sizes.$font-xxxl;
   margin-top: sizes.$xl;
   margin-bottom: sizes.$baseline;
+}
+
+@mixin legal-font {
+  font-family: "Gill Sans";
+  color: colors.$grey-7;
+  font-size: sizes.$font-baseline;
+  font-weight: 400;
 }
