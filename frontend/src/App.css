@@ -1,6 +1,16 @@
+@font-face {
+  font-family: "Gill Sans";
+  src: url("assets/gs.woff") format("woff");
+}
+@font-face {
+  font-family: "Gill Sans Condensed";
+  src: url("assets/gsc.woff") format("woff");
+}
+
 .App {
   display: grid;
   grid-template-rows: auto 1fr;
+  font-family: "Gill Sans", sans-serif;
 }
 
 .App > header, .App > main {
