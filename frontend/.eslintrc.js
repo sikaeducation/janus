@@ -6,6 +6,8 @@ module.exports = {
   extends: [
     'plugin:react/recommended',
     'airbnb',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:react-hooks/recommended',
   ],
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -18,11 +20,29 @@ module.exports = {
   plugins: [
     'react',
     '@typescript-eslint',
+    'react-hooks',
   ],
   rules: {
     'react/jsx-filename-extension': [1, {
-      extensions: ['.js', '.ts', '.jsx', '.tsx'],
+      extensions: ['.tsx'],
     }],
     'react/react-in-jsx-scope': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
+      {
+        ts: 'never',
+        tsx: 'never',
+      },
+    ],
+    'no-shadow': 'off',
+    '@typescript-eslint/no-shadow': ['error'],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': 'warn',
+  },
+  settings: {
+    'import/resolver': {
+      typescript: {},
+    },
   },
 };

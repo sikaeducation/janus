@@ -2,7 +2,7 @@ FROM node:17.2.0-bullseye as base
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY --chown=node:node . .
 
