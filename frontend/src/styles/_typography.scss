@@ -1,3 +1,6 @@
+@use "./sizes";
+@use "./colors";
+
 @font-face {
   font-family: "Gill Sans";
   src: url("../assets/gs.woff") format("woff");
@@ -5,4 +8,50 @@
 @font-face {
   font-family: "Gill Sans Condensed";
   src: url("../assets/gsc.woff") format("woff");
+}
+
+@mixin primary-header-font {
+  font-family: Montserrat, sans-serif;
+  font-weight: 300;
+  font-size: sizes.$font-xxxl;
+  color: colors.$grey-2;
+  line-height: sizes.$font-xxxl;
+  margin-bottom: sizes.$baseline;
+}
+
+@mixin nav-item-font {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  color: colors.$grey-2;
+  margin-bottom: sizes.$baseline;
+  font-size: sizes.$font-baseline;
+  line-height: sizes.$font-xl;
+}
+
+@mixin body-font {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: sizes.$font-xl;
+  color: colors.$grey-2;
+  line-height: sizes.$font-xxxl;
+}
+
+@mixin secondary-header-font {
+  font-family: Roboto, sans-serif;
+  font-weight: 400;
+  font-size: sizes.$font-xxl;
+  color: colors.$grey-4;
+  line-height: sizes.$font-xxxl;
+  margin-top: sizes.$xl;
+  margin-bottom: sizes.$baseline;
+}
+
+@mixin tertiary-header-font {
+  font-family: Roboto, sans-serif;
+  font-weight: 700;
+  font-size: sizes.$font-baseline;
+  color: colors.$grey-4;
+  line-height: sizes.$font-xxxl;
+  margin-top: sizes.$xl;
+  margin-bottom: sizes.$baseline;
 }

@@ -1,0 +1,24 @@
+@use "./sizes";
+@use "./colors";
+
+@mixin button-shadow-small {
+  box-shadow: 0 1px 0 sizes.$grey-6;
+  &:active {
+    box-shadow: 0 -1px 0 sizes.$grey-8;
+  }
+}
+
+@mixin button-active-primary {
+  transition: background-color sizes.$transition;
+  &:active {
+    background-color: colors.$primary-5;
+  }
+}
+
+@mixin button-active-neutral {
+  transition: background-color sizes.$transition;
+  &:active {
+    background-color: colors.$grey-5;
+  }
+}
+
