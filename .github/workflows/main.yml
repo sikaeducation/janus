@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e tests
-        run: ./test
+        run: ./ci
   build_deploy_frontend:
     needs: test
     runs-on: ubuntu-latest
