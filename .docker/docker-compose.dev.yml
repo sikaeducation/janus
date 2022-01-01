@@ -1,4 +1,4 @@
 services:
   frontend:
     volumes:
-      - ./frontend:/app
+      - ../frontend:/app

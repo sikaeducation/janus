@@ -1,7 +1,7 @@
 services:
   tests:
     build:
-      context: tests/
+      context: ../tests/
       args:
         BASE_URL: "http://frontend:3000"
     depends_on:
