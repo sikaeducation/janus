@@ -1,0 +1,11 @@
+@use "../styles/typography";
+
+.App {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  font-family: "Gill Sans", sans-serif;
+}
+
+.App > header, .App > main {
+  padding: 24px;
+}
