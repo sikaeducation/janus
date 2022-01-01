@@ -3,7 +3,7 @@ import {navigateTo} from "../utilities"
 
 test("smoke", async () => {
   await navigateTo("/")
-  const link = await screen.findByText("Learn React")
+  const link = await screen.findByText("Sika")
 
-  expect(link).toHaveTextContent("Learn React")
+  expect(link).toHaveTextContent("Sika")
 });
