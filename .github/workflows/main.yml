@@ -14,6 +14,7 @@ jobs:
       - name: Run e2e tests
         run: ./test
   build_deploy_frontend:
+    needs: test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
