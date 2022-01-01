@@ -7,4 +7,4 @@ ENV BASE_URL=${BASE_URL}
 COPY . .
 RUN npm install -g npm && npm install && npx playwright install
 
-CMD ["/bin/bash", "entrypoint.sh"]
+CMD ["/bin/bash", "e2e.sh"]
