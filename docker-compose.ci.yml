@@ -1,6 +1,0 @@
-services:
-  frontend:
-    volumes: []
-  tests:
-    command: ["/bin/bash", "ci.sh"]
-    volumes: []

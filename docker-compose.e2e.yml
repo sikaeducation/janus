@@ -1,0 +1,5 @@
+services:
+  tests:
+    volumes:
+      - ./tests:/app
+    command: ["/bin/bash", "e2e.sh"]
