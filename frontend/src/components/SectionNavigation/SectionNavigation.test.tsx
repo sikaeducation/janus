@@ -1,8 +1,8 @@
 import { render, screen } from "@testing-library/react";
-import UnitNavigation from ".";
+import SectionNavigation from ".";
 
-test("<UnitNavigation /> renders units", () => {
-  const units = [
+test("<SectionNavigation /> renders units", () => {
+  const sections = [
     {
       id: 1,
       url: "https://google.com",
@@ -19,7 +19,7 @@ test("<UnitNavigation /> renders units", () => {
       label: "Label",
     },
   ];
-  render(<UnitNavigation units={units} />);
+  render(<SectionNavigation sections={sections} />);
 
   const items = screen.getAllByRole("listitem");
   expect(items).toHaveLength(3);

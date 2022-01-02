@@ -2,7 +2,7 @@ import "./App.scss";
 import AppHeader from "../components/AppHeader";
 import AppFooter from "../components/AppFooter";
 import UnitNavigation from "../components/UnitNavigation";
-import SectionLink from "../components/SectionLink";
+import SectionNavigation from "../components/SectionNavigation";
 
 const units = [
   {
@@ -87,15 +87,7 @@ function App() {
       <div className="constrained-container">
         <section className="unit">
           <h3>Website Development</h3>
-          <nav className="section-navigation">
-            <ul>
-              {sections.map(({ id, url, label }) => (
-                <li key={id}>
-                  <SectionLink url={url} label={label} />
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <SectionNavigation sections={sections} />
           <main className="section-content">
             <h4>CLI</h4>
             <p>
