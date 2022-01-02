@@ -1,6 +1,7 @@
 @use "../styles/typography";
 @use "../styles/sizes";
 @use "../styles/colors";
+@use "../styles/buttons";
 
 .App {
   min-height: 100vh;
@@ -9,10 +10,21 @@
   font-family: "Gill Sans", sans-serif;
   padding-top: sizes.$s5;
   padding-bottom: sizes.$s5;
+  @media (max-width: sizes.$small-breakpoint){
+    padding-top: sizes.$s2;
+    padding-bottom: sizes.$s2;
+  }
 }
 
-.App > header, .unit, .App > footer {
+.App > header, .App > .constrained-container, .App > footer {
   padding: 0 sizes.$s5;
+  @media (max-width: sizes.$small-breakpoint){
+    padding: 0 sizes.$s3;
+  }
+}
+
+.App > header {
+  margin-bottom: sizes.$s5;
 }
 
 .primary-header {
@@ -21,27 +33,59 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: sizes.$s6;
+  @media (max-width: sizes.$small-breakpoint){
+    margin-bottom: sizes.$s4;
+  }
+  > h2 {
+    @media (max-width: sizes.$small-breakpoint){
+      display: none;
+    }
+  }
+}
+
+.constrained-container {
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: center;
+  > * {
+    flex-basis: 800px;
+    flex-shrink: 1;
+  }
 }
 
 .unit {
   display: grid;
   grid-template-rows: auto 1fr;
   grid-template-columns: 150px 1fr;
-  h3 {
+  margin: 0 auto;
+  @media (max-width: sizes.$small-breakpoint){
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto 1fr;
+  }
+  > h3 {
     margin-bottom: sizes.$s5;
     grid-row: 1 / span 1;
     grid-column: 1 / span 2;
+    @media (max-width: sizes.$small-breakpoint){
+      display: none;
+    }
   }
 }
 
 .unit-navigation {
-  margin-bottom: sizes.$s5;
   > ul {
     display: flex;
     flex-flow: row wrap;
+    > li {
+      width: 35px;
+      height: 35px;
+    }
     li + li {
       margin-left: sizes.$s2;
     }
+  }
+  @media (max-width: sizes.$small-breakpoint){
+    display: none;
   }
 }
 
@@ -54,21 +98,48 @@
   justify-content: center;
   align-items: center;
   font-size: sizes.$f3;
-  width: 35px;
-  height: 35px;
+  width: 100%;
+  height: 100%;
+  @include buttons.button-shadow-small;
   &.active {
     background-color: colors.$primary-5;
   }
 }
 
 .section-navigation {
-    grid-row: 2 / span 1;
-    grid-column: 1 / span 1;
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  @media (max-width: sizes.$small-breakpoint){
+    display: none;
+  }
+}
+.crumb-navigation {
+  @include typography.breadcrumb-font;
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  display: block;
+  @media (min-width: sizes.$small-breakpoint){
+    display: none;
+  }
+  li {
+    display: inline-block;
+  }
+  li + li {
+    margin-left: sizes.$s1;
+    &::before {
+      content: ">";
+      margin-right: sizes.$s1;
+    }
+  }
 }
 
 .section-content {
-    grid-row: 2 / span 1;
-    grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
+  grid-column: 2 / span 1;
+  @media (max-width: sizes.$small-breakpoint){
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 1;
+  }
 }
 
 .section-link {
@@ -78,6 +149,7 @@
 
 .App > footer {
   display: flex;
+  padding-top: sizes.$s6;
   justify-content: flex-end;
   @include typography.legal-font;
 }
