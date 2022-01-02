@@ -11,7 +11,7 @@
 }
 
 @mixin hero-font {
-  font-family: "Gill Sans Condensed";
+  font-family: "Gill Sans Condensed", sans-serif;
   color: colors.$primary-5;
   font-size: sizes.$f9;
   letter-spacing: -2px;
@@ -21,22 +21,20 @@
 }
 
 @mixin tagline-font {
-  font-family: "Gill Sans";
+  font-family: "Gill Sans", sans-serif;
   color: colors.$primary-1;
   font-size: sizes.$f4;
 }
 
 @mixin nav-item-font {
-  font-family: Roboto, sans-serif;
+  font-family: "Gill Sans", sans-serif;
   font-weight: 400;
-  color: colors.$grey-2;
-  margin-bottom: sizes.$s4;
+  color: colors.$grey-4;
   font-size: sizes.$f4;
-  line-height: sizes.$f6;
 }
 
 @mixin body-font {
-  font-family: "Gill Sans";
+  font-family: "Gill Sans", sans-serif;
   color: colors.$primary-1;
   font-size: sizes.$f4;
   font-weight: 400;
@@ -58,7 +56,7 @@
   font-family: "Gill Sans", sans-serif;
   font-weight: 400;
   font-size: sizes.$f5;
-  color: colors.$grey-4;
+  color: colors.$grey-6;
   line-height: sizes.$f7;
 }
 
@@ -71,6 +69,7 @@
 }
 
 @mixin breadcrumb-font {
+  font-family: "Gill Sans", sans-serif;
   font-size: sizes.$f2;
   font-weight: 400;
   color: colors.$grey-4;
@@ -88,7 +87,7 @@
 }
 
 @mixin legal-font {
-  font-family: "Gill Sans";
+  font-family: "Gill Sans", sans-serif;
   color: colors.$grey-7;
   font-size: sizes.$f3;
   font-weight: 400;
