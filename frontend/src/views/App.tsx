@@ -1,5 +1,69 @@
 import "./App.scss";
 import AppHeader from "../components/AppHeader";
+import AppFooter from "../components/AppFooter";
+import UnitNavigation from "../components/UnitNavigation";
+import SectionLink from "../components/SectionLink";
+
+const units = [
+  {
+    id: 1,
+    label: "0",
+    url: "https://google.com",
+  },
+  {
+    id: 2,
+    label: "1",
+    url: "https://google.com",
+  },
+  {
+    id: 3,
+    label: "2",
+    url: "https://google.com",
+  },
+  {
+    id: 4,
+    label: "3",
+    url: "https://google.com",
+  },
+  {
+    id: 5,
+    label: "4",
+    url: "https://google.com",
+  },
+  {
+    id: 6,
+    label: "5",
+    url: "https://google.com",
+  },
+];
+
+const sections = [
+  {
+    id: 1,
+    label: "CLI",
+    url: "https://google.com",
+  },
+  {
+    id: 2,
+    label: "Git",
+    url: "https://google.com",
+  },
+  {
+    id: 3,
+    label: "Websites I",
+    url: "https://google.com",
+  },
+  {
+    id: 4,
+    label: "Websites II",
+    url: "https://google.com",
+  },
+  {
+    id: 5,
+    label: "Websites III",
+    url: "https://google.com",
+  },
+];
 
 function App() {
   return (
@@ -7,20 +71,7 @@ function App() {
       <header>
         <AppHeader programLabel="Ford: Full-Stack Web Development" />
         <div className="constrained-container">
-          <nav className="unit-navigation">
-            <ul>
-              <li>
-                <a className="unit-link" href="https://google.com">
-                  1
-                </a>
-              </li>
-              <li>
-                <a className="unit-link active" href="https://google.com">
-                  2
-                </a>
-              </li>
-            </ul>
-          </nav>
+          <UnitNavigation units={units} />
         </div>
         <nav className="crumb-navigation">
           <ol>
@@ -38,31 +89,11 @@ function App() {
           <h3>Website Development</h3>
           <nav className="section-navigation">
             <ul>
-              <li>
-                <a className="section-link" href="https://google.com">
-                  CLI
-                </a>
-              </li>
-              <li>
-                <a className="section-link" href="https://google.com">
-                  Git
-                </a>
-              </li>
-              <li>
-                <a className="section-link" href="https://google.com">
-                  Websites I
-                </a>
-              </li>
-              <li>
-                <a className="section-link" href="https://google.com">
-                  Websites II
-                </a>
-              </li>
-              <li>
-                <a className="section-link" href="https://google.com">
-                  Websites III
-                </a>
-              </li>
+              {sections.map(({ id, url, label }) => (
+                <li key={id}>
+                  <SectionLink url={url} label={label} />
+                </li>
+              ))}
             </ul>
           </nav>
           <main className="section-content">
@@ -86,9 +117,7 @@ function App() {
           </main>
         </section>
       </div>
-      <footer>
-        <small>© 2022, Sika Education</small>
-      </footer>
+      <AppFooter />
     </div>
   );
 }

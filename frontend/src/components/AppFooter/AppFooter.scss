@@ -1,0 +1,8 @@
+@use "../../AppFooter";
+
+.AppFooter {
+  display: flex;
+  padding-top: sizes.$s6;
+  justify-content: flex-end;
+  @include typography.legal-font;
+}

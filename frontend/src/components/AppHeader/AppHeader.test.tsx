@@ -1,5 +1,5 @@
 import { render, screen } from "@testing-library/react";
-import AppHeader from "./index";
+import AppHeader from ".";
 
 test("<AppHeader /> renders program label", () => {
   render(<AppHeader programLabel="Program Name Here" />);

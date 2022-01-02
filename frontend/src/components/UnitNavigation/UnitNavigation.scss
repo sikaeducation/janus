@@ -1,0 +1,16 @@
+.UnitNavigation {
+  > ul {
+    display: flex;
+    flex-flow: row wrap;
+    > li {
+      width: 35px;
+      height: 35px;
+    }
+    li + li {
+      margin-left: sizes.$s2;
+    }
+  }
+  @media (max-width: sizes.$small-breakpoint){
+    display: none;
+  }
+}
