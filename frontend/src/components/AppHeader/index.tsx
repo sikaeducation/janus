@@ -4,9 +4,7 @@ type props = {
   programLabel: string;
 };
 
-function AppHeader(props: props) {
-  const { programLabel } = props;
-
+function AppHeader({ programLabel }: props) {
   return (
     <div className="AppHeader">
       <h1>Sika</h1>
