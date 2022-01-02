@@ -27,21 +27,6 @@
   margin-bottom: sizes.$s5;
 }
 
-.primary-header {
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  align-items: flex-end;
-  margin-bottom: sizes.$s6;
-  @media (max-width: sizes.$small-breakpoint){
-    margin-bottom: sizes.$s4;
-  }
-  > h2 {
-    @media (max-width: sizes.$small-breakpoint){
-      display: none;
-    }
-  }
-}
 
 .constrained-container {
   display: flex;

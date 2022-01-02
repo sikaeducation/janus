@@ -1,13 +1,11 @@
 import "./App.scss";
+import AppHeader from "../components/AppHeader";
 
 function App() {
   return (
     <div className="App">
       <header>
-        <div className="primary-header">
-          <h1>Sika</h1>
-          <h2>Ford: Full-Stack Web Development</h2>
-        </div>
+        <AppHeader programLabel="Ford: Full-Stack Web Development" />
         <div className="constrained-container">
           <nav className="unit-navigation">
             <ul>
