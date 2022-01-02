@@ -2,9 +2,9 @@
 @use "./colors";
 
 @mixin button-shadow-small {
-  box-shadow: 0 1px 0 sizes.$grey-6;
+  box-shadow: 0 1px 0 colors.$grey-6;
   &:active {
-    box-shadow: 0 -1px 0 sizes.$grey-8;
+    box-shadow: 0 -1px 0 colors.$grey-8;
   }
 }
 

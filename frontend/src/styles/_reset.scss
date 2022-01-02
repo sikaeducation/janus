@@ -62,13 +62,13 @@ h1 {
   @include typography.hero-font;
 }
 h2 {
-  @include typography.heading-font-1;
-}
-h3 {
   @include typography.heading-font-2;
 }
-h4 {
+h3 {
   @include typography.heading-font-3;
+}
+h4 {
+  @include typography.heading-font-4;
 }
 a {
   color: inherit;

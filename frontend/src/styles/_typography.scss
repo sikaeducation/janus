@@ -13,62 +13,67 @@
 @mixin hero-font {
   font-family: "Gill Sans Condensed";
   color: colors.$primary-5;
-  font-size: sizes.$font-xxxxl;
+  font-size: sizes.$f9;
   letter-spacing: -2px;
 }
 
 @mixin tagline-font {
   font-family: "Gill Sans";
   color: colors.$primary-1;
-  font-size: sizes.$font-baseline;
+  font-size: sizes.$f4;
 }
 
 @mixin nav-item-font {
   font-family: Roboto, sans-serif;
   font-weight: 400;
   color: colors.$grey-2;
-  margin-bottom: sizes.$baseline;
-  font-size: sizes.$font-baseline;
-  line-height: sizes.$font-xl;
+  margin-bottom: sizes.$s4;
+  font-size: sizes.$f4;
+  line-height: sizes.$f6;
 }
 
 @mixin body-font {
   font-family: "Gill Sans";
   color: colors.$primary-1;
-  font-size: sizes.$font-large;
+  font-size: sizes.$f4;
   font-weight: 400;
 }
 
 @mixin heading-font-1 {
-  font-family: "Gill Sans Condensed";
-  color: colors.$primary-5;
-  font-size: sizes.$font-xxxxxl;
-  letter-spacing: -2px;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f7;
+  color: colors.$grey-4;
+  line-height: sizes.$f8;
 }
 
 @mixin heading-font-2 {
   font-family: "Gill Sans", sans-serif;
   font-weight: 400;
-  font-size: sizes.$font-xxl;
+  font-size: sizes.$f5;
   color: colors.$grey-4;
-  line-height: sizes.$font-xxxl;
-  margin-top: sizes.$xl;
-  margin-bottom: sizes.$baseline;
+  line-height: sizes.$f7;
 }
 
 @mixin heading-font-3 {
   font-family: "Gill Sans", sans-serif;
-  font-weight: 700;
-  font-size: sizes.$font-baseline;
+  font-weight: 400;
+  font-size: sizes.$f7;
+  color: colors.$primary-4;
+  margin-bottom: sizes.$s4;
+}
+
+@mixin heading-font-4 {
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f7;
   color: colors.$grey-4;
-  line-height: sizes.$font-xxxl;
-  margin-top: sizes.$xl;
-  margin-bottom: sizes.$baseline;
+  margin-bottom: sizes.$s4;
 }
 
 @mixin legal-font {
   font-family: "Gill Sans";
   color: colors.$grey-7;
-  font-size: sizes.$font-baseline;
+  font-size: sizes.$f3;
   font-weight: 400;
 }
