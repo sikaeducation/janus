@@ -3,6 +3,7 @@ import AppHeader from "../components/AppHeader";
 import AppFooter from "../components/AppFooter";
 import UnitNavigation from "../components/UnitNavigation";
 import SectionNavigation from "../components/SectionNavigation";
+import CrumbNavigation from "../components/CrumbNavigation";
 
 const units = [
   {
@@ -65,6 +66,19 @@ const sections = [
   },
 ];
 
+const crumbs = [
+  {
+    id: 1,
+    label: "CLI",
+    url: "https://google.com",
+  },
+  {
+    id: 2,
+    label: "Git",
+    url: "https://google.com",
+  },
+];
+
 function App() {
   return (
     <div className="App">
@@ -73,16 +87,7 @@ function App() {
         <div className="constrained-container">
           <UnitNavigation units={units} />
         </div>
-        <nav className="crumb-navigation">
-          <ol>
-            <li>
-              <a href="google.com">Website Development</a>
-            </li>
-            <li>
-              <a href="google.com">CLI</a>
-            </li>
-          </ol>
-        </nav>
+        <CrumbNavigation links={crumbs} />
       </header>
       <div className="constrained-container">
         <section className="unit">

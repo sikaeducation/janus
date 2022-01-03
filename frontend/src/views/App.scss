@@ -27,7 +27,6 @@
   margin-bottom: sizes.$s5;
 }
 
-
 .constrained-container {
   display: flex;
   flex-flow: row nowrap;
@@ -53,26 +52,6 @@
     grid-column: 1 / span 2;
     @media (max-width: sizes.$small-breakpoint){
       display: none;
-    }
-  }
-}
-
-.crumb-navigation {
-  @include typography.breadcrumb-font;
-  grid-row: 2 / span 1;
-  grid-column: 1 / span 1;
-  display: block;
-  @media (min-width: sizes.$small-breakpoint){
-    display: none;
-  }
-  li {
-    display: inline-block;
-  }
-  li + li {
-    margin-left: sizes.$s1;
-    &::before {
-      content: ">";
-      margin-right: sizes.$s1;
     }
   }
 }

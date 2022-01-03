@@ -1,0 +1,22 @@
+@use "../../styles/typography";
+@use "../../styles/sizes";
+
+.CrumbNavigation {
+  @include typography.breadcrumb-font;
+  grid-row: 2 / span 1;
+  grid-column: 1 / span 1;
+  display: block;
+  @media (min-width: sizes.$small-breakpoint){
+    display: none;
+  }
+  li {
+    display: inline-block;
+  }
+  li + li {
+    margin-left: sizes.$s1;
+    &::before {
+      content: ">";
+      margin-right: sizes.$s1;
+    }
+  }
+}
