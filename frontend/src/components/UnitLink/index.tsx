@@ -1,14 +1,3 @@
-import "./UnitLink.scss";
+import UnitLink from "./UnitLink";
 
-type props = {
-  url: string;
-  label: string;
-};
-
-export default function UnitLink({ url, label }: props) {
-  return (
-    <a className="UnitLink" href={url}>
-      {label}
-    </a>
-  );
-}
+export default UnitLink;
