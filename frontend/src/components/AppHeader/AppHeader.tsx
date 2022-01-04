@@ -6,10 +6,10 @@ type props = {
 
 function AppHeader({ programLabel }: props) {
   return (
-    <div className="AppHeader">
-      <h1>Sika</h1>
-      <h2>{programLabel}</h2>
-    </div>
+    <header className="AppHeader">
+      <span className="logo">Sika</span>
+      <span className="program-label">{programLabel}</span>
+    </header>
   );
 }
 

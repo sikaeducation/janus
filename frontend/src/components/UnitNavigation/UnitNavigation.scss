@@ -1,6 +1,7 @@
 @use "../../styles/sizes";
 
 .UnitNavigation {
+  margin-bottom: sizes.$s3;
   > ul {
     display: flex;
     flex-flow: row wrap;

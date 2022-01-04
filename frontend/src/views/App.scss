@@ -6,7 +6,7 @@
 .App {
   min-height: 100vh;
   display: grid;
-  grid-template-rows: auto 1fr;
+  grid-template-rows: auto 1fr auto;
   font-family: "Gill Sans", sans-serif;
   padding-top: sizes.$s5;
   padding-bottom: sizes.$s5;
@@ -16,7 +16,7 @@
   }
 }
 
-.App > header, .App > .constrained-container, .App > footer {
+.App > header, .App > main, .App > footer {
   padding: 0 sizes.$s5;
   @media (max-width: sizes.$small-breakpoint){
     padding: 0 sizes.$s3;
@@ -27,40 +27,11 @@
   margin-bottom: sizes.$s5;
 }
 
-.constrained-container {
+.App > main {
   display: flex;
-  flex-flow: row nowrap;
   justify-content: center;
   > * {
-    flex-basis: 800px;
+    flex-basis: 600px;
     flex-shrink: 1;
-  }
-}
-
-.unit {
-  display: grid;
-  grid-template-rows: auto 1fr;
-  grid-template-columns: 150px 1fr;
-  margin: 0 auto;
-  @media (max-width: sizes.$small-breakpoint){
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto 1fr;
-  }
-  > h3 {
-    margin-bottom: sizes.$s5;
-    grid-row: 1 / span 1;
-    grid-column: 1 / span 2;
-    @media (max-width: sizes.$small-breakpoint){
-      display: none;
-    }
-  }
-}
-
-.section-content {
-  grid-row: 2 / span 1;
-  grid-column: 2 / span 1;
-  @media (max-width: sizes.$small-breakpoint){
-    grid-row: 3 / span 1;
-    grid-column: 1 / span 1;
   }
 }

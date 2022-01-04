@@ -1,0 +1,42 @@
+@use "../../styles/typography";
+@use "../../styles/sizes";
+@use "../../styles/colors";
+
+.AppContent {
+  width: 600px;
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  @media (max-width: sizes.$small-breakpoint){
+    width: 100%;
+  }
+  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
+    width: 100%;
+    margin-bottom: sizes.$f4;
+  }
+  pre, code, img, figure, svg {
+    width: 110%;
+    margin-bottom: sizes.$f4;
+    @media (max-width: sizes.$small-breakpoint){
+      width: 100%;
+    }
+  }
+  h1 {
+    @include typography.heading-font-1;
+  }
+  h2 {
+    @include typography.heading-font-2;
+  }
+  h3 {
+    @include typography.heading-font-3;
+  }
+  h4 {
+    @include typography.heading-font-4;
+  }
+  pre {
+    @include typography.code-font;
+    padding: sizes.$f5;
+    overflow: auto;
+    margin: sizes.$f7 0;
+  }
+}

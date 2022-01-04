@@ -55,21 +55,6 @@ table {
 body {
   @include typography.body-font;
 }
-p {
-  max-width: sizes.$max-width;
-}
-h1 {
-  @include typography.hero-font;
-}
-h2 {
-  @include typography.heading-font-2;
-}
-h3 {
-  @include typography.heading-font-3;
-}
-h4 {
-  @include typography.heading-font-4;
-}
 a {
   color: inherit;
 }
