@@ -3,16 +3,16 @@
 @use "../../styles/colors";
 
 .AppContent {
-  width: 600px;
+  width: sizes.$content-width-large;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  padding-bottom: sizes.$s9;
   @media (max-width: sizes.$small-breakpoint){
     width: 100%;
   }
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
     width: 100%;
-    margin-bottom: sizes.$f4;
   }
   pre, code, img, figure, svg {
     width: 110%;
@@ -33,10 +33,31 @@
   h4 {
     @include typography.heading-font-4;
   }
-  pre {
-    @include typography.code-font;
+  blockquote {
+    background-color: colors.$grey-9;
     padding: sizes.$f5;
-    overflow: auto;
+    > p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  code {
+    @include typography.code-font;
     margin: sizes.$f7 0;
+  }
+  pre {
+    // overflow: auto;
+    white-space: pre-wrap;
+  }
+  thead {
+    border-bottom: 1px solid colors.$grey-7;
+  }
+  th {
+    @include typography.heading-font-3;
+    text-align: left;
+    padding-bottom: sizes.$s2;
+  }
+  td {
+    padding-top: sizes.$s3;
   }
 }

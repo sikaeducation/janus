@@ -62,3 +62,6 @@ input, select, label, button {
   display: block;
   @include typography.body-font;
 }
+p, ul, ol, section, form, blockquote {
+  margin-bottom: sizes.$f5;
+}

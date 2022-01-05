@@ -14,7 +14,7 @@
     @include typography.logo-font;
   }
   .program-label {
-    @include typography.heading-font-3;
+    @include typography.program-label-font;
     @media (max-width: sizes.$small-breakpoint){
       display: none;
     }

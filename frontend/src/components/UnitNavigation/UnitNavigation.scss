@@ -1,10 +1,10 @@
 @use "../../styles/sizes";
 
 .UnitNavigation {
-  margin-bottom: sizes.$s3;
   > ul {
     display: flex;
     flex-flow: row wrap;
+    margin-bottom: sizes.$s2;
     > li {
       width: 35px;
       height: 35px;

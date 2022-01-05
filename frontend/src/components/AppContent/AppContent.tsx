@@ -4,7 +4,7 @@ import "./AppContent.scss";
 import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dark } from "react-syntax-highlighter/dist/esm/styles/prism";
+import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 
 type props = {
   content: string;
@@ -23,7 +23,7 @@ export default function AppContent({ content }: props) {
             return !inline && match ? (
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, "")}
-                style={dark}
+                style={style}
                 language={match[1]}
                 PreTag="div"
                 {...props}

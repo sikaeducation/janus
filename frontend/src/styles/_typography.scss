@@ -1,5 +1,6 @@
 @use "./sizes";
 @use "./colors";
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&display=swap");
 
 @font-face {
   font-family: "Gill Sans";
@@ -23,7 +24,7 @@
 @mixin body-font {
   font-family: "Gill Sans", sans-serif;
   color: colors.$primary-1;
-  font-size: sizes.$f4;
+  font-size: sizes.$f5;
   font-weight: 400;
   line-height: 1.5;
   @media (max-width: sizes.$small-breakpoint){
@@ -33,10 +34,11 @@
 
 @mixin heading-font-1 {
   font-family: "Gill Sans", sans-serif;
-  font-weight: 400;
-  font-size: sizes.$f7;
+  font-weight: 700;
+  font-size: sizes.$f8;
   color: colors.$primary-4;
-  margin-bottom: sizes.$s4;
+  margin-top: sizes.$f4;
+  margin-bottom: sizes.$f6;
 }
 
 @mixin heading-font-2 {
@@ -45,15 +47,17 @@
   font-size: sizes.$f7;
   color: colors.$grey-4;
   line-height: sizes.$f8;
+  margin-top: sizes.$f7;
   margin-bottom: sizes.$f2;
 }
 
 @mixin heading-font-3 {
   font-family: "Gill Sans", sans-serif;
   font-weight: 400;
-  font-size: sizes.$f5;
-  color: colors.$grey-6;
+  font-size: sizes.$f6;
+  color: colors.$grey-5;
   line-height: sizes.$f7;
+  margin-bottom: sizes.$f1;
 }
 
 @mixin heading-font-4 {
@@ -69,7 +73,7 @@
 
 @mixin breadcrumb-font {
   font-family: "Gill Sans", sans-serif;
-  font-size: sizes.$f2;
+  font-size: sizes.$f3;
   font-weight: 400;
   color: colors.$grey-4;
 }
@@ -84,8 +88,16 @@
   }
 }
 
+@mixin program-label-font {
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f5;
+  color: colors.$grey-6;
+  line-height: sizes.$f7;
+  margin-bottom: sizes.$f1;
+}
+
 @mixin code-font {
-  font-family: monospace;
-  font-size: sizes.$f4;
-  background-color: colors.$grey-9;
+  font-family: "Fira Mono", monospace;
+  font-size: inherit;
 }

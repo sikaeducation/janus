@@ -1,5 +1,6 @@
 @use "../../styles/typography";
 @use "../../styles/sizes";
+@use "../../styles/colors";
 
 .CrumbNavigation {
   @include typography.breadcrumb-font;
@@ -13,5 +14,11 @@
       content: ">";
       margin-right: sizes.$s1;
     }
+  }
+  a {
+    /* Controls spacing of underline */
+    display: inline-block;
+    text-decoration: none;
+    border-bottom: 1px solid colors.$grey-5;
   }
 }
