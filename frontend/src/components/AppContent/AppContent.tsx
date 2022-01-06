@@ -1,4 +1,4 @@
-/* eslint react/destructuring-assignment: "off", react/no-unstable-nested-components: "off", react/no-children-prop: "off", react/jsx-props-no-spreading: "off" */
+/* eslint react/destructuring-assignment: "off", react/no-unstable-nested-components: "off", react/no-children-prop: "off", react/jsx-props-no-spreading: "off", @typescript-eslint/no-explicit-any: "off" */
 
 import "./AppContent.scss";
 import ReactMarkdown from "react-markdown";
