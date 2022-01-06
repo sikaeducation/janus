@@ -27,7 +27,6 @@ function App() {
   );
   const unitLinks = getUnitLinks(program.units);
   const currentCrumbs = getCrumbs(currentActivity);
-  console.log(currentCrumbs);
 
   return (
     <div className="App">
