@@ -37,37 +37,26 @@ function getCurrentActivity(
     slug: unit.slug,
     label: unit.short_label,
   };
+  current.content = unit.table_of_contents;
+  if (!sectionSlug) return current;
 
-  if (!sectionSlug) {
-    return {
-      ...current,
-      content: unit.table_of_contents,
-    };
-  }
   const section = locate<section>(unit.sections, sectionSlug);
   if (!section) return current;
-
   current.section = {
     slug: section.slug,
     label: section.short_label,
   };
+  current.content = section.table_of_contents;
+  if (!activitySlug) return current;
 
-  if (!activitySlug && section) {
-    return {
-      ...current,
-      content: section.table_of_contents,
-    };
-  }
   const activity = locate<activity>(section.activities, activitySlug);
   if (!activity) return current;
   current.activity = {
     slug: activity.slug,
     label: activity.short_label,
   };
-  return {
-    ...current,
-    content: activity.content,
-  };
+  current.content = activity.content;
+  return current;
 }
 
 function makeCrumb(id: number, label: string, url: string) {
