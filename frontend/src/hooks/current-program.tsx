@@ -1,4 +1,4 @@
-import { data } from "../data";
+import data from "../data";
 
 function getUnitLinks(units: unit[]) {
   return units.map((unit) => ({
@@ -9,7 +9,7 @@ function getUnitLinks(units: unit[]) {
 }
 
 export default function currentContent() {
-  const { program } = data;
+  const { program } = data; // Fetch or read from localStorage
   const unitLinks = getUnitLinks(program.units);
 
   return {

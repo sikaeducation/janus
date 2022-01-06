@@ -1,24 +1,92 @@
-import { data, getCurrentActivity } from "../data";
+/* eslint @typescript-eslint/no-shadow: "off" */
+import data from "../data";
+
+function getCurrentActivity(
+  program: program,
+  unitSlug: string,
+  sectionSlug = "",
+  activitySlug = ""
+) {
+  const activity = {
+    unit: {
+      slug: unitSlug,
+      label: "",
+    },
+    section: {
+      slug: sectionSlug,
+      label: "",
+    },
+    activity: {
+      slug: activitySlug,
+      label: "",
+    },
+    content: "",
+  };
+  const unit = program.units.find((unit) => unit.slug === unitSlug);
+  if (!unit) {
+    return activity;
+  }
+  activity.unit = {
+    slug: unit.slug,
+    label: unit.short_label,
+  };
+  if (!sectionSlug) {
+    return {
+      ...activity,
+      content: unit.table_of_contents,
+    };
+  }
+  const section = unit.sections.find((section) => section.slug === sectionSlug);
+  if (!section) {
+    return activity;
+  }
+  activity.section = {
+    slug: section.slug,
+    label: section.short_label,
+  };
+  if (!activitySlug && section) {
+    return {
+      ...activity,
+      content: section.table_of_contents,
+    };
+  }
+  const currentActivity = section.activities.find(
+    (activity) => activity.slug === activitySlug
+  );
+  if (!currentActivity) {
+    return activity;
+  }
+  activity.activity = {
+    slug: currentActivity.slug,
+    label: currentActivity.short_label,
+  };
+  return {
+    ...activity,
+    content: currentActivity.content,
+  };
+}
 
 function makeCrumb(id: number, label: string, url: string) {
   return { id, label, url };
 }
 
-function getCrumbs(current: current) {
-  const { unit, section, activity } = current;
-  const parts = [unit, section, activity].filter((part) => part.slug);
-  const slugs = parts.map((crumb) => crumb.slug);
-  const paths = slugs
+function slugToPath(slug: string, index: number, originalSlugs: string[]) {
+  const path = originalSlugs
+    .slice(index + 1)
     .reverse()
-    .map((slug, index) => {
-      const otherSlugs = slugs.slice(index + 1);
-      const path = otherSlugs.join("/");
-      return `${path}/${slug}`;
-    })
+    .join("/");
+  return `${path}/${slug}`;
+}
+
+function getCrumbs({ unit, section, activity }: current) {
+  const parts = [unit, section, activity].filter((part) => part.slug);
+  const paths = parts
+    .map((crumb) => crumb.slug)
+    .reverse()
+    .map(slugToPath)
     .reverse();
 
   const crumbs: crumb[] = [];
-
   return parts.reduce((previousCrumbs, crumb, index) => {
     return [...previousCrumbs, makeCrumb(index, crumb.label, paths[index])];
   }, crumbs);
@@ -35,14 +103,9 @@ function getSlugs(path: string) {
 }
 
 export default function currentContent(pathname: string) {
-  const { program } = data;
-  const slugs = getSlugs(pathname);
-  const currentActivity = getCurrentActivity(
-    program,
-    slugs.unit,
-    slugs.section,
-    slugs.activity
-  );
+  const { program } = data; // Fetch or get from localStorage
+  const { unit, section, activity } = getSlugs(pathname);
+  const currentActivity = getCurrentActivity(program, unit, section, activity);
   const currentCrumbs = getCrumbs(currentActivity);
 
   return {

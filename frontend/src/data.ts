@@ -1,6 +1,4 @@
-/* eslint @typescript-eslint/no-shadow: "off" */
-
-export const data = {
+export default {
   program: {
     id: 1,
     label: "Ford: Full-Stack Web Development",
@@ -40,68 +38,3 @@ export const data = {
     ],
   },
 };
-
-export function getCurrentActivity(
-  program: program,
-  unitSlug: string,
-  sectionSlug = "",
-  activitySlug = ""
-) {
-  const activity = {
-    unit: {
-      slug: unitSlug,
-      label: "",
-    },
-    section: {
-      slug: sectionSlug,
-      label: "",
-    },
-    activity: {
-      slug: activitySlug,
-      label: "",
-    },
-    content: "",
-  };
-  const unit = program.units.find((unit) => unit.slug === unitSlug);
-  if (!unit) {
-    return activity;
-  }
-  activity.unit = {
-    slug: unit.slug,
-    label: unit.short_label,
-  };
-  if (!sectionSlug) {
-    return {
-      ...activity,
-      content: unit.table_of_contents,
-    };
-  }
-  const section = unit.sections.find((section) => section.slug === sectionSlug);
-  if (!section) {
-    return activity;
-  }
-  activity.section = {
-    slug: section.slug,
-    label: section.short_label,
-  };
-  if (!activitySlug && section) {
-    return {
-      ...activity,
-      content: section.table_of_contents,
-    };
-  }
-  const currentActivity = section.activities.find(
-    (activity) => activity.slug === activitySlug
-  );
-  if (!currentActivity) {
-    return activity;
-  }
-  activity.activity = {
-    slug: currentActivity.slug,
-    label: currentActivity.short_label,
-  };
-  return {
-    ...activity,
-    content: currentActivity.content,
-  };
-}
