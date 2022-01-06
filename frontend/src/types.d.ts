@@ -45,3 +45,8 @@ type current = {
   };
   content: string;
 };
+type crumb = {
+  id: number;
+  url: string;
+  label: string;
+};

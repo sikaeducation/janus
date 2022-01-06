@@ -1,30 +1,37 @@
-import { data, getCurrentActivity, getSlugs } from "../data";
+import { data, getCurrentActivity } from "../data";
 
-export function getCrumbs(current: current) {
-  const crumbs = [];
-  if (current.unit.slug) {
-    crumbs.push({
-      id: 1,
-      label: current.unit.label,
-      url: current.unit.slug,
-    });
-  }
-  if (current.section.slug) {
-    crumbs.push({
-      id: 2,
-      label: current.section.label,
-      url: `${current.unit.slug}/${current.section.slug}`,
-    });
-  }
-  if (current.activity.slug) {
-    crumbs.push({
-      id: 3,
-      label: current.activity.label,
-      url: `${current.unit.slug}/${current.section.slug}/${current.activity.slug}`,
-    });
-  }
+function makeCrumb(id: number, label: string, url: string) {
+  return { id, label, url };
+}
 
-  return crumbs;
+function getCrumbs(current: current) {
+  const { unit, section, activity } = current;
+  const parts = [unit, section, activity].filter((part) => part.slug);
+  const slugs = parts.map((crumb) => crumb.slug);
+  const paths = slugs
+    .reverse()
+    .map((slug, index) => {
+      const otherSlugs = slugs.slice(index + 1);
+      const path = otherSlugs.join("/");
+      return `${path}/${slug}`;
+    })
+    .reverse();
+
+  const crumbs: crumb[] = [];
+
+  return parts.reduce((previousCrumbs, crumb, index) => {
+    return [...previousCrumbs, makeCrumb(index, crumb.label, paths[index])];
+  }, crumbs);
+}
+
+function getSlugs(path: string) {
+  const normalizedPath = path.substring(1);
+  const segments = normalizedPath.split("/");
+  return {
+    unit: segments[0] || "",
+    section: segments[1] || "",
+    activity: segments[2] || "",
+  };
 }
 
 export default function currentContent(pathname: string) {

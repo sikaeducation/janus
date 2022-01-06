@@ -41,10 +41,6 @@ export const data = {
   },
 };
 
-export function getSections(program: program) {
-  return program.units.flatMap((unit) => unit.sections);
-}
-
 export function getCurrentActivity(
   program: program,
   unitSlug: string,
@@ -107,15 +103,5 @@ export function getCurrentActivity(
   return {
     ...activity,
     content: currentActivity.content,
-  };
-}
-
-export function getSlugs(path: string) {
-  const normalizedPath = path.substring(1);
-  const segments = normalizedPath.split("/");
-  return {
-    unit: segments[0] || "",
-    section: segments[1] || "",
-    activity: segments[2] || "",
   };
 }
