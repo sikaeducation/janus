@@ -5,6 +5,9 @@
 .CrumbNavigation {
   @include typography.breadcrumb-font;
   margin-bottom: sizes.$s6;
+  @media (max-width: sizes.$small-breakpoint){
+    margin-bottom: sizes.$s3;
+  }
   li {
     display: inline-block;
   }

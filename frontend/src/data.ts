@@ -10,7 +10,7 @@ export default {
         tiny_label: "1",
         slug: "websites",
         table_of_contents:
-          "# Websites \n\n## Check these [links](websites/websites-1) to sections",
+          "# Websites \n\n Check these [links](websites/websites-1) to sections",
         sections: [
           {
             id: 1,
@@ -18,7 +18,7 @@ export default {
             short_label: "Websites 1",
             slug: "websites-1",
             table_of_contents:
-              "# Websites 1\n\n## Check this out: [content](websites/websites-1/html-div-span)",
+              "# Websites 1\n\n Check this out: [content](websites/websites-1/html-div-span)",
             activities: [
               {
                 id: 1,

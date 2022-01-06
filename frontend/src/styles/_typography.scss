@@ -39,6 +39,10 @@
   color: colors.$primary-4;
   margin-top: sizes.$f4;
   margin-bottom: sizes.$f6;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f6;
+    margin-bottom: sizes.$f4;
+  }
 }
 
 @mixin heading-font-2 {
@@ -49,6 +53,11 @@
   line-height: sizes.$f8;
   margin-top: sizes.$f7;
   margin-bottom: sizes.$f2;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f6;
+    margin-top: sizes.$f4;
+    margin-bottom: sizes.$f1;
+  }
 }
 
 @mixin heading-font-3 {
@@ -58,6 +67,10 @@
   color: colors.$grey-5;
   line-height: sizes.$f7;
   margin-bottom: sizes.$f1;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f5;
+    margin-bottom: sizes.$f1;
+  }
 }
 
 @mixin heading-font-4 {

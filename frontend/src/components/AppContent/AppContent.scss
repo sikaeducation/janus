@@ -10,6 +10,7 @@
   padding-bottom: sizes.$s9;
   @media (max-width: sizes.$small-breakpoint){
     width: 100%;
+    padding-bottom: sizes.$s6;
   }
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
     width: 100%;
@@ -44,9 +45,9 @@
   code {
     @include typography.code-font;
     margin: sizes.$f7 0;
+    white-space: pre-wrap !important; // Needed to override syntax highlighter
   }
   pre {
-    // overflow: auto;
     white-space: pre-wrap;
   }
   thead {

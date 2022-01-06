@@ -1,4 +1,5 @@
 import "./UnitLink.scss";
+import { Link } from "react-router-dom";
 
 type props = {
   url: string;
@@ -7,8 +8,8 @@ type props = {
 
 export default function UnitLink({ url, label }: props) {
   return (
-    <a className="UnitLink" href={url}>
+    <Link to={url} className="UnitLink">
       {label}
-    </a>
+    </Link>
   );
 }

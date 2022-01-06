@@ -25,7 +25,7 @@ function getEmptyCurrent() {
 
 function getCurrentActivity(
   program: program,
-  unitSlug: string,
+  unitSlug = "",
   sectionSlug = "",
   activitySlug = ""
 ) {
