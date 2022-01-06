@@ -6,27 +6,13 @@ import UnitNavigation from "../../components/UnitNavigation";
 import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
 
-import {
-  data,
-  getCurrentActivity,
-  getUnitLinks,
-  getCrumbs,
-  getSlugs,
-} from "../../data";
+import currentContent from "../../hooks/current-content";
+import currentProgram from "../../hooks/current-program";
 
 function App() {
   const { pathname } = useLocation();
-
-  const { program } = data;
-  const slugs = getSlugs(pathname);
-  const currentActivity = getCurrentActivity(
-    program,
-    slugs.unit,
-    slugs.section,
-    slugs.activity
-  );
-  const unitLinks = getUnitLinks(program.units);
-  const currentCrumbs = getCrumbs(currentActivity);
+  const { crumbs, content } = currentContent(pathname);
+  const { program, unitLinks } = currentProgram();
 
   return (
     <div className="App">
@@ -34,8 +20,8 @@ function App() {
       <main>
         <div className="content-container">
           <UnitNavigation units={unitLinks} />
-          <CrumbNavigation links={currentCrumbs} />
-          <AppContent content={currentActivity.content} />
+          <CrumbNavigation links={crumbs} />
+          <AppContent content={content} />
         </div>
       </main>
       <AppFooter />

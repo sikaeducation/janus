@@ -1,0 +1,37 @@
+@use "../../styles/typography";
+@use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/buttons";
+
+.App {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  font-family: "Gill Sans", sans-serif;
+  padding-top: sizes.$s5;
+  padding-bottom: sizes.$s5;
+  @media (max-width: sizes.$small-breakpoint){
+    padding-top: sizes.$s2;
+    padding-bottom: sizes.$s2;
+  }
+}
+
+.App > header, .App > main, .App > footer {
+  padding: 0 sizes.$s5;
+  @media (max-width: sizes.$small-breakpoint){
+    padding: 0 sizes.$s3;
+  }
+}
+
+.App > header {
+  margin-bottom: sizes.$s5;
+}
+
+.App > main {
+  display: flex;
+  justify-content: center;
+  > * {
+    flex-basis: sizes.$content-width-large;
+    flex-shrink: 1;
+  }
+}

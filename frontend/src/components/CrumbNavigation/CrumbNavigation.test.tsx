@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 import CrumbNavigation from ".";
 
 test("<CrumbNavigation /> renders links", () => {
@@ -14,7 +15,11 @@ test("<CrumbNavigation /> renders links", () => {
       label: "Label",
     },
   ];
-  render(<CrumbNavigation links={links} />);
+  render(
+    <Router>
+      <CrumbNavigation links={links} />
+    </Router>
+  );
 
   const items = screen.getAllByRole("listitem");
   expect(items).toHaveLength(2);

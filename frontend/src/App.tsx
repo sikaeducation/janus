@@ -1,6 +1,5 @@
-import "./App.scss";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AppShell from "./AppShell";
+import AppShell from "./views/AppShell";
 
 function App() {
   return (
