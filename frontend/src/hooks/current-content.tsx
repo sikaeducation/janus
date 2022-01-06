@@ -23,9 +23,7 @@ function getCurrentActivity(
     content: "",
   };
   const unit = program.units.find((unit) => unit.slug === unitSlug);
-  if (!unit) {
-    return current;
-  }
+  if (!unit) return current;
   current.unit = {
     slug: unit.slug,
     label: unit.short_label,
@@ -37,9 +35,8 @@ function getCurrentActivity(
     };
   }
   const section = unit.sections.find((section) => section.slug === sectionSlug);
-  if (!section) {
-    return current;
-  }
+  if (!section) return current;
+
   current.section = {
     slug: section.slug,
     label: section.short_label,
@@ -53,9 +50,8 @@ function getCurrentActivity(
   const currentActivity = section.activities.find(
     (activity) => activity.slug === activitySlug
   );
-  if (!currentActivity) {
-    return current;
-  }
+  if (!currentActivity) return current;
+
   current.activity = {
     slug: currentActivity.slug,
     label: currentActivity.short_label,
