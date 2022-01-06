@@ -5,33 +5,39 @@ function locate<T extends { slug: string }>(collection: T[], slug: string) {
   return collection.find((item) => item.slug === slug);
 }
 
+function getEmptyCurrent() {
+  return {
+    unit: {
+      slug: "",
+      label: "",
+    },
+    section: {
+      slug: "",
+      label: "",
+    },
+    activity: {
+      slug: "",
+      label: "",
+    },
+    content: "",
+  };
+}
+
 function getCurrentActivity(
   program: program,
   unitSlug: string,
   sectionSlug = "",
   activitySlug = ""
 ) {
-  const current = {
-    unit: {
-      slug: unitSlug,
-      label: "",
-    },
-    section: {
-      slug: sectionSlug,
-      label: "",
-    },
-    activity: {
-      slug: activitySlug,
-      label: "",
-    },
-    content: "",
-  };
+  const current = getEmptyCurrent();
+
   const unit = locate<unit>(program.units, unitSlug);
   if (!unit) return current;
   current.unit = {
     slug: unit.slug,
     label: unit.short_label,
   };
+
   if (!sectionSlug) {
     return {
       ...current,
@@ -45,6 +51,7 @@ function getCurrentActivity(
     slug: section.slug,
     label: section.short_label,
   };
+
   if (!activitySlug && section) {
     return {
       ...current,
@@ -53,7 +60,6 @@ function getCurrentActivity(
   }
   const activity = locate<activity>(section.activities, activitySlug);
   if (!activity) return current;
-
   current.activity = {
     slug: activity.slug,
     label: activity.short_label,
