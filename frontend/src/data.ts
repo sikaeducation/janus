@@ -1,3 +1,5 @@
+/* eslint @typescript-eslint/no-shadow: "off" */
+
 export const data = {
   program: {
     id: 1,
@@ -10,14 +12,15 @@ export const data = {
         tiny_label: "1",
         slug: "websites",
         table_of_contents:
-          "# Websites \n\n## Check these [links](#some-link) to sections",
+          "# Websites \n\n## Check these [links](websites/websites-1) to sections",
         sections: [
           {
             id: 1,
             full_label: "Websites 1",
             short_label: "Websites 1",
             slug: "websites-1",
-            table_of_contents: "# Websites 1\n\n## Check this out",
+            table_of_contents:
+              "# Websites 1\n\n## Check this out: [content](websites/websites-1/html-div-span)",
             activities: [
               {
                 id: 1,
@@ -87,29 +90,123 @@ export function getUnitLinks(units: unit[]) {
   }));
 }
 
-export function getCrumbs(
-  units: unit[],
-  sections: section[],
-  activity: activity
-) {
-  return [
-    {
+type current = {
+  unit: {
+    label: string;
+    slug: string;
+  };
+  section: {
+    label: string;
+    slug: string;
+  };
+  activity: {
+    label: string;
+    slug: string;
+  };
+  content: string;
+};
+
+export function getCrumbs(current: current) {
+  const crumbs = [];
+  if (current.unit.slug) {
+    crumbs.push({
       id: 1,
-      label: findUnit(units, activity.unit_id)?.short_label || "",
-      url: findUnit(units, activity.unit_id)?.slug || "",
-    },
-    {
+      label: current.unit.label,
+      url: current.unit.slug,
+    });
+  }
+  if (current.section.slug) {
+    crumbs.push({
       id: 2,
-      label: findSection(sections, activity.unit_id)?.short_label || "",
-      url: findSection(sections, activity.unit_id)?.slug || "",
-    },
-    {
+      label: current.section.label,
+      url: `${current.unit.slug}/${current.section.slug}`,
+    });
+  }
+  if (current.activity.slug) {
+    crumbs.push({
       id: 3,
-      label: activity.short_label,
-      url: activity.slug,
-    },
-  ];
+      label: current.activity.label,
+      url: `${current.unit.slug}/${current.section.slug}/${current.activity.slug}`,
+    });
+  }
+
+  return crumbs;
 }
 export function getSections(program: program) {
   return program.units.flatMap((unit) => unit.sections);
+}
+
+export function getCurrentActivity(
+  program: program,
+  unitSlug: string,
+  sectionSlug = "",
+  activitySlug = ""
+) {
+  const activity = {
+    unit: {
+      slug: unitSlug,
+      label: "",
+    },
+    section: {
+      slug: sectionSlug,
+      label: "",
+    },
+    activity: {
+      slug: activitySlug,
+      label: "",
+    },
+    content: "",
+  };
+  const unit = program.units.find((unit) => unit.slug === unitSlug);
+  if (!unit) {
+    return activity;
+  }
+  activity.unit = {
+    slug: unit.slug,
+    label: unit.short_label,
+  };
+  if (!sectionSlug) {
+    return {
+      ...activity,
+      content: unit.table_of_contents,
+    };
+  }
+  const section = unit.sections.find((section) => section.slug === sectionSlug);
+  if (!section) {
+    return activity;
+  }
+  activity.section = {
+    slug: section.slug,
+    label: section.short_label,
+  };
+  if (!activitySlug && section) {
+    return {
+      ...activity,
+      content: section.table_of_contents,
+    };
+  }
+  const currentActivity = section.activities.find(
+    (activity) => activity.slug === activitySlug
+  );
+  if (!currentActivity) {
+    return activity;
+  }
+  activity.activity = {
+    slug: currentActivity.slug,
+    label: currentActivity.short_label,
+  };
+  return {
+    ...activity,
+    content: currentActivity.content,
+  };
+}
+
+export function getSlugs(path: string) {
+  const normalizedPath = path.substring(1);
+  const segments = normalizedPath.split("/");
+  return {
+    unit: segments[0] || "",
+    section: segments[1] || "",
+    activity: segments[2] || "",
+  };
 }

@@ -1,4 +1,5 @@
 import "./CrumbNavigation.scss";
+import { Link } from "react-router-dom";
 
 type link = {
   id: number;
@@ -15,7 +16,7 @@ export default function CrumbNavigation({ links }: props) {
       <ol>
         {links.map(({ id, url, label }) => (
           <li key={id}>
-            <a href={url}>{label}</a>
+            <Link to={url}>{label}</Link>
           </li>
         ))}
       </ol>
