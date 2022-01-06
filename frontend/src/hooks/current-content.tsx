@@ -1,6 +1,10 @@
 /* eslint @typescript-eslint/no-shadow: "off" */
 import data from "../data";
 
+function locate<T extends { slug: string }>(collection: T[], slug: string) {
+  return collection.find((item) => item.slug === slug);
+}
+
 function getCurrentActivity(
   program: program,
   unitSlug: string,
@@ -22,7 +26,7 @@ function getCurrentActivity(
     },
     content: "",
   };
-  const unit = program.units.find((unit) => unit.slug === unitSlug);
+  const unit = locate<unit>(program.units, unitSlug);
   if (!unit) return current;
   current.unit = {
     slug: unit.slug,
@@ -34,7 +38,7 @@ function getCurrentActivity(
       content: unit.table_of_contents,
     };
   }
-  const section = unit.sections.find((section) => section.slug === sectionSlug);
+  const section = locate<section>(unit.sections, sectionSlug);
   if (!section) return current;
 
   current.section = {
@@ -47,18 +51,16 @@ function getCurrentActivity(
       content: section.table_of_contents,
     };
   }
-  const currentActivity = section.activities.find(
-    (activity) => activity.slug === activitySlug
-  );
-  if (!currentActivity) return current;
+  const activity = locate<activity>(section.activities, activitySlug);
+  if (!activity) return current;
 
   current.activity = {
-    slug: currentActivity.slug,
-    label: currentActivity.short_label,
+    slug: activity.slug,
+    label: activity.short_label,
   };
   return {
     ...current,
-    content: currentActivity.content,
+    content: activity.content,
   };
 }
 
