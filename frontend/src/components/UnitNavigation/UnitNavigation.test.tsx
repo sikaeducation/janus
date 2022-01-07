@@ -1,4 +1,5 @@
 import { render, screen } from "@testing-library/react";
+import { BrowserRouter as Router } from "react-router-dom";
 import UnitNavigation from ".";
 
 test("<UnitNavigation /> renders units", () => {
@@ -19,7 +20,11 @@ test("<UnitNavigation /> renders units", () => {
       label: "Label",
     },
   ];
-  render(<UnitNavigation units={units} />);
+  render(
+    <Router>
+      <UnitNavigation units={units} />
+    </Router>
+  );
 
   const items = screen.getAllByRole("listitem");
   expect(items).toHaveLength(3);

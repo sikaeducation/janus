@@ -1,17 +1,19 @@
-import "./AppShell.scss";
 import { useLocation } from "react-router-dom";
+
+import "./AppShell.scss";
 import AppHeader from "../../components/AppHeader";
 import AppFooter from "../../components/AppFooter";
 import UnitNavigation from "../../components/UnitNavigation";
 import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
+import ActivityNavigation from "../../components/ActivityNavigation";
 
 import currentContent from "../../hooks/current-content";
 import currentProgram from "../../hooks/current-program";
 
 function App() {
   const { pathname } = useLocation();
-  const { crumbs, content } = currentContent(pathname);
+  const { crumbs, content, next } = currentContent(pathname);
   const { program, unitLinks } = currentProgram();
 
   return (
@@ -22,6 +24,9 @@ function App() {
           <UnitNavigation units={unitLinks} />
           <CrumbNavigation links={crumbs} />
           <AppContent content={content} />
+          {next.slug && next.label && (
+            <ActivityNavigation nextSlug={next.slug} nextLabel={next.label} />
+          )}
         </div>
       </main>
       <AppFooter />

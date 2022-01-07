@@ -114,3 +114,12 @@
   font-family: "Fira Mono", monospace;
   font-size: inherit;
 }
+
+@mixin primary-action-button-font {
+  font-family: "Gill Sans", sans-serif;
+  font-size: sizes.$f5;
+  font-weight: 700;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f4;
+  }
+}

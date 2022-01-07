@@ -1,0 +1,17 @@
+@use "../../styles/typography";
+@use "../../styles/colors";
+@use "../../styles/sizes";
+@use "../../styles/buttons";
+
+.ActivityNavigation {
+  display: flex;
+  justify-content: flex-end;
+  a {
+    appearance: button;
+    padding: sizes.$s2 sizes.$s4;
+    border-radius: sizes.$radius;
+    @include typography.primary-action-button-font;
+    @include buttons.button-shadow-small;
+    @include buttons.button-active-primary;
+  }
+}

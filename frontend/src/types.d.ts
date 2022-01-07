@@ -7,6 +7,10 @@ type activity = {
   section_id: number;
   unit_id: number;
   content: string;
+  next?: {
+    slug: string;
+    label: string;
+  };
 };
 type section = {
   id: number;
@@ -44,6 +48,10 @@ type current = {
     slug: string;
   };
   content: string;
+  next?: {
+    label: string;
+    slug: string;
+  };
 };
 type crumb = {
   id: number;

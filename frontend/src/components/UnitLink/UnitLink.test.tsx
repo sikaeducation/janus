@@ -1,15 +1,24 @@
 import { render, screen } from "@testing-library/react";
-import UnitLink from "./index";
+import { BrowserRouter as Router } from "react-router-dom";
+import UnitLink from ".";
 
 test("<UnitLink /> renders url", () => {
-  render(<UnitLink url="https://google.com" label="Label" />);
+  render(
+    <Router>
+      <UnitLink url="some/slug-here" label="Label" />
+    </Router>
+  );
 
   const link = screen.getByRole("link");
-  expect(link).toHaveAttribute("href", "https://google.com");
+  expect(link).toHaveAttribute("href", "/some/slug-here");
 });
 
 test("<UnitLink /> renders label", () => {
-  render(<UnitLink url="https://google.com" label="Label" />);
+  render(
+    <Router>
+      <UnitLink url="https://google.com" label="Label" />
+    </Router>
+  );
 
   const link = screen.getByRole("link");
   expect(link).toHaveTextContent("Label");

@@ -5,7 +5,7 @@ function locate<T extends { slug: string }>(collection: T[], slug: string) {
   return collection.find((item) => item.slug === slug);
 }
 
-function getEmptyCurrent() {
+function getEmptyCurrent(): current {
   return {
     unit: {
       slug: "",
@@ -56,6 +56,9 @@ function getCurrentActivity(
     label: activity.short_label,
   };
   current.content = activity.content;
+  if (activity.next) {
+    current.next = { ...activity.next };
+  }
   return current;
 }
 
@@ -104,5 +107,9 @@ export default function currentContent(pathname: string) {
   return {
     crumbs: currentCrumbs,
     content: currentActivity.content,
+    next: {
+      slug: currentActivity.next?.slug,
+      label: currentActivity.next?.label,
+    },
   };
 }

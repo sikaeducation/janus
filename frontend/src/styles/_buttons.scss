@@ -9,16 +9,19 @@
 }
 
 @mixin button-active-primary {
+  background-color: colors.$primary-5;
   transition: background-color sizes.$transition;
-  &:active {
-    background-color: colors.$primary-5;
+  color: colors.$white;
+  text-decoration: none;
+  &:active, &:hover {
+    background-color: colors.$primary-6;
   }
 }
 
 @mixin button-active-neutral {
+  background-color: colors.$grey-4;
   transition: background-color sizes.$transition;
-  &:active {
+  &:active, &:hover {
     background-color: colors.$grey-5;
   }
 }
-
