@@ -1,8 +1,0 @@
-@use "../../styles/sizes";
-@use "../../styles/typography";
-
-.SectionLink {
-  display: inline-block;
-  margin-bottom: sizes.$s2;
-  @include typography.nav-item-font;
-}
