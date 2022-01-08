@@ -20,7 +20,6 @@ export default function CrumbNavigation({ links }: props) {
         {normalizedLinks.map(({ id, path, label, isLinked }) => (
           <li key={id}>{isLinked ? <Link to={path}>{label}</Link> : label}</li>
         ))}
-        <li role="presentation">&nbsp;</li> {/* Vertical placeholder */}
       </ol>
     </nav>
   );

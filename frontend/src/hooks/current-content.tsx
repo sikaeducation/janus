@@ -44,13 +44,13 @@ function getNext(posts: post[], post: post): internalLink | null {
   return parent ? postToLink(parent) : null; // Return to parent if last
 }
 
-export default function currentContent(pathname: string) {
+export default function currentContent(path: string) {
   const {
     program: { posts },
   } = data; // Fetch or get from localStorage
 
   const defaultPath = posts[0].path; // This is bad, do it on the router instead
-  const normalizedPath = pathname.substring(1) || defaultPath;
+  const normalizedPath = path || defaultPath;
 
   const currentPost = posts.find((post) => post.path === normalizedPath)!;
   const ancestorIds: number[] = getAncestorIds(posts, [currentPost.id]);

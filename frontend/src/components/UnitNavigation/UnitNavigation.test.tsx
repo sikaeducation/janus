@@ -8,16 +8,19 @@ test("<UnitNavigation /> renders units", () => {
       id: 1,
       path: "https://google.com",
       label: "Label",
+      isActive: true,
     },
     {
       id: 2,
       path: "https://google.com",
       label: "Label",
+      isActive: false,
     },
     {
       id: 3,
       path: "https://google.com",
       label: "Label",
+      isActive: false,
     },
   ];
   render(

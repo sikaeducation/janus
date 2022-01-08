@@ -12,9 +12,9 @@ import currentContent from "../../hooks/current-content";
 import currentProgram from "../../hooks/current-program";
 
 function AppShell() {
-  const { pathname } = useLocation();
-  const { content, crumbs, next } = currentContent(pathname);
-  const { program, unitLinks } = currentProgram();
+  const path = useLocation().pathname.substring(1);
+  const { content, crumbs, next } = currentContent(path);
+  const { program, unitLinks } = currentProgram(path);
 
   return (
     <div className="App">

@@ -104,6 +104,19 @@ const data: programData = {
         content: "# Binary\n\nThis is how binary works.",
         children: [],
       },
+      {
+        id: 8,
+        type: "unit",
+        label: {
+          full: "Web Apps",
+          short: "Web Apps",
+          tiny: "2",
+        },
+        slug: "web-apps",
+        path: "web-apps",
+        content: "# Web apps\n\nand that's all, folks.",
+        children: [],
+      },
     ],
   },
 };

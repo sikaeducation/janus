@@ -5,7 +5,7 @@ import UnitLink from ".";
 test("<UnitLink /> renders url", () => {
   render(
     <Router>
-      <UnitLink path="some/slug-here" label="Label" />
+      <UnitLink path="some/slug-here" label="Label" isActive={false} />
     </Router>
   );
 
@@ -16,7 +16,7 @@ test("<UnitLink /> renders url", () => {
 test("<UnitLink /> renders label", () => {
   render(
     <Router>
-      <UnitLink path="https://google.com" label="Label" />
+      <UnitLink path="https://google.com" label="Label" isActive={false} />
     </Router>
   );
 

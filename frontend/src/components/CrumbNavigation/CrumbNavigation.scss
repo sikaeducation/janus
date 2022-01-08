@@ -8,6 +8,11 @@
   @media (max-width: sizes.$small-breakpoint){
     margin-bottom: sizes.$s3;
   }
+  > ol {
+    &::after {
+      content: "\a0"; // Holds space open with an empty list
+    }
+  }
   li {
     display: inline-block;
   }
