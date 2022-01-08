@@ -1,0 +1,1 @@
+docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.ci-e2e.yml up --abort-on-container-exit

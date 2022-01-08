@@ -14,7 +14,7 @@ jobs:
       - name: Run front-end unit tests
         run: ./scripts/ci-unit
       - name: Run e2e tests
-        run: ./scripts/ci
+        run: ./scripts/ci-e2e
   build_deploy_frontend:
     needs: test
     runs-on: ubuntu-latest
