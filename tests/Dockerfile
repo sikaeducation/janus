@@ -3,8 +3,6 @@ WORKDIR /app
 
 ARG BASE_URL
 ENV BASE_URL=${BASE_URL}
-ARG PORT
-ENV PORT=${PORT}
 
 COPY . .
 RUN npm install -g npm && npm install && npx playwright install

@@ -1,13 +1,16 @@
 services:
   frontend:
     ports:
-      - "8000:3000"
+      - "8000:80"
+    build:
+      target: production
+      args:
+        PORT: "8000"
   tests:
     build:
       context: ../tests/
       args:
         BASE_URL: "http://frontend:8000"
-        PORT: "8000"
     depends_on:
       - frontend
     command: ["/bin/bash", "ci.sh"]
