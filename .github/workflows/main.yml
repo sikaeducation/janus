@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run front-end unit tests
-        run: ./scripts/frontend-unit
+        run: ./scripts/ci-unit
       - name: Run e2e tests
         run: ./scripts/ci
   build_deploy_frontend:
