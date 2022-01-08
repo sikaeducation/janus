@@ -25,7 +25,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
-    "test:e2e": "playwright test",
+    "test:ci": "react-scripts test --watchAll=false --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
     "eject": "react-scripts eject"
   },
   "browserslist": {
