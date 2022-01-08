@@ -58,6 +58,10 @@ export default {
                 section_id: 1,
                 unit_id: 1,
                 content: "# CSS: Block Layout`\r\n\r\nThis is the content",
+                next: {
+                  slug: "websites",
+                  label: "Back to Websites",
+                },
               },
             ],
           },
