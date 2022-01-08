@@ -1,0 +1,9 @@
+services:
+  frontend:
+    ports:
+      - 3000:3000
+    build:
+      target: base
+    volumes:
+      - ../frontend:/app
+    command: [npm, start]

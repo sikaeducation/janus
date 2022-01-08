@@ -1,1 +1,3 @@
+echo "Running Docker Compose with this configuration:"
+docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.dev.yml config
 docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.dev.yml run frontend npm test

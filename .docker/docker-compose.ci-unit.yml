@@ -1,4 +1,6 @@
 services:
   frontend:
+    build:
+      target: base
     ports:
       - "3000:3000"

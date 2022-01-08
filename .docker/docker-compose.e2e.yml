@@ -1,5 +1,18 @@
 services:
+  frontend:
+    ports:
+      - 8000:3000
+    build:
+      target: base
+    expose:
+      - 3000
   tests:
+    depends_on:
+      - frontend
     volumes:
       - ../tests:/app
+    build:
+      context: ../tests/
+      args:
+        BASE_URL: "http://frontend:3000"
     command: ["/bin/bash", "e2e.sh"]
