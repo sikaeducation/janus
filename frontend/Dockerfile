@@ -6,7 +6,7 @@ RUN npm install
 
 COPY . .
 
-ARGS PORT
+ARG PORT
 EXPOSE ${PORT}
 CMD [npm, start]
 
