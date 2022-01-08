@@ -21,10 +21,10 @@ function getCrumbs(posts: post[], ancestorIds: number[]) {
     .reverse();
 }
 
-function postToLink({ path, label }: post) {
+function postToLink(message: string, { path, label }: post) {
   return {
     path,
-    label: label.short,
+    label: `${message} ${label.short}`,
   };
 }
 
@@ -39,9 +39,9 @@ function getNext(posts: post[], post: post): internalLink | null {
   });
   const currentIndex = siblings.findIndex((sibling) => sibling.id === post.id);
   const currentIsLast = currentIndex === siblings.length - 1;
-  if (!currentIsLast) return postToLink(siblings[currentIndex + 1]); // Next sibling
+  if (!currentIsLast) return postToLink("Next:", siblings[currentIndex + 1]); // Next sibling
 
-  return parent ? postToLink(parent) : null; // Return to parent if last
+  return parent ? postToLink("Back to", parent) : null; // Return to parent if last
 }
 
 export default function currentContent(path: string) {

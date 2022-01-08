@@ -10,7 +10,7 @@ type props = {
 function ActivityNavigation({ nextSlug, nextLabel }: props) {
   return (
     <nav className="ActivityNavigation">
-      <Link to={nextSlug}>Next: {nextLabel}</Link>
+      <Link to={nextSlug}>{nextLabel}</Link>
     </nav>
   );
 }
