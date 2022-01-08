@@ -11,9 +11,9 @@ import ActivityNavigation from "../../components/ActivityNavigation";
 import currentContent from "../../hooks/current-content";
 import currentProgram from "../../hooks/current-program";
 
-function App() {
+function AppShell() {
   const { pathname } = useLocation();
-  const { crumbs, content, next } = currentContent(pathname);
+  const { content, crumbs, next } = currentContent(pathname);
   const { program, unitLinks } = currentProgram();
 
   return (
@@ -24,8 +24,8 @@ function App() {
           <UnitNavigation units={unitLinks} />
           <CrumbNavigation links={crumbs} />
           <AppContent content={content} />
-          {next.slug && next.label && (
-            <ActivityNavigation nextSlug={next.slug} nextLabel={next.label} />
+          {next && (
+            <ActivityNavigation nextSlug={next.path} nextLabel={next.label} />
           )}
         </div>
       </main>
@@ -34,4 +34,4 @@ function App() {
   );
 }
 
-export default App;
+export default AppShell;

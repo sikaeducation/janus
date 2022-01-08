@@ -1,115 +1,63 @@
-/* eslint @typescript-eslint/no-shadow: "off" */
+/* eslint @typescript-eslint/no-shadow: "off", @typescript-eslint/no-non-null-assertion: "off" */
 import data from "../data";
 
-function locate<T extends { slug: string }>(collection: T[], slug: string) {
-  return collection.find((item) => item.slug === slug);
+function getAncestorIds(posts: post[], currentIds: number[]): number[] {
+  if (currentIds.length === 0) return [];
+  const head = currentIds[0];
+  const foundId = posts.find((post) => post.children.includes(head))?.id;
+  return !foundId
+    ? currentIds.reverse()
+    : getAncestorIds(posts, [foundId, ...currentIds]);
 }
 
-function getEmptyCurrent(): current {
-  return {
-    unit: {
-      slug: "",
-      label: "",
-    },
-    section: {
-      slug: "",
-      label: "",
-    },
-    activity: {
-      slug: "",
-      label: "",
-    },
-    content: "",
-  };
-}
-
-function getCurrentActivity(
-  program: program,
-  unitSlug = "",
-  sectionSlug = "",
-  activitySlug = ""
-) {
-  const current = getEmptyCurrent();
-
-  const unit = locate<unit>(program.units, unitSlug);
-  if (!unit) return current;
-  current.unit = {
-    slug: unit.slug,
-    label: unit.short_label,
-  };
-  current.content = unit.table_of_contents;
-  if (!sectionSlug) return current;
-
-  const section = locate<section>(unit.sections, sectionSlug);
-  if (!section) return current;
-  current.section = {
-    slug: section.slug,
-    label: section.short_label,
-  };
-  current.content = section.table_of_contents;
-  if (!activitySlug) return current;
-
-  const activity = locate<activity>(section.activities, activitySlug);
-  if (!activity) return current;
-  current.activity = {
-    slug: activity.slug,
-    label: activity.short_label,
-  };
-  current.content = activity.content;
-  if (activity.next) {
-    current.next = { ...activity.next };
-  }
-  return current;
-}
-
-function makeCrumb(id: number, label: string, url: string) {
-  return { id, label, url };
-}
-
-function slugToPath(slug: string, index: number, originalSlugs: string[]) {
-  const path = originalSlugs
-    .slice(index + 1)
-    .reverse()
-    .join("/");
-  return `${path}/${slug}`;
-}
-
-function getCrumbs({ unit, section, activity }: current) {
-  const parts = [unit, section, activity].filter((part) => part.slug);
-  const paths = parts
-    .map((crumb) => crumb.slug)
-    .reverse()
-    .map(slugToPath)
+function getCrumbs(posts: post[], ancestorIds: number[]) {
+  return ancestorIds
+    .map((id) => posts.find((post) => post.id === id)!)
+    .map((post, index) => ({
+      id: index,
+      label: post.label.short,
+      path: post.path,
+    }))
     .reverse();
-
-  const crumbs: crumb[] = [];
-  return parts.reduce((previousCrumbs, crumb, index) => {
-    return [...previousCrumbs, makeCrumb(index, crumb.label, paths[index])];
-  }, crumbs);
 }
 
-function getSlugs(path: string) {
-  const normalizedPath = path.substring(1);
-  const segments = normalizedPath.split("/");
+function postToLink({ path, label }: post) {
   return {
-    unit: segments[0] || "",
-    section: segments[1] || "",
-    activity: segments[2] || "",
+    path,
+    label: label.short,
   };
+}
+
+function getNext(posts: post[], post: post): internalLink | null {
+  if (post.children.length) return null; // No next for a parent node
+
+  const parent = posts.find((allPosts) => allPosts.children.includes(post.id));
+  if (!parent) return null; // No next for a root node
+
+  const siblings = posts.filter((post) => {
+    return parent.children.includes(post.id);
+  });
+  const currentIndex = siblings.findIndex((sibling) => sibling.id === post.id);
+  const currentIsLast = currentIndex === siblings.length - 1;
+  if (!currentIsLast) return postToLink(siblings[currentIndex + 1]); // Next sibling
+
+  return parent ? postToLink(parent) : null; // Return to parent if last
 }
 
 export default function currentContent(pathname: string) {
-  const { program } = data; // Fetch or get from localStorage
-  const { unit, section, activity } = getSlugs(pathname);
-  const currentActivity = getCurrentActivity(program, unit, section, activity);
-  const currentCrumbs = getCrumbs(currentActivity);
+  const {
+    program: { posts },
+  } = data; // Fetch or get from localStorage
+
+  const defaultPath = posts[0].path; // This is bad, do it on the router instead
+  const normalizedPath = pathname.substring(1) || defaultPath;
+
+  const currentPost = posts.find((post) => post.path === normalizedPath)!;
+  const ancestorIds: number[] = getAncestorIds(posts, [currentPost.id]);
 
   return {
-    crumbs: currentCrumbs,
-    content: currentActivity.content,
-    next: {
-      slug: currentActivity.next?.slug,
-      label: currentActivity.next?.label,
-    },
+    content: currentPost.content,
+    crumbs: getCrumbs(posts, ancestorIds),
+    next: getNext(posts, currentPost),
   };
 }

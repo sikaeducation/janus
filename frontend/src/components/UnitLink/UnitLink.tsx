@@ -2,13 +2,13 @@ import "./UnitLink.scss";
 import { Link } from "react-router-dom";
 
 type props = {
-  url: string;
+  path: string;
   label: string;
 };
 
-export default function UnitLink({ url, label }: props) {
+export default function UnitLink({ path, label }: props) {
   return (
-    <Link to={url} className="UnitLink">
+    <Link to={path} className="UnitLink">
       {label}
     </Link>
   );

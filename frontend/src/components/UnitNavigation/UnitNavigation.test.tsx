@@ -6,17 +6,17 @@ test("<UnitNavigation /> renders units", () => {
   const units = [
     {
       id: 1,
-      url: "https://google.com",
+      path: "https://google.com",
       label: "Label",
     },
     {
       id: 2,
-      url: "https://google.com",
+      path: "https://google.com",
       label: "Label",
     },
     {
       id: 3,
-      url: "https://google.com",
+      path: "https://google.com",
       label: "Label",
     },
   ];

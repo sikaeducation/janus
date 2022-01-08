@@ -6,12 +6,12 @@ test("<CrumbNavigation /> renders links", () => {
   const links = [
     {
       id: 1,
-      url: "https://google.com",
+      path: "https://google.com",
       label: "Label",
     },
     {
       id: 2,
-      url: "https://google.com",
+      path: "https://google.com",
       label: "Label",
     },
   ];

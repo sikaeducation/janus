@@ -1,60 +1,22 @@
-type activity = {
+type postType = "unit" | "section" | "topic" | "exercise";
+
+type post = {
   id: number;
-  type: string;
-  full_label: string;
-  short_label: string;
+  type: postType;
+  label: {
+    short: string;
+    full: string;
+    tiny: string;
+  };
   slug: string;
-  section_id: number;
-  unit_id: number;
+  path: string;
   content: string;
-  next?: {
-    slug: string;
-    label: string;
-  };
+  children: number[];
 };
-type section = {
-  id: number;
-  full_label: string;
-  short_label: string;
-  slug: string;
-  table_of_contents: string;
-  activities: activity[];
-};
-type unit = {
-  id: number;
-  full_label: string;
-  short_label: string;
-  tiny_label: string;
-  slug: string;
-  table_of_contents: string;
-  sections: section[];
-};
-type program = {
-  id: number;
+
+type internalLink = {
+  path: string;
   label: string;
-  units: unit[];
-};
-type current = {
-  unit: {
-    label: string;
-    slug: string;
-  };
-  section: {
-    label: string;
-    slug: string;
-  };
-  activity: {
-    label: string;
-    slug: string;
-  };
-  content: string;
-  next?: {
-    label: string;
-    slug: string;
-  };
-};
-type crumb = {
-  id: number;
-  url: string;
-  label: string;
+  id?: number;
+  isLinked?: boolean;
 };

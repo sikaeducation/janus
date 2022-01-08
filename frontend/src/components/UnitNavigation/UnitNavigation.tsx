@@ -1,22 +1,17 @@
 import "./UnitNavigation.scss";
 import UnitLink from "../UnitLink";
 
-type unit = {
-  id: number;
-  label: string;
-  url: string;
-};
 type props = {
-  units: unit[];
+  units: internalLink[];
 };
 
 export default function UnitNavigation({ units }: props) {
   return (
     <nav className="UnitNavigation">
       <ul>
-        {units.map(({ id, url, label }) => (
+        {units.map(({ id, path, label }) => (
           <li key={id}>
-            <UnitLink url={url} label={label} />
+            <UnitLink path={path} label={label} />
           </li>
         ))}
       </ul>

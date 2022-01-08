@@ -1,16 +1,23 @@
 import data from "../data";
 
-function getUnitLinks(units: unit[]) {
-  return units.map((unit) => ({
+function getUnitLinks(posts: post[]) {
+  return posts.map((unit) => ({
     id: unit.id,
-    label: unit.tiny_label,
-    url: `/${unit.slug}`,
+    label: unit.label.tiny,
+    path: `${unit.path}`,
   }));
 }
 
-export default function currentContent() {
+export default function currentProgram() {
   const { program } = data; // Fetch or read from localStorage
-  const unitLinks = getUnitLinks(program.units);
+  const allChildrenIds = program.posts
+    .map((post) => post.children)
+    .filter((x) => x)
+    .flat();
+  const postsWithNoParents = program.posts.filter(
+    (post) => !allChildrenIds.includes(post.id)
+  );
+  const unitLinks = getUnitLinks(postsWithNoParents);
 
   return {
     program,
