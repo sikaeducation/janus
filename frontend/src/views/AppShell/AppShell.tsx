@@ -22,7 +22,7 @@ function AppShell() {
 
   return (
     <div className="App">
-      {path || <Navigate replace to={unitLinks[0].path} />}
+      {path ? "" : <Navigate replace to={unitLinks[0].path} />}
       <AppHeader programLabel={program.label} />
       <main>
         <div className="content-container">
