@@ -8,17 +8,20 @@ import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 
-import {
-  getUnitLinks,
-  getCurrentProgram,
-  getCurrentContent,
-} from "../../hooks/current-program";
+import getUnitLinks from "../../services/unit-links";
+import getCrumbLinks from "../../services/crumb-links";
+import getNextLink from "../../services/next-link";
+import getCurrentProgram from "../../services/program-details";
+import getCurrentPost from "../../services/current-post";
 
 function AppShell() {
   const path = useLocation().pathname.substring(1);
   const program = getCurrentProgram();
   const unitLinks = getUnitLinks(path);
-  const { content, crumbs, next } = getCurrentContent(path);
+  const currentPost = getCurrentPost(path);
+  const crumbLinks = getCrumbLinks(currentPost);
+  const nextLink = getNextLink(currentPost);
+  const { content } = currentPost;
 
   return (
     <div className="App">
@@ -27,10 +30,13 @@ function AppShell() {
       <main>
         <div className="content-container">
           <UnitNavigation units={unitLinks} />
-          <CrumbNavigation links={crumbs} />
+          <CrumbNavigation links={crumbLinks} />
           <AppContent content={content} />
-          {next && (
-            <ActivityNavigation nextSlug={next.path} nextLabel={next.label} />
+          {nextLink && (
+            <ActivityNavigation
+              nextSlug={nextLink.path}
+              nextLabel={nextLink.label}
+            />
           )}
         </div>
       </main>

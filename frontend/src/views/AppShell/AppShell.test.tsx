@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { BrowserRouter as Router } from "react-router-dom";
+import { MemoryRouter as Router } from "react-router-dom";
 import AppShell from ".";
 
 test("renders app", () => {
   render(
-    <Router>
+    <Router initialEntries={["/websites"]}>
       <AppShell />
     </Router>
   );
