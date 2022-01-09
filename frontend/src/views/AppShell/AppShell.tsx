@@ -8,13 +8,17 @@ import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 
-import currentContent from "../../hooks/current-content";
-import currentProgram from "../../hooks/current-program";
+import {
+  getUnitLinks,
+  getCurrentProgram,
+  getCurrentContent,
+} from "../../hooks/current-program";
 
 function AppShell() {
   const path = useLocation().pathname.substring(1);
-  const { content, crumbs, next } = currentContent(path);
-  const { program, unitLinks } = currentProgram(path);
+  const program = getCurrentProgram();
+  const unitLinks = getUnitLinks(path);
+  const { content, crumbs, next } = getCurrentContent(path);
 
   return (
     <div className="App">
