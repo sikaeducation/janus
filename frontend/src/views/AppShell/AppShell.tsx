@@ -1,4 +1,4 @@
-import { useLocation } from "react-router-dom";
+import { useLocation, Navigate } from "react-router-dom";
 
 import "./AppShell.scss";
 import AppHeader from "../../components/AppHeader";
@@ -18,6 +18,7 @@ function AppShell() {
 
   return (
     <div className="App">
+      {path || <Navigate replace to={unitLinks[0].path} />}
       <AppHeader programLabel={program.label} />
       <main>
         <div className="content-container">

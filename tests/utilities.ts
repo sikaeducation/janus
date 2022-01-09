@@ -1,12 +1,12 @@
-import { chromium } from "playwright";
+import {chromium} from "playwright";
 
 declare global {
-    interface Window {
-        browser?: Browser;
-    }
+  interface Window {
+    browser?: Browser;
+  }
 }
 
-export async function navigateTo(url: string){
+export async function navigateTo(url: string) {
   window.browser = await chromium.launch()
   const page = await window.browser.newPage()
 
@@ -16,4 +16,6 @@ export async function navigateTo(url: string){
 
   await page.goto(normalizedUrl);
   document.body.innerHTML = await page.content()
+
+  return page
 }

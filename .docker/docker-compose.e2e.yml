@@ -6,6 +6,8 @@ services:
       target: base
     expose:
       - 3000
+    volumes:
+      - ../frontend:/app
   tests:
     depends_on:
       - frontend
