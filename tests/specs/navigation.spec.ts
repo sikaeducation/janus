@@ -1,13 +1,13 @@
 import {navigateTo} from "../utilities"
 
 test("initial navigation", async () => {
-  const page = await navigateTo("/")
+  const page = await navigateTo("/websites")
 
   expect(page.url()).toContain("/websites")
 })
 
 test("unit navigation", async () => {
-  const page = await navigateTo("/")
+  const page = await navigateTo("/websites")
 
   await page.click(".UnitNavigation li:nth-child(2)")
   expect(page.url()).toContain("/web-apps")
