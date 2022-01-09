@@ -16,8 +16,9 @@ import getCurrentPost from "../../services/current-post";
 
 function AppShell() {
   const path = useLocation().pathname.substring(1);
-  const program = getCurrentProgram();
   const unitLinks = getUnitLinks(path);
+  if (!path) return <Navigate replace to={unitLinks[0].path} />;
+  const program = getCurrentProgram();
   const currentPost = getCurrentPost(path);
   const crumbLinks = getCrumbLinks(currentPost);
   const nextLink = getNextLink(currentPost);
@@ -25,7 +26,6 @@ function AppShell() {
 
   return (
     <div className="App">
-      {path ? "" : <Navigate replace to={unitLinks[0].path} />}
       <AppHeader programLabel={program.label} />
       <main>
         <div className="content-container">
