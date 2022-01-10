@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 function useProgram(id: number): programData | null {
   const [program, setProgram] = useState(null);
   useEffect(() => {
-    const apiBaseUrl = process.env.REACT_APP_BASE_URL;
+    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
     fetch(`${apiBaseUrl}/programs/${id}`)
       .then((response) => response.json())
       .then((response) => {
