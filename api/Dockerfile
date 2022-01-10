@@ -9,7 +9,3 @@ COPY --chown=node:node . .
 USER node
 EXPOSE 80
 CMD ["npm", "run", "dev"]
-
-FROM base as prod
-RUN npm run build
-CMD ["npm", "start"]

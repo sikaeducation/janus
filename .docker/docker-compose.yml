@@ -7,5 +7,4 @@ services:
   api:
     build:
       context: ../api/
-      target: base
     command: ["npm", "start"]

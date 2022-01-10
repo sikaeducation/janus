@@ -8,6 +8,9 @@ services:
       - 3000
     volumes:
       - ../frontend:/app
+  api:
+    build:
+      target: base
   tests:
     depends_on:
       - frontend
