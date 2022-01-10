@@ -2,3 +2,10 @@ services:
   frontend:
     build:
       context: ../frontend/
+    depends_on:
+      - api
+  api:
+    build:
+      context: ../api/
+      target: base
+    command: ["npm", "start"]

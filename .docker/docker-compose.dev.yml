@@ -7,3 +7,13 @@ services:
     volumes:
       - ../frontend:/app
     command: [npm, start]
+  api:
+    environment:
+      PORT: 80
+    ports:
+      - 4000:80
+    volumes:
+      - ../api:/app
+    command: ["npm", "run", "dev"]
+    build:
+      target: base
