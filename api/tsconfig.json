@@ -5,17 +5,24 @@
     ],
     "allowSyntheticDefaultImports": true,
     "baseUrl": "./",
-    "declaration": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "module": "commonjs",
     "moduleResolution": "node",
     "noEmit": true,
-    "outDir": "./build",
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
     "target": "es2016"
-  }
+  },
+  "ts-node": {
+    "files": true
+  },
+  "files": [
+    "types.d.ts"
+  ],
+  "include": [ 
+    "."
+  ]
 }

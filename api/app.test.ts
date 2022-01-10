@@ -13,6 +13,7 @@ test("GET /programs/:programId", async () => {
     .get("/programs/1")
     .expect(200)
     .then(response => {
-      expect(response.body).toEqual({program: sampleData.program})
+      expect(response.body).toEqual({program: sampleData})
+      expect(response.headers).toHaveProperty("access-control-allow-origin")
     })
 })

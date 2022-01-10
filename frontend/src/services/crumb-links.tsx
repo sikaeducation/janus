@@ -1,5 +1,4 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
-import data from "../data";
 
 function getAncestorIds(posts: post[], currentIds: number[]): number[] {
   if (currentIds.length === 0) return [];
@@ -10,9 +9,7 @@ function getAncestorIds(posts: post[], currentIds: number[]): number[] {
     : getAncestorIds(posts, [foundId, ...currentIds]);
 }
 
-export default function getCrumbLinks(currentPost: post) {
-  const { posts } = data.program; // Fetch
-
+export default function getCrumbLinks(posts: post[], currentPost: post) {
   const ancestorIds = getAncestorIds(posts, [currentPost.id]);
   return ancestorIds
     .map((id) => posts.find((post) => post.id === id)!)

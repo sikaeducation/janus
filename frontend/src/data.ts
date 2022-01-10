@@ -1,11 +1,4 @@
-type programData = {
-  program: {
-    id: number;
-    label: string;
-    posts: post[];
-  };
-};
-const data: programData = {
+const data: { program: programData } = {
   program: {
     id: 1,
     label: "Ford: Full-Stack Web Development",

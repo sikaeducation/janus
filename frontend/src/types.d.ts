@@ -20,3 +20,9 @@ type internalLink = {
   id?: number;
   isLinked?: boolean;
 };
+
+type programData = {
+  id: number;
+  label: string;
+  posts: post[];
+};

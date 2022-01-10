@@ -19,5 +19,5 @@ test("program data service fetches data", async () => {
   const { result, waitForNextUpdate } = renderHook(() => useProgram(1));
   await waitForNextUpdate();
 
-  expect(result.current.program).toEqual(programFixture);
+  expect(result.current).toEqual(programFixture);
 });

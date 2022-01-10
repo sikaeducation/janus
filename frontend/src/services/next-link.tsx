@@ -1,5 +1,3 @@
-import data from "../data";
-
 function postToLink(message: string, { path, label }: post) {
   return {
     path,
@@ -7,8 +5,10 @@ function postToLink(message: string, { path, label }: post) {
   };
 }
 
-export default function getNextLink(currentPost: post): internalLink | null {
-  const { posts } = data.program;
+export default function getNextLink(
+  posts: post[],
+  currentPost: post
+): internalLink | null {
   if (currentPost.children.length) return null; // No next for a parent node
 
   const parent = posts.find((allPosts) =>

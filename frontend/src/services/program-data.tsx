@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-function useProgram(id: number) {
-  const [program, setProgram] = useState({});
+function useProgram(id: number): programData | null {
+  const [program, setProgram] = useState(null);
   useEffect(() => {
-    const apiBaseUrl = "http://backend";
+    const apiBaseUrl = process.env.REACT_APP_BASE_URL;
     fetch(`${apiBaseUrl}/programs/${id}`)
       .then((response) => response.json())
       .then((response) => {
@@ -14,7 +14,7 @@ function useProgram(id: number) {
       });
   }, [id]);
 
-  return { program };
+  return program;
 }
 
 export default useProgram;

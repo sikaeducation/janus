@@ -1,4 +1,7 @@
 import getUnitLinks from "./unit-links";
+import data from "../data";
+
+const { posts } = data.program;
 
 test("#getUnitLinks generates links from a path", () => {
   const path = "websites/websites-1";
@@ -16,5 +19,5 @@ test("#getUnitLinks generates links from a path", () => {
       path: "web-apps",
     },
   ];
-  expect(getUnitLinks(path)).toEqual(links);
+  expect(getUnitLinks(posts, path)).toEqual(links);
 });

@@ -13,3 +13,9 @@ type post = {
   content: string;
   children: number[];
 };
+
+type programData = {
+  id: number;
+  label: string;
+  posts: post[];
+};

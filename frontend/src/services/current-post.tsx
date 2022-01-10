@@ -1,11 +1,5 @@
-/* eslint @typescript-eslint/no-non-null-assertion: "off" */
-import data from "../data";
-
-export default function getCurrentPost(path: string) {
-  const {
-    program: { posts },
-  } = data; // Fetch or get from localStorage
+export default function getCurrentPost(posts: post[], path: string) {
   const normalizedPath = path || "/";
 
-  return posts.find((post) => post.path === normalizedPath)!;
+  return posts.find((post) => post.path === normalizedPath);
 }

@@ -11,17 +11,21 @@ import ActivityNavigation from "../../components/ActivityNavigation";
 import getUnitLinks from "../../services/unit-links";
 import getCrumbLinks from "../../services/crumb-links";
 import getNextLink from "../../services/next-link";
-import getCurrentProgram from "../../services/program-details";
 import getCurrentPost from "../../services/current-post";
 
-function AppShell() {
+type props = {
+  program: programData;
+};
+
+function AppShell({ program }: props) {
   const path = useLocation().pathname.substring(1);
-  const unitLinks = getUnitLinks(path);
+  if (!program.posts.length) return <Navigate replace to="/404" />;
+  const unitLinks = getUnitLinks(program.posts, path);
   if (!path) return <Navigate replace to={unitLinks[0].path} />;
-  const program = getCurrentProgram();
-  const currentPost = getCurrentPost(path);
-  const crumbLinks = getCrumbLinks(currentPost);
-  const nextLink = getNextLink(currentPost);
+  const currentPost = getCurrentPost(program.posts, path);
+  if (!currentPost) return <Navigate replace to="/404" />;
+  const crumbLinks = getCrumbLinks(program.posts, currentPost);
+  const nextLink = getNextLink(program.posts, currentPost);
   const { content } = currentPost;
 
   return (

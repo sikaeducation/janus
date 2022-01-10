@@ -1,5 +1,3 @@
-import data from "../data";
-
 function generateUnitLinks(posts: post[], currentPath: string) {
   return posts.map((unit) => ({
     id: unit.id,
@@ -9,13 +7,12 @@ function generateUnitLinks(posts: post[], currentPath: string) {
   }));
 }
 
-export default function getUnitLinks(currentPath: string) {
-  const { program } = data; // Fetch or read from localStorage
-  const allChildrenIds = program.posts
+export default function getUnitLinks(posts: post[], currentPath: string) {
+  const allChildrenIds = posts
     .map((post) => post.children)
     .filter((x) => x)
     .flat();
-  const postsWithNoParents = program.posts.filter(
+  const postsWithNoParents = posts.filter(
     (post) => !allChildrenIds.includes(post.id)
   );
 
