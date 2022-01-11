@@ -10,6 +10,7 @@ function useProgram(id: number): programData | null {
         setProgram(response.program);
       })
       .catch((error) => {
+        // eslint-disable-next-line
         console.error(error.message);
       });
   }, [id]);
