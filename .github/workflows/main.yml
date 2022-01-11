@@ -15,6 +15,8 @@ jobs:
         run: ./scripts/ci-unit
       - name: Run e2e tests
         run: ./scripts/ci-e2e
+        env:
+          REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
   build_deploy_frontend:
     needs: test
     runs-on: ubuntu-latest
