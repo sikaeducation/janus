@@ -16,11 +16,9 @@ jobs:
   e2e_test:
     runs-on: ubuntu-latest
     env:
-      REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      REACT_APP_API_BASE_URL: "http://backend:80"
     steps:
       - uses: actions/checkout@v2
-      - name: Setup upterm session
-        uses: lhotari/action-upterm@v1
       - name: Run e2e tests
         run: ./scripts/ci-e2e
   build_deploy_frontend:
