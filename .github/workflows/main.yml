@@ -7,19 +7,27 @@ on:
     branches: [ master ]
   workflow_dispatch:
 jobs:
-  test:
+  unit_test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
       - name: Run unit tests
         run: ./scripts/ci-unit
+  e2e_test:
+    runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+    steps:
+      - uses: actions/checkout@v2
       - name: Run e2e tests
         run: ./scripts/ci-e2e
-        env:
-          REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
   build_deploy_frontend:
-    needs: test
+    needs:
+      - unit_test
+      - e2e_test
     runs-on: ubuntu-latest
+    env:
+      REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
@@ -27,8 +35,6 @@ jobs:
       - name: Build app
         working-directory: frontend
         run: npm ci && npm run build
-        env:
-          REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2.3
         with:
@@ -38,7 +44,9 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
   build_deploy_api:
-    needs: test
+    needs:
+      - unit_test
+      - e2e_test
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
