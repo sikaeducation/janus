@@ -4,6 +4,7 @@ function useProgram(id: number): programData | null {
   const [program, setProgram] = useState(null);
   useEffect(() => {
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+    console.log(apiBaseUrl);
     fetch(`${apiBaseUrl}/programs/${id}`)
       .then((response) => response.json())
       .then((response) => {

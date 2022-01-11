@@ -1,11 +1,18 @@
 services:
   frontend:
+    environment:
+      REACT_APP_API_BASE_URL: "http://api:80"
     ports:
       - 8000:3000
     build:
       target: base
     expose:
       - 3000
+  api:
+    environment:
+      PORT: 80
+    ports:
+      - 8001:80
   tests:
     build:
       context: ../tests/
