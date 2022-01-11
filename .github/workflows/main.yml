@@ -16,7 +16,7 @@ jobs:
   e2e_test:
     runs-on: ubuntu-latest
     env:
-      REACT_APP_API_BASE_URL: "http://backend:80"
+      REACT_APP_API_BASE_URL: "http://api:80"
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e tests
