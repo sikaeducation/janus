@@ -176,6 +176,8 @@ if [[ $WAITFORIT_CLI != "" ]]; then
         echoerr "$WAITFORIT_cmdname: strict mode, refusing to execute subprocess"
         exit $WAITFORIT_RESULT
     fi
+    echo "Waiting 5 seconds..."
+    sleep 5
     exec "${WAITFORIT_CLI[@]}"
 else
     exit $WAITFORIT_RESULT
