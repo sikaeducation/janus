@@ -1,3 +1,3 @@
 echo "Running Docker Compose with this configuration:"
 docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml -f .docker/docker-compose.e2e.ci.yml config
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml up --abort-on-container-exit
+docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml -f .docker/docker-compose.e2e.ci.yml up --abort-on-container-exit

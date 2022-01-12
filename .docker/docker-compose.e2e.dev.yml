@@ -8,4 +8,4 @@ services:
   tests:
     volumes:
       - "../tests:/app"
-    command: ["./wait-for-it.sh", "-t", "60", "-h", "frontend", "-p", "3000", "--", "npm", "run", "test:watch"]
+    command: ["./dev.sh"]

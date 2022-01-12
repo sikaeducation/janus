@@ -1,11 +1,5 @@
 import {navigateTo} from "../utilities"
 
-test("initial navigation", async () => {
-  const page = await navigateTo("/")
-
-  expect(page.url()).toContain("/websites")
-})
-
 test("unit navigation", async () => {
   const page = await navigateTo("/")
 
@@ -38,3 +32,9 @@ test("activity navigation", async () => {
   await page.click("text=Back to Websites 1")
   expect(page.url()).toContain("/websites/websites-1")
 });
+
+test("initial navigation", async () => {
+  const page = await navigateTo("/")
+
+  expect(page.url()).toContain("/websites")
+})
