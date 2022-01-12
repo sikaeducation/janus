@@ -2,8 +2,7 @@ services:
   frontend:
     environment:
       REACT_APP_API_BASE_URL: "http://api:80"
-    ports:
-      - 8000:3000
+      PORT: 3000
     build:
       target: base
     expose:
@@ -11,13 +10,13 @@ services:
   api:
     environment:
       PORT: 80
-    ports:
-      - 8001:80
+    expose:
+      - 80
   tests:
     build:
       context: ../tests/
-      args:
-        BASE_URL: "http://frontend:3000"
+    environment:
+      BASE_URL: "http://frontend:3000"
     depends_on:
       - frontend
-    command: ["/bin/bash", "ci.sh"]
+      - api

@@ -18,7 +18,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run e2e tests
-        run: ./scripts/ci-e2e
+        run: ./scripts/test/e2e/ci
   build_deploy_frontend:
     needs:
       - unit_test
