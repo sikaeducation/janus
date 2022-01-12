@@ -4,12 +4,12 @@ Sika's LMS
 
 ## Scripts
 
-* `scripts/dev` - Start a development server
-* `scripts/e2e` - Run E2E tests in watch mode
 * `scripts/build` - Rebuild Docker containers
-* `scripts/frontend-unit` - Run frontend unit tests in watch mode
-* `scripts/ci-e2e` - Run E2E tests once
-* `scripts/ci-unit` - Run all unit tests once
+* `scripts/dev` - Start a development server
+* `scripts/e2e/dev` - Run E2E tests in watch mode
+* `scripts/e2e/ci` - Run E2E tests in CI mode
+* `scripts/units/dev` - Run unit tests in watch mode
+* `scripts/units/ci` - Run unit tests in CI mode
 
 ## Compose Files
 

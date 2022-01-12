@@ -1,11 +1,2 @@
-echo "\n\n CI: Unit tests building..."
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.ci-unit.yml build
-
-echo "\n\n CI: e2e tests building..."
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.ci-e2e.yml build
-
-echo "\n\n Dev environment building..."
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.dev.yml build
-
-echo "\n\n Dev e2e tests building..."
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.yml build
+echo "\n\n Building containers..."
+docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml build

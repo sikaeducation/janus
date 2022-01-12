@@ -4,4 +4,4 @@ WORKDIR /app
 COPY . .
 RUN npm install -g npm && npm install && npx playwright install
 
-CMD ["/bin/bash", "e2e.sh"]
+CMD ["npm", "run", "test"]

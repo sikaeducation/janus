@@ -1,0 +1,4 @@
+echo "Running Docker Compose with this configuration:"
+docker-compose -f .docker/docker-compose.yml config
+docker-compose -f .docker/docker-compose.yml run frontend npm run test:ci --abort-on-container-exit
+docker-compose -f .docker/docker-compose.yml run api npm run test:ci --abort-on-container-exit

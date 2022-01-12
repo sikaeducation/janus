@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - name: Run unit tests
-        run: ./scripts/ci-unit
+        run: ./scripts/test/unit/ci
   e2e_test:
     runs-on: ubuntu-latest
     steps:
