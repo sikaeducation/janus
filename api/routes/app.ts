@@ -23,11 +23,15 @@ app.get("/", (request: Request, response: Response) => {
 });
 
 app.get(
-  "/programs/:programId/currentVersion",
+  "/programs/:programId/current-version",
   async (request: Request, response: Response) => {
     const { programId } = request.params;
-    const version = await getProgramVersion(+programId);
-    response.json({ version });
+    try {
+      const version = await getProgramVersion(+programId);
+      response.json({ version });
+    } catch {
+      response.json({});
+    }
   }
 );
 
@@ -40,14 +44,13 @@ app.get(
       await createProgram(+programId);
     }
     const program = await readProgram(+programId);
-    response.json(program);
+    response.json({ program });
   }
 );
 
-app.get("/topics", (request: Request, response: Response) => {
-  getPosts().then(() => {
-    response.json({ message: "files done" });
-  });
+// eslint-disable-next-line
+app.get("/error", (request: Request, response: Response) => {
+  throw new Error();
 });
 
 app.use(

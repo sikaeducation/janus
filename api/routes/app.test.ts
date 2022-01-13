@@ -1,17 +1,61 @@
 import supertest from "supertest";
+import fs from "fs-extra";
 import app from "./app";
 import sampleData from "../data/sample_program";
+
+jest.mock("fs-extra");
+const mockReadDirectory = fs.readdir as unknown as jest.Mock;
 
 test("GET /", async () => {
   await supertest(app).get("/").expect(200);
 });
 
-test("GET /programs/:programId", async () => {
+test("404 Handler", async () => {
   await supertest(app)
-    .get("/programs/1")
-    .expect(200)
+    .get("/doesnt-exist")
     .then((response) => {
-      expect(response.body).toEqual({ program: sampleData });
-      expect(response.headers).toHaveProperty("access-control-allow-origin");
+      expect(response.statusCode).toBe(404);
     });
 });
+
+test("Error Handler", async () => {
+  // eslint-disable-next-line
+  jest.spyOn(console, "error").mockImplementation(() => {});
+  await supertest(app)
+    .get("/error")
+    .then((response) => {
+      expect(response.statusCode).toBe(500);
+    });
+});
+
+test("GET /programs/:programId/current-version", async () => {
+  mockReadDirectory.mockResolvedValueOnce(["123456789"]);
+
+  await supertest(app)
+    .get("/programs/1/current-version")
+    .expect(200)
+    .then((response) => {
+      expect(response.body).toEqual({ version: "123456789" });
+    });
+});
+
+test("GET /programs/:programId/current-version", async () => {
+  mockReadDirectory.mockResolvedValueOnce([]);
+
+  await supertest(app)
+    .get("/programs/1/current-version")
+    .expect(200)
+    .then((response) => {
+      expect(response.body).toEqual({});
+    });
+});
+
+// test("GET /programs/:programId", async () => {
+//   await supertest(app)
+//     .get("/programs/1")
+//     .expect(200)
+//     .then((response) => {
+//       expect(response.body).toEqual({ program: sampleData });
+//       expect(response.headers).toHaveProperty("access-control-allow-origin");
+//     });
+// });

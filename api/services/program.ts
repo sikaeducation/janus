@@ -48,8 +48,8 @@ function writeProgram(content: programData) {
   return fs.writeJSON(`data/hydrated-programs/${content.id}/${hash}`, content);
 }
 
-function clearPosts() {
-  return fs.remove("data/posts/*");
+function clearTempData() {
+  return fs.remove("data/temp/*");
 }
 
 function getFirst<T>(array: T[]) {
@@ -100,7 +100,7 @@ function getContentValue<T extends { content: Promise<string> }>(object: T) {
 
 export function readPosts() {
   return fs
-    .readdir("data/posts")
+    .readdir("data/temp")
     .then(getFirst)
     .then(folderToFiles)
     .then((files) => {
@@ -119,7 +119,7 @@ export async function doEverything(id: number) {
   const rawProgram = await readRawProgram(id);
   await getPosts();
   const posts = await readPosts();
-  await clearPosts();
+  await clearTempData();
   const mappedContent = mapProgramToContent(rawProgram, posts);
   await writeProgram(mappedContent);
 }

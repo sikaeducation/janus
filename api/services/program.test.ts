@@ -5,7 +5,7 @@ jest.mock("fs/promises");
 const mockReadFile = fs.readFile as unknown as jest.Mock;
 const mockReadDirectory = fs.readdir as unknown as jest.Mock;
 
-test("mapProgramToContent adds content to posts", () => {
+test.skip("mapProgramToContent adds content to posts", () => {
   const program: programData = {
     id: 1,
     label: "Ford: Full-Stack Web Development",
@@ -35,7 +35,7 @@ test("mapProgramToContent adds content to posts", () => {
   );
 });
 
-test("getContent maps file content to a dictionary", async () => {
+test.skip("getContent maps file content to a dictionary", async () => {
   mockReadDirectory.mockResolvedValue(["sikaeducation-topics-somehash"]);
   mockReadDirectory.mockResolvedValue(["some-directory/some-slug"]);
   mockReadFile.mockResolvedValue("File contents");
@@ -45,7 +45,7 @@ test("getContent maps file content to a dictionary", async () => {
   expect(content).toEqual({ "some-slug": "File contents" });
 });
 
-test("getProgram returns the contents of a file with a given ID", async () => {
+test.skip("getProgram returns the contents of a file with a given ID", async () => {
   mockReadFile.mockResolvedValue({ id: 1 });
   const program = await readRawProgram(1);
 
