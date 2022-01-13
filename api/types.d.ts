@@ -14,8 +14,10 @@ type post = {
   children: number[];
 };
 
+type postNoContent = Omit<post, "content">;
+
 type programData = {
   id: number;
   label: string;
-  posts: post[];
+  posts: post[] | postNoContent[];
 };

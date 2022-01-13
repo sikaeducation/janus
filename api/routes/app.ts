@@ -4,6 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 
 import sampleData from "../data/sample_program";
+import getTopics from "../services/github";
 
 const app = express();
 
@@ -17,6 +18,12 @@ app.get("/", (request: Request, response: Response) => {
 
 app.get("/programs/:programId", (request: Request, response: Response) => {
   response.json({ program: sampleData });
+});
+
+app.get("/topics", (request: Request, response: Response) => {
+  getTopics().then(() => {
+    response.json({ message: "files done" });
+  });
 });
 
 export default app;
