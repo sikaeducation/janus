@@ -8,7 +8,7 @@ export function getArchiveUrl() {
   return octokit.rest.repos
     .downloadTarballArchive({
       owner: "sikaeducation",
-      repo: "topics",
+      repo: "posts",
       ref: "master",
     })
     .then((response) => {
@@ -17,14 +17,15 @@ export function getArchiveUrl() {
 }
 
 export function downloadArchive(url: string) {
-  return download(url, "data/topics", { extract: true });
+  return download(url, "data/posts", { extract: true });
 }
 
 export function processFiles() {
+  // eslint-disable-next-line
   console.log("Files downloaded");
 }
 
-export default function getTopics() {
+export default function getPosts() {
   return getArchiveUrl()
     .then(downloadArchive)
     .then(processFiles)

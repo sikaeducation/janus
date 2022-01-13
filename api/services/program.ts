@@ -1,11 +1,6 @@
-// Read the program file
-// Get updated content
-// Map the program to the content
-// Delete downloaded content
-// Store hydrated program in a file with a version
-// Send it back on request
-
-import fs from "fs/promises";
+import fs from "fs-extra";
+import objectHash from "object-hash";
+import getPosts from "./github";
 
 export function mapProgramToContent(
   program: programData,
@@ -20,6 +15,41 @@ export function mapProgramToContent(
       };
     }),
   };
+}
+
+export function checkProgramVersion(programId: number, hash: string) {
+  return fs.pathExists(`data/hydrated-programs/${programId}/${hash}`);
+}
+
+export function getProgramVersion(programId: number) {
+  return fs
+    .readdir(`data/hydrated-programs/${programId}`)
+    .then((files) => files[0]);
+}
+
+export function checkProgram(programId: number) {
+  return fs
+    .readdir(`data/hydrated-programs/${programId}`)
+    .then((files) => files.length > 0);
+}
+
+export function readProgram(programId: number) {
+  return fs
+    .readdir(`data/hydrated-programs/${programId}`)
+    .then((files) => files[0])
+    .then((file) => {
+      return fs.readFile(file, "utf8");
+    });
+}
+
+function writeProgram(content: programData) {
+  const hash = objectHash(content);
+  fs.remove(`data/hydrated-programs/${content.id}/*`);
+  return fs.writeJSON(`data/hydrated-programs/${content.id}/${hash}`, content);
+}
+
+function clearPosts() {
+  return fs.remove("data/posts/*");
 }
 
 function getFirst<T>(array: T[]) {
@@ -68,9 +98,9 @@ function getContentValue<T extends { content: Promise<string> }>(object: T) {
   return object.content;
 }
 
-export function getContent() {
+export function readPosts() {
   return fs
-    .readdir("data/topics")
+    .readdir("data/posts")
     .then(getFirst)
     .then(folderToFiles)
     .then((files) => {
@@ -81,9 +111,15 @@ export function getContent() {
     });
 }
 
-export function getProgram(id: number) {
-  return fs.readFile(`data/programs/${id}.ts`, "utf8").catch((error) => {
-    // eslint-disable-next-line
-    console.error(error.message);
-  });
+export function readRawProgram(id: number) {
+  return fs.readJSON(`data/raw-programs/${id}.json`);
+}
+
+export async function doEverything(id: number) {
+  const rawProgram = await readRawProgram(id);
+  await getPosts();
+  const posts = await readPosts();
+  await clearPosts();
+  const mappedContent = mapProgramToContent(rawProgram, posts);
+  await writeProgram(mappedContent);
 }
