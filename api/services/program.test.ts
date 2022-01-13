@@ -1,11 +1,11 @@
 import fs from "fs/promises";
-import { getProgram, getContent } from "./program";
+import { mapProgramToContent, getContent, getProgram } from "./program";
 
 jest.mock("fs/promises");
 const mockReadFile = fs.readFile as unknown as jest.Mock;
 const mockReadDirectory = fs.readdir as unknown as jest.Mock;
 
-test("getProgram adds content to posts", () => {
+test("mapProgramToContent adds content to posts", () => {
   const program: programData = {
     id: 1,
     label: "Ford: Full-Stack Web Development",
@@ -28,7 +28,7 @@ test("getProgram adds content to posts", () => {
     websites: "Website Content",
   };
 
-  const programWithContent = getProgram(program, content);
+  const programWithContent = mapProgramToContent(program, content);
   expect(programWithContent.posts[0]).toHaveProperty(
     "content",
     "Website Content"
@@ -43,4 +43,11 @@ test("getContent maps file content to a dictionary", async () => {
   const content = await getContent();
 
   expect(content).toEqual({ "some-slug": "File contents" });
+});
+
+test("getProgram returns the contents of a file with a given ID", async () => {
+  mockReadFile.mockResolvedValue({ id: 1 });
+  const program = await getProgram(1);
+
+  expect(program).toEqual({ id: 1 });
 });

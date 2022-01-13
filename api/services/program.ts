@@ -1,6 +1,13 @@
+// Read the program file
+// Get updated content
+// Map the program to the content
+// Delete downloaded content
+// Store hydrated program in a file with a version
+// Send it back on request
+
 import fs from "fs/promises";
 
-export function getProgram(
+export function mapProgramToContent(
   program: programData,
   content: Record<string, string>
 ) {
@@ -72,4 +79,11 @@ export function getContent() {
         accumulateContent(names)
       );
     });
+}
+
+export function getProgram(id: number) {
+  return fs.readFile(`data/programs/${id}.ts`, "utf8").catch((error) => {
+    // eslint-disable-next-line
+    console.error(error.message);
+  });
 }
