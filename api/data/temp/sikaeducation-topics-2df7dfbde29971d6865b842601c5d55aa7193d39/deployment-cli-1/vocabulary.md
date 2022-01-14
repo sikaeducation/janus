@@ -1,2 +1,0 @@
-Deployment
-Static Hosting Provider

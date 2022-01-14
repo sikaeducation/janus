@@ -9,7 +9,7 @@ import {
   checkProgram,
   readProgram,
   getProgramVersion,
-  doEverything as createProgram,
+  createProgram,
 } from "../services/program";
 
 const app = express();
@@ -30,7 +30,7 @@ app.get(
       const version = await getProgramVersion(+programId);
       response.json({ version });
     } catch {
-      response.json({});
+      response.status(400).json({});
     }
   }
 );
@@ -40,10 +40,11 @@ app.get(
   async (request: Request, response: Response) => {
     const { programId } = request.params;
     const programExists = await checkProgram(+programId);
-    if (!programExists) {
-      await createProgram(+programId);
-    }
-    const program = await readProgram(+programId);
+
+    const program = programExists
+      ? await readProgram(+programId)
+      : await createProgram(+programId);
+
     response.json({ program });
   }
 );

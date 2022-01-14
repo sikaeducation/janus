@@ -1,3 +1,0 @@
-Natural Language
-Methodology
-Computational Problem

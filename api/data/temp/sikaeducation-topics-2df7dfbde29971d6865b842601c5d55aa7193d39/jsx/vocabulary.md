@@ -1,3 +1,0 @@
-* DOM
-* JSX
-* React Component

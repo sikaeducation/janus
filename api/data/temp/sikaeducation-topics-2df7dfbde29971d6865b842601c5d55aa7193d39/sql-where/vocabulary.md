@@ -1,8 +1,0 @@
-SQL Clause
-SQL
-SQL FROM Clause
-SQL WHERE Clause
-SQL AND
-SQL OR
-SQL NOT
-SQL LIKE

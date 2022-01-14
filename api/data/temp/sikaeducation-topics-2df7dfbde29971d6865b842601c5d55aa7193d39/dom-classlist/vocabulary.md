@@ -1,2 +1,0 @@
-DOM: `.classList`
-CSS Class

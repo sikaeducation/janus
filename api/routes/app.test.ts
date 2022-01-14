@@ -1,7 +1,6 @@
 import supertest from "supertest";
 import fs from "fs-extra";
 import app from "./app";
-import sampleData from "../data/sample_program";
 
 jest.mock("fs-extra");
 const mockReadDirectory = fs.readdir as unknown as jest.Mock;
@@ -50,12 +49,7 @@ test("GET /programs/:programId/current-version", async () => {
     });
 });
 
-// test("GET /programs/:programId", async () => {
-//   await supertest(app)
-//     .get("/programs/1")
-//     .expect(200)
-//     .then((response) => {
-//       expect(response.body).toEqual({ program: sampleData });
-//       expect(response.headers).toHaveProperty("access-control-allow-origin");
-//     });
-// });
+test.skip("GET /programs/:programId", async () => {
+  // eslint-disable-next-line
+  console.log("Skipping");
+});
