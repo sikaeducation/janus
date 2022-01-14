@@ -45,7 +45,9 @@ export function readProgram(programId: number) {
 function writeProgram(content: programData) {
   const hash = objectHash(content);
   fs.remove(`data/hydrated-programs/${content.id}/*`);
-  return fs.writeJSON(`data/hydrated-programs/${content.id}/${hash}`, content);
+  return fs
+    .writeJSON(`data/hydrated-programs/${content.id}/${hash}`, content)
+    .then(() => content);
 }
 
 export function readRawProgram(id: number) {
@@ -61,5 +63,16 @@ export async function createProgram(id: number) {
     rawProgram,
     posts as Record<string, string>
   );
-  await writeProgram(mappedContent);
+  return writeProgram(mappedContent);
+}
+
+export async function createPrograms() {
+  return fs
+    .readdir(`data/raw-programs`)
+    .then((files) => {
+      return files.map((file) => +file.split(".")[0]);
+    })
+    .then((programIds) => {
+      return Promise.all(programIds.map(createProgram));
+    });
 }

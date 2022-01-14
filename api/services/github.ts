@@ -18,6 +18,22 @@ export function getArchiveUrl() {
     });
 }
 
+export function getLastUpdateTime() {
+  const octokit = new Octokit({
+    auth: process.env.GITHUB_TOKEN,
+  });
+
+  return octokit.repos
+    .get({
+      owner: "sikaeducation",
+      repo: "posts",
+      ref: "master",
+    })
+    .then((repo) => {
+      return repo.data.updated_at;
+    });
+}
+
 function getFiles(url: string) {
   return axios.get(url, { responseType: "arraybuffer" }).then((response) => {
     const zip = new AdmZip(response.data);
