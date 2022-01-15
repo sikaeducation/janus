@@ -4,8 +4,8 @@ import {
   checkProgram,
   readProgram,
   getProgramVersion,
-  createProgram,
-  buildPrograms,
+  buildProgram,
+  buildAllPrograms,
 } from "../services/program";
 import { verifyWebHook } from "../services/github";
 
@@ -31,7 +31,7 @@ router.get("/:programId", async (request: Request, response: Response) => {
 
     const program = programExists
       ? await readProgram(+programId)
-      : await createProgram(+programId);
+      : await buildProgram(+programId);
 
     response.json({ program });
   } catch (error) {
@@ -46,7 +46,7 @@ router.get("/:programId", async (request: Request, response: Response) => {
 router.post("/build", async (request: Request, response: Response) => {
   const isValid = verifyWebHook(request);
   if (isValid) {
-    await buildPrograms();
+    await buildAllPrograms();
     response.status(200).send();
   } else {
     response.status(401).send();
