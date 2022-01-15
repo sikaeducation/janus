@@ -26,8 +26,3 @@ test("GET /programs/:programId/current-version", async () => {
       expect(response.body).toEqual({});
     });
 });
-
-test.skip("GET /programs/:programId", async () => {
-  // eslint-disable-next-line
-  console.log("Skipping");
-});
