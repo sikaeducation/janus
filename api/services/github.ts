@@ -2,8 +2,10 @@ import { Octokit } from "@octokit/rest";
 import AdmZip, { IZipEntry } from "adm-zip";
 import axios from "axios";
 import { flow, mapValues, keyBy } from "lodash/fp";
+import { Request } from "express";
+import crypto from "crypto";
 
-export function getArchiveUrl() {
+function getArchiveUrl() {
   const octokit = new Octokit({
     auth: process.env.GITHUB_TOKEN,
   });
@@ -13,25 +15,7 @@ export function getArchiveUrl() {
       repo: "posts",
       ref: "master",
     })
-    .then((response) => {
-      return response.url;
-    });
-}
-
-export function getLastUpdateTime() {
-  const octokit = new Octokit({
-    auth: process.env.GITHUB_TOKEN,
-  });
-
-  return octokit.repos
-    .get({
-      owner: "sikaeducation",
-      repo: "posts",
-      ref: "master",
-    })
-    .then((repo) => {
-      return repo.data.updated_at;
-    });
+    .then((response) => response.url);
 }
 
 function getFiles(url: string) {
@@ -41,19 +25,21 @@ function getFiles(url: string) {
   });
 }
 
+function entryToFile(entry: IZipEntry) {
+  return {
+    name: entry.entryName.split("/")[1],
+    content: entry.getData().toString("utf8"),
+  };
+}
+
 function processFiles(entries: IZipEntry[]) {
   const files = entries
     .filter((entry) => entry.name === "README.md")
-    .map((entry) => {
-      return {
-        name: entry.entryName.split("/")[1],
-        content: entry.getData().toString("utf8"),
-      };
-    });
+    .map(entryToFile);
   return flow([keyBy("name"), mapValues("content")])(files);
 }
 
-export default function getPosts() {
+export function getPosts() {
   return getArchiveUrl()
     .then(getFiles)
     .then(processFiles)
@@ -62,4 +48,20 @@ export default function getPosts() {
       console.error(error.message);
       return {};
     });
+}
+
+export function verifyWebHook(request: Request) {
+  const GITHUB_WEBHOOK_TOKEN = process.env.GITHUB_WEBHOOK_TOKEN || "";
+
+  const signature = Buffer.from(
+    request.get("X-Hub-Signature-256") || "",
+    "utf8"
+  );
+  const hmac = crypto.createHmac("sha256", GITHUB_WEBHOOK_TOKEN);
+  const digest = Buffer.from(
+    `sha256=${hmac.update(request.body).digest("hex")}`,
+    "utf8"
+  );
+
+  return crypto.timingSafeEqual(signature, digest);
 }

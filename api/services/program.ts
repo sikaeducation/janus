@@ -1,8 +1,9 @@
 import fs from "fs-extra";
 import objectHash from "object-hash";
-import getPosts from "./github";
+import { map } from "lodash/fp";
+import { getPosts } from "./github";
 
-export function mapProgramToContent(
+function mapProgramToContent(
   program: programData,
   content: Record<string, string>
 ) {
@@ -15,10 +16,6 @@ export function mapProgramToContent(
       };
     }),
   };
-}
-
-export function checkProgramVersion(programId: number, hash: string) {
-  return fs.pathExists(`data/hydrated-programs/${programId}/${hash}`);
 }
 
 export function getProgramVersion(programId: number) {
@@ -50,7 +47,7 @@ function writeProgram(content: programData) {
     .then(() => content);
 }
 
-export function readRawProgram(id: number) {
+function readRawProgram(id: number) {
   return fs.readJSON(`data/raw-programs/${id}.json`);
 }
 
@@ -66,13 +63,21 @@ export async function createProgram(id: number) {
   return writeProgram(mappedContent);
 }
 
-export async function createPrograms() {
+function getIdFromFile(file: string) {
+  return +file.split(".")[0];
+}
+
+function getAllIdsFromFileNames(fileNames: string[]) {
+  return map(getIdFromFile)(fileNames);
+}
+
+function buildAll(programIds: number[]) {
+  return Promise.all(programIds.map(createProgram));
+}
+
+export async function buildPrograms() {
   return fs
     .readdir(`data/raw-programs`)
-    .then((files) => {
-      return files.map((file) => +file.split(".")[0]);
-    })
-    .then((programIds) => {
-      return Promise.all(programIds.map(createProgram));
-    });
+    .then(getAllIdsFromFileNames)
+    .then(buildAll);
 }
