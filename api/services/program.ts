@@ -43,7 +43,13 @@ function writeProgram(content: programData) {
   const hash = objectHash(content);
   fs.remove(`data/hydrated-programs/${content.id}/*`);
   return fs
-    .writeJSON(`data/hydrated-programs/${content.id}/${hash}`, content)
+    .ensureDir(`data/hydrated-programs/${content.id}`)
+    .then(() => {
+      return fs.writeJSON(
+        `data/hydrated-programs/${content.id}/${hash}`,
+        content
+      );
+    })
     .then(() => content);
 }
 
