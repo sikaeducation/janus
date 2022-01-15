@@ -1,7 +1,3 @@
-// Public stuff is:
-// buildProgram(programId)
-// buildAllPrograms(programIds)
-
 import fs from "fs-extra";
 import objectHash from "object-hash";
 import { getPosts } from "./github";
