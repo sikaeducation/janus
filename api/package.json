@@ -6,8 +6,8 @@
   "scripts": {
     "build": "tsc",
     "start": "nodemon index.ts",
-    "test:ci": "jest",
-    "test:watch": "jest --watchAll",
+    "test:ci": "NODE_ENV=test jest",
+    "test:watch": "NODE_ENV=test jest --watchAll",
     "dev": "nodemon index.ts"
   },
   "keywords": [],

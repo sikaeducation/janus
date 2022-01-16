@@ -12,7 +12,7 @@ dotenv.config();
 const app = express();
 
 app.use(cors());
-app.use(morgan("tiny"));
+if (app.get("env") !== "test") app.use(morgan("tiny"));
 app.use(helmet());
 app.use(bodyParser.json());
 
