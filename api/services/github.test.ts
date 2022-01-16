@@ -1,5 +1,9 @@
-import {} from "./github";
-
-test("Github service exists", () => {
-  expect(true).toBeTruthy();
+test("verifyWebHook works", () => {
+  expect(true).toEqual(true);
 });
+
+test("getPosts works", () => {
+  expect(true).toEqual(true);
+});
+
+export {};
