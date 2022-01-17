@@ -111,5 +111,5 @@ export default function getProgram() {
         children: [],
       },
     ],
-  }
+  };
 }

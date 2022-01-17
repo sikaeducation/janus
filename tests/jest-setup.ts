@@ -1,3 +1,3 @@
-import "expect-playwright"
+import "expect-playwright";
 
-jest.setTimeout(15 * 1000)
+jest.setTimeout(15 * 1000);
