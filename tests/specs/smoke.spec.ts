@@ -1,9 +1,11 @@
-import {screen} from "@testing-library/dom"
-import {navigateTo} from "../utilities"
+import usePage from "../mocks/page-with-mock-api"
 
 test("smoke", async () => {
-  await navigateTo("/")
-  const root = await screen.findByTestId("root")
+  const {page, done} = await usePage()
+  await page.goto("/")
 
-  expect(root).toBeInTheDocument()
+  const root = page.locator("data-test-id=root")
+
+  expect(root).toBeTruthy()
+  done()
 });

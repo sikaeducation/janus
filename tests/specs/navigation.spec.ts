@@ -1,4 +1,4 @@
-import usePage from "../mocks/program"
+import usePage from "../mocks/page-with-mock-api"
 
 test("unit navigation", async () => {
   const {page, done} = await usePage()
