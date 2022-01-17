@@ -1,0 +1,7 @@
+@use "../../styles/sizes";
+
+.ProgramViewer {
+  ul ul {
+    margin-left: sizes.$s8;
+  }
+}

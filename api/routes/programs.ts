@@ -44,7 +44,8 @@ router.get("/:programId", async (request: Request, response: Response) => {
 });
 
 router.post("/build", async (request: Request, response: Response) => {
-  const isValid = verifyWebHook(request);
+  const isValid =
+    process.env.NODE_ENV !== "production" || verifyWebHook(request);
   if (isValid) {
     await buildAllPrograms();
     response.status(200).send();
