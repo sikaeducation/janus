@@ -1,13 +1,22 @@
-import { chromium } from "playwright";
+import { chromium, Browser, Route } from "playwright";
 import getProgram from "../fixtures/program";
 
 const { BASE_URL } = process.env;
 
+declare global {
+  // eslint-disable-next-line
+  namespace NodeJS {
+    interface Global {
+      browser?: Browser;
+    }
+  }
+}
+
 export default async function usePage() {
-  const browser = await chromium.launch();
-  const context = await browser.newContext({ baseURL: BASE_URL });
+  global.browser = await chromium.launch();
+  const context = await global.browser.newContext({ baseURL: BASE_URL });
   const page = await context.newPage();
-  await page.route("**/programs/*", (route) => {
+  await page.route("**/programs/*", (route: Route) => {
     route.fulfill({
       headers: {
         "Access-Control-Allow-Origin": "*",
@@ -16,5 +25,5 @@ export default async function usePage() {
     });
   });
 
-  return { page, done: async () => browser.close() };
+  return { page };
 }
