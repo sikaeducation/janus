@@ -1,10 +1,8 @@
 import usePage from "../mocks/program"
 
-const {BASE_URL} = process.env
-
 test("unit navigation", async () => {
   const {page, done} = await usePage()
-  await page.goto(`${BASE_URL}`)
+  await page.goto("/")
 
   await page.click(".UnitNavigation li:nth-child(2)")
   expect(page.url()).toContain("/web-apps")
@@ -18,7 +16,7 @@ test("unit navigation", async () => {
 test("section navigation", async () => {
   const {page, done} = await usePage()
 
-  await page.goto(`${BASE_URL}/websites`)
+  await page.goto("/websites")
 
   await page.click("text=links")
   expect(page.url()).toContain("/websites/websites-1")
@@ -31,7 +29,7 @@ test("section navigation", async () => {
 
 test("activity navigation", async () => {
   const {page, done} = await usePage()
-  await page.goto(`${BASE_URL}/websites/websites-1/html-div-span`)
+  await page.goto("/websites/websites-1/html-div-span")
 
   await page.click("text=Next: <div> & <span> Exercises")
   expect(page.url()).toContain("/websites/websites-1/html-div-span-exercises")
@@ -47,7 +45,7 @@ test("activity navigation", async () => {
 
 test("navigation on load", async () => {
   const {page, done} = await usePage()
-  await page.goto(`${BASE_URL}`)
+  await page.goto("/")
 
   expect(page.url()).toContain("/websites")
 
