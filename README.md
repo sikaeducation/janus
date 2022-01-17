@@ -14,7 +14,7 @@ Sika's LMS
 ## Compose Files
 
 * `.docker/docker-compose.yml`: Base for all environments
-* `.docker/docker-compose.dev.yml`: Syncs to local volumes
-* `.docker/docker-compose.e2e.yml`: Syncs to local volumes, runs e2e tests in watch mode
-* `.docker/docker-compose.ci-unit.yml`: Unit tests, no volumes
-* `.docker/docker-compose.ci-e2e.yml`: E2E tests, no volumes
+* `.docker/docker-compose.dev.yml`: Sets local environment variables and syncs to local volumes
+* `.docker/docker-compose.e2e.base.yml`: Sets test environment variables
+* `.docker/docker-compose.e2e.dev.yml`: Syncs to local volumes, runs tests in watch
+* `.docker/docker-compose.e2e.ci.yml`: Runs tests once
