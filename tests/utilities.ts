@@ -1,4 +1,4 @@
-import {chromium} from "playwright";
+import {chromium, Browser} from "playwright";
 
 declare global {
   interface Window {
