@@ -7,6 +7,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Link } from "react-router-dom";
 import { ComponentPropsWithoutRef } from "react";
+import remarkUnwrapImages from "remark-unwrap-images";
+import codesandbox from "remark-codesandbox";
 
 type props = {
   content: string;
@@ -27,7 +29,7 @@ export default function AppContent({ content }: props) {
     <article className="AppContent">
       <ReactMarkdown
         children={content}
-        remarkPlugins={[gfm]}
+        remarkPlugins={[gfm, remarkUnwrapImages, codesandbox]}
         components={{
           a: RouterLink,
           code({ inline, className, children, ...props }) {

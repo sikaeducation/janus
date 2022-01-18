@@ -22,15 +22,10 @@
       width: 100%;
     }
   }
-  img {
-    margin-left: -1 * sizes.$s6; // All imgs are wrapped in p tags, this offsets them
-  }
   img[src$="#small"] {
-    margin-left: 0;
     width: 30%;
   }
   img[src$="#medium"] {
-    margin-left: 0;
     width: 50%;
   }
   img, blockquote {
