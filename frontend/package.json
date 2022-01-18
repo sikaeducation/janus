@@ -16,7 +16,6 @@
     "react-router-dom": "^6.2.1",
     "react-scripts": "5.0.0",
     "react-syntax-highlighter": "^15.4.5",
-    "remark-codesandbox": "^0.10.1",
     "remark-gfm": "^3.0.1",
     "remark-unwrap-images": "^3.0.1",
     "sass": "^1.45.2",

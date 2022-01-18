@@ -1,4 +1,5 @@
 import "./AppHeader.scss";
+import { Link } from "react-router-dom";
 
 type props = {
   programLabel: string;
@@ -7,7 +8,9 @@ type props = {
 function AppHeader({ programLabel }: props) {
   return (
     <header className="AppHeader">
-      <span className="logo">Sika</span>
+      <span className="logo">
+        <Link to="/">Sika</Link>
+      </span>
       <span className="program-label">{programLabel}</span>
     </header>
   );

@@ -12,6 +12,9 @@
   }
   .logo {
     @include typography.logo-font;
+    a {
+      text-decoration: none;
+    }
   }
   .program-label {
     @include typography.program-label-font;

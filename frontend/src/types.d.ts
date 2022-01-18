@@ -1,5 +1,3 @@
-declare module "remark-codesandbox";
-
 type postType = "root" | "unit" | "section" | "topic" | "exercise";
 
 type post = {

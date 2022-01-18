@@ -40,7 +40,7 @@ function AppShell({ program }: props) {
   const currentPost =
     path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
-  const crumbLinks = getCrumbLinks(program.posts, currentPost);
+  const crumbLinks = getCrumbLinks(program.posts, path);
   const nextLink = getNextLink(program.posts, currentPost, program.root);
   const { content } = currentPost;
 
