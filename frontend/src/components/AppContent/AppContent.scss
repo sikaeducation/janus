@@ -22,6 +22,20 @@
       width: 100%;
     }
   }
+  img {
+    margin-left: -1 * sizes.$s6; // All imgs are wrapped in p tags, this offsets them
+  }
+  img[src$="#small"] {
+    margin-left: 0;
+    width: 30%;
+  }
+  img[src$="#medium"] {
+    margin-left: 0;
+    width: 50%;
+  }
+  img, blockquote {
+    border-radius: sizes.$border-radius;
+  }
   h1 {
     @include typography.heading-font-1;
   }
@@ -31,7 +45,7 @@
   h3 {
     @include typography.heading-font-3;
   }
-  h4 {
+  h4, h5, h6 {
     @include typography.heading-font-4;
   }
   blockquote {
@@ -45,10 +59,14 @@
   code {
     @include typography.code-font;
     margin: sizes.$f7 0;
+    font-size: sizes.$f4; // Overrides inheritance
     white-space: pre-wrap !important; // Needed to override syntax highlighter
   }
   pre {
     white-space: pre-wrap;
+    > div {
+      border-radius: sizes.$border-radius !important;
+    }
   }
   thead {
     border-bottom: 1px solid colors.$grey-7;
@@ -60,5 +78,48 @@
   }
   td {
     padding-top: sizes.$s3;
+  }
+  strong {
+    font-weight: 700;
+  }
+  em {
+    font-style: italic;
+  }
+  ul {
+    list-style: square;
+    margin-left: sizes.$s7;
+  }
+  ol {
+    list-style: none;
+    margin-left: sizes.$s7;
+    > li {
+      counter-increment: ordered-list-item;
+      &::before {
+        content: counter(ordered-list-item) ". ";
+        font-weight: 700;
+      }
+    }
+  }
+  ul ul, ol ol, ul ol, ol ul, li ol, li ul {
+    margin-left: sizes.$s7;
+  }
+  hr {
+    width: 66%;
+    border: 0.5px solid colors.$grey-8;
+  }
+  table {
+    margin-bottom: sizes.$s5;
+  }
+  .contains-task-list {
+    margin: sizes.$s5 0;
+    .task-list-item {
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      input {
+        margin-top: 8px;
+        margin-right: sizes.$s3;
+      }
+    }
   }
 }

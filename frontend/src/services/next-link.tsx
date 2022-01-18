@@ -1,29 +1,49 @@
-function postToLink(message: string, { path, label }: post) {
-  return {
-    path,
-    label: `${message} ${label.short}`,
-  };
+/* eslint @typescript-eslint/no-non-null-assertion: "off" */
+
+function getFirstUnit(posts: post[], unitIds: number[]) {
+  return posts.find((post) => post.id === unitIds[0]);
+}
+
+function pathTo(posts: post[], id: number) {
+  const path = [];
+  const someCondition = false;
+  do {
+    const parentId = posts.find((post) => post.children.includes(id));
+    if (parentId) path.unshift(parentId);
+  } while (someCondition);
+  return `/${path.join("/")}`;
 }
 
 export default function getNextLink(
   posts: post[],
-  currentPost: post
+  currentPost: post,
+  rootPost: Omit<post, "id">
 ): internalLink | null {
-  if (currentPost.children.length) return null; // No next for a parent node
+  // Root Node
+  if (currentPost.slug === rootPost.slug) {
+    return {
+      label: `Start ${currentPost.label.short}`,
+      path: `/${getFirstUnit(posts, currentPost.children)}`,
+    };
+  }
 
-  const parent = posts.find((allPosts) =>
-    allPosts.children.includes(currentPost.id)
-  );
-  if (!parent) return null; // No next for a root node
+  // End of sequence
+  const parent =
+    posts.find((allPosts) => allPosts.children.includes(currentPost.id)) ||
+    (rootPost as post);
+  const currentIndex = parent.children.indexOf(currentPost.id);
+  if (currentIndex === parent.children.length - 1) {
+    return {
+      label: `Back to ${parent.label.short}`,
+      path: parent.id ? pathTo(posts, parent.id) : "/",
+    };
+  }
 
-  const siblings = posts.filter((post) => {
-    return parent.children.includes(post.id);
-  });
-  const currentIndex = siblings.findIndex(
-    (sibling) => sibling.id === currentPost.id
-  );
-  const currentIsLast = currentIndex === siblings.length - 1;
-  if (!currentIsLast) return postToLink("Next:", siblings[currentIndex + 1]); // Next sibling
-
-  return parent ? postToLink("Back to", parent) : null; // Return to parent if last
+  // Next sibling
+  const nextSiblingId = parent.children[currentIndex + 1];
+  const nextSibling = posts.find((post) => post.id === nextSiblingId)!;
+  return {
+    label: `Next: ${nextSibling.label.short}`,
+    path: pathTo(posts, nextSibling.id),
+  };
 }

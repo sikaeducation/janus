@@ -18,15 +18,14 @@ function buildTree(posts: post[], postIds: number[]): JSX.Element[] {
 }
 
 export default function ProgramViewer({ program }: props) {
-  const root = program.posts.find((post) => post.path === "/")!;
-  const units = root.children;
+  const units = program.root.children;
   const tree = buildTree(program.posts, units);
 
   return (
     <div className="ProgramViewer">
       <h1>Program Viewer: {program.label}</h1>
       <ul>
-        <li className="PostListing">{root.label.full}</li>
+        <li className="PostListing">{program.root.label.full}</li>
         {tree}
       </ul>
     </div>

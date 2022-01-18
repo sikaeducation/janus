@@ -3,7 +3,7 @@ export default function getProgram() {
     id: 1,
     label: "Ford: Full-Stack Web Development",
     root: {
-      id: 1,
+      id: -1,
       type: "root",
       label: {
         full: "Root",

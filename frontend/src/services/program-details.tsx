@@ -1,7 +1,5 @@
-import data from "../data";
+import getProgram from "../fixtures/program";
 
 export default function getCurrentProgram() {
-  const { program } = data; // Fetch or read from localStorage
-
-  return program;
+  return getProgram();
 }

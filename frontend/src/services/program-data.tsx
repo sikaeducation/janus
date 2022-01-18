@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 function useProgram(id: number): programData | null {
-  const [program, setProgram] = useState(null);
+  const [program, setProgram] = useState<programData | null>(null);
   useEffect(() => {
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
     fetch(`${apiBaseUrl}/programs/${id}`)
@@ -11,7 +11,7 @@ function useProgram(id: number): programData | null {
       })
       .catch((error) => {
         // eslint-disable-next-line
-        console.error(error.message);
+          console.error(error.message);
       });
   }, [id]);
 

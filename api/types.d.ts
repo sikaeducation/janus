@@ -8,6 +8,7 @@ type post = {
     full: string;
     tiny: string;
   };
+  path: string;
   slug: string;
   content: string;
   children: number[];
@@ -18,6 +19,6 @@ type postNoContent = Omit<post, "content">;
 type programData = {
   id: number;
   label: string;
-  root: Omit<post, "id">;
+  root: post;
   posts: post[] | postNoContent[];
 };

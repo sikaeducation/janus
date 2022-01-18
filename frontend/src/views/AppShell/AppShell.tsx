@@ -8,24 +8,40 @@ import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 
-import getUnitLinks from "../../services/unit-links";
+// import getUnitLinks from "../../services/unit-links";
 import getCrumbLinks from "../../services/crumb-links";
 import getNextLink from "../../services/next-link";
-import getCurrentPost from "../../services/current-post";
+// import getCurrentPost from "../../services/current-post";
 
 type props = {
   program: programData;
 };
 
+function getUnitLinks(posts: post[], unitIds: number[], currentPath: string) {
+  return posts
+    .filter((post) => unitIds.includes(post.id))
+    .map((unit, index) => ({
+      id: index + 1,
+      path: `/${unit.slug}`,
+      label: unit.label.tiny,
+      isActive: currentPath.startsWith(`/${unit.slug}`),
+    }));
+}
+
+function getCurrentPost(posts: post[], path: string) {
+  const segments = path.split("/");
+  const slug = segments[segments.length - 1];
+  return posts.find((post) => post.slug === slug);
+}
+
 function AppShell({ program }: props) {
-  const path = useLocation().pathname.substring(1);
-  if (!program.posts.length) return <Navigate replace to="/404" />;
-  const unitLinks = getUnitLinks(program.posts, path);
-  if (!path) return <Navigate replace to={unitLinks[0].path} />;
-  const currentPost = getCurrentPost(program.posts, path);
+  const path = useLocation().pathname;
+  const unitLinks = getUnitLinks(program.posts, program.root.children, path);
+  const currentPost =
+    path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
   const crumbLinks = getCrumbLinks(program.posts, currentPost);
-  const nextLink = getNextLink(program.posts, currentPost);
+  const nextLink = getNextLink(program.posts, currentPost, program.root);
   const { content } = currentPost;
 
   return (
