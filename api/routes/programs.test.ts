@@ -43,23 +43,10 @@ test("GET /programs/:programId/current-version returns nothing if no version pre
 });
 
 test("POST /programs/build succeeds", async () => {
-  mockVerifyWebhook.mockReturnValueOnce(true);
   await supertest(app)
     .post("/programs/build")
     .expect(200)
     .then(() => {
-      expect(mockVerifyWebhook).toHaveBeenCalled();
-      expect(mockBuildAllPrograms).toHaveBeenCalled();
-    });
-});
-
-test("POST /programs/build fails", async () => {
-  mockVerifyWebhook.mockReturnValueOnce(false);
-  await supertest(app)
-    .post("/programs/build")
-    .expect(401)
-    .then(() => {
-      expect(mockVerifyWebhook).toHaveBeenCalled();
       expect(mockBuildAllPrograms).toHaveBeenCalled();
     });
 });

@@ -1,4 +1,5 @@
 import usePage from "../mocks/page-with-mock-api";
+import "expect-playwright";
 
 test("unit navigation", async () => {
   const { page } = await usePage();

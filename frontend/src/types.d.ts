@@ -1,4 +1,4 @@
-type postType = "unit" | "section" | "topic" | "exercise";
+type postType = "root" | "unit" | "section" | "topic" | "exercise";
 
 type post = {
   id: number;
@@ -9,7 +9,6 @@ type post = {
     tiny: string;
   };
   slug: string;
-  path: string;
   content: string;
   children: number[];
 };
@@ -24,5 +23,6 @@ type internalLink = {
 type programData = {
   id: number;
   label: string;
+  root: Omit<post, "id">;
   posts: post[];
 };

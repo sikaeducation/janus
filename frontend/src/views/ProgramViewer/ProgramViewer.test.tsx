@@ -1,15 +1,11 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter as Router } from "react-router-dom";
 import ProgramViewer from ".";
-import data from "../../data";
+import getProgram from "../../../fixtures/program";
 
-test("renders app", () => {
-  const programFixture = data.program;
+test("renders app", async () => {
+  const programFixture = getProgram() as programData;
 
-  render(
-    <Router initialEntries={["/program-viewer"]}>
-      <ProgramViewer program={programFixture} />
-    </Router>
-  );
-  expect(true).toBe(true);
+  render(<ProgramViewer program={programFixture} />);
+  const listItems = await screen.findAllByRole("listitem");
+  expect(listItems.length).toBe(8);
 });

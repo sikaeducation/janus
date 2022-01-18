@@ -8,17 +8,11 @@ type props = {
 function buildTree(posts: post[], postIds: number[]): JSX.Element[] {
   return postIds.map((postId) => {
     const post = posts.find((post) => post.id === postId)!;
-    return !post.children.length ? (
+    return (
       <li key={post.id} className="PostListing">
         {post.label.full}
+        {post.children.length && <ul>{buildTree(posts, post.children)}</ul>}
       </li>
-    ) : (
-      <>
-        <li key={post.id + 0.5}>{post.label.full}</li>
-        <li key={post.id}>
-          <ul>{buildTree(posts, post.children)}</ul>
-        </li>
-      </>
     );
   });
 }
