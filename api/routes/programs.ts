@@ -26,23 +26,23 @@ router.get(
 );
 
 router.get("/:programId", async (request: Request, response: Response) => {
-  // response.json({ program: getProgram() });
-  const { programId } = request.params;
-  try {
-    const programExists = await checkProgram(+programId);
+  response.json({ program: getProgram() });
+  // const { programId } = request.params;
+  // try {
+  //   const programExists = await checkProgram(+programId);
 
-    const program = programExists
-      ? await readProgram(+programId)
-      : await buildProgram(+programId);
+  //   const program = programExists
+  //     ? await readProgram(+programId)
+  //     : await buildProgram(+programId);
 
-    response.json({ program });
-  } catch (error) {
-    // eslint-disable-next-line
-      if (error instanceof Error) console.error(error.message);
-    response
-      .status(500)
-      .json({ error: "There was an error retrieving this program" });
-  }
+  //   response.json({ program });
+  // } catch (error) {
+  //   // eslint-disable-next-line
+  //     if (error instanceof Error) console.error(error.message);
+  //   response
+  //     .status(500)
+  //     .json({ error: "There was an error retrieving this program" });
+  // }
 });
 
 router.post("/build", async (request: Request, response: Response) => {

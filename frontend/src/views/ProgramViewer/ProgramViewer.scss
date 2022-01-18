@@ -1,7 +1,44 @@
 @use "../../styles/sizes";
+@use "../../styles/typography";
+@use "../../styles/colors";
 
 .ProgramViewer {
+  padding: sizes.$s4 sizes.$s8;
+  display: flex;
+  justify-content: center;
+  .ProgramViewer-wrapper {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    grid-template-rows: auto 1fr;
+    > h1 {
+      grid-row: 1 / span 1;
+      grid-column: 1 / span 2;
+      @include typography.heading-font-3;
+      margin-bottom: sizes.$s8;
+    }
+    > ul {
+      grid-row: 2 / span 1;
+      grid-column: 1 / span 1;
+    }
+    > .AppContent {
+      grid-row: 2 / span 1;
+      grid-column: 2 / span 1;
+      margin-left: sizes.$s8;
+    }
+  }
   ul ul {
     margin-left: sizes.$s8;
+  }
+  ul {
+    margin-bottom: 0;
+  }
+  .PostListing {
+    padding: sizes.$s1 sizes.$s3;
+    background-color: colors.$grey-9;
+    margin-bottom: sizes.$s1;
+    width: 200px;
+    font-size: sizes.$f3;
+    text-overflow: ellipsis;
+    cursor: pointer;
   }
 }
