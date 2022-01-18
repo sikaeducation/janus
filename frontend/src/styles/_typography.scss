@@ -80,7 +80,7 @@
   color: colors.$grey-4;
   margin-bottom: sizes.$s4;
   @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f6;
+    font-size: sizes.$f4;
   }
 }
 
@@ -113,6 +113,9 @@
 @mixin code-font {
   font-family: "Fira Mono", monospace;
   font-size: inherit;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f3;
+  }
 }
 
 @mixin primary-action-button-font {
