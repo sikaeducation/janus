@@ -1,7 +1,7 @@
 import usePage from "../mocks/page-with-mock-api";
 import "expect-playwright";
 
-test("program viewer displays program content", async () => {
+test.skip("program viewer displays program content", async () => {
   const { page } = await usePage();
   await page.goto("/program-viewer");
   const posts = page.locator(".PostListing");

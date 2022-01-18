@@ -7,7 +7,7 @@ test("renders app", () => {
   const programFixture = getProgram() as programData;
 
   render(
-    <Router initialEntries={["/websites"]}>
+    <Router initialEntries={["/"]}>
       <AppShell program={programFixture} />
     </Router>
   );
