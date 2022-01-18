@@ -8,7 +8,7 @@
   justify-content: center;
   .ProgramViewer-wrapper {
     display: grid;
-    grid-template-columns: 400px 1fr;
+    grid-template-columns: 450px 680px;
     grid-template-rows: auto 1fr;
     > h1 {
       grid-row: 1 / span 1;
@@ -27,18 +27,9 @@
     }
   }
   ul ul {
-    margin-left: sizes.$s8;
+    margin-left: sizes.$s6;
   }
   ul {
     margin-bottom: 0;
-  }
-  .PostListing {
-    padding: sizes.$s1 sizes.$s3;
-    background-color: colors.$grey-9;
-    margin-bottom: sizes.$s1;
-    width: 200px;
-    font-size: sizes.$f3;
-    text-overflow: ellipsis;
-    cursor: pointer;
   }
 }

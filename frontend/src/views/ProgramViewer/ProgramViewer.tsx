@@ -2,12 +2,16 @@
 import "./ProgramViewer.scss";
 import { KeyboardEvent, useState } from "react";
 import AppContent from "../../components/AppContent";
+import PostListing from "../../components/PostListing";
 
 type props = {
   program: programData;
 };
 
 export default function ProgramViewer({ program }: props) {
+  const [currentPost, setCurrentPost] = useState<post | null>(null);
+  const units = program.root.children;
+
   const handleClick = (post: post) => {
     return () => {
       setCurrentPost(post);
@@ -19,38 +23,38 @@ export default function ProgramViewer({ program }: props) {
     };
   };
 
-  const buildTree = (posts: post[], postIds: number[]): JSX.Element[] => {
+  const buildTree = (
+    posts: post[],
+    postIds: number[],
+    currentPost?: post | null
+  ): JSX.Element[] => {
     return postIds
       .map((postId) => posts.find((post) => post.id === postId)!)
-      .reduce((list: JSX.Element[], post: post) => {
-        const postElements = [
-          ...list,
+      .flatMap((post: post) => {
+        const postListing = (
           <li key={post.id}>
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={handleClick(post)}
-              onKeyPress={handleEnter(post)}
-              className="PostListing"
-            >
-              {post.label.short}
-            </div>
-          </li>,
-        ];
-        return post.children.length > 0
-          ? [
-              ...postElements,
-              <li>
-                <ul>{buildTree(posts, post.children)}</ul>
+            <PostListing
+              post={post}
+              isActive={currentPost?.path === post.path}
+              handlers={{
+                click: handleClick(post),
+                keyboard: handleEnter(post),
+              }}
+            />
+          </li>
+        );
+        return post.children.length === 0
+          ? postListing
+          : [
+              postListing,
+              <li key={post.id + 0.5}>
+                <ul>{buildTree(posts, post.children, currentPost)}</ul>
               </li>,
-            ]
-          : postElements;
-      }, []);
+            ];
+      });
   };
 
-  const units = program.root.children;
-  const tree = buildTree(program.posts, units);
-  const [currentPost, setCurrentPost] = useState<post | null>(null);
+  const tree = buildTree(program.posts, units, currentPost);
 
   return (
     <div className="ProgramViewer">
@@ -58,15 +62,14 @@ export default function ProgramViewer({ program }: props) {
         <h1>Program Viewer: {program.label}</h1>
         <ul>
           <li>
-            <div
-              role="button"
-              tabIndex={0}
-              onClick={handleClick(program.root)}
-              onKeyPress={handleEnter(program.root)}
-              className="PostListing"
-            >
-              {program.root.label.short}
-            </div>
+            <PostListing
+              post={program.root}
+              isActive={currentPost?.path === program.root.path}
+              handlers={{
+                click: handleClick(program.root),
+                keyboard: handleEnter(program.root),
+              }}
+            />
           </li>
           {tree}
         </ul>
