@@ -26,8 +26,7 @@ router.get(
 );
 
 router.get("/:programId", async (request: Request, response: Response) => {
-  response.json({ program: getProgram() });
-  /*
+  // response.json({ program: getProgram() });
   const { programId } = request.params;
   try {
     const programExists = await checkProgram(+programId);
@@ -44,7 +43,6 @@ router.get("/:programId", async (request: Request, response: Response) => {
       .status(500)
       .json({ error: "There was an error retrieving this program" });
   }
-    */
 });
 
 router.post("/build", async (request: Request, response: Response) => {
