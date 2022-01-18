@@ -2,7 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import AppShell from "./views/AppShell";
 import ProgramViewer from "./views/ProgramViewer";
 
-import useProgram from "./services/program-data";
+import { useProgram } from "./services/program-data";
 
 function App() {
   const program = useProgram(1);
