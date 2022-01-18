@@ -9,7 +9,7 @@ type props = {
 };
 
 export default function ProgramViewer({ program }: props) {
-  const [currentPost, setCurrentPost] = useState<post | null>(null);
+  const [currentPost, setCurrentPost] = useState<post>(program.root);
   const units = program.root.children;
 
   const handleClick = (post: post) => {
@@ -26,7 +26,7 @@ export default function ProgramViewer({ program }: props) {
   const buildTree = (
     posts: post[],
     postIds: number[],
-    currentPost?: post | null
+    currentPost: post
   ): JSX.Element[] => {
     return postIds
       .map((postId) => posts.find((post) => post.id === postId)!)
