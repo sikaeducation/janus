@@ -27,7 +27,7 @@ export default function getProgram() {
         },
         path: "/unit-1",
         slug: "unit-1",
-        content: "# Unit 2",
+        content: "# Unit 1",
         children: [3, 4, 5],
       },
       {
@@ -48,7 +48,7 @@ export default function getProgram() {
         type: "topic",
         label: {
           full: "Topic 1",
-          short: "1",
+          short: "Topic 1",
           tiny: "",
         },
         path: "/unit-1/topic-1",
