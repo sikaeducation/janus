@@ -8,7 +8,7 @@ import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 
-import { getCurrentPost, getLinks } from "../../services/program-data";
+import { getCurrentPost, getLinks } from "../../services/program";
 
 type props = {
   program: programData;

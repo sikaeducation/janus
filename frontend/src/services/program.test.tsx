@@ -1,7 +1,7 @@
 import { renderHook } from "@testing-library/react-hooks";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
-import { useProgram } from "./program-data";
+import { useProgram } from "./program";
 import getProgram from "../fixtures/program";
 
 const server = setupServer();
