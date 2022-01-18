@@ -1,6 +1,9 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import AppShell from "./views/AppShell";
+import CurriculumViewer from "./views/CurriculumViewer";
 import ProgramViewer from "./views/ProgramViewer";
+import AppHeader from "./components/AppHeader";
+import AppFooter from "./components/AppFooter";
+import "./App.scss";
 
 import { useProgram } from "./services/program";
 
@@ -9,20 +12,32 @@ function App() {
 
   return (
     <Router>
-      <Routes>
-        <Route path="404" element={<p>Couldn&lsquo;t find that, sorry!</p>} />
-        {program ? (
-          <>
+      <div className="App">
+        <AppHeader programLabel={program?.label || ""} />
+        <main>
+          <Routes>
             <Route
-              path="/program-viewer"
-              element={<ProgramViewer program={program} />}
+              path="404"
+              element={<p>Couldn&lsquo;t find that, sorry!</p>}
             />
-            <Route path="*" element={<AppShell program={program} />} />
-          </>
-        ) : (
-          <Route path="*" element={<p>Loading...</p>} />
-        )}
-      </Routes>
+            {program ? (
+              <>
+                <Route
+                  path="/program-viewer"
+                  element={<ProgramViewer program={program} />}
+                />
+                <Route
+                  path="*"
+                  element={<CurriculumViewer program={program} />}
+                />
+              </>
+            ) : (
+              <Route path="*" element={<p>Loading...</p>} />
+            )}
+          </Routes>
+        </main>
+        <AppFooter />
+      </div>
     </Router>
   );
 }

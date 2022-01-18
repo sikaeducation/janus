@@ -1,8 +1,6 @@
 import { useLocation, Navigate } from "react-router-dom";
 
-import "./AppShell.scss";
-import AppHeader from "../../components/AppHeader";
-import AppFooter from "../../components/AppFooter";
+import "./CurriculumViewer.scss";
 import UnitNavigation from "../../components/UnitNavigation";
 import CrumbNavigation from "../../components/CrumbNavigation";
 import AppContent from "../../components/AppContent";
@@ -14,7 +12,7 @@ type props = {
   program: programData;
 };
 
-function AppShell({ program }: props) {
+export default function CurriculumViewer({ program }: props) {
   const path = useLocation().pathname;
   const currentPost =
     path === "/" ? program.root : getCurrentPost(program.posts, path);
@@ -22,24 +20,16 @@ function AppShell({ program }: props) {
   const { unitLinks, crumbLinks, nextLink } = getLinks(program, currentPost);
 
   return (
-    <div className="App">
-      <AppHeader programLabel={program.label} />
-      <main>
-        <div className="content-container">
-          <UnitNavigation units={unitLinks} />
-          <CrumbNavigation links={crumbLinks} />
-          <AppContent content={currentPost.content} />
-          {nextLink && (
-            <ActivityNavigation
-              nextSlug={nextLink.path}
-              nextLabel={nextLink.label}
-            />
-          )}
-        </div>
-      </main>
-      <AppFooter />
+    <div className="CurriculumViewer">
+      <UnitNavigation units={unitLinks} />
+      <CrumbNavigation links={crumbLinks} />
+      <AppContent content={currentPost.content} />
+      {nextLink && (
+        <ActivityNavigation
+          nextSlug={nextLink.path}
+          nextLabel={nextLink.label}
+        />
+      )}
     </div>
   );
 }
-
-export default AppShell;
