@@ -46,3 +46,11 @@ test("404", async () => {
   await page.goto("/path-that-doesnt-exist");
   await expect(page).toMatchText(/sorry!/);
 });
+
+test("Loading", async () => {
+  expect(true).toBe(true);
+});
+
+test("Error", async () => {
+  expect(true).toBe(true);
+});
