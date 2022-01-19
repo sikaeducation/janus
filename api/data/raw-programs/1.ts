@@ -9,9 +9,9 @@ const program: programData = {
       short: "Full-Stack Web Development",
       tiny: "",
     },
-    slug: "websites",
+    slug: "ford-full-stack",
     path: "/",
-    children: [1],
+    children: [1, 2, 3, 5, 6, 7],
   },
   posts: [
     {
@@ -36,7 +36,7 @@ const program: programData = {
       },
       path: "/unit-websites",
       slug: "unit-websites",
-      children: [],
+      children: [8],
     },
     {
       id: 3,
@@ -84,7 +84,7 @@ const program: programData = {
       },
       path: "/unit-persistence-spring-boot",
       slug: "unit-persistence-spring-boot",
-      children: [],
+      children: [9],
     },
     {
       id: 7,
@@ -96,6 +96,30 @@ const program: programData = {
       },
       path: "/unit-capstones-ford",
       slug: "unit-capstones-ford",
+      children: [],
+    },
+    {
+      id: 8,
+      type: "section",
+      label: {
+        full: "Intro to CLI",
+        short: "CLI: Intro",
+        tiny: "",
+      },
+      path: "/websites/section-cli-1",
+      slug: "section-cli-1",
+      children: [],
+    },
+    {
+      id: 9,
+      type: "topic",
+      label: {
+        full: "Intro to SQL",
+        short: "SQL: Intro",
+        tiny: "",
+      },
+      path: "/persistence/sql-intro",
+      slug: "sql-intro",
       children: [],
     },
   ],
