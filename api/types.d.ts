@@ -19,6 +19,6 @@ type postNoContent = Omit<post, "content">;
 type programData = {
   id: number;
   label: string;
-  root: post;
+  root: post | postNoContent;
   posts: post[] | postNoContent[];
 };
