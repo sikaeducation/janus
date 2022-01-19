@@ -1,0 +1,10 @@
+@use "../../styles/typography";
+
+.AppMissing {
+  display: flex;
+  flex-flow: column nowrap;
+  align-items: center;
+  h1 {
+    @include typography.heading-font-1;
+  }
+}

@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import CurriculumViewer from "./views/CurriculumViewer";
 import ProgramViewer from "./views/ProgramViewer";
+import AppMissing from "./views/AppMissing";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
 import "./App.scss";
@@ -16,10 +17,7 @@ function App() {
         <AppHeader programLabel={program?.label || ""} />
         <main>
           <Routes>
-            <Route
-              path="404"
-              element={<p>Couldn&lsquo;t find that, sorry!</p>}
-            />
+            <Route path="404" element={<AppMissing />} />
             {program ? (
               <>
                 <Route
