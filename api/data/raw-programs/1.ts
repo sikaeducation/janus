@@ -131,7 +131,28 @@ const program: dehydratedProgram = {
         full: "Websites: 1",
       },
       slug: "section-websites-1",
-      children: [],
+      children: [
+        "internet-intro",
+        "web-intro",
+        "local-file-servers",
+        "html-intro",
+        "html-syntax",
+        "html-div-and-span",
+        "html-headings-and-paragraphs",
+        "html-images",
+        "html-lists",
+        "github-pages",
+        "css-selectors-1",
+        "css-syntax",
+        "css-units",
+        "css-layout-1",
+        "dev-tools-1",
+        "design-colors",
+        "css-colors",
+        "guide-color-pallettes",
+        "guide-selecting-tags",
+        "concept-file-serving",
+      ],
     },
     {
       type: "section",
@@ -262,6 +283,172 @@ const program: dehydratedProgram = {
         full: "Understanding Git",
       },
       slug: "concepts-git",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to the Internet",
+      },
+      slug: "internet-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to the Web",
+      },
+      slug: "web-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Local File Servers",
+      },
+      slug: "local-file-servers",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to HTML",
+      },
+      slug: "html-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Syntax",
+      },
+      slug: "html-syntax",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: <div> & <span>",
+        short: "<div> & <span>",
+      },
+      slug: "html-div-and-span",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Headings & Paragraphs",
+        short: "Headings & Paragraphs",
+      },
+      slug: "html-headings-and-paragraphs",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Images",
+        short: "Images",
+      },
+      slug: "html-images",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Lists",
+        short: "Lists",
+      },
+      slug: "html-lists",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "GitHub Pages",
+      },
+      slug: "github-pages",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Selectors: 1",
+      },
+      slug: "css-selectors-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Syntax",
+      },
+      slug: "css-syntax",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Units",
+      },
+      slug: "css-units",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Layout",
+      },
+      slug: "css-layout-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Browser Dev Tools 1",
+        short: "Dev Tools",
+      },
+      slug: "dev-tools-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Design: Colors",
+      },
+      slug: "design-colors",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How to Build a Color Pallette",
+      },
+      slug: "guide-color-pallettes",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Colors",
+      },
+      slug: "css-colors",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How to Select HTML Tags",
+        short: "Selecting HTML Tags",
+      },
+      slug: "guide-selecting-tags",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding Static File Serving",
+      },
+      slug: "concept-file-serving",
       children: [],
     },
   ],
