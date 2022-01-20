@@ -114,7 +114,7 @@ const program: dehydratedProgram = {
         short: "Git: Intro",
       },
       slug: "section-git-1",
-      children: [],
+      children: ["git-intro"],
     },
     {
       type: "section",
@@ -188,6 +188,14 @@ const program: dehydratedProgram = {
         full: "Understanding *nix",
       },
       slug: "concepts-nix",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Git",
+      },
+      slug: "git-intro",
       children: [],
     },
   ],
