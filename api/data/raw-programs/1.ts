@@ -6,7 +6,6 @@ const program: dehydratedProgram = {
     label: {
       full: "Ford: Full-Stack Web Development",
       short: "Full-Stack Web Development",
-      tiny: "",
     },
     slug: "ford-full-stack",
     children: [
@@ -24,7 +23,6 @@ const program: dehydratedProgram = {
       type: "unit",
       label: {
         full: "Getting Started",
-        short: "Getting started",
         tiny: "0",
       },
       slug: "unit-getting-started-ford",
@@ -34,7 +32,6 @@ const program: dehydratedProgram = {
       type: "unit",
       label: {
         full: "Websites",
-        short: "Websites",
         tiny: "1",
       },
       slug: "unit-websites",
@@ -44,7 +41,6 @@ const program: dehydratedProgram = {
       type: "unit",
       label: {
         full: "Web Apps",
-        short: "Web apps",
         tiny: "2",
       },
       slug: "unit-web-apps",
@@ -54,7 +50,6 @@ const program: dehydratedProgram = {
       type: "unit",
       label: {
         full: "Problem Solving",
-        short: "Problem solving",
         tiny: "3",
       },
       slug: "unit-problem-solving",
@@ -95,7 +90,6 @@ const program: dehydratedProgram = {
       label: {
         full: "Intro to CLI",
         short: "CLI: Intro",
-        tiny: "",
       },
       slug: "section-cli-1",
       children: [],
@@ -105,7 +99,6 @@ const program: dehydratedProgram = {
       label: {
         full: "Intro to SQL",
         short: "SQL: Intro",
-        tiny: "",
       },
       slug: "sql-intro",
       children: [],

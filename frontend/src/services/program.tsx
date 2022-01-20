@@ -14,7 +14,7 @@ function getNextLink(
     return firstUnit
       ? {
           slug: firstUnit.slug,
-          label: `Start ${firstUnit.label.short}`,
+          label: `Start ${firstUnit.label.short ?? firstUnit.label.full}`,
           path: firstUnit.path,
         }
       : null;
@@ -28,7 +28,7 @@ function getNextLink(
     return firstSection
       ? {
           slug: firstSection.slug,
-          label: `Start ${firstSection.label.short}`,
+          label: `Start ${firstSection.label.short ?? firstSection.label.full}`,
           path: firstSection.path,
         }
       : null;
@@ -42,7 +42,7 @@ function getNextLink(
   if (currentIndex === parent.children.length - 1) {
     return {
       slug: parent.slug,
-      label: `Back to ${parent.label.short}`,
+      label: `Back to ${parent.label.short ?? parent.label.full}`,
       path: parent.path,
     };
   }
@@ -53,7 +53,7 @@ function getNextLink(
   return nextSibling
     ? {
         slug: nextSibling.slug,
-        label: `Next: ${nextSibling.label.short}`,
+        label: `Next: ${nextSibling.label.short ?? nextSibling.label.full}`,
         path: nextSibling.path,
       }
     : null;
@@ -69,7 +69,7 @@ function getUnitLinks(
     .map((unit) => ({
       slug: unit.slug,
       path: unit.path,
-      label: unit.label.tiny,
+      label: unit.label.tiny ?? unit.label.short ?? unit.label.full,
       isActive: currentPath.startsWith(`/${unit.slug}`),
     }));
 }
@@ -82,7 +82,7 @@ function getCrumbLinks(posts: hydratedPost[], currentPath: string) {
     const matchingPost = posts.find((post) => post.slug === section)!;
     return {
       slug: matchingPost.slug,
-      label: matchingPost.label.short,
+      label: matchingPost.label.short ?? matchingPost.label.full,
       path: matchingPost.path,
     };
   });
