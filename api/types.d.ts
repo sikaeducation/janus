@@ -12,9 +12,9 @@ type postType = "root" | "unit" | "section" | "topic" | "exercise";
 type rawPost = {
   type: postType;
   label: {
-    short: string;
     full: string;
-    tiny: string;
+    short?: string;
+    tiny?: string;
   };
   slug: slug;
   children: slug[];
