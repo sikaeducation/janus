@@ -4,7 +4,7 @@ import ProgramViewer from ".";
 import getProgram from "../../fixtures/program";
 
 test("renders program", async () => {
-  const programFixture = getProgram() as programData;
+  const programFixture = getProgram();
 
   render(
     <Router>
@@ -12,5 +12,5 @@ test("renders program", async () => {
     </Router>
   );
   const listItems = await screen.findAllByRole("listitem");
-  expect(listItems.length).toBe(26);
+  expect(listItems.length).toBe(10);
 });

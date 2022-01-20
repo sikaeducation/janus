@@ -4,7 +4,7 @@ test("smoke", async () => {
   const { page } = await usePage();
   await page.goto("/");
 
-  const root = page.locator("data-test-id=root");
+  const sika = page.locator("text=Sika");
 
-  expect(root).toBeTruthy();
+  expect(sika).toBeTruthy();
 });

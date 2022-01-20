@@ -4,13 +4,13 @@ import CurriculumViewer from ".";
 import getProgram from "../../fixtures/program";
 
 test("CurriculumViewer renders program", () => {
-  const programFixture = getProgram() as programData;
+  const programFixture = getProgram();
 
   render(
     <Router>
       <CurriculumViewer program={programFixture} />
     </Router>
   );
-  const heading = screen.getByText("Example Root Post");
+  const heading = screen.getByText("Root");
   expect(heading).toBeInTheDocument();
 });

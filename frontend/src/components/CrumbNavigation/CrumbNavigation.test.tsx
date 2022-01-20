@@ -5,12 +5,12 @@ import CrumbNavigation from ".";
 test("<CrumbNavigation /> renders links", () => {
   const links = [
     {
-      id: 1,
+      slug: "A",
       path: "https://google.com",
       label: "Label",
     },
     {
-      id: 2,
+      slug: "B",
       path: "https://google.com",
       label: "Label",
     },

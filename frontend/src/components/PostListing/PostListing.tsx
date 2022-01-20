@@ -3,7 +3,7 @@ import "./PostListing.scss";
 import { MouseEventHandler, KeyboardEventHandler } from "react";
 
 type props = {
-  post: post;
+  post: hydratedPost;
   isActive: boolean;
   handlers: {
     click: MouseEventHandler;
@@ -28,7 +28,7 @@ export default function PostListing({ post, isActive, handlers }: props) {
         })}
       >
         <p>
-          <span className="post-id">{post?.id}</span>
+          <span className="post-id">{post?.slug}</span>
           <span className="post-path">{post?.path}</span>
         </p>
         <table>

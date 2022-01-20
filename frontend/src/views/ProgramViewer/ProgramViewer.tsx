@@ -5,34 +5,34 @@ import AppContent from "../../components/AppContent";
 import PostListing from "../../components/PostListing";
 
 type props = {
-  program: programData;
+  program: hydratedProgram;
 };
 
 export default function ProgramViewer({ program }: props) {
-  const [currentPost, setCurrentPost] = useState<post>(program.root);
+  const [currentPost, setCurrentPost] = useState<hydratedPost>(program.root);
   const units = program.root.children;
 
-  const handleClick = (post: post) => {
+  const handleClick = (post: hydratedPost) => {
     return () => {
       setCurrentPost(post);
     };
   };
-  const handleEnter = (post: post) => {
+  const handleEnter = (post: hydratedPost) => {
     return (event: KeyboardEvent) => {
       if (event.key === "enter") setCurrentPost(post);
     };
   };
 
   const buildTree = (
-    posts: post[],
-    postIds: number[],
-    currentPost: post
+    posts: hydratedPost[],
+    slugs: string[], // Don't coerce to slug, client doesn't have list
+    currentPost: hydratedPost
   ): JSX.Element[] => {
-    return postIds
-      .map((postId) => posts.find((post) => post.id === postId)!)
-      .flatMap((post: post) => {
+    return slugs
+      .map((slugId) => posts.find((post) => post.slug === slugId)!)
+      .flatMap((post: hydratedPost) => {
         const postListing = (
-          <li key={post.id}>
+          <li key={post.slug}>
             <PostListing
               post={post}
               isActive={currentPost?.path === post.path}
@@ -47,7 +47,7 @@ export default function ProgramViewer({ program }: props) {
           ? postListing
           : [
               postListing,
-              <li key={post.id + 0.5}>
+              <li key={`${post.slug}--menu`}>
                 <ul>{buildTree(posts, post.children, currentPost)}</ul>
               </li>,
             ];

@@ -9,7 +9,7 @@ import ActivityNavigation from "../../components/ActivityNavigation";
 import { getCurrentPost, getLinks } from "../../services/program";
 
 type props = {
-  program: programData;
+  program: hydratedProgram;
 };
 
 export default function CurriculumViewer({ program }: props) {

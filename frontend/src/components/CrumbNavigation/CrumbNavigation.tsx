@@ -17,8 +17,10 @@ export default function CrumbNavigation({ links }: props) {
   return (
     <nav className="CrumbNavigation">
       <ol>
-        {normalizedLinks.map(({ id, path, label, isLinked }) => (
-          <li key={id}>{isLinked ? <Link to={path}>{label}</Link> : label}</li>
+        {normalizedLinks.map(({ slug, path, label, isLinked }) => (
+          <li key={slug}>
+            {isLinked ? <Link to={path}>{label}</Link> : label}
+          </li>
         ))}
       </ol>
     </nav>

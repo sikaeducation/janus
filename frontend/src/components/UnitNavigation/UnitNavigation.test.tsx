@@ -5,19 +5,19 @@ import UnitNavigation from ".";
 test("<UnitNavigation /> renders units", () => {
   const units = [
     {
-      id: 1,
+      slug: "A",
       path: "https://google.com",
       label: "Label",
       isActive: true,
     },
     {
-      id: 2,
+      slug: "B",
       path: "https://google.com",
       label: "Label",
       isActive: false,
     },
     {
-      id: 3,
+      slug: "C",
       path: "https://google.com",
       label: "Label",
       isActive: false,
