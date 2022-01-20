@@ -114,7 +114,16 @@ const program: dehydratedProgram = {
         short: "Git: Intro",
       },
       slug: "section-git-1",
-      children: ["git-intro"],
+      children: [
+        "git-intro",
+        "git-commits",
+        "git-staging",
+        "git-repositories",
+        "git-remotes",
+        "readmes",
+        "guide-common-git-tasks",
+        "concepts-git",
+      ],
     },
     {
       type: "section",
@@ -152,8 +161,7 @@ const program: dehydratedProgram = {
     {
       type: "topic",
       label: {
-        full: "Intro to the Command Line",
-        short: "Intro to CLI",
+        full: "CLI Navigation",
       },
       slug: "cli-navigation-1",
       children: [],
@@ -196,6 +204,64 @@ const program: dehydratedProgram = {
         full: "Intro to Git",
       },
       slug: "git-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Git: Staging",
+      },
+      slug: "git-staging",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Git: Commits",
+      },
+      slug: "git-commits",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Git Repositories",
+      },
+      slug: "git-repositories",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Git Remote Repositories",
+        short: "Git Remotes",
+      },
+      slug: "git-remotes",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "READMEs",
+      },
+      slug: "readmes",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Common Git Tasks",
+        short: "Common Git Task Guide",
+      },
+      slug: "guide-common-git-tasks",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding Git",
+      },
+      slug: "concepts-git",
       children: [],
     },
   ],
