@@ -6,5 +6,5 @@ const program = prepareProgram(program1);
 if (program instanceof Error) throw new Error(program.message);
 writeJSON("../data/dehydrated-programs/1.json", program).then(() => {
   // eslint-disable-next-line
-  console.log("Wrote raw program 1.json");
+  console.log("Wrote dehydrated program 1.json");
 });
