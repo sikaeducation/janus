@@ -3,19 +3,25 @@ import objectHash from "object-hash";
 import { map } from "lodash/fp";
 import { getPosts } from "./github";
 
-function mapRawProgramToContent(
-  program: programData,
-  content: Record<string, string>
-) {
-  return {
-    ...program,
-    posts: program.posts.map((post) => {
-      return {
-        ...post,
-        content: content[post.slug],
-      };
-    }),
-  };
+export async function buildAllPrograms() {
+  return fs
+    .readdir(`data/raw-programs`)
+    .then(getAllIdsFromFileNames)
+    .then(buildPrograms);
+}
+
+export async function buildProgram(id: number) {
+  const dehydratedProgram = (await readDehydratedProgram(id)) || "";
+  const posts = await getPosts();
+
+  const hydratedProgram = mapDehydratedProgramToContent(
+    dehydratedProgram,
+    posts
+  );
+
+  await writeProgram(hydratedProgram);
+
+  return hydratedProgram;
 }
 
 export function getProgramVersion(programId: number) {
@@ -51,7 +57,7 @@ export function readProgram(programId: number) {
   });
 }
 
-function writeProgram(program: programData) {
+function writeProgram(program: hydratedProgram) {
   const hash = objectHash(program);
   return fs
     .remove(`data/hydrated-programs/${program.id}/*`)
@@ -65,22 +71,8 @@ function writeProgram(program: programData) {
     .then(() => program);
 }
 
-function readRawProgram(id: number) {
-  return fs.readJSON(`data/raw-programs/${id}.json`);
-}
-
-export async function buildProgram(id: number) {
-  const rawProgram = (await readRawProgram(id)) || "";
-  const posts = await getPosts();
-
-  const hydratedProgram = mapRawProgramToContent(
-    rawProgram,
-    posts as Record<string, string>
-  );
-
-  await writeProgram(hydratedProgram);
-
-  return hydratedProgram;
+function readDehydratedProgram(id: number) {
+  return fs.readJSON(`data/dehydrated-programs/${id}.json`);
 }
 
 function getIdFromFile(file: string) {
@@ -95,9 +87,23 @@ function buildPrograms(programIds: number[]) {
   return Promise.all(programIds.map(buildProgram));
 }
 
-export async function buildAllPrograms() {
-  return fs
-    .readdir(`data/raw-programs`)
-    .then(getAllIdsFromFileNames)
-    .then(buildPrograms);
+function mapDehydratedProgramToContent(
+  program: dehydratedProgram,
+  content: Record<string, string>
+) {
+  const hydratedProgram: hydratedProgram = {
+    ...program,
+    root: {
+      ...program.root,
+      content: content[program.root.slug],
+    },
+    posts: program.posts.map((post) => {
+      const hydratedPost: hydratedPost = {
+        ...post,
+        content: content[post.slug],
+      };
+      return hydratedPost;
+    }),
+  };
+  return hydratedProgram;
 }

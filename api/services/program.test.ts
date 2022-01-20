@@ -94,41 +94,128 @@ describe("readProgram", () => {
 
 describe("buildProgram", () => {
   it("builds a program based on an ID", async () => {
-    mockReadJSON.mockResolvedValueOnce({
+    const dehydratedProgram: dehydratedProgram = {
       id: 1,
+      label: "Label",
+      root: {
+        type: "root",
+        label: {
+          full: "a",
+          short: "a",
+          tiny: "a",
+        },
+        path: "/",
+        slug: "a" as slug,
+        children: ["b" as slug, "c" as slug],
+      },
       posts: [
-        { id: 1, slug: "a", children: [2, 3] },
-        { id: 2, slug: "b", children: [] },
-        { id: 3, slug: "c", children: [] },
+        {
+          type: "unit",
+          label: {
+            full: "b",
+            short: "b",
+            tiny: "b",
+          },
+          path: "/b",
+          slug: "b" as slug,
+          children: ["d" as slug],
+        },
+        {
+          type: "unit",
+          label: {
+            full: "c",
+            short: "c",
+            tiny: "c",
+          },
+          path: "/c",
+          slug: "c" as slug,
+          children: [],
+        },
+        {
+          type: "topic",
+          label: {
+            full: "d",
+            short: "d",
+            tiny: "d",
+          },
+          path: "/b/d",
+          slug: "d" as slug,
+          children: [],
+        },
       ],
-    });
+    };
+    const expectedProgram: hydratedProgram = {
+      id: 1,
+      label: "Label",
+      root: {
+        type: "root",
+        label: {
+          full: "a",
+          short: "a",
+          tiny: "a",
+        },
+        path: "/",
+        slug: "a" as slug,
+        content: "# A",
+        children: ["b" as slug, "c" as slug],
+      },
+      posts: [
+        {
+          type: "unit",
+          label: {
+            full: "b",
+            short: "b",
+            tiny: "b",
+          },
+          path: "/b",
+          slug: "b" as slug,
+          content: "# B",
+          children: ["d" as slug],
+        },
+        {
+          type: "unit",
+          label: {
+            full: "c",
+            short: "c",
+            tiny: "c",
+          },
+          path: "/c",
+          slug: "c" as slug,
+          content: "# C",
+          children: [],
+        },
+        {
+          type: "topic",
+          label: {
+            full: "d",
+            short: "d",
+            tiny: "d",
+          },
+          path: "/b/d",
+          slug: "d" as slug,
+          content: "# D",
+          children: [],
+        },
+      ],
+    };
+
+    mockReadJSON.mockResolvedValueOnce(dehydratedProgram);
     mockGetPosts.mockResolvedValueOnce({
-      a: "# Headline 1",
-      b: "# Headline 2",
-      c: "# Headline 3",
+      a: "# A",
+      b: "# B",
+      c: "# C",
+      d: "# D",
     });
     mockObjectHash.mockReturnValue("some-hash");
     mockRemove.mockResolvedValueOnce(true);
     mockEnsureDir.mockResolvedValueOnce(true);
-
     mockWriteJSON.mockResolvedValueOnce(true);
 
-    const program = await buildProgram(1);
-    const expectedProgram = {
-      id: 1,
-      posts: [
-        {
-          id: 1,
-          slug: "a",
-          content: "# Headline 1",
-          children: [2, 3],
-        },
-        { id: 2, slug: "b", content: "# Headline 2", children: [] },
-        { id: 3, slug: "c", content: "# Headline 3", children: [] },
-      ],
-    };
+    const program: hydratedProgram = await buildProgram(1);
 
-    expect(mockReadJSON).toHaveBeenCalledWith("data/raw-programs/1.json");
+    expect(mockReadJSON).toHaveBeenCalledWith(
+      "data/dehydrated-programs/1.json"
+    );
     expect(mockGetPosts).toHaveBeenCalled();
     expect(mockObjectHash).toHaveBeenCalledWith(expectedProgram);
     expect(mockRemove).toHaveBeenCalledWith("data/hydrated-programs/1/*");

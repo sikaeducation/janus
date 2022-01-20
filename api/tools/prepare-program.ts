@@ -1,13 +1,13 @@
 import { isEqual, difference } from "lodash/fp";
 
-function getAllChildren(program: rawProgram) {
+function getAllChildren(program: dehydratedProgram) {
   return [
     ...program.root.children,
     ...program.posts.flatMap((post) => post.children),
   ];
 }
 
-function getAllPostSlugs(program: rawProgram) {
+function getAllPostSlugs(program: dehydratedProgram) {
   return program.posts.map((post) => post.slug);
 }
 
@@ -15,7 +15,7 @@ function getParent(posts: rawPost[], slug: slug) {
   return posts.find((post) => post.children.includes(slug));
 }
 
-function childrenMatchPosts(program: rawProgram) {
+function childrenMatchPosts(program: dehydratedProgram) {
   const slugs: slug[] = getAllPostSlugs(program).sort();
   const children: slug[] = getAllChildren(program).sort();
   const differential = difference(slugs, children);
@@ -34,7 +34,7 @@ function getPath(posts: rawPost[], slug: slug) {
   return `/${segments.join("/")}`;
 }
 
-export default function prepareProgram(program: rawProgram) {
+export default function prepareProgram(program: dehydratedProgram) {
   if (!program.root.children.length) {
     return new Error("Root post needs children");
   }

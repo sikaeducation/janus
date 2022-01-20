@@ -1,6 +1,6 @@
 import prepareProgram from "./prepare-program";
 
-const sampleRawProgram: rawProgram = {
+const sampleRawProgram: dehydratedProgram = {
   id: 1,
   label: "Program",
   root: {
@@ -10,6 +10,7 @@ const sampleRawProgram: rawProgram = {
       short: "Short",
       tiny: "1",
     },
+    path: "/",
     slug: "ford-full-stack",
     children: ["unit-websites", "unit-web-apps"],
   },
@@ -21,6 +22,7 @@ const sampleRawProgram: rawProgram = {
         short: "Short",
         tiny: "1",
       },
+      path: "/unit-websites",
       slug: "unit-websites",
       children: ["html-intro"],
     },
@@ -31,6 +33,7 @@ const sampleRawProgram: rawProgram = {
         short: "Web apps",
         tiny: "2",
       },
+      path: "/unit-web-apps",
       slug: "unit-web-apps",
       children: [],
     },
@@ -41,6 +44,7 @@ const sampleRawProgram: rawProgram = {
         short: "HTML intro",
         tiny: "",
       },
+      path: "/unit-websites/html-intro",
       slug: "html-intro",
       children: [],
     },
@@ -102,7 +106,7 @@ test("#prepareProgram converts a raw program to a hydrated program", async () =>
 });
 
 test("#prepareProgram requires the root post to have children", async () => {
-  const rootPostWithoutChildren: rawProgram = {
+  const rootPostWithoutChildren: dehydratedProgram = {
     id: 1,
     label: "Program",
     root: {
@@ -112,6 +116,7 @@ test("#prepareProgram requires the root post to have children", async () => {
         short: "Short",
         tiny: "1",
       },
+      path: "/",
       slug: "ford-full-stack",
       children: [],
     },
@@ -122,7 +127,7 @@ test("#prepareProgram requires the root post to have children", async () => {
 });
 
 test("#prepareProgram rejects programs with too many posts", async () => {
-  const programWithTooManyPosts: rawProgram = {
+  const programWithTooManyPosts: dehydratedProgram = {
     id: 1,
     label: "Program",
     root: {
@@ -132,6 +137,7 @@ test("#prepareProgram rejects programs with too many posts", async () => {
         short: "Short",
         tiny: "1",
       },
+      path: "/",
       slug: "ford-full-stack",
       children: ["html-intro"],
     },
@@ -143,6 +149,7 @@ test("#prepareProgram rejects programs with too many posts", async () => {
           short: "Short",
           tiny: "1",
         },
+        path: "/html-intro",
         slug: "html-intro",
         children: [],
       },
@@ -153,6 +160,7 @@ test("#prepareProgram rejects programs with too many posts", async () => {
           short: "Short",
           tiny: "1",
         },
+        path: "/html-div-and-span",
         slug: "html-div-and-span",
         children: [],
       },
@@ -163,7 +171,7 @@ test("#prepareProgram rejects programs with too many posts", async () => {
 });
 
 test("#prepareProgram rejects programs with not enough posts", async () => {
-  const programWithNotEnoughPosts: rawProgram = {
+  const programWithNotEnoughPosts: dehydratedProgram = {
     id: 1,
     label: "Program",
     root: {
@@ -173,6 +181,7 @@ test("#prepareProgram rejects programs with not enough posts", async () => {
         short: "Short",
         tiny: "1",
       },
+      path: "/",
       slug: "ford-full-stack",
       children: ["html-intro"],
     },
@@ -184,6 +193,7 @@ test("#prepareProgram rejects programs with not enough posts", async () => {
           short: "Short",
           tiny: "1",
         },
+        path: "/html-intro",
         slug: "html-intro",
         children: ["html-div-and-span"],
       },

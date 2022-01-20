@@ -4,7 +4,7 @@ import prepareProgram from "./prepare-program";
 
 const program = prepareProgram(program1);
 if (program instanceof Error) throw new Error(program.message);
-writeJSON("../data/validated-programs/1.json", program).then(() => {
+writeJSON("../data/dehydrated-programs/1.json", program).then(() => {
   // eslint-disable-next-line
   console.log("Wrote raw program 1.json");
 });

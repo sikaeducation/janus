@@ -1,4 +1,4 @@
-const program: rawProgram = {
+const program: dehydratedProgram = {
   id: 1,
   label: "Ford: Full-Stack Web Development",
   root: {

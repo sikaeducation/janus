@@ -1,3 +1,13 @@
+type Clobber<
+  T extends Record<string, unknown>,
+  U extends Record<string, unknown>
+> = {
+  [K in keyof T | keyof U]: K extends keyof U
+    ? U[K]
+    : K extends keyof T
+    ? T[K]
+    : never;
+};
 type postType = "root" | "unit" | "section" | "topic" | "exercise";
 type rawPost = {
   type: postType;
@@ -18,6 +28,8 @@ type program<PostType> = {
   root: PostType;
   posts: PostType[];
 };
-type hydratedProgram = program<hydratedPost>;
-type dehydratedProgram = program<dehydratedPost>;
+type hydratedProgram = program<Clober<hydratedPost, { root: { path: "/" } }>>;
+type dehydratedProgram = program<
+  Clober<dehydratedPost, { root: { path: "/" } }>
+>;
 type rawProgram = program<rawPost>;
