@@ -3,7 +3,7 @@
 @use "../../styles/colors";
 
 .ProgramViewer {
-  padding: sizes.$s4 sizes.$s8;
+  padding: sizes.$s4 0;
   display: flex;
   justify-content: center;
   .ProgramViewer-wrapper {
@@ -15,7 +15,10 @@
     }
     > .AppContent {
       grid-column: 2 / span 1;
-      margin-left: sizes.$s8;
+      margin-left: sizes.$s2;
+      position: sticky;
+      top: 0;
+      align-self: start;
     }
   }
   ul ul {
