@@ -20,7 +20,7 @@ export default function PostListing({ post, isActive, handlers }: props) {
       onKeyPress={handlers.keyboard}
       className="PostListing"
     >
-      {post.label.short}
+      {post.label.short ?? post.label.full}
       <div
         className={classNames({
           "post-details": true,
