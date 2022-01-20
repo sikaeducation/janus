@@ -13,6 +13,7 @@ const program: rawProgram = {
       "unit-getting-started-ford",
       "unit-websites",
       "unit-web-apps",
+      "unit-problem-solving",
       "unit-spas-angular",
       "unit-persistence-spring-boot",
       "unit-capstones-ford",
