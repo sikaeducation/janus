@@ -35,7 +35,13 @@ const program: dehydratedProgram = {
         tiny: "1",
       },
       slug: "unit-websites",
-      children: ["section-cli-1"],
+      children: [
+        "section-cli-1",
+        "section-git-1",
+        "section-websites-1",
+        "section-websites-2",
+        "section-websites-3",
+      ],
     },
     {
       type: "unit",
@@ -73,7 +79,7 @@ const program: dehydratedProgram = {
         tiny: "5",
       },
       slug: "unit-persistence-spring-boot",
-      children: ["sql-intro"],
+      children: [],
     },
     {
       type: "unit",
@@ -92,15 +98,96 @@ const program: dehydratedProgram = {
         short: "CLI: Intro",
       },
       slug: "section-cli-1",
+      children: [
+        "cli-intro",
+        "cli-navigation-1",
+        "cli-file-management-1",
+        "cli-flags-and-arguments",
+        "guide-common-cli-tasks",
+        "concepts-nix",
+      ],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Intro to Git",
+        short: "Git: Intro",
+      },
+      slug: "section-git-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Websites: 1",
+      },
+      slug: "section-websites-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Websites: 2",
+      },
+      slug: "section-websites-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Websites: 3",
+      },
+      slug: "section-websites-3",
       children: [],
     },
     {
       type: "topic",
       label: {
-        full: "Intro to SQL",
-        short: "SQL: Intro",
+        full: "Intro to the Command Line",
+        short: "Intro to CLI",
       },
-      slug: "sql-intro",
+      slug: "cli-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to the Command Line",
+        short: "Intro to CLI",
+      },
+      slug: "cli-navigation-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CLI: File Management",
+      },
+      slug: "cli-file-management-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CLI: Flags and Arguments",
+      },
+      slug: "cli-flags-and-arguments",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Common CLI Tasks",
+      },
+      slug: "guide-common-cli-tasks",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding *nix",
+      },
+      slug: "concepts-nix",
       children: [],
     },
   ],

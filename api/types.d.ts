@@ -8,7 +8,14 @@ type Clobber<
     ? T[K]
     : never;
 };
-type postType = "root" | "unit" | "section" | "topic" | "exercise";
+type postType =
+  | "root"
+  | "unit"
+  | "section"
+  | "topic"
+  | "exercise"
+  | "guide"
+  | "concept";
 type rawPost = {
   type: postType;
   label: {
