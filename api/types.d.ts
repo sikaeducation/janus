@@ -1,5 +1,4 @@
 type postType = "root" | "unit" | "section" | "topic" | "exercise";
-
 type rawPost = {
   type: postType;
   label: {
@@ -10,42 +9,15 @@ type rawPost = {
   slug: slug;
   children: slug[];
 };
+type dehydratedPost = rawPost & { path: string };
+type hydratedPost = dehydratedPost & { content: string };
 
-type rawPostWithPath = rawPost & { path: string };
-
-type rawProgram = {
+type program<PostType> = {
   id: number;
   label: string;
-  root: rawPost;
-  posts: rawPost[];
+  root: PostType;
+  posts: PostType[];
 };
-
-type rawProgramWithPaths = {
-  id: number;
-  label: string;
-  root: rawPostWithPath;
-  posts: rawPostWithPath[];
-};
-
-type post = {
-  id: number;
-  type: postType;
-  label: {
-    short: string;
-    full: string;
-    tiny: string;
-  };
-  path: string;
-  slug: string;
-  content: string;
-  children: number[];
-};
-
-type postNoContent = Omit<post, "content">;
-
-type programData = {
-  id: number;
-  label: string;
-  root: post | postNoContent;
-  posts: post[] | postNoContent[];
-};
+type hydratedProgram = program<hydratedPost>;
+type dehydratedProgram = program<dehydratedPost>;
+type rawProgram = program<rawPost>;
