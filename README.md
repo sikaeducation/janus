@@ -11,6 +11,11 @@ Sika's LMS
 * `scripts/units/dev` - Run unit tests in watch mode
 * `scripts/units/ci` - Run unit tests in CI mode
 
+---
+
+* `api/tools/prepare-1.ts` - Build program #1, from raw to dehydrated
+* `api/tools/generate-slugs.ts` - Generate a new set of slug types
+
 ## Compose Files
 
 * `.docker/docker-compose.yml`: Base for all environments
