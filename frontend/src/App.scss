@@ -33,10 +33,6 @@
   @media (max-width: sizes.$small-breakpoint){
     display: block;
   }
-  > * {
-    flex-basis: sizes.$content-width-large;
-    flex-shrink: 1;
-  }
 }
 
 .App > footer {

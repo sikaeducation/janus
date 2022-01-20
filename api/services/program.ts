@@ -60,7 +60,7 @@ export function readProgram(programId: number) {
 function writeProgram(program: hydratedProgram) {
   const hash = objectHash(program);
   return fs
-    .remove(`data/hydrated-programs/${program.id}/*`)
+    .emptyDir(`data/hydrated-programs/${program.id}`)
     .then(() => fs.ensureDir(`data/hydrated-programs/${program.id}`))
     .then(() => {
       return fs.writeJSON(

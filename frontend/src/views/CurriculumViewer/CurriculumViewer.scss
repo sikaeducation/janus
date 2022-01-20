@@ -1,0 +1,6 @@
+@use "../../styles/sizes";
+
+.CurriculumViewer {
+  flex-basis: sizes.$content-width-large;
+  flex-shrink: 1;
+}

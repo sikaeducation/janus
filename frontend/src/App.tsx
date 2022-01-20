@@ -19,6 +19,7 @@ function App() {
         <AppHeader programLabel={program?.label || ""} />
         <main>
           <Routes>
+            <Route path="/loading" element={<AppLoading />} />
             <Route path="/error" element={<AppError />} />
             <Route path="/404" element={<AppMissing />} />
             {program ? (

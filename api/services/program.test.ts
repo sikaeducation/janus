@@ -18,7 +18,7 @@ jest.mock("../services/github", () => {
 });
 
 const mockReaddir = fs.readdir as jest.Mock;
-const mockRemove = fs.remove as jest.Mock;
+const mockEmptyDir = fs.emptydir as jest.Mock;
 const mockEnsureDir = fs.ensureDir as jest.Mock;
 const mockReadJSON = fs.readJSON as jest.Mock;
 const mockWriteJSON = fs.writeJSON as jest.Mock;
@@ -207,7 +207,7 @@ describe("buildProgram", () => {
       d: "# D",
     });
     mockObjectHash.mockReturnValue("some-hash");
-    mockRemove.mockResolvedValueOnce(true);
+    mockEmptyDir.mockResolvedValueOnce(true);
     mockEnsureDir.mockResolvedValueOnce(true);
     mockWriteJSON.mockResolvedValueOnce(true);
 
@@ -218,7 +218,7 @@ describe("buildProgram", () => {
     );
     expect(mockGetPosts).toHaveBeenCalled();
     expect(mockObjectHash).toHaveBeenCalledWith(expectedProgram);
-    expect(mockRemove).toHaveBeenCalledWith("data/hydrated-programs/1/*");
+    expect(mockEmptyDir).toHaveBeenCalledWith("data/hydrated-programs/1");
     expect(mockEnsureDir).toHaveBeenCalledWith("data/hydrated-programs/1");
     expect(mockWriteJSON).toHaveBeenCalledWith(
       "data/hydrated-programs/1/some-hash",
