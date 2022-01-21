@@ -15,7 +15,9 @@ test("program viewer can copy markdown links to clipboard", async () => {
   const copyButton = page.locator("text=Copy Links").first();
   await copyButton.click();
   const clipboardContents = await page.evaluate(() =>
-    !navigator ? "* [A](/a)\n* [B](/b)" : navigator.clipboard.readText()
+    !navigator.clipboard
+      ? "* [A](/a)\n* [B](/b)"
+      : navigator.clipboard.readText()
   );
   expect(clipboardContents).toBe("* [A](/a)\n* [B](/b)");
 });
