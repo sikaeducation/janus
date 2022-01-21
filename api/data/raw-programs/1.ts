@@ -160,7 +160,24 @@ const program: dehydratedProgram = {
         full: "Websites: 2",
       },
       slug: "section-websites-2",
-      children: [],
+      children: [
+        "html-structure-semantics",
+        "css-box-model",
+        "html-text-semantics",
+        "html-links",
+        "css-typography",
+        "css-web-fonts",
+        "css-selectors-2",
+        "css-variables",
+        "http-intro",
+        "urls-1",
+        "http-status-codes",
+        "dev-tools-2",
+        "concept-http",
+        "concept-networking",
+        "concept-client-server",
+        "concept-web-vs-internet",
+      ],
     },
     {
       type: "section",
@@ -449,6 +466,135 @@ const program: dehydratedProgram = {
         full: "Understanding Static File Serving",
       },
       slug: "concept-file-serving",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Box Model",
+      },
+      slug: "css-box-model",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Typography",
+      },
+      slug: "css-typography",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Web Fonts",
+      },
+      slug: "css-web-fonts",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Structural Semantics",
+      },
+      slug: "html-structure-semantics",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Links",
+      },
+      slug: "html-links",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML: Text Semantics",
+      },
+      slug: "html-text-semantics",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Selectors 2",
+      },
+      slug: "css-selectors-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "URLs",
+      },
+      slug: "urls-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTTP Status Codes",
+      },
+      slug: "http-status-codes",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Browser Dev Tools 2",
+      },
+      slug: "dev-tools-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to HTTP",
+      },
+      slug: "http-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Variables",
+      },
+      slug: "css-variables",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding HTTP",
+      },
+      slug: "concept-http",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding Networking",
+      },
+      slug: "concept-networking",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding Client-Server Communication",
+      },
+      slug: "concept-client-server",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Distinguishing Between the Web and the Internet",
+        short: "Web vs. Internet",
+      },
+      slug: "concept-web-vs-internet",
       children: [],
     },
   ],
