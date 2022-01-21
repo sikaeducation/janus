@@ -1,5 +1,6 @@
 @use "../../styles/sizes";
 @use "../../styles/colors";
+@use "../../styles/buttons";
 
 .PostListing {
   padding: sizes.$s1 sizes.$s3;
@@ -32,6 +33,14 @@
     }
     td {
       padding-left: sizes.$s3;
+    }
+    .copy-links {
+      padding: sizes.$s1;
+      border: none;
+      border-radius: sizes.$border-radius;
+      font-size: sizes.$f2;
+      margin-top: sizes.$s1;
+      @include buttons.button-shadow-small;
     }
   }
 }

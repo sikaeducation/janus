@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 import objectHash from "object-hash";
-import { getPosts } from "./github";
+import { getPostContent } from "./github";
 
 import {
   getProgramVersion,
@@ -13,7 +13,7 @@ jest.mock("fs-extra");
 jest.mock("object-hash");
 jest.mock("../services/github", () => {
   return {
-    getPosts: jest.fn(),
+    getPostContent: jest.fn(),
   };
 });
 
@@ -23,7 +23,7 @@ const mockEnsureDir = fs.ensureDir as jest.Mock;
 const mockReadJSON = fs.readJSON as jest.Mock;
 const mockWriteJSON = fs.writeJSON as jest.Mock;
 const mockObjectHash = objectHash as unknown as jest.Mock;
-const mockGetPosts = getPosts as jest.Mock;
+const mockGetPosts = getPostContent as jest.Mock;
 
 describe("getProgramVersion", () => {
   it("returns the program version", async () => {

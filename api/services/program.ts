@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import objectHash from "object-hash";
 import { map } from "lodash/fp";
-import { getPosts } from "./github";
+import { getPostContent } from "./github";
 
 export async function buildAllPrograms() {
   return fs
@@ -12,7 +12,7 @@ export async function buildAllPrograms() {
 
 export async function buildProgram(id: number) {
   const dehydratedProgram = (await readDehydratedProgram(id)) || "";
-  const posts = await getPosts();
+  const posts = await getPostContent();
 
   const hydratedProgram = mapDehydratedProgramToContent(
     dehydratedProgram,

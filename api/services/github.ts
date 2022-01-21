@@ -39,7 +39,7 @@ function processFiles(entries: IZipEntry[]) {
   return flow([keyBy("name"), mapValues("content")])(files);
 }
 
-export function getPosts() {
+export function getPostContent() {
   return getArchiveUrl()
     .then(getFiles)
     .then(processFiles)

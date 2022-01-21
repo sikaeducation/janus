@@ -15,6 +15,7 @@ declare global {
 export default async function usePage(): Promise<{ page: Page }> {
   global.browser = await chromium.launch();
   const context = await global.browser.newContext({ baseURL: BASE_URL });
+  context.grantPermissions(["clipboard-read", "clipboard-write"]);
   const page = await context.newPage();
   await page.route("**/programs/*", (route: Route) => {
     route.fulfill({

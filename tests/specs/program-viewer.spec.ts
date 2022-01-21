@@ -8,3 +8,14 @@ test("program viewer displays program content", async () => {
   await expect(page).toMatchURL(/program-viewer/);
   await expect(count).toBe(8);
 });
+
+test("program viewer can copy markdown links to clipboard", async () => {
+  const { page } = await usePage();
+  await page.goto("/program-viewer");
+  const copyButton = page.locator("text=Copy Links").first();
+  await copyButton.click();
+  const clipboardContents = await page.evaluate(() =>
+    navigator.clipboard.readText()
+  );
+  expect(clipboardContents).toBe("* [A](/a)\n* [B](/b)");
+});
