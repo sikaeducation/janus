@@ -185,7 +185,23 @@ const program: dehydratedProgram = {
         full: "Websites: 3",
       },
       slug: "section-websites-3",
-      children: [],
+      children: [
+        "design-content-inventories",
+        "design-layout-1",
+        "css-resets",
+        "css-flex",
+        "css-grid",
+        "guide-css-layout",
+        "css-selectors-3",
+        "css-media-queries",
+        "css-positioning",
+        "guide-css-specificity",
+        "guide-responsive-design",
+        "concept-how-browsers-work",
+        "guide-to-working-on-a-feature",
+        "guide-to-starting-a-website",
+        "guide-debugging-websites",
+      ],
     },
     {
       type: "topic",
@@ -595,6 +611,126 @@ const program: dehydratedProgram = {
         short: "Web vs. Internet",
       },
       slug: "concept-web-vs-internet",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Designing with Content Inventories",
+      },
+      slug: "design-content-inventories",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Designing Web Layouts",
+      },
+      slug: "design-layout-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Resets",
+      },
+      slug: "css-resets",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Flexbox",
+      },
+      slug: "css-flex",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Grid",
+      },
+      slug: "css-grid",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Layout with CSS",
+      },
+      slug: "guide-css-layout",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Selectors 3",
+      },
+      slug: "css-selectors-3",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Media Queries",
+      },
+      slug: "css-media-queries",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Positioning",
+      },
+      slug: "css-positioning",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Understanding CSS Specificity",
+      },
+      slug: "guide-css-specificity",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Responsive Design",
+      },
+      slug: "guide-responsive-design",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "How Browsers Work",
+      },
+      slug: "concept-how-browsers-work",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How to Work on a Feature",
+      },
+      slug: "guide-to-working-on-a-feature",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How to Start a Website",
+      },
+      slug: "guide-to-starting-a-website",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How to Debug a Website",
+      },
+      slug: "guide-debugging-websites",
       children: [],
     },
   ],
