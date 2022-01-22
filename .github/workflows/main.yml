@@ -26,6 +26,8 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      REACT_APP_AUTH_ZERO_DOMAIN: ${{ secrets.AUTH_ZERO_DOMAIN }} 
+      REACT_APP_CLIENT_ID: ${{ secrets.CLIENT_ID }}
     steps:
       - uses: actions/checkout@v2
       - name: Setup Node.js environment
