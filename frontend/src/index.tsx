@@ -7,7 +7,6 @@ import ScrollToTop from "./components/ScrollToTop";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 
-console.log(window.location.origin);
 ReactDOM.render(
   <React.StrictMode>
     <Auth0Provider

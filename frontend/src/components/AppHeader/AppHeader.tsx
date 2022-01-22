@@ -11,8 +11,7 @@ type props = {
 };
 
 function AppHeader({ programLabel }: props) {
-  const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log(user);
+  const { user, isAuthenticated } = useAuth0();
   return (
     <header className="AppHeader">
       <span className="logo">
