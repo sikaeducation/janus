@@ -8,6 +8,13 @@ type Clobber<
     ? T[K]
     : never;
 };
+declare global {
+  namespace NodeJS {
+    interface ProcessEnv {
+      NODE_ENV: "development" | "production";
+    }
+  }
+}
 type postType =
   | "root"
   | "unit"
