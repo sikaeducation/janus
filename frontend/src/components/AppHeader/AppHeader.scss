@@ -13,7 +13,7 @@
   .logo {
     @include typography.logo-font;
     display: inline-block;
-    margin-top: -18px; // Visual alignment with user avatar
+    margin-top: -12px; // Visual alignment with user avatar
     a {
       text-decoration: none;
     }
