@@ -6,6 +6,7 @@ import AppLoading from "./views/AppLoading";
 import AppError from "./views/AppError";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
+import ScrollToTop from "./components/ScrollToTop";
 import "./App.scss";
 
 import { useProgram } from "./services/program";
@@ -15,6 +16,7 @@ function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="App">
         <AppHeader programLabel={program?.label || ""} />
         <main>
