@@ -2,7 +2,7 @@ import usePage from "../mocks/page-with-mock-api";
 
 describe.skip("refactor to use playwright test", () => {
   test("program viewer displays program content", async () => {
-    const {page} = await usePage();
+    const { page } = await usePage();
     await page.goto("/program-viewer");
     const posts = page.locator(".PostListing");
     const count = await posts.count();
@@ -11,7 +11,7 @@ describe.skip("refactor to use playwright test", () => {
   });
 
   test("program viewer can copy markdown links to clipboard", async () => {
-    const {page} = await usePage();
+    const { page } = await usePage();
     await page.goto("/program-viewer");
     const copyButton = page.locator("text=Copy Links").first();
     await copyButton.click();
@@ -22,4 +22,4 @@ describe.skip("refactor to use playwright test", () => {
     );
     expect(clipboardContents).toBe("* [A](/a)\n* [B](/b)");
   });
-}
+});
