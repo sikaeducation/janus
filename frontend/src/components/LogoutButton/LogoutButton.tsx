@@ -1,7 +1,11 @@
 import "./LogoutButton.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 
-export default function LogoutButton() {
+type props = {
+  children: JSX.Element;
+};
+
+export default function LogoutButton({ children }: props) {
   const { logout } = useAuth0();
 
   return (
@@ -10,7 +14,7 @@ export default function LogoutButton() {
       type="button"
       onClick={() => logout({ returnTo: window.location.origin })}
     >
-      Log Out
+      {children}
     </button>
   );
 }

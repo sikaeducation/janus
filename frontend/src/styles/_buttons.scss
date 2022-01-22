@@ -8,6 +8,20 @@
   }
 }
 
+@mixin button-secondary {
+  width: fit-content;
+  display: inline-block;
+  background-color: colors.$primary-8;
+  color: colors.$primary-2;
+  border: none;
+  border-radius: sizes.$border-radius;
+  transition: background-color sizes.$transition;
+  padding: sizes.$s1 sizes.$s3;
+  &:active, &:hover {
+    background-color: colors.$primary-7;
+  }
+}
+
 @mixin button-active-primary {
   background-color: colors.$primary-5;
   transition: background-color sizes.$transition;

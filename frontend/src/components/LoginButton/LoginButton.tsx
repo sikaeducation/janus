@@ -10,7 +10,7 @@ export default function LoginButton() {
       type="button"
       onClick={() => loginWithRedirect()}
     >
-      Log In
+      Login
     </button>
   );
 }

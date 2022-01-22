@@ -17,16 +17,15 @@ function AppHeader({ programLabel }: props) {
       <span className="logo">
         <Link to="/">Sika</Link>
       </span>
-      <div>
-        <span className="program-label">{programLabel}</span>
+      <div className="user-info">
         {!isAuthenticated || !user ? (
           <LoginButton />
         ) : (
-          <>
-            <p>{user!.email}</p>
-            <LogoutButton />
-          </>
+          <LogoutButton>
+            <img className="avatar" src={user.picture} alt={user.name} />
+          </LogoutButton>
         )}
+        <div className="program-label">{programLabel}</div>
       </div>
     </header>
   );

@@ -5,21 +5,33 @@
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
-  align-items: flex-end;
+  align-items: flex-start;
   margin-bottom: sizes.$s6;
   @media (max-width: sizes.$small-breakpoint){
     margin-bottom: sizes.$s4;
   }
   .logo {
     @include typography.logo-font;
+    display: inline-block;
+    margin-top: -18px; // Visual alignment with user avatar
     a {
       text-decoration: none;
     }
   }
-  .program-label {
-    @include typography.program-label-font;
-    @media (max-width: sizes.$small-breakpoint){
-      display: none;
+  .user-info {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: flex-end;
+    align-items: flex-end;
+    .program-label {
+      @include typography.program-label-font;
+      @media (max-width: sizes.$small-breakpoint){
+        display: none;
+      }
+    }
+    .avatar {
+      width: sizes.$s7;
+      border-radius: sizes.$border-radius;
     }
   }
 }

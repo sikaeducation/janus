@@ -1,4 +1,6 @@
 @use "../../styles/sizes";
+@use "../../styles/buttons";
 
 .LoginButton {
+  @include buttons.button-secondary;
 }
