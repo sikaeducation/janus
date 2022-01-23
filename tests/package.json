@@ -2,16 +2,12 @@
   "name": "testing",
   "version": "1.0.0",
   "scripts": {
-    "test": "playwright test",
-    "test:watch": "playwright-watch test"
+    "test": "playwright test"
   },
   "keywords": [],
   "author": "Kyle Coberly",
   "license": "ISC",
   "dependencies": {
-    "@babel/core": "^7.16.5",
-    "@babel/preset-env": "^7.16.5",
-    "@babel/preset-typescript": "^7.16.5",
     "@playwright/test": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
@@ -21,7 +17,6 @@
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-prettier": "^4.0.0",
-    "playwright": "^1.18.0",
-    "playwright-watch": "^1.3.23"
+    "playwright": "^1.18.0"
   }
 }
