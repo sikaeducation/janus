@@ -27,4 +27,4 @@ services:
     environment:
       POSTGRES_PASSWORD: "sikaeducation"
     volumes:
-      - ./database:/var/lib/postgresql/data
+      - ../database:/var/lib/postgresql/data

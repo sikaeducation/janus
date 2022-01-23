@@ -15,7 +15,7 @@ const config: PlaywrightTestConfig = {
   reporter: "list",
   use: {
     actionTimeout: 0,
-    baseURL: "http://localhost:3000",
+    baseURL: process.env.BASE_URL,
     trace: "on-first-retry",
   },
   projects: [
