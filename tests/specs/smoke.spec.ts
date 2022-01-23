@@ -1,12 +1,9 @@
-import usePage from "../mocks/page-with-mock-api";
+import { test, expect } from "@playwright/test";
 
-describe.skip("refactor to use playwright test", () => {
-  test("smoke", async () => {
-    const { page } = await usePage();
-    await page.goto("/");
+test("smoke", async ({ page }) => {
+  await page.goto("/");
 
-    const sika = page.locator("text=Sika");
+  const sika = page.locator("text=Sika").first();
 
-    expect(sika).toBeTruthy();
-  });
+  await expect(sika).toHaveText("Sika");
 });

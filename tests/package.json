@@ -2,8 +2,8 @@
   "name": "testing",
   "version": "1.0.0",
   "scripts": {
-    "test": "jest",
-    "test:watch": "jest --watchAll"
+    "test": "playwright test",
+    "test:watch": "playwright-watch test"
   },
   "keywords": [],
   "author": "Kyle Coberly",
@@ -12,11 +12,7 @@
     "@babel/core": "^7.16.5",
     "@babel/preset-env": "^7.16.5",
     "@babel/preset-typescript": "^7.16.5",
-    "@types/jest": "^27.0.3",
-    "babel-jest": "^27.4.5",
-    "expect-playwright": "^0.8.0",
-    "jest": "^27.4.5",
-    "playwright": "^1.17.1",
+    "@playwright/test": "^1.18.0",
     "@typescript-eslint/eslint-plugin": "^5.8.1",
     "@typescript-eslint/parser": "^5.8.1",
     "eslint": "^8.6.0",
@@ -24,12 +20,8 @@
     "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
-    "eslint-plugin-prettier": "^4.0.0"
-  },
-  "jest": {
-    "setupFilesAfterEnv": [
-      "expect-playwright",
-      "<rootDir>/jest-setup.ts"
-    ]
+    "eslint-plugin-prettier": "^4.0.0",
+    "playwright": "^1.18.0",
+    "playwright-watch": "^1.3.23"
   }
 }
