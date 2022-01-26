@@ -2,7 +2,7 @@ FROM node:16.13-alpine3.12 as base
 WORKDIR /app
 
 COPY package*.json ./
-RUN npm ci
+RUN npm install
 
 COPY --chown=node:node . .
 

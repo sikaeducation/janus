@@ -8,3 +8,9 @@ services:
     build:
       context: ../api/
     command: ["npm", "start"]
+    depends_on:
+      - database
+  database:
+    image: postgres:14.1-alpine
+    environment:
+      POSTGRES_PASSWORD: "sikaeducation"

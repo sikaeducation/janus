@@ -2,4 +2,4 @@ services:
   tests:
     command: ["./ci.sh"]
     environment:
-      CI: true
+      CI: 1

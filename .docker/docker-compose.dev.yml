@@ -20,11 +20,6 @@ services:
     volumes:
       - ../api:/app
     command: ["npm", "run", "dev"]
-    depends_on:
-      - database
   database:
-    image: postgres:14.1-alpine
-    environment:
-      POSTGRES_PASSWORD: "sikaeducation"
     volumes:
       - ../database:/var/lib/postgresql/data
