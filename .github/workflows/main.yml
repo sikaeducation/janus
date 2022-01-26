@@ -16,7 +16,6 @@ jobs:
   build_deploy_frontend:
     needs:
       - unit_test
-      - e2e_test
     runs-on: ubuntu-latest
     env:
       REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
