@@ -42,8 +42,6 @@ type program<PostType> = {
   root: PostType;
   posts: PostType[];
 };
-type hydratedProgram = program<Clober<hydratedPost, { root: { path: "/" } }>>;
-type dehydratedProgram = program<
-  Clober<dehydratedPost, { root: { path: "/" } }>
->;
 type rawProgram = program<rawPost>;
+type dehydratedProgram = program<dehydratedPost>;
+type hydratedProgram = program<hydratedPost>;

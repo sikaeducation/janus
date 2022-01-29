@@ -36,10 +36,12 @@ module.exports = {
       },
     ],
     "no-shadow": "off",
+    "react/require-default-props": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "no-use-before-define": "off",
+    "react/jsx-no-constructed-context-values": "off",
     "import/no-extraneous-dependencies": [
       "error",
       {

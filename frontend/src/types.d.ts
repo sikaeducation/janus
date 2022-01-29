@@ -35,7 +35,7 @@ type program<PostType> = {
   root: PostType;
   posts: PostType[];
 };
-type hydratedProgram = program<Clober<hydratedPost, { root: { path: "/" } }>>;
+type hydratedProgram = program<hydratedPost>;
 
 type internalLink = {
   path: string;
@@ -43,3 +43,22 @@ type internalLink = {
   slug: string; // Don't coerce to slug, client doesn't have list
   isLinked?: boolean;
 };
+
+type payloadType = "topic-view";
+
+type payload = {
+  type: payloadType;
+};
+
+type confidenceLevel = 1 | 2 | 3;
+type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
+
+type rawActivity<PayloadType> = {
+  userId: number;
+  postSlug: string;
+  payload: PayloadType;
+};
+
+type topicViewActivity = rawActivity<topicViewPayload>;
+
+type activity = topicViewActivity;
