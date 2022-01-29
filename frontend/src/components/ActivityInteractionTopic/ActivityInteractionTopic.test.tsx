@@ -25,7 +25,12 @@ test("<ActivityInteraction /> submits activities", async () => {
   );
   render(
     <ActivityProvider>
-      <ActivityInteraction activities={[]} userId="1" postSlug="c" />
+      <ActivityInteraction
+        postActivity={jest.fn()}
+        activities={[]}
+        userId="1"
+        postSlug="c"
+      />
     </ActivityProvider>
   );
 
