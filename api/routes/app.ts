@@ -5,7 +5,10 @@ import helmet from "helmet";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
 
+import { createServer } from "http";
+import { Server } from "socket.io";
 import programs from "./programs";
+import activitySocketHandlers from "./activities";
 
 dotenv.config();
 
@@ -15,6 +18,14 @@ app.use(cors());
 if (app.get("env") !== "test") app.use(morgan("tiny"));
 app.use(helmet());
 app.use(bodyParser.json());
+
+export const socketServer = createServer(app);
+const io = new Server(socketServer, {
+  cors: {
+    origin: process.env.CLIENT_ORIGIN,
+  },
+});
+activitySocketHandlers(io);
 
 app.use("/programs", programs);
 

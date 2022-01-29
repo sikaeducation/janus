@@ -49,6 +49,8 @@ router.post("/build", async (request: Request, response: Response) => {
   const isValid =
     process.env.NODE_ENV !== "production" || verifyWebHook(request);
   if (isValid) {
+    // eslint-disable-next-line
+    console.log("Building...");
     await buildAllPrograms();
     response.status(200).send();
   } else {

@@ -25,12 +25,7 @@ test("<ActivityInteraction /> submits activities", async () => {
   );
   render(
     <ActivityProvider>
-      <ActivityInteraction
-        postType="topic"
-        activities={[]}
-        userId="1"
-        postSlug="c"
-      />
+      <ActivityInteraction activities={[]} userId="1" postSlug="c" />
     </ActivityProvider>
   );
 

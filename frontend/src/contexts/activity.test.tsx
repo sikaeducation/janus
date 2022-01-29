@@ -26,7 +26,7 @@ test("activity service posts activities", async () => {
   function Consumer() {
     const { postActivity } = useContext(activityContext);
     postActivity({
-      userId: 1,
+      userId: "1",
       postSlug: "c",
       payload: {
         type: "topic-view",

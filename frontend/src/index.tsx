@@ -6,19 +6,22 @@ import { BrowserRouter as Router } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { SocketProvider } from "./contexts/socket";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Auth0Provider
-      domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
-      clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
-      redirectUri={window.location.origin}
-    >
-      <Router>
-        <ScrollToTop />
-        <App />
-      </Router>
-    </Auth0Provider>
+    <SocketProvider>
+      <Auth0Provider
+        domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
+        clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
+        redirectUri={window.location.origin}
+      >
+        <Router>
+          <ScrollToTop />
+          <App />
+        </Router>
+      </Auth0Provider>
+    </SocketProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -1,4 +1,4 @@
-const program: dehydratedProgram = {
+const program: rawProgram = {
   id: 1,
   label: "Ford: Full-Stack Web Development",
   root: {
@@ -147,7 +147,6 @@ const program: dehydratedProgram = {
         "css-units",
         "css-layout-1",
         "dev-tools-1",
-        "design-colors",
         "css-colors",
         "guide-color-pallettes",
         "guide-selecting-tags",
@@ -165,8 +164,6 @@ const program: dehydratedProgram = {
         "css-box-model",
         "html-text-semantics",
         "html-links",
-        "css-typography",
-        "css-web-fonts",
         "css-selectors-2",
         "css-variables",
         "http-intro",
@@ -444,14 +441,6 @@ const program: dehydratedProgram = {
       children: [],
     },
     {
-      type: "topic",
-      label: {
-        full: "Design: Colors",
-      },
-      slug: "design-colors",
-      children: [],
-    },
-    {
       type: "guide",
       label: {
         full: "How to Build a Color Pallette",
@@ -490,22 +479,6 @@ const program: dehydratedProgram = {
         full: "CSS: Box Model",
       },
       slug: "css-box-model",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
-        full: "CSS: Typography",
-      },
-      slug: "css-typography",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
-        full: "CSS: Web Fonts",
-      },
-      slug: "css-web-fonts",
       children: [],
     },
     {

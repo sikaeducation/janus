@@ -23,8 +23,8 @@ type rawPost = {
     short?: string;
     tiny?: string;
   };
-  slug: slug;
-  children: slug[];
+  slug: string;
+  children: string[];
 };
 type dehydratedPost = rawPost & { path: string };
 type hydratedPost = dehydratedPost & { content: string };
@@ -54,7 +54,7 @@ type confidenceLevel = 1 | 2 | 3;
 type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
 
 type rawActivity<PayloadType> = {
-  userId: number;
+  userId: string;
   postSlug: string;
   payload: PayloadType;
 };

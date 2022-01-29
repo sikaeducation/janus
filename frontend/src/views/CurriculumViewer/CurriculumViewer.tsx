@@ -1,3 +1,4 @@
+import { useContext } from "react";
 import { useLocation, Navigate } from "react-router-dom";
 
 import "./CurriculumViewer.scss";
@@ -8,7 +9,7 @@ import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 import ActivityInteraction from "../../components/ActivityInteraction";
 
-import { ActivityProvider } from "../../contexts/activity";
+import { activityContext } from "../../contexts/activity";
 
 import { getCurrentPost, getLinks } from "../../services/program";
 
@@ -17,25 +18,28 @@ type props = {
 };
 
 export default function CurriculumViewer({ program }: props) {
+  const { activities } = useContext(activityContext);
   const { user } = useAuth0();
   const path = useLocation().pathname;
   const currentPost =
     path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
   const { unitLinks, crumbLinks, nextLink } = getLinks(program, currentPost);
+  const currentActivities = activities.filter(
+    (activity) => activity.postSlug === currentPost.slug
+  );
 
   return (
     <div className="CurriculumViewer">
       <UnitNavigation units={unitLinks} />
       <CrumbNavigation links={crumbLinks} />
       <AppContent content={currentPost.content} />
-      <ActivityProvider>
-        <ActivityInteraction
-          currentConfidenceLevel={undefined}
-          postSlug={currentPost.slug}
-          userId={user?.id}
-        />
-      </ActivityProvider>
+      <ActivityInteraction
+        postSlug={currentPost.slug}
+        postType={currentPost.type}
+        userId={user?.email || ""}
+        activities={currentActivities}
+      />
       {nextLink && (
         <ActivityNavigation
           nextSlug={nextLink.path}

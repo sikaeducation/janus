@@ -6,6 +6,7 @@ import AppLoading from "./views/AppLoading";
 import AppError from "./views/AppError";
 import AppHeader from "./components/AppHeader";
 import AppFooter from "./components/AppFooter";
+import { ActivityProvider } from "./contexts/activity";
 import "./App.scss";
 
 import { useProgram } from "./services/program";
@@ -29,7 +30,11 @@ function App() {
               />
               <Route
                 path="*"
-                element={<CurriculumViewer program={program} />}
+                element={
+                  <ActivityProvider>
+                    <CurriculumViewer program={program} />
+                  </ActivityProvider>
+                }
               />
             </>
           ) : (
