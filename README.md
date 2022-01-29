@@ -12,6 +12,8 @@ Sika's LMS
 * `scripts/e2e/ci` - Run E2E tests in CI mode
 * `scripts/units/dev` - Run unit tests in watch mode
 * `scripts/units/ci` - Run unit tests in CI mode
+* `scripts/update-slugs` - Add new slugs to the slug type based on current posts
+* `scripts/update-program` - Create a new dehydrated program from a raw program
 
 ---
 

@@ -1,2 +1,5 @@
-echo "\n\n Building containers..."
+#!/bin/bash
+echo "Building containers..."
+PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd $PARENT_PATH/..
 docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml build
