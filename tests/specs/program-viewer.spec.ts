@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("program viewer displays program content", async ({ page }) => {
+test.skip("program viewer displays program content", async ({ page }) => {
   await page.goto("/program-viewer");
   const posts = page.locator(".PostListing");
   const count = await posts.count();
@@ -20,7 +20,7 @@ test("program viewer displays program content", async ({ page }) => {
   expect(count).toBe(8);
 });
 
-test("program viewer can copy markdown links to clipboard", async ({
+test.skip("program viewer can copy markdown links to clipboard", async ({
   page,
   context,
 }) => {

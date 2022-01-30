@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("learners can submit topic views", async ({ page }) => {
+test.skip("learners can submit topic views", async ({ page }) => {
   await page.route("**/activities", (route, request) => {
     expect(request.postDataJSON()).toMatchObject({
       userId: 1,

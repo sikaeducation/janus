@@ -12,7 +12,7 @@ test.beforeEach(async ({ page }) => {
   });
 });
 
-test("unit navigation", async ({ page }) => {
+test.skip("unit navigation", async ({ page }) => {
   await page.goto("/");
   await page.click(".UnitLink:has-text('A')");
   await expect(page).toHaveURL(/\/a$/);
@@ -20,7 +20,7 @@ test("unit navigation", async ({ page }) => {
   await expect(page).toHaveURL(/\/b$/);
 });
 
-test("section navigation", async ({ page }) => {
+test.skip("section navigation", async ({ page }) => {
   await page.goto("/a/d");
   await page.click("text=Link to F");
   await expect(page).toHaveURL(/\/a\/d\/f$/);
@@ -29,7 +29,7 @@ test("section navigation", async ({ page }) => {
   await expect(page).toHaveURL(/\/a\/d\/g$/);
 });
 
-test("activity navigation", async ({ page }) => {
+test.skip("activity navigation", async ({ page }) => {
   await page.goto("/");
   await page.click("text=Start A");
   await expect(page).toHaveURL(/\/a$/);
@@ -43,7 +43,7 @@ test("activity navigation", async ({ page }) => {
   await expect(page).toHaveURL(/\/a$/);
 });
 
-test("404", async ({ page }) => {
+test.skip("404", async ({ page }) => {
   await page.goto("/path-that-doesnt-exist");
   const body = page.locator("body");
   await expect(body).toHaveText(/sorry!/);
