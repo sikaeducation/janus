@@ -3,8 +3,6 @@ import database from "../database-connection";
 
 Model.knex(database);
 
-export default class User extends Model {
-  static tableName = "user";
-
-  id!: number;
+export default class Performance extends Model {
+  static tableName = "performance";
 }

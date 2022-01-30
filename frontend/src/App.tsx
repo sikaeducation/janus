@@ -8,6 +8,7 @@ import AppError from "./views/AppError";
 import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
+import { SocketProvider } from "./contexts/socket";
 import { ActivityProvider } from "./contexts/activity";
 import "./App.scss";
 
@@ -24,29 +25,31 @@ function App() {
         {isAuthenticated && isLoading ? <AppLoading /> : null}
         {!isAuthenticated && !isLoading ? <AppHome /> : null}
         {isAuthenticated && (
-          <Routes>
-            <Route path="/loading" element={<AppLoading />} />
-            <Route path="/error" element={<AppError />} />
-            <Route path="/404" element={<AppMissing />} />
-            {program ? (
-              <>
-                <Route
-                  path="/program-viewer"
-                  element={<ProgramViewer program={program} />}
-                />
-                <Route
-                  path="*"
-                  element={
-                    <ActivityProvider>
-                      <CurriculumViewer program={program} />
-                    </ActivityProvider>
-                  }
-                />
-              </>
-            ) : (
-              <Route path="*" element={<AppLoading />} />
-            )}
-          </Routes>
+          <SocketProvider>
+            <Routes>
+              <Route path="/loading" element={<AppLoading />} />
+              <Route path="/error" element={<AppError />} />
+              <Route path="/404" element={<AppMissing />} />
+              {program ? (
+                <>
+                  <Route
+                    path="/program-viewer"
+                    element={<ProgramViewer program={program} />}
+                  />
+                  <Route
+                    path="*"
+                    element={
+                      <ActivityProvider>
+                        <CurriculumViewer program={program} />
+                      </ActivityProvider>
+                    }
+                  />
+                </>
+              ) : (
+                <Route path="*" element={<AppLoading />} />
+              )}
+            </Routes>
+          </SocketProvider>
         )}
       </main>
       <AppFooter />

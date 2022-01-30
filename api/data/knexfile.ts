@@ -2,12 +2,30 @@ import { Knex } from "knex";
 
 const config: Record<string, Knex.Config> = {
   development: {
-    client: "postgres",
-    connection: process.env.DATABASE_URL,
+    client: "pg",
+    connection: {
+      host: process.env.DATABASE_URL,
+      port: 5432,
+      user: "postgres",
+      database: "postgres",
+      password: process.env.POSTGRES_PASSWORD,
+    },
+    migrations: {
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeds",
+    },
   },
   production: {
-    client: "postgres",
+    client: "pg",
     connection: process.env.DATABASE_URL,
+    migrations: {
+      directory: "./migrations",
+    },
+    seeds: {
+      directory: "./seeds",
+    },
   },
 };
 

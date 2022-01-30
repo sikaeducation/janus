@@ -4,6 +4,8 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
+  justify-content: center;
+  margin-bottom: 15%;
   h1 {
     @include typography.heading-font-1;
   }

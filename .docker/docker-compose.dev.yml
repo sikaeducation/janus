@@ -15,13 +15,18 @@ services:
   api:
     environment:
       PORT: 80
-      DATABASE_URL: postgres://database/
+      DATABASE_URL: database
       CLIENT_ORIGIN: http://localhost:3000
+      POSTGRES_PASSWORD: "sikaeducation"
     ports:
       - 4000:80
     volumes:
       - ../api:/app
     command: ["npm", "run", "dev"]
   database:
+    expose:
+      - "5432"
     volumes:
       - ../database:/var/lib/postgresql/data
+    environment:
+      POSTGRES_PASSWORD: "sikaeducation"

@@ -6,7 +6,6 @@ import { BrowserRouter as Router } from "react-router-dom";
 import ScrollToTop from "./components/ScrollToTop";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import { SocketProvider } from "./contexts/socket";
 
 ReactDOM.render(
   <React.StrictMode>
@@ -15,12 +14,10 @@ ReactDOM.render(
       clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
       redirectUri={window.location.origin}
     >
-      <SocketProvider>
-        <Router>
-          <ScrollToTop />
-          <App />
-        </Router>
-      </SocketProvider>
+      <Router>
+        <ScrollToTop />
+        <App />
+      </Router>
     </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")
