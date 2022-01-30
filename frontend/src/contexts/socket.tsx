@@ -10,7 +10,7 @@ type props = {
 };
 
 export function SocketProvider({ children }: props) {
-  const { getAccessTokenSilently, getAccessTokenWithPopup } = useAuth0();
+  const { getAccessTokenSilently } = useAuth0();
   const socket = io(process.env.REACT_APP_API_BASE_URL || "", {
     auth: (callback: any) => {
       getAccessTokenSilently({

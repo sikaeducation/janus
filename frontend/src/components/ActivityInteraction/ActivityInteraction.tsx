@@ -1,30 +1,30 @@
 import "./ActivityInteraction.scss";
 import { useContext } from "react";
-import { activityContext } from "../../contexts/activity";
+import { performanceContext } from "../../contexts/activity";
 
 import ActivityInteractionTopic from "../ActivityInteractionTopic";
 
 type props = {
   postType: postType;
-  activities: activity[];
+  performances: performance[];
   userId: string;
   postSlug: string;
 };
 
 export default function ActivityInteraction({
   postType,
-  activities,
+  performances,
   userId,
   postSlug,
 }: props) {
-  const { postActivity } = useContext(activityContext);
+  const { postPerformance } = useContext(performanceContext);
   const interactions = {
     topic: (
       <ActivityInteractionTopic
         userId={userId}
-        postActivity={postActivity}
+        postPerformance={postPerformance}
         postSlug={postSlug}
-        activities={activities}
+        performances={performances}
       />
     ),
     root: null,

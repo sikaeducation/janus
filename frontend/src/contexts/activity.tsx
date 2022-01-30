@@ -1,40 +1,46 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 import useSocketHandlers from "../services/use-socket-handlers";
 import { SocketContext } from "./socket";
 
-type activityContext = {
-  postActivity: (activity: activity) => void;
-  activities: activity[];
+type performanceContext = {
+  postPerformance: (performance: performance) => void;
+  performances: performance[];
 };
-export const activityContext = createContext<activityContext>(
-  {} as activityContext
+export const performanceContext = createContext<performanceContext>(
+  {} as performanceContext
 );
 
 type props = {
   children: JSX.Element;
 };
 
-export function ActivityProvider({ children }: props) {
-  const [activities, setActivities] = useState<activity[]>([]);
+export function PerformanceProvider({ children }: props) {
+  const [performances, setPerformances] = useState<performance[]>([]);
   const socket = useContext(SocketContext);
 
   useSocketHandlers({
-    "new-activity": (activity: activity) =>
-      setActivities((previous) => [...previous, activity]),
+    "list-performances": (retrievedPerformances: performance[]) =>
+      setPerformances(retrievedPerformances),
+    "new-performance": (performance: performance) =>
+      setPerformances((previous) => [...previous, performance]),
   });
 
-  const postActivity = (activity: activity) => {
-    socket.emit("post-activity", activity);
+  useEffect(() => {
+    socket.emit("list-performances");
+  }, [socket]);
+
+  const postPerformance = (performance: performance) => {
+    socket.emit("post-performance", performance);
   };
 
   return (
-    <activityContext.Provider
+    <performanceContext.Provider
       value={{
-        activities,
-        postActivity,
+        performances,
+        postPerformance,
       }}
     >
       {children}
-    </activityContext.Provider>
+    </performanceContext.Provider>
   );
 }

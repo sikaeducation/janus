@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import ActivityInteraction from ".";
-import { ActivityProvider } from "../../contexts/activity";
+import { PerformanceProvider } from "../../contexts/activity";
 
 const server = setupServer();
 beforeAll(() => server.listen());
@@ -24,14 +24,14 @@ test("<ActivityInteraction /> submits activities", async () => {
     })
   );
   render(
-    <ActivityProvider>
+    <PerformanceProvider>
       <ActivityInteraction
-        postActivity={jest.fn()}
-        activities={[]}
+        postPerformance={jest.fn()}
+        performances={[]}
         userId="1"
         postSlug="c"
       />
-    </ActivityProvider>
+    </PerformanceProvider>
   );
 
   screen

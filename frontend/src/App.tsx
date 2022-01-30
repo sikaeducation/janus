@@ -9,7 +9,7 @@ import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
 import { SocketProvider } from "./contexts/socket";
-import { ActivityProvider } from "./contexts/activity";
+import { PerformanceProvider } from "./contexts/activity";
 import "./App.scss";
 
 import { useProgram } from "./services/program";
@@ -39,9 +39,9 @@ function App() {
                   <Route
                     path="*"
                     element={
-                      <ActivityProvider>
+                      <PerformanceProvider>
                         <CurriculumViewer program={program} />
-                      </ActivityProvider>
+                      </PerformanceProvider>
                     }
                   />
                 </>

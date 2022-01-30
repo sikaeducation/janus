@@ -9,7 +9,7 @@ import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 import ActivityInteraction from "../../components/ActivityInteraction";
 
-import { activityContext } from "../../contexts/activity";
+import { performanceContext } from "../../contexts/activity";
 import { getCurrentPost, getLinks } from "../../services/program";
 
 type props = {
@@ -18,15 +18,15 @@ type props = {
 
 export default function CurriculumViewer({ program }: props) {
   const { user, isAuthenticated } = useAuth0();
-  const { activities } = useContext(activityContext);
+  const { performances } = useContext(performanceContext);
   const path = useLocation().pathname;
   if (!isAuthenticated) return <Navigate replace to="/" />;
   const currentPost =
     path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
   const { unitLinks, crumbLinks, nextLink } = getLinks(program, currentPost);
-  const currentActivities = activities.filter(
-    (activity) => activity.postSlug === currentPost.slug
+  const currentActivities = performances.filter(
+    (performance) => performance.postSlug === currentPost.slug
   );
 
   return (
@@ -38,7 +38,7 @@ export default function CurriculumViewer({ program }: props) {
         postSlug={currentPost.slug}
         postType={currentPost.type}
         userId={user?.email || ""}
-        activities={currentActivities}
+        performances={currentActivities}
       />
       {nextLink && (
         <ActivityNavigation

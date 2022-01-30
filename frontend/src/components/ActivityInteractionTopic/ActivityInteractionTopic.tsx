@@ -2,19 +2,19 @@ import "./ActivityInteractionTopic.scss";
 import { last } from "lodash/fp";
 
 type props = {
-  postActivity: (activity: activity) => void;
+  postPerformance: (performance: performance) => void;
   userId: string;
   postSlug: string;
-  activities: activity[];
+  performances: performance[];
 };
 
 export default function ActivityInteractionTopic({
   userId,
   postSlug,
-  activities,
-  postActivity,
+  performances,
+  postPerformance,
 }: props) {
-  const currentConfidenceLevel = last(activities)?.payload.confidenceLevel;
+  const currentConfidenceLevel = last(performances)?.payload.confidenceLevel;
   const buttons = [
     {
       confidenceLevel: 1,
@@ -30,7 +30,7 @@ export default function ActivityInteractionTopic({
     },
   ] as const;
   const handleClick = (confidenceLevel: confidenceLevel) => () => {
-    postActivity({
+    postPerformance({
       userId,
       postSlug,
       payload: {

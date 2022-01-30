@@ -52,13 +52,15 @@ type payload = {
 
 type confidenceLevel = 1 | 2 | 3;
 type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
+type exerciseSubmissionPayload = payload & { url: string };
 
-type rawActivity<PayloadType> = {
+type rawPerformance<PayloadType> = {
   userId: string;
   postSlug: string;
   payload: PayloadType;
 };
 
-type topicViewActivity = rawActivity<topicViewPayload>;
+type topicViewPerformance = rawPerformance<topicViewPayload>;
+type exerciseSubmissionPerformance = rawPerformance<exerciseSubmissionPayload>;
 
-type activity = topicViewActivity;
+type performance = topicViewPerformance | exerciseSubmissionPerformance;

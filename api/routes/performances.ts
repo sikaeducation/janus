@@ -13,7 +13,7 @@ const postPerformance = (socket: any) => (performance: performance) => {
       socket.emit("new-performance", postedPerformance);
     });
 };
-const listPerformances = (socket: any) => {
+const listPerformances = (socket: any) => () => {
   return Performance.query()
     .select()
     .where("userId", socket.email)
