@@ -10,18 +10,18 @@ import { SocketProvider } from "./contexts/socket";
 
 ReactDOM.render(
   <React.StrictMode>
-    <SocketProvider>
-      <Auth0Provider
-        domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
-        clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
-        redirectUri={window.location.origin}
-      >
+    <Auth0Provider
+      domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
+      clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
+      redirectUri={window.location.origin}
+    >
+      <SocketProvider>
         <Router>
           <ScrollToTop />
           <App />
         </Router>
-      </Auth0Provider>
-    </SocketProvider>
+      </SocketProvider>
+    </Auth0Provider>
   </React.StrictMode>,
   document.getElementById("root")
 );

@@ -4,6 +4,8 @@ import morgan from "morgan";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
+import jwt from "jsonwebtoken";
+import jwksClient from "jwks-rsa";
 
 import { createServer } from "http";
 import { Server } from "socket.io";
@@ -24,6 +26,29 @@ const io = new Server(socketServer, {
   cors: {
     origin: process.env.CLIENT_ORIGIN,
   },
+});
+io.use(async (socket, next) => {
+  const { token } = socket.handshake.auth;
+  const { verify } = jwt;
+  const secretUrl = "https://dev-6vs4dnoj.us.auth0.com/.well-known/jwks.json";
+
+  const client = jwksClient({
+    jwksUri: secretUrl,
+  });
+
+  const getKey = (
+    header: any,
+    callback: (error: Error | null, signingKey: string) => void
+  ) => {
+    client.getSigningKey(header.kid, (error, key) => {
+      const signingKey = key.getPublicKey();
+      callback(error, signingKey);
+    });
+  };
+
+  verify(token, getKey, (error, decodedJwt) => {
+    next(error as Error | undefined);
+  });
 });
 activitySocketHandlers(io);
 

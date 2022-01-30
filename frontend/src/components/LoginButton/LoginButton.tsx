@@ -8,7 +8,11 @@ export default function LoginButton() {
     <button
       className="LoginButton"
       type="button"
-      onClick={() => loginWithRedirect()}
+      onClick={() =>
+        loginWithRedirect({
+          scope: "openid profile email",
+        })
+      }
     >
       Login
     </button>
