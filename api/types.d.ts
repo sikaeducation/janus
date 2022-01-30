@@ -45,3 +45,22 @@ type program<PostType> = {
 type rawProgram = program<rawPost>;
 type dehydratedProgram = program<dehydratedPost>;
 type hydratedProgram = program<hydratedPost>;
+
+type payloadType = "topic-view";
+
+type payload = {
+  type: payloadType;
+};
+
+type confidenceLevel = 1 | 2 | 3;
+type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
+
+type rawActivity<PayloadType> = {
+  userId: string;
+  postSlug: string;
+  payload: PayloadType;
+};
+
+type topicViewActivity = rawActivity<topicViewPayload>;
+
+type activity = topicViewActivity;

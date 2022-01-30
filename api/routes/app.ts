@@ -27,6 +27,7 @@ const io = new Server(socketServer, {
     origin: process.env.CLIENT_ORIGIN,
   },
 });
+
 io.use(async (socket, next) => {
   const { token } = socket.handshake.auth;
   const { verify } = jwt;
@@ -46,7 +47,9 @@ io.use(async (socket, next) => {
     });
   };
 
-  verify(token, getKey, (error, decodedJwt) => {
+  verify(token, getKey, (error, decodedJwt: any) => {
+    // eslint-disable-next-line
+    (socket as any).email = decodedJwt["https://sikaeducation.com/email"];
     next(error as Error | undefined);
   });
 });
