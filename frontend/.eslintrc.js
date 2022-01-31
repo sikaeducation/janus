@@ -42,6 +42,12 @@ module.exports = {
     "react-hooks/exhaustive-deps": "warn",
     "no-use-before-define": "off",
     "react/jsx-no-constructed-context-values": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
+      {
+        assert: "htmlFor",
+      },
+    ],
     "import/no-extraneous-dependencies": [
       "error",
       {

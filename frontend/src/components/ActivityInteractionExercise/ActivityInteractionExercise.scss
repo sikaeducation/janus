@@ -1,0 +1,9 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/buttons";
+
+.ActivityInteractionExercise {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
+}

@@ -57,8 +57,11 @@ type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
 type exerciseSubmissionPayload = payload & { url: string };
 
 type rawPerformance<PayloadType> = {
+  id: number;
   userId: string;
   postSlug: string;
+  createdAt: string;
+  updatedAt: string;
   payload: PayloadType;
 };
 

@@ -2,7 +2,7 @@ import { render, screen } from "@testing-library/react";
 import { rest } from "msw";
 import { setupServer } from "msw/node";
 import ActivityInteraction from ".";
-import { PerformanceProvider } from "../../contexts/activity";
+import { PerformanceProvider } from "../../contexts/performance";
 
 const server = setupServer();
 beforeAll(() => server.listen());

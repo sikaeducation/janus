@@ -12,7 +12,7 @@ type props = {
 export function SocketProvider({ children }: props) {
   const { getAccessTokenSilently } = useAuth0();
   const socket = io(process.env.REACT_APP_API_BASE_URL || "", {
-    auth: (callback: any) => {
+    auth: (callback: (params: { token: string }) => void) => {
       getAccessTokenSilently({
         audience: process.env.REACT_APP_API_AUTH_URI,
       }).then((token) => {

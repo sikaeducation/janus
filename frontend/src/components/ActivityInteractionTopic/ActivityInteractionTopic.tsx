@@ -2,10 +2,10 @@ import "./ActivityInteractionTopic.scss";
 import { last } from "lodash/fp";
 
 type props = {
-  postPerformance: (performance: performance) => void;
+  postPerformance: (performance: rawPerformance) => void;
   userId: string;
   postSlug: string;
-  performances: performance[];
+  performances: postedTopicViewPerformance[];
 };
 
 export default function ActivityInteractionTopic({

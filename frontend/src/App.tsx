@@ -9,7 +9,7 @@ import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
 import { SocketProvider } from "./contexts/socket";
-import { PerformanceProvider } from "./contexts/activity";
+import { PerformanceProvider } from "./contexts/performance";
 import "./App.scss";
 
 import { useProgram } from "./services/program";

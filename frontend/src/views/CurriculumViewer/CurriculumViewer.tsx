@@ -9,7 +9,7 @@ import AppContent from "../../components/AppContent";
 import ActivityNavigation from "../../components/ActivityNavigation";
 import ActivityInteraction from "../../components/ActivityInteraction";
 
-import { performanceContext } from "../../contexts/activity";
+import { performanceContext } from "../../contexts/performance";
 import { getCurrentPost, getLinks } from "../../services/program";
 
 type props = {

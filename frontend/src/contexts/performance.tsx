@@ -3,8 +3,8 @@ import useSocketHandlers from "../services/use-socket-handlers";
 import { SocketContext } from "./socket";
 
 type performanceContext = {
-  postPerformance: (performance: performance) => void;
-  performances: performance[];
+  postPerformance: (performance: rawPerformance) => void;
+  performances: postedPerformance[];
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -15,13 +15,13 @@ type props = {
 };
 
 export function PerformanceProvider({ children }: props) {
-  const [performances, setPerformances] = useState<performance[]>([]);
+  const [performances, setPerformances] = useState<postedPerformance[]>([]);
   const socket = useContext(SocketContext);
 
   useSocketHandlers({
-    "list-performances": (retrievedPerformances: performance[]) =>
+    "list-performances": (retrievedPerformances: postedPerformance[]) =>
       setPerformances(retrievedPerformances),
-    "new-performance": (performance: performance) =>
+    "new-performance": (performance: rawPerformance) =>
       setPerformances((previous) => [...previous, performance]),
   });
 
@@ -29,7 +29,7 @@ export function PerformanceProvider({ children }: props) {
     socket.emit("list-performances");
   }, [socket]);
 
-  const postPerformance = (performance: performance) => {
+  const postPerformance = (performance: rawPerformance) => {
     socket.emit("post-performance", performance);
   };
 
