@@ -102,6 +102,7 @@ const program: rawProgram = {
         "cli-intro",
         "cli-navigation-1",
         "cli-file-management-1",
+        "exercise-cli-exercise-1",
         "cli-flags-and-arguments",
         "guide-common-cli-tasks",
         "concepts-nix",
@@ -704,6 +705,14 @@ const program: rawProgram = {
         full: "How to Debug a Website",
       },
       slug: "guide-debugging-websites",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "CLI Exercise 1",
+      },
+      slug: "exercise-cli-exercise-1",
       children: [],
     },
   ],

@@ -1,11 +1,12 @@
 import { useState } from "react";
+import { format } from "date-fns";
 import "./ActivityInteractionSubmission.scss";
 
 type props = {
   postPerformance: (performance: rawExerciseSubmissionPerformance) => void;
   userId: string;
   postSlug: string;
-  performances: postedPerformance[];
+  performances: postedExerciseSubmissionPerformance[];
 };
 
 export default function ActivityInteractionSubmission({
@@ -15,7 +16,7 @@ export default function ActivityInteractionSubmission({
   postPerformance,
 }: props) {
   const [url, setUrl] = useState<string>("");
-  const handleSubmit = (event: React.SyntheticEvent) => () => {
+  const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     postPerformance({
       userId,
@@ -27,14 +28,18 @@ export default function ActivityInteractionSubmission({
     });
     setUrl("");
   };
+  const formatDateTime = (dateTime: string) =>
+    format(new Date(dateTime), "M/d/yy: p");
   return (
     <div className="ActivityInteractionSubmission">
       {performances.length ? (
         <>
           <p>Previous Submissions:</p>
-          <ul>
-            {performances.map(({ id, createdAt }) => (
-              <li key={id}>{createdAt}</li>
+          <ul className="submissions">
+            {performances.map(({ id, createdAt, payload }) => (
+              <li key={id}>
+                <a href={payload.url}>{formatDateTime(createdAt)}</a>
+              </li>
             ))}
           </ul>
         </>
