@@ -17,7 +17,7 @@ import {
 
 function getPerformanceIndicator(performance: postedPerformance) {
   switch (performance.payload.type) {
-    case "topic-view": {
+    case "view": {
       const indicators = {
         1: <FontAwesomeIcon icon={faCircle} size="xs" className="failure" />,
         2: <FontAwesomeIcon icon={faCircle} size="xs" className="warning" />,
@@ -27,7 +27,7 @@ function getPerformanceIndicator(performance: postedPerformance) {
         .payload;
       return indicators[confidenceLevel];
     }
-    case "exercise-submission": {
+    case "submission": {
       const indicators: Record<string, JSX.Element> = {
         score: (
           <FontAwesomeIcon icon={faCircle} size="xs" className="failure" />

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./ActivityInteractionExercise.scss";
+import "./ActivityInteractionSubmission.scss";
 
 type props = {
   postPerformance: (performance: rawExerciseSubmissionPerformance) => void;
@@ -8,7 +8,7 @@ type props = {
   performances: postedPerformance[];
 };
 
-export default function ActivityInteractionExercise({
+export default function ActivityInteractionSubmission({
   userId,
   postSlug,
   performances,
@@ -21,14 +21,14 @@ export default function ActivityInteractionExercise({
       userId,
       postSlug,
       payload: {
-        type: "exercise-submission",
+        type: "submission",
         url,
       },
     });
     setUrl("");
   };
   return (
-    <div className="ActivityInteractionExercise">
+    <div className="ActivityInteractionSubmission">
       {performances.length ? (
         <>
           <p>Previous Submissions:</p>

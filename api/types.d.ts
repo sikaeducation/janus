@@ -46,7 +46,7 @@ type rawProgram = program<rawPost>;
 type dehydratedProgram = program<dehydratedPost>;
 type hydratedProgram = program<hydratedPost>;
 
-type payloadType = "topic-view";
+type payloadType = "view" | "submission";
 
 type payload = {
   type: payloadType;

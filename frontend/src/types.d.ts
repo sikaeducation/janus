@@ -44,7 +44,7 @@ type internalLink = {
   isLinked?: boolean;
 };
 
-type payloadType = "topic-view" | "exercise-submission";
+type payloadType = "view" | "submission";
 
 type payload = {
   type: payloadType;

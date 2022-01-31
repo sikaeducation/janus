@@ -1,4 +1,4 @@
-import "./ActivityInteractionTopic.scss";
+import "./ActivityInteractionView.scss";
 import { last } from "lodash/fp";
 
 type props = {
@@ -8,7 +8,7 @@ type props = {
   performances: postedTopicViewPerformance[];
 };
 
-export default function ActivityInteractionTopic({
+export default function ActivityInteractionView({
   userId,
   postSlug,
   performances,
@@ -34,13 +34,13 @@ export default function ActivityInteractionTopic({
       userId,
       postSlug,
       payload: {
-        type: "topic-view",
+        type: "view",
         confidenceLevel,
       },
     });
   };
   return (
-    <div className="ActivityInteractionTopic">
+    <div className="ActivityInteractionView">
       <p>After reading this, I feel:</p>
       <ul>
         {buttons.map(({ label, confidenceLevel }) => (
