@@ -21,7 +21,7 @@ export function PerformanceProvider({ children }: props) {
   useSocketHandlers({
     "list-performances": (retrievedPerformances: postedPerformance[]) =>
       setPerformances(retrievedPerformances),
-    "new-performance": (performance: rawPerformance) =>
+    "new-performance": (performance: postedPerformance) =>
       setPerformances((previous) => [...previous, performance]),
   });
 

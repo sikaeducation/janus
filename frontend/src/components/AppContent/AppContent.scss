@@ -126,4 +126,17 @@
       }
     }
   }
+  .failure {
+    color: colors.$failure-7;
+  }
+  .warning {
+    color: colors.$warning-7;
+  }
+  .success {
+    color: colors.$success-7;
+  }
+  .internal-link + svg {
+    margin-left: sizes.$s3;
+    margin-bottom: 0;
+  }
 }

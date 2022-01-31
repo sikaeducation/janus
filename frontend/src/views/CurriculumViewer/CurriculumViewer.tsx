@@ -25,7 +25,7 @@ export default function CurriculumViewer({ program }: props) {
     path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
   const { unitLinks, crumbLinks, nextLink } = getLinks(program, currentPost);
-  const currentActivities = performances.filter(
+  const currentPerformances = performances.filter(
     (performance) => performance.postSlug === currentPost.slug
   );
 
@@ -33,12 +33,12 @@ export default function CurriculumViewer({ program }: props) {
     <div className="CurriculumViewer">
       <UnitNavigation units={unitLinks} />
       <CrumbNavigation links={crumbLinks} />
-      <AppContent content={currentPost.content} />
+      <AppContent performances={performances} content={currentPost.content} />
       <ActivityInteraction
         postSlug={currentPost.slug}
         postType={currentPost.type}
         userId={user?.email || ""}
-        performances={currentActivities}
+        performances={currentPerformances}
       />
       {nextLink && (
         <ActivityNavigation

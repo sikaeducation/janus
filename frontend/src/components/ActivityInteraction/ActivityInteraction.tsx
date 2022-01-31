@@ -19,16 +19,13 @@ export default function ActivityInteraction({
   postSlug,
 }: props) {
   const { postPerformance } = useContext(performanceContext);
-  const postPerformances = performances.filter(
-    (performance) => performance.postSlug === postSlug
-  );
   const interactions = {
     topic: (
       <ActivityInteractionTopic
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={postPerformances as postedTopicViewPerformance[]}
+        performances={performances as postedTopicViewPerformance[]}
       />
     ),
     exercise: (
@@ -36,7 +33,7 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={postPerformances as postedExerciseSubmissionPerformance[]}
+        performances={performances as postedExerciseSubmissionPerformance[]}
       />
     ),
     root: null,

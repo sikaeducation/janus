@@ -59,7 +59,7 @@ type getRawPerformance<PayloadType> = {
   postSlug: string;
   payload: PayloadType;
 };
-type getPostedPerformance<PayloadType> = rawPerformance<PayloadType> & {
+type getPostedPerformance<PayloadType> = getRawPerformance<PayloadType> & {
   id: number;
   createdAt: string;
   updatedAt: string;
