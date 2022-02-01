@@ -19,6 +19,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
+      REACT_APP_API_AUTH_URI: ${{ secrets.AUTH_URI }}
       REACT_APP_AUTH_ZERO_DOMAIN: ${{ secrets.AUTH_ZERO_DOMAIN }} 
       REACT_APP_CLIENT_ID: ${{ secrets.AUTH_ZERO_CLIENT_ID }}
     steps:
