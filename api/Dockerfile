@@ -8,4 +8,4 @@ COPY --chown=node:node . .
 
 USER node
 EXPOSE 80
-CMD ["npm", "run", "dev"]
+CMD ["npm", "start"]
