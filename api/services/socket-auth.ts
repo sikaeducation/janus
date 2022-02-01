@@ -9,10 +9,9 @@ export default async function socketAuth(
 ) {
   const { token } = socket.handshake.auth;
   const { verify } = jwt;
-  const secretUrl = "https://dev-6vs4dnoj.us.auth0.com/.well-known/jwks.json";
 
   const client = jwksClient({
-    jwksUri: secretUrl,
+    jwksUri: process.env.AUTH_KEY_URL || "",
   });
 
   const getKey = (

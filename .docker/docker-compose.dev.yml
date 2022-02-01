@@ -19,6 +19,7 @@ services:
       DATABASE_URL: database
       CLIENT_ORIGIN: http://localhost:3000
       POSTGRES_PASSWORD: "sikaeducation"
+      AUTH_KEY_URL: "https://dev-6vs4dnoj.us.auth0.com/.well-known/jwks.json"
     ports:
       - 4000:80
     volumes:
