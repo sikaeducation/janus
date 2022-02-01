@@ -4,7 +4,7 @@ const config: Record<string, Knex.Config> = {
   development: {
     client: "pg",
     connection: {
-      host: process.env.DATABASE_URL,
+      host: process.env.DATABASE_HOST,
       port: 5432,
       user: "postgres",
       database: "postgres",
@@ -19,7 +19,10 @@ const config: Record<string, Knex.Config> = {
   },
   production: {
     client: "pg",
-    connection: process.env.DATABASE_URL,
+    connection: {
+      connectionString: process.env.DATABASE_URL,
+      ssl: { rejectUnauthorized: false },
+    },
     migrations: {
       directory: "./migrations",
     },
