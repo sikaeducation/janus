@@ -4,7 +4,7 @@ import morgan from "morgan";
 import helmet from "helmet";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
-import { Server } from "socket.io";
+import { Server, Socket } from "socket.io";
 
 import { createServer } from "http";
 import programs from "./programs";
@@ -27,7 +27,12 @@ const io = new Server(socketServer, {
   },
 });
 io.use(socketAuth);
-io.on("connection", performanceHandlers);
+io.on("connection", (socket: Socket & { role?: string }) => {
+  if (socket.role === "coach") {
+    socket.join("coaches");
+  }
+});
+io.on("connection", performanceHandlers(io));
 
 app.use("/programs", programs);
 

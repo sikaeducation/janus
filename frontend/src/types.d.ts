@@ -44,38 +44,33 @@ type internalLink = {
   isLinked?: boolean;
 };
 
-type payloadType = "view" | "submission";
-
-type payload = {
-  type: payloadType;
-};
-
-type confidenceLevel = 1 | 2 | 3;
-type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
-type exerciseSubmissionPayload = payload & { url: string };
-
-type getRawPerformance<PayloadType> = {
+type getRawPerformance<Performance, Payload> = {
+  type: Performance;
   userId: string;
   postSlug: string;
-  payload: PayloadType;
+  payload: Payload;
 };
-type getPostedPerformance<PayloadType> = getRawPerformance<PayloadType> & {
+type getPostedPerformance<RawPerformance> = RawPerformance & {
   id: number;
   createdAt: string;
   updatedAt: string;
 };
 
-type rawTopicViewPerformance = getRawPerformance<topicViewPayload>;
-type postedTopicViewPerformance = getPostedPerformance<topicViewPayload>;
+type confidenceLevel = 1 | 2 | 3;
+type rawViewPerformance = getRawPerformance<
+  "view",
+  {
+    confidenceLevel: confidenceLevel;
+  }
+>;
+type postedViewPerformance = getPostedPerformance<rawViewPerformance>;
 
-type rawExerciseSubmissionPerformance =
-  getRawPerformance<exerciseSubmissionPayload>;
-type postedExerciseSubmissionPerformance =
-  getPostedPerformance<exerciseSubmissionPayload>;
+type rawSubmissionPerformance = getRawPerformance<
+  "submission",
+  { url: string }
+>;
+type postedSubmissionPerformance =
+  getPostedPerformance<rawSubmissionPerformance>;
 
-type rawPerformance =
-  | rawTopicViewPerformance
-  | rawExerciseSubmissionPerformance;
-type postedPerformance =
-  | postedTopicViewPerformance
-  | postedExerciseSubmissionPerformance;
+type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
+type postedPerformance = postedViewPerformance | postedSubmissionPerformance;

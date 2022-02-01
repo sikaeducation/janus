@@ -46,28 +46,32 @@ type rawProgram = program<rawPost>;
 type dehydratedProgram = program<dehydratedPost>;
 type hydratedProgram = program<hydratedPost>;
 
-type payloadType = "view" | "submission";
-
-type payload = {
-  type: payloadType;
-};
-
-type confidenceLevel = 1 | 2 | 3;
-type topicViewPayload = payload & { confidenceLevel: confidenceLevel };
-type exerciseSubmissionPayload = payload & { url: string };
-
-type rawPerformance<PayloadType> = {
-  id: number;
+type getRawPerformance<Performance, Payload> = {
+  type: Performance;
   userId: string;
   postSlug: string;
+  payload: Payload;
+};
+type getPostedPerformance<RawPerformance> = RawPerformance & {
+  id: number;
   createdAt: string;
   updatedAt: string;
-  payload: PayloadType;
 };
 
-type topicViewPerformance = rawPerformance<topicViewPayload>;
-type exerciseSubmissionPerformance = rawPerformance<exerciseSubmissionPayload>;
+type rawViewPerformance = getRawPerformance<
+  "view",
+  {
+    confidenceLevel: 1 | 2 | 3;
+  }
+>;
+type postedViewPerformance = getPostedPerformance<rawViewPerformance>;
 
-type performance = topicViewPerformance | exerciseSubmissionPerformance;
+type rawSubmissionPerformance = getRawPerformance<
+  "submission",
+  { url: string }
+>;
+type postedSubmissionPerformance =
+  getPostedPerformance<rawSubmissionPerformance>;
 
-type performance = topicViewPerformance;
+type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
+type postedPerformance = postedViewPerformance | postedSubmissionPerformance;

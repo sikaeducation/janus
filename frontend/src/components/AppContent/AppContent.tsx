@@ -16,15 +16,14 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 function getPerformanceIndicator(performance: postedPerformance) {
-  switch (performance.payload.type) {
+  switch (performance.type) {
     case "view": {
       const indicators = {
         1: <FontAwesomeIcon icon={faCircle} size="xs" className="failure" />,
         2: <FontAwesomeIcon icon={faCircle} size="xs" className="warning" />,
         3: <FontAwesomeIcon icon={faCircle} size="xs" className="success" />,
       };
-      const { confidenceLevel } = (performance as postedTopicViewPerformance)
-        .payload;
+      const { confidenceLevel } = performance.payload;
       return indicators[confidenceLevel];
     }
     case "submission": {
@@ -36,8 +35,7 @@ function getPerformanceIndicator(performance: postedPerformance) {
           <FontAwesomeIcon icon={farCircle} size="xs" className="warning" />
         ),
       };
-      const { url } = (performance as postedExerciseSubmissionPerformance)
-        .payload;
+      const { url } = performance.payload;
       return indicators[url] || indicators.default;
     }
     default: {

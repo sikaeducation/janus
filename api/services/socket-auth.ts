@@ -27,6 +27,8 @@ export default async function socketAuth(
   verify(token, getKey, (error, decodedJwt: any) => {
     // eslint-disable-next-line
     (socket as any).email = decodedJwt["https://sikaeducation.com/email"];
+    // eslint-disable-next-line
+    (socket as any).role = decodedJwt["https://sikaeducation.com/role"];
     next(error as Error | undefined);
   });
 }

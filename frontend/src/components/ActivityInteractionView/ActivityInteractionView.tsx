@@ -5,7 +5,7 @@ type props = {
   postPerformance: (performance: rawPerformance) => void;
   userId: string;
   postSlug: string;
-  performances: postedTopicViewPerformance[];
+  performances: postedViewPerformance[];
 };
 
 export default function ActivityInteractionView({
@@ -33,8 +33,8 @@ export default function ActivityInteractionView({
     postPerformance({
       userId,
       postSlug,
+      type: "view",
       payload: {
-        type: "view",
         confidenceLevel,
       },
     });

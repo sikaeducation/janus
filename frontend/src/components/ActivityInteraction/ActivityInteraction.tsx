@@ -25,7 +25,7 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={performances as postedTopicViewPerformance[]}
+        performances={performances as postedViewPerformance[]}
       />
     ),
     exercise: (
@@ -33,7 +33,7 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={performances as postedExerciseSubmissionPerformance[]}
+        performances={performances as postedSubmissionPerformance[]}
       />
     ),
     root: null,

@@ -36,6 +36,8 @@ module.exports = {
       },
     ],
     "no-shadow": "off",
+    "default-case": "off",
+    "consistent-return": "off",
     "react/require-default-props": "off",
     "@typescript-eslint/no-shadow": ["error"],
     "react-hooks/rules-of-hooks": "error",

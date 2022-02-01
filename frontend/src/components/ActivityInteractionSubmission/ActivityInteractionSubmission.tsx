@@ -3,10 +3,10 @@ import { format } from "date-fns";
 import "./ActivityInteractionSubmission.scss";
 
 type props = {
-  postPerformance: (performance: rawExerciseSubmissionPerformance) => void;
+  postPerformance: (performance: rawSubmissionPerformance) => void;
   userId: string;
   postSlug: string;
-  performances: postedExerciseSubmissionPerformance[];
+  performances: postedSubmissionPerformance[];
 };
 
 export default function ActivityInteractionSubmission({
@@ -21,8 +21,8 @@ export default function ActivityInteractionSubmission({
     postPerformance({
       userId,
       postSlug,
+      type: "submission",
       payload: {
-        type: "submission",
         url,
       },
     });
