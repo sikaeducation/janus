@@ -1,6 +1,5 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { drop } from "lodash/fp";
-import { createContext, useEffect, useRef, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 
 type toastContextType = {
   toasts: string[];

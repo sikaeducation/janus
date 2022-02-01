@@ -24,10 +24,7 @@ export default function AuthenticatedRoutes() {
         <Route path="/404" element={<AppMissing />} />
         {program ? (
           <>
-            <Route
-              path="/inbox"
-              element={<InstructorInbox program={program} />}
-            />
+            <Route path="/inbox" element={<InstructorInbox />} />
             <Route
               path="/program-viewer"
               element={<ProgramViewer program={program} />}

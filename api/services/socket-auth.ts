@@ -1,10 +1,12 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { Socket } from "socket.io";
 import jwt from "jsonwebtoken";
 import jwksClient from "jwks-rsa";
+import { Socket } from "socket.io";
+
+type SikaSocket = Socket & { email?: string; role?: string };
 
 export default async function socketAuth(
-  socket: Socket,
+  socket: SikaSocket,
   next: (error: Error | undefined) => void
 ) {
   const { token } = socket.handshake.auth;
@@ -26,9 +28,9 @@ export default async function socketAuth(
 
   verify(token, getKey, (error, decodedJwt: any) => {
     // eslint-disable-next-line
-    (socket as any).email = decodedJwt["https://sikaeducation.com/email"];
+    socket.email = decodedJwt["https://sikaeducation.com/email"];
     // eslint-disable-next-line
-    (socket as any).role = decodedJwt["https://sikaeducation.com/role"];
+    socket.role = decodedJwt["https://sikaeducation.com/role"];
     next(error as Error | undefined);
   });
 }

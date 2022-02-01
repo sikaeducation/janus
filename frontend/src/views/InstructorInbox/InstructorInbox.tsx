@@ -6,10 +6,6 @@ import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
 import "./InstructorInbox.scss";
 
-type props = {
-  program: hydratedProgram;
-};
-
 function getSubmissionComponent(performance: postedPerformance) {
   switch (performance.type) {
     case "view": {
@@ -25,7 +21,7 @@ function getSubmissionComponent(performance: postedPerformance) {
   }
 }
 
-export default function InstructorInbox({ program }: props) {
+export default function InstructorInbox() {
   const { isAuthenticated } = useAuth0();
   const { performances } = useContext(performanceContext);
   if (!isAuthenticated) return <Navigate replace to="/" />;

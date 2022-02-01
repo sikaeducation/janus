@@ -1,8 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
+import { Server, Socket } from "socket.io";
 import Performance from "../data/models/Performance";
 
+type SikaSocket = Socket & { email?: string; role?: string };
+
 const postPerformance =
-  (socket: any, io: any) => (performance: rawPerformance) => {
+  (socket: SikaSocket, io: Server) => (performance: rawPerformance) => {
     return Performance.query()
       .returning("*")
       .insert({
@@ -19,12 +22,12 @@ const postPerformance =
         socket.emit("new-performance", postedPerformance);
       });
   };
-const listPerformances = (socket: any) => () => {
+const listPerformances = (socket: SikaSocket) => () => {
   Performance.query()
     .select()
     .where((builder) => {
       // eslint-disable-next-line
-      socket.role !== "coach" && builder.where("userId", socket.email);
+        socket.role !== "coach" && builder.where("userId", socket?.email || "");
     })
     .then((performances) => {
       socket.emit("list-performances", performances);
@@ -32,8 +35,8 @@ const listPerformances = (socket: any) => () => {
 };
 
 const performanceHandlers =
-  (io: any) =>
-  (socket: any): void => {
+  (io: Server) =>
+  (socket: SikaSocket): void => {
     socket.on("list-performances", listPerformances(socket));
     socket.on("post-performance", postPerformance(socket, io));
   };
