@@ -18,8 +18,9 @@ const postPerformance =
         if (socket.role === "coach") {
           io.to("coaches").emit("new-performance-notice", postedPerformance);
           io.to("coaches").emit("new-performance", postedPerformance);
+        } else {
+          socket.emit("new-performance", postedPerformance);
         }
-        socket.emit("new-performance", postedPerformance);
       });
   };
 const listPerformances = (socket: SikaSocket) => () => {
@@ -27,7 +28,7 @@ const listPerformances = (socket: SikaSocket) => () => {
     .select()
     .where((builder) => {
       // eslint-disable-next-line
-        socket.role !== "coach" && builder.where("userId", socket?.email || "");
+      socket.role !== "coach" && builder.where("userId", socket?.email || "");
     })
     .then((performances) => {
       socket.emit("list-performances", performances);
