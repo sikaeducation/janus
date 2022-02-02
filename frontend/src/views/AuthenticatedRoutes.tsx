@@ -8,12 +8,12 @@ import AppError from "./AppError";
 import InstructorInbox from "./InstructorInbox";
 import { toastContext } from "../contexts/toast";
 
-import { useProgram } from "../services/program";
 import ToastNotification from "../components/ToastNotification";
+import { programContext } from "../contexts/program";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
-  const program = useProgram(1);
+  const { program } = useContext(programContext);
   const showToastNotification = toasts.length > 0;
 
   return (

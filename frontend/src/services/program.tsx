@@ -1,5 +1,6 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import { programContext } from "../contexts/program";
 
 function getNextLink(
   posts: hydratedPost[],
@@ -86,24 +87,6 @@ function getCrumbLinks(posts: hydratedPost[], currentPath: string) {
       path: matchingPost.path,
     };
   });
-}
-
-export function useProgram(id: number): hydratedProgram | null {
-  const [program, setProgram] = useState<hydratedProgram | null>(null);
-  useEffect(() => {
-    const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-    fetch(`${apiBaseUrl}/programs/${id}`)
-      .then((response) => response.json())
-      .then((response) => {
-        setProgram(response.program);
-      })
-      .catch((error) => {
-        // eslint-disable-next-line
-          console.error(error.message);
-      });
-  }, [id]);
-
-  return program;
 }
 
 export function getLinks(program: hydratedProgram, currentPost: hydratedPost) {

@@ -1,9 +1,9 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
 import classNames from "classnames";
 import "./PostListing.scss";
-import { MouseEventHandler, KeyboardEventHandler } from "react";
+import { MouseEventHandler, KeyboardEventHandler, useContext } from "react";
 import useClipboard from "react-use-clipboard";
-import { useProgram } from "../../services/program";
+import { programContext } from "../../contexts/program";
 
 declare module "react-use-clipboard" {
   export default interface useClipboard {
@@ -21,7 +21,7 @@ type props = {
 };
 
 export default function PostListing({ post, isActive, handlers }: props) {
-  const program = useProgram(1);
+  const { program } = useContext(programContext);
   let linksMarkdown = "";
   if (program) {
     const { posts } = program;

@@ -7,32 +7,33 @@ import { SocketProvider } from "./contexts/socket";
 import { PerformanceProvider } from "./contexts/performance";
 import "./App.scss";
 
-import { useProgram } from "./services/program";
 import ToastProvider from "./contexts/toast";
 import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
+import { ProgramProvider } from "./contexts/program";
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0();
-  const program = useProgram(1);
 
   return (
-    <div className="App">
-      <AppHeader programLabel={program?.label || ""} />
-      {isAuthenticated && isLoading ? <AppLoading /> : null}
-      {!isAuthenticated && !isLoading ? <AppHome /> : null}
-      {isAuthenticated && (
-        <main>
-          <SocketProvider>
-            <ToastProvider>
-              <PerformanceProvider>
-                <AuthenticatedRoutes />
-              </PerformanceProvider>
-            </ToastProvider>
-          </SocketProvider>
-        </main>
-      )}
-      <AppFooter />
-    </div>
+    <ProgramProvider>
+      <div className="App">
+        <AppHeader />
+        {isAuthenticated && isLoading ? <AppLoading /> : null}
+        {!isAuthenticated && !isLoading ? <AppHome /> : null}
+        {isAuthenticated && (
+          <main>
+            <SocketProvider>
+              <ToastProvider>
+                <PerformanceProvider>
+                  <AuthenticatedRoutes />
+                </PerformanceProvider>
+              </ToastProvider>
+            </SocketProvider>
+          </main>
+        )}
+        <AppFooter />
+      </div>
+    </ProgramProvider>
   );
 }
 
