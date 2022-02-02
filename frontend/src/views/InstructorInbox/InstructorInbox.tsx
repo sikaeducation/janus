@@ -6,10 +6,10 @@ import Gravatar from "react-gravatar";
 import { groupBy } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCheckCircle,
+  faCheck,
+  faClipboardCheck,
   faExternalLinkAlt,
   faQuestionCircle,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
 import "./InstructorInbox.scss";
@@ -30,9 +30,9 @@ function getSubmissionComponent(
   switch (performance.type) {
     case "view": {
       const checks = {
-        1: <FontAwesomeIcon icon={faCheckCircle} className="failure" />,
-        2: <FontAwesomeIcon icon={faCheckCircle} className="pending" />,
-        3: <FontAwesomeIcon icon={faCheckCircle} className="success" />,
+        1: <FontAwesomeIcon icon={faCheck} className="failure" />,
+        2: <FontAwesomeIcon icon={faCheck} className="pending" />,
+        3: <FontAwesomeIcon icon={faCheck} className="success" />,
       } as const;
       return (
         <div className="LearnerViewing">
@@ -52,8 +52,12 @@ function getSubmissionComponent(
         submitted: (
           <FontAwesomeIcon icon={faQuestionCircle} className="pending" />
         ),
-        rejected: <FontAwesomeIcon icon={faTimesCircle} className="failure" />,
-        accepted: <FontAwesomeIcon icon={faCheckCircle} className="success" />,
+        rejected: (
+          <FontAwesomeIcon icon={faClipboardCheck} className="failure" />
+        ),
+        accepted: (
+          <FontAwesomeIcon icon={faClipboardCheck} className="success" />
+        ),
       } as const;
       const status =
         statuses[

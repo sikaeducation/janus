@@ -10,33 +10,69 @@ import { ComponentPropsWithoutRef } from "react";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCircle,
-  faCircle as farCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 
 function getPerformanceIndicator(performance: postedPerformance) {
   switch (performance.type) {
     case "view": {
       const indicators = {
-        1: <FontAwesomeIcon icon={faCircle} size="xs" className="failure" />,
-        2: <FontAwesomeIcon icon={faCircle} size="xs" className="warning" />,
-        3: <FontAwesomeIcon icon={faCircle} size="xs" className="success" />,
+        1: (
+          <FontAwesomeIcon
+            icon={faCheck}
+            size="xs"
+            className="indicator failure"
+            title="You read this and indicated that it was unclear to you"
+          />
+        ),
+        2: (
+          <FontAwesomeIcon
+            icon={faCheck}
+            size="xs"
+            className="indicator"
+            title="You read this and indicated that it was clear to you"
+          />
+        ),
+        3: (
+          <FontAwesomeIcon
+            icon={faCheck}
+            size="xs"
+            className="indicator success"
+            title="You read this and indicated that you were confident about it."
+          />
+        ),
       };
       const { confidenceLevel } = performance.payload;
       return indicators[confidenceLevel];
     }
     case "submission": {
       const indicators: Record<string, JSX.Element> = {
-        score: (
-          <FontAwesomeIcon icon={faCircle} size="xs" className="failure" />
+        rejected: (
+          <FontAwesomeIcon
+            icon={faClipboardCheck}
+            size="xs"
+            className="indicator failure"
+            title="Your latest submission needs more work"
+          />
         ),
-        default: (
-          <FontAwesomeIcon icon={farCircle} size="xs" className="warning" />
+        accepted: (
+          <FontAwesomeIcon
+            icon={faClipboardCheck}
+            size="xs"
+            className="indicator accepted"
+            title="Your latest submission was accepted!"
+          />
+        ),
+        submitted: (
+          <FontAwesomeIcon
+            icon={faClipboardCheck}
+            size="xs"
+            className="indicator submitted"
+            title="Your latest submission is waiting to be graded"
+          />
         ),
       };
       const { url } = performance.payload;
-      return indicators[url] || indicators.default;
+      return indicators[url] || indicators.submitted;
     }
     default: {
       return null;
