@@ -1,6 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { format } from "date-fns";
-import { useContext } from "react";
+import { createRef, useContext, useEffect } from "react";
 import { Navigate } from "react-router-dom";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
@@ -24,9 +24,15 @@ function getSubmissionComponent(performance: postedPerformance) {
 export default function InstructorInbox() {
   const { isAuthenticated } = useAuth0();
   const { performances } = useContext(performanceContext);
+  const lastMessageRef = createRef<HTMLLIElement>();
+  useEffect(() => {
+    lastMessageRef?.current?.scrollIntoView({ behavior: "smooth" });
+  }, [lastMessageRef]);
+
   if (!isAuthenticated) return <Navigate replace to="/" />;
   const formatDateTime = (dateTime: string) =>
     format(new Date(dateTime), "M/d/yy: p");
+
   return (
     <div className="InstructorInbox">
       <ul className="submissions">
@@ -40,6 +46,7 @@ export default function InstructorInbox() {
             </div>
           </li>
         ))}
+        <li className="dummy" ref={lastMessageRef} />
       </ul>
     </div>
   );

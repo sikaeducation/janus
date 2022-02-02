@@ -1,4 +1,15 @@
 @use "../../styles/colors";
+@use "../../styles/sizes";
 
 .InstructorInbox {
+  flex-basis: sizes.$content-width-large;
+  flex-shrink: 1;
+  .submissions {
+    height: 70vh;
+    overflow-y: auto;
+  }
+}
+
+.LearnerSubmission {
+  width: 100%;
 }
