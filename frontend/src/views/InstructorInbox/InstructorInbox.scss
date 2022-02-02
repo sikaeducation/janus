@@ -74,11 +74,25 @@
     grid-column: 2 / span 1;
     margin-bottom: 0;
   }
-  > time {
+  .meta {
     grid-row: 2 / span 1;
     grid-column: 2 / span 2;
     @include typography.breadcrumb-font;
     color: colors.$grey-7;
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: sizes.$s2;
+        &::before {
+          content: "·";
+          margin-right: sizes.$s2;
+        }
+      }
+    }
+    svg {
+      margin-left: sizes.$s1;
+      color: colors.$grey-8;
+    }
   }
   .evaluation-status {
     grid-row: 1 / span 2;

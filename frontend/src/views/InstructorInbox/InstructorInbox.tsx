@@ -7,6 +7,7 @@ import { groupBy } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faCheckCircle,
+  faExternalLinkAlt,
   faQuestionCircle,
   faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
@@ -63,9 +64,20 @@ function getSubmissionComponent(
         <div className="LearnerSubmission">
           <Gravatar email={performance.userId} size={60} />
           <p>
-            {performance.userId} submitted <a href={path}>{title}</a>.
+            {performance.userId} submitted{" "}
+            <a href={performance.payload.url}>{title}</a>.
           </p>
-          <time>{formatTime(performance.createdAt)}</time>
+          <ul className="meta">
+            <li>
+              <time>{formatTime(performance.createdAt)}</time>
+            </li>
+            <li>
+              <Link to={path} target="_blank" rel="noopener noreferrer">
+                Original activity
+              </Link>
+              <FontAwesomeIcon icon={faExternalLinkAlt} />
+            </li>
+          </ul>
           <span className="evaluation-status">{status}</span>
         </div>
       );
