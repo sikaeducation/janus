@@ -21,13 +21,33 @@
     border-right: none;
   }
   [type=submit]{
-    background-color: colors.$success-9;
-    color: colors.$success-2;
+    background-color: colors.$grey-8;
+    color: colors.$grey-2;
     border-radius: 0 sizes.$border-radius sizes.$border-radius 0;
     cursor: pointer;
     transition: background-color sizes.$transition;
     &:hover {
-      background-color: colors.$success-8;
+      background-color: colors.$grey-7;
+    }
+  }
+  h2 {
+    @include typography.heading-font-2;
+  }
+  .submissions {
+    width: 100%;
+    .previous-submission {
+      margin-bottom: sizes.$s5;
+      padding: sizes.$s7;
+      width: 100%;
+      border-radius: sizes.$border-radius;
+      &.accepted {
+        border: 4px solid colors.$success-8;
+        color: colors.$success-1;
+      }
+      &.rejected {
+        border: 4px solid colors.$failure-9;
+        color: colors.$failure-1;
+      }
     }
   }
 }

@@ -1,3 +1,4 @@
+/* eslint no-nested-ternary: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
@@ -16,7 +17,7 @@ import { performanceContext } from "../../contexts/performance";
 import "./LearnerSubmission.scss";
 
 type props = {
-  performance: postedPerformance;
+  performance: evaluatedSubmissionPerformance;
   post: hydratedPost;
 };
 
@@ -40,11 +41,7 @@ export default function LearnerSubmission({ performance, post }: props) {
     rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
-  const status =
-    statuses[
-      (performance as gradedSubmissionPerformance)?.evaluation?.status ||
-        "submitted"
-    ];
+  const status = statuses[performance?.evaluation?.status || "submitted"];
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -58,6 +55,7 @@ export default function LearnerSubmission({ performance, post }: props) {
     postEvaluation(evaluation);
     setFeedback("");
     setEvaluationStatus("");
+    setShowForm(false);
   };
   return (
     <div className="LearnerSubmission">
@@ -116,13 +114,13 @@ export default function LearnerSubmission({ performance, post }: props) {
             <input type="submit" value="Send Evaluation" />
           </div>
         </form>
-      ) : (
+      ) : !performance.evaluation ? (
         <div className="toggle-evaluation-form">
           <button type="button" onClick={() => setShowForm(true)}>
             Evaluate
           </button>
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

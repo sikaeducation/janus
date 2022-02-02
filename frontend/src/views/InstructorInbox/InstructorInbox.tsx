@@ -3,7 +3,6 @@ import { format } from "date-fns";
 import { createRef, useContext, useEffect, useRef } from "react";
 import { Link, Navigate } from "react-router-dom";
 import Gravatar from "react-gravatar";
-import { groupBy } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
@@ -48,13 +47,11 @@ function getSubmissionComponent(
 
 export default function InstructorInbox() {
   const { isAuthenticated } = useAuth0();
-  const { performances } = useContext(performanceContext);
+  const { performances, performancesByDay } = useContext(performanceContext);
   const { postsBySlug } = useContext(programContext);
   const lastMessageRef = createRef<HTMLLIElement>();
   const isInitialized = useRef<boolean>(false);
-  const performancesByDay = groupBy((performance: postedPerformance) => {
-    return format(new Date(performance.createdAt), "yyyy/MM/dd");
-  })(performances);
+
   useEffect(() => {
     if (performances.length > 0 && !isInitialized.current) {
       isInitialized.current = true;
@@ -66,7 +63,7 @@ export default function InstructorInbox() {
 
   return (
     <div className="InstructorInbox">
-      <h1>Student Activity</h1>
+      <h1>Learner Performances</h1>
       <div className="submissions">
         {Object.entries(performancesByDay).map(([date, performanceByDay]) => (
           <div key={date}>

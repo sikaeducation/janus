@@ -18,56 +18,30 @@ type props = {
 
 export default function CurriculumViewer({ program }: props) {
   const { user, isAuthenticated } = useAuth0();
-  const { performances, evaluations } = useContext(performanceContext);
+  const { performancesWithEvaluations } = useContext(performanceContext);
   const path = useLocation().pathname;
   if (!isAuthenticated) return <Navigate replace to="/" />;
   const currentPost =
     path === "/" ? program.root : getCurrentPost(program.posts, path);
   if (!currentPost) return <Navigate replace to="/404" />;
   const { unitLinks, crumbLinks, nextLink } = getLinks(program, currentPost);
-  const currentPerformances = performances.filter(
+  const currentPerformances = performancesWithEvaluations.filter(
     (performance) => performance.postSlug === currentPost.slug
   );
-  const currentPerformancesWithEvaluations = currentPerformances.map(
-    (performance) => {
-      return {
-        ...performance,
-        ...{
-          evaluation: evaluations.find(
-            (evaluation) => evaluation.performanceId === performance.id
-          ),
-        },
-      };
-    }
-  );
-  const allPerformancesWithEvaluations = performances.map((performance) => {
-    return {
-      ...performance,
-      ...{
-        evaluation: evaluations.find(
-          (evaluation) => evaluation.performanceId === performance.id
-        ),
-      },
-    };
-  });
 
   return (
     <div className="CurriculumViewer">
       <UnitNavigation units={unitLinks} />
       <CrumbNavigation links={crumbLinks} />
       <AppContent
-        performances={allPerformancesWithEvaluations}
+        performances={performancesWithEvaluations}
         content={currentPost.content}
       />
       <ActivityInteraction
         postSlug={currentPost.slug}
         postType={currentPost.type}
         userId={user?.email || ""}
-        performances={
-          currentPerformancesWithEvaluations as unknown as (postedPerformance & {
-            evaluation?: postedEvaluation;
-          })[]
-        }
+        performances={currentPerformances}
       />
       {nextLink && (
         <ActivityNavigation

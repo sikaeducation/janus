@@ -7,6 +7,9 @@ import ReactMarkdown from "react-markdown";
 import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
+import classNames from "classnames";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
@@ -39,51 +42,83 @@ export default function ActivityInteractionSubmission({
   const formatDateTime = (dateTime: string) =>
     format(new Date(dateTime), "M/d/yy: p");
   const getMessage = (status: string) => {
-    const statuses: Record<string, string> = {
-      accepted: "accepted",
-      rejected: "rejected",
+    const statuses: Record<string, JSX.Element> = {
+      accepted: (
+        <span>
+          accepted.{" "}
+          <FontAwesomeIcon
+            icon={faClipboardCheck}
+            className="indicator success"
+          />
+        </span>
+      ),
+      rejected: (
+        <span>
+          submitted.
+          <FontAwesomeIcon
+            icon={faClipboardCheck}
+            className="indicator failure"
+          />{" "}
+        </span>
+      ),
+      submitted: (
+        <span>
+          submitted.
+          <FontAwesomeIcon icon={faClipboardCheck} className="indicator" />{" "}
+        </span>
+      ),
     };
-    return statuses[status] || "submitted";
+    return statuses[status || "submitted"];
   };
   return (
     <div className="ActivityInteractionSubmission">
       {performances.length ? (
         <>
-          <p>Previous Submissions:</p>
+          <h2>Previous Submissions:</h2>
           <ul className="submissions">
             {performances.map((performance) => (
               <li key={performance.id}>
-                <a href={performance.payload.url}>
-                  {formatDateTime(performance.createdAt)}
-                </a>
                 {performance.evaluation ? (
                   <div>
-                    <p>
-                      This submission was{" "}
-                      {getMessage(performance.evaluation.status)}.
-                    </p>
-                    <ReactMarkdown
-                      children={performance.evaluation.feedback}
-                      remarkPlugins={[gfm, remarkUnwrapImages]}
-                      components={{
-                        code: ({ inline, className, children, ...props }) => {
-                          const match = /language-(\w+)/.exec(className || "");
-                          return !inline && match ? (
-                            <SyntaxHighlighter
-                              children={String(children).replace(/\n$/, "")}
-                              style={style}
-                              language={match[1]}
-                              PreTag="div"
-                              {...props}
-                            />
-                          ) : (
-                            <code className={className} {...props}>
-                              {children}
-                            </code>
-                          );
-                        },
-                      }}
-                    />
+                    <div
+                      className={classNames({
+                        "previous-submission ": true,
+                        rejected: performance.evaluation?.status === "rejected",
+                        accepted: performance.evaluation?.status === "accepted",
+                      })}
+                    >
+                      <a href={performance.payload.url}>
+                        {formatDateTime(performance.createdAt)}
+                      </a>
+                      <p>
+                        This submission was{" "}
+                        {getMessage(performance.evaluation.status)}.
+                      </p>
+                      <ReactMarkdown
+                        children={performance.evaluation.feedback}
+                        remarkPlugins={[gfm, remarkUnwrapImages]}
+                        components={{
+                          code: ({ inline, className, children, ...props }) => {
+                            const match = /language-(\w+)/.exec(
+                              className || ""
+                            );
+                            return !inline && match ? (
+                              <SyntaxHighlighter
+                                children={String(children).replace(/\n$/, "")}
+                                style={style}
+                                language={match[1]}
+                                PreTag="div"
+                                {...props}
+                              />
+                            ) : (
+                              <code className={className} {...props}>
+                                {children}
+                              </code>
+                            );
+                          },
+                        }}
+                      />
+                    </div>
                   </div>
                 ) : null}
               </li>
@@ -100,7 +135,9 @@ export default function ActivityInteractionSubmission({
           value={url}
           onChange={(event) => setUrl(event.target.value)}
         />
-        <button type="submit">Submit</button>
+        <button type="submit">
+          Submit{performances.length > 0 ? " another" : null}
+        </button>
       </form>
     </div>
   );

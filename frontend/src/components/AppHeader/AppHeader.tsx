@@ -1,4 +1,4 @@
-/* eslint @typescript-eslint/no-non-null-assertion: "off" */
+/* eslint @typescript-eslint/no-non-null-assertion: "off", no-nested-ternary: "off" */
 import "./AppHeader.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -9,7 +9,7 @@ import LogoutButton from "../LogoutButton";
 import { programContext } from "../../contexts/program";
 
 function AppHeader() {
-  const { user, isAuthenticated } = useAuth0();
+  const { user, isAuthenticated, isLoading } = useAuth0();
   const { program } = useContext(programContext);
   const programLabel = program?.label || "";
 
@@ -19,12 +19,20 @@ function AppHeader() {
         <Link to="/">Sika</Link>
       </span>
       <div className="user-info">
-        {!isAuthenticated || !user ? (
-          <LoginButton />
+        {!isLoading ? (
+          !isAuthenticated || !user ? (
+            <LoginButton />
+          ) : (
+            <LogoutButton>
+              <img className="avatar" src={user.picture} alt={user.name} />
+            </LogoutButton>
+          )
         ) : (
-          <LogoutButton>
-            <img className="avatar" src={user.picture} alt={user.name} />
-          </LogoutButton>
+          <img
+            className="avatar"
+            src="/user-avatar-placeholder.png"
+            alt="user avatar placeholder"
+          />
         )}
         <div className="program-label">{programLabel}</div>
       </div>
