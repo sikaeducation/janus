@@ -8,6 +8,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
 import "./InstructorInbox.scss";
+import { programContext } from "../../contexts/program";
 
 const formatDateTime = (dateTime: string) =>
   format(new Date(dateTime), "M/d/yy: p");
@@ -49,13 +50,12 @@ function getSubmissionComponent(performance: postedPerformance) {
 export default function InstructorInbox() {
   const { isAuthenticated } = useAuth0();
   const { performances } = useContext(performanceContext);
+  const { postsBySlug } = useContext(programContext);
   const lastMessageRef = createRef<HTMLLIElement>();
   const isInitialized = useRef<boolean>(false);
   const performancesByDay = groupBy((performance: postedPerformance) => {
     return format(new Date(performance.createdAt), "yyyy/MM/dd");
   })(performances);
-  console.log(performancesByDay);
-
   useEffect(() => {
     if (performances.length > 0 && !isInitialized.current) {
       isInitialized.current = true;
