@@ -5,7 +5,11 @@ import { Link, Navigate } from "react-router-dom";
 import Gravatar from "react-gravatar";
 import { groupBy } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheckCircle,
+  faQuestionCircle,
+  faTimesCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
 import "./InstructorInbox.scss";
 import { programContext } from "../../contexts/program";
@@ -17,37 +21,52 @@ const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
 function getSubmissionComponent(
   performance: postedPerformance,
-  postsBySlug: Record<string, hydratedPost>
+  post: hydratedPost
 ) {
-  const title =
-    postsBySlug[performance.postSlug].label.short ||
-    postsBySlug[performance.postSlug].label.full;
-  const { path } = postsBySlug[performance.postSlug];
+  const title = post.label.short || post.label.full;
+  const { path } = post;
 
   switch (performance.type) {
     case "view": {
       const checks = {
         1: <FontAwesomeIcon icon={faCheckCircle} className="failure" />,
-        2: <FontAwesomeIcon icon={faCheckCircle} className="warning" />,
+        2: <FontAwesomeIcon icon={faCheckCircle} className="pending" />,
         3: <FontAwesomeIcon icon={faCheckCircle} className="success" />,
-      };
+      } as const;
       return (
-        <div className="LearnerSubmission">
+        <div className="LearnerViewing">
           <Gravatar email={performance.userId} size={60} />
           <p>
             {performance.userId} read <Link to={path}>{title}</Link>.
           </p>
+          <time>{formatTime(performance.createdAt)}</time>
           <span className="confidence-level">
             {checks[performance.payload.confidenceLevel]}
           </span>
-          <time>{formatTime(performance.createdAt)}</time>
         </div>
       );
     }
     case "submission": {
+      const statuses = {
+        submitted: (
+          <FontAwesomeIcon icon={faQuestionCircle} className="pending" />
+        ),
+        rejected: <FontAwesomeIcon icon={faTimesCircle} className="failure" />,
+        accepted: <FontAwesomeIcon icon={faCheckCircle} className="success" />,
+      } as const;
+      const status =
+        statuses[
+          (performance as gradedSubmissionPerformance)?.evaluation?.status ||
+            "submitted"
+        ];
       return (
-        <div>
-          <a href={performance.payload.url}>Submission</a>
+        <div className="LearnerSubmission">
+          <Gravatar email={performance.userId} size={60} />
+          <p>
+            {performance.userId} submitted <a href={path}>{title}</a>.
+          </p>
+          <time>{formatTime(performance.createdAt)}</time>
+          <span className="evaluation-status">{status}</span>
         </div>
       );
     }
@@ -82,7 +101,10 @@ export default function InstructorInbox() {
             <ul>
               {performanceByDay.map((performance) => (
                 <li key={performance.id}>
-                  {getSubmissionComponent(performance, postsBySlug)}
+                  {getSubmissionComponent(
+                    performance,
+                    postsBySlug[performance.postSlug]
+                  )}
                 </li>
               ))}
               <li className="dummy" ref={lastMessageRef} />

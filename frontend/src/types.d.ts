@@ -71,6 +71,18 @@ type rawSubmissionPerformance = getRawPerformance<
 >;
 type postedSubmissionPerformance =
   getPostedPerformance<rawSubmissionPerformance>;
+type gradedSubmissionPerformance = postedSubmissionPerformance & {
+  evaluation: {
+    id: number;
+    status: "accepted" | "rejected";
+    feedback: string;
+    createdAt: string;
+    updatedAt: string;
+  };
+};
 
 type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
-type postedPerformance = postedViewPerformance | postedSubmissionPerformance;
+type postedPerformance =
+  | postedViewPerformance
+  | postedSubmissionPerformance
+  | gradedSubmissionPerformance;
