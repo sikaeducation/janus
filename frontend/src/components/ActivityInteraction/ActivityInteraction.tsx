@@ -7,7 +7,7 @@ import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
 
 type props = {
   postType: postType;
-  performances: postedPerformance[];
+  performances: (postedPerformance & { evaluation?: postedEvaluation })[];
   userId: string;
   postSlug: string;
 };

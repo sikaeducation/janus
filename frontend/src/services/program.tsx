@@ -1,7 +1,4 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
-import { useContext, useEffect, useState } from "react";
-import { programContext } from "../contexts/program";
-
 function getNextLink(
   posts: hydratedPost[],
   currentPost: hydratedPost,

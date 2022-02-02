@@ -12,7 +12,9 @@ import { last } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 
-function getPerformanceIndicator(performance: postedPerformance) {
+function getPerformanceIndicator(
+  performance: postedPerformance & { evaluation?: postedEvaluation }
+) {
   switch (performance.type) {
     case "view": {
       const indicators = {
@@ -58,7 +60,7 @@ function getPerformanceIndicator(performance: postedPerformance) {
           <FontAwesomeIcon
             icon={faClipboardCheck}
             size="xs"
-            className="indicator accepted"
+            className="indicator success"
             title="Your latest submission was accepted!"
           />
         ),
@@ -71,8 +73,8 @@ function getPerformanceIndicator(performance: postedPerformance) {
           />
         ),
       };
-      const { url } = performance.payload;
-      return indicators[url] || indicators.submitted;
+      const status = performance?.evaluation?.status || "";
+      return indicators[status] || indicators.submitted;
     }
     default: {
       return null;

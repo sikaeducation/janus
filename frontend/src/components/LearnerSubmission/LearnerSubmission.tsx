@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
   faClipboardCheck,
@@ -23,6 +24,7 @@ const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
 export default function LearnerSubmission({ performance, post }: props) {
   const [feedback, setFeedback] = useState("");
+  const { user } = useAuth0();
   const [evaluationStatus, setEvaluationStatus] = useState("");
   const [showForm, setShowForm] = useState(false);
   const { postEvaluation } = useContext(performanceContext);
@@ -47,6 +49,9 @@ export default function LearnerSubmission({ performance, post }: props) {
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     const evaluation = {
+      performanceId: performance.id,
+      learnerId: performance.userId,
+      evaluatorId: user?.email || "",
       feedback,
       status: evaluationStatus as "accepted" | "rejected",
     };

@@ -58,10 +58,24 @@ type getPostedPerformance<RawPerformance> = RawPerformance & {
   updatedAt: string;
 };
 
+type rawEvaluation = {
+  performanceId: number;
+  status: "accepted" | "rejected";
+  evaluatorId: string;
+  learnerId: string;
+  feedback: string;
+};
+type postedEvaluation = rawEvaluation & {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
+type confidenceLevel = 1 | 2 | 3;
 type rawViewPerformance = getRawPerformance<
   "view",
   {
-    confidenceLevel: 1 | 2 | 3;
+    confidenceLevel: confidenceLevel;
   }
 >;
 type postedViewPerformance = getPostedPerformance<rawViewPerformance>;

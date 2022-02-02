@@ -11,6 +11,8 @@ import programs from "./programs";
 import socketAuth from "../services/socket-auth";
 import performanceHandlers from "./performances";
 
+type SikaSocket = Socket & { email?: string; role?: string };
+
 dotenv.config();
 
 const app = express();
@@ -27,10 +29,11 @@ const io = new Server(socketServer, {
   },
 });
 io.use(socketAuth);
-io.on("connection", (socket: Socket & { role?: string }) => {
+io.on("connection", (socket: SikaSocket) => {
   if (socket.role === "coach") {
     socket.join("coaches");
   }
+  socket.join(socket.email || "");
 });
 io.on("connection", performanceHandlers(io));
 

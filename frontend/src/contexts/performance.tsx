@@ -26,16 +26,21 @@ export function PerformanceProvider({ children }: props) {
   useSocketHandlers({
     "list-performances": (retrievedPerformances: postedPerformance[]) =>
       setPerformances(retrievedPerformances),
+    "list-evaluations": (retrievedEvaluations: postedEvaluation[]) =>
+      setEvaluations(retrievedEvaluations),
     "new-performance": (performance: postedPerformance) =>
       setPerformances((previous) => [...previous, performance]),
     "new-performance-notice": (performance: postedPerformance) =>
       setToasts([...toasts, performance.userId]),
-    "evaluate-performance": (evaluation: postedEvaluation) =>
+    "new-evaluation": (evaluation: postedEvaluation) =>
       setEvaluations((previous) => [...previous, evaluation]),
+    "new-evaluation-notice": (evaluation: postedEvaluation) =>
+      setToasts([...toasts, evaluation.status]),
   });
 
   useEffect(() => {
     socket.emit("list-performances");
+    socket.emit("list-evaluations");
   }, [socket]);
 
   const postPerformance = (performance: rawPerformance) => {

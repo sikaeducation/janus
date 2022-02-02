@@ -18,7 +18,7 @@ type props = {
 
 export default function CurriculumViewer({ program }: props) {
   const { user, isAuthenticated } = useAuth0();
-  const { performances } = useContext(performanceContext);
+  const { performances, evaluations } = useContext(performanceContext);
   const path = useLocation().pathname;
   if (!isAuthenticated) return <Navigate replace to="/" />;
   const currentPost =
@@ -28,17 +28,46 @@ export default function CurriculumViewer({ program }: props) {
   const currentPerformances = performances.filter(
     (performance) => performance.postSlug === currentPost.slug
   );
+  const currentPerformancesWithEvaluations = currentPerformances.map(
+    (performance) => {
+      return {
+        ...performance,
+        ...{
+          evaluation: evaluations.find(
+            (evaluation) => evaluation.performanceId === performance.id
+          ),
+        },
+      };
+    }
+  );
+  const allPerformancesWithEvaluations = performances.map((performance) => {
+    return {
+      ...performance,
+      ...{
+        evaluation: evaluations.find(
+          (evaluation) => evaluation.performanceId === performance.id
+        ),
+      },
+    };
+  });
 
   return (
     <div className="CurriculumViewer">
       <UnitNavigation units={unitLinks} />
       <CrumbNavigation links={crumbLinks} />
-      <AppContent performances={performances} content={currentPost.content} />
+      <AppContent
+        performances={allPerformancesWithEvaluations}
+        content={currentPost.content}
+      />
       <ActivityInteraction
         postSlug={currentPost.slug}
         postType={currentPost.type}
         userId={user?.email || ""}
-        performances={currentPerformances}
+        performances={
+          currentPerformancesWithEvaluations as unknown as (postedPerformance & {
+            evaluation?: postedEvaluation;
+          })[]
+        }
       />
       {nextLink && (
         <ActivityNavigation
