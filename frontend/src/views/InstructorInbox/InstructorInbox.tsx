@@ -15,7 +15,15 @@ const formatDateTime = (dateTime: string) =>
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
-function getSubmissionComponent(performance: postedPerformance) {
+function getSubmissionComponent(
+  performance: postedPerformance,
+  postsBySlug: Record<string, hydratedPost>
+) {
+  const title =
+    postsBySlug[performance.postSlug].label.short ||
+    postsBySlug[performance.postSlug].label.full;
+  const { path } = postsBySlug[performance.postSlug];
+
   switch (performance.type) {
     case "view": {
       const checks = {
@@ -27,8 +35,7 @@ function getSubmissionComponent(performance: postedPerformance) {
         <div className="LearnerSubmission">
           <Gravatar email={performance.userId} size={60} />
           <p>
-            {performance.userId} read{" "}
-            <Link to="#something">{performance.postSlug}</Link>.
+            {performance.userId} read <Link to={path}>{title}</Link>.
           </p>
           <span className="confidence-level">
             {checks[performance.payload.confidenceLevel]}
@@ -75,7 +82,7 @@ export default function InstructorInbox() {
             <ul>
               {performanceByDay.map((performance) => (
                 <li key={performance.id}>
-                  {getSubmissionComponent(performance)}
+                  {getSubmissionComponent(performance, postsBySlug)}
                 </li>
               ))}
               <li className="dummy" ref={lastMessageRef} />
