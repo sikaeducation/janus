@@ -5,18 +5,11 @@ import { Link, Navigate } from "react-router-dom";
 import Gravatar from "react-gravatar";
 import { groupBy } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faCheck,
-  faClipboardCheck,
-  faExternalLinkAlt,
-  faQuestionCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
 import "./InstructorInbox.scss";
 import { programContext } from "../../contexts/program";
-
-const formatDateTime = (dateTime: string) =>
-  format(new Date(dateTime), "M/d/yy: p");
+import LearnerSubmission from "../../components/LearnerSubmission";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
@@ -48,43 +41,7 @@ function getSubmissionComponent(
       );
     }
     case "submission": {
-      const statuses = {
-        submitted: (
-          <FontAwesomeIcon icon={faQuestionCircle} className="pending" />
-        ),
-        rejected: (
-          <FontAwesomeIcon icon={faClipboardCheck} className="failure" />
-        ),
-        accepted: (
-          <FontAwesomeIcon icon={faClipboardCheck} className="success" />
-        ),
-      } as const;
-      const status =
-        statuses[
-          (performance as gradedSubmissionPerformance)?.evaluation?.status ||
-            "submitted"
-        ];
-      return (
-        <div className="LearnerSubmission">
-          <Gravatar email={performance.userId} size={60} />
-          <p>
-            {performance.userId} submitted{" "}
-            <a href={performance.payload.url}>{title}</a>.
-          </p>
-          <ul className="meta">
-            <li>
-              <time>{formatTime(performance.createdAt)}</time>
-            </li>
-            <li>
-              <Link to={path} target="_blank" rel="noopener noreferrer">
-                Original activity
-              </Link>
-              <FontAwesomeIcon icon={faExternalLinkAlt} />
-            </li>
-          </ul>
-          <span className="evaluation-status">{status}</span>
-        </div>
-      );
+      return <LearnerSubmission performance={performance} post={post} />;
     }
   }
 }

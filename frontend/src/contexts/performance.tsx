@@ -5,7 +5,9 @@ import { SocketContext } from "./socket";
 
 type performanceContext = {
   postPerformance: (performance: rawPerformance) => void;
+  postEvaluation: (evaluation: rawEvaluation) => void;
   performances: postedPerformance[];
+  evaluations: postedEvaluation[];
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -17,6 +19,7 @@ type props = {
 
 export function PerformanceProvider({ children }: props) {
   const [performances, setPerformances] = useState<postedPerformance[]>([]);
+  const [evaluations, setEvaluations] = useState<postedEvaluation[]>([]);
   const socket = useContext(SocketContext);
   const { toasts, setToasts } = useContext(toastContext);
 
@@ -25,9 +28,10 @@ export function PerformanceProvider({ children }: props) {
       setPerformances(retrievedPerformances),
     "new-performance": (performance: postedPerformance) =>
       setPerformances((previous) => [...previous, performance]),
-    "new-performance-notice": (performance: postedPerformance) => {
-      return setToasts([...toasts, performance.userId]);
-    },
+    "new-performance-notice": (performance: postedPerformance) =>
+      setToasts([...toasts, performance.userId]),
+    "evaluate-performance": (evaluation: postedEvaluation) =>
+      setEvaluations((previous) => [...previous, evaluation]),
   });
 
   useEffect(() => {
@@ -37,12 +41,17 @@ export function PerformanceProvider({ children }: props) {
   const postPerformance = (performance: rawPerformance) => {
     socket.emit("post-performance", performance);
   };
+  const postEvaluation = (evaluation: rawEvaluation) => {
+    socket.emit("post-evaluation", evaluation);
+  };
 
   return (
     <performanceContext.Provider
       value={{
         performances,
         postPerformance,
+        postEvaluation,
+        evaluations,
       }}
     >
       {children}

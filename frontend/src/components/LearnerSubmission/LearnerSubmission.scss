@@ -1,0 +1,137 @@
+@use "../../styles/colors";
+@use "../../styles/sizes";
+@use "../../styles/typography";
+@use "../../styles/buttons";
+
+.LearnerSubmission {
+  width: 100%;
+  display: grid;
+  align-items: center;
+  grid-template-columns: auto 1fr auto;
+  grid-template-rows: auto auto auto;
+  margin-bottom: sizes.$s7;
+  .failure {
+    color: colors.$failure-6;
+  }
+  .pending {
+    color: colors.$grey-6;
+  }
+  .success {
+    color: colors.$success-6;
+  }
+  > img {
+    grid-row: 1 / span 2;
+    grid-column: 1 / span 1;
+    display: inline-block;
+    width: 60px;
+    height: 60px;
+    overflow: hidden;
+    margin-right: sizes.$s4;
+  }
+  > p {
+    grid-row: 1 / span 1;
+    grid-column: 2 / span 1;
+    margin-bottom: 0;
+  }
+  .meta {
+    grid-row: 2 / span 1;
+    grid-column: 2 / span 2;
+    @include typography.breadcrumb-font;
+    color: colors.$grey-7;
+    li {
+      display: inline-block;
+      & + li {
+        margin-left: sizes.$s2;
+        &::before {
+          content: "·";
+          margin-right: sizes.$s2;
+        }
+      }
+    }
+    svg {
+      margin-left: sizes.$s1;
+      color: colors.$grey-8;
+    }
+  }
+  .evaluation-status {
+    grid-row: 1 / span 2;
+    grid-column: 3 / span 1;
+    margin-right: sizes.$s4;
+    margin-left: sizes.$s2;
+    margin-bottom: sizes.$s4;
+  }
+  > .toggle-evaluation-form {
+    grid-row: 3 / span 1;
+    grid-column: 2 / span 1;
+    text-align: right;
+    button {
+      display: inline-block;
+      background-color: colors.$grey-9;
+      color: colors.$grey-3;
+      border: none;
+      padding: sizes.$s1 sizes.$s4;
+      border-radius: sizes.$border-radius;
+      @include buttons.button-shadow-small;
+      font-size: sizes.$f3;
+    }
+  }
+  > form {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
+    .feedback {
+      width: 100%;
+      height: sizes.$s11;
+      resize: none;
+      border-radius: sizes.$border-radius;
+      border: 1px solid colors.$grey-8;
+      overflow-y: auto;
+      padding: sizes.$s4;
+      @include typography.code-font;
+      font-size: sizes.$f3;
+      margin-left: 2px; // Makes left focus border visible
+    }
+    .status-buttons {
+      display: flex;
+      flex-flow: row wrap;
+      justify-content: flex-end;
+      margin-top: sizes.$s1;
+      margin-bottom: sizes.$s2;
+      button {
+        border-radius: sizes.$border-radius;
+        background-color: transparent;
+        border: none;
+        cursor: pointer;
+        font-size: sizes.$f8;
+        margin-left: sizes.$s1;
+        margin-right: sizes.$s3;
+      }
+      :not(.active) {
+        svg {
+          color: colors.$grey-7;
+        }
+      }
+    }
+    .submission-container {
+      text-align: right;
+      [type=button]{
+        display: inline-block;
+        border: none;
+        text-decoration: underline;
+        background: transparent;
+        margin-right: sizes.$s5;
+        cursor: pointer;
+      }
+      [type=submit] {
+        display: inline-block;
+        background-color: colors.$primary-5;
+        color: colors.$white;
+        font-weight: 700;
+        border: none;
+        padding: sizes.$s2 sizes.$s4;
+        @include buttons.button-shadow-small;
+        border-radius: sizes.$border-radius;
+        cursor: pointer;
+      }
+    }
+  }
+}

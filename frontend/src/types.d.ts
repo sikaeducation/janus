@@ -56,6 +56,16 @@ type getPostedPerformance<RawPerformance> = RawPerformance & {
   updatedAt: string;
 };
 
+type rawEvaluation = {
+  status: "accepted" | "rejected";
+  feedback: string;
+};
+type postedEvaluation = rawEvaluation & {
+  id: number;
+  createdAt: string;
+  updatedAt: string;
+};
+
 type confidenceLevel = 1 | 2 | 3;
 type rawViewPerformance = getRawPerformance<
   "view",
@@ -72,13 +82,7 @@ type rawSubmissionPerformance = getRawPerformance<
 type postedSubmissionPerformance =
   getPostedPerformance<rawSubmissionPerformance>;
 type gradedSubmissionPerformance = postedSubmissionPerformance & {
-  evaluation: {
-    id: number;
-    status: "accepted" | "rejected";
-    feedback: string;
-    createdAt: string;
-    updatedAt: string;
-  };
+  evaluation: postedEvaluation;
 };
 
 type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
