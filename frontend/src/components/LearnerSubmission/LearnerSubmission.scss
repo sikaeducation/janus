@@ -134,4 +134,12 @@
       }
     }
   }
+  .existing-feedback {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
+    > .AppContent {
+      margin: 0 auto;
+      width: 80%;
+    }
+  }
 }

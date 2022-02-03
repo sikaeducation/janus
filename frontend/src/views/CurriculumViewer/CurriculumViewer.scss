@@ -3,4 +3,11 @@
 .CurriculumViewer {
   flex-basis: sizes.$content-width-large;
   flex-shrink: 1;
+  > .AppContent {
+    width: sizes.$content-width-large;
+    padding-bottom: sizes.$s9;
+    @media (max-width: sizes.$small-breakpoint){
+      padding-bottom: sizes.$s6;
+    }
+  }
 }

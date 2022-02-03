@@ -8,9 +8,9 @@ import { SocketContext } from "./socket";
 type performanceContext = {
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
-  performances: postedPerformance[];
-  performancesWithEvaluations: evaluatedPerformance[];
-  performancesByDay: Record<string, evaluatedPerformance[]>;
+  performances: evaluatedSubmissionPerformance[];
+  performancesWithEvaluations: evaluatedSubmissionPerformance[];
+  performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
 };
 export const performanceContext = createContext<performanceContext>(
@@ -22,17 +22,20 @@ type props = {
 };
 
 export function PerformanceProvider({ children }: props) {
-  const [performances, setPerformances] = useState<postedPerformance[]>([]);
+  const [performances, setPerformances] = useState<
+    evaluatedSubmissionPerformance[]
+  >([]);
   const [evaluations, setEvaluations] = useState<postedEvaluation[]>([]);
   const socket = useContext(SocketContext);
   const { toasts, setToasts } = useContext(toastContext);
 
   useSocketHandlers({
-    "list-performances": (retrievedPerformances: evaluatedPerformance[]) =>
-      setPerformances(retrievedPerformances),
+    "list-performances": (
+      retrievedPerformances: evaluatedSubmissionPerformance[]
+    ) => setPerformances(retrievedPerformances),
     "list-evaluations": (retrievedEvaluations: postedEvaluation[]) =>
       setEvaluations(retrievedEvaluations),
-    "new-performance": (performance: postedPerformance) =>
+    "new-performance": (performance: evaluatedSubmissionPerformance) =>
       setPerformances((previous) => [...previous, performance]),
     "new-performance-notice": (performance: postedPerformance) =>
       setToasts([...toasts, performance.userId]),
@@ -63,9 +66,11 @@ export function PerformanceProvider({ children }: props) {
       },
     };
   });
-  const performancesByDay = groupBy((performance: evaluatedPerformance) => {
-    return format(new Date(performance.createdAt), "yyyy/MM/dd");
-  })(performancesWithEvaluations);
+  const performancesByDay = groupBy(
+    (performance: evaluatedSubmissionPerformance) => {
+      return format(new Date(performance.createdAt), "yyyy/MM/dd");
+    }
+  )(performancesWithEvaluations);
 
   return (
     <performanceContext.Provider

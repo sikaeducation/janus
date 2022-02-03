@@ -72,9 +72,7 @@ export default function ProgramViewer({ program }: props) {
           </li>
           {tree}
         </ul>
-        {currentPost ? (
-          <AppContent performances={[]} content={currentPost.content} />
-        ) : null}
+        {currentPost ? <AppContent content={currentPost.content} /> : null}
       </div>
     </div>
   );

@@ -3,7 +3,7 @@ import { Knex } from "knex";
 export async function up(knex: Knex): Promise<void> {
   return knex.schema.createTable("evaluation", (table) => {
     table.increments();
-    table.timestamps();
+    table.timestamps(false, true, true);
     table.text("feedback");
     table.string("status");
     table.string("learnerId");

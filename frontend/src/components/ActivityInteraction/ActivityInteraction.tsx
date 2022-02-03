@@ -7,7 +7,7 @@ import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
 
 type props = {
   postType: postType;
-  performances: (postedPerformance & { evaluation?: postedEvaluation })[];
+  performances: evaluatedSubmissionPerformance[];
   userId: string;
   postSlug: string;
 };
@@ -25,7 +25,7 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={performances as postedViewPerformance[]}
+        performances={performances as unknown as postedViewPerformance[]}
       />
     ),
     exercise: (
@@ -33,7 +33,7 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={performances as postedSubmissionPerformance[]}
+        performances={performances}
       />
     ),
     root: null,

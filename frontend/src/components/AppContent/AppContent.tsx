@@ -6,15 +6,14 @@ import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Link } from "react-router-dom";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, useContext } from "react";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import { performanceContext } from "../../contexts/performance";
 
-function getPerformanceIndicator(
-  performance: postedPerformance & { evaluation?: postedEvaluation }
-) {
+function getPerformanceIndicator(performance: evaluatedPerformance) {
   switch (performance.type) {
     case "view": {
       const indicators = {
@@ -73,7 +72,9 @@ function getPerformanceIndicator(
           />
         ),
       };
-      const status = performance?.evaluation?.status || "";
+      const status =
+        (performance as evaluatedSubmissionPerformance)?.evaluation?.status ||
+        "";
       return indicators[status] || indicators.submitted;
     }
     default: {
@@ -83,11 +84,11 @@ function getPerformanceIndicator(
 }
 
 type props = {
-  performances: postedPerformance[];
   content: string;
 };
 
-export default function AppContent({ content, performances }: props) {
+export default function AppContent({ content }: props) {
+  const { performancesWithEvaluations } = useContext(performanceContext);
   return (
     <article className="AppContent">
       <ReactMarkdown
@@ -97,7 +98,7 @@ export default function AppContent({ content, performances }: props) {
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal = href?.match(/^(https?:)?\/\//);
             const slug = !isExternal && last(href?.split("/"));
-            const currentPerformances = performances.filter(
+            const currentPerformances = performancesWithEvaluations.filter(
               (performance) => performance.postSlug === slug
             );
             const lastPerformance = last(currentPerformances);

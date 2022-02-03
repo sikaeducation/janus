@@ -14,23 +14,33 @@ import { useContext, useState } from "react";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
+import AppContent from "../AppContent";
 import "./LearnerSubmission.scss";
 
+const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
+const formatDateTime = (dateTime: string | undefined) => {
+  if (!dateTime) return "";
+  return format(new Date(dateTime), "M/d/yy p");
+};
+
 type props = {
-  performance: evaluatedSubmissionPerformance;
+  submittedPerformance: evaluatedSubmissionPerformance;
   post: hydratedPost;
 };
 
-const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
-
-export default function LearnerSubmission({ performance, post }: props) {
+export default function LearnerSubmission({
+  submittedPerformance,
+  post,
+}: props) {
   const [feedback, setFeedback] = useState("");
   const { user } = useAuth0();
+  const role = (user && user["https://sikaeducation.com/role"]) || "";
   const [evaluationStatus, setEvaluationStatus] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const { postEvaluation } = useContext(performanceContext);
+  const { performancesWithEvaluations, postEvaluation } =
+    useContext(performanceContext);
 
-  if (performance.type !== "submission") {
+  if (submittedPerformance.type !== "submission") {
     return null;
   }
   const title = post.label.short || post.label.full;
@@ -41,13 +51,14 @@ export default function LearnerSubmission({ performance, post }: props) {
     rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
-  const status = statuses[performance?.evaluation?.status || "submitted"];
+  const status =
+    statuses[submittedPerformance?.evaluation?.status || "submitted"];
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     const evaluation = {
-      performanceId: performance.id,
-      learnerId: performance.userId,
+      performanceId: submittedPerformance.id,
+      learnerId: submittedPerformance.userId,
       evaluatorId: user?.email || "",
       feedback,
       status: evaluationStatus as "accepted" | "rejected",
@@ -57,16 +68,26 @@ export default function LearnerSubmission({ performance, post }: props) {
     setEvaluationStatus("");
     setShowForm(false);
   };
+
+  const previousPerformances = performancesWithEvaluations.filter(
+    (performance) => {
+      return (
+        performance.userId === submittedPerformance.userId &&
+        performance.postSlug === submittedPerformance.postSlug &&
+        performance.id !== submittedPerformance.id
+      );
+    }
+  );
   return (
     <div className="LearnerSubmission">
-      <Gravatar email={performance.userId} size={60} />
+      <Gravatar email={submittedPerformance.userId} size={60} />
       <p>
-        {performance.userId} submitted{" "}
-        <a href={performance.payload.url}>{title}</a>.
+        {submittedPerformance.userId} submitted{" "}
+        <a href={submittedPerformance.payload.url}>{title}</a>.
       </p>
       <ul className="meta">
         <li>
-          <time>{formatTime(performance.createdAt)}</time>
+          <time>{formatTime(submittedPerformance.createdAt)}</time>
         </li>
         <li>
           <Link to={path} target="_blank" rel="noopener noreferrer">
@@ -78,6 +99,29 @@ export default function LearnerSubmission({ performance, post }: props) {
       <span className="evaluation-status">{status}</span>
       {showForm ? (
         <form onSubmit={handleSubmit}>
+          {previousPerformances.length > 0 ? (
+            <>
+              <p>Previous feedback</p>
+              <ul className="previous-feedback">
+                {previousPerformances.map((performance) => (
+                  <li key={performance.id}>
+                    <div>
+                      <a href={performance.payload.url}>
+                        <time>
+                          {formatDateTime(
+                            performance.evaluation?.createdAt || ""
+                          )}
+                        </time>
+                      </a>
+                      <AppContent
+                        content={performance.evaluation?.feedback || ""}
+                      />
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </>
+          ) : null}
           <label htmlFor="feedback">Feedback:</label>
           <textarea
             onChange={(event) => setFeedback(event.target.value)}
@@ -114,13 +158,19 @@ export default function LearnerSubmission({ performance, post }: props) {
             <input type="submit" value="Send Evaluation" />
           </div>
         </form>
-      ) : !performance.evaluation ? (
+      ) : !submittedPerformance.evaluation && role === "coach" ? (
         <div className="toggle-evaluation-form">
           <button type="button" onClick={() => setShowForm(true)}>
             Evaluate
           </button>
         </div>
-      ) : null}
+      ) : (
+        <div className="existing-feedback">
+          <AppContent
+            content={submittedPerformance?.evaluation?.feedback || ""}
+          />
+        </div>
+      )}
     </div>
   );
 }

@@ -2,6 +2,7 @@ import { Knex } from "knex";
 
 // eslint-disable-next-line import/prefer-default-export
 export async function seed(knex: Knex): Promise<void> {
+  await knex("evaluation").del();
   await knex("performance").del();
   await knex("performance").insert([
     {

@@ -2,22 +2,16 @@
 import { useState } from "react";
 import { format } from "date-fns";
 import "./ActivityInteractionSubmission.scss";
-import remarkUnwrapImages from "remark-unwrap-images";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
-import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
-import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import AppContent from "../AppContent";
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
   userId: string;
   postSlug: string;
-  performances: (postedSubmissionPerformance & {
-    evaluation?: postedEvaluation;
-  })[];
+  performances: evaluatedSubmissionPerformance[];
 };
 
 export default function ActivityInteractionSubmission({
@@ -45,7 +39,7 @@ export default function ActivityInteractionSubmission({
     const statuses: Record<string, JSX.Element> = {
       accepted: (
         <span>
-          accepted.{" "}
+          was accepted{" "}
           <FontAwesomeIcon
             icon={faClipboardCheck}
             className="indicator success"
@@ -54,7 +48,7 @@ export default function ActivityInteractionSubmission({
       ),
       rejected: (
         <span>
-          submitted.
+          was not accepted{" "}
           <FontAwesomeIcon
             icon={faClipboardCheck}
             className="indicator failure"
@@ -63,7 +57,7 @@ export default function ActivityInteractionSubmission({
       ),
       submitted: (
         <span>
-          submitted.
+          has not been evaluated yet{" "}
           <FontAwesomeIcon icon={faClipboardCheck} className="indicator" />{" "}
         </span>
       ),
@@ -72,55 +66,31 @@ export default function ActivityInteractionSubmission({
   };
   return (
     <div className="ActivityInteractionSubmission">
-      {performances.length ? (
+      {performances.length > 0 ? (
         <>
           <h2>Previous Submissions:</h2>
           <ul className="submissions">
             {performances.map((performance) => (
               <li key={performance.id}>
-                {performance.evaluation ? (
-                  <div>
-                    <div
-                      className={classNames({
-                        "previous-submission ": true,
-                        rejected: performance.evaluation?.status === "rejected",
-                        accepted: performance.evaluation?.status === "accepted",
-                      })}
-                    >
-                      <a href={performance.payload.url}>
-                        {formatDateTime(performance.createdAt)}
-                      </a>
-                      <p>
-                        This submission was{" "}
-                        {getMessage(performance.evaluation.status)}.
-                      </p>
-                      <ReactMarkdown
-                        children={performance.evaluation.feedback}
-                        remarkPlugins={[gfm, remarkUnwrapImages]}
-                        components={{
-                          code: ({ inline, className, children, ...props }) => {
-                            const match = /language-(\w+)/.exec(
-                              className || ""
-                            );
-                            return !inline && match ? (
-                              <SyntaxHighlighter
-                                children={String(children).replace(/\n$/, "")}
-                                style={style}
-                                language={match[1]}
-                                PreTag="div"
-                                {...props}
-                              />
-                            ) : (
-                              <code className={className} {...props}>
-                                {children}
-                              </code>
-                            );
-                          },
-                        }}
-                      />
-                    </div>
-                  </div>
-                ) : null}
+                <div
+                  className={classNames({
+                    "previous-submission ": true,
+                    rejected: performance.evaluation?.status === "rejected",
+                    accepted: performance.evaluation?.status === "accepted",
+                    pending: !performance.evaluation?.status,
+                  })}
+                >
+                  <a href={performance.payload.url}>
+                    {formatDateTime(performance.createdAt)}
+                  </a>
+                  <p>
+                    This submission{" "}
+                    {getMessage(performance?.evaluation?.status || "")}
+                  </p>
+                  {performance?.evaluation?.feedback ? (
+                    <AppContent content={performance?.evaluation?.feedback} />
+                  ) : null}
+                </div>
               </li>
             ))}
           </ul>

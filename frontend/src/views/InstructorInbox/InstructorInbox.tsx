@@ -40,7 +40,9 @@ function getSubmissionComponent(
       );
     }
     case "submission": {
-      return <LearnerSubmission performance={performance} post={post} />;
+      return (
+        <LearnerSubmission submittedPerformance={performance} post={post} />
+      );
     }
   }
 }
