@@ -6,6 +6,7 @@ import { toastContext } from "./toast";
 import { SocketContext } from "./socket";
 
 type performanceContext = {
+  postInboxPrompt: (broadcast: rawBroadcast) => void;
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
   performances: evaluatedSubmissionPerformance[];
@@ -56,6 +57,9 @@ export function PerformanceProvider({ children }: props) {
   const postEvaluation = (evaluation: rawEvaluation) => {
     socket.emit("post-evaluation", evaluation);
   };
+  const postInboxPrompt = (broadcast: rawBroadcast) => {
+    socket.emit("post-inbox-prompt", broadcast);
+  };
   const performancesWithEvaluations = performances.map((performance) => {
     return {
       ...performance,
@@ -80,6 +84,7 @@ export function PerformanceProvider({ children }: props) {
         performancesByDay,
         postPerformance,
         postEvaluation,
+        postInboxPrompt,
         evaluations,
       }}
     >

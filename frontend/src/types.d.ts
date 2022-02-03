@@ -91,3 +91,10 @@ type evaluatedSubmissionPerformance = postedSubmissionPerformance & {
 type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
 type postedPerformance = postedViewPerformance | postedSubmissionPerformance;
 type evaluatedPerformance = postedPerformance | evaluatedSubmissionPerformance;
+
+type rawBroadcast = {
+  slug: string;
+  prompt: string;
+  tags: string;
+  responseType: "markdown";
+};

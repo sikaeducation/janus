@@ -1,4 +1,74 @@
 @use "../../styles/typography";
+@use "../../styles/buttons";
+@use "../../styles/sizes";
+@use "../../styles/colors";
 
 .AppInbox {
+  width: sizes.$content-width-large;
+  h1 {
+    @include typography.heading-font-1;
+  }
+  form {
+    label {
+      @include typography.breadcrumb-font;
+    }
+    .question-prompt {
+      @include typography.code-font;
+      border-radius: sizes.$border-radius;
+      border-radius: sizes.$border-radius;
+      border: 1px solid colors.$grey-6;
+      height: sizes.$s11;
+      margin-bottom: sizes.$s4;
+      padding: sizes.$s4;
+      resize: none;
+      width: 100%;
+    }
+    input {
+      padding: sizes.$s2 sizes.$s4;
+      border-radius: sizes.$border-radius;
+      border: 1px solid colors.$grey-6;
+      margin-bottom: sizes.$s4;
+    }
+    .submission-section {
+      text-align: right;
+      [type=submit]{
+        display: inline-block;
+        cursor: pointer;
+        border: none;
+        border-radius: sizes.$border-radius;
+        background-color: colors.$grey-9;
+        @include buttons.button-shadow-small;
+      }
+    }
+  }
 }
+
+.InboxPromptDisplay {
+  .tag {
+    color: colors.$grey-6;
+    display: inline-block;
+    background-color: colors.$grey-9;
+    padding: 0 sizes.$s4;
+    @include typography.breadcrumb-font;
+    border-radius: sizes.$border-radius;
+    & + .tag {
+      margin-left: sizes.$s2;
+    }
+  }
+  .submission-section {
+    text-align: right;
+    button {
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      border-radius: sizes.$border-radius;
+      background-color: colors.$failure-9;
+      color: colors.$failure-1;
+      @include buttons.button-shadow-small;
+      padding: sizes.$s2 sizes.$s4;
+    }
+  }
+}
+
+.CoachInbox {}
+.StudentInbox {}
