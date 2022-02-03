@@ -21,8 +21,11 @@ function AppHeader() {
     <li key="2">
       <Link to="/activity">Activity</Link>
     </li>,
+    <li key="3">
+      <Link to="/inbox">Inbox</Link>
+    </li>,
     role === "coach" && (
-      <li key="3">
+      <li key="4">
         <Link to="/program-viewer">Program Viewer</Link>
       </li>
     ),

@@ -10,6 +10,7 @@ import { toastContext } from "../contexts/toast";
 
 import ToastNotification from "../components/ToastNotification";
 import { programContext } from "../contexts/program";
+import AppInbox from "./AppInbox";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
@@ -24,6 +25,7 @@ export default function AuthenticatedRoutes() {
         <Route path="/404" element={<AppMissing />} />
         {program ? (
           <>
+            <Route path="/inbox" element={<AppInbox />} />
             <Route path="/activity" element={<PerformanceList />} />
             <Route
               path="/program-viewer"
