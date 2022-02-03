@@ -37,8 +37,12 @@ function AppHeader() {
         <span className="logo">
           <Link to="/">Sika</Link>
         </span>
-        <ul className="links">{links}</ul>
-        <div className="program-label">{programLabel}</div>
+        {user ? (
+          <>
+            <ul className="links">{links}</ul>
+            <div className="program-label">{programLabel}</div>
+          </>
+        ) : null}
       </nav>
       <div className="user-info">
         {!isLoading ? (
