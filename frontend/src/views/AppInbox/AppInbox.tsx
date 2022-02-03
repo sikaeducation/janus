@@ -1,5 +1,7 @@
+/* eslint no-nested-ternary: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
+import Gravatar from "react-gravatar";
 import AppContent from "../../components/AppContent";
 import { performanceContext } from "../../contexts/performance";
 import "./AppInbox.scss";
@@ -30,12 +32,16 @@ export default function AppInbox() {
 
 function CoachInbox() {
   const [formShouldDisplay, setFormShouldDisplay] = useState<boolean>(true);
+  const [slug, setSlug] = useState<string>("");
   const [prompt, setPrompt] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [tagString, setTagString] = useState<string>("");
   const { startInboxPrompt, endInboxPrompt } = useContext(performanceContext);
 
-  const slug = generateSlug();
+  useEffect(() => {
+    const generatedSlug = generateSlug();
+    setSlug(generatedSlug);
+  }, [prompt]);
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -84,7 +90,12 @@ function CoachInbox() {
           </div>
         </form>
       ) : (
-        <InboxPromptDisplay endPrompt={endPrompt} tags={tags} prompt={prompt} />
+        <CoachInboxPromptDisplay
+          slug={slug}
+          endPrompt={endPrompt}
+          tags={tags}
+          prompt={prompt}
+        />
       )}
     </div>
   );
@@ -94,9 +105,11 @@ type props = {
   tags: string[];
   prompt: string;
   endPrompt: () => void;
+  slug: string;
 };
 
-function InboxPromptDisplay({ tags, prompt, endPrompt }: props) {
+function CoachInboxPromptDisplay({ slug, tags, prompt, endPrompt }: props) {
+  const { performances } = useContext(performanceContext);
   const handleEndPrompt = () => {
     endPrompt();
   };
@@ -115,11 +128,121 @@ function InboxPromptDisplay({ tags, prompt, endPrompt }: props) {
           End Prompt
         </button>
       </div>
+      <ul className="responses">
+        {performances
+          .filter((performance) => {
+            return performance.postSlug === slug;
+          })
+          .map((performance) => {
+            return (
+              <li key={performance.id}>
+                <div className="prompt-response">
+                  <Gravatar email={performance.userId} size={60} />
+                  <AppContent content={performance.payload.response || ""} />
+                </div>
+              </li>
+            );
+          })}
+      </ul>
     </div>
   );
 }
 
 function LearnerInbox() {
-  const { currentBroadcast } = useContext(performanceContext);
-  return <div className="StudentInbox">Student</div>;
+  const [formShouldDisplay, setFormShouldDisplay] = useState<boolean>(true);
+  const [response, setResponse] = useState<string>("");
+  const { currentBroadcast, postPerformance } = useContext(performanceContext);
+  const { user } = useAuth0();
+  const postResponse = (postedResponse: string) => {
+    postPerformance({
+      userId: user?.email || "",
+      postSlug: currentBroadcast?.slug || "",
+      type: "submission",
+      payload: {
+        response: postedResponse,
+        prompt: currentBroadcast?.prompt || "",
+      },
+    });
+    setFormShouldDisplay(false);
+  };
+
+  return (
+    <div className="LearnerInbox">
+      {currentBroadcast ? (
+        formShouldDisplay ? (
+          <LearnerInboxPromptResponseForm
+            response={response}
+            setResponse={setResponse}
+            postResponse={postResponse}
+            currentBroadcast={currentBroadcast}
+          />
+        ) : (
+          <LearnerInboxPromptResponseDisplay
+            response={response}
+            currentBroadcast={currentBroadcast}
+          />
+        )
+      ) : (
+        <p>Nothing for now!</p>
+      )}
+    </div>
+  );
+}
+
+function LearnerInboxPromptResponseDisplay({
+  currentBroadcast,
+  response,
+}: {
+  currentBroadcast: rawBroadcast;
+  response: string;
+}) {
+  const { prompt } = currentBroadcast;
+  return (
+    <>
+      <AppContent content={prompt} />
+      <AppContent content={response} />
+    </>
+  );
+}
+
+function LearnerInboxPromptResponseForm({
+  currentBroadcast,
+  postResponse,
+  response,
+  setResponse,
+}: {
+  currentBroadcast: rawBroadcast;
+  postResponse: (response: string) => void;
+  response: string;
+  setResponse: (response: string) => void;
+}) {
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    postResponse(response);
+  };
+  const { prompt } = currentBroadcast;
+
+  return (
+    <div className="StudentInbox">
+      <AppContent content={prompt} />
+      <div className="submission-section">
+        <form onSubmit={handleSubmit}>
+          <label htmlFor="response">Response</label>
+          <textarea
+            id="response"
+            className="response"
+            value={response}
+            onChange={(event) => {
+              setResponse(event.target.value);
+            }}
+          >
+            asdf
+          </textarea>
+          <div className="submission-section">
+            <input type="submit" value="Post Response" />
+          </div>
+        </form>
+      </div>
+    </div>
+  );
 }

@@ -82,7 +82,7 @@ type postedViewPerformance = getPostedPerformance<rawViewPerformance>;
 
 type rawSubmissionPerformance = getRawPerformance<
   "submission",
-  { url: string }
+  { url?: string; response?: string; prompt?: string }
 >;
 type gradedSubmissionPerformance = postedSubmissionPerformance & {
   evaluation: {
@@ -105,6 +105,6 @@ type postedPerformance =
 type rawBroadcast = {
   slug: string;
   prompt: string;
-  tags: string;
+  tags?: string;
   responseType: "markdown";
 };

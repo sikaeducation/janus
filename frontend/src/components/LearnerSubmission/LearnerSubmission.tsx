@@ -25,7 +25,7 @@ const formatDateTime = (dateTime: string | undefined) => {
 
 type props = {
   submittedPerformance: evaluatedSubmissionPerformance;
-  post: hydratedPost;
+  post?: hydratedPost;
 };
 
 export default function LearnerSubmission({
@@ -43,8 +43,8 @@ export default function LearnerSubmission({
   if (submittedPerformance.type !== "submission") {
     return null;
   }
-  const title = post.label.short || post.label.full;
-  const { path } = post;
+  const title = post?.label?.short || post?.label?.full || "";
+  const path = post?.path || "";
 
   const statuses = {
     submitted: <FontAwesomeIcon icon={faQuestionCircle} className="pending" />,
@@ -78,25 +78,39 @@ export default function LearnerSubmission({
       );
     }
   );
+
   return (
     <div className="LearnerSubmission">
       <Gravatar email={submittedPerformance.userId} size={60} />
-      <p>
-        {submittedPerformance.userId} submitted{" "}
-        <a href={submittedPerformance.payload.url}>{title}</a>.
-      </p>
+      {title ? (
+        <p>
+          {submittedPerformance.userId} submitted{" "}
+          <a href={submittedPerformance.payload.url}>{title}</a>.
+        </p>
+      ) : (
+        <p>{submittedPerformance.userId} answered a prompt:</p>
+      )}
       <ul className="meta">
         <li>
           <time>{formatTime(submittedPerformance.createdAt)}</time>
         </li>
-        <li>
-          <Link to={path} target="_blank" rel="noopener noreferrer">
-            Original activity
-          </Link>
-          <FontAwesomeIcon icon={faExternalLinkAlt} />
-        </li>
+        {path ? (
+          <li>
+            <Link to={path} target="_blank" rel="noopener noreferrer">
+              Original activity
+            </Link>
+            <FontAwesomeIcon icon={faExternalLinkAlt} />
+          </li>
+        ) : null}
       </ul>
       <span className="evaluation-status">{status}</span>
+      {submittedPerformance.payload.response &&
+      submittedPerformance.payload.prompt ? (
+        <div className="prompt-response">
+          <AppContent content={submittedPerformance.payload.prompt} />
+          <AppContent content={submittedPerformance.payload.response} />
+        </div>
+      ) : null}
       {showForm ? (
         <form onSubmit={handleSubmit}>
           {previousPerformances.length > 0 ? (
@@ -159,11 +173,13 @@ export default function LearnerSubmission({
           </div>
         </form>
       ) : !submittedPerformance.evaluation && role === "coach" ? (
-        <div className="toggle-evaluation-form">
-          <button type="button" onClick={() => setShowForm(true)}>
-            Evaluate
-          </button>
-        </div>
+        !submittedPerformance.payload.prompt ? (
+          <div className="toggle-evaluation-form">
+            <button type="button" onClick={() => setShowForm(true)}>
+              Evaluate
+            </button>
+          </div>
+        ) : null
       ) : (
         <div className="existing-feedback">
           <AppContent

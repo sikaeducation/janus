@@ -14,10 +14,10 @@ const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
 function getSubmissionComponent(
   performance: postedPerformance,
-  post: hydratedPost
+  post?: hydratedPost
 ) {
-  const title = post.label.short || post.label.full;
-  const { path } = post;
+  const title = post?.label?.short || post?.label?.full || "";
+  const path = post?.path || "";
 
   switch (performance.type) {
     case "view": {

@@ -134,6 +134,19 @@
       }
     }
   }
+  .prompt-response {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
+    > .AppContent {
+      width: 80%;
+      margin: 0 auto;
+      padding: sizes.$s2;
+    }
+    > .AppContent:nth-child(1) {
+      background-color: colors.$grey-9;
+      margin-bottom: sizes.$s4;
+    }
+  }
   .existing-feedback {
     grid-row: 3 / span 1;
     grid-column: 1 / span 2;
