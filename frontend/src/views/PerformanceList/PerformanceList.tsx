@@ -6,7 +6,7 @@ import Gravatar from "react-gravatar";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { performanceContext } from "../../contexts/performance";
-import "./InstructorInbox.scss";
+import "./PerformanceList.scss";
 import { programContext } from "../../contexts/program";
 import LearnerSubmission from "../../components/LearnerSubmission";
 
@@ -47,7 +47,7 @@ function getSubmissionComponent(
   }
 }
 
-export default function InstructorInbox() {
+export default function PerformanceList() {
   const { isAuthenticated } = useAuth0();
   const { performances, performancesByDay } = useContext(performanceContext);
   const { postsBySlug } = useContext(programContext);
@@ -64,8 +64,8 @@ export default function InstructorInbox() {
   if (!isAuthenticated) return <Navigate replace to="/" />;
 
   return (
-    <div className="InstructorInbox">
-      <h1>Learner Performances</h1>
+    <div className="PerformanceList">
+      <h1>Activity</h1>
       <div className="submissions">
         {Object.entries(performancesByDay).map(([date, performanceByDay]) => (
           <div key={date}>

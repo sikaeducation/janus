@@ -1,4 +1,4 @@
-test("InstructorInbox", () => {
+test("PerformanceList", () => {
   expect(true).toBe(true);
 });
 

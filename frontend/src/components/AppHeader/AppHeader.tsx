@@ -15,14 +15,14 @@ function AppHeader() {
   const programLabel = program?.label || "";
 
   const links = [
-    <li>
+    <li key="1">
       <Link to="/">Curriculum</Link>
     </li>,
-    <li>
-      <Link to="/inbox">Inbox</Link>
+    <li key="2">
+      <Link to="/activity">Activity</Link>
     </li>,
     role === "coach" && (
-      <li>
+      <li key="3">
         <Link to="/program-viewer">Program Viewer</Link>
       </li>
     ),
