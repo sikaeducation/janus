@@ -6,13 +6,15 @@ import { toastContext } from "./toast";
 import { SocketContext } from "./socket";
 
 type performanceContext = {
-  postInboxPrompt: (broadcast: rawBroadcast) => void;
+  startInboxPrompt: (broadcast: rawBroadcast) => void;
+  endInboxPrompt: () => void;
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
   performances: evaluatedSubmissionPerformance[];
   performancesWithEvaluations: evaluatedSubmissionPerformance[];
   performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
+  currentBroadcast: rawBroadcast | null;
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -26,6 +28,9 @@ export function PerformanceProvider({ children }: props) {
   const [performances, setPerformances] = useState<
     evaluatedSubmissionPerformance[]
   >([]);
+  const [currentBroadcast, setCurrentBroadcast] = useState<rawBroadcast | null>(
+    null
+  );
   const [evaluations, setEvaluations] = useState<postedEvaluation[]>([]);
   const socket = useContext(SocketContext);
   const { toasts, setToasts } = useContext(toastContext);
@@ -44,6 +49,8 @@ export function PerformanceProvider({ children }: props) {
       setEvaluations((previous) => [...previous, evaluation]),
     "new-evaluation-notice": (evaluation: postedEvaluation) =>
       setToasts([...toasts, evaluation.status]),
+    "start-inbox-prompt": (broadcast: rawBroadcast) =>
+      setCurrentBroadcast(broadcast),
   });
 
   useEffect(() => {
@@ -57,8 +64,11 @@ export function PerformanceProvider({ children }: props) {
   const postEvaluation = (evaluation: rawEvaluation) => {
     socket.emit("post-evaluation", evaluation);
   };
-  const postInboxPrompt = (broadcast: rawBroadcast) => {
-    socket.emit("post-inbox-prompt", broadcast);
+  const startInboxPrompt = (broadcast: rawBroadcast) => {
+    socket.emit("start-inbox-prompt", broadcast);
+  };
+  const endInboxPrompt = () => {
+    socket.emit("end-inbox-prompt");
   };
   const performancesWithEvaluations = performances.map((performance) => {
     return {
@@ -84,8 +94,10 @@ export function PerformanceProvider({ children }: props) {
         performancesByDay,
         postPerformance,
         postEvaluation,
-        postInboxPrompt,
+        startInboxPrompt,
+        endInboxPrompt,
         evaluations,
+        currentBroadcast,
       }}
     >
       {children}

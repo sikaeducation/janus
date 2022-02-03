@@ -33,7 +33,7 @@ function CoachInbox() {
   const [prompt, setPrompt] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [tagString, setTagString] = useState<string>("");
-  const { postInboxPrompt } = useContext(performanceContext);
+  const { startInboxPrompt, endInboxPrompt } = useContext(performanceContext);
 
   const slug = generateSlug();
 
@@ -47,10 +47,11 @@ function CoachInbox() {
       tags: tagsArray.join(","),
       responseType: "markdown",
     } as const;
-    postInboxPrompt(broadcast);
+    startInboxPrompt(broadcast);
     setFormShouldDisplay(false);
   };
   const endPrompt = () => {
+    endInboxPrompt();
     setFormShouldDisplay(true);
   };
 
@@ -119,5 +120,6 @@ function InboxPromptDisplay({ tags, prompt, endPrompt }: props) {
 }
 
 function LearnerInbox() {
+  const { currentBroadcast } = useContext(performanceContext);
   return <div className="StudentInbox">Student</div>;
 }

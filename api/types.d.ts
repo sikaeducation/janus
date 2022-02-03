@@ -101,3 +101,10 @@ type postedPerformance =
   | postedViewPerformance
   | postedSubmissionPerformance
   | gradedSubmissionPerformance;
+
+type rawBroadcast = {
+  slug: string;
+  prompt: string;
+  tags: string;
+  responseType: "markdown";
+};

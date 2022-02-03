@@ -5,6 +5,23 @@ import Evaluation from "../data/models/Evaluation";
 
 type SikaSocket = Socket & { email?: string; role?: string };
 
+let currentBroadcast = null;
+
+const startInboxPrompt =
+  (socket: SikaSocket, io: Server) => (broadcast: rawBroadcast) => {
+    if (socket.role === "coach") {
+      // eslint-disable-next-line
+      currentBroadcast = broadcast;
+      io.emit("new-inbox-prompt", broadcast);
+    }
+  };
+const endInboxPrompt = (socket: SikaSocket, io: Server) => () => {
+  if (socket.role === "coach") {
+    // eslint-disable-next-line
+      currentBroadcast = null;
+    io.emit("end-inbox-prompt");
+  }
+};
 const postPerformance =
   (socket: SikaSocket, io: Server) => (performance: rawPerformance) => {
     return Performance.query()
@@ -74,5 +91,7 @@ const performanceHandlers =
     socket.on("list-evaluations", listEvaluations(socket));
     socket.on("post-performance", postPerformance(socket, io));
     socket.on("post-evaluation", postEvaluation(socket, io));
+    socket.on("start-inbox-prompt", startInboxPrompt(socket, io));
+    socket.on("end-inbox-prompt", endInboxPrompt(socket, io));
   };
 export default performanceHandlers;
