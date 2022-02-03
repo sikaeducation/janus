@@ -10,12 +10,29 @@
   @media (max-width: sizes.$small-breakpoint){
     margin-bottom: sizes.$s4;
   }
-  .logo {
-    @include typography.logo-font;
-    display: inline-block;
-    margin-top: -12px; // Visual alignment with user avatar
-    a {
-      text-decoration: none;
+  .primary-navigation {
+    .links {
+      margin-bottom: sizes.$s2;
+      li {
+        display: inline-block;
+        & + li {
+          margin-left: sizes.$s4;
+        }
+      }
+    }
+    .logo {
+      @include typography.logo-font;
+      display: inline-block;
+      margin-top: -12px; // Visual alignment with user avatar
+      a {
+        text-decoration: none;
+      }
+    }
+    .program-label {
+      @include typography.program-label-font;
+      @media (max-width: sizes.$small-breakpoint){
+        display: none;
+      }
     }
   }
   .user-info {
@@ -23,12 +40,6 @@
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: flex-end;
-    .program-label {
-      @include typography.program-label-font;
-      @media (max-width: sizes.$small-breakpoint){
-        display: none;
-      }
-    }
     .avatar {
       width: sizes.$s7;
       border-radius: sizes.$border-radius;

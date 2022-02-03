@@ -4,8 +4,6 @@
 @use "../../styles/buttons";
 
 .InstructorInbox {
-  // flex-basis: sizes.$content-width-large;
-  // flex-shrink: 1;
   h1 {
     @include typography.heading-font-1;
   }
@@ -15,7 +13,7 @@
   .submissions {
     height: 60vh;
     overflow-y: auto;
-    width: 600px;
+    width: sizes.$content-width-large;
   }
 }
 
@@ -49,18 +47,18 @@
   .confidence-level {
     grid-row: 1 / span 2;
     grid-column: 3 / span 1;
-    margin-right: sizes.$s4;
+    margin-right: sizes.$s6;
     margin-left: sizes.$s2;
     margin-bottom: sizes.$s4;
   }
 
-.failure {
-  color: colors.$failure-6;
-}
-.pending {
-  color: colors.$grey-6;
-}
-.success {
-  color: colors.$success-6;
-}
+  .failure {
+    color: colors.$failure-6;
+  }
+  .pending {
+    color: colors.$grey-6;
+  }
+  .success {
+    color: colors.$success-6;
+  }
 }

@@ -10,14 +10,33 @@ import { programContext } from "../../contexts/program";
 
 function AppHeader() {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  const role = (user && user["https://sikaeducation.com/role"]) || "";
   const { program } = useContext(programContext);
   const programLabel = program?.label || "";
 
+  const links = [
+    <li>
+      <Link to="/">Curriculum</Link>
+    </li>,
+    <li>
+      <Link to="/inbox">Inbox</Link>
+    </li>,
+    role === "coach" && (
+      <li>
+        <Link to="/program-viewer">Program Viewer</Link>
+      </li>
+    ),
+  ];
+
   return (
     <header className="AppHeader">
-      <span className="logo">
-        <Link to="/">Sika</Link>
-      </span>
+      <nav className="primary-navigation">
+        <span className="logo">
+          <Link to="/">Sika</Link>
+        </span>
+        <ul className="links">{links}</ul>
+        <div className="program-label">{programLabel}</div>
+      </nav>
       <div className="user-info">
         {!isLoading ? (
           !isAuthenticated || !user ? (
@@ -34,7 +53,6 @@ function AppHeader() {
             alt="user avatar placeholder"
           />
         )}
-        <div className="program-label">{programLabel}</div>
       </div>
     </header>
   );
