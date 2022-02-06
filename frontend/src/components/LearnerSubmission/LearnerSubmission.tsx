@@ -24,14 +24,11 @@ const formatDateTime = (dateTime: string | undefined) => {
 };
 
 type props = {
-  submittedPerformance: evaluatedSubmissionPerformance;
+  performance: evaluatedSubmissionPerformance;
   post?: hydratedPost;
 };
 
-export default function LearnerSubmission({
-  submittedPerformance,
-  post,
-}: props) {
+export default function LearnerSubmission({ performance, post }: props) {
   const [feedback, setFeedback] = useState("");
   const { user } = useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
@@ -40,7 +37,7 @@ export default function LearnerSubmission({
   const { performancesWithEvaluations, postEvaluation } =
     useContext(performanceContext);
 
-  if (submittedPerformance.type !== "submission") {
+  if (performance.type !== "submission") {
     return null;
   }
   const title = post?.label?.short || post?.label?.full || "";
@@ -51,14 +48,13 @@ export default function LearnerSubmission({
     rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
-  const status =
-    statuses[submittedPerformance?.evaluation?.status || "submitted"];
+  const status = statuses[performance?.evaluation?.status || "submitted"];
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     const evaluation = {
-      performanceId: submittedPerformance.id,
-      learnerId: submittedPerformance.userId,
+      performanceId: performance.id,
+      learnerId: performance.userId,
       evaluatorId: user?.email || "",
       feedback,
       status: evaluationStatus as "accepted" | "rejected",
@@ -70,29 +66,29 @@ export default function LearnerSubmission({
   };
 
   const previousPerformances = performancesWithEvaluations.filter(
-    (performance) => {
+    (evaluatedPerformance) => {
       return (
-        performance.userId === submittedPerformance.userId &&
-        performance.postSlug === submittedPerformance.postSlug &&
-        performance.id !== submittedPerformance.id
+        evaluatedPerformance.userId === performance.userId &&
+        evaluatedPerformance.postSlug === performance.postSlug &&
+        evaluatedPerformance.id !== performance.id
       );
     }
   );
 
   return (
     <div className="LearnerSubmission">
-      <Gravatar email={submittedPerformance.userId} size={60} />
+      <Gravatar default="identicon" email={performance.userId} size={60} />
       {title ? (
         <p>
-          {submittedPerformance.userId} submitted{" "}
-          <a href={submittedPerformance.payload.url}>{title}</a>.
+          {performance.userId} submitted{" "}
+          <a href={performance.payload.url}>{title}</a>.
         </p>
       ) : (
-        <p>{submittedPerformance.userId} answered a prompt:</p>
+        <p>{performance.userId} answered a prompt:</p>
       )}
       <ul className="meta">
         <li>
-          <time>{formatTime(submittedPerformance.createdAt)}</time>
+          <time>{formatTime(performance.createdAt)}</time>
         </li>
         {path ? (
           <li>
@@ -104,11 +100,10 @@ export default function LearnerSubmission({
         ) : null}
       </ul>
       <span className="evaluation-status">{status}</span>
-      {submittedPerformance.payload.response &&
-      submittedPerformance.payload.prompt ? (
+      {performance.payload.response && performance.payload.prompt ? (
         <div className="prompt-response">
-          <AppContent content={submittedPerformance.payload.prompt} />
-          <AppContent content={submittedPerformance.payload.response} />
+          <AppContent content={performance.payload.prompt} />
+          <AppContent content={performance.payload.response} />
         </div>
       ) : null}
       {showForm ? (
@@ -117,18 +112,18 @@ export default function LearnerSubmission({
             <>
               <p>Previous feedback</p>
               <ul className="previous-feedback">
-                {previousPerformances.map((performance) => (
-                  <li key={performance.id}>
+                {previousPerformances.map((previousPerformance) => (
+                  <li key={previousPerformance.id}>
                     <div>
-                      <a href={performance.payload.url}>
+                      <a href={previousPerformance.payload.url}>
                         <time>
                           {formatDateTime(
-                            performance.evaluation?.createdAt || ""
+                            previousPerformance.evaluation?.createdAt || ""
                           )}
                         </time>
                       </a>
                       <AppContent
-                        content={performance.evaluation?.feedback || ""}
+                        content={previousPerformance.evaluation?.feedback || ""}
                       />
                     </div>
                   </li>
@@ -172,8 +167,8 @@ export default function LearnerSubmission({
             <input type="submit" value="Send Evaluation" />
           </div>
         </form>
-      ) : !submittedPerformance.evaluation && role === "coach" ? (
-        !submittedPerformance.payload.prompt ? (
+      ) : !performance.evaluation && role === "coach" ? (
+        !performance.payload.prompt ? (
           <div className="toggle-evaluation-form">
             <button type="button" onClick={() => setShowForm(true)}>
               Evaluate
@@ -182,9 +177,7 @@ export default function LearnerSubmission({
         ) : null
       ) : (
         <div className="existing-feedback">
-          <AppContent
-            content={submittedPerformance?.evaluation?.feedback || ""}
-          />
+          <AppContent content={performance?.evaluation?.feedback || ""} />
         </div>
       )}
     </div>

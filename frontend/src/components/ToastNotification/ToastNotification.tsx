@@ -4,7 +4,7 @@ import "./ToastNotification.scss";
 function ToastNotification() {
   return (
     <div className="ToastNotification">
-      <Link to="/inbox">You have a new message</Link>
+      <Link to="/activity">You have a new message</Link>
     </div>
   );
 }

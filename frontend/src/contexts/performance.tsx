@@ -30,6 +30,11 @@ export function PerformanceProvider({ children }: props) {
   >([]);
   const [currentBroadcast, setCurrentBroadcast] = useState<rawBroadcast | null>(
     null
+    // {
+    //   slug: "aaaaaaaa",
+    //   prompt: "## Ladders\n* Can you climb them?\n```ts\nconst a = 1;\n```",
+    //   responseType: "markdown",
+    // }
   );
   const [evaluations, setEvaluations] = useState<postedEvaluation[]>([]);
   const socket = useContext(SocketContext);

@@ -156,7 +156,18 @@
     padding-bottom: sizes.$s2; 
     > .AppContent {
       margin: 0 auto;
-      width: 80%;
+      width: 70%;
+    }
+  }
+  .previous-feedback {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
+    background-color: colors.$grey-9;
+    border-radius: sizes.$border-radius;
+    padding: sizes.$s4; 
+    .AppContent {
+      margin: 0 auto;
+      width: 70%;
     }
   }
 }
