@@ -1,0 +1,39 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/buttons";
+@use "../../styles/typography";
+
+.InboxCoachPromptForm {
+  label {
+    @include typography.breadcrumb-font;
+  }
+  .question-prompt {
+    @include typography.code-font;
+    border-radius: sizes.$border-radius;
+    border-radius: sizes.$border-radius;
+    border: 1px solid colors.$grey-6;
+    height: sizes.$s11;
+    margin-bottom: sizes.$s4;
+    padding: sizes.$s4;
+    resize: vertical;
+    width: 100%;
+    overflow-y: auto;
+  }
+  input {
+    padding: sizes.$s2 sizes.$s4;
+    border-radius: sizes.$border-radius;
+    border: 1px solid colors.$grey-6;
+    margin-bottom: sizes.$s4;
+  }
+  .submission-section {
+    text-align: right;
+    [type=submit]{
+      display: inline-block;
+      cursor: pointer;
+      border: none;
+      border-radius: sizes.$border-radius;
+      background-color: colors.$grey-9;
+      @include buttons.button-shadow-small;
+    }
+  }
+}
