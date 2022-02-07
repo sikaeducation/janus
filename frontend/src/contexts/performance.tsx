@@ -15,6 +15,9 @@ type performanceContext = {
   performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
   currentBroadcast: rawBroadcast | null;
+  getPreviousEvaluations: (
+    performance: evaluatedSubmissionPerformance
+  ) => evaluatedSubmissionPerformance[];
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -91,6 +94,16 @@ export function PerformanceProvider({ children }: props) {
     }
   )(performancesWithEvaluations);
 
+  function getPreviousEvaluations(performance: evaluatedSubmissionPerformance) {
+    return performancesWithEvaluations.filter((evaluatedPerformance) => {
+      return (
+        evaluatedPerformance.userId === performance.userId &&
+        evaluatedPerformance.postSlug === performance.postSlug &&
+        evaluatedPerformance.id !== performance.id
+      );
+    });
+  }
+
   return (
     <performanceContext.Provider
       value={{
@@ -99,6 +112,7 @@ export function PerformanceProvider({ children }: props) {
         performancesByDay,
         postPerformance,
         postEvaluation,
+        getPreviousEvaluations,
         startInboxPrompt,
         endInboxPrompt,
         evaluations,

@@ -1,19 +1,22 @@
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
+import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
+import { programContext } from "../../contexts/program";
 import "./LearnerViewing.scss";
 
 type props = {
-  post: hydratedPost;
   performance: postedViewPerformance;
 };
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
-export default function LearningViewing({ post, performance }: props) {
-  const title = post.label?.short || post.label.full || "";
-  const path = post.path || "";
+export default function LearningViewing({ performance }: props) {
+  const { postsBySlug } = useContext(programContext);
+  const post = postsBySlug[performance.postSlug];
+  const title = post?.label?.short || post?.label?.full || "";
+  const path = post?.path || "";
 
   const checks = {
     1: <FontAwesomeIcon icon={faCheck} className="failure" />,
