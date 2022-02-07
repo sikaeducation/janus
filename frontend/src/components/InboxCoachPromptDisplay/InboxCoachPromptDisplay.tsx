@@ -2,6 +2,7 @@ import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
+import InboxResponses from "../InboxResponses";
 import "./InboxCoachPromptDisplay.scss";
 
 type props = {
@@ -18,6 +19,10 @@ export default function CoachInboxPromptDisplay({
   endPrompt,
 }: props) {
   const { performances } = useContext(performanceContext);
+  const promptPerformances = performances.filter(
+    (performance) => performance.postSlug === slug
+  );
+
   const handleEndPrompt = () => {
     endPrompt();
   };
@@ -36,24 +41,7 @@ export default function CoachInboxPromptDisplay({
           End Prompt
         </button>
       </div>
-      <ul className="responses">
-        {performances
-          .filter((performance) => {
-            return performance.postSlug === slug;
-          })
-          .map((performance) => {
-            return performance.type === "prompt" ? (
-              <li key={performance.id}>
-                <div className="prompt-response">
-                  <Gravatar email={performance.userId} size={60} />
-                  <AppContent content={performance.payload.response || ""} />
-                </div>
-              </li>
-            ) : (
-              (null as never)
-            );
-          })}
-      </ul>
+      <InboxResponses performances={promptPerformances} />
     </div>
   );
 }
