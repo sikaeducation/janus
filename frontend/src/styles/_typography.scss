@@ -13,7 +13,7 @@
 
 @mixin logo-font {
   font-family: "Gill Sans Condensed", sans-serif;
-  color: colors.$primary-5;
+  color: colors.$primary-3;
   font-size: sizes.$f9;
   letter-spacing: -2px;
   @media (max-width: sizes.$small-breakpoint){
@@ -23,7 +23,7 @@
 
 @mixin body-font {
   font-family: "Gill Sans", sans-serif;
-  color: colors.$primary-1;
+  color: colors.$grey-1;
   font-size: sizes.$f5;
   font-weight: 400;
   line-height: 1.5;
@@ -36,7 +36,7 @@
   font-family: "Gill Sans", sans-serif;
   font-weight: 700;
   font-size: sizes.$f8;
-  color: colors.$primary-4;
+  color: colors.$primary-3;
   margin-top: sizes.$f4;
   margin-bottom: sizes.$f6;
   @media (max-width: sizes.$small-breakpoint){

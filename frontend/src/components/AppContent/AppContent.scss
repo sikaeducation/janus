@@ -73,17 +73,6 @@
       border-radius: sizes.$border-radius !important;
     }
   }
-  thead {
-    border-bottom: 1px solid colors.$grey-7;
-  }
-  th {
-    @include typography.heading-font-3;
-    text-align: left;
-    padding-bottom: sizes.$s2;
-  }
-  td {
-    padding-top: sizes.$s3;
-  }
   strong {
     font-weight: 700;
   }
@@ -117,6 +106,19 @@
   }
   table {
     margin-bottom: sizes.$s5;
+    border-collapse: separate;
+    border-spacing: 1px; // Force newline
+    thead {
+      border-bottom: 1px solid colors.$grey-7;
+    }
+    th {
+      @include typography.heading-font-3;
+      text-align: left;
+      padding-bottom: sizes.$s2;
+    }
+    td {
+      padding-top: sizes.$s3;
+    }
   }
   .contains-task-list {
     margin: sizes.$s5 0;
@@ -131,15 +133,15 @@
     }
   }
   .indicator {
-    color: colors.$grey-6;
+    color: colors.$grey-5;
     &.failure {
-      color: colors.$failure-7;
+      color: colors.$failure-5;
     }
     &.warning {
-      color: colors.$warning-7;
+      color: colors.$warning-5;
     }
     &.success {
-      color: colors.$success-7;
+      color: colors.$success-5;
     }
     &.submitted {
       color: colors.$grey-8;

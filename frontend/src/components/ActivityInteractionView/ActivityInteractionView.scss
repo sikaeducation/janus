@@ -20,7 +20,7 @@
       border-radius: sizes.$border-radius;
       font-size: sizes.$f3;
       background-color: colors.$grey-9;
-      color: colors.$grey-3;
+      color: colors.$grey-6;
       padding: sizes.$s1 sizes.$s3;
       cursor: pointer;
       border: none;
@@ -29,8 +29,8 @@
         color: colors.$failure-1;
       }
       &.active[data-confidence-level="2"] {
-        background-color: colors.$warning-9;
-        color: colors.$warning-1;
+        background-color: colors.$grey-8;
+        color: colors.$grey-1;
       }
       &.active[data-confidence-level="3"] {
         background-color: colors.$success-9;
