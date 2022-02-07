@@ -20,8 +20,9 @@ export default function CoachInboxPromptDisplay({
 }: props) {
   const { performances } = useContext(performanceContext);
   const promptPerformances = performances.filter(
-    (performance) => performance.postSlug === slug
-  ) as postedPromptPerformance[];
+    (performance): performance is postedPromptPerformance =>
+      performance.postSlug === slug
+  );
 
   const handleEndPrompt = () => {
     endPrompt();
