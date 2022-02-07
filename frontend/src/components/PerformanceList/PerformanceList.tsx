@@ -7,6 +7,10 @@ type props = {
   performances: Record<string, evaluatedSubmissionPerformance[]>;
 };
 
+const formatDate = (date: string) => {
+  return format(new Date(date), "eeee, LLLL do");
+};
+
 export default function PerformanceList({ performances }: props) {
   const lastMessageRef = createRef<HTMLLIElement>();
   const isInitialized = useRef<boolean>(false);
@@ -37,8 +41,4 @@ export default function PerformanceList({ performances }: props) {
       ))}
     </div>
   );
-}
-
-function formatDate(date: string) {
-  return format(new Date(date), "eeee, LLLL do");
 }

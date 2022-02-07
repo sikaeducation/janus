@@ -14,7 +14,7 @@ export default function DescriptionView({ performance }: props) {
   const title = post.label?.short || post.label?.full || "";
 
   return (
-    <p>
+    <p className="DescriptionView description">
       {" "}
       {performance.userId} read <Link to={path}>{title}</Link>.{" "}
     </p>

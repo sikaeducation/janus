@@ -12,7 +12,7 @@ export default function DescriptionSubmission({ performance }: props) {
   const title = post.label?.short || post.label?.full || "";
 
   return (
-    <p>
+    <p className="DescriptionSubmission description">
       {performance.userId} submitted{" "}
       <a href={performance.payload.url}>{title}</a>.
     </p>

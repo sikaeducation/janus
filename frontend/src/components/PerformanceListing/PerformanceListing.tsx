@@ -42,7 +42,12 @@ export default function PerformanceListing({ performance }: props) {
 
   return (
     <div className="PerformanceListing">
-      <Gravatar default="identicon" email={performance.userId} size={60} />
+      <Gravatar
+        className="avatar"
+        default="identicon"
+        email={performance.userId}
+        size={60}
+      />
       {performanceListingType}
     </div>
   );

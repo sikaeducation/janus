@@ -5,5 +5,9 @@ type props = {
 };
 
 export default function DescriptionPrompt({ performance }: props) {
-  return <p>{performance.userId} answered a prompt.</p>;
+  return (
+    <p className="DescriptionPrompt description">
+      {performance.userId} answered a prompt.
+    </p>
+  );
 }
