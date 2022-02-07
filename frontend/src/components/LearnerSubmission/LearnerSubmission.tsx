@@ -12,7 +12,6 @@ import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
 import AppContent from "../AppContent";
-import EvaluationStatus from "../EvaluationStatus";
 import SubmissionEvaluationForm from "../SubmissionEvaluationForm";
 import "./LearnerSubmission.scss";
 
@@ -36,9 +35,14 @@ export default function LearnerSubmission({ performance }: props) {
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
   const statusIcon = statusIcons[performance.evaluation?.status || "submitted"];
+  const title = post.label?.short || post.label?.full || "";
 
   return (
     <>
+      <p className="DescriptionSubmission description">
+        {performance.userId} submitted{" "}
+        <a href={performance.payload.url}>{title}</a>.
+      </p>
       <ul className="meta">
         <li>
           <time>{formatTime(performance.createdAt)}</time>

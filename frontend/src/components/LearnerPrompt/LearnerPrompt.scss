@@ -1,16 +1,13 @@
 @use "../../styles/sizes";
 @use "../../styles/colors";
 
-.LearnerPrompt {
-}
-
 .prompt-response {
   grid-row: 3 / span 1;
-  grid-column: 1 / span 2;
+  grid-column: 2 / span 2;
   > .AppContent {
-    width: 80%;
-    margin: 0 auto;
-    padding: sizes.$s2;
+    padding-top: sizes.$s1; 
+    padding-bottom: sizes.$s1; 
+    border-radius: sizes.$border-radius;
   }
   > .AppContent:nth-child(1) {
     background-color: colors.$grey-9;

@@ -1,7 +1,4 @@
 import Gravatar from "react-gravatar";
-import DescriptionPrompt from "../DescriptionPrompt";
-import DescriptionSubmission from "../DescriptionSubmission";
-import DescriptionView from "../DescriptionView";
 import LearnerPrompt from "../LearnerPrompt";
 import LearnerSubmission from "../LearnerSubmission";
 import LearnerViewing from "../LearnerViewing";
@@ -13,29 +10,14 @@ type props = {
 
 export default function PerformanceListing({ performance }: props) {
   const performanceListingTypes = {
-    view: (
-      <>
-        <LearnerViewing performance={performance as postedViewPerformance} />
-        <DescriptionView performance={performance as postedViewPerformance} />
-      </>
-    ),
+    view: <LearnerViewing performance={performance as postedViewPerformance} />,
     submission: (
-      <>
-        <DescriptionSubmission
-          performance={performance as evaluatedSubmissionPerformance}
-        />
-        <LearnerSubmission
-          performance={performance as evaluatedSubmissionPerformance}
-        />
-      </>
+      <LearnerSubmission
+        performance={performance as evaluatedSubmissionPerformance}
+      />
     ),
     prompt: (
-      <>
-        <DescriptionPrompt
-          performance={performance as postedPromptPerformance}
-        />
-        <LearnerPrompt performance={performance as postedPromptPerformance} />
-      </>
+      <LearnerPrompt performance={performance as postedPromptPerformance} />
     ),
   } as const;
   const performanceListingType = performanceListingTypes[performance.type];

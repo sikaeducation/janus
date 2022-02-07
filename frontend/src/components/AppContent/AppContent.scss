@@ -21,7 +21,7 @@
     }
   }
   &.flat {
-    padding: sizes.$s4;
+    padding: 0 sizes.$s4;
     pre, code, img, figure, svg {
       width: 100%;
     }
@@ -92,11 +92,11 @@
   }
   ul {
     list-style: square;
-    margin-left: sizes.$s7;
+    padding-left: sizes.$s7;
   }
   ol {
     list-style: none;
-    margin-left: sizes.$s7;
+    padding-left: sizes.$s7;
     > li {
       counter-increment: ordered-list-item;
       &::before {
@@ -106,7 +106,7 @@
     }
   }
   ul ul, ol ol, ul ol, ol ul, li ol, li ul {
-    margin-left: sizes.$s7;
+    padding-left: sizes.$s7;
     @media (max-width: sizes.$small-breakpoint){
       margin-left: sizes.$s5;
     }
