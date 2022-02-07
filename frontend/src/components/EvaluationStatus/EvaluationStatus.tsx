@@ -17,5 +17,5 @@ export default function EvaluationStatus({ status }: props) {
   } as const;
   const statusIcon = statusIcons[status || "submitted"];
 
-  return <span className="evaluation-status">{statusIcon}</span>;
+  return <span className="EvaluationStatus">{statusIcon}</span>;
 }

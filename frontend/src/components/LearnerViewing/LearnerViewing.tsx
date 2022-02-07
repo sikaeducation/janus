@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
+import "./LearnerViewing.scss";
 
 type props = {
   post: hydratedPost;
