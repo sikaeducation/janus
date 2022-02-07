@@ -22,7 +22,7 @@ export default function LearningViewing({ post, performance }: props) {
 
   return (
     <div className="LearnerViewing">
-      <Gravatar email={performance.userId} size={60} />k
+      <Gravatar email={performance.userId} size={60} />
       <p>
         {performance.userId} read <Link to={path}>{title}</Link>.
       </p>

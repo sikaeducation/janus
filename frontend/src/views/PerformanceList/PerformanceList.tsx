@@ -5,35 +5,11 @@ import { Navigate } from "react-router-dom";
 import { mapValues } from "lodash/fp";
 import { performanceContext } from "../../contexts/performance";
 import "./PerformanceList.scss";
-import { programContext } from "../../contexts/program";
-import LearnerSubmission from "../../components/LearnerSubmission";
-import LearnerViewing from "../../components/LearnerViewing";
-
-function getSubmissionComponent(
-  performance: postedPerformance,
-  post: hydratedPost
-) {
-  const components = {
-    view: (
-      <LearnerViewing
-        performance={performance as postedViewPerformance}
-        post={post}
-      />
-    ),
-    submission: (
-      <LearnerSubmission
-        performance={performance as evaluatedSubmissionPerformance}
-        post={post}
-      />
-    ),
-  } as const;
-  return components[performance.type];
-}
+import PerformanceListing from "../../components/PerformanceListing";
 
 export default function PerformanceList() {
   const { isAuthenticated } = useAuth0();
   const { performances, performancesByDay } = useContext(performanceContext);
-  const { postsBySlug } = useContext(programContext);
   const lastMessageRef = createRef<HTMLLIElement>();
   const isInitialized = useRef<boolean>(false);
   const [selectedStudentId, setSelectedStudentId] = useState("all");
@@ -56,7 +32,7 @@ export default function PerformanceList() {
   ];
 
   useEffect(() => {
-    if (performances.length > 0 && !isInitialized.current) {
+    if (!isInitialized.current) {
       isInitialized.current = true;
       lastMessageRef?.current?.scrollIntoView();
     }
@@ -89,10 +65,7 @@ export default function PerformanceList() {
                 {performanceByDay.map(
                   (performance: evaluatedSubmissionPerformance) => (
                     <li key={performance.id}>
-                      {getSubmissionComponent(
-                        performance,
-                        postsBySlug[performance.postSlug]
-                      )}
+                      <PerformanceListing performance={performance} />
                     </li>
                   )
                 )}
