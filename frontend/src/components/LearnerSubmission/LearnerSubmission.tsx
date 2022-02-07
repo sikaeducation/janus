@@ -3,7 +3,6 @@ import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext, useState } from "react";
-import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
@@ -19,49 +18,35 @@ type props = {
 };
 
 export default function LearnerSubmission({ performance }: props) {
-  const { postsBySlug } = useContext(programContext);
-  const post = postsBySlug[performance.postSlug];
-  const title = post?.label?.short || post?.label?.full || "";
-  const path = post?.path || "";
   const { user } = useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
 
+  const { postsBySlug } = useContext(programContext);
+  const post = postsBySlug[performance.postSlug];
+  const path = post?.path || "";
+
   return (
-    <div className="LearnerSubmission">
-      <Gravatar default="identicon" email={performance.userId} size={60} />
-      <p>
-        {performance.userId} submitted{" "}
-        <a href={performance.payload.url}>{title}</a>.
-      </p>
+    <>
       <ul className="meta">
         <li>
           <time>{formatTime(performance.createdAt)}</time>
         </li>
-        {path && (
-          <li>
-            <Link to={path} target="_blank" rel="noopener noreferrer">
-              Original activity
-            </Link>
-            <FontAwesomeIcon icon={faExternalLinkAlt} />
-          </li>
-        )}
+        <li>
+          <Link to={path} target="_blank" rel="noopener noreferrer">
+            Original activity
+          </Link>
+          <FontAwesomeIcon icon={faExternalLinkAlt} />
+        </li>
       </ul>
-      {role === "coach" ? (
-        <LearnerSubmissionReadOnly performance={performance} />
-      ) : (
+      <EvaluationStatus status={performance.evaluation?.status} />
+      {role === "coach" && (
         <LearnerSubmissionEvaluable performance={performance} />
       )}
-    </div>
-  );
-}
-
-function LearnerSubmissionReadOnly({ performance }: props) {
-  return (
-    <>
-      <EvaluationStatus status={performance.evaluation?.status} />
-      <div className="existing-feedback">
-        <AppContent content={performance?.evaluation?.feedback || ""} />
-      </div>
+      {performance.evaluation?.feedback && (
+        <div className="existing-feedback">
+          <AppContent content={performance?.evaluation?.feedback || ""} />
+        </div>
+      )}
     </>
   );
 }
@@ -72,22 +57,17 @@ function LearnerSubmissionEvaluable({ performance }: props) {
 
   const previousPerformances = getPreviousEvaluations(performance);
 
-  return (
-    <>
-      <EvaluationStatus status={performance.evaluation?.status} />
-      {showForm ? (
-        <SubmissionEvaluationForm
-          performance={performance}
-          previousPerformances={previousPerformances}
-          cancel={() => setShowForm(false)}
-        />
-      ) : (
-        <div className="toggle-evaluation-form">
-          <button type="button" onClick={() => setShowForm(true)}>
-            Evaluate
-          </button>
-        </div>
-      )}
-    </>
+  return showForm ? (
+    <SubmissionEvaluationForm
+      performance={performance}
+      previousPerformances={previousPerformances}
+      cancel={() => setShowForm(false)}
+    />
+  ) : (
+    <div className="toggle-evaluation-form">
+      <button type="button" onClick={() => setShowForm(true)}>
+        Evaluate
+      </button>
+    </div>
   );
 }

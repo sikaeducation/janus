@@ -1,5 +1,8 @@
-import AppContent from "../AppContent";
-import EvaluationStatus from "../EvaluationStatus";
+import Gravatar from "react-gravatar";
+import DescriptionPrompt from "../DescriptionPrompt";
+import DescriptionSubmission from "../DescriptionSubmission";
+import DescriptionView from "../DescriptionView";
+import LearnerPrompt from "../LearnerPrompt";
 import LearnerSubmission from "../LearnerSubmission";
 import LearnerViewing from "../LearnerViewing";
 import "./PerformanceListing.scss";
@@ -9,37 +12,40 @@ type props = {
 };
 
 export default function PerformanceListing({ performance }: props) {
-  const components = {
-    view: <LearnerViewing performance={performance as postedViewPerformance} />,
+  const performanceListingTypes = {
+    view: (
+      <>
+        <LearnerViewing performance={performance as postedViewPerformance} />
+        <DescriptionView performance={performance as postedViewPerformance} />
+      </>
+    ),
     submission: (
-      <LearnerSubmission
-        performance={performance as evaluatedSubmissionPerformance}
-      />
+      <>
+        <DescriptionSubmission
+          performance={performance as evaluatedSubmissionPerformance}
+        />
+        <LearnerSubmission
+          performance={performance as evaluatedSubmissionPerformance}
+        />
+      </>
     ),
     prompt: (
-      <LearnerPrompt
-        performance={performance as evaluatedSubmissionPerformance}
-      />
+      <>
+        <DescriptionPrompt
+          performance={performance as evaluatedSubmissionPerformance}
+        />
+        <LearnerPrompt
+          performance={performance as evaluatedSubmissionPerformance}
+        />
+      </>
     ),
   } as const;
-  const isPrompt = !!(performance as evaluatedSubmissionPerformance)?.payload
-    ?.prompt;
-  if (isPrompt) return components.prompt;
-  return components[performance.type];
-}
+  const performanceListingType = performanceListingTypes[performance.type];
 
-function LearnerPrompt({
-  performance,
-}: {
-  performance: evaluatedSubmissionPerformance;
-}) {
   return (
-    <>
-      <EvaluationStatus status={performance.evaluation?.status} />
-      <div className="prompt-response">
-        <AppContent content={performance.payload.prompt || ""} />
-        <AppContent content={performance.payload.response || ""} />
-      </div>
-    </>
+    <div className="PerformanceListing">
+      <Gravatar default="identicon" email={performance.userId} size={60} />
+      {performanceListingType}
+    </div>
   );
 }
