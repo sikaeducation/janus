@@ -33,9 +33,7 @@ export default function InboxLearnerPromptResponseForm({
             onChange={(event) => {
               setResponse(event.target.value);
             }}
-          >
-            asdf
-          </textarea>
+          />
           <div className="submission-section">
             <input type="submit" value="Post Response" />
           </div>
