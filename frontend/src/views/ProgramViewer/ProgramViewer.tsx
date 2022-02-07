@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/no-non-null-assertion: "off", @typescript-eslint/no-shadow: "off" */
 import "./ProgramViewer.scss";
 import { KeyboardEvent, useState } from "react";
 import AppContent from "../../components/AppContent";
@@ -8,28 +7,18 @@ type props = {
   program: hydratedProgram;
 };
 
-export default function ProgramViewer({ program }: props) {
-  const [currentPost, setCurrentPost] = useState<hydratedPost>(program.root);
-  const units = program.root.children;
-
-  const handleClick = (post: hydratedPost) => {
-    return () => {
-      setCurrentPost(post);
-    };
-  };
-  const handleEnter = (post: hydratedPost) => {
-    return (event: KeyboardEvent) => {
-      if (event.key === "enter") setCurrentPost(post);
-    };
-  };
-
-  const buildTree = (
-    posts: hydratedPost[],
-    slugs: string[], // Don't coerce to slug, client doesn't have list
-    currentPost: hydratedPost
-  ): JSX.Element[] => {
-    return slugs
-      .map((slugId) => posts.find((post) => post.slug === slugId)!)
+const buildTree = (
+  posts: hydratedPost[],
+  slugs: string[], // Don't coerce to slug, client doesn't have list
+  currentPost: hydratedPost,
+  handleClick: (post: hydratedPost) => () => void,
+  handleEnter: (post: hydratedPost) => (event: KeyboardEvent) => void
+): JSX.Element[] => {
+  return (
+    slugs
+      // eslint-disable-next-line
+    .map((slugId) => posts.find((post) => post.slug === slugId)!)
+      .filter((post) => !!post)
       .flatMap((post: hydratedPost) => {
         const postListing = (
           <li key={post.slug}>
@@ -48,13 +37,43 @@ export default function ProgramViewer({ program }: props) {
           : [
               postListing,
               <li key={`${post.slug}--menu`}>
-                <ul>{buildTree(posts, post.children, currentPost)}</ul>
+                <ul>
+                  {buildTree(
+                    posts,
+                    post.children,
+                    currentPost,
+                    handleClick,
+                    handleEnter
+                  )}
+                </ul>
               </li>,
             ];
-      });
+      })
+  );
+};
+
+export default function ProgramViewer({ program }: props) {
+  const [currentPost, setCurrentPost] = useState<hydratedPost>(program.root);
+  const units = program.root.children;
+
+  const handleClick = (post: hydratedPost) => {
+    return () => {
+      setCurrentPost(post);
+    };
+  };
+  const handleEnter = (post: hydratedPost) => {
+    return (event: KeyboardEvent) => {
+      if (event.key === "enter") setCurrentPost(post);
+    };
   };
 
-  const tree = buildTree(program.posts, units, currentPost);
+  const tree = buildTree(
+    program.posts,
+    units,
+    currentPost,
+    handleClick,
+    handleEnter
+  );
 
   return (
     <div className="ProgramViewer">

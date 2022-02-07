@@ -13,11 +13,11 @@ export default function LearnerPrompt({
       </p>
       <div className="prompt-response">
         <AppContent
-          wrapperClassName="flat"
+          wrapperClassName="contained"
           content={performance.payload.prompt || ""}
         />
         <AppContent
-          wrapperClassName="flat"
+          wrapperClassName="contained"
           content={performance.payload.response || ""}
         />
       </div>

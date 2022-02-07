@@ -6,6 +6,10 @@ type props = {
   performances: evaluatedSubmissionPerformance[];
 };
 
+const formatDateTime = (dateTime: string) => {
+  return format(new Date(dateTime), "M/d/yy p");
+};
+
 export default function PreviousFeedback({ performances }: props) {
   return (
     <ul className="previous-feedback">
@@ -23,9 +27,4 @@ export default function PreviousFeedback({ performances }: props) {
       ))}
     </ul>
   );
-}
-
-function formatDateTime(dateTime: string | undefined) {
-  if (!dateTime) return "";
-  return format(new Date(dateTime), "M/d/yy p");
 }

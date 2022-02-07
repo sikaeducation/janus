@@ -67,7 +67,7 @@ export default function LearnerSubmission({ performance }: props) {
             size={40}
           />
           <AppContent
-            wrapperClassName="evaluation-feedback flat"
+            wrapperClassName="evaluation-feedback contained"
             content={performance?.evaluation?.feedback || ""}
           />
         </>

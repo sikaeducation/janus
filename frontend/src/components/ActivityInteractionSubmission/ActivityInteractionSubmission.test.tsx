@@ -1,4 +1,4 @@
-test("<ActivityInteraction /> submits activities", async () => {
+test("<ActivityInteractionSubmission /> submits activities", async () => {
   expect(true).toBe(true);
 });
 

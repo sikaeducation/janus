@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/no-non-null-assertion: "off", no-nested-ternary: "off" */
 import "./AppHeader.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -37,23 +36,21 @@ function AppHeader() {
         <span className="logo">
           <Link to="/">Sika</Link>
         </span>
-        {user ? (
+        {user && (
           <>
             <ul className="links">{links}</ul>
             <div className="program-label">{programLabel}</div>
           </>
-        ) : null}
+        )}
       </nav>
       <div className="user-info">
-        {!isLoading ? (
-          !isAuthenticated || !user ? (
-            <LoginButton />
-          ) : (
-            <LogoutButton>
-              <img className="avatar" src={user.picture} alt={user.name} />
-            </LogoutButton>
-          )
-        ) : (
+        {!isLoading && !isAuthenticated && <LoginButton />}
+        {user && (
+          <LogoutButton>
+            <img className="avatar" src={user.picture} alt={user.name} />
+          </LogoutButton>
+        )}
+        {isLoading && (
           <img
             className="avatar"
             src="/user-avatar-placeholder.png"

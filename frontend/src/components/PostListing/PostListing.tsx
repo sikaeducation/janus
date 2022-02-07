@@ -1,4 +1,3 @@
-/* eslint @typescript-eslint/no-non-null-assertion: "off" */
 import classNames from "classnames";
 import "./PostListing.scss";
 import { MouseEventHandler, KeyboardEventHandler, useContext } from "react";
