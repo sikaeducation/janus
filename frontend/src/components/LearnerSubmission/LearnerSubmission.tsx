@@ -1,8 +1,13 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
+import {
+  faClipboardCheck,
+  faExternalLinkAlt,
+  faQuestionCircle,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext, useState } from "react";
+import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
@@ -25,6 +30,13 @@ export default function LearnerSubmission({ performance }: props) {
   const post = postsBySlug[performance.postSlug];
   const path = post?.path || "";
 
+  const statusIcons = {
+    submitted: <FontAwesomeIcon icon={faQuestionCircle} className="pending" />,
+    rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
+    accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
+  } as const;
+  const statusIcon = statusIcons[performance.evaluation?.status || "submitted"];
+
   return (
     <>
       <ul className="meta">
@@ -38,14 +50,23 @@ export default function LearnerSubmission({ performance }: props) {
           <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>
-      <EvaluationStatus status={performance.evaluation?.status} />
-      {role === "coach" && (
+      <span className="evaluation-status">{statusIcon}</span>
+      {role === "coach" && !performance.evaluation?.feedback && (
         <LearnerSubmissionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
-        <div className="existing-feedback">
-          <AppContent content={performance?.evaluation?.feedback || ""} />
-        </div>
+        <>
+          <Gravatar
+            className="evaluator-avatar"
+            default="identicon"
+            email={performance.evaluation.evaluatorId}
+            size={40}
+          />
+          <AppContent
+            wrapperClassName="evaluation-feedback flat"
+            content={performance?.evaluation?.feedback || ""}
+          />
+        </>
       )}
     </>
   );

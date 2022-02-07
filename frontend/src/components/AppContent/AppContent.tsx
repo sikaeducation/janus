@@ -85,12 +85,13 @@ function getPerformanceIndicator(performance: evaluatedPerformance) {
 
 type props = {
   content: string;
+  wrapperClassName?: string;
 };
 
-export default function AppContent({ content }: props) {
+export default function AppContent({ content, wrapperClassName }: props) {
   const { performancesWithEvaluations } = useContext(performanceContext);
   return (
-    <article className="AppContent">
+    <article className={`AppContent ${wrapperClassName}`}>
       <ReactMarkdown
         children={content}
         remarkPlugins={[gfm, remarkUnwrapImages]}

@@ -4,6 +4,9 @@
 @use "../../styles/typography";
 
 .SubmissionEvaluationForm {
+  label {
+    @include typography.breadcrumb-font;
+  }
   .feedback {
     width: 100%;
     height: sizes.$s11;

@@ -8,8 +8,14 @@ export default function LearnerPrompt({
 }) {
   return (
     <div className="prompt-response">
-      <AppContent content={performance.payload.prompt || ""} />
-      <AppContent content={performance.payload.response || ""} />
+      <AppContent
+        wrapperClassName="flat"
+        content={performance.payload.prompt || ""}
+      />
+      <AppContent
+        wrapperClassName="flat"
+        content={performance.payload.response || ""}
+      />
     </div>
   );
 }

@@ -20,6 +20,12 @@
       width: 100%;
     }
   }
+  &.flat {
+    padding: sizes.$s4;
+    pre, code, img, figure, svg {
+      width: 100%;
+    }
+  }
   img[src$="#small"] {
     width: 30%;
     @media (max-width: sizes.$small-breakpoint){
