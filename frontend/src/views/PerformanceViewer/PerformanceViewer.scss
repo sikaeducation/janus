@@ -1,0 +1,7 @@
+@use "../../styles/typography";
+
+.PerformanceViewer {
+  h1 {
+    @include typography.heading-font-1;
+  }
+}

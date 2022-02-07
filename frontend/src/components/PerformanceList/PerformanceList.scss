@@ -1,0 +1,11 @@
+@use "../../styles/typography";
+@use "../../styles/sizes";
+
+.PerformanceList {
+  h2 {
+    @include typography.heading-font-2;
+  }
+  height: 65vh;
+  overflow-y: auto;
+  width: sizes.$content-width-large;
+}

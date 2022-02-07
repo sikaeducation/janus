@@ -5,7 +5,7 @@ import ProgramViewer from "./ProgramViewer";
 import AppMissing from "./AppMissing";
 import AppLoading from "./AppLoading";
 import AppError from "./AppError";
-import PerformanceList from "./PerformanceList";
+import PerformanceViewer from "./PerformanceViewer";
 import { toastContext } from "../contexts/toast";
 
 import ToastNotification from "../components/ToastNotification";
@@ -26,7 +26,7 @@ export default function AuthenticatedRoutes() {
         {program ? (
           <>
             <Route path="/inbox" element={<AppInbox />} />
-            <Route path="/activity" element={<PerformanceList />} />
+            <Route path="/activity" element={<PerformanceViewer />} />
             <Route
               path="/program-viewer"
               element={<ProgramViewer program={program} />}

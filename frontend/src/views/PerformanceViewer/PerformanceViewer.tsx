@@ -1,17 +1,14 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { format } from "date-fns";
-import { createRef, useContext, useEffect, useRef, useState } from "react";
+import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { mapValues } from "lodash/fp";
 import { performanceContext } from "../../contexts/performance";
-import "./PerformanceList.scss";
-import PerformanceListing from "../../components/PerformanceListing";
+import "./PerformanceViewer.scss";
+import PerformanceList from "../../components/PerformanceList";
 
-export default function PerformanceList() {
+export default function PerformanceViewer() {
   const { isAuthenticated } = useAuth0();
   const { performances, performancesByDay } = useContext(performanceContext);
-  const lastMessageRef = createRef<HTMLLIElement>();
-  const isInitialized = useRef<boolean>(false);
   const [selectedStudentId, setSelectedStudentId] = useState("all");
   const isForSelectedUser = (
     dayPerformances: evaluatedSubmissionPerformance[]
@@ -31,17 +28,10 @@ export default function PerformanceList() {
     ),
   ];
 
-  useEffect(() => {
-    if (!isInitialized.current) {
-      isInitialized.current = true;
-      lastMessageRef?.current?.scrollIntoView();
-    }
-  }, [performances, isInitialized, lastMessageRef]);
-
   if (!isAuthenticated) return <Navigate replace to="/" />;
 
   return (
-    <div className="PerformanceList">
+    <div className="PerformanceViewer">
       <h1>Activity</h1>
       <form>
         <label htmlFor="student-filter">Student</label>
@@ -56,25 +46,7 @@ export default function PerformanceList() {
           ))}
         </select>
       </form>
-      <div className="submissions">
-        {Object.entries(filteredPerformancesByDay).map(
-          ([date, performanceByDay]) => (
-            <div key={date}>
-              <h2>{format(new Date(date), "eeee, LLLL do")}</h2>
-              <ul>
-                {performanceByDay.map(
-                  (performance: evaluatedSubmissionPerformance) => (
-                    <li key={performance.id}>
-                      <PerformanceListing performance={performance} />
-                    </li>
-                  )
-                )}
-                <li className="dummy" ref={lastMessageRef} />
-              </ul>
-            </div>
-          )
-        )}
-      </div>
+      <PerformanceList performances={filteredPerformancesByDay} />
     </div>
   );
 }
