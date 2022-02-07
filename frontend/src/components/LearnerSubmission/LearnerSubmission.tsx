@@ -15,13 +15,10 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
+import PreviousFeedback from "../PreviousFeedback";
 import "./LearnerSubmission.scss";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
-const formatDateTime = (dateTime: string | undefined) => {
-  if (!dateTime) return "";
-  return format(new Date(dateTime), "M/d/yy p");
-};
 
 type props = {
   performance: evaluatedSubmissionPerformance;
@@ -111,24 +108,7 @@ export default function LearnerSubmission({ performance, post }: props) {
           {previousPerformances.length > 0 ? (
             <>
               <p>Previous feedback</p>
-              <ul className="previous-feedback">
-                {previousPerformances.map((previousPerformance) => (
-                  <li key={previousPerformance.id}>
-                    <div>
-                      <a href={previousPerformance.payload.url}>
-                        <time>
-                          {formatDateTime(
-                            previousPerformance.evaluation?.createdAt || ""
-                          )}
-                        </time>
-                      </a>
-                      <AppContent
-                        content={previousPerformance.evaluation?.feedback || ""}
-                      />
-                    </div>
-                  </li>
-                ))}
-              </ul>
+              <PreviousFeedback performances={previousPerformances} />
             </>
           ) : null}
           <label htmlFor="feedback">Feedback:</label>
