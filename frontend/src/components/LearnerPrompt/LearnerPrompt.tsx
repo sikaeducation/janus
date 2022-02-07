@@ -4,7 +4,7 @@ import "./LearnerPrompt.scss";
 export default function LearnerPrompt({
   performance,
 }: {
-  performance: evaluatedSubmissionPerformance;
+  performance: postedPromptPerformance;
 }) {
   return (
     <div className="prompt-response">

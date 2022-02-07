@@ -82,9 +82,7 @@ function CoachInbox() {
             onChange={(event) => {
               setPrompt(event.target.value);
             }}
-          >
-            asdf
-          </textarea>
+          />
           <div className="submission-section">
             <input type="submit" value="Post Question" />
           </div>
@@ -134,13 +132,15 @@ function CoachInboxPromptDisplay({ slug, tags, prompt, endPrompt }: props) {
             return performance.postSlug === slug;
           })
           .map((performance) => {
-            return (
+            return performance.type === "prompt" ? (
               <li key={performance.id}>
                 <div className="prompt-response">
                   <Gravatar email={performance.userId} size={60} />
                   <AppContent content={performance.payload.response || ""} />
                 </div>
               </li>
+            ) : (
+              (null as never)
             );
           })}
       </ul>
@@ -157,7 +157,7 @@ function LearnerInbox() {
     postPerformance({
       userId: user?.email || "",
       postSlug: currentBroadcast?.slug || "",
-      type: "submission",
+      type: "prompt",
       payload: {
         response: postedResponse,
         prompt: currentBroadcast?.prompt || "",

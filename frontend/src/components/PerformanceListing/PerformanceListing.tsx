@@ -32,11 +32,9 @@ export default function PerformanceListing({ performance }: props) {
     prompt: (
       <>
         <DescriptionPrompt
-          performance={performance as evaluatedSubmissionPerformance}
+          performance={performance as postedPromptPerformance}
         />
-        <LearnerPrompt
-          performance={performance as evaluatedSubmissionPerformance}
-        />
+        <LearnerPrompt performance={performance as postedPromptPerformance} />
       </>
     ),
   } as const;

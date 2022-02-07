@@ -80,7 +80,7 @@ type postedViewPerformance = getPostedPerformance<rawViewPerformance>;
 
 type rawSubmissionPerformance = getRawPerformance<
   "submission",
-  { url?: string; response?: string; prompt?: string }
+  { url: string }
 >;
 type postedSubmissionPerformance =
   getPostedPerformance<rawSubmissionPerformance>;
@@ -88,8 +88,20 @@ type evaluatedSubmissionPerformance = postedSubmissionPerformance & {
   evaluation?: postedEvaluation;
 };
 
-type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
-type postedPerformance = postedViewPerformance | postedSubmissionPerformance;
+type rawPromptPerformance = getRawPerformance<
+  "prompt",
+  { response: string; prompt: string }
+>;
+type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
+
+type rawPerformance =
+  | rawViewPerformance
+  | rawSubmissionPerformance
+  | rawPromptPerformance;
+type postedPerformance =
+  | postedViewPerformance
+  | postedSubmissionPerformance
+  | postedPromptPerformance;
 type evaluatedPerformance = postedPerformance | evaluatedSubmissionPerformance;
 
 type rawBroadcast = {

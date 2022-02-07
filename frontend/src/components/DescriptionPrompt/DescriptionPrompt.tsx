@@ -1,7 +1,7 @@
 import "./DescriptionPrompt.scss";
 
 type props = {
-  performance: evaluatedSubmissionPerformance;
+  performance: postedPromptPerformance;
 };
 
 export default function DescriptionPrompt({ performance }: props) {

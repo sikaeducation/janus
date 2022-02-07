@@ -96,11 +96,21 @@ type gradedSubmissionPerformance = postedSubmissionPerformance & {
 type postedSubmissionPerformance =
   getPostedPerformance<rawSubmissionPerformance>;
 
-type rawPerformance = rawViewPerformance | rawSubmissionPerformance;
+type rawPromptPerformance = getRawPerformance<
+  "prompt",
+  { response: string; prompt: string }
+>;
+type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
+
+type rawPerformance =
+  | rawViewPerformance
+  | rawSubmissionPerformance
+  | rawPromptPerformance;
 type postedPerformance =
   | postedViewPerformance
   | postedSubmissionPerformance
-  | gradedSubmissionPerformance;
+  | gradedSubmissionPerformance
+  | postedPromptPerformance;
 
 type rawBroadcast = {
   slug: string;

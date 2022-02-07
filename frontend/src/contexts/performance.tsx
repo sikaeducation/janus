@@ -10,7 +10,7 @@ type performanceContext = {
   endInboxPrompt: () => void;
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
-  performances: evaluatedSubmissionPerformance[];
+  performances: evaluatedPerformance[];
   performancesWithEvaluations: evaluatedSubmissionPerformance[];
   performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
