@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import "./styles/index.scss";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { BrowserRouter as Router } from "react-router-dom";
-import ScrollToTop from "./components/ScrollToTop";
+import ScrollToTop from "./utilities/scroll-to-top";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 

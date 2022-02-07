@@ -1,7 +1,7 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import { groupBy } from "lodash/fp";
 import { format } from "date-fns";
-import useSocketHandlers from "../services/use-socket-handlers";
+import useSocketHandlers from "../hooks/use-socket-handlers";
 import { toastContext } from "./toast";
 import { SocketContext } from "./socket";
 

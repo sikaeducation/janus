@@ -10,7 +10,7 @@ import ActivityNavigation from "../../components/ActivityNavigation";
 import ActivityInteraction from "../../components/ActivityInteraction";
 
 import { performanceContext } from "../../contexts/performance";
-import { getCurrentPost, getLinks } from "../../services/program";
+import { getCurrentPost, getLinks } from "../../utilities/program";
 
 type props = {
   program: hydratedProgram;
