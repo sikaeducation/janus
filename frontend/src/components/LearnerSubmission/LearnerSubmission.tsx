@@ -1,21 +1,18 @@
 /* eslint no-nested-ternary: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
 import {
-  faCheckCircle,
   faClipboardCheck,
   faExternalLinkAlt,
   faQuestionCircle,
-  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
 import { format } from "date-fns";
 import { useContext, useState } from "react";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
-import PreviousFeedback from "../PreviousFeedback";
+import SubmissionEvaluationForm from "../SubmissionEvaluationForm";
 import "./LearnerSubmission.scss";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
@@ -26,13 +23,10 @@ type props = {
 };
 
 export default function LearnerSubmission({ performance, post }: props) {
-  const [feedback, setFeedback] = useState("");
   const { user } = useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
-  const [evaluationStatus, setEvaluationStatus] = useState("");
   const [showForm, setShowForm] = useState(false);
-  const { performancesWithEvaluations, postEvaluation } =
-    useContext(performanceContext);
+  const { performancesWithEvaluations } = useContext(performanceContext);
 
   if (performance.type !== "submission") {
     return null;
@@ -46,21 +40,6 @@ export default function LearnerSubmission({ performance, post }: props) {
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
   const status = statuses[performance?.evaluation?.status || "submitted"];
-
-  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const evaluation = {
-      performanceId: performance.id,
-      learnerId: performance.userId,
-      evaluatorId: user?.email || "",
-      feedback,
-      status: evaluationStatus as "accepted" | "rejected",
-    };
-    postEvaluation(evaluation);
-    setFeedback("");
-    setEvaluationStatus("");
-    setShowForm(false);
-  };
 
   const previousPerformances = performancesWithEvaluations.filter(
     (evaluatedPerformance) => {
@@ -104,49 +83,11 @@ export default function LearnerSubmission({ performance, post }: props) {
         </div>
       ) : null}
       {showForm ? (
-        <form onSubmit={handleSubmit}>
-          {previousPerformances.length > 0 ? (
-            <>
-              <p>Previous feedback</p>
-              <PreviousFeedback performances={previousPerformances} />
-            </>
-          ) : null}
-          <label htmlFor="feedback">Feedback:</label>
-          <textarea
-            onChange={(event) => setFeedback(event.target.value)}
-            id="feedback"
-            className="feedback"
-            value={feedback}
-          />
-          <div className="status-buttons">
-            <button
-              type="button"
-              className={classNames({
-                active: evaluationStatus === "rejected",
-                failure: true,
-              })}
-              onClick={() => setEvaluationStatus("rejected")}
-            >
-              <FontAwesomeIcon icon={faTimesCircle} />
-            </button>
-            <button
-              type="button"
-              onClick={() => setEvaluationStatus("accepted")}
-              className={classNames({
-                active: evaluationStatus === "accepted",
-                success: true,
-              })}
-            >
-              <FontAwesomeIcon icon={faCheckCircle} className="accepted" />
-            </button>
-          </div>
-          <div className="submission-container">
-            <button type="button" onClick={() => setShowForm(false)}>
-              Cancel
-            </button>
-            <input type="submit" value="Send Evaluation" />
-          </div>
-        </form>
+        <SubmissionEvaluationForm
+          performance={performance}
+          previousPerformances={previousPerformances}
+          cancel={() => setShowForm(false)}
+        />
       ) : !performance.evaluation && role === "coach" ? (
         !performance.payload.prompt ? (
           <div className="toggle-evaluation-form">
