@@ -11,8 +11,8 @@ type props = {
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
 export default function LearningViewing({ post, performance }: props) {
-  const title = post?.label?.short || post?.label?.full || "";
-  const path = post?.path || "";
+  const title = post.label?.short || post.label.full || "";
+  const path = post.path || "";
 
   const checks = {
     1: <FontAwesomeIcon icon={faCheck} className="failure" />,
