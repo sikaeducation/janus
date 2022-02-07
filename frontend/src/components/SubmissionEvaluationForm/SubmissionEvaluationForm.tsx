@@ -42,7 +42,7 @@ export default function SubmissionEvaluationForm({
   };
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="SubmissionEvaluationForm">
       {previousPerformances.length > 0 ? (
         <>
           <p>Previous feedback</p>

@@ -1,10 +1,6 @@
 /* eslint no-nested-ternary: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  faClipboardCheck,
-  faExternalLinkAlt,
-  faQuestionCircle,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext, useState } from "react";
@@ -12,6 +8,7 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
+import EvaluationStatus from "../EvaluationStatus";
 import SubmissionEvaluationForm from "../SubmissionEvaluationForm";
 import "./LearnerSubmission.scss";
 
@@ -33,13 +30,6 @@ export default function LearnerSubmission({ performance, post }: props) {
   }
   const title = post?.label?.short || post?.label?.full || "";
   const path = post?.path || "";
-
-  const statuses = {
-    submitted: <FontAwesomeIcon icon={faQuestionCircle} className="pending" />,
-    rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
-    accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
-  } as const;
-  const status = statuses[performance?.evaluation?.status || "submitted"];
 
   const previousPerformances = performancesWithEvaluations.filter(
     (evaluatedPerformance) => {
@@ -75,7 +65,7 @@ export default function LearnerSubmission({ performance, post }: props) {
           </li>
         ) : null}
       </ul>
-      <span className="evaluation-status">{status}</span>
+      <EvaluationStatus status={performance.evaluation?.status} />
       {performance.payload.response && performance.payload.prompt ? (
         <div className="prompt-response">
           <AppContent content={performance.payload.prompt} />
