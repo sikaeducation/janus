@@ -29,20 +29,20 @@ export default function InboxLearner() {
 
   return (
     <div className="InboxLearner">
-      {currentBroadcast && !alreadyAnswered && (
-        <InboxLearnerPromptResponseForm
-          response={response}
-          setResponse={setResponse}
-          postResponse={postResponse}
-          currentBroadcast={currentBroadcast}
-        />
-      )}
-      {currentBroadcast && alreadyAnswered && (
-        <InboxLearnerPromptResponseDisplay
-          response={response}
-          currentBroadcast={currentBroadcast}
-        />
-      )}
+      {currentBroadcast &&
+        (alreadyAnswered ? (
+          <InboxLearnerPromptResponseForm
+            response={response}
+            setResponse={setResponse}
+            postResponse={postResponse}
+            currentBroadcast={currentBroadcast}
+          />
+        ) : (
+          <InboxLearnerPromptResponseDisplay
+            response={response}
+            currentBroadcast={currentBroadcast}
+          />
+        ))}
       {!currentBroadcast && <p>Nothing for now!</p>}
     </div>
   );
