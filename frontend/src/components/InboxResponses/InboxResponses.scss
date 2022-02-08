@@ -5,12 +5,15 @@
 .InboxResponses {
   h2 {
     @include typography.heading-font-2;
-    margin-bottom: sizes.$s4;
+    margin-bottom: sizes.$s5;
   }
   .learner-response {
     display: grid;
     grid-template-columns: 100px 1fr;
     margin-bottom: sizes.$s4;
+    > img {
+      margin-top: sizes.$s3;
+    }
     .username {
       font-weight: 700;
       padding: sizes.$s1 sizes.$s2;
