@@ -24,7 +24,6 @@ export default function CoachInbox() {
   };
   const handleStartPrompt = (broadcast: rawBroadcast) => {
     const generatedSlug = generateSlug();
-    console.log(generatedSlug);
     setSlug(generatedSlug);
     const broadcastWithSlug = {
       ...broadcast,
