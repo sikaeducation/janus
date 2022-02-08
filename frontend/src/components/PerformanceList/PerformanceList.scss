@@ -2,10 +2,10 @@
 @use "../../styles/sizes";
 
 .PerformanceList {
+  height: 100vh;
+  overflow-y: auto;
+  width: 100%;
   h2 {
     @include typography.heading-font-2;
   }
-  height: 65vh;
-  overflow-y: auto;
-  width: sizes.$content-width-large;
 }

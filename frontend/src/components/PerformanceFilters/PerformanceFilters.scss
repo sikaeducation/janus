@@ -1,0 +1,23 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+
+.PerformanceFilters {
+  .filter {
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 200px 1fr;
+    margin-bottom: sizes.$s1;
+    label {
+      font-size: sizes.$f3;
+      align-self: center;
+    }
+    .dropdown-filter {
+      font-size: sizes.$f3;
+      max-width: 400px;
+      padding: sizes.$s1 sizes.$s2;
+      background-color: colors.$white;
+      border-radius: sizes.$border-radius;
+      border: 1px solid colors.$grey-6;
+    }
+  }
+}

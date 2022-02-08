@@ -1,15 +1,37 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { mapValues } from "lodash/fp";
+import { flow, mapValues } from "lodash/fp";
+import { format } from "date-fns";
 import { performanceContext } from "../../contexts/performance";
 import "./PerformanceViewer.scss";
 import PerformanceList from "../../components/PerformanceList";
+import PerformanceFilters from "../../components/PerformanceFilters";
+
+const formatDate = (date: string) => format(new Date(date), "eeee, LLLL do");
 
 export default function PerformanceViewer() {
   const { isAuthenticated } = useAuth0();
   const { performances, performancesByDay } = useContext(performanceContext);
   const [selectedStudentId, setSelectedStudentId] = useState("all");
+  const [selectedPerformanceType, setSelectedPerformanceType] = useState("all");
+  const [selectedDate, setSelectedDate] = useState("all");
+
+  const filters = {
+    date: {
+      state: selectedDate,
+      setState: setSelectedDate,
+    },
+    student: {
+      state: selectedStudentId,
+      setState: setSelectedStudentId,
+    },
+    type: {
+      state: selectedPerformanceType,
+      setState: setSelectedPerformanceType,
+    },
+  } as const;
+
   const isForSelectedUser = (
     dayPerformances: evaluatedSubmissionPerformance[]
   ) => {
@@ -19,33 +41,37 @@ export default function PerformanceViewer() {
         dayPerformance.userId === selectedStudentId
     );
   };
-  const filteredPerformancesByDay =
-    mapValues(isForSelectedUser)(performancesByDay);
+  const isForSelectedType = (
+    dayPerformances: evaluatedSubmissionPerformance[]
+  ) => {
+    return dayPerformances.filter(
+      (dayPerformance) =>
+        selectedPerformanceType === "all" ||
+        dayPerformance.type === selectedPerformanceType
+    );
+  };
+  const isForSelectedDate = (
+    dayPerformances: evaluatedSubmissionPerformance[]
+  ) => {
+    return dayPerformances.filter(
+      (dayPerformance) =>
+        selectedDate === "all" ||
+        formatDate(dayPerformance.createdAt) === selectedDate
+    );
+  };
 
-  const userIds = [
-    ...Array.from(
-      new Set<string>(performances.map((performance) => performance.userId))
-    ),
-  ];
+  const filteredPerformancesByDay = flow([
+    mapValues(isForSelectedUser),
+    mapValues(isForSelectedType),
+    mapValues(isForSelectedDate),
+  ])(performancesByDay);
 
   if (!isAuthenticated) return <Navigate replace to="/" />;
 
   return (
     <div className="PerformanceViewer">
       <h1>Activity</h1>
-      <form>
-        <label htmlFor="student-filter">Student</label>
-        <select
-          value={selectedStudentId}
-          id="student-filter"
-          onChange={(event) => setSelectedStudentId(event.target.value)}
-        >
-          <option value="all">All</option>
-          {userIds.map((userId) => (
-            <option key={userId}>{userId}</option>
-          ))}
-        </select>
-      </form>
+      <PerformanceFilters performances={performances} filters={filters} />
       <PerformanceList performances={filteredPerformancesByDay} />
     </div>
   );

@@ -1,6 +1,9 @@
 @use "../../styles/typography";
+@use "../../styles/sizes";
+@use "../../styles/colors";
 
 .PerformanceViewer {
+  width: sizes.$content-width-xl;
   h1 {
     @include typography.heading-font-1;
   }

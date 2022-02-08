@@ -1,5 +1,4 @@
 import { useContext } from "react";
-import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
 import InboxResponses from "../InboxResponses";
