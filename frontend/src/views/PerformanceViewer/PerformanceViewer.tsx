@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { flow, mapValues } from "lodash/fp";
+import { flow, mapValues, omitBy } from "lodash/fp";
 import { format } from "date-fns";
 import { performanceContext } from "../../contexts/performance";
 import "./PerformanceViewer.scss";
@@ -64,6 +64,7 @@ export default function PerformanceViewer() {
     mapValues(isForSelectedUser),
     mapValues(isForSelectedType),
     mapValues(isForSelectedDate),
+    omitBy((value: unknown[]) => !value.length),
   ])(performancesByDay);
 
   if (!isAuthenticated) return <Navigate replace to="/" />;
