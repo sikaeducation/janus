@@ -27,6 +27,9 @@ export default function InboxLearner() {
   const alreadyAnswered = !!performances.find(
     (performance) => performance.postSlug === currentBroadcast?.slug
   );
+  if (alreadyAnswered) {
+    setFormShouldDisplay(false);
+  }
 
   return (
     <div className="InboxLearner">
