@@ -18,7 +18,9 @@ export default function PerformanceList({ performances }: props) {
   useEffect(() => {
     if (!isInitialized.current) {
       isInitialized.current = true;
-      lastMessageRef?.current?.scrollIntoView();
+      lastMessageRef?.current?.scrollIntoView({
+        behavior: "smooth",
+      });
     }
   }, [performances, isInitialized, lastMessageRef]);
 
