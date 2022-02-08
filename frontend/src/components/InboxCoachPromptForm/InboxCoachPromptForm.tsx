@@ -48,7 +48,7 @@ export default function InboxCoachPromptForm({
         }}
       />
       <div className="submission-section">
-        <input type="submit" value="Post Question" />
+        <input type="submit" value="Post Prompt" />
       </div>
     </form>
   );

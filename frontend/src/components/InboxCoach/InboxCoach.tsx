@@ -34,8 +34,12 @@ export default function CoachInbox() {
     setTags(broadcastWithSlug.tags?.split(",").map((tag) => tag.trim()) || []);
   };
 
+  const currentBroadcastRequested = useRef<boolean>(false);
   useEffect(() => {
-    getCurrentPrompt();
+    if (!currentBroadcastRequested.current) {
+      getCurrentPrompt();
+      currentBroadcastRequested.current = true;
+    }
   }, [getCurrentPrompt]);
 
   const currentBroadcastInitialized = useRef<boolean>(false);
