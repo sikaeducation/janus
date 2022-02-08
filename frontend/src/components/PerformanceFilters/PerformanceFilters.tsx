@@ -39,6 +39,12 @@ export default function PerformanceFilters({ performances, filters }: props) {
     ),
   ];
 
+  const clearFilters = () => {
+    Object.values(filters).forEach((filter) => {
+      filter.setState("all");
+    });
+  };
+
   return (
     <form className="PerformanceFilters">
       <h2>Filters</h2>
@@ -96,6 +102,9 @@ export default function PerformanceFilters({ performances, filters }: props) {
           </select>
         </li>
       </ul>
+      <button className="clear" type="button" onClick={clearFilters}>
+        Clear filters
+      </button>
     </form>
   );
 }

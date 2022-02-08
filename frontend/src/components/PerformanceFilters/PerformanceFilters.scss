@@ -20,4 +20,12 @@
       border: 1px solid colors.$grey-6;
     }
   }
+  .clear {
+    background: inherit;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    color: colors.$grey-5;
+  }
 }
