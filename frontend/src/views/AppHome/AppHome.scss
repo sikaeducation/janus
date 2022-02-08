@@ -9,4 +9,11 @@
   h1 {
     @include typography.heading-font-1;
   }
+  .login {
+    background-color: inherit;
+    text-decoration: underline;
+    display: inline;
+    border: none;
+    cursor: pointer;
+  }
 }

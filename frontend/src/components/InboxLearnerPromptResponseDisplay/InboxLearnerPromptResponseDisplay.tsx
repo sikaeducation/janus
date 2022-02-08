@@ -13,9 +13,6 @@ export default function InboxLearnerPromptResponseDisplay({
   const { prompt } = currentBroadcast;
   return (
     <>
-      {currentBroadcast.slug && (
-        <div className="slug">{currentBroadcast.slug}</div>
-      )}
       <AppContent wrapperClassName="contained" content={prompt} />
       <AppContent content={response} />
     </>

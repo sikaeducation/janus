@@ -21,6 +21,7 @@ export default function InboxLearner() {
         prompt: currentBroadcast?.prompt || "",
       },
     });
+    setResponse("");
   };
 
   const alreadyAnswered = !!performances.find(

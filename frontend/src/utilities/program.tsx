@@ -12,7 +12,7 @@ function getNextLink(
     return firstUnit
       ? {
           slug: firstUnit.slug,
-          label: `Start ${firstUnit.label.short ?? firstUnit.label.full}`,
+          label: `Next: ${firstUnit.label.short ?? firstUnit.label.full}`,
           path: firstUnit.path,
         }
       : null;
@@ -26,7 +26,7 @@ function getNextLink(
     return firstSection
       ? {
           slug: firstSection.slug,
-          label: `Start ${firstSection.label.short ?? firstSection.label.full}`,
+          label: `Next: ${firstSection.label.short ?? firstSection.label.full}`,
           path: firstSection.path,
         }
       : null;

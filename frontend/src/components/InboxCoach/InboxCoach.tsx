@@ -17,10 +17,10 @@ export default function CoachInbox() {
   } = useContext(promptContext);
 
   const handleStartPrompt = (broadcast: rawBroadcast) => {
-    const generatedSlug = generateSlug();
+    const slug = generateSlug();
     const broadcastWithSlug = {
       ...broadcast,
-      slug: generatedSlug,
+      slug,
     };
     startInboxPrompt(broadcastWithSlug);
   };

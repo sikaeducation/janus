@@ -7,11 +7,6 @@
   > .AppContent {
     padding: 0;
   }
-  .slug {
-    @include typography.breadcrumb-font;
-    color: colors.$grey-8;
-    margin-bottom: sizes.$s4;
-  }
   form {
     label {
       @include typography.breadcrumb-font;

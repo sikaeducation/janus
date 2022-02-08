@@ -17,7 +17,10 @@ export default function InboxCoachPromptForm({
 }: props) {
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const tagsArray = tagString.split(",").map((string) => string.trim());
+    const tagsArray = tagString
+      .trim()
+      .split(",")
+      .map((string) => string.trim());
     const broadcast = {
       prompt,
       tags: tagsArray.join(","),
