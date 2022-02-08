@@ -6,7 +6,6 @@ import InboxLearnerPromptResponseForm from "../InboxLearnerPromptResponseForm";
 import "./InboxLearner.scss";
 
 export default function InboxLearner() {
-  const [formShouldDisplay, setFormShouldDisplay] = useState<boolean>(true);
   const [response, setResponse] = useState<string>("");
   const { currentBroadcast, postPerformance, performances } =
     useContext(performanceContext);
@@ -21,19 +20,15 @@ export default function InboxLearner() {
         prompt: currentBroadcast?.prompt || "",
       },
     });
-    setFormShouldDisplay(false);
   };
 
   const alreadyAnswered = !!performances.find(
     (performance) => performance.postSlug === currentBroadcast?.slug
   );
-  if (alreadyAnswered) {
-    setFormShouldDisplay(false);
-  }
 
   return (
     <div className="InboxLearner">
-      {currentBroadcast && !alreadyAnswered && formShouldDisplay && (
+      {currentBroadcast && !alreadyAnswered && (
         <InboxLearnerPromptResponseForm
           response={response}
           setResponse={setResponse}
@@ -41,7 +36,7 @@ export default function InboxLearner() {
           currentBroadcast={currentBroadcast}
         />
       )}
-      {currentBroadcast && alreadyAnswered && !formShouldDisplay && (
+      {currentBroadcast && alreadyAnswered && (
         <InboxLearnerPromptResponseDisplay
           response={response}
           currentBroadcast={currentBroadcast}
