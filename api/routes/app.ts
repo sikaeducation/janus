@@ -10,6 +10,7 @@ import { createServer } from "http";
 import programs from "./programs";
 import socketAuth from "../services/socket-auth";
 import performanceHandlers from "./performances";
+import promptHandlers from "./prompts";
 
 type SikaSocket = Socket & { email?: string; role?: string };
 
@@ -36,6 +37,7 @@ io.on("connection", (socket: SikaSocket) => {
   socket.join(socket.email || "");
 });
 io.on("connection", performanceHandlers(io));
+io.on("connection", promptHandlers(io));
 
 app.use("/programs", programs);
 
