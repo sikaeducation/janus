@@ -28,7 +28,6 @@ export default function CoachInboxPromptDisplay({
   };
   return (
     <div className="InboxCoachPromptDisplay">
-      {slug && <div className="slug">{slug}</div>}
       {tags.length > 0 && (
         <ul className="tags">
           {tags.map((tag) => (
@@ -38,6 +37,7 @@ export default function CoachInboxPromptDisplay({
           ))}
         </ul>
       )}
+      {slug && <div className="slug">{slug}</div>}
       <AppContent wrapperClassName="contained" content={prompt} />
       <div className="submission-section">
         <button onClick={handleEndPrompt} type="button">

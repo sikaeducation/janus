@@ -16,12 +16,7 @@ type props = {
 
 export function PromptProvider({ children }: props) {
   const [currentBroadcast, setCurrentBroadcast] = useState<rawBroadcast | null>(
-    // null
-    {
-      slug: "aaaaaaaa",
-      prompt: "## Ladders\n* Can you climb them?\n```ts\nconst a = 1;\n```",
-      responseType: "markdown",
-    }
+    null
   );
   const socket = useContext(SocketContext);
 

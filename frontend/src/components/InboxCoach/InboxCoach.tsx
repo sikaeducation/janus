@@ -1,3 +1,4 @@
+import { identity } from "lodash/fp";
 import { useContext, useEffect, useRef, useState } from "react";
 import { promptContext } from "../../contexts/prompt";
 import generateSlug from "../../utilities/generate-slug";
@@ -42,7 +43,7 @@ export default function CoachInbox() {
         <InboxCoachPromptDisplay
           slug={currentBroadcast.slug || ""}
           endPrompt={handleEndPrompt}
-          tags={currentBroadcast.tags?.split(",") || []}
+          tags={currentBroadcast.tags?.split(",").filter(identity) || []}
           prompt={currentBroadcast.prompt}
         />
       ) : (
