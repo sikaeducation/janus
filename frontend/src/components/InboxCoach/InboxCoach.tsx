@@ -26,7 +26,7 @@ export default function CoachInbox() {
   useEffect(() => {
     const generatedSlug = generateSlug();
     setSlug(generatedSlug);
-  }, [slug]);
+  }, []);
 
   return (
     <div className="InboxCoach">
