@@ -42,6 +42,7 @@ export default function InboxCoachPromptForm({
         id="question-prompt"
         className="question-prompt"
         value={prompt}
+        required
         onChange={(event) => {
           setPrompt(event.target.value);
         }}

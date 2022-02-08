@@ -21,7 +21,14 @@ export default function PreviousFeedback({ performances }: props) {
                 {formatDateTime(performance.evaluation?.createdAt || "")}
               </time>
             </a>
-            <AppContent content={performance.evaluation?.feedback || ""} />
+            {performance.evaluation?.feedback ? (
+              <AppContent
+                wrapperClassName="contained"
+                content={performance.evaluation?.feedback}
+              />
+            ) : (
+              <p>None</p>
+            )}
           </div>
         </li>
       ))}

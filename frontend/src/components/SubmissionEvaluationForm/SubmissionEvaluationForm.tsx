@@ -1,3 +1,4 @@
+/* eslint react/jsx-props-no-spreading: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
@@ -25,6 +26,7 @@ export default function SubmissionEvaluationForm({
   const [feedback, setFeedback] = useState("");
   const [evaluationStatus, setEvaluationStatus] = useState("");
   const { postEvaluation } = useContext(performanceContext);
+  const canSubmit = !!evaluationStatus;
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -45,7 +47,7 @@ export default function SubmissionEvaluationForm({
     <form onSubmit={handleSubmit} className="SubmissionEvaluationForm">
       {previousPerformances.length > 0 ? (
         <>
-          <p>Previous feedback</p>
+          <h2>Previous feedback:</h2>
           <PreviousFeedback performances={previousPerformances} />
         </>
       ) : null}
@@ -82,7 +84,7 @@ export default function SubmissionEvaluationForm({
         <button type="button" onClick={cancel}>
           Cancel
         </button>
-        <input type="submit" value="Send Evaluation" />
+        <input type="submit" disabled={!canSubmit} value="Send Evaluation" />
       </div>
     </form>
   );

@@ -4,6 +4,10 @@
 @use "../../styles/typography";
 
 .SubmissionEvaluationForm {
+  h2 {
+    @include typography.body-font;
+    font-weight: 700;
+  }
   label {
     @include typography.breadcrumb-font;
   }
@@ -60,6 +64,10 @@
       @include buttons.button-shadow-small;
       border-radius: sizes.$border-radius;
       cursor: pointer;
+      &[disabled] {
+        background-color: colors.$grey-5;
+        cursor: initial;
+      }
     }
   }
 }

@@ -85,10 +85,10 @@ export default function ActivityInteractionSubmission({
                   </a>
                   <p>
                     This submission{" "}
-                    {getMessage(performance?.evaluation?.status || "")}
+                    {getMessage(performance.evaluation?.status || "")}
                   </p>
-                  {performance?.evaluation?.feedback ? (
-                    <AppContent content={performance?.evaluation?.feedback} />
+                  {performance.evaluation?.feedback ? (
+                    <AppContent content={performance.evaluation?.feedback} />
                   ) : null}
                 </div>
               </li>
@@ -104,6 +104,7 @@ export default function ActivityInteractionSubmission({
           type="url"
           value={url}
           onChange={(event) => setUrl(event.target.value)}
+          required
         />
         <button type="submit">
           Submit{performances.length > 0 ? " another" : null}

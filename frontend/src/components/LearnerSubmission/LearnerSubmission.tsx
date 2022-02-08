@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {
   faClipboardCheck,
   faExternalLinkAlt,
-  faQuestionCircle,
+  faQuestion,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
@@ -30,7 +30,7 @@ export default function LearnerSubmission({ performance }: props) {
   const path = post?.path || "";
 
   const statusIcons = {
-    submitted: <FontAwesomeIcon icon={faQuestionCircle} className="pending" />,
+    submitted: <FontAwesomeIcon icon={faQuestion} className="pending" />,
     rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
     accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
   } as const;
