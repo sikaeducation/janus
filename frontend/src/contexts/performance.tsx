@@ -18,6 +18,7 @@ type performanceContext = {
   getPreviousEvaluations: (
     performance: evaluatedSubmissionPerformance
   ) => evaluatedSubmissionPerformance[];
+  getCurrentPrompt: () => void;
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -79,6 +80,9 @@ export function PerformanceProvider({ children }: props) {
   const endInboxPrompt = () => {
     socket.emit("end-inbox-prompt");
   };
+  const getCurrentPrompt = () => {
+    socket.emit("get-inbox-prompt");
+  };
   const performancesWithEvaluations = performances.map((performance) => {
     return {
       ...performance,
@@ -118,6 +122,7 @@ export function PerformanceProvider({ children }: props) {
         endInboxPrompt,
         evaluations,
         currentBroadcast,
+        getCurrentPrompt,
       }}
     >
       {children}
