@@ -18,10 +18,11 @@ export default function InboxLearnerPromptResponseForm({
     event.preventDefault();
     postResponse(response);
   };
-  const { prompt } = currentBroadcast;
+  const { prompt, slug } = currentBroadcast;
 
   return (
     <div className="InboxLearnerPromptResponseForm">
+      {slug && <div className="slug">{slug}</div>}
       <AppContent wrapperClassName="contained" content={prompt} />
       <div className="submission-section">
         <form onSubmit={handleSubmit}>

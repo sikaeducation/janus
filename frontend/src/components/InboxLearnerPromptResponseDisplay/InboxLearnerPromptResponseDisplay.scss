@@ -1,4 +1,11 @@
 @use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/typography";
 
 .InboxLearnerPromptResponseDisplay {
+  .slug {
+    @include typography.breadcrumb-font;
+    color: colors.$grey-8;
+    margin-bottom: sizes.$s4;
+  }
 }

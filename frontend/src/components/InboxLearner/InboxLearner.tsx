@@ -27,6 +27,9 @@ export default function InboxLearner() {
       currentBroadcast?.slug && performance.postSlug === currentBroadcast?.slug
   );
 
+  // eslint-disable-next-line
+  console.log("Already answered:", alreadyAnswered, currentBroadcast, performances)
+
   return (
     <div className="InboxLearner">
       {currentBroadcast &&
