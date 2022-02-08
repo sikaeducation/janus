@@ -8,7 +8,8 @@ import "./InboxLearner.scss";
 export default function InboxLearner() {
   const [formShouldDisplay, setFormShouldDisplay] = useState<boolean>(true);
   const [response, setResponse] = useState<string>("");
-  const { currentBroadcast, postPerformance } = useContext(performanceContext);
+  const { currentBroadcast, postPerformance, performances } =
+    useContext(performanceContext);
   const { user } = useAuth0();
   const postResponse = (postedResponse: string) => {
     postPerformance({
@@ -23,9 +24,13 @@ export default function InboxLearner() {
     setFormShouldDisplay(false);
   };
 
+  const alreadyAnswered = !!performances.find(
+    (performance) => performance.postSlug === currentBroadcast?.slug
+  );
+
   return (
     <div className="InboxLearner">
-      {currentBroadcast && formShouldDisplay && (
+      {currentBroadcast && !alreadyAnswered && formShouldDisplay && (
         <InboxLearnerPromptResponseForm
           response={response}
           setResponse={setResponse}
@@ -33,7 +38,7 @@ export default function InboxLearner() {
           currentBroadcast={currentBroadcast}
         />
       )}
-      {currentBroadcast && !formShouldDisplay && (
+      {currentBroadcast && alreadyAnswered && !formShouldDisplay && (
         <InboxLearnerPromptResponseDisplay
           response={response}
           currentBroadcast={currentBroadcast}
