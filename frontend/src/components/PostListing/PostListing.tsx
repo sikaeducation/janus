@@ -40,7 +40,7 @@ export default function PostListing({ post, isActive, handlers }: props) {
       tabIndex={0}
       onClick={handlers.click}
       onKeyPress={handlers.keyboard}
-      className="PostListing"
+      className={classNames({ PostListing: true, active: isActive })}
       data-testid="PostListing"
     >
       {post.label.short ?? post.label.full}
@@ -69,14 +69,18 @@ export default function PostListing({ post, isActive, handlers }: props) {
               <th>Full:</th>
               <td data-testid="full-label">{post.label.full}</td>
             </tr>
-            <tr>
-              <th>Short:</th>
-              <td data-testid="short-label">{post.label.short}</td>
-            </tr>
-            <tr>
-              <th>Tiny:</th>
-              <td data-testid="tiny-label">{post.label.tiny}</td>
-            </tr>
+            {post.label.short && (
+              <tr>
+                <th>Short:</th>
+                <td data-testid="short-label">{post.label.short}</td>
+              </tr>
+            )}
+            {post.label.tiny && (
+              <tr>
+                <th>Tiny:</th>
+                <td data-testid="tiny-label">{post.label.tiny}</td>
+              </tr>
+            )}
           </tbody>
         </table>
       </div>

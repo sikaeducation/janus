@@ -4,15 +4,15 @@
 
 .PostListing {
   padding: sizes.$s1 sizes.$s3;
-  background-color: colors.$grey-9;
+  background-color: colors.$grey-10;
   margin-bottom: sizes.$s1;
   width: 300px;
   font-size: sizes.$f3;
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color sizes.$transition;
-  &:active, &:hover {
-    background-color: colors.$grey-8;
+  &:hover, &.active {
+    background-color: darken(colors.$grey-10, 5%);
   }
   .post-details {
     height: 0;
@@ -22,14 +22,10 @@
       height: auto;
     }
     .post-id {
-      padding: 2px 8px;
-      display: inline-flex;
-      justify-content: center;
-      align-items: center;
-      background-color: colors.$grey-8;
-    }
-    .post-path {
-      margin-left: sizes.$s3;
+      display: block;
+      padding: 8px 0;
+      font-weight: 700;
+      color: colors.$grey-3;
     }
     td {
       padding-left: sizes.$s3;
