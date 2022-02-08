@@ -13,9 +13,8 @@
     margin-bottom: sizes.$s4;
     .username {
       font-weight: 700;
-      background-color: colors.$grey-9;
       padding: sizes.$s1 sizes.$s2;
-      margin-left: sizes.$s3 * -1;
+      margin-left: -8px; // Visual offset
       margin-bottom: sizes.$s2;
     }
   }
