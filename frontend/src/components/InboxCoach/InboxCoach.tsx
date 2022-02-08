@@ -20,7 +20,7 @@ export default function CoachInbox() {
     const generatedSlug = generateSlug();
     const broadcastWithSlug = {
       ...broadcast,
-      generatedSlug,
+      slug: generatedSlug,
     };
     startInboxPrompt(broadcastWithSlug);
   };
