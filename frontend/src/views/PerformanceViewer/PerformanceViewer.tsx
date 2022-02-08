@@ -64,7 +64,6 @@ export default function PerformanceViewer() {
     return isEnabled
       ? dayPerformances
       : dayPerformances.filter((dayPerformance) => {
-          console.log("got here", dayPerformance);
           return (
             dayPerformance.type === "submission" &&
             !dayPerformance.evaluation?.status
