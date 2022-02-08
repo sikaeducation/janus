@@ -57,8 +57,9 @@ export function PerformanceProvider({ children }: props) {
       setEvaluations((previous) => [...previous, evaluation]),
     "new-evaluation-notice": (evaluation: postedEvaluation) =>
       setToasts([...toasts, evaluation.status]),
-    "start-inbox-prompt": (broadcast: rawBroadcast) =>
+    "new-inbox-prompt": (broadcast: rawBroadcast) =>
       setCurrentBroadcast(broadcast),
+    "end-inbox-prompt": () => setCurrentBroadcast(null),
   });
 
   useEffect(() => {
