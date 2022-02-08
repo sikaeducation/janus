@@ -5,7 +5,7 @@
 .InboxResponses {
   h2 {
     @include typography.heading-font-2;
-    margin-bottom: sizes.$s2;
+    margin-bottom: sizes.$s4;
   }
   .learner-response {
     display: grid;
