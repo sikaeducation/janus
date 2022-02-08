@@ -28,20 +28,24 @@ export default function CoachInboxPromptDisplay({
   };
   return (
     <div className="InboxCoachPromptDisplay">
-      <ul className="tags">
-        {tags.map((tag) => (
-          <li className="tag" key={tag}>
-            {tag}
-          </li>
-        ))}
-      </ul>
-      <AppContent content={prompt} />
+      {tags.length > 0 && (
+        <ul className="tags">
+          {tags.map((tag) => (
+            <li className="tag" key={tag}>
+              {tag}
+            </li>
+          ))}
+        </ul>
+      )}
+      <AppContent wrapperClassName="contained" content={prompt} />
       <div className="submission-section">
         <button onClick={handleEndPrompt} type="button">
           End Prompt
         </button>
       </div>
-      <InboxResponses performances={promptPerformances} />
+      {promptPerformances.length > 0 && (
+        <InboxResponses performances={promptPerformances} />
+      )}
     </div>
   );
 }

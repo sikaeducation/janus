@@ -1,4 +1,8 @@
 @use "../../styles/sizes";
 
 .InboxLearner {
+  > .AppContent:nth-child(1) {
+    background-color: colors.$grey-9;
+    padding: sizes.$s4 sizes.$s2;
+  }
 }

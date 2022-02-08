@@ -4,9 +4,11 @@
 @use "../../styles/buttons";
 
 .InboxCoachPromptDisplay {
-  background-color: colors.$grey-9;
-  margin-bottom: sizes.$s4;
-  padding: sizes.$s4;
+  > .AppContent {
+    background-color: colors.$grey-9;
+    margin-bottom: sizes.$s4;
+    padding: sizes.$s4;
+  }
   .tag {
     color: colors.$grey-6;
     display: inline-block;
