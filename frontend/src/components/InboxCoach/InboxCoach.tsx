@@ -1,5 +1,5 @@
 import { useContext, useEffect, useRef, useState } from "react";
-import { performanceContext } from "../../contexts/performance";
+import { promptContext } from "../../contexts/prompt";
 import generateSlug from "../../utilities/generate-slug";
 import InboxCoachPromptDisplay from "../InboxCoachPromptDisplay";
 import InboxCoachPromptForm from "../InboxCoachPromptForm";
@@ -16,7 +16,7 @@ export default function CoachInbox() {
     startInboxPrompt,
     endInboxPrompt,
     getCurrentPrompt,
-  } = useContext(performanceContext);
+  } = useContext(promptContext);
 
   const handleEndPrompt = () => {
     endInboxPrompt();

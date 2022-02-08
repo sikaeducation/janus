@@ -10,6 +10,7 @@ import "./App.scss";
 import ToastProvider from "./contexts/toast";
 import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 import { ProgramProvider } from "./contexts/program";
+import { PromptProvider } from "./contexts/prompt";
 
 function App() {
   const { isLoading, isAuthenticated } = useAuth0();
@@ -24,9 +25,11 @@ function App() {
           <main>
             <SocketProvider>
               <ToastProvider>
-                <PerformanceProvider>
-                  <AuthenticatedRoutes />
-                </PerformanceProvider>
+                <PromptProvider>
+                  <PerformanceProvider>
+                    <AuthenticatedRoutes />
+                  </PerformanceProvider>
+                </PromptProvider>
               </ToastProvider>
             </SocketProvider>
           </main>

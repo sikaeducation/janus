@@ -1,14 +1,15 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
+import { promptContext } from "../../contexts/prompt";
 import InboxLearnerPromptResponseDisplay from "../InboxLearnerPromptResponseDisplay";
 import InboxLearnerPromptResponseForm from "../InboxLearnerPromptResponseForm";
 import "./InboxLearner.scss";
 
 export default function InboxLearner() {
   const [response, setResponse] = useState<string>("");
-  const { currentBroadcast, postPerformance, performances } =
-    useContext(performanceContext);
+  const { postPerformance, performances } = useContext(performanceContext);
+  const { currentBroadcast } = useContext(promptContext);
   const { user } = useAuth0();
   const postResponse = (postedResponse: string) => {
     postPerformance({
