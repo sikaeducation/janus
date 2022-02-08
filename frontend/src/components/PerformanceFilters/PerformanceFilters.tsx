@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import classNames from "classnames";
 import { format } from "date-fns";
 import "./PerformanceFilters.scss";
 
@@ -13,9 +14,18 @@ type props = {
       setState: (state: string) => void;
     }
   >;
+  filterUnevaluated: () => void;
+  isEnabled: boolean;
+  setIsEnabled: (state: boolean) => void;
 };
 
-export default function PerformanceFilters({ performances, filters }: props) {
+export default function PerformanceFilters({
+  performances,
+  filters,
+  filterUnevaluated,
+  isEnabled,
+  setIsEnabled,
+}: props) {
   const { user } = useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
   const userIds = [
@@ -46,6 +56,7 @@ export default function PerformanceFilters({ performances, filters }: props) {
     Object.values(filters).forEach((filter) => {
       filter.setState("all");
     });
+    setIsEnabled(true);
   };
 
   return (
@@ -54,11 +65,14 @@ export default function PerformanceFilters({ performances, filters }: props) {
       <ul className="filters">
         {role === "coach" && (
           <li className="filter">
-            <label htmlFor="student-filter">Student</label>
+            <label data-disabled={!isEnabled} htmlFor="student-filter">
+              Student
+            </label>
             <select
               value={filters.student.state}
               id="student-filter"
               className="dropdown-filter"
+              disabled={!isEnabled}
               onChange={(event) => filters.student.setState(event.target.value)}
             >
               <option value="all">All</option>
@@ -71,11 +85,14 @@ export default function PerformanceFilters({ performances, filters }: props) {
           </li>
         )}
         <li className="filter">
-          <label htmlFor="type-filter">Performance Type</label>
+          <label data-disabled={!isEnabled} htmlFor="type-filter">
+            Performance Type
+          </label>
           <select
             value={filters.type.state}
             id="type-filter"
             className="dropdown-filter"
+            disabled={!isEnabled}
             onChange={(event) => filters.type.setState(event.target.value)}
           >
             <option value="all">All</option>
@@ -91,11 +108,14 @@ export default function PerformanceFilters({ performances, filters }: props) {
           </select>
         </li>
         <li className="filter">
-          <label htmlFor="date-filter">Date</label>
+          <label data-disabled={!isEnabled} htmlFor="date-filter">
+            Date
+          </label>
           <select
             value={filters.date.state}
             id="date-filter"
             className="dropdown-filter"
+            disabled={!isEnabled}
             onChange={(event) => filters.date.setState(event.target.value)}
           >
             <option value="all">All</option>
@@ -107,6 +127,16 @@ export default function PerformanceFilters({ performances, filters }: props) {
           </select>
         </li>
       </ul>
+      <button
+        className={classNames({
+          "filter-unevaluated": true,
+          active: !isEnabled,
+        })}
+        type="button"
+        onClick={() => filterUnevaluated()}
+      >
+        All unevaluated
+      </button>
       <button className="clear" type="button" onClick={clearFilters}>
         Clear filters
       </button>
