@@ -28,6 +28,7 @@ export default function CoachInboxPromptDisplay({
   };
   return (
     <div className="InboxCoachPromptDisplay">
+      {slug && <div className="slug">{slug}</div>}
       {tags.length > 0 && (
         <ul className="tags">
           {tags.map((tag) => (

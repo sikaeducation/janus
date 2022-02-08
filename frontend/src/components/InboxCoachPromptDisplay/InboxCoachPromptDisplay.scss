@@ -4,6 +4,11 @@
 @use "../../styles/buttons";
 
 .InboxCoachPromptDisplay {
+  .slug {
+    @include typography.breadcrumb-font;
+    color: colors.$grey-8;
+    margin-bottom: sizes.$s4;
+  }
   > .AppContent {
     background-color: colors.$grey-10;
     margin-bottom: sizes.$s4;
