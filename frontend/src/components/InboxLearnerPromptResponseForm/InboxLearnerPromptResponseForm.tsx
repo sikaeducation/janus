@@ -30,6 +30,7 @@ export default function InboxLearnerPromptResponseForm({
             id="response"
             className="response"
             value={response}
+            required
             onChange={(event) => {
               setResponse(event.target.value);
             }}

@@ -8,21 +8,27 @@ type props = {
 
 export default function InboxResponses({ performances }: props) {
   return (
-    <ul className="InboxResponses">
-      {performances.map(
-        (performance) =>
-          performance.type === "prompt" && (
-            <li key={performance.id}>
-              <div className="learner-response">
-                <Gravatar email={performance.userId} size={60} />
-                <div>
-                  <span className="username">{performance.userId}</span>
-                  <AppContent content={performance.payload.response || ""} />
+    <div className="InboxResponses">
+      <h2>Responses</h2>
+      <ul>
+        {performances.map(
+          (performance) =>
+            performance.type === "prompt" && (
+              <li key={performance.id}>
+                <div className="learner-response">
+                  <Gravatar email={performance.userId} size={60} />
+                  <div>
+                    <div className="username">{performance.userId}:</div>
+                    <AppContent
+                      wrapperClassName="contained"
+                      content={performance.payload.response || ""}
+                    />
+                  </div>
                 </div>
-              </div>
-            </li>
-          )
-      )}
-    </ul>
+              </li>
+            )
+        )}
+      </ul>
+    </div>
   );
 }

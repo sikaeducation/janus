@@ -28,6 +28,7 @@
     }
     .submission-section {
       text-align: right;
+      margin-bottom: sizes.$s6;
       [type=submit]{
         display: inline-block;
         cursor: pointer;

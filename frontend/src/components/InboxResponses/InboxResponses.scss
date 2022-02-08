@@ -1,11 +1,19 @@
 @use "../../styles/sizes";
+@use "../../styles/typography";
 
 .InboxResponses {
+  h2 {
+    @include typography.heading-font-2;
+  }
   .learner-response {
     display: grid;
     grid-template-columns: 100px 1fr;
     margin-bottom: sizes.$s4;
     .username {
+      font-weight: 700;
+      background-color: colors.$grey-9;
+      padding: sizes.$s1 sizes.$s2;
+      margin-left: sizes.$s3 * -1;
       margin-bottom: sizes.$s2;
     }
   }
