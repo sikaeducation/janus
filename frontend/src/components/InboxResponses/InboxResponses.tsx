@@ -13,9 +13,12 @@ export default function InboxResponses({ performances }: props) {
         (performance) =>
           performance.type === "prompt" && (
             <li key={performance.id}>
-              <div className="prompt-response">
+              <div className="learner-response">
                 <Gravatar email={performance.userId} size={60} />
-                <AppContent content={performance.payload.response || ""} />
+                <div>
+                  <span className="username">{performance.userId}</span>
+                  <AppContent content={performance.payload.response || ""} />
+                </div>
               </div>
             </li>
           )

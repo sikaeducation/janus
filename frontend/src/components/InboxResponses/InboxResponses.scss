@@ -1,4 +1,12 @@
 @use "../../styles/sizes";
 
 .InboxResponses {
+  .learner-response {
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    margin-bottom: sizes.$s4;
+    .username {
+      margin-bottom: sizes.$s2;
+    }
+  }
 }
