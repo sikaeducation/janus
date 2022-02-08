@@ -5,6 +5,9 @@
 
 .InboxLearnerPromptResponseForm {
   form {
+    > .AppContent {
+      padding: 0;
+    }
     label {
       @include typography.breadcrumb-font;
     }
