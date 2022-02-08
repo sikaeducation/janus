@@ -8,7 +8,7 @@ type props = {
 
 export default function InboxResponses({ performances }: props) {
   return (
-    <ul className="responses">
+    <ul className="InboxResponses">
       {performances.map(
         (performance) =>
           performance.type === "prompt" && (
