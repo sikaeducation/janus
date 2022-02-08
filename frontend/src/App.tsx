@@ -18,8 +18,8 @@ function App() {
     <ProgramProvider>
       <div className="App">
         <AppHeader />
-        {isAuthenticated && isLoading ? <AppLoading /> : null}
-        {!isAuthenticated && !isLoading ? <AppHome /> : null}
+        {isLoading && <AppLoading />}
+        {!isAuthenticated && !isLoading && <AppHome />}
         {isAuthenticated && (
           <main>
             <SocketProvider>

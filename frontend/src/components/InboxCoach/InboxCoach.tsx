@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
 import generateSlug from "../../utilities/generate-slug";
 import InboxCoachPromptDisplay from "../InboxCoachPromptDisplay";
@@ -18,20 +18,16 @@ export default function CoachInbox() {
     getCurrentPrompt,
   } = useContext(performanceContext);
 
-  const newSlug = () => {
-    const generatedSlug = generateSlug();
-    setSlug(generatedSlug);
-  };
-
   const handleEndPrompt = () => {
     endInboxPrompt();
     setFormShouldDisplay(true);
   };
   const handleStartPrompt = (broadcast: rawBroadcast) => {
-    newSlug();
+    const generatedSlug = generateSlug();
+    setSlug(generatedSlug);
     const broadcastWithSlug = {
       ...broadcast,
-      slug,
+      generatedSlug,
     };
     startInboxPrompt(broadcastWithSlug);
     setFormShouldDisplay(false);
@@ -40,14 +36,18 @@ export default function CoachInbox() {
 
   useEffect(() => {
     getCurrentPrompt();
-  });
+  }, [getCurrentPrompt]);
 
-  if (currentBroadcast) {
-    setSlug(currentBroadcast.slug || "");
-    setTagString(currentBroadcast.tags || "");
-    setPrompt(currentBroadcast.prompt || "");
-    setFormShouldDisplay(false);
-  }
+  const currentBroadcastInitialized = useRef<boolean>(false);
+  useEffect(() => {
+    if (currentBroadcast && currentBroadcastInitialized.current === false) {
+      setSlug(currentBroadcast.slug || "");
+      setTagString(currentBroadcast.tags || "");
+      setPrompt(currentBroadcast.prompt || "");
+      setFormShouldDisplay(false);
+      currentBroadcastInitialized.current = true;
+    }
+  }, [currentBroadcast]);
 
   return (
     <div className="InboxCoach">
