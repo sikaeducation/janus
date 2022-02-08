@@ -31,15 +31,15 @@ export default function InboxLearner() {
     <div className="InboxLearner">
       {currentBroadcast &&
         (alreadyAnswered ? (
+          <InboxLearnerPromptResponseDisplay
+            response={response}
+            currentBroadcast={currentBroadcast}
+          />
+        ) : (
           <InboxLearnerPromptResponseForm
             response={response}
             setResponse={setResponse}
             postResponse={postResponse}
-            currentBroadcast={currentBroadcast}
-          />
-        ) : (
-          <InboxLearnerPromptResponseDisplay
-            response={response}
             currentBroadcast={currentBroadcast}
           />
         ))}
