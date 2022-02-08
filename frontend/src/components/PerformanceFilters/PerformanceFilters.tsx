@@ -1,3 +1,4 @@
+import { useAuth0 } from "@auth0/auth0-react";
 import { format } from "date-fns";
 import "./PerformanceFilters.scss";
 
@@ -15,6 +16,8 @@ type props = {
 };
 
 export default function PerformanceFilters({ performances, filters }: props) {
+  const { user } = useAuth0();
+  const role = (user && user["https://sikaeducation.com/role"]) || "";
   const userIds = [
     ...Array.from(
       new Set<string>(performances.map((performance) => performance.userId))
@@ -49,22 +52,24 @@ export default function PerformanceFilters({ performances, filters }: props) {
     <form className="PerformanceFilters">
       <h2>Filters</h2>
       <ul className="filters">
-        <li className="filter">
-          <label htmlFor="student-filter">Student</label>
-          <select
-            value={filters.student.state}
-            id="student-filter"
-            className="dropdown-filter"
-            onChange={(event) => filters.student.setState(event.target.value)}
-          >
-            <option value="all">All</option>
-            {userIds.map((userId) => (
-              <option value={userId} key={userId}>
-                {userId}
-              </option>
-            ))}
-          </select>
-        </li>
+        {role === "coach" && (
+          <li className="filter">
+            <label htmlFor="student-filter">Student</label>
+            <select
+              value={filters.student.state}
+              id="student-filter"
+              className="dropdown-filter"
+              onChange={(event) => filters.student.setState(event.target.value)}
+            >
+              <option value="all">All</option>
+              {userIds.map((userId) => (
+                <option value={userId} key={userId}>
+                  {userId}
+                </option>
+              ))}
+            </select>
+          </li>
+        )}
         <li className="filter">
           <label htmlFor="type-filter">Performance Type</label>
           <select
