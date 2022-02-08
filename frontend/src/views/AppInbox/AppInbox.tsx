@@ -17,7 +17,7 @@ export default function AppInbox() {
   return (
     <div className="AppInbox">
       <h1>Inbox</h1>
-      {role !== "coach" ? <InboxCoach /> : <InboxLearner />}
+      {role === "coach" ? <InboxCoach /> : <InboxLearner />}
     </div>
   );
 }
