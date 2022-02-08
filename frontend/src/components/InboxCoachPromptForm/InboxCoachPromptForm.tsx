@@ -2,7 +2,6 @@ import "./InboxCoachPromptForm.scss";
 
 type props = {
   startPrompt: (broadcast: rawBroadcast) => void;
-  slug: string;
   prompt: string;
   setPrompt: (prompt: string) => void;
   tagString: string;
@@ -11,7 +10,6 @@ type props = {
 
 export default function InboxCoachPromptForm({
   startPrompt,
-  slug,
   prompt,
   setPrompt,
   tagString,
@@ -21,7 +19,6 @@ export default function InboxCoachPromptForm({
     event.preventDefault();
     const tagsArray = tagString.split(",").map((string) => string.trim());
     const broadcast = {
-      slug,
       prompt,
       tags: tagsArray.join(","),
       responseType: "markdown",

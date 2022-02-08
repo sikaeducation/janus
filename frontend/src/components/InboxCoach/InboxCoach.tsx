@@ -11,29 +11,49 @@ export default function CoachInbox() {
   const [prompt, setPrompt] = useState<string>("");
   const [tags, setTags] = useState<string[]>([]);
   const [tagString, setTagString] = useState<string>("");
-  const { startInboxPrompt, endInboxPrompt } = useContext(performanceContext);
+  const {
+    currentBroadcast,
+    startInboxPrompt,
+    endInboxPrompt,
+    getCurrentPrompt,
+  } = useContext(performanceContext);
+
+  const newSlug = () => {
+    const generatedSlug = generateSlug();
+    setSlug(generatedSlug);
+  };
 
   const handleEndPrompt = () => {
     endInboxPrompt();
     setFormShouldDisplay(true);
   };
   const handleStartPrompt = (broadcast: rawBroadcast) => {
-    startInboxPrompt(broadcast);
+    newSlug();
+    const broadcastWithSlug = {
+      ...broadcast,
+      slug,
+    };
+    startInboxPrompt(broadcastWithSlug);
     setFormShouldDisplay(false);
-    setTags(broadcast.tags?.split(",").map((tag) => tag.trim()) || []);
+    setTags(broadcastWithSlug.tags?.split(",").map((tag) => tag.trim()) || []);
   };
 
   useEffect(() => {
-    const generatedSlug = generateSlug();
-    setSlug(generatedSlug);
-  }, [prompt]);
+    getCurrentPrompt();
+  });
+
+  if (currentBroadcast) {
+    setSlug(currentBroadcast.slug || "");
+    setTagString(currentBroadcast.tags || "");
+    setPrompt(currentBroadcast.prompt || "");
+    setFormShouldDisplay(false);
+  }
 
   return (
     <div className="InboxCoach">
       {formShouldDisplay ? (
         <InboxCoachPromptForm
           startPrompt={handleStartPrompt}
-          slug={slug}
           tagString={tagString}
           setTagString={setTagString}
           prompt={prompt}

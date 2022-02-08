@@ -105,7 +105,7 @@ type postedPerformance =
 type evaluatedPerformance = postedPerformance | evaluatedSubmissionPerformance;
 
 type rawBroadcast = {
-  slug: string;
+  slug?: string;
   prompt: string;
   tags?: string;
   responseType: "markdown";
