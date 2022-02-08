@@ -23,7 +23,8 @@ export default function InboxLearner() {
   };
 
   const alreadyAnswered = !!performances.find(
-    (performance) => performance.postSlug === currentBroadcast?.slug
+    (performance) =>
+      currentBroadcast?.slug && performance.postSlug === currentBroadcast?.slug
   );
 
   return (
