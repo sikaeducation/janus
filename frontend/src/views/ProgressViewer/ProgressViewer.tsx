@@ -1,17 +1,10 @@
 import { faCheck, faQuestion } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
+import Gravatar from "react-gravatar";
+import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
 import "./ProgressViewer.scss";
-
-export const buildTree = (
-  posts: Record<"string", hydratedPost>,
-  currentSlug: string
-): Record<string, Record<string, unknown>> => {
-  return {
-    [currentSlug]: {},
-  };
-};
 
 export const getSequence = (
   posts: Record<string, hydratedPost>,
@@ -30,14 +23,60 @@ export const getSequence = (
     : [rootSlug];
 };
 
+const getIndicatorByType = (performance: postedPerformance) => {
+  const indicatorsByType = {
+    view: (viewPerformance: postedViewPerformance) => {
+      const viewIndicators = {
+        1: <FontAwesomeIcon className="failure" icon={faCheck} />,
+        2: <FontAwesomeIcon icon={faCheck} />,
+        3: <FontAwesomeIcon className="success" icon={faCheck} />,
+      } as const;
+      return viewIndicators[
+        viewPerformance.payload.confidenceLevel as confidenceLevel
+      ];
+    },
+    submission: (submissionPerformance: evaluatedSubmissionPerformance) => {
+      const submissionIndicators = {
+        accepted: <FontAwesomeIcon className="success" icon={faCheck} />,
+        rejected: <FontAwesomeIcon className="failure" icon={faCheck} />,
+        default: <FontAwesomeIcon icon={faQuestion} />,
+      } as const;
+      return submissionIndicators[
+        submissionPerformance.evaluation?.status || "default"
+      ];
+    },
+    prompt: () => {
+      return <FontAwesomeIcon icon={faCheck} />;
+    },
+    default: () => {
+      return <FontAwesomeIcon icon={faCheck} />;
+    },
+  } as const;
+
+  switch (performance.type) {
+    case "view":
+      return indicatorsByType[performance.type](performance);
+      break;
+    case "submission":
+      return indicatorsByType[performance.type](performance);
+      break;
+    case "prompt":
+      return indicatorsByType[performance.type]();
+      break;
+    default:
+      return indicatorsByType.default();
+  }
+};
+
 export default function ProgressViewer() {
   const { postsBySlug, program } = useContext(programContext);
+  const { learners, performancesBySlugByLearner } =
+    useContext(performanceContext);
   const rootSlug = program?.root?.slug || "";
   const sequence = getSequence(
     { [rootSlug]: postsBySlug[rootSlug], ...postsBySlug },
     rootSlug
   );
-  console.log(sequence);
 
   return (
     sequence && (
@@ -47,20 +86,29 @@ export default function ProgressViewer() {
           <thead>
             <tr>
               <th>&nbsp;</th>
-              <th>Student 1</th>
-              <th>Student 2</th>
+              {learners.map((learner: string) => (
+                <th key={learner}>
+                  <Gravatar email={learner} size={60} title={learner} />
+                </th>
+              ))}
             </tr>
           </thead>
           <tbody>
-            {sequence.map((activity: string) => (
-              <tr>
-                <th>{postsBySlug[activity].label.full}</th>
-                <td>
-                  <FontAwesomeIcon className="success" icon={faCheck} />
-                </td>
-                <td>
-                  <FontAwesomeIcon className="failure" icon={faCheck} />
-                </td>
+            {sequence.map((slug: string) => (
+              <tr key={slug}>
+                <th>{postsBySlug[slug].label.full}</th>
+                {learners.map((learner: string) => {
+                  const slugPerformances = performancesBySlugByLearner[slug];
+                  const learnerPerformance =
+                    slugPerformances && slugPerformances[learner];
+                  return learnerPerformance ? (
+                    <td key={learnerPerformance.postSlug}>
+                      {getIndicatorByType(learnerPerformance)}
+                    </td>
+                  ) : (
+                    <td>&nbsp;</td>
+                  );
+                })}
               </tr>
             ))}
             <tr>

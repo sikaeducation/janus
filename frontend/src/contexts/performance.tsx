@@ -1,11 +1,12 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { groupBy } from "lodash/fp";
+import { flow, groupBy, head, mapValues, reverse, sortBy } from "lodash/fp";
 import { format } from "date-fns";
 import useSocketHandlers from "../hooks/use-socket-handlers";
 import { toastContext } from "./toast";
 import { SocketContext } from "./socket";
 
 type performanceContext = {
+  learners: string[];
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
   performances: evaluatedPerformance[];
@@ -15,6 +16,10 @@ type performanceContext = {
   getPreviousEvaluations: (
     performance: evaluatedSubmissionPerformance
   ) => evaluatedSubmissionPerformance[];
+  performancesBySlugByLearner: Record<
+    string,
+    Record<string, evaluatedSubmissionPerformance>
+  >;
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -86,12 +91,25 @@ export function PerformanceProvider({ children }: props) {
     });
   }
 
+  const learners = Array.from(
+    new Set(performances.map((performance) => performance.userId))
+  );
+
+  const performancesBySlugByLearner = flow([
+    groupBy("postSlug"),
+    mapValues(sortBy("createdAt")),
+    mapValues(reverse),
+    mapValues(flow([groupBy("userId"), mapValues(head)])),
+  ])(performancesWithEvaluations);
+
   return (
     <performanceContext.Provider
       value={{
+        learners,
         performances,
         performancesWithEvaluations,
         performancesByDay,
+        performancesBySlugByLearner,
         postPerformance,
         postEvaluation,
         getPreviousEvaluations,

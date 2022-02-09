@@ -3,7 +3,7 @@
 @use "../../styles/typography";
 
 .ProgressViewer {
-  width: sizes.$content-width-xl;
+  width: 100%;
   h1 {
     @include typography.heading-font-1;
   }
@@ -17,24 +17,31 @@
       color: colors.$grey-6;
     }
     th, td {
-      padding: sizes.$s3;
+      padding: sizes.$s1;
     }
     th {
       text-align: left;
     }
     td {
       text-align: center;
+      border: 1px solid colors.$grey-10;
     }
     tbody th {
       left: 0;
       background-color: colors.$white;
       box-shadow: 0 0 5px colors.$white;
+      @include typography.body-font;
+      text-align: right;
+      color: colors.$grey-3;
     }
-    thead th {
-      rotate: -35deg;
-      top: 0;
-      background-color: colors.$white;
-      box-shadow: 0 0 5px colors.$white;
+    thead {
+      th {
+        top: 0;
+        background-color: colors.$white;
+        img {
+          box-shadow: 0 0 50px 35px colors.$white;
+        }
+      }
     }
   }
   .failure {

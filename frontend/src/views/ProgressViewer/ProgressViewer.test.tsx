@@ -1,4 +1,4 @@
-import { buildTree, getSequence } from "./ProgressViewer";
+import { getSequence } from "./ProgressViewer";
 
 const root = {
   type: "root",
@@ -110,21 +110,6 @@ const posts = {
     children: [],
   },
 } as Record<string, hydratedPost>;
-
-test.skip("#buildTree", () => {
-  const tree = buildTree(posts, root.slug);
-  expect(tree).toBe({
-    a: {
-      c: {},
-      d: {
-        f: {},
-        g: {},
-      },
-      e: {},
-    },
-    b: {},
-  });
-});
 
 test("#getSequence", () => {
   const sequence = getSequence(posts, root.slug);
