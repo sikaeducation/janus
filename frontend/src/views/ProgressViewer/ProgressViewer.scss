@@ -1,0 +1,41 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/typography";
+
+.ProgressViewer {
+  width: sizes.$content-width-xl;
+  h1 {
+    @include typography.heading-font-1;
+  }
+  table {
+    position: relative;
+    th {
+      font-weight: 700;
+      position: sticky;
+    }
+    td {
+      color: colors.$grey-6;
+    }
+    th, td {
+      padding: sizes.$s3;
+      text-align: center;
+    }
+    tbody th {
+      left: 0;
+      background-color: colors.$white;
+      box-shadow: 0 0 5px colors.$white;
+    }
+    thead th {
+      rotate: -35deg;
+      top: 0;
+      background-color: colors.$white;
+      box-shadow: 0 0 5px colors.$white;
+    }
+  }
+  .failure {
+    color: colors.$failure-5;
+  }
+  .success {
+    color: colors.$success-5;
+  }
+}
