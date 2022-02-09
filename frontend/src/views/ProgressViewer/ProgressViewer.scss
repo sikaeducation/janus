@@ -18,6 +18,11 @@
     }
     th, td {
       padding: sizes.$s3;
+    }
+    th {
+      text-align: left;
+    }
+    td {
       text-align: center;
     }
     tbody th {

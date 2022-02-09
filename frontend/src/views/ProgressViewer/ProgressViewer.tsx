@@ -52,15 +52,17 @@ export default function ProgressViewer() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <th>Assignment 1</th>
-              <td>
-                <FontAwesomeIcon className="success" icon={faCheck} />
-              </td>
-              <td>
-                <FontAwesomeIcon className="failure" icon={faCheck} />
-              </td>
-            </tr>
+            {sequence.map((activity: string) => (
+              <tr>
+                <th>{postsBySlug[activity].label.full}</th>
+                <td>
+                  <FontAwesomeIcon className="success" icon={faCheck} />
+                </td>
+                <td>
+                  <FontAwesomeIcon className="failure" icon={faCheck} />
+                </td>
+              </tr>
+            ))}
             <tr>
               <th>Assignment 2</th>
               <td>
