@@ -2,6 +2,9 @@
 @use "../../styles/colors";
 
 .PerformanceFilters {
+  h2 {
+    font-weight: 700;
+  }
   .filter {
     display: grid;
     grid-template-rows: auto;
@@ -39,6 +42,16 @@
     &.active {
       background-color: colors.$grey-9;
     }
+  }
+  .scroll-target {
+    display: inline-block;
+    background: inherit;
+    border: none;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    color: colors.$grey-1;
+    margin-right: sizes.$s5;
   }
   .clear {
     display: inline-block;

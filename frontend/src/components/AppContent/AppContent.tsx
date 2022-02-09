@@ -91,7 +91,7 @@ type props = {
 export default function AppContent({ content, wrapperClassName }: props) {
   const { performancesWithEvaluations } = useContext(performanceContext);
   return (
-    <article className={`AppContent ${wrapperClassName || null}`}>
+    <article className={`AppContent ${wrapperClassName} || null`}>
       <ReactMarkdown
         children={content}
         remarkPlugins={[gfm, remarkUnwrapImages]}

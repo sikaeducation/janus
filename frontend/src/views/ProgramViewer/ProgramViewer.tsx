@@ -91,7 +91,12 @@ export default function ProgramViewer({ program }: props) {
           </li>
           {tree}
         </ul>
-        {currentPost ? <AppContent content={currentPost.content} /> : null}
+        {currentPost ? (
+          <AppContent
+            wrapperClassName="contained"
+            content={currentPost.content}
+          />
+        ) : null}
       </div>
     </div>
   );

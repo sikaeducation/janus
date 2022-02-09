@@ -1,5 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { useContext, useState } from "react";
+import { createRef, useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { flow, mapValues, omitBy } from "lodash/fp";
 import { format } from "date-fns";
@@ -17,6 +17,7 @@ export default function PerformanceViewer() {
   const [selectedPerformanceType, setSelectedPerformanceType] = useState("all");
   const [selectedDate, setSelectedDate] = useState("all");
   const [isEnabled, setIsEnabled] = useState(true);
+  const lastMessageRef = createRef<HTMLLIElement>();
 
   const filters = {
     date: {
@@ -83,6 +84,12 @@ export default function PerformanceViewer() {
     setIsEnabled(false);
   };
 
+  const scrollToBottom = () => {
+    lastMessageRef?.current?.scrollIntoView({
+      behavior: "smooth",
+    });
+  };
+
   if (!isAuthenticated) return <Navigate replace to="/" />;
 
   return (
@@ -94,8 +101,12 @@ export default function PerformanceViewer() {
         isEnabled={isEnabled}
         setIsEnabled={setIsEnabled}
         filterUnevaluated={filterUnevaluated}
+        scrollToBottom={scrollToBottom}
       />
-      <PerformanceList performances={filteredPerformancesByDay} />
+      <PerformanceList
+        lastMessageRef={lastMessageRef}
+        performances={filteredPerformancesByDay}
+      />
     </div>
   );
 }
