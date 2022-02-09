@@ -24,14 +24,14 @@ function AppHeader() {
       <Link to="/inbox">Inbox</Link>
     </li>,
     role === "coach" && (
-      <>
-        <li key="4">
-          <Link to="/program-viewer">Program Viewer</Link>
-        </li>
-        <li key="5">
-          <Link to="/progress">Progress Chart</Link>
-        </li>
-      </>
+      <li key="4">
+        <Link to="/program-viewer">Program Viewer</Link>
+      </li>
+    ),
+    role === "coach" && (
+      <li key="5">
+        <Link to="/progress">Progress Chart</Link>
+      </li>
     ),
   ];
 

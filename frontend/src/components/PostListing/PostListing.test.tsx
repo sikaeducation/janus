@@ -4,7 +4,7 @@ import useClipboard from "react-use-clipboard";
 import PostListing from ".";
 
 jest.mock("react-use-clipboard");
-jest.mock("../../services/program");
+jest.mock("../../contexts/program");
 const mockUseClipboard = useClipboard as unknown as jest.Mock;
 
 const { tab, keyboard } = UserEvent;

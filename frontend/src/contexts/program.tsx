@@ -31,7 +31,7 @@ export function ProgramProvider({ children }: props) {
     posts: [],
   });
   const id = 1; // Hard-coded
-  const posts = [...program.posts];
+  const posts = [program.root, ...program.posts];
   const postsBySlug = keyBy<hydratedPost>("slug")(posts);
   useEffect(() => {
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
