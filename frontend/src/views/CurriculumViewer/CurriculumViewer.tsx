@@ -32,7 +32,7 @@ export default function CurriculumViewer({ program }: props) {
   return (
     <div className="CurriculumViewer">
       <UnitNavigation units={unitLinks} />
-      <CrumbNavigation links={crumbLinks} />
+      {crumbLinks.length > 0 && <CrumbNavigation links={crumbLinks} />}
       <AppContent content={currentPost.content} />
       <ActivityInteraction
         postSlug={currentPost.slug}
