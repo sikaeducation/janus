@@ -52,16 +52,24 @@ export function getPostContent() {
 
 export function verifyWebHook(request: Request) {
   const GITHUB_WEBHOOK_TOKEN = process.env.GITHUB_WEBHOOK_TOKEN || "";
+  // eslint-disable-next-line
+  console.log("token", GITHUB_WEBHOOK_TOKEN);
 
   const signature = Buffer.from(
     request.get("X-Hub-Signature-256") || "",
     "utf8"
   );
+  // eslint-disable-next-line
+  console.log("signature", signature);
   const hmac = crypto.createHmac("sha256", GITHUB_WEBHOOK_TOKEN);
+  // eslint-disable-next-line
+  console.log("hmac", hmac);
+  console.log("body", request.body);
   const digest = Buffer.from(
     `sha256=${hmac.update(request.body).digest("hex")}`,
     "utf8"
   );
+  console.log("digest", digest);
 
   return crypto.timingSafeEqual(signature, digest);
 }

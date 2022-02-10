@@ -1,5 +1,4 @@
 node_modules
 build
 .env
-data/dehydrated-programs/*
 data/hydrated-programs/*
