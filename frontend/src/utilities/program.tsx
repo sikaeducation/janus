@@ -75,7 +75,10 @@ function getUnitLinks(
 function getCrumbLinks(posts: hydratedPost[], currentPath: string) {
   const normalizedPath = currentPath.substring(1);
   if (!normalizedPath) return [];
-  const sections = normalizedPath.split("/");
+  const sections = normalizedPath
+    .trim()
+    .split("/")
+    .map((section) => section.trim());
   return sections.map((section) => {
     const matchingPost = posts.find((post) => post.slug === section)!;
     return {
