@@ -97,6 +97,7 @@
   }
   ul ul, ol ol, ul ol, ol ul, li ol, li ul {
     padding-left: sizes.$s7;
+    margin-bottom: 0;
     @media (max-width: sizes.$small-breakpoint){
       margin-left: sizes.$s5;
     }
