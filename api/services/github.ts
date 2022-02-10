@@ -66,7 +66,7 @@ export function verifyWebHook(request: Request) {
   console.log("hmac", hmac);
   console.log("body", request.body);
   const digest = Buffer.from(
-    `sha256=${hmac.update(request.body).digest("hex")}`,
+    `sha256=${hmac.update(JSON.stringify(request.body)).digest("hex")}`,
     "utf8"
   );
   console.log("digest", digest);
