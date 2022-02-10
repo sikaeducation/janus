@@ -26,7 +26,22 @@ const program: rawProgram = {
         tiny: "0",
       },
       slug: "unit-getting-started-ford",
-      children: [],
+      children: [
+        "setup-accounts",
+        "setup-software",
+        "sika-stand-up",
+        "warmups",
+        "project-presentations",
+        "habits-of-excellence",
+        "sika-surveys",
+        "sika-stand-down",
+        "feelings-friday",
+        "simplified-neuroscience",
+        "passive-vs-active-learning",
+        "education-myths",
+        "dreyfuss-model",
+        "zone-of-proximal-development",
+      ],
     },
     {
       type: "unit",
@@ -713,6 +728,120 @@ const program: rawProgram = {
         full: "CLI Exercise 1",
       },
       slug: "exercise-cli-exercise-1",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Setup Accounts",
+      },
+      slug: "setup-accounts",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Setup Software",
+      },
+      slug: "setup-software",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Stand-up",
+      },
+      slug: "sika-stand-up",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Warmups",
+      },
+      slug: "warmups",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Project Presentations",
+      },
+      slug: "project-presentations",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Habits of Excellence",
+      },
+      slug: "habits-of-excellence",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Surveys",
+      },
+      slug: "sika-surveys",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Stand-down",
+      },
+      slug: "sika-stand-down",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Feelings Friday",
+      },
+      slug: "feelings-friday",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Simplified Neuroscience",
+      },
+      slug: "simplified-neuroscience",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Passive vs. Active Learning",
+      },
+      slug: "passive-vs-active-learning",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Education Myths",
+      },
+      slug: "education-myths",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Dreyfuss Model of Skill Acquisition",
+        short: "Dreyfuss Model",
+      },
+      slug: "dreyfuss-model",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Zone of Proximal Development",
+        short: "ZPD",
+      },
+      slug: "zone-of-proximal-development",
       children: [],
     },
   ],
