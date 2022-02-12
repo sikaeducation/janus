@@ -1,3 +1,4 @@
+import AppContent from "../AppContent";
 import ButtonFormSubmission from "../ButtonFormSubmission";
 import TextAreaResponse from "../TextAreaResponse";
 import "./QuestionForm.scss";
@@ -29,7 +30,7 @@ export default function QuestionForm({
   };
   return (
     <div className="QuestionForm">
-      <div>{prompt}</div>
+      <AppContent wrapperClassName="contained" content={prompt} />
       <form onSubmit={handleSubmit}>
         <TextAreaResponse
           id={id}

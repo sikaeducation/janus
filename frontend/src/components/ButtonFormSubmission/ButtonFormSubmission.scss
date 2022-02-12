@@ -3,7 +3,7 @@
 @use "../../styles/buttons";
 
 .ButtonFormSubmission {
-  background-color: colors.$grey-8;
+  background-color: colors.$grey-9;
   color: colors.$grey-2;
   border-radius: 0 sizes.$border-radius sizes.$border-radius 0;
   border: none;
@@ -12,6 +12,7 @@
   transition: background-color sizes.$transition;
   @include buttons.button-shadow-small;
   &:hover {
-    background-color: colors.$grey-7;
+    background-color: darken(colors.$grey-9, 5%);
+    color: colors.$grey-1;
   }
 }

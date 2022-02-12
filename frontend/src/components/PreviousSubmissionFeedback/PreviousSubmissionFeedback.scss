@@ -1,7 +1,7 @@
 @use "../../styles/sizes";
 @use "../../styles/colors";
 
-.PreviousFeedback {
+.PreviousSubmissionFeedback {
   grid-row: 3 / span 1;
   grid-column: 1 / span 2;
   background-color: colors.$grey-9;

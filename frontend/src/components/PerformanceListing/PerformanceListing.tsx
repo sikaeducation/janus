@@ -1,5 +1,6 @@
 import Gravatar from "react-gravatar";
 import LearnerPrompt from "../LearnerPrompt";
+import LearnerQuestion from "../LearnerQuestion";
 import LearnerSubmission from "../LearnerSubmission";
 import LearnerViewing from "../LearnerViewing";
 import "./PerformanceListing.scss";
@@ -19,7 +20,11 @@ export default function PerformanceListing({ performance }: props) {
     prompt: (
       <LearnerPrompt performance={performance as postedPromptPerformance} />
     ),
-    question: null,
+    question: (
+      <LearnerQuestion
+        performance={performance as evaluatedQuestionPerformance}
+      />
+    ),
   } as const;
   const performanceListingType = performanceListingTypes[performance.type];
 

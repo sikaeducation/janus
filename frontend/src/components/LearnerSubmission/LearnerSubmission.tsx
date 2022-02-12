@@ -11,7 +11,7 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
 import AppContent from "../AppContent";
-import LearnerSubmissionEvaluable from "../LearnerEvaluable/LearnerEvaluable";
+import LearnerSubmissionEvaluable from "../LearnerSubmissionEvaluable";
 import "./LearnerSubmission.scss";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");

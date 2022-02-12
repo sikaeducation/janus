@@ -1,4 +1,3 @@
-/* eslint react/jsx-props-no-spreading: "off" */
 import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
@@ -8,16 +7,16 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
-import PreviousSubmissionFeedback from "../PreviousSubmissionFeedback";
-import "./SubmissionEvaluationForm.scss";
+import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
+import "./QuestionEvaluationForm.scss";
 
 type props = {
-  previousPerformances: evaluatedSubmissionPerformance[];
+  previousPerformances: evaluatedQuestionPerformance[];
   performance: evaluatedPerformance;
   cancel: () => void;
 };
 
-export default function SubmissionEvaluationForm({
+export default function QuestionEvaluationForm({
   previousPerformances,
   performance,
   cancel,
@@ -44,11 +43,11 @@ export default function SubmissionEvaluationForm({
   };
 
   return (
-    <form onSubmit={handleSubmit} className="SubmissionEvaluationForm">
+    <form onSubmit={handleSubmit} className="QuestionEvaluationForm">
       {previousPerformances.length > 0 ? (
         <>
           <h2>Previous feedback:</h2>
-          <PreviousSubmissionFeedback performances={previousPerformances} />
+          <PreviousQuestionFeedback performances={previousPerformances} />
         </>
       ) : null}
       <label htmlFor="feedback">Feedback:</label>

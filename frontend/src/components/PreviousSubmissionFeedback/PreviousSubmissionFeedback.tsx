@@ -1,18 +1,18 @@
 import { format } from "date-fns";
 import AppContent from "../AppContent";
-import "./PreviousFeedback.scss";
-
-type props = {
-  performances: evaluatedSubmissionPerformance[];
-};
+import "./PreviousSubmissionFeedback.scss";
 
 const formatDateTime = (dateTime: string) => {
   return format(new Date(dateTime), "M/d/yy p");
 };
 
-export default function PreviousFeedback({ performances }: props) {
+type props = {
+  performances: evaluatedSubmissionPerformance[];
+};
+
+export default function PreviousSubmissionFeedback({ performances }: props) {
   return (
-    <ul className="previous-feedback">
+    <ul className="PreviousSubmissionFeedback">
       {performances.map((performance) => (
         <li key={performance.id}>
           <div>

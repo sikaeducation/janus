@@ -11,7 +11,7 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
 import AppContent from "../AppContent";
-import LearnerSubmissionEvaluable from "../LearnerEvaluable/LearnerEvaluable";
+import LearnerQuestionEvaluable from "../LearnerQuestionEvaluable";
 import "./LearnerQuestion.scss";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
@@ -53,7 +53,7 @@ export default function LearnerQuestion({ performance }: props) {
       </ul>
       <span className="evaluation-status">{statusIcon}</span>
       {role === "coach" && !performance.evaluation?.feedback && (
-        <LearnerSubmissionEvaluable performance={performance} />
+        <LearnerQuestionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
         <>
