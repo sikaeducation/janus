@@ -95,15 +95,29 @@ type rawPromptPerformance = getRawPerformance<
 >;
 type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
 
+type rawQuestionPerformance = getRawPerformance<
+  "question",
+  { response: string; prompt: string; originalPostSlug: string }
+>;
+type postedQuestionPerformance = getPostedPerformance<rawQuestionPerformance>;
+type evaluatedQuestionPerformance = postedQuestionPerformance & {
+  evaluation?: postedEvaluation;
+};
+
 type rawPerformance =
   | rawViewPerformance
   | rawSubmissionPerformance
-  | rawPromptPerformance;
+  | rawPromptPerformance
+  | rawQuestionPerformance;
 type postedPerformance =
   | postedViewPerformance
   | postedSubmissionPerformance
-  | postedPromptPerformance;
-type evaluatedPerformance = postedPerformance | evaluatedSubmissionPerformance;
+  | postedPromptPerformance
+  | postedQuestionPerformance;
+type evaluatedPerformance =
+  | postedPerformance
+  | evaluatedSubmissionPerformance
+  | evaluatedQuestionPerformance;
 
 type rawBroadcast = {
   slug?: string;

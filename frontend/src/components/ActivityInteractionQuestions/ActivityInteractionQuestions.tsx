@@ -43,6 +43,20 @@ export default function ActivityInteractionQuestions({
       [id]: response,
     });
   };
+  const postResponse =
+    (questionId: string) =>
+    ({ prompt, response }: { prompt: string; response: string }) => {
+      postPerformance({
+        type: "question",
+        postSlug: questionId,
+        userId,
+        payload: {
+          response,
+          prompt,
+          originalPostSlug: postSlug,
+        },
+      });
+    };
   if (!frontmatter || !frontmatter[1]) return null;
 
   return (
@@ -55,6 +69,7 @@ export default function ActivityInteractionQuestions({
               prompt={question.prompt}
               response={responses[question.id]}
               setResponse={updateResponse(question.id)}
+              postResponse={postResponse(question.id)}
             />
           </li>
         ))}

@@ -13,7 +13,7 @@ import "./SubmissionEvaluationForm.scss";
 
 type props = {
   previousPerformances: evaluatedSubmissionPerformance[];
-  performance: evaluatedSubmissionPerformance;
+  performance: evaluatedPerformance;
   cancel: () => void;
 };
 

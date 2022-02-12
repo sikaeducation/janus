@@ -19,6 +19,7 @@ export default function PerformanceListing({ performance }: props) {
     prompt: (
       <LearnerPrompt performance={performance as postedPromptPerformance} />
     ),
+    question: null,
   } as const;
   const performanceListingType = performanceListingTypes[performance.type];
 

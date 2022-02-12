@@ -99,7 +99,7 @@ type postedSubmissionPerformance =
 
 type rawPromptPerformance = getRawPerformance<
   "prompt",
-  { response: string; prompt: string }
+  { response: string; prompt: string; originalPostSlug: string }
 >;
 type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
 

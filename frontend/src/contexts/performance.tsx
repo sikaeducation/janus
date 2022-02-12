@@ -14,7 +14,7 @@ type performanceContext = {
   performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
   getPreviousEvaluations: (
-    performance: evaluatedSubmissionPerformance
+    performance: evaluatedPerformance
   ) => evaluatedSubmissionPerformance[];
   performancesBySlugByLearner: Record<
     string,
@@ -81,7 +81,7 @@ export function PerformanceProvider({ children }: props) {
     }
   )(performancesWithEvaluations);
 
-  function getPreviousEvaluations(performance: evaluatedSubmissionPerformance) {
+  function getPreviousEvaluations(performance: evaluatedPerformance) {
     return performancesWithEvaluations.filter((evaluatedPerformance) => {
       return (
         evaluatedPerformance.userId === performance.userId &&

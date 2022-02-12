@@ -7,6 +7,13 @@ type props = {
   prompt: string;
   response: string;
   setResponse: (response: string) => void;
+  postResponse: ({
+    response,
+    prompt,
+  }: {
+    response: string;
+    prompt: string;
+  }) => void;
 };
 
 export default function QuestionForm({
@@ -14,11 +21,16 @@ export default function QuestionForm({
   prompt,
   response,
   setResponse,
+  postResponse,
 }: props) {
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    postResponse({ response, prompt });
+  };
   return (
     <div className="QuestionForm">
       <div>{prompt}</div>
-      <form>
+      <form onSubmit={handleSubmit}>
         <TextAreaResponse
           id={id}
           label="Response"
