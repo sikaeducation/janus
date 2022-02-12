@@ -115,6 +115,7 @@ const program: rawProgram = {
       slug: "section-cli-1",
       children: [
         "cli-intro",
+        "intro-cli-questions",
         "cli-navigation-1",
         "cli-file-management-1",
         "exercise-cli-exercise-1",
@@ -842,6 +843,15 @@ const program: rawProgram = {
         short: "ZPD",
       },
       slug: "zone-of-proximal-development",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Intro to the CLI: Questions",
+        short: "CLI Questions",
+      },
+      slug: "intro-cli-questions",
       children: [],
     },
   ],

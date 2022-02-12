@@ -1,3 +1,4 @@
+import TextAreaResponse from "../TextAreaResponse";
 import "./InboxCoachPromptForm.scss";
 
 type props = {
@@ -40,15 +41,12 @@ export default function InboxCoachPromptForm({
         }}
         value={tagString}
       />
-      <label htmlFor="question-prompt">Question prompt</label>
-      <textarea
+      <TextAreaResponse
         id="question-prompt"
-        className="question-prompt"
-        value={prompt}
-        required
-        onChange={(event) => {
-          setPrompt(event.target.value);
-        }}
+        label="Question prompt"
+        content={prompt}
+        action={setPrompt}
+        isRequired
       />
       <div className="submission-section">
         <input type="submit" value="Post Prompt" />

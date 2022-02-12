@@ -4,6 +4,7 @@ import { performanceContext } from "../../contexts/performance";
 
 import ActivityInteractionView from "../ActivityInteractionView";
 import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
+import ActivityInteractionQuestions from "../ActivityInteractionQuestions";
 
 type props = {
   postType: postType;
@@ -41,6 +42,14 @@ export default function ActivityInteraction({
     section: null,
     guide: null,
     concept: null,
+    questions: (
+      <ActivityInteractionQuestions
+        userId={userId}
+        postPerformance={postPerformance}
+        performances={performances as unknown}
+        postSlug={postSlug}
+      />
+    ),
   } as const;
   return interactions[postType];
 }

@@ -2,6 +2,7 @@
 
 import "./AppContent.scss";
 import ReactMarkdown from "react-markdown";
+import frontmatter from "remark-frontmatter";
 import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
@@ -11,6 +12,7 @@ import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import classNames from "classnames";
 import { performanceContext } from "../../contexts/performance";
 
 function getPerformanceIndicator(performance: evaluatedPerformance) {
@@ -91,10 +93,19 @@ type props = {
 export default function AppContent({ content, wrapperClassName }: props) {
   const { performancesWithEvaluations } = useContext(performanceContext);
   return (
-    <article className={`AppContent ${wrapperClassName} || null`}>
+    <article
+      className={classNames({
+        AppContent: true,
+        contained: !!wrapperClassName,
+      })}
+    >
       <ReactMarkdown
         children={content}
-        remarkPlugins={[gfm, remarkUnwrapImages]}
+        remarkPlugins={[
+          gfm,
+          remarkUnwrapImages,
+          [frontmatter, { type: "yaml", marker: "-" }],
+        ]}
         components={{
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal = href?.match(/^(https?:)?\/\//);

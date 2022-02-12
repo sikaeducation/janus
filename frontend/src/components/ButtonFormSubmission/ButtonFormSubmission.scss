@@ -1,0 +1,17 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+@use "../../styles/buttons";
+
+.ButtonFormSubmission {
+  background-color: colors.$grey-8;
+  color: colors.$grey-2;
+  border-radius: 0 sizes.$border-radius sizes.$border-radius 0;
+  border: none;
+  cursor: pointer;
+  padding: sizes.$s2 sizes.$s3;
+  transition: background-color sizes.$transition;
+  @include buttons.button-shadow-small;
+  &:hover {
+    background-color: colors.$grey-7;
+  }
+}

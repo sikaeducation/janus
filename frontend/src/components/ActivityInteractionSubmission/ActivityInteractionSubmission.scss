@@ -20,16 +20,6 @@
     border-radius: sizes.$border-radius 0 0 sizes.$border-radius;
     border-right: none;
   }
-  [type=submit]{
-    background-color: colors.$grey-8;
-    color: colors.$grey-2;
-    border-radius: 0 sizes.$border-radius sizes.$border-radius 0;
-    cursor: pointer;
-    transition: background-color sizes.$transition;
-    &:hover {
-      background-color: colors.$grey-7;
-    }
-  }
   h2 {
     align-self: flex-start;
     @include typography.heading-font-2;
