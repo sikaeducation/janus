@@ -38,7 +38,7 @@ export default function CoachInboxPromptDisplay({
         </ul>
       )}
       {slug && <div className="slug">{slug}</div>}
-      <AppContent wrapperClassName="contained" content={prompt} />
+      <AppContent className="existing-prompt" isContained content={prompt} />
       <div className="submission-section">
         <button onClick={handleEndPrompt} type="button">
           End Prompt

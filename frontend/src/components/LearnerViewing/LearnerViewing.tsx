@@ -24,7 +24,7 @@ export default function LearningViewing({ performance }: props) {
   } as const;
 
   return (
-    <>
+    <div className="LearnerViewing">
       <p className="description">
         {" "}
         {performance.userId} read <Link to={path}>{title}</Link>.{" "}
@@ -37,6 +37,6 @@ export default function LearningViewing({ performance }: props) {
       <span className="evaluation-status">
         {checks[performance.payload.confidenceLevel as confidenceLevel]}
       </span>
-    </>
+    </div>
   );
 }

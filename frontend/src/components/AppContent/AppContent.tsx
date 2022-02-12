@@ -87,16 +87,22 @@ function getPerformanceIndicator(performance: evaluatedPerformance) {
 
 type props = {
   content: string;
-  wrapperClassName?: string;
+  isContained?: boolean;
+  className?: string;
 };
 
-export default function AppContent({ content, wrapperClassName }: props) {
+export default function AppContent({
+  content,
+  isContained,
+  className = "",
+}: props) {
   const { performancesWithEvaluations } = useContext(performanceContext);
   return (
     <article
       className={classNames({
         AppContent: true,
-        contained: !!wrapperClassName,
+        contained: isContained,
+        [className]: true,
       })}
     >
       <ReactMarkdown
@@ -129,8 +135,13 @@ export default function AppContent({ content, wrapperClassName }: props) {
               </>
             );
           },
-          code: ({ inline, className, children, ...props }) => {
-            const match = /language-(\w+)/.exec(className || "");
+          code: ({
+            inline,
+            className: elementClassName,
+            children,
+            ...props
+          }) => {
+            const match = /language-(\w+)/.exec(elementClassName || "");
             return !inline && match ? (
               <SyntaxHighlighter
                 children={String(children).replace(/\n$/, "")}
@@ -140,7 +151,7 @@ export default function AppContent({ content, wrapperClassName }: props) {
                 {...props}
               />
             ) : (
-              <code className={className} {...props}>
+              <code className={elementClassName} {...props}>
                 {children}
               </code>
             );

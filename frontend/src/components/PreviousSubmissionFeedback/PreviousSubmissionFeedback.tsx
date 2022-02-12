@@ -23,7 +23,8 @@ export default function PreviousSubmissionFeedback({ performances }: props) {
             </a>
             {performance.evaluation?.feedback ? (
               <AppContent
-                wrapperClassName="contained"
+                className="feedback"
+                isContained
                 content={performance.evaluation?.feedback}
               />
             ) : (

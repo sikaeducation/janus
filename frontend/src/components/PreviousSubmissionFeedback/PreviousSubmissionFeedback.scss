@@ -4,11 +4,10 @@
 .PreviousSubmissionFeedback {
   grid-row: 3 / span 1;
   grid-column: 1 / span 2;
-  background-color: colors.$grey-9;
+  background-color: colors.$grey-10;
   border-radius: sizes.$border-radius;
   padding: sizes.$s4; 
-  .AppContent {
-    margin: 0 auto;
-    width: 70%;
+  > li > div > .feedback {
+    padding: 0;
   }
 }

@@ -10,7 +10,7 @@ export default function LearnerPrompt({
   performance: postedPromptPerformance;
 }) {
   return (
-    <>
+    <div className="LearnerPrompt">
       <p className="description">{performance.userId} answered a prompt.</p>
       <ul className="meta">
         <li>
@@ -19,14 +19,16 @@ export default function LearnerPrompt({
       </ul>
       <div className="prompt-response">
         <AppContent
-          wrapperClassName="contained"
+          className="prompt"
+          isContained
           content={performance.payload.prompt || ""}
         />
         <AppContent
-          wrapperClassName="contained"
+          className="response"
+          isContained
           content={performance.payload.response || ""}
         />
       </div>
-    </>
+    </div>
   );
 }

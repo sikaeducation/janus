@@ -30,7 +30,7 @@ export default function QuestionForm({
   };
   return (
     <div className="QuestionForm">
-      <AppContent wrapperClassName="contained" content={prompt} />
+      <AppContent className="prompt" isContained content={prompt} />
       <form onSubmit={handleSubmit}>
         <TextAreaResponse
           id={id}

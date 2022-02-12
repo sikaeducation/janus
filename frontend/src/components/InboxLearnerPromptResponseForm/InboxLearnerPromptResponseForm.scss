@@ -4,7 +4,7 @@
 @use "../../styles/buttons";
 
 .InboxLearnerPromptResponseForm {
-  > .AppContent {
+  .prompt {
     padding: 0;
   }
   form {

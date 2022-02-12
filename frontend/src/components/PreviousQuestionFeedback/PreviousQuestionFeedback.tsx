@@ -20,16 +20,19 @@ export default function PreviousQuestionFeedback({ performances }: props) {
               {formatDateTime(performance.evaluation?.createdAt || "")}
             </time>
             <AppContent
-              wrapperClassName="contained"
+              className="prompt"
+              isContained
               content={performance.payload.prompt}
             />
             <AppContent
-              wrapperClassName="contained"
+              className="response"
+              isContained
               content={performance.payload.response}
             />
             {performance.evaluation?.feedback ? (
               <AppContent
-                wrapperClassName="contained"
+                isContained
+                className="feedback"
                 content={performance.evaluation.feedback}
               />
             ) : (

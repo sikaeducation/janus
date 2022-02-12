@@ -1,4 +1,22 @@
 @use "../../styles/sizes";
+@use "../../styles/colors";
 
 .PreviousQuestionFeedback {
+  grid-row: 3 / span 1;
+  grid-column: 1 / span 2;
+  border-radius: sizes.$border-radius;
+  padding: sizes.$s4; 
+  time {
+    display: inline-block;
+    font-weight: 700;
+    margin-bottom: sizes.$s2;
+  }
+  > li > div {
+    > .prompt {
+      background-color: colors.$grey-10;
+    }
+    > .feedback {
+      background-color: colors.$grey-10;
+    }
+  }
 }

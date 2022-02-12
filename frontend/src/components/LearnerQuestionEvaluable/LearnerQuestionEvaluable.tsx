@@ -22,7 +22,7 @@ export default function LearnerQuestionEvaluable({ performance }: props) {
       cancel={() => setShowForm(false)}
     />
   ) : (
-    <div className="toggle-evaluation-form">
+    <div className="toggle-question-evaluation-form">
       <button type="button" onClick={() => setShowForm(true)}>
         Evaluate
       </button>

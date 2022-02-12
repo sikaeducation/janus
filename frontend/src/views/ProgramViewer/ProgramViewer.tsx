@@ -93,7 +93,8 @@ export default function ProgramViewer({ program }: props) {
         </ul>
         {currentPost ? (
           <AppContent
-            wrapperClassName="contained"
+            className="post-content"
+            isContained
             content={currentPost.content}
           />
         ) : null}

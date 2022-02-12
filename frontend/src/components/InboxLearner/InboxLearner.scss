@@ -2,7 +2,7 @@
 @use "../../styles/colors";
 
 .InboxLearner {
-  > .AppContent:nth-child(1) {
+  .prompt {
     box-sizing: content-box;
     background-color: colors.$grey-10;
     padding: sizes.$s4;

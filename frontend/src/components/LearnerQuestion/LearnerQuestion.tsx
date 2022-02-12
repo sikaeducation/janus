@@ -36,7 +36,7 @@ export default function LearnerQuestion({ performance }: props) {
   const { path } = post;
 
   return (
-    <>
+    <div className="LearnerQuestion">
       <p className="description">
         {performance.userId} submitted a question response from {title}
       </p>
@@ -51,6 +51,18 @@ export default function LearnerQuestion({ performance }: props) {
           <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>
+      <div className="question-prompt-response">
+        <AppContent
+          className="prompt"
+          isContained
+          content={performance.payload.prompt}
+        />
+        <AppContent
+          className="response"
+          isContained
+          content={performance.payload.response}
+        />
+      </div>
       <span className="evaluation-status">{statusIcon}</span>
       {role === "coach" && !performance.evaluation?.feedback && (
         <LearnerQuestionEvaluable performance={performance} />
@@ -64,11 +76,12 @@ export default function LearnerQuestion({ performance }: props) {
             size={40}
           />
           <AppContent
-            wrapperClassName="evaluation-feedback contained"
-            content={performance?.evaluation?.feedback || ""}
+            className="evaluation-feedback"
+            isContained
+            content={performance.evaluation.feedback || ""}
           />
         </>
       )}
-    </>
+    </div>
   );
 }

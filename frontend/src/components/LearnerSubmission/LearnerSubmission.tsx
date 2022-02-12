@@ -37,7 +37,7 @@ export default function LearnerSubmission({ performance }: props) {
   const title = post.label?.short || post.label?.full || "";
 
   return (
-    <>
+    <div className="LearnerSubmission">
       <p className="description">
         {performance.userId} submitted{" "}
         <a href={performance.payload.url}>{title}</a>.
@@ -66,11 +66,12 @@ export default function LearnerSubmission({ performance }: props) {
             size={40}
           />
           <AppContent
-            wrapperClassName="evaluation-feedback contained"
+            isContained
             content={performance?.evaluation?.feedback || ""}
+            className="evaluation-feedback"
           />
         </>
       )}
-    </>
+    </div>
   );
 }

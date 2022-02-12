@@ -20,7 +20,8 @@ export default function InboxResponses({ performances }: props) {
                   <div>
                     <div className="username">{performance.userId}:</div>
                     <AppContent
-                      wrapperClassName="contained"
+                      isContained
+                      className="response-content"
                       content={performance.payload.response || ""}
                     />
                   </div>
