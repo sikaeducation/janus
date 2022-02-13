@@ -4,6 +4,7 @@ import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
+import useIndicator from "../../hooks/use-indicator";
 import "./ProgressViewer.scss";
 
 export const getSequence = (
@@ -23,55 +24,11 @@ export const getSequence = (
     : [rootSlug];
 };
 
-const getIndicatorByType = (performance: postedPerformance) => {
-  const indicatorsByType = {
-    view: (viewPerformance: postedViewPerformance) => {
-      const viewIndicators = {
-        1: <FontAwesomeIcon className="failure" icon={faCheck} />,
-        2: <FontAwesomeIcon icon={faCheck} />,
-        3: <FontAwesomeIcon className="success" icon={faCheck} />,
-      } as const;
-      return viewIndicators[
-        viewPerformance.payload.confidenceLevel as confidenceLevel
-      ];
-    },
-    submission: (submissionPerformance: evaluatedSubmissionPerformance) => {
-      const submissionIndicators = {
-        accepted: <FontAwesomeIcon className="success" icon={faCheck} />,
-        rejected: <FontAwesomeIcon className="failure" icon={faCheck} />,
-        default: <FontAwesomeIcon icon={faQuestion} />,
-      } as const;
-      return submissionIndicators[
-        submissionPerformance.evaluation?.status || "default"
-      ];
-    },
-    prompt: () => {
-      return <FontAwesomeIcon icon={faCheck} />;
-    },
-    default: () => {
-      return <FontAwesomeIcon icon={faCheck} />;
-    },
-  } as const;
-
-  switch (performance.type) {
-    case "view":
-      return indicatorsByType[performance.type](performance);
-      break;
-    case "submission":
-      return indicatorsByType[performance.type](performance);
-      break;
-    case "prompt":
-      return indicatorsByType[performance.type]();
-      break;
-    default:
-      return indicatorsByType.default();
-  }
-};
-
 export default function ProgressViewer() {
   const { postsBySlug, program } = useContext(programContext);
   const { learners, lastPerformanceBySlugByLearner } =
     useContext(performanceContext);
+  const getIndicator = useIndicator();
   const rootSlug = program?.root?.slug || "";
   const sequence = getSequence(
     { [rootSlug]: postsBySlug[rootSlug], ...postsBySlug },
@@ -98,15 +55,23 @@ export default function ProgressViewer() {
               <tr key={slug}>
                 <th>{postsBySlug[slug].label.full}</th>
                 {learners.map((learner: string) => {
+                  const post = postsBySlug[slug];
                   const slugPerformances = lastPerformanceBySlugByLearner[slug];
                   const learnerPerformance =
                     slugPerformances && slugPerformances[learner];
-                  return learnerPerformance ? (
-                    <td key={learnerPerformance.postSlug}>
-                      {getIndicatorByType(learnerPerformance)}
+                  return learnerPerformance || post.type === "questions" ? (
+                    <td key={`${learner}-${slug}`}>
+                      {getIndicator(
+                        post.type === "questions"
+                          ? ({
+                              type: "question",
+                              postSlug: slug,
+                            } as evaluatedQuestionPerformance)
+                          : learnerPerformance
+                      )}
                     </td>
                   ) : (
-                    <td>&nbsp;</td>
+                    <td key={`${learner}-${slug}`}>&nbsp;</td>
                   );
                 })}
               </tr>
