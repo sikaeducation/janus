@@ -1,6 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
@@ -32,15 +30,12 @@ export default function LearnerQuestion({ performance }: props) {
   return (
     <div className="LearnerQuestion">
       <p className="description">
-        {performance.userId} submitted a question response from {title}
+        {performance.userId} submitted a question response from{" "}
+        <Link to={path}>{title}</Link>
       </p>
       <ul className="meta">
         <li>
           <time>{formatTime(performance.createdAt)}</time>
-        </li>
-        <li>
-          <Link to={path}>Original activity</Link>
-          <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>
       <div className="question-prompt-response">

@@ -1,6 +1,4 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
@@ -42,7 +40,6 @@ export default function LearnerSubmission({ performance }: props) {
         </li>
         <li>
           <Link to={path}>Original activity</Link>
-          <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>
       <span className="evaluation-status">{indicator}</span>
