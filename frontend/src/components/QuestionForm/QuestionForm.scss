@@ -42,6 +42,9 @@
   .previous-response-control {
     color: colors.$grey-2;
     cursor: pointer;
+    svg {
+      color: colors.$grey-5;
+    }
   }
   .previous-content {
     display: grid;

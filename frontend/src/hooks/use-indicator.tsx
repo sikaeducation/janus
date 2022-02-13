@@ -108,6 +108,8 @@ const getQuestionIndicator = (
     ),
   } as const;
 
+  if (!performances) return null;
+
   const anyPending = flow([
     values,
     map(

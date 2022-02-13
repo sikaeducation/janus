@@ -2,7 +2,9 @@ import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCaretDown,
   faCaretRight,
-  faCheck,
+  faCheckSquare,
+  faQuestion,
+  faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
@@ -19,9 +21,9 @@ const formatDateTime = (dateTime: string) =>
 
 const getIndicatorIcon = (status: "pending" | "accepted" | "rejected") => {
   const indicators = {
-    pending: faCheck,
-    accepted: faCheck,
-    rejected: faCheck,
+    pending: faQuestion,
+    accepted: faCheckSquare,
+    rejected: faTimes,
   } as const;
 
   return indicators[status];
