@@ -6,7 +6,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";

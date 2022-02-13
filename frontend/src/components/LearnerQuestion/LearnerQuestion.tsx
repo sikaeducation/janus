@@ -45,9 +45,7 @@ export default function LearnerQuestion({ performance }: props) {
           <time>{formatTime(performance.createdAt)}</time>
         </li>
         <li>
-          <Link to={path} target="_blank" rel="noopener noreferrer">
-            Original activity
-          </Link>
+          <Link to={path}>Original activity</Link>
           <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>

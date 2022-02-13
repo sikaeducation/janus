@@ -8,7 +8,7 @@ import ActivityInteractionQuestions from "../ActivityInteractionQuestions";
 
 type props = {
   postType: postType;
-  performances: evaluatedSubmissionPerformance[];
+  performances: postedPerformance[];
   userId: string;
   postSlug: string;
 };
@@ -34,7 +34,9 @@ export default function ActivityInteraction({
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
-        performances={performances}
+        performances={
+          performances as unknown as evaluatedSubmissionPerformance[]
+        }
       />
     ),
     questions: (

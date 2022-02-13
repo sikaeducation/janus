@@ -29,14 +29,12 @@ export default function PreviousQuestionFeedback({ performances }: props) {
               isContained
               content={performance.payload.response}
             />
-            {performance.evaluation?.feedback ? (
+            {performance.evaluation?.feedback && (
               <AppContent
                 isContained
                 className="feedback"
                 content={performance.evaluation.feedback}
               />
-            ) : (
-              <p>None</p>
             )}
           </div>
         </li>

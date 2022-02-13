@@ -10,80 +10,10 @@ import { Link } from "react-router-dom";
 import { ComponentPropsWithoutRef, useContext } from "react";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import classNames from "classnames";
 import { performanceContext } from "../../contexts/performance";
-
-function getPerformanceIndicator(performance: evaluatedPerformance) {
-  switch (performance.type) {
-    case "view": {
-      const indicators = {
-        1: (
-          <FontAwesomeIcon
-            icon={faCheck}
-            size="xs"
-            className="indicator failure"
-            title="You read this and indicated that it was unclear to you"
-          />
-        ),
-        2: (
-          <FontAwesomeIcon
-            icon={faCheck}
-            size="xs"
-            className="indicator"
-            title="You read this and indicated that it was clear to you"
-          />
-        ),
-        3: (
-          <FontAwesomeIcon
-            icon={faCheck}
-            size="xs"
-            className="indicator success"
-            title="You read this and indicated that you were confident about it."
-          />
-        ),
-      };
-      const { confidenceLevel } = performance.payload;
-      return indicators[confidenceLevel];
-    }
-    case "submission": {
-      const indicators: Record<string, JSX.Element> = {
-        rejected: (
-          <FontAwesomeIcon
-            icon={faClipboardCheck}
-            size="xs"
-            className="indicator failure"
-            title="Your latest submission needs more work"
-          />
-        ),
-        accepted: (
-          <FontAwesomeIcon
-            icon={faClipboardCheck}
-            size="xs"
-            className="indicator success"
-            title="Your latest submission was accepted!"
-          />
-        ),
-        submitted: (
-          <FontAwesomeIcon
-            icon={faClipboardCheck}
-            size="xs"
-            className="indicator submitted"
-            title="Your latest submission is waiting to be graded"
-          />
-        ),
-      };
-      const status =
-        (performance as evaluatedSubmissionPerformance)?.evaluation?.status ||
-        "";
-      return indicators[status] || indicators.submitted;
-    }
-    default: {
-      return null;
-    }
-  }
-}
+import useIndicator from "../../hooks/use-indicator";
+import { programContext } from "../../contexts/program";
 
 type props = {
   content: string;
@@ -97,6 +27,8 @@ export default function AppContent({
   className = "",
 }: props) {
   const { performancesWithEvaluations } = useContext(performanceContext);
+  const { postsBySlug } = useContext(programContext);
+  const getPerformanceIndicator = useIndicator();
   return (
     <article
       className={classNames({
@@ -116,10 +48,18 @@ export default function AppContent({
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal = href?.match(/^(https?:)?\/\//);
             const slug = !isExternal && last(href?.split("/"));
+            const post = postsBySlug[slug || ""];
             const currentPerformances = performancesWithEvaluations.filter(
               (performance) => performance.postSlug === slug
             );
-            const lastPerformance = last(currentPerformances);
+            const lastPerformance =
+              post?.type === "questions"
+                ? ({
+                    type: "question",
+                    postSlug: slug,
+                  } as unknown as postedQuestionPerformance)
+                : last(currentPerformances);
+
             return isExternal ? (
               <a href={href} target="blank" rel="noreferrer">
                 {children}
@@ -129,9 +69,7 @@ export default function AppContent({
                 <Link className="internal-link" to={href || ""}>
                   {children}
                 </Link>
-                {lastPerformance
-                  ? getPerformanceIndicator(lastPerformance)
-                  : null}
+                {lastPerformance && getPerformanceIndicator(lastPerformance)}
               </>
             );
           },

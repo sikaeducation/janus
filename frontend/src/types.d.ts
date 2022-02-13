@@ -70,6 +70,8 @@ type postedEvaluation = rawEvaluation & {
   updatedAt: string;
 };
 
+type performanceType = "view" | "submission" | "prompt" | "question";
+
 type confidenceLevel = 1 | 2 | 3;
 type rawViewPerformance = getRawPerformance<
   "view",

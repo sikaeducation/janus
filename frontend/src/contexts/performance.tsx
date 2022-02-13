@@ -1,5 +1,16 @@
 import { useState, createContext, useContext, useEffect } from "react";
-import { flow, groupBy, head, mapValues, reverse, sortBy } from "lodash/fp";
+import {
+  filter,
+  flow,
+  groupBy,
+  head,
+  map,
+  mapValues,
+  maxBy,
+  reverse,
+  sortBy,
+  tap,
+} from "lodash/fp";
 import { format } from "date-fns";
 import useSocketHandlers from "../hooks/use-socket-handlers";
 import { toastContext } from "./toast";
@@ -7,10 +18,14 @@ import { SocketContext } from "./socket";
 
 type performanceContext = {
   learners: string[];
+  lastQuestionPerformancesBySlug: Record<
+    string,
+    Record<string, evaluatedQuestionPerformance>
+  >;
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
   performances: evaluatedPerformance[];
-  performancesWithEvaluations: evaluatedSubmissionPerformance[];
+  performancesWithEvaluations: evaluatedPerformance[];
   performancesByDay: Record<string, evaluatedSubmissionPerformance[]>;
   evaluations: postedEvaluation[];
   getPreviousEvaluations: (
@@ -113,9 +128,29 @@ export function PerformanceProvider({ children }: props) {
     mapValues(groupBy("userId")),
   ])(performancesWithEvaluations);
 
+  const lastQuestionPerformancesBySlug = flow([
+    filter(
+      (performance: evaluatedPerformance) => performance.type === "question"
+    ),
+    map((performance: evaluatedQuestionPerformance) => ({
+      ...performance,
+      originalPostSlug: performance.payload.originalPostSlug,
+    })),
+    groupBy("originalPostSlug"),
+    mapValues(groupBy("postSlug")),
+    mapValues(
+      mapValues(
+        maxBy((performance: postedPerformance) => {
+          return Date.parse(performance.createdAt);
+        })
+      )
+    ),
+  ])(performancesWithEvaluations);
+
   return (
     <performanceContext.Provider
       value={{
+        lastQuestionPerformancesBySlug,
         performancesBySlugByLearner,
         learners,
         performances,
