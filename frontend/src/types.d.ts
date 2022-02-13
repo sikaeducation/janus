@@ -60,7 +60,7 @@ type getPostedPerformance<RawPerformance> = RawPerformance & {
 type rawEvaluation = {
   performanceId: number;
   status: "accepted" | "rejected";
-  feedback: string;
+  feedback?: string;
   evaluatorId: string;
   learnerId: string;
 };

@@ -5,6 +5,7 @@
 .TextAreaResponse {
   label {
     @include typography.breadcrumb-font;
+    margin-bottom: sizes.$s2;
   }
   textarea {
     @include typography.code-font;

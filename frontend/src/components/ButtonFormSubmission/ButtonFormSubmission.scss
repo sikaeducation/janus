@@ -5,7 +5,7 @@
 .ButtonFormSubmission {
   background-color: colors.$grey-9;
   color: colors.$grey-2;
-  border-radius: 0 sizes.$border-radius sizes.$border-radius 0;
+  border-radius: sizes.$border-radius;
   border: none;
   cursor: pointer;
   padding: sizes.$s2 sizes.$s3;

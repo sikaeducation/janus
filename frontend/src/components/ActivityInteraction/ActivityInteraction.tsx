@@ -37,19 +37,18 @@ export default function ActivityInteraction({
         performances={performances}
       />
     ),
+    questions: (
+      <ActivityInteractionQuestions
+        userId={userId}
+        postPerformance={postPerformance}
+        postSlug={postSlug}
+      />
+    ),
     root: null,
     unit: null,
     section: null,
     guide: null,
     concept: null,
-    questions: (
-      <ActivityInteractionQuestions
-        userId={userId}
-        postPerformance={postPerformance}
-        performances={performances as unknown}
-        postSlug={postSlug}
-      />
-    ),
   } as const;
   return interactions[postType];
 }

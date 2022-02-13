@@ -70,7 +70,7 @@ const getIndicatorByType = (performance: postedPerformance) => {
 
 export default function ProgressViewer() {
   const { postsBySlug, program } = useContext(programContext);
-  const { learners, performancesBySlugByLearner } =
+  const { learners, lastPerformanceBySlugByLearner } =
     useContext(performanceContext);
   const rootSlug = program?.root?.slug || "";
   const sequence = getSequence(
@@ -98,7 +98,7 @@ export default function ProgressViewer() {
               <tr key={slug}>
                 <th>{postsBySlug[slug].label.full}</th>
                 {learners.map((learner: string) => {
-                  const slugPerformances = performancesBySlugByLearner[slug];
+                  const slugPerformances = lastPerformanceBySlugByLearner[slug];
                   const learnerPerformance =
                     slugPerformances && slugPerformances[learner];
                   return learnerPerformance ? (

@@ -7,7 +7,6 @@ import "./ActivityInteractionQuestions.scss";
 type props = {
   userId: string;
   postPerformance: (performance: rawPerformance) => void;
-  performances: unknown;
   postSlug: string;
 };
 
@@ -15,7 +14,6 @@ export default function ActivityInteractionQuestions({
   userId,
   postPerformance,
   postSlug,
-  performances,
 }: props) {
   const [responses, setResponses] = useState<Record<string, string>>({});
   const { postsBySlug } = useContext(programContext);
@@ -69,7 +67,7 @@ export default function ActivityInteractionQuestions({
               prompt={question.prompt}
               response={responses[question.id]}
               setResponse={updateResponse(question.id)}
-              postResponse={postResponse(question.id)}
+              postResponse={postResponse(`${postSlug}-question-${question.id}`)}
             />
           </li>
         ))}

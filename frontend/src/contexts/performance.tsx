@@ -16,9 +16,13 @@ type performanceContext = {
   getPreviousEvaluations: (
     performance: evaluatedPerformance
   ) => evaluatedSubmissionPerformance[];
+  lastPerformanceBySlugByLearner: Record<
+    string,
+    Record<string, evaluatedPerformance>
+  >;
   performancesBySlugByLearner: Record<
     string,
-    Record<string, evaluatedSubmissionPerformance>
+    Record<string, evaluatedPerformance[]>
   >;
 };
 export const performanceContext = createContext<performanceContext>(
@@ -95,21 +99,29 @@ export function PerformanceProvider({ children }: props) {
     new Set(performances.map((performance) => performance.userId))
   );
 
-  const performancesBySlugByLearner = flow([
+  const lastPerformanceBySlugByLearner = flow([
     groupBy("postSlug"),
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
     mapValues(flow([groupBy("userId"), mapValues(head)])),
   ])(performancesWithEvaluations);
 
+  const performancesBySlugByLearner = flow([
+    groupBy("postSlug"),
+    mapValues(sortBy("createdAt")),
+    mapValues(reverse),
+    mapValues(groupBy("userId")),
+  ])(performancesWithEvaluations);
+
   return (
     <performanceContext.Provider
       value={{
+        performancesBySlugByLearner,
         learners,
         performances,
         performancesWithEvaluations,
         performancesByDay,
-        performancesBySlugByLearner,
+        lastPerformanceBySlugByLearner,
         postPerformance,
         postEvaluation,
         getPreviousEvaluations,
