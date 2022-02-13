@@ -44,7 +44,7 @@ export default function PerformanceFilters({
     view: "Views",
     submission: "Submissions",
     prompt: "Prompt Responses",
-    questions: "Questions",
+    question: "Questions",
   } as const;
 
   const dates = [
