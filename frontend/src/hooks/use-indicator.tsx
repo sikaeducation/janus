@@ -162,6 +162,7 @@ export default function useIndicator() {
   } as const;
 
   return (performance: postedPerformance) => {
-    return performanceTypes[performance.type](performance);
+    const getIndicator = performanceTypes[performance.type];
+    return getIndicator?.(performance) || null;
   };
 }
