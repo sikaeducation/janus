@@ -80,8 +80,8 @@ export default function PerformanceViewer() {
     omitBy((value: unknown[]) => !value.length),
   ])(performancesByDay);
 
-  const filterUnevaluated = () => {
-    setIsEnabled(false);
+  const toggleUnevaluated = () => {
+    setIsEnabled(!isEnabled);
   };
 
   const scrollToBottom = () => {
@@ -100,7 +100,7 @@ export default function PerformanceViewer() {
         filters={filters}
         isEnabled={isEnabled}
         setIsEnabled={setIsEnabled}
-        filterUnevaluated={filterUnevaluated}
+        toggleUnevaluated={toggleUnevaluated}
         scrollToBottom={scrollToBottom}
       />
       <PerformanceList

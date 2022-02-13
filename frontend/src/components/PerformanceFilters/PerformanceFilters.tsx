@@ -14,7 +14,7 @@ type props = {
       setState: (state: string) => void;
     }
   >;
-  filterUnevaluated: () => void;
+  toggleUnevaluated: () => void;
   isEnabled: boolean;
   setIsEnabled: (state: boolean) => void;
   scrollToBottom: () => void;
@@ -23,7 +23,7 @@ type props = {
 export default function PerformanceFilters({
   performances,
   filters,
-  filterUnevaluated,
+  toggleUnevaluated,
   isEnabled,
   setIsEnabled,
   scrollToBottom,
@@ -136,7 +136,7 @@ export default function PerformanceFilters({
           active: !isEnabled,
         })}
         type="button"
-        onClick={() => filterUnevaluated()}
+        onClick={() => toggleUnevaluated()}
       >
         All unevaluated
       </button>
