@@ -1,5 +1,3 @@
-import { faCheck, faQuestion } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
