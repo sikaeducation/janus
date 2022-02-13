@@ -1,15 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  faClipboardCheck,
-  faExternalLinkAlt,
-  faQuestion,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
+import useIndicator from "../../hooks/use-indicator";
 import AppContent from "../AppContent";
 import LearnerQuestionEvaluable from "../LearnerQuestionEvaluable";
 import "./LearnerQuestion.scss";
@@ -22,18 +19,15 @@ type props = {
 
 export default function LearnerQuestion({ performance }: props) {
   const { user } = useAuth0();
+  const getIndicator = useIndicator();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
 
   const { postsBySlug } = useContext(programContext);
   const post = postsBySlug[performance.payload?.originalPostSlug];
-  const statusIcons = {
-    submitted: <FontAwesomeIcon icon={faQuestion} className="pending" />,
-    rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
-    accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
-  } as const;
-  const statusIcon = statusIcons[performance.evaluation?.status || "submitted"];
   const title = post.label?.short || post.label?.full || "";
   const { path } = post;
+
+  const indicator = getIndicator(performance);
 
   return (
     <div className="LearnerQuestion">
@@ -61,8 +55,8 @@ export default function LearnerQuestion({ performance }: props) {
           content={performance.payload.response}
         />
       </div>
-      <span className="evaluation-status">{statusIcon}</span>
-      {role === "coach" && !performance.evaluation?.feedback && (
+      <span className="evaluation-status">{indicator}</span>
+      {role === "coach" && !performance.evaluation && (
         <LearnerQuestionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (

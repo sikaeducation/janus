@@ -1,15 +1,12 @@
 import { useAuth0 } from "@auth0/auth0-react";
-import {
-  faClipboardCheck,
-  faExternalLinkAlt,
-  faQuestion,
-} from "@fortawesome/free-solid-svg-icons";
+import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
+import useIndicator from "../../hooks/use-indicator";
 import AppContent from "../AppContent";
 import LearnerSubmissionEvaluable from "../LearnerSubmissionEvaluable";
 import "./LearnerSubmission.scss";
@@ -22,18 +19,15 @@ type props = {
 
 export default function LearnerSubmission({ performance }: props) {
   const { user } = useAuth0();
+  const getIndicator = useIndicator();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
 
   const { postsBySlug } = useContext(programContext);
   const post = postsBySlug[performance.postSlug];
   const path = post?.path || "";
 
-  const statusIcons = {
-    submitted: <FontAwesomeIcon icon={faQuestion} className="pending" />,
-    rejected: <FontAwesomeIcon icon={faClipboardCheck} className="failure" />,
-    accepted: <FontAwesomeIcon icon={faClipboardCheck} className="success" />,
-  } as const;
-  const statusIcon = statusIcons[performance.evaluation?.status || "submitted"];
+  const indicator = getIndicator(performance);
+
   const title = post.label?.short || post.label?.full || "";
 
   return (
@@ -51,7 +45,7 @@ export default function LearnerSubmission({ performance }: props) {
           <FontAwesomeIcon icon={faExternalLinkAlt} />
         </li>
       </ul>
-      <span className="evaluation-status">{statusIcon}</span>
+      <span className="evaluation-status">{indicator}</span>
       {role === "coach" && !performance.evaluation?.feedback && (
         <LearnerSubmissionEvaluable performance={performance} />
       )}

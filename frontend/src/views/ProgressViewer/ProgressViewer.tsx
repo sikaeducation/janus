@@ -76,15 +76,6 @@ export default function ProgressViewer() {
                 })}
               </tr>
             ))}
-            <tr>
-              <th>Assignment 2</th>
-              <td>
-                <FontAwesomeIcon className="pending" icon={faQuestion} />
-              </td>
-              <td>
-                <FontAwesomeIcon icon={faCheck} />
-              </td>
-            </tr>
           </tbody>
         </table>
       </div>

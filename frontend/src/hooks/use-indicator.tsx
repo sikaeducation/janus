@@ -1,4 +1,11 @@
-import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
+import {
+  faCheck,
+  faCheckCircle,
+  faCheckSquare,
+  faClipboardCheck,
+  faQuestion,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { every, flow, identity, map, negate, some, values } from "lodash/fp";
 import { useContext } from "react";
@@ -8,8 +15,8 @@ const getViewIndicator = (performance: postedViewPerformance) => {
   const indicators = {
     1: (
       <FontAwesomeIcon
-        icon={faCheck}
-        size="xs"
+        icon={faTimes}
+        size="sm"
         className="indicator failure"
         title="You read this and indicated that it was unclear to you"
       />
@@ -17,15 +24,15 @@ const getViewIndicator = (performance: postedViewPerformance) => {
     2: (
       <FontAwesomeIcon
         icon={faCheck}
-        size="xs"
-        className="indicator"
+        size="sm"
+        className="indicator pending"
         title="You read this and indicated that it was clear to you"
       />
     ),
     3: (
       <FontAwesomeIcon
-        icon={faCheck}
-        size="xs"
+        icon={faCheckCircle}
+        size="sm"
         className="indicator success"
         title="You read this and indicated that you were confident about it."
       />
@@ -41,26 +48,26 @@ const getSubmissionIndicator = (
   const indicators = {
     rejected: (
       <FontAwesomeIcon
-        icon={faClipboardCheck}
-        size="xs"
+        icon={faTimes}
+        size="sm"
         className="indicator failure"
         title="Your latest submission needs more work"
+      />
+    ),
+    submitted: (
+      <FontAwesomeIcon
+        icon={faQuestion}
+        size="sm"
+        className="indicator submitted"
+        title="Your latest submission is waiting to be graded"
       />
     ),
     accepted: (
       <FontAwesomeIcon
         icon={faClipboardCheck}
-        size="xs"
+        size="sm"
         className="indicator success"
         title="Your latest submission was accepted!"
-      />
-    ),
-    submitted: (
-      <FontAwesomeIcon
-        icon={faClipboardCheck}
-        size="xs"
-        className="indicator submitted"
-        title="Your latest submission is waiting to be graded"
       />
     ),
   } as const;
@@ -77,26 +84,26 @@ const getQuestionIndicator = (
   const indicators = {
     rejected: (
       <FontAwesomeIcon
-        icon={faClipboardCheck}
-        size="xs"
+        icon={faTimes}
+        size="sm"
         className="indicator failure"
         title="Some of these answers need more work"
       />
     ),
-    accepted: (
-      <FontAwesomeIcon
-        icon={faClipboardCheck}
-        size="xs"
-        className="indicator success"
-        title="All of these answers were accepted!"
-      />
-    ),
     submitted: (
       <FontAwesomeIcon
-        icon={faClipboardCheck}
-        size="xs"
-        className="indicator submitted"
+        icon={faQuestion}
+        size="sm"
+        className="indicator pending"
         title="You have reponses waiting to be evaluated"
+      />
+    ),
+    accepted: (
+      <FontAwesomeIcon
+        icon={faCheckSquare}
+        size="sm"
+        className="indicator success"
+        title="All of these answers were accepted!"
       />
     ),
   } as const;
