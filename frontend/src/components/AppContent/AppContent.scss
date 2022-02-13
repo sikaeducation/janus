@@ -82,21 +82,21 @@
   }
   ul {
     list-style: square;
-    padding-left: sizes.$s7;
   }
   ol {
     list-style: none;
-    padding-left: sizes.$s7;
+    list-style-position: outside;
     > li {
       counter-increment: ordered-list-item;
       &::before {
         content: counter(ordered-list-item) ". ";
+        margin-left: -1em;
         font-weight: 700;
       }
     }
   }
   ul ul, ol ol, ul ol, ol ul, li ol, li ul {
-    padding-left: sizes.$s7;
+    padding-left: sizes.$s6;
     margin-bottom: 0;
     @media (max-width: sizes.$small-breakpoint){
       margin-left: sizes.$s5;

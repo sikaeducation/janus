@@ -95,7 +95,9 @@ export function getLinks(program: hydratedProgram, currentPost: hydratedPost) {
     program.root.children,
     currentPost.path
   );
-  const crumbLinks = getCrumbLinks(program.posts, currentPost.path);
+  const crumbLinks = ["root", "unit"].includes(currentPost.type)
+    ? []
+    : getCrumbLinks(program.posts, currentPost.path);
   const nextLink = getNextLink(program.posts, currentPost, program.root);
 
   return {
