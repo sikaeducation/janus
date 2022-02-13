@@ -15,30 +15,38 @@ import ProgressViewer from "./ProgressViewer";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
-  const { program } = useContext(programContext);
+  const { program, isError, isLoading } = useContext(programContext);
   const showToastNotification = toasts.length > 0;
 
   return (
     <>
-      <Routes>
-        <Route path="/loading" element={<AppLoading />} />
-        <Route path="/error" element={<AppError />} />
-        <Route path="/404" element={<AppMissing />} />
-        {program ? (
-          <>
-            <Route path="/inbox" element={<AppInbox />} />
-            <Route path="/progress" element={<ProgressViewer />} />
-            <Route path="/activity" element={<PerformanceViewer />} />
-            <Route
-              path="/program-viewer"
-              element={<ProgramViewer program={program} />}
-            />
-            <Route path="*" element={<CurriculumViewer program={program} />} />
-          </>
-        ) : (
-          <Route path="*" element={<AppLoading />} />
-        )}
-      </Routes>
+      {isError && !isLoading && <AppError />}
+      {isLoading ? (
+        <AppLoading />
+      ) : (
+        <Routes>
+          <Route path="/loading" element={<AppLoading />} />
+          <Route path="/error" element={<AppError />} />
+          <Route path="/404" element={<AppMissing />} />
+          {program ? (
+            <>
+              <Route path="/inbox" element={<AppInbox />} />
+              <Route path="/progress" element={<ProgressViewer />} />
+              <Route path="/activity" element={<PerformanceViewer />} />
+              <Route
+                path="/program-viewer"
+                element={<ProgramViewer program={program} />}
+              />
+              <Route
+                path="*"
+                element={<CurriculumViewer program={program} />}
+              />
+            </>
+          ) : (
+            <Route path="*" element={<AppLoading />} />
+          )}
+        </Routes>
+      )}
       {showToastNotification ? <ToastNotification /> : null}
     </>
   );
