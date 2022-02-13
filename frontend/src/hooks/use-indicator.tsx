@@ -1,16 +1,6 @@
 import { faCheck, faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  every,
-  flow,
-  identity,
-  map,
-  mapValues,
-  negate,
-  some,
-  tap,
-  values,
-} from "lodash/fp";
+import { every, flow, identity, map, negate, some, values } from "lodash/fp";
 import { useContext } from "react";
 import { performanceContext } from "../contexts/performance";
 

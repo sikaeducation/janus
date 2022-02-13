@@ -9,7 +9,6 @@ import {
   maxBy,
   reverse,
   sortBy,
-  tap,
 } from "lodash/fp";
 import { format } from "date-fns";
 import useSocketHandlers from "../hooks/use-socket-handlers";
