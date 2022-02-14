@@ -62,9 +62,9 @@ export default function ProgressViewer() {
                       {getIndicator(
                         post.type === "questions"
                           ? ({
-                              type: "question",
+                              type: "questions",
                               postSlug: slug,
-                            } as evaluatedQuestionPerformance)
+                            } as unknown as evaluatedQuestionPerformance)
                           : learnerPerformance
                       )}
                     </td>

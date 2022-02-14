@@ -55,7 +55,7 @@ export default function AppContent({
             const lastPerformance =
               post?.type === "questions"
                 ? ({
-                    type: "question",
+                    type: "questions",
                     postSlug: slug,
                   } as unknown as postedQuestionPerformance)
                 : last(currentPerformances);

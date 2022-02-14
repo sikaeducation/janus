@@ -158,6 +158,14 @@ export default function useIndicator() {
     question: (performance: postedPerformance) => {
       return getQuestionIndicator(
         performance as evaluatedQuestionPerformance,
+        lastQuestionPerformancesBySlug[
+          (performance as postedQuestionPerformance).payload.originalPostSlug
+        ]
+      );
+    },
+    questions: (performance: postedPerformance) => {
+      return getQuestionIndicator(
+        performance as evaluatedQuestionPerformance,
         lastQuestionPerformancesBySlug[performance.postSlug]
       );
     },

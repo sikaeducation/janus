@@ -54,6 +54,7 @@ export default function ActivityInteractionQuestions({
           originalPostSlug: postSlug,
         },
       });
+      updateResponse(questionId)("");
     };
   if (!frontmatter || !frontmatter[1]) return null;
 
