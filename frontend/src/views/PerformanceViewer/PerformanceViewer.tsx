@@ -66,7 +66,7 @@ export default function PerformanceViewer() {
       ? dayPerformances
       : dayPerformances.filter((dayPerformance) => {
           return (
-            dayPerformance.type === "submission" &&
+            ["submission", "question"].includes(dayPerformance.type) &&
             !dayPerformance.evaluation?.status
           );
         });
