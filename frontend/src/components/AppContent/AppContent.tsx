@@ -53,9 +53,11 @@ export default function AppContent({
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal = href?.match(/^(https?:)?\/\//);
             if (isExternal) {
-              <a href={href} target="blank" rel="noreferrer">
-                {children}
-              </a>;
+              return (
+                <a href={href} target="blank" rel="noreferrer">
+                  {children}
+                </a>
+              );
             }
 
             const slug = last(href?.split("/")) || "";
