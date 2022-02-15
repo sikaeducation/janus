@@ -14,9 +14,17 @@
   > li > div {
     > .prompt {
       background-color: colors.$grey-10;
+      padding: sizes.$s2;
+      padding-bottom: 0;
+    }
+    > .response {
+      padding: sizes.$s2;
+      padding-bottom: 0;
     }
     > .feedback {
       background-color: colors.$grey-10;
+      padding: sizes.$s2;
+      padding-bottom: 0;
     }
   }
 }

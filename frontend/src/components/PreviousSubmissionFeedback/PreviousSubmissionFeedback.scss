@@ -8,6 +8,7 @@
   border-radius: sizes.$border-radius;
   padding: sizes.$s4; 
   > li > div > .feedback {
-    padding: 0;
+    padding: sizes.$s2;
+    padding-bottom: 0;
   }
 }

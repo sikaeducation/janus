@@ -15,11 +15,33 @@ import useSocketHandlers from "../hooks/use-socket-handlers";
 import { toastContext } from "./toast";
 import { SocketContext } from "./socket";
 
+const onlyQuestions = filter(
+  (performance: evaluatedPerformance) => performance.type === "question"
+);
+const addPostSlugToQuestionPayload = map(
+  (performance: evaluatedQuestionPerformance) => ({
+    ...performance,
+    originalPostSlug: performance.payload.originalPostSlug,
+  })
+);
+const lastPerformanceBySlugByQuestion = mapValues(
+  maxBy((performance: postedPerformance) => {
+    return Date.parse(performance.createdAt);
+  })
+);
+const groupByPost = groupBy("postSlug");
+const groupByLearner = groupBy("userId");
+const groupByQuestion = groupBy("originalPostSlug");
+
 type performanceContext = {
   learners: string[];
   lastQuestionPerformancesBySlug: Record<
     string,
     Record<string, evaluatedQuestionPerformance>
+  >;
+  lastQuestionPerformancesBySlugByLearnerByQuestion: Record<
+    string,
+    Record<string, Record<string, evaluatedQuestionPerformance>>
   >;
   postPerformance: (performance: rawPerformance) => void;
   postEvaluation: (evaluation: rawEvaluation) => void;
@@ -146,10 +168,23 @@ export function PerformanceProvider({ children }: props) {
     ),
   ])(performancesWithEvaluations);
 
+  const lastQuestionPerformancesBySlugByLearnerByQuestion = flow([
+    onlyQuestions,
+    addPostSlugToQuestionPayload,
+    groupByQuestion,
+    mapValues(
+      flow([
+        groupByLearner,
+        mapValues(flow([groupByPost, lastPerformanceBySlugByQuestion])),
+      ])
+    ),
+  ])(performancesWithEvaluations);
+
   return (
     <performanceContext.Provider
       value={{
         lastQuestionPerformancesBySlug,
+        lastQuestionPerformancesBySlugByLearnerByQuestion,
         performancesBySlugByLearner,
         learners,
         performances,

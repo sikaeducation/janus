@@ -7,7 +7,16 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { every, flow, identity, map, negate, some, values } from "lodash/fp";
+import {
+  every,
+  flow,
+  identity,
+  isEmpty,
+  map,
+  negate,
+  some,
+  values,
+} from "lodash/fp";
 import { useContext } from "react";
 import { performanceContext } from "../contexts/performance";
 
@@ -140,7 +149,8 @@ const getQuestionIndicator = (
 };
 
 export default function useIndicator() {
-  const { lastQuestionPerformancesBySlug } = useContext(performanceContext);
+  const { lastQuestionPerformancesBySlugByLearnerByQuestion } =
+    useContext(performanceContext);
 
   const performanceTypes = {
     view: (performance: postedPerformance) => {
@@ -156,17 +166,25 @@ export default function useIndicator() {
       return null;
     },
     question: (performance: postedPerformance) => {
-      return getQuestionIndicator(
-        performance as evaluatedQuestionPerformance,
-        lastQuestionPerformancesBySlug[
-          (performance as postedQuestionPerformance).payload.originalPostSlug
-        ]
-      );
+      return isEmpty(lastQuestionPerformancesBySlugByLearnerByQuestion)
+        ? null
+        : getQuestionIndicator(
+            performance as evaluatedQuestionPerformance,
+            lastQuestionPerformancesBySlugByLearnerByQuestion?.[
+              (performance as postedQuestionPerformance)?.payload
+                ?.originalPostSlug
+            ]?.[performance.userId] || ""
+          );
     },
     questions: (performance: postedPerformance) => {
+      const { postSlug } = performance as postedQuestionPerformance;
+      const questionPerformances =
+        lastQuestionPerformancesBySlugByLearnerByQuestion[postSlug]?.[
+          performance.userId
+        ];
       return getQuestionIndicator(
         performance as evaluatedQuestionPerformance,
-        lastQuestionPerformancesBySlug[performance.postSlug]
+        questionPerformances
       );
     },
   } as const;

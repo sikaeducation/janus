@@ -11,6 +11,7 @@ import { ComponentPropsWithoutRef, useContext } from "react";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
 import classNames from "classnames";
+import { useAuth0 } from "@auth0/auth0-react";
 import { performanceContext } from "../../contexts/performance";
 import useIndicator from "../../hooks/use-indicator";
 import { programContext } from "../../contexts/program";
@@ -26,9 +27,13 @@ export default function AppContent({
   isContained,
   className = "",
 }: props) {
-  const { performancesWithEvaluations } = useContext(performanceContext);
+  const {
+    performancesWithEvaluations,
+    lastQuestionPerformancesBySlugByLearnerByQuestion,
+  } = useContext(performanceContext);
   const { postsBySlug } = useContext(programContext);
-  const getPerformanceIndicator = useIndicator();
+  const { user } = useAuth0();
+  const getIndicator = useIndicator();
   return (
     <article
       className={classNames({
@@ -47,29 +52,39 @@ export default function AppContent({
         components={{
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal = href?.match(/^(https?:)?\/\//);
-            const slug = !isExternal && last(href?.split("/"));
-            const post = postsBySlug[slug || ""];
-            const currentPerformances = performancesWithEvaluations.filter(
-              (performance) => performance.postSlug === slug
-            );
-            const lastPerformance =
-              post?.type === "questions"
-                ? ({
-                    type: "questions",
-                    postSlug: slug,
-                  } as unknown as postedQuestionPerformance)
-                : last(currentPerformances);
-
-            return isExternal ? (
+            if (isExternal) {
               <a href={href} target="blank" rel="noreferrer">
                 {children}
-              </a>
-            ) : (
+              </a>;
+            }
+
+            const slug = last(href?.split("/")) || "";
+            const post = postsBySlug[slug || ""];
+            const lastStandardQuestionPerformance = last(
+              performancesWithEvaluations.filter(
+                (performance) => performance.postSlug === slug
+              )
+            );
+            const lastQuestionPerformances =
+              lastQuestionPerformancesBySlugByLearnerByQuestion[slug]?.[
+                user?.email || ""
+              ];
+            const lastPerformance =
+              post?.type === "questions" && lastQuestionPerformances
+                ? {
+                    type: "questions",
+                    postSlug: slug,
+                    userId: user?.email || "",
+                  }
+                : lastStandardQuestionPerformance;
+
+            return (
               <>
                 <Link className="internal-link" to={href || ""}>
                   {children}
                 </Link>
-                {lastPerformance && getPerformanceIndicator(lastPerformance)}
+                {lastPerformance &&
+                  getIndicator(lastPerformance as postedPerformance)}
               </>
             );
           },

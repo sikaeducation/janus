@@ -64,6 +64,7 @@ export default function ProgressViewer() {
                           ? ({
                               type: "questions",
                               postSlug: slug,
+                              userId: learner,
                             } as unknown as evaluatedQuestionPerformance)
                           : learnerPerformance
                       )}
