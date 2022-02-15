@@ -14,7 +14,11 @@
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
     width: 100%;
   }
-  pre, code, img, figure, svg {
+  a + svg {
+    color: colors.$grey-8;
+    font-size: sizes.$f1;
+  }
+  pre, code, img, figure {
     width: 110%;
     margin-bottom: sizes.$f4;
     @media (max-width: sizes.$small-breakpoint){
