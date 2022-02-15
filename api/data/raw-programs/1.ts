@@ -115,7 +115,11 @@ const program: rawProgram = {
       slug: "section-cli-1",
       children: [
         "cli-intro",
+        "intro-cli-questions",
+        "learn-enough-cli",
         "cli-navigation-1",
+        "cli-navigation-questions",
+        "cli-wineflix-navigation-exercise",
         "cli-file-management-1",
         "exercise-cli-exercise-1",
         "cli-flags-and-arguments",
@@ -223,7 +227,7 @@ const program: rawProgram = {
         short: "Intro to CLI",
       },
       slug: "cli-intro",
-      children: ["intro-cli-questions", "learn-enough-cli"],
+      children: [],
     },
     {
       type: "topic",
@@ -231,10 +235,7 @@ const program: rawProgram = {
         full: "CLI Navigation",
       },
       slug: "cli-navigation-1",
-      children: [
-        "cli-navigation-questions",
-        "cli-wineflix-navigation-exercise",
-      ],
+      children: [],
     },
     {
       type: "topic",

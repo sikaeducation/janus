@@ -61,7 +61,10 @@ export default function AppContent({
                     {children}
                   </a>
                   &nbsp;
-                  <FontAwesomeIcon icon={faExternalLinkAlt} />
+                  <FontAwesomeIcon
+                    className="external-link-icon"
+                    icon={faExternalLinkAlt}
+                  />
                 </>
               );
             }

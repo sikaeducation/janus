@@ -78,7 +78,7 @@ export default function ProgramViewer({ program }: props) {
   return (
     <div className="ProgramViewer">
       <div className="ProgramViewer-wrapper">
-        <ul>
+        <ul className="post-listings">
           <li>
             <PostListing
               post={program.root}

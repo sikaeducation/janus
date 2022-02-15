@@ -15,8 +15,12 @@
     width: 100%;
   }
   .internal-link + .indicator {
-    font-size: sizes.$f1;
+    font-size: sizes.$f2;
     display: inline;
+  }
+  .external-link-icon {
+    font-size: sizes.$f2;
+    color: colors.$grey-5;
   }
   pre, code, img, figure {
     width: 110%;

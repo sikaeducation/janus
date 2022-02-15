@@ -14,14 +14,14 @@
       height: 100vh;
       overflow-y: auto;
       grid-column: 1 / span 1;
+      & ul {
+        margin-left: sizes.$s6;
+      }
     }
     .post-content {
       grid-column: 2 / span 1;
       margin-left: sizes.$s6;
     }
-  }
-  ul ul {
-    margin-left: sizes.$s6;
   }
   ul {
     margin-bottom: 0;
