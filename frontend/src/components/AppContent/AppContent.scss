@@ -14,9 +14,9 @@
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
     width: 100%;
   }
-  a + svg {
-    color: colors.$grey-8;
+  .internal-link + .indicator {
     font-size: sizes.$f1;
+    display: inline;
   }
   pre, code, img, figure {
     width: 110%;
@@ -27,7 +27,7 @@
   }
   &.contained {
     padding: 0;
-    pre, code, img, figure, svg {
+    pre, code, img, figure {
       width: 100%;
     }
   }
@@ -140,6 +140,8 @@
   }
   .indicator {
     color: colors.$grey-5;
+    margin-left: sizes.$s3;
+    margin-bottom: 0;
     &.failure {
       color: colors.$failure-5;
     }
@@ -149,12 +151,8 @@
     &.success {
       color: colors.$success-5;
     }
-    &.submitted {
+    &.submitted, &.pending {
       color: colors.$grey-6;
     }
-  }
-  svg.indicator {
-    margin-left: sizes.$s3;
-    margin-bottom: 0;
   }
 }
