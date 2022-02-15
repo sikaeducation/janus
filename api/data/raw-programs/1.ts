@@ -116,6 +116,7 @@ const program: rawProgram = {
       children: [
         "cli-intro",
         "intro-cli-questions",
+        "learn-enough-cli",
         "cli-navigation-1",
         "cli-file-management-1",
         "exercise-cli-exercise-1",
@@ -852,6 +853,15 @@ const program: rawProgram = {
         short: "CLI Questions",
       },
       slug: "intro-cli-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Learn Enough Command Line To Be Dangerous",
+        short: "Learn Enough CLI",
+      },
+      slug: "learn-enough-cli",
       children: [],
     },
   ],
