@@ -47,11 +47,22 @@
     grid-row: 3 / span 1;
     grid-column: 2 / span 2;
     .prompt {
-      background-color: colors.$grey-10;
       margin-top: sizes.$s4;
       margin-bottom: sizes.$s4;
     }
-    .prompt, .response {
+    .answer-wrapper {
+      display: flex;
+      flex-flow: row nowrap;
+      strong {
+        margin-left: sizes.$s2;
+        margin-right: sizes.$s4;
+        font-style: italic;
+      }
+    }
+    .answer {
+      background-color: colors.$grey-10;
+    }
+    .prompt, .answer {
       padding: sizes.$s2;
       padding-bottom: 0;
     }

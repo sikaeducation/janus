@@ -70,17 +70,22 @@ export default function ActivityInteractionQuestions({
   return (
     <div className="ActivityInteractionQuestions">
       <ul>
-        {questions.map((question: { id: string; prompt: string }) => (
-          <li key={question.id}>
-            <QuestionForm
-              id={`${postSlug}-question-${question.id}`}
-              prompt={question.prompt}
-              response={responses[question.id]}
-              setResponse={updateResponse(question.id)}
-              postResponse={postResponse(`${postSlug}-question-${question.id}`)}
-            />
-          </li>
-        ))}
+        {questions.map(
+          (question: { id: string; prompt: string; answer?: string }) => (
+            <li key={question.id}>
+              <QuestionForm
+                id={`${postSlug}-question-${question.id}`}
+                prompt={question.prompt}
+                response={responses[question.id]}
+                answer={question.answer}
+                setResponse={updateResponse(question.id)}
+                postResponse={postResponse(
+                  `${postSlug}-question-${question.id}`
+                )}
+              />
+            </li>
+          )
+        )}
       </ul>
     </div>
   );

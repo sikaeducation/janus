@@ -33,6 +33,7 @@ type props = {
   id: string;
   prompt: string;
   response: string;
+  answer?: string;
   setResponse: (response: string) => void;
   postResponse: ({
     response,
@@ -40,12 +41,14 @@ type props = {
   }: {
     response: string;
     prompt: string;
+    answer?: string;
   }) => void;
 };
 
 export default function QuestionForm({
   id,
   prompt,
+  answer,
   response,
   setResponse,
   postResponse,
@@ -70,7 +73,7 @@ export default function QuestionForm({
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
     setDisplayResponseForm(false);
-    postResponse({ response, prompt });
+    postResponse({ response, prompt, answer });
   };
 
   return (

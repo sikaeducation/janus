@@ -4,6 +4,7 @@
 @use "../../styles/typography";
 
 .QuestionEvaluationForm {
+  padding-top: sizes.$s4;
   h2 {
     @include typography.body-font;
     font-weight: 700;
@@ -69,5 +70,9 @@
         cursor: initial;
       }
     }
+  }
+  .PreviousQuestionFeedback {
+    grid-row: 3 / span 1;
+    grid-column: 1 / span 2;
   }
 }

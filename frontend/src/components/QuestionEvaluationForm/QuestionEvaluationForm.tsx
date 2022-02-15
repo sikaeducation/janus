@@ -51,15 +51,12 @@ export default function QuestionEvaluationForm({
           <PreviousQuestionFeedback performances={previousPerformances} />
         </>
       ) : null}
-      {performance.payload.answer && (
-        <>
-          <h2>Answer</h2>
-          <AppContent
-            isContained
-            className="answer"
-            content={performance.payload.answer}
-          />
-        </>
+      {performance.payload.response && (
+        <AppContent
+          isContained
+          className="response"
+          content={performance.payload.response}
+        />
       )}
       <label htmlFor="feedback">Feedback:</label>
       <textarea
