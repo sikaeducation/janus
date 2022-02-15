@@ -118,6 +118,8 @@ const program: rawProgram = {
         "intro-cli-questions",
         "learn-enough-cli",
         "cli-navigation-1",
+        "cli-navigation-questions",
+        "cli-wineflix-navigation-exercise",
         "cli-file-management-1",
         "exercise-cli-exercise-1",
         "cli-flags-and-arguments",
