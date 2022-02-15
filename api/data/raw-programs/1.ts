@@ -866,6 +866,22 @@ const program: rawProgram = {
       slug: "learn-enough-cli",
       children: [],
     },
+    {
+      type: "questions",
+      label: {
+        full: "CLI Navigation Questions",
+      },
+      slug: "cli-navigation-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CLI Wineflix Navigation",
+      },
+      slug: "cli-wineflix-navigation-exercise",
+      children: [],
+    },
   ],
 };
 
