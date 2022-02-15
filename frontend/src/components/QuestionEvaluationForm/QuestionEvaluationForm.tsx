@@ -7,12 +7,13 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
+import AppContent from "../AppContent";
 import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
 import "./QuestionEvaluationForm.scss";
 
 type props = {
   previousPerformances: evaluatedQuestionPerformance[];
-  performance: evaluatedPerformance;
+  performance: evaluatedQuestionPerformance;
   cancel: () => void;
 };
 
@@ -50,6 +51,16 @@ export default function QuestionEvaluationForm({
           <PreviousQuestionFeedback performances={previousPerformances} />
         </>
       ) : null}
+      {performance.payload.answer && (
+        <>
+          <h2>Answer</h2>
+          <AppContent
+            isContained
+            className="answer"
+            content={performance.payload.answer}
+          />
+        </>
+      )}
       <label htmlFor="feedback">Feedback:</label>
       <textarea
         onChange={(event) => setFeedback(event.target.value)}

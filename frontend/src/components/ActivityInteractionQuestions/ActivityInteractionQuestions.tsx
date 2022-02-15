@@ -25,7 +25,7 @@ export default function ActivityInteractionQuestions({
     const formQuestions = questions.reduce(
       (
         existingQuestions: Record<string, string>,
-        question: { id: string; prompt: string }
+        question: { id: string; prompt: string; answer?: string }
       ) => ({
         ...existingQuestions,
         [question.id]: "",
@@ -43,7 +43,15 @@ export default function ActivityInteractionQuestions({
   };
   const postResponse =
     (questionId: string) =>
-    ({ prompt, response }: { prompt: string; response: string }) => {
+    ({
+      prompt,
+      response,
+      answer = "",
+    }: {
+      prompt: string;
+      response: string;
+      answer?: string;
+    }) => {
       postPerformance({
         type: "question",
         postSlug: questionId,
@@ -51,6 +59,7 @@ export default function ActivityInteractionQuestions({
         payload: {
           response,
           prompt,
+          answer,
           originalPostSlug: postSlug,
         },
       });

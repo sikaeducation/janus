@@ -99,7 +99,12 @@ type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
 
 type rawQuestionPerformance = getRawPerformance<
   "question",
-  { response: string; prompt: string; originalPostSlug: string }
+  {
+    response: string;
+    prompt: string;
+    originalPostSlug: string;
+    answer?: string;
+  }
 >;
 type postedQuestionPerformance = getPostedPerformance<rawQuestionPerformance>;
 type evaluatedQuestionPerformance = postedQuestionPerformance & {
