@@ -127,7 +127,10 @@
       padding-bottom: sizes.$s2;
     }
     td {
-      padding-top: sizes.$s3;
+      padding: sizes.$s2;
+    }
+    tr:nth-child(even) {
+      background-color: colors.$grey-10;
     }
   }
   .contains-task-list {

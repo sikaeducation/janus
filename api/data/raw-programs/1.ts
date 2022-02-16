@@ -41,6 +41,7 @@ const program: rawProgram = {
         "education-myths",
         "dreyfuss-model",
         "zone-of-proximal-development",
+        "sika-vocabulary",
       ],
     },
     {
@@ -907,6 +908,14 @@ const program: rawProgram = {
         full: "Wineflix File Management Exercise 2",
       },
       slug: "cli-wineflix-file-management-exercise-2",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Sika Vocabulary",
+      },
+      slug: "sika-vocabulary",
       children: [],
     },
   ],
