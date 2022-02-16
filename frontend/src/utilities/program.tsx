@@ -21,6 +21,7 @@ function getNextLink(
   const parent = posts.find((post) =>
     post.children.includes(currentPost.slug)
   )!;
+  if (!parent) return null;
   const currentIndex = parent.children.indexOf(currentPost.slug);
   if (currentIndex === parent.children.length - 1) {
     return {
