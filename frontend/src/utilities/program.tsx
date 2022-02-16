@@ -1,33 +1,18 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
 function getNextLink(
   posts: hydratedPost[],
-  currentPost: hydratedPost,
-  rootPost: hydratedPost
+  currentPost: hydratedPost
 ): internalLink | null {
-  const unitSlugs = rootPost.children;
-
-  // Is root
-  if (currentPost === rootPost) {
-    const firstUnit = posts.find((post) => post.slug === unitSlugs[0]);
-    return firstUnit
-      ? {
-          slug: firstUnit.slug,
-          label: `Next: ${firstUnit.label.short ?? firstUnit.label.full}`,
-          path: firstUnit.path,
-        }
-      : null;
-  }
-
-  // Is unit
-  if (unitSlugs.includes(currentPost.slug)) {
-    const firstSection = posts.find(
+  // Has children
+  if (currentPost.children.length > 0) {
+    const firstChild = posts.find(
       (post) => post.slug === currentPost.children[0]
     );
-    return firstSection
+    return firstChild
       ? {
-          slug: firstSection.slug,
-          label: `Next: ${firstSection.label.short ?? firstSection.label.full}`,
-          path: firstSection.path,
+          slug: firstChild.slug,
+          label: `Next: ${firstChild.label.short ?? firstChild.label.full}`,
+          path: firstChild.path,
         }
       : null;
   }
@@ -98,7 +83,7 @@ export function getLinks(program: hydratedProgram, currentPost: hydratedPost) {
   const crumbLinks = ["root", "unit"].includes(currentPost.type)
     ? []
     : getCrumbLinks(program.posts, currentPost.path);
-  const nextLink = getNextLink(program.posts, currentPost, program.root);
+  const nextLink = getNextLink(program.posts, currentPost);
 
   return {
     unitLinks,
