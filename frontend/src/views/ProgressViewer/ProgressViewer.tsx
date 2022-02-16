@@ -7,19 +7,19 @@ import "./ProgressViewer.scss";
 
 export const getSequence = (
   posts: Record<string, hydratedPost>,
-  rootSlug: string
-): string[] => {
-  if (!posts[rootSlug]) return [];
-  const { children } = posts[rootSlug];
+  root: hydratedPost
+): hydratedPost[] => {
+  if (!posts[root.slug]) return [];
+  const { children } = posts[root.slug];
 
   return children.length
     ? [
-        rootSlug,
+        root,
         ...children.flatMap((child) => {
-          return [...getSequence(posts, child)];
+          return [...getSequence(posts, posts[child])];
         }),
       ]
-    : [rootSlug];
+    : [root];
 };
 
 export default function ProgressViewer() {
@@ -28,10 +28,13 @@ export default function ProgressViewer() {
     useContext(performanceContext);
   const getIndicator = useIndicator();
   const rootSlug = program?.root?.slug || "";
-  const sequence = getSequence(
-    { [rootSlug]: postsBySlug[rootSlug], ...postsBySlug },
-    rootSlug
-  );
+  const ignoredTypes = ["root", "unit", "guide", "section"];
+  const sequence = program?.root
+    ? getSequence(
+        { [rootSlug]: postsBySlug[rootSlug], ...postsBySlug },
+        program.root
+      ).filter((post) => !ignoredTypes.includes(post.type))
+    : [];
 
   return (
     sequence && (
@@ -49,7 +52,7 @@ export default function ProgressViewer() {
             </tr>
           </thead>
           <tbody>
-            {sequence.map((slug: string) => (
+            {sequence.map(({ slug }: hydratedPost) => (
               <tr key={slug}>
                 <th>{postsBySlug[slug].label.full}</th>
                 {learners.map((learner: string) => {

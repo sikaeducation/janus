@@ -51,6 +51,7 @@ export default function ActivityInteraction({
     section: null,
     guide: null,
     concept: null,
+    meta: null,
   } as const;
   return interactions[postType];
 }

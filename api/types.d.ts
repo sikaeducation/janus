@@ -23,7 +23,8 @@ type postType =
   | "exercise"
   | "guide"
   | "concept"
-  | "questions";
+  | "questions"
+  | "meta";
 type rawPost = {
   type: postType;
   label: {

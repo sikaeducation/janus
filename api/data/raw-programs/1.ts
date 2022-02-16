@@ -751,7 +751,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Stand-up",
       },
@@ -759,7 +759,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Warmups",
       },
@@ -767,7 +767,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Project Presentations",
       },
@@ -775,7 +775,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Habits of Excellence",
       },
@@ -783,7 +783,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Surveys",
       },
@@ -791,7 +791,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Stand-down",
       },
@@ -799,7 +799,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "meta",
       label: {
         full: "Feelings Friday",
       },
@@ -807,7 +807,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "concept",
       label: {
         full: "Simplified Neuroscience",
       },
@@ -815,7 +815,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "concept",
       label: {
         full: "Passive vs. Active Learning",
       },
@@ -823,7 +823,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "concept",
       label: {
         full: "Education Myths",
       },
@@ -831,7 +831,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "concept",
       label: {
         full: "Dreyfuss Model of Skill Acquisition",
         short: "Dreyfuss Model",
@@ -840,7 +840,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
+      type: "concept",
       label: {
         full: "Zone of Proximal Development",
         short: "ZPD",

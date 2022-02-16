@@ -10,6 +10,7 @@ type Clobber<
 };
 type postType =
   | "root"
+  | "meta"
   | "unit"
   | "section"
   | "topic"
