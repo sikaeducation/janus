@@ -131,6 +131,7 @@ const program: rawProgram = {
         "guide-common-cli-tasks",
         "concepts-nix",
         "cli-vocabulary",
+        "cli-murder-mystery",
       ],
     },
     {
@@ -934,6 +935,14 @@ const program: rawProgram = {
         full: "CLI Flags & Arguments Questions",
       },
       slug: "cli-flags-arguments-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CLI Murder Mystery",
+      },
+      slug: "cli-murder-mystery",
       children: [],
     },
   ],
