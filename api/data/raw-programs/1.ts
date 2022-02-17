@@ -127,6 +127,7 @@ const program: rawProgram = {
         "cli-wineflix-file-management-exercise-2",
         "exercise-cli-exercise-1",
         "cli-flags-and-arguments",
+        "cli-flags-arguments-questions",
         "guide-common-cli-tasks",
         "concepts-nix",
         "cli-vocabulary",
@@ -925,6 +926,14 @@ const program: rawProgram = {
         full: "CLI Vocabulary",
       },
       slug: "cli-vocabulary",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CLI Flags & Arguments Questions",
+      },
+      slug: "cli-flags-arguments-questions",
       children: [],
     },
   ],
