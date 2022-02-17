@@ -129,6 +129,7 @@ const program: rawProgram = {
         "cli-flags-and-arguments",
         "guide-common-cli-tasks",
         "concepts-nix",
+        "cli-vocabulary",
       ],
     },
     {
@@ -916,6 +917,14 @@ const program: rawProgram = {
         full: "Sika Vocabulary",
       },
       slug: "sika-vocabulary",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CLI Vocabulary",
+      },
+      slug: "cli-vocabulary",
       children: [],
     },
   ],
