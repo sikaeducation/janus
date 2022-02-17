@@ -1,11 +1,9 @@
 @use "../../styles/sizes";
 
 .CurriculumViewer {
-  flex-basis: sizes.$content-width-large;
-  flex-shrink: 1;
+  width: sizes.$content-width-large;
 
   .curriculum-content {
-    width: sizes.$content-width-large;
     padding-bottom: sizes.$s7;
     @media (max-width: sizes.$small-breakpoint){
       padding-bottom: sizes.$s6;
