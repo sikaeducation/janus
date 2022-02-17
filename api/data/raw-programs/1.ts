@@ -130,8 +130,8 @@ const program: rawProgram = {
         "cli-flags-arguments-questions",
         "guide-common-cli-tasks",
         "concepts-nix",
-        "cli-vocabulary",
         "cli-murder-mystery",
+        "cli-vocabulary",
       ],
     },
     {
