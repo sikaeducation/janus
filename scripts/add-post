@@ -1,0 +1,8 @@
+#!/bin/bash
+PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
+cd $PARENT_PATH/../../../posts
+mkdir $1
+cd $1
+echo "# $1" > README.md
+cd ../../tools/janus/scripts
+./update-slugs

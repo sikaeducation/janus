@@ -144,12 +144,19 @@ const program: rawProgram = {
       children: [
         "git-intro",
         "git-commits",
+        "git-commits-questions",
         "git-staging",
         "git-repositories",
         "git-remotes",
+        "git-remotes-questions",
+        "git-remotes-basic-exercise",
         "readmes",
+        "readmes-questions",
+        "readmes-exercise",
         "guide-common-git-tasks",
-        "concepts-git",
+        "git-exercise-1",
+        "git-exercise-2",
+        "git-exercise-3",
       ],
     },
     {
@@ -332,14 +339,6 @@ const program: rawProgram = {
         short: "Common Git Task Guide",
       },
       slug: "guide-common-git-tasks",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "Understanding Git",
-      },
-      slug: "concepts-git",
       children: [],
     },
     {
@@ -943,6 +942,78 @@ const program: rawProgram = {
         full: "CLI Murder Mystery",
       },
       slug: "cli-murder-mystery",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Git Commits Questions",
+      },
+      slug: "git-commits-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Git Remotes Questions",
+      },
+      slug: "git-remotes-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Git Remotes Exercise",
+      },
+      slug: "git-remotes-basic-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Git Remotes Exercise",
+      },
+      slug: "git-remotes-basic-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "READMEs Questions",
+      },
+      slug: "readmes-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "READMEs Exercise",
+      },
+      slug: "readmes-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Git Exercise 1",
+      },
+      slug: "git-exercise-1",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Git Exercise 2",
+      },
+      slug: "git-exercise-2",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Git Exercise 3",
+      },
+      slug: "git-exercise-3",
       children: [],
     },
   ],
