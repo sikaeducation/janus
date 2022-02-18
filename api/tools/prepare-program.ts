@@ -1,14 +1,14 @@
-import { isEqual, difference } from "lodash/fp";
+import { isEqual, uniq, xor } from "lodash/fp";
 
 function getAllChildren(program: rawProgram) {
-  return [
-    ...program.root.children,
+  return uniq([
+    ...uniq(program.root.children),
     ...program.posts.flatMap((post) => post.children),
-  ];
+  ]);
 }
 
 function getAllPostSlugs(program: rawProgram) {
-  return program.posts.map((post) => post.slug);
+  return uniq(program.posts.map((post) => post.slug));
 }
 
 function getParent(posts: rawPost[], slug: slug) {
@@ -16,12 +16,12 @@ function getParent(posts: rawPost[], slug: slug) {
 }
 
 function childrenMatchPosts(program: rawProgram) {
-  const slugs: slug[] = getAllPostSlugs(program).sort();
-  const children: slug[] = getAllChildren(program).sort();
-  const differential = difference(slugs, children);
+  const slugs = getAllPostSlugs(program).sort();
+  const children = getAllChildren(program).sort();
+  const unmatchedSlugs = xor(children, slugs);
   return isEqual(slugs, children)
     ? true
-    : new Error(`Children must match posts: ${differential}`);
+    : new Error(`Children must match posts: ${unmatchedSlugs}`);
 }
 
 function getPath(posts: rawPost[], slug: slug) {

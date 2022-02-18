@@ -157,6 +157,7 @@ const program: rawProgram = {
         "git-exercise-1",
         "git-exercise-2",
         "git-exercise-3",
+        "git-vocabulary",
       ],
     },
     {
@@ -1014,6 +1015,14 @@ const program: rawProgram = {
         full: "Git Exercise 3",
       },
       slug: "git-exercise-3",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Git Vocabulary",
+      },
+      slug: "git-vocabulary",
       children: [],
     },
   ],
