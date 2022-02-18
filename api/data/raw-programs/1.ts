@@ -151,8 +151,6 @@ const program: rawProgram = {
         "git-remotes-questions",
         "git-remotes-basic-exercise",
         "readmes",
-        "readmes-questions",
-        "readmes-exercise",
         "guide-common-git-tasks",
         "git-exercise-1",
         "git-exercise-2",
@@ -967,22 +965,6 @@ const program: rawProgram = {
         full: "Git Remotes Exercise",
       },
       slug: "git-remotes-basic-exercise",
-      children: [],
-    },
-    {
-      type: "questions",
-      label: {
-        full: "READMEs Questions",
-      },
-      slug: "readmes-questions",
-      children: [],
-    },
-    {
-      type: "exercise",
-      label: {
-        full: "READMEs Exercise",
-      },
-      slug: "readmes-exercise",
       children: [],
     },
     {
