@@ -962,14 +962,6 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "questions",
-      label: {
-        full: "Git Remotes Exercise",
-      },
-      slug: "git-remotes-basic-exercise",
-      children: [],
-    },
-    {
       type: "exercise",
       label: {
         full: "Git Remotes Exercise",
