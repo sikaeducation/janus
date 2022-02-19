@@ -166,24 +166,39 @@ const program: rawProgram = {
       slug: "section-websites-1",
       children: [
         "internet-intro",
+        "network-diagram-exercise",
+        "internet-questions-1",
         "web-intro",
+        "diagramming-http-request-exercise",
+        "web-questions-1",
         "local-file-servers",
+        "serve-repo-exercise",
+        "local-file-servers-questions",
         "html-intro",
         "html-syntax",
+        "scaffold-from-scratch-exercise",
+        "correct-broken-html-exercise",
         "html-div-and-span",
         "html-headings-and-paragraphs",
         "html-images",
         "html-lists",
         "github-pages",
         "css-selectors-1",
+        "css-selectors-questions-1",
+        "css-diner-exercise",
         "css-syntax",
         "css-units",
         "css-layout-1",
+        "draw-css-exercise",
+        "css-layout-questions",
         "dev-tools-1",
+        "design-colors",
         "css-colors",
+        "css-colors-questions",
+        "guess-the-color-exercise",
         "guide-color-pallettes",
         "guide-selecting-tags",
-        "concept-file-serving",
+        "web-vocabulary-1",
       ],
     },
     {
@@ -488,14 +503,6 @@ const program: rawProgram = {
         short: "Selecting HTML Tags",
       },
       slug: "guide-selecting-tags",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "Understanding Static File Serving",
-      },
-      slug: "concept-file-serving",
       children: [],
     },
     {
@@ -997,6 +1004,134 @@ const program: rawProgram = {
         full: "Git Vocabulary",
       },
       slug: "git-vocabulary",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Internet Questions",
+      },
+      slug: "internet-questions-1",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Network Diagram",
+      },
+      slug: "network-diagram-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Web Questions",
+      },
+      slug: "web-questions-1",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Diagramming HTTP Requests",
+      },
+      slug: "diagramming-http-request-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Local File Server Questions",
+      },
+      slug: "local-file-servers-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Web Vocabulary",
+      },
+      slug: "web-vocabulary-1",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Serve a Repo",
+      },
+      slug: "serve-repo-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Scaffold From Scratch",
+      },
+      slug: "scaffold-from-scratch-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Correct Broken HTML",
+      },
+      slug: "correct-broken-html-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "CSS Diner",
+      },
+      slug: "css-diner-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Selector Questions",
+      },
+      slug: "css-selectors-questions-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Layout Questions",
+      },
+      slug: "css-layout-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Draw CSS",
+      },
+      slug: "draw-css-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Design: Colors",
+      },
+      slug: "design-colors",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Colors Questions",
+      },
+      slug: "css-colors-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Guess The Color",
+      },
+      slug: "guess-the-color-exercise",
       children: [],
     },
   ],
