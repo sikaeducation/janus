@@ -101,7 +101,12 @@ const program: rawProgram = {
         tiny: "4",
       },
       slug: "unit-spas-angular",
-      children: [],
+      children: [
+        "section-static-angular",
+        "section-dynamic-angular",
+        "section-angular-components-1",
+        "section-angular-components-2",
+      ],
     },
     {
       type: "unit",
@@ -111,7 +116,13 @@ const program: rawProgram = {
         tiny: "5",
       },
       slug: "unit-persistence-spring-boot",
-      children: [],
+      children: [
+        "section-java-1",
+        "section-spring-boot-1",
+        "section-sql-1",
+        "section-data-modeling",
+        "section-spring-boot-2",
+      ],
     },
     {
       type: "unit",
@@ -1263,6 +1274,78 @@ const program: rawProgram = {
         short: "TS OOP",
       },
       slug: "section-oop",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Static Angular",
+      },
+      slug: "section-static-angular",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Dynamic Angular",
+      },
+      slug: "section-dynamic-angular",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Angular Components 1",
+      },
+      slug: "section-angular-components-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Angular Components 2",
+      },
+      slug: "section-angular-components-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Intro to Java",
+      },
+      slug: "section-java-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Intro to Spring Boot",
+      },
+      slug: "section-spring-boot-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Intro to SQL",
+      },
+      slug: "section-sql-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Data Modeling",
+      },
+      slug: "section-data-modeling",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Spring Boot 2",
+      },
+      slug: "section-spring-boot-2",
       children: [],
     },
   ],
