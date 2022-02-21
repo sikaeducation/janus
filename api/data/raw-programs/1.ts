@@ -66,7 +66,15 @@ const program: rawProgram = {
         tiny: "2",
       },
       slug: "unit-web-apps",
-      children: [],
+      children: [
+        "section-reading-code",
+        "section-writing-code",
+        "section-dom-1",
+        "section-api-integration-1",
+        "section-dom-2",
+        "section-html-forms",
+        "section-api-integration-2",
+      ],
     },
     {
       type: "unit",
@@ -75,7 +83,15 @@ const program: rawProgram = {
         tiny: "3",
       },
       slug: "unit-problem-solving",
-      children: [],
+      children: [
+        "section-testing-1",
+        "section-typescript-1",
+        "section-polya",
+        "section-testing-2",
+        "section-typescript-2",
+        "section-ts-refactoring",
+        "section-oop",
+      ],
     },
     {
       type: "unit",
@@ -1132,6 +1148,121 @@ const program: rawProgram = {
         full: "Guess The Color",
       },
       slug: "guess-the-color-exercise",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Code",
+      },
+      slug: "section-reading-code",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Writing Code",
+      },
+      slug: "section-writing-code",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "DOM 1",
+      },
+      slug: "section-dom-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "API Integration 1",
+      },
+      slug: "section-api-integration-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "DOM 2",
+      },
+      slug: "section-dom-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "HTML Forms",
+      },
+      slug: "section-html-forms",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "API Integration 2",
+      },
+      slug: "section-api-integration-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Testing 1",
+      },
+      slug: "section-testing-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "TypeScript 1",
+      },
+      slug: "section-typescript-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Polya's Problem-Solving Method",
+        short: "Polya",
+      },
+      slug: "section-polya",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Testing 2",
+      },
+      slug: "section-testing-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "TypeScript 2",
+      },
+      slug: "section-typescript-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "TypeScript Refactoring",
+        short: "TS Refactoring",
+      },
+      slug: "section-ts-refactoring",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "TypeScript OOP",
+        short: "TS OOP",
+      },
+      slug: "section-oop",
       children: [],
     },
   ],
