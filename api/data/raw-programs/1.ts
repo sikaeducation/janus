@@ -27,6 +27,7 @@ const program: rawProgram = {
       },
       slug: "unit-getting-started-ford",
       children: [
+        "policies-ford",
         "setup-accounts",
         "setup-software",
         "sika-stand-up",
@@ -1167,7 +1168,23 @@ const program: rawProgram = {
         full: "Reading Code",
       },
       slug: "section-reading-code",
-      children: [],
+      children: [
+        "reading-code-exercise-1",
+        "reading-code-exercise-2",
+        "reading-code-exercise-3",
+        "reading-code-exercise-4",
+        "reading-code-exercise-5",
+        "reading-code-exercise-6",
+        "reading-code-exercise-7",
+        "reading-code-exercise-8",
+        "reading-code-exercise-9",
+        "reading-code-exercise-10",
+        "reading-code-exercise-11",
+        "reading-code-exercise-12",
+        "reading-code-exercise-13",
+        "reading-code-exercise-14",
+        "reading-code-exercise-15",
+      ],
     },
     {
       type: "section",
@@ -1346,6 +1363,134 @@ const program: rawProgram = {
         full: "Spring Boot 2",
       },
       slug: "section-spring-boot-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #1",
+      },
+      slug: "reading-code-exercise-1",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #2",
+      },
+      slug: "reading-code-exercise-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #3",
+      },
+      slug: "reading-code-exercise-3",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #4",
+      },
+      slug: "reading-code-exercise-4",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #5",
+      },
+      slug: "reading-code-exercise-5",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #6",
+      },
+      slug: "reading-code-exercise-6",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #7",
+      },
+      slug: "reading-code-exercise-7",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #8",
+      },
+      slug: "reading-code-exercise-8",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #9",
+      },
+      slug: "reading-code-exercise-9",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #10",
+      },
+      slug: "reading-code-exercise-10",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #11",
+      },
+      slug: "reading-code-exercise-11",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #12",
+      },
+      slug: "reading-code-exercise-12",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #13",
+      },
+      slug: "reading-code-exercise-13",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #14",
+      },
+      slug: "reading-code-exercise-14",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Reading Exercise #15",
+      },
+      slug: "reading-code-exercise-15",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Policies",
+      },
+      slug: "policies-ford",
       children: [],
     },
   ],
