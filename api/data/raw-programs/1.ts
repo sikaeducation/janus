@@ -29,6 +29,8 @@ const program: rawProgram = {
       children: [
         "policies-ford",
         "setup-accounts",
+        "vs-code-config",
+        "zsh-config",
         "setup-software",
         "sika-stand-up",
         "warmups",
@@ -1491,6 +1493,22 @@ const program: rawProgram = {
         full: "Policies",
       },
       slug: "policies-ford",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "VS Code Configuration",
+      },
+      slug: "vs-code-config",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "`zsh` Configuration",
+      },
+      slug: "zsh-config",
       children: [],
     },
   ],
