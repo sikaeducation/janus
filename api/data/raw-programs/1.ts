@@ -147,8 +147,9 @@ const program: rawProgram = {
       slug: "section-cli-1",
       children: [
         "cli-intro",
-        "intro-cli-questions",
         "learn-enough-cli",
+        "intro-cli-questions",
+        "exercise-cli-exercise-1",
         "cli-navigation-1",
         "cli-navigation-questions",
         "cli-wineflix-navigation-exercise",
@@ -156,7 +157,6 @@ const program: rawProgram = {
         "cli-file-management-questions",
         "cli-wineflix-file-management-exercise-1",
         "cli-wineflix-file-management-exercise-2",
-        "exercise-cli-exercise-1",
         "cli-flags-and-arguments",
         "cli-flags-arguments-questions",
         "guide-common-cli-tasks",
@@ -174,9 +174,9 @@ const program: rawProgram = {
       slug: "section-git-1",
       children: [
         "git-intro",
+        "git-staging",
         "git-commits",
         "git-commits-questions",
-        "git-staging",
         "git-repositories",
         "git-remotes",
         "git-remotes-questions",
@@ -222,8 +222,8 @@ const program: rawProgram = {
         "css-syntax",
         "css-units",
         "css-layout-1",
-        "draw-css-exercise",
         "css-layout-questions",
+        "draw-css-exercise",
         "dev-tools-1",
         "design-colors",
         "css-colors",
@@ -242,20 +242,29 @@ const program: rawProgram = {
       },
       slug: "section-websites-2",
       children: [
-        "html-structure-semantics",
-        "css-box-model",
-        "html-text-semantics",
-        "html-links",
-        "css-selectors-2",
-        "css-variables",
         "http-intro",
+        "http-questions",
+        "http-headless-request-exercise",
         "urls-1",
+        "urls-questions",
+        "url-component-identification-exercise",
+        "url-building-exercise",
         "http-status-codes",
+        "http-status-codes-questions",
+        "http-status-code-table-exercise",
         "dev-tools-2",
+        "html-links",
+        "html-structure-semantics",
+        "html-structure-semantics-questions",
+        "html-text-semantics",
+        "css-selectors-2",
+        "css-selectors-questions-2",
+        "css-box-model",
+        "css-programming-danger-exercise",
+        "css-typography",
+        "css-variables",
         "concept-http",
-        "concept-networking",
-        "concept-client-server",
-        "concept-web-vs-internet",
+        "web-vocabulary-2",
       ],
     },
     {
@@ -265,21 +274,26 @@ const program: rawProgram = {
       },
       slug: "section-websites-3",
       children: [
-        "design-content-inventories",
-        "design-layout-1",
         "css-resets",
         "css-flex",
+        "css-flexbox-froggy-exercise",
+        "css-flex-questions",
         "css-grid",
-        "guide-css-layout",
+        "css-grid-questions",
+        "css-grid-garden-exercise",
         "css-selectors-3",
+        "css-selectors-questions-3",
         "css-media-queries",
+        "css-media-queries-questions",
         "css-positioning",
-        "guide-css-specificity",
-        "guide-responsive-design",
-        "concept-how-browsers-work",
-        "guide-to-working-on-a-feature",
+        "css-positioning-questions",
+        "design-content-inventories",
+        "design-layout-1",
+        "guide-css-layout",
         "guide-to-starting-a-website",
-        "guide-debugging-websites",
+        "web-book-promo-page-exercise",
+        "implement-wireframe-exercise-group",
+        "implement-wireframe-exercise-solo",
       ],
     },
     {
@@ -628,31 +642,6 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "concept",
-      label: {
-        full: "Understanding Networking",
-      },
-      slug: "concept-networking",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "Understanding Client-Server Communication",
-      },
-      slug: "concept-client-server",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "Distinguishing Between the Web and the Internet",
-        short: "Web vs. Internet",
-      },
-      slug: "concept-web-vs-internet",
-      children: [],
-    },
-    {
       type: "topic",
       label: {
         full: "Designing with Content Inventories",
@@ -725,51 +714,11 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "concept",
-      label: {
-        full: "Understanding CSS Specificity",
-      },
-      slug: "guide-css-specificity",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "Guide to Responsive Design",
-      },
-      slug: "guide-responsive-design",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "How Browsers Work",
-      },
-      slug: "concept-how-browsers-work",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "How to Work on a Feature",
-      },
-      slug: "guide-to-working-on-a-feature",
-      children: [],
-    },
-    {
       type: "guide",
       label: {
         full: "How to Start a Website",
       },
       slug: "guide-to-starting-a-website",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "How to Debug a Website",
-      },
-      slug: "guide-debugging-websites",
       children: [],
     },
     {
@@ -1545,6 +1494,186 @@ const program: rawProgram = {
         full: "HTML Questions",
       },
       slug: "html-questions-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Flex Questions",
+      },
+      slug: "css-flex-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Flexbox Froggy",
+      },
+      slug: "css-flexbox-froggy-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Grid Garden",
+      },
+      slug: "css-grid-garden-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Grid Questions",
+        short: "Grid Questions",
+      },
+      slug: "css-grid-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Media Queries Questions",
+        short: "Media Queries Questions",
+      },
+      slug: "css-media-queries-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Positioning Questions",
+        short: "Positioning Questions",
+      },
+      slug: "css-positioning-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "CSS Programming Danger Exercise",
+        short: "Programming Danger",
+      },
+      slug: "css-programming-danger-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Selectors Questions",
+      },
+      slug: "css-selectors-questions-2",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Selectors Questions",
+      },
+      slug: "css-selectors-questions-3",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Typography",
+      },
+      slug: "css-typography",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTML Structural Semantics Questions",
+      },
+      slug: "html-structure-semantics-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "HTTP Headless Request Exercise",
+      },
+      slug: "http-headless-request-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTTP Questions",
+      },
+      slug: "http-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "HTTP Status Code Table",
+      },
+      slug: "http-status-code-table-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTTP Status Code Questions ",
+      },
+      slug: "http-status-codes-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Implement Wireframe (group)",
+      },
+      slug: "implement-wireframe-exercise-group",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Implement Wireframe (solo)",
+      },
+      slug: "implement-wireframe-exercise-solo",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "URL Building Exercise",
+      },
+      slug: "url-building-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "URL Component Identification",
+      },
+      slug: "url-component-identification-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "URL Questions",
+      },
+      slug: "urls-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Book Promo Page",
+      },
+      slug: "web-book-promo-page-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Web Vocabulary",
+      },
+      slug: "web-vocabulary-2",
       children: [],
     },
   ],
