@@ -33,14 +33,14 @@ function childrenMatchPosts(program: rawProgram) {
   const duplicates = getDuplicates(slugs);
   if (duplicates.length > 0)
     return new Error(
-      `These posts have more than one entry: ${duplicates.join(", ")}`
+      `These posts have more than one entry:\n\n${duplicates.join("\n")}`
     );
 
   const children = getAllChildren(program).sort();
   const unmatchedSlugs = xor(children, slugs);
   return isEqual(slugs, children)
     ? true
-    : new Error(`Children must match posts: ${unmatchedSlugs}`);
+    : new Error(`Children must match posts:\n\n${unmatchedSlugs.join("\n")}`);
 }
 
 function getPath(posts: rawPost[], slug: slug) {
