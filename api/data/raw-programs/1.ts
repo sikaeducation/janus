@@ -1124,6 +1124,29 @@ const program: rawProgram = {
       },
       slug: "section-reading-code",
       children: [
+        "programming-intro",
+        "programming-input-output",
+        "programming-input-output-questions",
+        "programming-data-types",
+        "programming-expressions",
+        "programming-expressions-questions",
+        "programming-math",
+        "programming-math-questions",
+        "programming-variables",
+        "programming-variables-questions",
+        "programming-boolean-logic",
+        "programming-boolean-logic-questions",
+        "programming-boolean-logic-2",
+        "programming-boolean-logic-questions-2",
+        "programming-conditional-logic",
+        "programming-conditional-logic-questions",
+        "programming-functions",
+        "programming-functions-questions",
+        "programming-variable-scoping",
+        "programming-variable-scoping-questions",
+        "programming-data-types-2",
+        "programming-iteration",
+        "programming-iteration-questions",
         "reading-code-exercise-1",
         "reading-code-exercise-2",
         "reading-code-exercise-3",
@@ -1139,6 +1162,7 @@ const program: rawProgram = {
         "reading-code-exercise-13",
         "reading-code-exercise-14",
         "reading-code-exercise-15",
+        "reading-code-vocab",
       ],
     },
     {
@@ -1674,6 +1698,199 @@ const program: rawProgram = {
         full: "Web Vocabulary",
       },
       slug: "web-vocabulary-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Boolean Operators",
+      },
+      slug: "programming-boolean-logic",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Boolean Comparisons",
+      },
+      slug: "programming-boolean-logic-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Conditional Logic",
+      },
+      slug: "programming-conditional-logic",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Simple Data Types",
+      },
+      slug: "programming-data-types",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Complex Data Types",
+      },
+      slug: "programming-data-types-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Expressions",
+      },
+      slug: "programming-expressions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Functions",
+      },
+      slug: "programming-functions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Input/Output",
+      },
+      slug: "programming-input-output",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Programming",
+      },
+      slug: "programming-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Iteration",
+      },
+      slug: "programming-iteration",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Programming Math",
+      },
+      slug: "programming-math",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Variable Scoping",
+      },
+      slug: "programming-variable-scoping",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Variables",
+      },
+      slug: "programming-variables",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Reading Code Vocabulary",
+        short: "Reading Code Vocab",
+      },
+      slug: "reading-code-vocab",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Boolean Logic Operators Questions",
+      },
+      slug: "programming-boolean-logic-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Boolean Logic Comparisons Questions",
+      },
+      slug: "programming-boolean-logic-questions-2",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Conditional Logic Questions",
+      },
+      slug: "programming-conditional-logic-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Expressions Questions",
+      },
+      slug: "programming-expressions-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Functions Questions",
+      },
+      slug: "programming-functions-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Input/Output Questions",
+      },
+      slug: "programming-input-output-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Iteration Questions",
+      },
+      slug: "programming-iteration-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Programming Math Questions",
+      },
+      slug: "programming-math-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Variable Scoping Questions",
+      },
+      slug: "programming-variable-scoping-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Variables Questions",
+      },
+      slug: "programming-variables-questions",
       children: [],
     },
   ],
