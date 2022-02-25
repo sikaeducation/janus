@@ -16,6 +16,11 @@
     border: 1px solid colors.$grey-8;
     padding: sizes.$s2 sizes.$s4;
   }
+  .ButtonFormSubmission {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    box-shadow: none;
+  }
   input {
     border-radius: sizes.$border-radius 0 0 sizes.$border-radius;
     border-right: none;

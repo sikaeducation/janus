@@ -53,6 +53,7 @@
     .answer-wrapper {
       display: flex;
       flex-flow: row nowrap;
+      margin-bottom: sizes.$s2;
       strong {
         margin-left: sizes.$s2;
         margin-right: sizes.$s4;
@@ -89,5 +90,24 @@
     margin-right: sizes.$s6;
     margin-left: sizes.$s2;
     margin-bottom: sizes.$s4;
+  }
+  .indicator {
+    color: colors.$grey-5;
+    &.question {
+      font-weight: 700;
+      font-size: sizes.$s5;
+    }
+    &.failure {
+      color: colors.$failure-5;
+    }
+    &.warning {
+      color: colors.$warning-5;
+    }
+    &.success {
+      color: colors.$success-5;
+    }
+    &.submitted, &.pending {
+      color: colors.$grey-6;
+    }
   }
 }

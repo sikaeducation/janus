@@ -50,6 +50,7 @@ function getUnitLinks(
 ) {
   return posts
     .filter((post) => unitSlugs.includes(post.slug))
+    .filter((post) => process.env.NODE_ENV !== "production" || !post.isHidden)
     .map((unit) => ({
       slug: unit.slug,
       path: unit.path,

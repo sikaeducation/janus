@@ -34,6 +34,7 @@ type rawPost = {
   };
   slug: slug;
   children: slug[];
+  isHidden?: boolean;
 };
 type dehydratedPost = rawPost & { path: string };
 type hydratedPost = dehydratedPost & { content: string };

@@ -92,28 +92,19 @@ const getQuestionIndicator = (
 ) => {
   const indicators = {
     rejected: (
-      <FontAwesomeIcon
-        icon={faTimes}
-        size="sm"
-        className="indicator failure"
-        title="Some of these answers need more work"
-      />
+      <span className="indicator question failure">
+        {values(performances).length}
+      </span>
     ),
     submitted: (
-      <FontAwesomeIcon
-        icon={faQuestion}
-        size="sm"
-        className="indicator pending"
-        title="You have reponses waiting to be evaluated"
-      />
+      <span className="indicator question pending">
+        {values(performances).length}
+      </span>
     ),
     accepted: (
-      <FontAwesomeIcon
-        icon={faCheckSquare}
-        size="sm"
-        className="indicator success"
-        title="All of these answers were accepted!"
-      />
+      <span className="indicator question success">
+        {values(performances).length}
+      </span>
     ),
   } as const;
 

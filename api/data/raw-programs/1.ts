@@ -98,6 +98,7 @@ const program: rawProgram = {
         tiny: "3",
       },
       slug: "unit-problem-solving",
+      isHidden: true,
       children: [
         "section-testing-1",
         "section-typescript-1",
@@ -116,6 +117,7 @@ const program: rawProgram = {
         tiny: "4",
       },
       slug: "unit-spas-angular",
+      isHidden: true,
       children: [
         "section-static-angular",
         "section-dynamic-angular",
@@ -131,6 +133,7 @@ const program: rawProgram = {
         tiny: "5",
       },
       slug: "unit-persistence-spring-boot",
+      isHidden: true,
       children: [
         "section-java-1",
         "section-spring-boot-1",
@@ -147,6 +150,7 @@ const program: rawProgram = {
         tiny: "6",
       },
       slug: "unit-capstones-ford",
+      isHidden: true,
       children: [],
     },
     {

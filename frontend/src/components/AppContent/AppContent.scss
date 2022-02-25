@@ -11,7 +11,7 @@
   @media (max-width: sizes.$small-breakpoint){
     width: 100%;
   }
-  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table {
+  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre, code {
     width: 100%;
   }
   .internal-link + .indicator {
@@ -22,7 +22,20 @@
     font-size: sizes.$f2;
     color: colors.$grey-5;
   }
-  pre, code, img, figure {
+  pre {
+    margin-bottom: sizes.$f4;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    > div {
+      width: 100%;
+      box-sizing: content-box;
+      @media (max-width: sizes.$small-breakpoint){
+        box-sizing: border-box;
+      }
+    }
+  }
+  img, figure {
     width: 110%;
     margin-bottom: sizes.$f4;
     @media (max-width: sizes.$small-breakpoint){
@@ -149,6 +162,10 @@
     color: colors.$grey-5;
     margin-left: sizes.$s3;
     margin-bottom: 0;
+    &.question {
+      font-weight: 700;
+      font-size: sizes.$f4;
+    }
     &.failure {
       color: colors.$failure-5;
     }

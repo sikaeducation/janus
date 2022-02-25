@@ -108,7 +108,7 @@ export default function ActivityInteractionSubmission({
           required
         />
         <ButtonFormSubmission
-          label={`Submit${performances.length > 0 ? " another" : null}`}
+          label={`Submit${performances.length > 0 ? " another" : ""}`}
         />
       </form>
     </div>

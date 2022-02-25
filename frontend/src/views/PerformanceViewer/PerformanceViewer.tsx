@@ -1,7 +1,16 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { createRef, useContext, useState } from "react";
 import { Navigate } from "react-router-dom";
-import { flow, mapValues, omitBy } from "lodash/fp";
+import {
+  flow,
+  identity,
+  keys,
+  mapValues,
+  omitBy,
+  pick,
+  sortBy,
+  takeRight,
+} from "lodash/fp";
 import { format } from "date-fns";
 import { performanceContext } from "../../contexts/performance";
 import "./PerformanceViewer.scss";
@@ -18,6 +27,18 @@ export default function PerformanceViewer() {
   const [selectedDate, setSelectedDate] = useState("all");
   const [isEnabled, setIsEnabled] = useState(true);
   const lastMessageRef = createRef<HTMLLIElement>();
+
+  const last5Days = flow([keys, sortBy(identity), takeRight(1)])(
+    performancesByDay
+  );
+  const filterActive =
+    selectedStudentId !== "all" ||
+    selectedPerformanceType !== "all" ||
+    selectedDate !== "all" ||
+    !isEnabled;
+  const normalizedPerformancesByDay = filterActive
+    ? performancesByDay
+    : pick(last5Days)(performancesByDay);
 
   const filters = {
     date: {
@@ -78,7 +99,7 @@ export default function PerformanceViewer() {
     mapValues(isForSelectedDate),
     mapValues(isUnevaluated),
     omitBy((value: unknown[]) => !value.length),
-  ])(performancesByDay);
+  ])(normalizedPerformancesByDay);
 
   const toggleUnevaluated = () => {
     setIsEnabled(!isEnabled);

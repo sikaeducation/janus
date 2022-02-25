@@ -27,6 +27,7 @@ type rawPost = {
   };
   slug: string;
   children: string[];
+  isHidden?: boolean;
 };
 type dehydratedPost = rawPost & { path: string };
 type hydratedPost = dehydratedPost & { content: string };
