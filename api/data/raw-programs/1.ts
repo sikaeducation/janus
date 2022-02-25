@@ -28,24 +28,35 @@ const program: rawProgram = {
       slug: "unit-getting-started-ford",
       children: [
         "policies-ford",
+        "sika-discord-setup",
         "setup-accounts",
+        "setup-software",
         "vs-code-config",
         "zsh-config",
-        "setup-software",
+        "sika-how-to-do-this-program",
+        "sika-school-community",
+        "sika-vocabulary",
         "sika-stand-up",
         "warmups",
         "project-presentations",
         "habits-of-excellence",
         "sika-surveys",
         "sika-stand-down",
+        "thankful-thursday",
         "feelings-friday",
         "simplified-neuroscience",
         "passive-vs-active-learning",
         "education-myths",
         "dreyfuss-model",
         "zone-of-proximal-development",
+        "sika-gradual-release-of-responsibility",
+        "sika-learning-to-learn",
         "sika-vocabulary",
+        "sika-personal-empowerment-protocol",
         "markdown",
+        "build-and-burn",
+        "pair-programming",
+        "sika-screenshots",
       ],
     },
     {
@@ -1891,6 +1902,86 @@ const program: rawProgram = {
         full: "Variables Questions",
       },
       slug: "programming-variables-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Build and Burn",
+      },
+      slug: "build-and-burn",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Pair Programming",
+      },
+      slug: "pair-programming",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Discord Setup",
+      },
+      slug: "sika-discord-setup",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Gradual Release of Responsibility",
+      },
+      slug: "sika-gradual-release-of-responsibility",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "How to Do This Program",
+      },
+      slug: "sika-how-to-do-this-program",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Learning to Learn",
+      },
+      slug: "sika-learning-to-learn",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "School Community",
+      },
+      slug: "sika-school-community",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Screenshots",
+      },
+      slug: "sika-screenshots",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Thankful Thursday",
+      },
+      slug: "thankful-thursday",
+      children: [],
+    },
+    {
+      type: "meta",
+      label: {
+        full: "Personal Empowerment Protocol",
+      },
+      slug: "sika-personal-empowerment-protocol",
       children: [],
     },
   ],
