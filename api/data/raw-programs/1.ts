@@ -27,7 +27,6 @@ const program: rawProgram = {
       },
       slug: "unit-getting-started-ford",
       children: [
-        "policies-ford",
         "sika-discord-setup",
         "setup-accounts",
         "setup-software",
@@ -36,6 +35,7 @@ const program: rawProgram = {
         "sika-how-to-do-this-program",
         "sika-school-community",
         "sika-vocabulary",
+        "policies-ford",
         "sika-stand-up",
         "warmups",
         "project-presentations",

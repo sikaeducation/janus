@@ -53,7 +53,8 @@ export default function AppContent({
         ]}
         components={{
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
-            const isExternal = href?.match(/^(https?:)?\/\//);
+            const isExternal =
+              href?.match(/^(https?:)?\/\//) || href?.match(/^mailto:/);
             if (isExternal) {
               return (
                 <>

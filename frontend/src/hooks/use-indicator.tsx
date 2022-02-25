@@ -1,7 +1,6 @@
 import {
   faCheck,
   faCheckCircle,
-  faCheckSquare,
   faClipboardCheck,
   faQuestion,
   faTimes,
