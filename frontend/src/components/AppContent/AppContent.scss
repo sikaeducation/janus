@@ -158,6 +158,9 @@
       }
     }
   }
+  .internal-link + em {
+    display: none;
+  }
   .indicator {
     color: colors.$grey-5;
     margin-left: sizes.$s3;
