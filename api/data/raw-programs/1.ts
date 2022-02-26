@@ -1013,7 +1013,7 @@ const program: rawProgram = {
     {
       type: "exercise",
       label: {
-        full: "Network Diagram",
+        full: "Network Diagram (Group)",
       },
       slug: "network-diagram-exercise",
       children: [],
