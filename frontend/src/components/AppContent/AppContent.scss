@@ -162,6 +162,10 @@
     color: colors.$grey-5;
     margin-left: sizes.$s3;
     margin-bottom: 0;
+    & + em {
+      font-size: sizes.$f5;
+      color: colors.$grey-5;
+    }
     &.question {
       font-weight: 700;
       font-size: sizes.$f5;
