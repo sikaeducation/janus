@@ -85,12 +85,14 @@
   }
   code {
     @include typography.code-font;
-    margin: sizes.$f7 0;
-    font-size: sizes.$f4 !important; // Overrides inheritance
-    white-space: pre-wrap !important; // Needed to override syntax highlighter
   }
   pre {
     white-space: pre-wrap;
+    code {
+      margin: sizes.$f7 0;
+      font-size: sizes.$f4 !important; // Overrides inheritance
+      white-space: pre-wrap !important; // Needed to override syntax highlighter
+    }
     > div {
       border-radius: sizes.$border-radius !important;
     }
