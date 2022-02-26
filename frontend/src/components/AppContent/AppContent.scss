@@ -14,9 +14,22 @@
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre, code {
     width: 100%;
   }
-  .internal-link + .indicator {
-    font-size: sizes.$f2;
-    display: inline;
+  p {
+    code {
+      display: inline-block;
+      padding: 4px;
+      background-color: colors.$grey-10;
+      font-size: sizes.$f4;
+    }
+  }
+  .internal-link {
+    & + em {
+      display: none;
+    }
+    & + .indicator {
+      font-size: sizes.$f2;
+      display: inline;
+    }
   }
   .external-link-icon {
     font-size: sizes.$f2;
@@ -27,12 +40,19 @@
     display: flex;
     flex-flow: column nowrap;
     align-items: center;
+    white-space: pre-wrap;
     > div {
       width: 100%;
       box-sizing: content-box;
+      border-radius: sizes.$border-radius !important;
       @media (max-width: sizes.$small-breakpoint){
         box-sizing: border-box;
       }
+    }
+    code {
+      margin: sizes.$f7 0;
+      font-size: sizes.$f4 !important; // Overrides inheritance
+      white-space: pre-wrap !important; // Needed to override syntax highlighter
     }
   }
   img, figure {
@@ -85,17 +105,6 @@
   }
   code {
     @include typography.code-font;
-  }
-  pre {
-    white-space: pre-wrap;
-    code {
-      margin: sizes.$f7 0;
-      font-size: sizes.$f4 !important; // Overrides inheritance
-      white-space: pre-wrap !important; // Needed to override syntax highlighter
-    }
-    > div {
-      border-radius: sizes.$border-radius !important;
-    }
   }
   strong {
     font-weight: 700;
@@ -159,9 +168,6 @@
         margin-right: sizes.$s3;
       }
     }
-  }
-  .internal-link + em {
-    display: none;
   }
   .indicator {
     color: colors.$grey-5;
