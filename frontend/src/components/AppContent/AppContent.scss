@@ -170,7 +170,7 @@
       font-size: sizes.$f5;
       color: colors.$grey-5;
       &::before {
-        content: " / "
+        content: "/ ";
       }
     }
     &.question {
