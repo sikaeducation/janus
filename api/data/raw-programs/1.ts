@@ -34,7 +34,6 @@ const program: rawProgram = {
         "zsh-config",
         "sika-how-to-do-this-program",
         "sika-school-community",
-        "sika-vocabulary",
         "policies-ford",
         "sika-stand-up",
         "warmups",
