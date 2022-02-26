@@ -166,8 +166,12 @@
     margin-left: sizes.$s3;
     margin-bottom: 0;
     & + em {
+      font-style: normal;
       font-size: sizes.$f5;
       color: colors.$grey-5;
+      &::before {
+        content: " / "
+      }
     }
     &.question {
       font-weight: 700;
