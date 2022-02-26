@@ -49,7 +49,6 @@ const program: rawProgram = {
         "education-myths",
         "dreyfuss-model",
         "zone-of-proximal-development",
-        "sika-gradual-release-of-responsibility",
         "sika-learning-to-learn",
         "sika-vocabulary",
         "sika-personal-empowerment-protocol",
@@ -1930,14 +1929,6 @@ const program: rawProgram = {
         full: "Discord Setup",
       },
       slug: "sika-discord-setup",
-      children: [],
-    },
-    {
-      type: "meta",
-      label: {
-        full: "Gradual Release of Responsibility",
-      },
-      slug: "sika-gradual-release-of-responsibility",
       children: [],
     },
     {
