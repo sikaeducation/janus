@@ -242,8 +242,6 @@ const program: rawProgram = {
         "css-colors",
         "css-colors-questions",
         "guess-the-color-exercise",
-        "guide-color-pallettes",
-        "guide-selecting-tags",
         "html-summer-camp-exercise",
         "web-vocabulary-1",
       ],
@@ -542,28 +540,11 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "guide",
-      label: {
-        full: "How to Build a Color Pallette",
-      },
-      slug: "guide-color-pallettes",
-      children: [],
-    },
-    {
       type: "topic",
       label: {
         full: "CSS: Colors",
       },
       slug: "css-colors",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "How to Select HTML Tags",
-        short: "Selecting HTML Tags",
-      },
-      slug: "guide-selecting-tags",
       children: [],
     },
     {
