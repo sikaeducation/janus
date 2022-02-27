@@ -272,9 +272,6 @@ const program: rawProgram = {
         "css-selectors-questions-2",
         "css-box-model",
         "css-programming-danger-exercise",
-        "css-typography",
-        "css-variables",
-        "concept-http",
         "web-vocabulary-2",
       ],
     },
@@ -617,22 +614,6 @@ const program: rawProgram = {
         full: "Intro to HTTP",
       },
       slug: "http-intro",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
-        full: "CSS Variables",
-      },
-      slug: "css-variables",
-      children: [],
-    },
-    {
-      type: "concept",
-      label: {
-        full: "Understanding HTTP",
-      },
-      slug: "concept-http",
       children: [],
     },
     {
@@ -1588,14 +1569,6 @@ const program: rawProgram = {
         full: "CSS Selectors Questions",
       },
       slug: "css-selectors-questions-3",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
-        full: "CSS Typography",
-      },
-      slug: "css-typography",
       children: [],
     },
     {
