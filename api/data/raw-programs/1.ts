@@ -79,6 +79,7 @@ const program: rawProgram = {
         tiny: "2",
       },
       slug: "unit-web-apps",
+      isHidden: true,
       children: [
         "section-reading-code",
         "section-writing-code",
