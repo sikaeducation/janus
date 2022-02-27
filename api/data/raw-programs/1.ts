@@ -1687,7 +1687,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "exercise",
+      type: "questions",
       label: {
         full: "Web Vocabulary",
       },
