@@ -1663,7 +1663,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "exercise",
+      type: "questions",
       label: {
         full: "URL Component Identification",
       },
