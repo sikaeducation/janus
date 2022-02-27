@@ -295,10 +295,6 @@ const program: rawProgram = {
         "css-media-queries-questions",
         "css-positioning",
         "css-positioning-questions",
-        "design-content-inventories",
-        "design-layout-1",
-        "guide-css-layout",
-        "guide-to-starting-a-website",
         "web-book-promo-page-exercise",
         "implement-wireframe-exercise-group",
         "implement-wireframe-exercise-solo",
@@ -620,22 +616,6 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "Designing with Content Inventories",
-      },
-      slug: "design-content-inventories",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
-        full: "Designing Web Layouts",
-      },
-      slug: "design-layout-1",
-      children: [],
-    },
-    {
-      type: "topic",
-      label: {
         full: "CSS Resets",
       },
       slug: "css-resets",
@@ -655,14 +635,6 @@ const program: rawProgram = {
         full: "CSS: Grid",
       },
       slug: "css-grid",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "Guide to Layout with CSS",
-      },
-      slug: "guide-css-layout",
       children: [],
     },
     {
@@ -687,14 +659,6 @@ const program: rawProgram = {
         full: "CSS: Positioning",
       },
       slug: "css-positioning",
-      children: [],
-    },
-    {
-      type: "guide",
-      label: {
-        full: "How to Start a Website",
-      },
-      slug: "guide-to-starting-a-website",
       children: [],
     },
     {
