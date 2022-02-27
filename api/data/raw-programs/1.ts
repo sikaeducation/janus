@@ -1655,7 +1655,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "exercise",
+      type: "questions",
       label: {
         full: "URL Building Exercise",
       },
