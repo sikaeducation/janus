@@ -302,6 +302,7 @@ const program: rawProgram = {
         "web-book-promo-page-exercise",
         "implement-wireframe-exercise-group",
         "implement-wireframe-exercise-solo",
+        "web-vocabulary-3",
       ],
     },
     {
@@ -1010,6 +1011,14 @@ const program: rawProgram = {
         full: "Web Vocabulary",
       },
       slug: "web-vocabulary-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Web Vocabulary",
+      },
+      slug: "web-vocabulary-3",
       children: [],
     },
     {
