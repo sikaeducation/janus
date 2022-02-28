@@ -7,6 +7,9 @@
     @include typography.heading-font-2;
     margin-bottom: sizes.$s5;
   }
+  .response-count {
+    font-style: italic;
+  }
   .learner-response {
     display: grid;
     grid-template-columns: 84px 1fr;
