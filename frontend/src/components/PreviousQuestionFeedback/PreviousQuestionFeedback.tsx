@@ -16,9 +16,9 @@ export default function PreviousQuestionFeedback({ performances }: props) {
       {performances.map((performance) => (
         <li key={performance.id}>
           <div>
-            <time>
-              {formatDateTime(performance.evaluation?.createdAt || "")}
-            </time>
+            {performance.evaluation?.createdAt && (
+              <time>{formatDateTime(performance.evaluation.createdAt)}</time>
+            )}
             <AppContent
               className="prompt"
               isContained
