@@ -82,7 +82,7 @@ export default function PerformanceViewer() {
         formatDate(dayPerformance.createdAt) === selectedDate
     );
   };
-  const unevalutedPerformances = (
+  const unevaluatedPerformances = (
     dayPerformances: evaluatedSubmissionPerformance[]
   ) =>
     dayPerformances.filter((dayPerformance) => {
@@ -127,7 +127,10 @@ export default function PerformanceViewer() {
         setIsEnabled={setIsEnabled}
         toggleUnevaluated={toggleUnevaluated}
         scrollToBottom={scrollToBottom}
-        unevalutedPerformanceCount={unevalutedPerformances.length}
+        unevalutedPerformanceCount={
+          unevaluatedPerformances(Object.values(performancesByDay).flat())
+            .length
+        }
       />
       <PerformanceList
         lastMessageRef={lastMessageRef}
