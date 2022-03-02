@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import useIndicator from "../../hooks/use-indicator";
 import AppContent from "../AppContent";
 import "./PreviousQuestionFeedback.scss";
 
@@ -11,19 +12,20 @@ type props = {
 };
 
 export default function PreviousQuestionFeedback({ performances }: props) {
+  const getIndicator = useIndicator();
+
   return (
     <ul className="PreviousQuestionFeedback">
       {performances.map((performance) => (
         <li key={performance.id}>
           <div>
-            {performance.evaluation?.createdAt && (
-              <time>{formatDateTime(performance.evaluation.createdAt)}</time>
-            )}
-            <AppContent
-              className="prompt"
-              isContained
-              content={performance.payload.prompt}
-            />
+            <div className="meta">
+              <time>
+                {performance.evaluation?.createdAt &&
+                  formatDateTime(performance.evaluation.createdAt)}
+              </time>
+              {getIndicator(performance)}
+            </div>
             <AppContent
               className="response"
               isContained

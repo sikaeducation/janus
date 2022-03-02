@@ -1,4 +1,5 @@
 import { format } from "date-fns";
+import useIndicator from "../../hooks/use-indicator";
 import AppContent from "../AppContent";
 import "./PreviousSubmissionFeedback.scss";
 
@@ -11,16 +12,22 @@ type props = {
 };
 
 export default function PreviousSubmissionFeedback({ performances }: props) {
+  const getIndicator = useIndicator();
+
   return (
     <ul className="PreviousSubmissionFeedback">
       {performances.map((performance) => (
         <li key={performance.id}>
           <div>
-            <a href={performance.payload.url}>
-              <time>
-                {formatDateTime(performance.evaluation?.createdAt || "")}
-              </time>
-            </a>
+            <div className="meta">
+              <a href={performance.payload.url}>
+                <time>
+                  {performance.evaluation?.createdAt &&
+                    formatDateTime(performance.evaluation?.createdAt)}
+                </time>
+              </a>
+              {getIndicator(performance)}
+            </div>
             {performance.evaluation?.feedback ? (
               <AppContent
                 className="feedback"

@@ -11,4 +11,13 @@
     padding: sizes.$s2;
     padding-bottom: 0;
   }
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    time {
+      display: inline-block;
+      font-weight: 700;
+      margin-bottom: sizes.$s2;
+    }
+  }
 }
