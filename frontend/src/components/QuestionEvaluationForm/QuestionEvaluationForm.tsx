@@ -42,10 +42,13 @@ export default function QuestionEvaluationForm({
     setEvaluationStatus("");
     cancel();
   };
+  const previousPerformancesWithEvaluations = previousPerformances.filter(
+    (previousPerformance) => previousPerformance.evaluation
+  );
 
   return (
     <form onSubmit={handleSubmit} className="QuestionEvaluationForm">
-      {previousPerformances.length > 0 && (
+      {previousPerformancesWithEvaluations.length > 0 && (
         <>
           <h2>Previous feedback:</h2>
           <PreviousQuestionFeedback performances={previousPerformances} />
