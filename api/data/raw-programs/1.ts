@@ -169,6 +169,7 @@ const program: rawProgram = {
         "cli-wineflix-navigation-exercise",
         "cli-file-management-1",
         "cli-file-management-questions",
+        "cli-wineflix-file-management-exercise-1",
         "cli-wineflix-file-management-exercise-2",
         "cli-flags-and-arguments",
         "cli-flags-arguments-questions",
@@ -823,6 +824,14 @@ const program: rawProgram = {
         full: "CLI File Management Questions",
       },
       slug: "cli-file-management-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Wineflix File Management Exercise 1",
+      },
+      slug: "cli-wineflix-file-management-exercise-1",
       children: [],
     },
     {
