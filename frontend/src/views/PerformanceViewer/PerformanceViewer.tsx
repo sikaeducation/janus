@@ -94,7 +94,7 @@ export default function PerformanceViewer() {
   const isUnevaluated = (dayPerformances: evaluatedSubmissionPerformance[]) => {
     return isEnabled
       ? dayPerformances
-      : unevalutedPerformances(dayPerformances);
+      : unevaluatedPerformances(dayPerformances);
   };
 
   const filteredPerformancesByDay = flow([
