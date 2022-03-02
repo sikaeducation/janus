@@ -8,7 +8,7 @@ type props = {
 };
 
 export default function LearnerSubmissionEvaluable({ performance }: props) {
-  const [showForm, setShowForm] = useState(false);
+  const [showForm, setShowForm] = useState(true);
   const { getPreviousEvaluations } = useContext(performanceContext);
 
   const previousPerformances = getPreviousEvaluations(performance);
