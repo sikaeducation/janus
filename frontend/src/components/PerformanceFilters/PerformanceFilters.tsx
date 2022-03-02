@@ -18,6 +18,7 @@ type props = {
   isEnabled: boolean;
   setIsEnabled: (state: boolean) => void;
   scrollToBottom: () => void;
+  unevalutedPerformanceCount: number;
 };
 
 export default function PerformanceFilters({
@@ -27,6 +28,7 @@ export default function PerformanceFilters({
   isEnabled,
   setIsEnabled,
   scrollToBottom,
+  unevalutedPerformanceCount,
 }: props) {
   const { user } = useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
@@ -138,7 +140,7 @@ export default function PerformanceFilters({
         type="button"
         onClick={() => toggleUnevaluated()}
       >
-        All unevaluated
+        See {unevalutedPerformanceCount} Unevaluated
       </button>
       <button className="scroll-target" type="button" onClick={scrollToBottom}>
         Most recent

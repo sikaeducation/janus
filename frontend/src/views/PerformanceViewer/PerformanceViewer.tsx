@@ -82,15 +82,19 @@ export default function PerformanceViewer() {
         formatDate(dayPerformance.createdAt) === selectedDate
     );
   };
+  const unevalutedPerformances = (
+    dayPerformances: evaluatedSubmissionPerformance[]
+  ) =>
+    dayPerformances.filter((dayPerformance) => {
+      return (
+        ["submission", "question"].includes(dayPerformance.type) &&
+        !dayPerformance.evaluation?.status
+      );
+    });
   const isUnevaluated = (dayPerformances: evaluatedSubmissionPerformance[]) => {
     return isEnabled
       ? dayPerformances
-      : dayPerformances.filter((dayPerformance) => {
-          return (
-            ["submission", "question"].includes(dayPerformance.type) &&
-            !dayPerformance.evaluation?.status
-          );
-        });
+      : unevalutedPerformances(dayPerformances);
   };
 
   const filteredPerformancesByDay = flow([
@@ -123,6 +127,7 @@ export default function PerformanceViewer() {
         setIsEnabled={setIsEnabled}
         toggleUnevaluated={toggleUnevaluated}
         scrollToBottom={scrollToBottom}
+        unevalutedPerformanceCount={unevalutedPerformances.length}
       />
       <PerformanceList
         lastMessageRef={lastMessageRef}
