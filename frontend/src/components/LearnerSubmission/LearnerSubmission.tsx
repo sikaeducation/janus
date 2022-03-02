@@ -32,7 +32,10 @@ export default function LearnerSubmission({ performance }: props) {
     <div className="LearnerSubmission">
       <p className="description">
         {performance.userId} submitted{" "}
-        <a href={performance.payload.url}>{title}</a>.
+        <a href={performance.payload.url} target="_BLANK" rel="noreferrer">
+          {title}
+        </a>
+        .
       </p>
       <ul className="meta">
         <li>
