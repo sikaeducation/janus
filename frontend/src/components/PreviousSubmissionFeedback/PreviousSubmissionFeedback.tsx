@@ -13,10 +13,13 @@ type props = {
 
 export default function PreviousSubmissionFeedback({ performances }: props) {
   const getIndicator = useIndicator();
+  const performancesWithEvaluations = performances.filter(
+    (performance) => performance.evaluation
+  );
 
   return (
     <ul className="PreviousSubmissionFeedback">
-      {performances.map((performance) => (
+      {performancesWithEvaluations.map((performance) => (
         <li key={performance.id}>
           <div>
             <div className="meta">
