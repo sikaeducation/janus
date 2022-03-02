@@ -15,12 +15,9 @@ const postPerformance =
         payload: performance.payload,
       })
       .then((postedPerformance) => {
-        if (socket.role === "coach") {
-          socket.emit("new-performance", postedPerformance);
-        } else {
-          io.to("coaches").emit("new-performance-notice", postedPerformance);
-          io.to("coaches").emit("new-performance", postedPerformance);
-        }
+        socket.emit("new-performance", postedPerformance);
+        io.to("coaches").emit("new-performance-notice", postedPerformance);
+        io.to("coaches").emit("new-performance", postedPerformance);
       });
   };
 const postEvaluation =
