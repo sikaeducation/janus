@@ -49,23 +49,7 @@
     .prompt {
       margin-top: sizes.$s4;
       margin-bottom: sizes.$s4;
-    }
-    .answer-wrapper {
-      display: flex;
-      flex-flow: row nowrap;
-      margin-bottom: sizes.$s2;
-      strong {
-        margin-left: sizes.$s2;
-        margin-right: sizes.$s4;
-        font-style: italic;
-      }
-    }
-    .answer {
-      background-color: colors.$grey-10;
-    }
-    .prompt, .answer {
       padding: sizes.$s2;
-      padding-bottom: 0;
     }
   }
   .evaluation-feedback {

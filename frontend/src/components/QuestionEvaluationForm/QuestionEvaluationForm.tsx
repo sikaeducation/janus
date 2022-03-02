@@ -45,12 +45,22 @@ export default function QuestionEvaluationForm({
 
   return (
     <form onSubmit={handleSubmit} className="QuestionEvaluationForm">
-      {previousPerformances.length > 0 ? (
+      {previousPerformances.length > 0 && (
         <>
           <h2>Previous feedback:</h2>
           <PreviousQuestionFeedback performances={previousPerformances} />
         </>
-      ) : null}
+      )}
+      {performance.payload.answer && (
+        <div className="answer-wrapper">
+          <strong>Answer: </strong>
+          <AppContent
+            className="answer"
+            isContained
+            content={performance.payload.answer}
+          />
+        </div>
+      )}
       {performance.payload.response && (
         <AppContent
           isContained

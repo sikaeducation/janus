@@ -45,6 +45,20 @@
       }
     }
   }
+  .answer-wrapper {
+    display: flex;
+    flex-flow: row nowrap;
+    margin-bottom: sizes.$s2;
+    strong {
+      margin-left: sizes.$s2;
+      margin-right: sizes.$s4;
+      font-style: italic;
+    }
+    .answer {
+      background-color: colors.$grey-10;
+      padding: sizes.$s2;
+    }
+  }
   .submission-container {
     text-align: right;
     [type=button]{
