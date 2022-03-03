@@ -54,7 +54,12 @@ export default function AppContent({
         components={{
           img: ({ src, alt }: ComponentPropsWithoutRef<"img">) => {
             return (
-              <a href={src} target="_BLANK" rel="noopener noreferrer">
+              <a
+                href={src}
+                className="image-container"
+                target="_BLANK"
+                rel="noopener noreferrer"
+              >
                 <img src={src} alt={alt} />
               </a>
             );

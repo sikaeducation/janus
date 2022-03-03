@@ -68,6 +68,9 @@
       width: 100%;
     }
   }
+  .image-container {
+    text-align: center;
+  }
   img[src$="#small"] {
     width: 30%;
     @media (max-width: sizes.$small-breakpoint){
