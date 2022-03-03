@@ -1,0 +1,47 @@
+@use "../../styles/sizes";
+@use "../../styles/typography";
+@use "../../styles/buttons";
+
+.AppEvaluator {
+  width: 100%;
+  h2 {
+    @include typography.heading-font-2;
+  }
+  > form {
+    text-align: right;
+  }
+  .evaluator-performances {
+    width: 100%;
+    th {
+      font-weight: 700;
+      text-align: left;
+    }
+    .evaluator-performance {
+      text-align: center;
+      td {
+        padding: sizes.$s4;
+        vertical-align: middle;
+      }
+      .avatar {
+        width: 75px;
+      }
+      .submission-time {
+        width: 75px;
+      }
+      .submission {
+        min-width: 400px;
+        height: auto;
+        overflow-y: auto;
+      }
+      .feedback {
+        input {
+          width: 100%;
+        }
+      }
+    }
+  }
+  [type=submit] {
+    @include buttons.button-shadow-small;
+    @include buttons.button-primary;
+  }
+}

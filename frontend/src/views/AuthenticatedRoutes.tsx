@@ -12,6 +12,7 @@ import ToastNotification from "../components/ToastNotification";
 import { programContext } from "../contexts/program";
 import AppInbox from "./AppInbox";
 import ProgressViewer from "./ProgressViewer";
+import AppEvaluator from "./AppEvaluator";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
@@ -33,6 +34,7 @@ export default function AuthenticatedRoutes() {
               <Route path="/inbox" element={<AppInbox />} />
               <Route path="/progress" element={<ProgressViewer />} />
               <Route path="/activity" element={<PerformanceViewer />} />
+              <Route path="/evaluator" element={<AppEvaluator />} />
               <Route
                 path="/program-viewer"
                 element={<ProgramViewer program={program} />}

@@ -30,6 +30,11 @@ function AppHeader() {
     ),
     role === "coach" && (
       <li key="5">
+        <Link to="/evaluator">Evaluator</Link>
+      </li>
+    ),
+    role === "coach" && (
+      <li key="6">
         <Link to="/progress">Progress Chart</Link>
       </li>
     ),
