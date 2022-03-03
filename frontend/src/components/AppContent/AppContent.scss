@@ -192,7 +192,10 @@
       color: colors.$warning-5;
     }
     &.success {
-      color: colors.$success-5;
+      background-color: colors.$success-6;
+      color: colors.$white;
+      border-radius: sizes.$border-radius;
+      padding: 0 sizes.$s1;
     }
     &.submitted, &.pending {
       color: colors.$grey-6;

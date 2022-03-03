@@ -47,6 +47,9 @@
     grid-row: 3 / span 1;
     grid-column: 2 / span 2;
     .prompt {
+      background-color: colors.$grey-10;
+    }
+    .prompt, .response {
       margin-top: sizes.$s4;
       margin-bottom: sizes.$s4;
       padding: sizes.$s2;
@@ -88,7 +91,10 @@
       color: colors.$warning-5;
     }
     &.success {
-      color: colors.$success-5;
+      background-color: colors.$success-6;
+      color: colors.$white;
+      border-radius: sizes.$border-radius;
+      padding: 0 sizes.$s1;
     }
     &.submitted, &.pending {
       color: colors.$grey-6;
