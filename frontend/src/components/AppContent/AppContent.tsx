@@ -52,6 +52,13 @@ export default function AppContent({
           [frontmatter, { type: "yaml", marker: "-" }],
         ]}
         components={{
+          img: ({ src, alt }: ComponentPropsWithoutRef<"img">) => {
+            return (
+              <a href={src} target="_BLANK" rel="noopener noreferrer">
+                <img src={src} alt={alt} />
+              </a>
+            );
+          },
           a: ({ children, href }: ComponentPropsWithoutRef<"a">) => {
             const isExternal =
               href?.match(/^(https?:)?\/\//) || href?.match(/^mailto:/);
