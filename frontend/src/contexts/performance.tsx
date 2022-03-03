@@ -4,6 +4,7 @@ import {
   flow,
   groupBy,
   head,
+  isEmpty,
   map,
   mapValues,
   maxBy,
@@ -60,6 +61,10 @@ type performanceContext = {
     string,
     Record<string, evaluatedPerformance[]>
   >;
+  unevaluatedQuestionPerformancesBySlugByLearner: Record<
+    string,
+    Record<string, evaluatedQuestionPerformance[]>
+  >;
 };
 export const performanceContext = createContext<performanceContext>(
   {} as performanceContext
@@ -100,10 +105,10 @@ export function PerformanceProvider({ children }: props) {
   }, []);
 
   const postPerformance = (performance: rawPerformance) => {
-    socket.emit("post-performance", performance);
+    return socket.emit("post-performance", performance);
   };
   const postEvaluation = (evaluation: rawEvaluation) => {
-    socket.emit("post-evaluation", evaluation);
+    return socket.emit("post-evaluation", evaluation);
   };
   const performancesWithEvaluations = performances.map((performance) => {
     return {
@@ -143,6 +148,20 @@ export function PerformanceProvider({ children }: props) {
   ])(performancesWithEvaluations);
 
   const performancesBySlugByLearner = flow([
+    groupBy("postSlug"),
+    mapValues(sortBy("createdAt")),
+    mapValues(reverse),
+    mapValues(groupBy("userId")),
+  ])(performancesWithEvaluations);
+
+  const unevaluatedQuestionPerformancesBySlugByLearner = flow([
+    filter((performance: evaluatedSubmissionPerformance) =>
+      isEmpty(performance.evaluation)
+    ),
+    filter(
+      (performance: evaluatedQuestionPerformance) =>
+        performance.type === "question"
+    ),
     groupBy("postSlug"),
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
@@ -189,6 +208,7 @@ export function PerformanceProvider({ children }: props) {
         learners,
         performances,
         performancesWithEvaluations,
+        unevaluatedQuestionPerformancesBySlugByLearner,
         performancesByDay,
         lastPerformanceBySlugByLearner,
         postPerformance,
