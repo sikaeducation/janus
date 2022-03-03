@@ -91,6 +91,7 @@ export default function AppEvaluator() {
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const requests = Object.entries(evaluations)
+      // eslint-disable-next-line
       .filter(([learnerId, evaluation]) => {
         return evaluation.status !== "pending";
       })
