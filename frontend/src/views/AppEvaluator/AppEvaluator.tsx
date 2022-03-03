@@ -3,7 +3,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { maxBy } from "lodash/fp";
+import { maxBy, fromPairs } from "lodash/fp";
 import { useEffect, useContext, useState } from "react";
 import Gravatar from "react-gravatar";
 import AppContent from "../../components/AppContent";
@@ -88,6 +88,23 @@ export default function AppEvaluator() {
     };
   type performanceTuple = [string, evaluatedQuestionPerformance, boolean];
 
+  const setAll = (status: string) => {
+    setEvaluations((previousState) => {
+      const newState = Object.entries(previousState).map(
+        ([learnerId, evaluation]) => {
+          return [
+            learnerId,
+            {
+              ...evaluation,
+              status,
+            },
+          ];
+        }
+      );
+      return fromPairs(newState);
+    });
+  };
+
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const requests = Object.entries(evaluations)
@@ -151,8 +168,16 @@ export default function AppEvaluator() {
                   <th>Submission</th>
                   <th>Resubmission?</th>
                   <th>Feedback</th>
-                  <th>Reject</th>
-                  <th>Accept</th>
+                  <th>
+                    <button type="button" onClick={() => setAll("rejected")}>
+                      Reject
+                    </button>
+                  </th>
+                  <th>
+                    <button type="button" onClick={() => setAll("accepted")}>
+                      Accept
+                    </button>
+                  </th>
                 </tr>
               </thead>
               <tbody>
