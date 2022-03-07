@@ -1155,7 +1155,6 @@ const program: rawProgram = {
         "data-structures-intro",
         "data-structures-questions",
         "data-structures-trees",
-        "data-structures-questions",
         "dom-query-selectors",
         "dom-query-selectors-questions",
         "dom-create-append-elements",
