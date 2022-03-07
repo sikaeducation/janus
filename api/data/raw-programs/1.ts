@@ -2375,7 +2375,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
         full: "JavaScript Arrays Questions",
       },
