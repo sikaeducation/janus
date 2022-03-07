@@ -2650,7 +2650,7 @@ const program: rawProgram = {
     {
       type: "questions",
       label: {
-        full: "Writin Code Vocab",
+        full: "Writing Code Vocab",
       },
       slug: "writing-code-vocab",
       children: [],
