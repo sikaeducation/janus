@@ -261,9 +261,6 @@ const program: rawProgram = {
         "urls-questions",
         "url-component-identification-exercise",
         "url-building-exercise",
-        "http-status-codes",
-        "http-status-codes-questions",
-        "http-status-code-table-exercise",
         "dev-tools-2",
         "html-links",
         "html-structure-semantics",
@@ -1239,6 +1236,7 @@ const program: rawProgram = {
       children: [
         "http-status-codes",
         "http-status-codes-questions",
+        "http-status-code-table-exercise",
         "js-async-await",
         "js-async-await-questions",
         "async-await-refactoring-exercise",
