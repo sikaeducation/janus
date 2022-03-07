@@ -2524,7 +2524,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
         full: "`Promise.all()` Questions",
       },
