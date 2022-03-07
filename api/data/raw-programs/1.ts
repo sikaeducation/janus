@@ -1386,7 +1386,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #1",
       },
@@ -1394,7 +1394,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #2",
       },
@@ -1402,7 +1402,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #3",
       },
@@ -1410,7 +1410,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #4",
       },
@@ -1418,7 +1418,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #5",
       },
@@ -1426,7 +1426,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #6",
       },
@@ -1434,7 +1434,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #7",
       },
@@ -1442,7 +1442,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #8",
       },
@@ -1450,7 +1450,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #9",
       },
@@ -1458,7 +1458,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #10",
       },
@@ -1466,7 +1466,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #11",
       },
@@ -1474,7 +1474,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #12",
       },
@@ -1482,7 +1482,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #13",
       },
@@ -1490,7 +1490,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #14",
       },
@@ -1498,7 +1498,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "section",
+      type: "exercise",
       label: {
         full: "Reading Exercise #15",
       },

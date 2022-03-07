@@ -10,6 +10,10 @@ import AppContent from "../../components/AppContent";
 import { performanceContext } from "../../contexts/performance";
 import "./AppEvaluator.scss";
 
+const formatDateTime = (dateTime: string) => {
+  return format(new Date(dateTime), "M/d/yy p");
+};
+
 export default function AppEvaluator() {
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
     useContext(performanceContext);
@@ -18,6 +22,10 @@ export default function AppEvaluator() {
     slugs.length > 0 ? slugs[0] : ""
   );
   const { user } = useAuth0();
+  const { postsBySlug } = useContext(programContext);
+  const getPath = (slug) => {
+    return postsBySlug[slug].path ?? "";
+  };
 
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner?.[selectedSlug] || {};
@@ -168,13 +176,21 @@ export default function AppEvaluator() {
                   <th>Submission</th>
                   <th>Resubmission?</th>
                   <th>Feedback</th>
-                  <th>
-                    <button type="button" onClick={() => setAll("rejected")}>
+                  <th className="evaluate-all">
+                    <button
+                      className="rejected"
+                      type="button"
+                      onClick={() => setAll("rejected")}
+                    >
                       Reject
                     </button>
                   </th>
-                  <th>
-                    <button type="button" onClick={() => setAll("accepted")}>
+                  <th className="evaluate-all">
+                    <button
+                      className="accepted"
+                      type="button"
+                      onClick={() => setAll("accepted")}
+                    >
                       Accept
                     </button>
                   </th>
@@ -192,7 +208,13 @@ export default function AppEvaluator() {
                         />
                       </td>
                       <td className="submission-time">
-                        <time>{performance?.createdAt}</time>
+                        <time>
+                          <Link
+                            to={getPath(performance?.payload.originalPostSlug)}
+                          >
+                            {formatDateTime(performance?.createdAt)}
+                          </Link>
+                        </time>
                       </td>
                       <td className="submission">
                         <AppContent

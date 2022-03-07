@@ -25,6 +25,18 @@
       text-align: left;
       padding: sizes.$s4;
     }
+    .evaluate-all {
+      button {
+        @include buttons.button-shadow-small;
+        border-radius: sizes.$border-radius;
+        border: none;
+        cursor: pointer;
+        font-size: sizes.$f6;
+        font-weight: 700;
+        background-color: colors.$grey-7;
+        color: colors.$grey-1;
+      }
+    }
     tr {
       &:nth-child(even) {
         background-color: colors.$grey-10;
