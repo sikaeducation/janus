@@ -31,10 +31,9 @@
         border-radius: sizes.$border-radius;
         border: none;
         cursor: pointer;
-        font-size: sizes.$f6;
-        font-weight: 700;
-        background-color: colors.$grey-7;
+        background-color: colors.$grey-10;
         color: colors.$grey-1;
+        padding: sizes.$s1;
       }
     }
     tr {
@@ -79,5 +78,7 @@
   [type=submit] {
     @include buttons.button-shadow-small;
     @include buttons.button-primary;
+
+    margin-top: sizes.$s4;
   }
 }

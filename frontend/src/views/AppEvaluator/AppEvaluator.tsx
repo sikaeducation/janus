@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 // @ts-nocheck
 import { useAuth0 } from "@auth0/auth0-react";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faRepeat } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { maxBy, fromPairs } from "lodash/fp";
 import { useEffect, useContext, useState } from "react";
@@ -174,11 +174,11 @@ export default function AppEvaluator() {
             <table className="evaluator-performances">
               <thead>
                 <tr>
-                  <th>Learner</th>
-                  <th>Time</th>
-                  <th>Submission</th>
-                  <th>Resubmission?</th>
-                  <th>Feedback</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
+                  <th>&nbsp;</th>
                   <th className="evaluate-all">
                     <button
                       className="rejected"
@@ -225,7 +225,7 @@ export default function AppEvaluator() {
                         />
                       </td>
                       <td className="has-previous-feedback">
-                        {hasMultiple && <FontAwesomeIcon icon={faCheck} />}
+                        {hasMultiple && <FontAwesomeIcon icon={faRepeat} />}
                       </td>
                       <td className="feedback">
                         <input
