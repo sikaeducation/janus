@@ -713,7 +713,7 @@ const program: rawProgram = {
         full: "Habits of Excellence",
       },
       slug: "habits-of-excellence",
-      children: [],
+      children: ["habits-learn-your-tools"],
     },
     {
       type: "meta",
@@ -2650,6 +2650,30 @@ const program: rawProgram = {
         full: "Writing Code Vocab",
       },
       slug: "writing-code-vocab",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Learn Your Tools",
+      },
+      slug: "habits-learn-your-tools",
+      children: ["touch-typing", "browser-shortcuts"],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Touch Typing",
+      },
+      slug: "touch-typing",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Browser Shortcuts",
+      },
+      slug: "browser-shortcuts",
       children: [],
     },
   ],
