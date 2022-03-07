@@ -1998,6 +1998,663 @@ const program: rawProgram = {
       slug: "sika-personal-empowerment-protocol",
       children: [],
     },
+    {
+      type: "exercise",
+      label: {
+        full: "Add Event Listener Exercise",
+      },
+      slug: "add-event-listener-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Album Previewer Exercise",
+      },
+      slug: "album-previewer-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "API Integration Vocabulary",
+      },
+      slug: "api-integration-vocab-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "API Integration Vocabulary",
+      },
+      slug: "api-integration-vocab-2",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to APIs",
+      },
+      slug: "api-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Applicative Programming",
+      },
+      slug: "applicative-programming-js",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "`async`/`await` Refactoring Exercise",
+      },
+      slug: "async-await-refactoring-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Beyonce Exercise",
+      },
+      slug: "beyonce-object-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Boom Goes The Dynamite",
+      },
+      slug: "boom-goes-the-dynamite-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Candy Shop: Item & Sale Combiner",
+      },
+      slug: "candy-shop-item-and-sale-combiner-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Comments",
+      },
+      slug: "comments",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Comments Questions",
+      },
+      slug: "comments-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Corgi DOM Manipulation Exercises",
+      },
+      slug: "corgi-dom-manipulation-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS Forms",
+      },
+      slug: "css-forms",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "CSS Forms Questions",
+      },
+      slug: "css-forms-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Data Structures",
+      },
+      slug: "data-structures-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Data Structures Questions",
+      },
+      slug: "data-structures-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Data Structures: Trees",
+      },
+      slug: "data-structures-trees",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to the DOM",
+      },
+      slug: "dom-1",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "DOM Calculator",
+      },
+      slug: "dom-calculator-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "DOM: `.classList`",
+      },
+      slug: "dom-classlist",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM: `.classList` Questions",
+      },
+      slug: "dom-classlist-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Creating and Appending DOM Elements",
+      },
+      slug: "dom-create-append-elements",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Creating and Appending DOM Elements Questions",
+      },
+      slug: "dom-create-append-elements-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "DOM Events",
+      },
+      slug: "dom-events",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM Events Questions",
+      },
+      slug: "dom-events-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "DOM Manipulation",
+      },
+      slug: "dom-manipulation",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM Manipulation Questions",
+      },
+      slug: "dom-manipulation-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "DOM: Query Selectors",
+      },
+      slug: "dom-query-selectors",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM: Query Selectors Questions",
+      },
+      slug: "dom-query-selectors-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM Questions",
+      },
+      slug: "dom-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM Vocabulary",
+      },
+      slug: "dom-vocab-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "DOM Vocabulary",
+      },
+      slug: "dom-vocab-2",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Draw the DOM",
+      },
+      slug: "draw-dom-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Email Repeater Exercise",
+      },
+      slug: "email-repeater-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Buttons",
+      },
+      slug: "html-buttons",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Buttons Questions",
+      },
+      slug: "html-buttons-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Form Inputs",
+      },
+      slug: "html-form-inputs",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Form Inputs Questions",
+      },
+      slug: "html-form-inputs-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Form Submission",
+      },
+      slug: "html-form-submission",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTML Form Submission Questions",
+      },
+      slug: "html-form-submission-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "HTML Forms",
+      },
+      slug: "html-forms",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTML Forms Questions",
+      },
+      slug: "html-forms-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTML Forms Vocabulary",
+      },
+      slug: "html-forms-vocab",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "HTTP Questions",
+      },
+      slug: "http-intro-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Insomnia",
+      },
+      slug: "insomnia",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript Arrays",
+      },
+      slug: "js-arrays",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript Arrays Questions",
+      },
+      slug: "js-arrays-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript Arrays Exercise",
+      },
+      slug: "js-arrays-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`async`/`await`",
+      },
+      slug: "js-async-await",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "`async`/`await` Questions",
+      },
+      slug: "js-async-await-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`fetch`",
+      },
+      slug: "js-fetch-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "`fetch` Questions",
+      },
+      slug: "js-fetch-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript `.find()`/`.filter()`",
+      },
+      slug: "js-find-filter",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JavaScript `.find()`/`.filter()` Questions",
+      },
+      slug: "js-find-filter-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript `.forEach()`",
+      },
+      slug: "js-foreach",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JavaScript `.forEach()` Questions",
+      },
+      slug: "js-foreach-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`localStorage`",
+      },
+      slug: "js-local-storage",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "`localStorage` Questions",
+      },
+      slug: "js-local-storage-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript `.map()`",
+      },
+      slug: "js-map",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JavaScript `.map()` Questions",
+      },
+      slug: "js-map-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript Objects",
+      },
+      slug: "js-objects",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JavaScript Objects Questions",
+      },
+      slug: "js-objects-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Promises",
+      },
+      slug: "js-promises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Promises Questions",
+      },
+      slug: "js-promises-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`Promise.all()`",
+      },
+      slug: "js-promise-all",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`Promise.all()` Questions",
+      },
+      slug: "js-promise-all-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "JavaScript Read Inputs Exercise",
+      },
+      slug: "js-read-inputs-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JavaScript Strings",
+      },
+      slug: "js-strings",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JavaScript Strings Questions",
+      },
+      slug: "js-strings-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`.then()`/`.catch()`",
+      },
+      slug: "js-then-catch",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "`.then()`/`.catch()` Questions",
+      },
+      slug: "js-then-catch-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "JSON",
+      },
+      slug: "json",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "JSON Questions",
+      },
+      slug: "json-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Pokemon Library Exercise",
+      },
+      slug: "pokemon-library-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Production Website Exercise",
+      },
+      slug: "production-website-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Asynchronus Programming",
+        short: "Async Programming",
+      },
+      slug: "programming-async",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Query Strings",
+      },
+      slug: "query-strings",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Query Strings Questions",
+      },
+      slug: "query-strings-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Star Wars Library Group Exercise",
+      },
+      slug: "star-wars-library-exercise-group",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Underpants Gnomes",
+      },
+      slug: "underpants-gnomes-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Writin Code Vocab",
+      },
+      slug: "writing-code-vocab",
+      children: [],
+    },
   ],
 };
 
