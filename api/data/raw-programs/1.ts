@@ -1172,7 +1172,6 @@ const program: rawProgram = {
       children: [
         "api-intro",
         "http-intro-questions",
-        "http-intro-questions",
         "insomnia",
         "js-fetch-1",
         "js-fetch-questions",
