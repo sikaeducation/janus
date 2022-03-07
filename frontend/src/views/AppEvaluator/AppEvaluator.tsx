@@ -1,7 +1,7 @@
 // eslint-disable-next-line
 // @ts-nocheck
 import { useAuth0 } from "@auth0/auth0-react";
-import { faRepeat } from "@fortawesome/free-solid-svg-icons";
+import { faRedo } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { maxBy, fromPairs } from "lodash/fp";
 import { useEffect, useContext, useState } from "react";
@@ -225,7 +225,7 @@ export default function AppEvaluator() {
                         />
                       </td>
                       <td className="has-previous-feedback">
-                        {hasMultiple && <FontAwesomeIcon icon={faRepeat} />}
+                        {hasMultiple && <FontAwesomeIcon icon={faRedo} />}
                       </td>
                       <td className="feedback">
                         <input
