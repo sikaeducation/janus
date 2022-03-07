@@ -10,6 +10,7 @@ import { format } from "date-fns";
 import Gravatar from "react-gravatar";
 import AppContent from "../../components/AppContent";
 import { performanceContext } from "../../contexts/performance";
+import { programContext } from "../../contexts/program";
 import "./AppEvaluator.scss";
 
 const formatDateTime = (dateTime: string) => {
