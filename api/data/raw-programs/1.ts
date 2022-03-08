@@ -53,7 +53,6 @@ const program: rawProgram = {
         "sika-personal-empowerment-protocol",
         "markdown",
         "build-and-burn",
-        "pair-programming",
         "sika-screenshots",
       ],
     },
@@ -713,7 +712,7 @@ const program: rawProgram = {
         full: "Habits of Excellence",
       },
       slug: "habits-of-excellence",
-      children: ["habits-learn-your-tools"],
+      children: ["habits-learn-your-tools", "habits-work-together"],
     },
     {
       type: "meta",
@@ -1932,14 +1931,6 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
-      label: {
-        full: "Pair Programming",
-      },
-      slug: "pair-programming",
-      children: [],
-    },
-    {
       type: "meta",
       label: {
         full: "Discord Setup",
@@ -2674,6 +2665,22 @@ const program: rawProgram = {
         full: "Browser Shortcuts",
       },
       slug: "browser-shortcuts",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Work Together",
+      },
+      slug: "habits-work-together",
+      children: ["pair-programming"],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Pair Programming",
+      },
+      slug: "pair-programming",
       children: [],
     },
   ],
