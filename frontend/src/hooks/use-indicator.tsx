@@ -6,16 +6,7 @@ import {
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  every,
-  flow,
-  identity,
-  isEmpty,
-  map,
-  negate,
-  some,
-  values,
-} from "lodash/fp";
+import { countBy, flow, isEmpty, values } from "lodash/fp";
 import { useContext } from "react";
 import { performanceContext } from "../contexts/performance";
 
@@ -57,7 +48,6 @@ const getSubmissionIndicator = (
     rejected: (
       <FontAwesomeIcon
         icon={faTimes}
-        size="sm"
         className="indicator failure"
         title="Your latest submission needs more work"
       />
@@ -65,7 +55,6 @@ const getSubmissionIndicator = (
     submitted: (
       <FontAwesomeIcon
         icon={faQuestion}
-        size="sm"
         className="indicator submitted"
         title="Your latest submission is waiting to be graded"
       />
@@ -73,7 +62,6 @@ const getSubmissionIndicator = (
     accepted: (
       <FontAwesomeIcon
         icon={faClipboardCheck}
-        size="sm"
         className="indicator success"
         title="Your latest submission was accepted!"
       />
@@ -89,53 +77,22 @@ const getQuestionIndicator = (
   performance: postedPerformance,
   performances: Record<string, postedQuestionPerformance>
 ) => {
-  const indicators = {
-    rejected: (
-      <span className="indicator question failure">
-        {values(performances).length}
-      </span>
-    ),
-    submitted: (
-      <span className="indicator question pending">
-        {values(performances).length}
-      </span>
-    ),
-    accepted: (
-      <span className="indicator question success">
-        {values(performances).length}
-      </span>
-    ),
-  } as const;
-
   if (!performances) return null;
 
-  const anyPending = flow([
+  const { rejected, pending, accepted } = flow([
     values,
-    map(
-      (latestPerformance: evaluatedQuestionPerformance) =>
-        !!latestPerformance.evaluation
-    ),
-    some(negate(identity)),
+    countBy((p: evaluatedQuestionPerformance) => {
+      return !p.evaluation ? "pending" : p.evaluation.status;
+    }),
   ])(performances);
 
-  if (anyPending) {
-    return indicators.submitted;
-  }
-
-  const allPassing = flow([
-    values,
-    map(
-      (latestPerformance: evaluatedQuestionPerformance) =>
-        latestPerformance.evaluation?.status === "accepted"
-    ),
-    every(identity),
-  ])(performances);
-
-  if (allPassing) {
-    return indicators.accepted;
-  }
-
-  return indicators.rejected;
+  return (
+    <span className="question">
+      {rejected > 0 && <span className="indicator failure">{rejected}</span>}
+      {pending > 0 && <span className="indicator pending">{pending}</span>}
+      {accepted > 0 && <span className="indicator success">{accepted}</span>}
+    </span>
+  );
 };
 
 export default function useIndicator() {
