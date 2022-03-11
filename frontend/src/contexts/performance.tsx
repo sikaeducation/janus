@@ -1,5 +1,6 @@
 import { useState, createContext, useContext, useEffect } from "react";
 import {
+  countBy,
   filter,
   flow,
   groupBy,
@@ -8,8 +9,10 @@ import {
   map,
   mapValues,
   maxBy,
+  reduce,
   reverse,
   sortBy,
+  toPairs,
 } from "lodash/fp";
 import { format } from "date-fns";
 import useSocketHandlers from "../hooks/use-socket-handlers";
@@ -154,6 +157,28 @@ export function PerformanceProvider({ children }: props) {
     mapValues(groupBy("userId")),
   ])(performancesWithEvaluations);
 
+  const sortByMostFrequent = (
+    questionPerformances: evaluatedQuestionPerformance[]
+  ) => {
+    return flow([
+      countBy((performance: evaluatedQuestionPerformance) => {
+        return performance.postSlug;
+      }),
+      toPairs,
+      sortBy(1),
+      reverse,
+      map("0"),
+      reduce((group, slug: string) => {
+        return {
+          ...group,
+          [slug]: filter(
+            (p: evaluatedQuestionPerformance) => p.postSlug === slug
+          )(questionPerformances),
+        };
+      }, {}),
+    ])(questionPerformances);
+  };
+
   const unevaluatedQuestionPerformancesBySlugByLearner = flow([
     filter((performance: evaluatedSubmissionPerformance) =>
       isEmpty(performance.evaluation)
@@ -162,8 +187,7 @@ export function PerformanceProvider({ children }: props) {
       (performance: evaluatedQuestionPerformance) =>
         performance.type === "question"
     ),
-    groupBy("postSlug"),
-    maxBy("length"),
+    sortByMostFrequent,
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
     mapValues(groupBy("userId")),
