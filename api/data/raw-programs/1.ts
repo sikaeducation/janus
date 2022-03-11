@@ -279,6 +279,7 @@ const program: rawProgram = {
       slug: "section-websites-3",
       children: [
         "css-resets",
+        "css-images",
         "css-flex",
         "css-flexbox-froggy-exercise",
         "css-flex-questions",
@@ -2680,6 +2681,14 @@ const program: rawProgram = {
         full: "Pair Programming",
       },
       slug: "pair-programming",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "CSS: Images",
+      },
+      slug: "css-images",
       children: [],
     },
   ],
