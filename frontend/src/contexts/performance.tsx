@@ -163,6 +163,7 @@ export function PerformanceProvider({ children }: props) {
         performance.type === "question"
     ),
     groupBy("postSlug"),
+    maxBy("length"),
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
     mapValues(groupBy("userId")),
