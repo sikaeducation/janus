@@ -44,6 +44,13 @@ export default function LearnerQuestion({ performance }: props) {
           isContained
           content={performance.payload.prompt}
         />
+        {performance.evaluation && (
+          <AppContent
+            className="response"
+            isContained
+            content={performance.payload.response}
+          />
+        )}
       </div>
       <span className="evaluation-status">{indicator}</span>
       {role === "coach" && !performance.evaluation && (
