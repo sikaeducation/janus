@@ -1,0 +1,8 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+
+.IndicatorSubmissionPending {
+  font-size: sizes.$f4;
+  color: colors.$grey-7;
+  margin-left: sizes.$f4;
+}

@@ -1,0 +1,12 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+
+.IndicatorViewUnclear {
+  font-weight: 700;
+  font-size: sizes.$f4;
+  padding: 0 sizes.$s1;
+  border-radius: sizes.$border-radius;
+  background-color: colors.$failure-5;
+  color: colors.$white;
+  margin-left: sizes.$f4;
+}

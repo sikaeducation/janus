@@ -78,26 +78,4 @@
     margin-left: sizes.$s2;
     margin-bottom: sizes.$s4;
   }
-  .indicator {
-    color: colors.$grey-5;
-    &.question {
-      font-weight: 700;
-      font-size: sizes.$s5;
-    }
-    &.failure {
-      color: colors.$failure-5;
-    }
-    &.warning {
-      color: colors.$warning-5;
-    }
-    &.success {
-      background-color: colors.$success-6;
-      color: colors.$white;
-      border-radius: sizes.$border-radius;
-      padding: 0 sizes.$s1;
-    }
-    &.submitted, &.pending {
-      color: colors.$grey-6;
-    }
-  }
 }

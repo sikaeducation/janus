@@ -23,13 +23,4 @@
     grid-row: 1 / span 1;
     grid-column: 1 / span 3;
   }
-  .failure {
-    color: colors.$failure-5;
-  }
-  .pending {
-    color: colors.$grey-5;
-  }
-  .success {
-    color: colors.$success-5;
-  }
 }

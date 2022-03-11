@@ -1,41 +1,19 @@
-import {
-  faCheck,
-  faCheckCircle,
-  faClipboardCheck,
-  faQuestion,
-  faTimes,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { countBy, flow, isEmpty, values } from "lodash/fp";
 import { useContext } from "react";
+import IndicatorQuestion from "../components/IndicatorQuestion";
+import IndicatorSubmissionAccepted from "../components/IndicatorSubmissionAccepted";
+import IndicatorSubmissionPending from "../components/IndicatorSubmissionPending";
+import IndicatorSubmissionRejected from "../components/IndicatorSubmissionRejected";
+import IndicatorViewClear from "../components/IndicatorViewClear";
+import IndicatorViewConfident from "../components/IndicatorViewConfident";
+import IndicatorViewUnclear from "../components/IndicatorViewUnclear";
 import { performanceContext } from "../contexts/performance";
 
 const getViewIndicator = (performance: postedViewPerformance) => {
   const indicators = {
-    1: (
-      <FontAwesomeIcon
-        icon={faTimes}
-        size="sm"
-        className="indicator failure"
-        title="You read this and indicated that it was unclear to you"
-      />
-    ),
-    2: (
-      <FontAwesomeIcon
-        icon={faCheck}
-        size="sm"
-        className="indicator pending"
-        title="You read this and indicated that it was clear to you"
-      />
-    ),
-    3: (
-      <FontAwesomeIcon
-        icon={faCheckCircle}
-        size="sm"
-        className="indicator success"
-        title="You read this and indicated that you were confident about it."
-      />
-    ),
+    1: <IndicatorViewUnclear />,
+    2: <IndicatorViewClear />,
+    3: <IndicatorViewConfident />,
   };
   const { confidenceLevel } = performance.payload;
   return indicators[confidenceLevel];
@@ -45,32 +23,14 @@ const getSubmissionIndicator = (
   performance: evaluatedSubmissionPerformance
 ) => {
   const indicators = {
-    rejected: (
-      <FontAwesomeIcon
-        icon={faTimes}
-        className="indicator failure"
-        title="Your latest submission needs more work"
-      />
-    ),
-    submitted: (
-      <FontAwesomeIcon
-        icon={faQuestion}
-        className="indicator submitted"
-        title="Your latest submission is waiting to be graded"
-      />
-    ),
-    accepted: (
-      <FontAwesomeIcon
-        icon={faClipboardCheck}
-        className="indicator success"
-        title="Your latest submission was accepted!"
-      />
-    ),
+    rejected: <IndicatorSubmissionRejected />,
+    pending: <IndicatorSubmissionPending />,
+    accepted: <IndicatorSubmissionAccepted />,
   } as const;
 
   const status =
     (performance as evaluatedSubmissionPerformance)?.evaluation?.status || "";
-  return indicators[status || "submitted"];
+  return indicators[status || "pending"];
 };
 
 const getQuestionIndicator = (
@@ -87,11 +47,11 @@ const getQuestionIndicator = (
   ])(performances);
 
   return (
-    <span className="question">
-      {rejected > 0 && <span className="indicator failure">{rejected}</span>}
-      {pending > 0 && <span className="indicator pending">{pending}</span>}
-      {accepted > 0 && <span className="indicator success">{accepted}</span>}
-    </span>
+    <IndicatorQuestion
+      pending={pending}
+      rejected={rejected}
+      accepted={accepted}
+    />
   );
 };
 

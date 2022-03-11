@@ -40,34 +40,4 @@
       }
     }
   }
-  .indicator {
-    color: colors.$grey-6;
-    margin-bottom: 0;
-    font-weight: 700;
-    font-size: sizes.$f4;
-    padding: 0 sizes.$s1;
-    width: 1em;
-    &:first-child {
-      margin-left: sizes.$s3;
-    }
-    & + em {
-      font-style: normal;
-      font-size: sizes.$f5;
-      color: colors.$grey-5;
-    }
-    & + em::before {
-      content: "/ ";
-    }
-    &.failure {
-      background-color: colors.$failure-6;
-      color: colors.$white;
-    }
-    &.warning {
-      color: colors.$warning-5;
-    }
-    &.success {
-      background-color: colors.$success-6;
-      color: colors.$white;
-    }
-  }
 }
