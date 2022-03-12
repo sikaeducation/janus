@@ -168,7 +168,7 @@ export default function AppEvaluator() {
         <>
           <div className="question-details">
             <AppContent className="prompt" content={prompt || ""} />
-            {answer && <AppContent className="answer" content={answer} />}
+            {answer && <AppContent className="answer" content={`${answer}`} />}
           </div>
           <form onSubmit={submitAll}>
             <table className="evaluator-performances">
