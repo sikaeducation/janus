@@ -104,7 +104,7 @@ const program: rawProgram = {
         "section-typescript-2",
         "section-ts-refactoring",
         "section-oop",
-        "interview-trivia",
+        "interview-battery-questions",
       ],
     },
     {
@@ -2697,7 +2697,7 @@ const program: rawProgram = {
       label: {
         full: "Interview Trivia",
       },
-      slug: "interview-trivia",
+      slug: "interview-battery-questions",
       children: [],
     },
   ],
