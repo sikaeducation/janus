@@ -104,6 +104,7 @@ const program: rawProgram = {
         "section-typescript-2",
         "section-ts-refactoring",
         "section-oop",
+        "interview-trivia",
       ],
     },
     {
@@ -2689,6 +2690,14 @@ const program: rawProgram = {
         full: "CSS: Images",
       },
       slug: "css-images",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Interview Trivia",
+      },
+      slug: "interview-trivia",
       children: [],
     },
   ],
