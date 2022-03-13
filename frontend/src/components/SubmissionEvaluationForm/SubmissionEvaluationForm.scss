@@ -53,6 +53,12 @@
       background: transparent;
       margin-right: sizes.$s5;
       cursor: pointer;
+      &.success {
+        background-color: colors.$success-5;
+      }
+      &.failure {
+        background-color: colors.$success-5;
+      }
     }
     [type=submit] {
       display: inline-block;
