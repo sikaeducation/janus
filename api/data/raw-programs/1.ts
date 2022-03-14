@@ -2650,7 +2650,11 @@ const program: rawProgram = {
         full: "Learn Your Tools",
       },
       slug: "habits-learn-your-tools",
-      children: ["touch-typing", "browser-shortcuts"],
+      children: [
+        "touch-typing",
+        "browser-shortcuts",
+        "window-management-shortcuts",
+      ],
     },
     {
       type: "topic",
@@ -2698,6 +2702,14 @@ const program: rawProgram = {
         full: "Interview Trivia",
       },
       slug: "interview-battery-questions",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Window Management Shortcuts",
+      },
+      slug: "window-management-shortcuts",
       children: [],
     },
   ],
