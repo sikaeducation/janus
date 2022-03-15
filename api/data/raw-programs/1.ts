@@ -51,6 +51,7 @@ const program: rawProgram = {
         "zone-of-proximal-development",
         "sika-learning-to-learn",
         "sika-personal-empowerment-protocol",
+        "how-to-ask-questions",
         "markdown",
         "build-and-burn",
         "sika-screenshots",
@@ -2710,6 +2711,14 @@ const program: rawProgram = {
         full: "Window Management Shortcuts",
       },
       slug: "window-management-shortcuts",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "How To Ask Questions",
+      },
+      slug: "how-to-ask-questions",
       children: [],
     },
   ],
