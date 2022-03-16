@@ -2655,6 +2655,7 @@ const program: rawProgram = {
         "touch-typing",
         "browser-shortcuts",
         "window-management-shortcuts",
+        "vs-code-shortcuts",
       ],
     },
     {
@@ -2719,6 +2720,14 @@ const program: rawProgram = {
         full: "How To Ask Questions",
       },
       slug: "how-to-ask-questions",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "VS Code Shortcuts",
+      },
+      slug: "vs-code-shortcuts",
       children: [],
     },
   ],
