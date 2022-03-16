@@ -85,9 +85,9 @@ export default function AppContent({
             const slug = last(href?.split("/")) || "";
             const post = postsBySlug[slug || ""];
             const lastStandardQuestionPerformance = last(
-              performancesWithEvaluations.filter(
-                (performance) => performance.postSlug === slug
-              )
+              performancesWithEvaluations
+                .filter((performance) => performance.postSlug === slug)
+                .filter((performance) => performance.userId === user?.email)
             );
             const lastQuestionPerformances =
               lastQuestionPerformancesBySlugByLearnerByQuestion[slug]?.[
