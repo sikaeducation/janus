@@ -39,11 +39,11 @@ module.exports = {
     "default-case": "off",
     "consistent-return": "off",
     "react/require-default-props": "off",
-    "@typescript-eslint/no-shadow": ["error"],
+    "react/jsx-no-constructed-context-values": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-shadow": ["off"],
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
-    "no-use-before-define": "off",
-    "react/jsx-no-constructed-context-values": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
