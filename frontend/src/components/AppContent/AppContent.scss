@@ -11,6 +11,13 @@
   @media (max-width: sizes.$small-breakpoint){
     width: 100%;
   }
+  &:not(.contained){
+    pre {
+      > div {
+        box-sizing: content-box;
+      }
+    }
+  }
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre {
     width: 100%;
   }
@@ -43,11 +50,7 @@
     white-space: pre-wrap;
     > div {
       width: 100%;
-      box-sizing: content-box;
       border-radius: sizes.$border-radius !important;
-      @media (max-width: sizes.$small-breakpoint){
-        box-sizing: border-box;
-      }
     }
     code {
       margin: sizes.$f7 0;
