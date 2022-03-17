@@ -12,6 +12,9 @@ import socketAuth from "../services/socket-auth";
 import performanceHandlers from "./performances";
 import promptHandlers from "./prompts";
 
+import Performance from "../data/models/Performance";
+import Evaluation from "../data/models/Evaluation";
+
 type SikaSocket = Socket & { email?: string; role?: string };
 
 dotenv.config();
@@ -44,6 +47,20 @@ app.use("/programs", programs);
 app.get("/", (request: Request, response: Response) => {
   response.status(200).json();
 });
+
+app.delete(
+  "/performances/:postSlug",
+  async (request: Request, response: Response) => {
+    const performances = await Performance.query().select("id").where({
+      postSlug: request.params.postSlug,
+    });
+    const performanceIds = performances.map((performance) => performance.id);
+    await Evaluation.query().delete().whereIn("performanceId", performanceIds);
+    await Performance.query().delete().whereIn("id", performanceIds);
+
+    response.sendStatus(204);
+  }
+);
 
 // eslint-disable-next-line
 app.get("/error", (request: Request, response: Response) => {
