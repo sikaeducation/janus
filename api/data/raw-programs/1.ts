@@ -55,6 +55,7 @@ const program: rawProgram = {
         "markdown",
         "build-and-burn",
         "sika-screenshots",
+        "git-updating-from-upstream",
       ],
     },
     {
@@ -1119,6 +1120,8 @@ const program: rawProgram = {
       },
       slug: "section-writing-code",
       children: [
+        "js-running-code",
+        "js-running-node-projects",
         "js-strings",
         "js-strings-questions",
         "js-arrays",
@@ -2728,6 +2731,30 @@ const program: rawProgram = {
         full: "VS Code Shortcuts",
       },
       slug: "vs-code-shortcuts",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Updating From An Upstream Repo",
+      },
+      slug: "git-updating-from-upstream",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Running JavaScript Code",
+      },
+      slug: "js-running-code",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Running Node Projects",
+      },
+      slug: "js-running-node-projects",
       children: [],
     },
   ],
