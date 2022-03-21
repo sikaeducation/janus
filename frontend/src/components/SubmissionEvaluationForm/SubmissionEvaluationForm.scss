@@ -43,15 +43,15 @@
         color: colors.$grey-7;
       }
     }
-  }
-  .submission-container {
-    text-align: right;
     .success {
       background-color: colors.$success-5;
     }
     .failure {
       background-color: colors.$success-5;
     }
+  }
+  .submission-container {
+    text-align: right;
     [type=button]{
       display: inline-block;
       border: none;
