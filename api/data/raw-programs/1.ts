@@ -1156,6 +1156,7 @@ const program: rawProgram = {
         "data-structures-intro",
         "data-structures-questions",
         "data-structures-trees",
+        "data-structures-trees-questions",
         "dom-query-selectors",
         "dom-query-selectors-questions",
         "dom-create-append-elements",
@@ -2755,6 +2756,14 @@ const program: rawProgram = {
         full: "Running Node Projects",
       },
       slug: "js-running-node-projects",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Trees Questions",
+      },
+      slug: "data-structures-trees-questions",
       children: [],
     },
   ],
