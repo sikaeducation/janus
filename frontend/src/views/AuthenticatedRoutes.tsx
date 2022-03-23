@@ -13,6 +13,7 @@ import { programContext } from "../contexts/program";
 import AppInbox from "./AppInbox";
 import ProgressViewer from "./ProgressViewer";
 import AppEvaluator from "./AppEvaluator";
+import EvaluationViewer from "./EvaluationViewer";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
@@ -35,6 +36,7 @@ export default function AuthenticatedRoutes() {
               <Route path="/progress" element={<ProgressViewer />} />
               <Route path="/activity" element={<PerformanceViewer />} />
               <Route path="/evaluator" element={<AppEvaluator />} />
+              <Route path="/evaluations" element={<EvaluationViewer />} />
               <Route
                 path="/program-viewer"
                 element={<ProgramViewer program={program} />}

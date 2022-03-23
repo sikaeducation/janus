@@ -21,20 +21,23 @@ function AppHeader() {
       <Link to="/activity">Activity</Link>
     </li>,
     <li key="3">
+      <Link to="/evaluations">Evaluations</Link>
+    </li>,
+    <li key="4">
       <Link to="/inbox">Inbox</Link>
     </li>,
     role === "coach" && (
-      <li key="4">
+      <li key="5">
         <Link to="/program-viewer">Program Viewer</Link>
       </li>
     ),
     role === "coach" && (
-      <li key="5">
+      <li key="6">
         <Link to="/evaluator">Evaluator</Link>
       </li>
     ),
     role === "coach" && (
-      <li key="6">
+      <li key="7">
         <Link to="/progress">Progress Chart</Link>
       </li>
     ),

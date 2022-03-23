@@ -46,7 +46,7 @@ export default function LearnerSubmission({ performance }: props) {
         </li>
       </ul>
       <span className="evaluation-status">{indicator}</span>
-      {role === "coach" && !performance.evaluation?.feedback && (
+      {role === "coach" && !performance.evaluation && (
         <LearnerSubmissionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
