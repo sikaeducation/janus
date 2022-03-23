@@ -43,11 +43,11 @@
         color: colors.$grey-7;
       }
     }
-    .success {
-      background-color: colors.$success-5;
+    .success.active > svg {
+      color: colors.$success-5;
     }
-    .failure {
-      background-color: colors.$success-5;
+    .failure.active > svg {
+      color: colors.$failure-5;
     }
   }
   .submission-container {

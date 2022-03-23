@@ -9,4 +9,5 @@
   background-color: colors.$success-5;
   color: colors.$white;
   margin-left: sizes.$f4;
+  width: initial; // Override FA default
 }

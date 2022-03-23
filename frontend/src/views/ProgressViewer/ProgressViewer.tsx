@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useContext } from "react";
 import Gravatar from "react-gravatar";
 import { performanceContext } from "../../contexts/performance";
@@ -28,7 +29,7 @@ export default function ProgressViewer() {
     useContext(performanceContext);
   const getIndicator = useIndicator();
   const rootSlug = program?.root?.slug || "";
-  const ignoredTypes = ["root", "unit", "guide", "section"];
+  const ignoredTypes = ["root", "unit", "guide", "section", "concept", "meta"];
   const sequence = program?.root
     ? getSequence(
         { [rootSlug]: postsBySlug[rootSlug], ...postsBySlug },
@@ -52,8 +53,14 @@ export default function ProgressViewer() {
             </tr>
           </thead>
           <tbody>
-            {sequence.map(({ slug }: hydratedPost) => (
-              <tr key={slug}>
+            {sequence.map(({ type, slug, isRequired }: hydratedPost) => (
+              <tr
+                key={slug}
+                className={classNames({
+                  required: isRequired,
+                  topic: type === "topic",
+                })}
+              >
                 <th>{postsBySlug[slug].label.full}</th>
                 {learners.map((learner: string) => {
                   const post = postsBySlug[slug];

@@ -856,6 +856,7 @@ const program: rawProgram = {
       },
       slug: "cli-vocabulary",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -872,6 +873,7 @@ const program: rawProgram = {
       },
       slug: "cli-murder-mystery",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -904,6 +906,7 @@ const program: rawProgram = {
       },
       slug: "git-exercise-1",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -912,6 +915,7 @@ const program: rawProgram = {
       },
       slug: "git-exercise-2",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -920,6 +924,7 @@ const program: rawProgram = {
       },
       slug: "git-exercise-3",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -928,6 +933,7 @@ const program: rawProgram = {
       },
       slug: "git-vocabulary",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -976,6 +982,7 @@ const program: rawProgram = {
       },
       slug: "web-vocabulary-1",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -984,6 +991,7 @@ const program: rawProgram = {
       },
       slug: "web-vocabulary-3",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1474,6 +1482,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-exercise-11",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1482,6 +1491,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-exercise-12",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1490,6 +1500,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-exercise-13",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1498,6 +1509,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-exercise-14",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1506,6 +1518,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-exercise-15",
       children: [],
+      isRequired: true,
     },
     {
       type: "meta",
@@ -1546,6 +1559,7 @@ const program: rawProgram = {
       },
       slug: "html-summer-camp-exercise",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1686,6 +1700,7 @@ const program: rawProgram = {
       },
       slug: "implement-wireframe-exercise-group",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -1694,6 +1709,7 @@ const program: rawProgram = {
       },
       slug: "implement-wireframe-exercise-solo",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -1726,6 +1742,7 @@ const program: rawProgram = {
       },
       slug: "web-book-promo-page-exercise",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -1734,6 +1751,7 @@ const program: rawProgram = {
       },
       slug: "web-vocabulary-2",
       children: [],
+      isRequired: true,
     },
     {
       type: "topic",
@@ -1847,6 +1865,7 @@ const program: rawProgram = {
       },
       slug: "reading-code-vocab",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -2015,6 +2034,7 @@ const program: rawProgram = {
       },
       slug: "api-integration-vocab-1",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -2023,6 +2043,7 @@ const program: rawProgram = {
       },
       slug: "api-integration-vocab-2",
       children: [],
+      isRequired: true,
     },
     {
       type: "topic",
@@ -2055,6 +2076,7 @@ const program: rawProgram = {
       },
       slug: "beyonce-object-exercise",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -2247,6 +2269,7 @@ const program: rawProgram = {
       },
       slug: "dom-vocab-1",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -2255,6 +2278,7 @@ const program: rawProgram = {
       },
       slug: "dom-vocab-2",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -2343,6 +2367,7 @@ const program: rawProgram = {
       },
       slug: "html-forms-vocab",
       children: [],
+      isRequired: true,
     },
     {
       type: "questions",
@@ -2591,6 +2616,7 @@ const program: rawProgram = {
       },
       slug: "pokemon-library-exercise",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -2599,6 +2625,7 @@ const program: rawProgram = {
       },
       slug: "production-website-exercise",
       children: [],
+      isRequired: true,
     },
     {
       type: "topic",
@@ -2632,6 +2659,7 @@ const program: rawProgram = {
       },
       slug: "star-wars-library-exercise-group",
       children: [],
+      isRequired: true,
     },
     {
       type: "exercise",
@@ -2648,6 +2676,7 @@ const program: rawProgram = {
       },
       slug: "writing-code-vocab",
       children: [],
+      isRequired: true,
     },
     {
       type: "section",

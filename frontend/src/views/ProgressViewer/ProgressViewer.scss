@@ -9,6 +9,16 @@
   }
   table {
     position: relative;
+    .topic {
+      background-color: colors.$grey-10;
+      th, td {
+        font-size: sizes.$f1;
+        color: colors.$grey-3;
+      }
+    }
+    .required {
+      border: 2px solid colors.$success-8;
+    }
     th {
       font-weight: 700;
       position: sticky;
@@ -26,12 +36,13 @@
       text-align: center;
       border: 1px solid colors.$grey-10;
     }
-    tbody th {
-      left: 0;
-      background-color: colors.$white;
-      @include typography.body-font;
-      text-align: right;
-      color: colors.$grey-3;
+    tbody {
+      th {
+        left: 0;
+        @include typography.body-font;
+        text-align: right;
+        color: colors.$grey-3;
+      }
     }
     thead {
       th {
@@ -39,5 +50,8 @@
         background-color: colors.$white;
       }
     }
+  }
+  .IndicatorQuestion, .IndicatorSubmissionPending, .IndicatorSubmissionAccepted, .IndicatorSubmissionRejected, .IndicatorViewClear, .IndicatorViewConfident, .IndicatorViewUnclear {
+    margin-left: 0;
   }
 }
