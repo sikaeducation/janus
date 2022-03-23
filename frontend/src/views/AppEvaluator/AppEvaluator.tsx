@@ -221,6 +221,7 @@ export default function AppEvaluator() {
                       </td>
                       <td className="submission">
                         <AppContent
+                          isContained
                           content={performance?.payload.response || ""}
                         />
                       </td>
