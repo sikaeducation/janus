@@ -4,6 +4,7 @@
 
 .EvaluationViewer {
   width: sizes.$content-width-xl;
+  height: 100%;
   h1 {
     @include typography.heading-font-1;
   }
@@ -21,8 +22,6 @@
         margin-bottom: sizes.$s2;
       }
     }
-  }
-  .feedback {
   }
   .prompt, .response {
     padding: sizes.$s4;

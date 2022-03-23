@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { format } from "date-fns";
 import { Link } from "react-router-dom";
-import { filter, flow, reverse, sortBy } from "lodash/fp";
+import { filter, flow, reverse, sortBy, take } from "lodash/fp";
 import { performanceContext } from "../../contexts/performance";
 import "./EvaluationViewer.scss";
 import useIndicator from "../../hooks/use-indicator";
@@ -21,6 +21,7 @@ export default function EvaluationViewer() {
     filter("evaluation"),
     sortBy("evaluation.updatedAt"),
     reverse,
+    take(100),
   ])(performancesWithEvaluations);
 
   const getPostDetails = (
