@@ -1119,6 +1119,7 @@ const program: rawProgram = {
         "reading-code-exercise-14",
         "reading-code-exercise-15",
         "reading-code-vocab",
+        "js-programming-concepts-review",
       ],
     },
     {
@@ -2793,6 +2794,14 @@ const program: rawProgram = {
         full: "Trees Questions",
       },
       slug: "data-structures-trees-questions",
+      children: [],
+    },
+    {
+      type: "concept",
+      label: {
+        full: "Programming Concepts",
+      },
+      slug: "js-programming-concepts-review",
       children: [],
     },
   ],
