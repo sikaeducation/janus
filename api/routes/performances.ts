@@ -34,8 +34,10 @@ const postPerformance =
       };
     });
     if (deferredEvaluations.length) {
-      await Evaluation.query().insert(deferredEvaluations);
-      deferredEvaluations.forEach((evaluation) => {
+      const savedEvaluations = await Evaluation.query()
+        .returning("*")
+        .insert(deferredEvaluations);
+      savedEvaluations.forEach((evaluation) => {
         io.to("coaches").emit("new-evaluation", evaluation);
         io.to(evaluation.learnerId).emit("new-evaluation", evaluation);
         io.to(evaluation.learnerId).emit("new-evaluation-notice", evaluation);

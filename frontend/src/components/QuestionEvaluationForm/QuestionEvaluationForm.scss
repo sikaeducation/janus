@@ -44,6 +44,12 @@
         color: colors.$grey-7;
       }
     }
+    .success.active > svg {
+      color: colors.$success-5;
+    }
+    .failure.active > svg {
+      color: colors.$failure-5;
+    }
   }
   .answer-wrapper {
     display: flex;

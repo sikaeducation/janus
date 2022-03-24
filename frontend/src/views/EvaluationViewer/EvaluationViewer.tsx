@@ -57,7 +57,7 @@ export default function EvaluationViewer() {
                     <ul>
                       <li>
                         <time>
-                          {performance.evaluation
+                          {performance.evaluation?.updatedAt
                             ? formatDateTime(performance.evaluation.updatedAt)
                             : ""}
                         </time>
