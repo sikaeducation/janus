@@ -7,41 +7,44 @@ type SikaSocket = Socket & { email?: string; role?: string };
 
 const postPerformance =
   (socket: SikaSocket, io: Server) => async (performance: rawPerformance) => {
-    // Get all performances with this user and post slug
-    const performances = await Performance.query().select("id").where({
-      userId: performance.userId,
-      postSlug: performance.postSlug,
-    });
-    const allPerformanceIds = performances.map((record) => record.id);
-    // // Get all evaluations for those performances
-    const evaluations = await Evaluation.query()
-      .select("performanceId")
-      .whereIn("performanceId", allPerformanceIds);
-    const performanceIdsWithEvaluations = evaluations.map(
-      (evaluation) => evaluation.performanceId
-    );
-    const performanceIdsWithoutEvaluations = difference(allPerformanceIds)(
-      performanceIdsWithEvaluations
-    );
-    // // For any performance without evaluations, add a "deferred" one
-    const deferredEvaluations = performanceIdsWithoutEvaluations.map((id) => {
-      return {
-        performanceId: id,
-        feedback: "Another performance was submitted before this was evaluated",
-        evaluatorId: "admin@sikaeducation.com",
-        learnerId: performance.userId,
-        status: "deferred",
-      };
-    });
-    if (deferredEvaluations.length) {
-      const savedEvaluations = await Evaluation.query()
-        .returning("*")
-        .insert(deferredEvaluations);
-      savedEvaluations.forEach((evaluation) => {
-        io.to("coaches").emit("new-evaluation", evaluation);
-        io.to(evaluation.learnerId).emit("new-evaluation", evaluation);
-        io.to(evaluation.learnerId).emit("new-evaluation-notice", evaluation);
+    if (["submission", "question"].includes(performance.type)) {
+      // Get all performances with this user and post slug
+      const performances = await Performance.query().select("id").where({
+        userId: performance.userId,
+        postSlug: performance.postSlug,
       });
+      const allPerformanceIds = performances.map((record) => record.id);
+      // // Get all evaluations for those performances
+      const evaluations = await Evaluation.query()
+        .select("performanceId")
+        .whereIn("performanceId", allPerformanceIds);
+      const performanceIdsWithEvaluations = evaluations.map(
+        (evaluation) => evaluation.performanceId
+      );
+      const performanceIdsWithoutEvaluations = difference(allPerformanceIds)(
+        performanceIdsWithEvaluations
+      );
+      // // For any performance without evaluations, add a "deferred" one
+      const deferredEvaluations = performanceIdsWithoutEvaluations.map((id) => {
+        return {
+          performanceId: id,
+          feedback:
+            "Another performance was submitted before this was evaluated",
+          evaluatorId: "admin@sikaeducation.com",
+          learnerId: performance.userId,
+          status: "deferred",
+        };
+      });
+      if (deferredEvaluations.length) {
+        const savedEvaluations = await Evaluation.query()
+          .returning("*")
+          .insert(deferredEvaluations);
+        savedEvaluations.forEach((evaluation) => {
+          io.to("coaches").emit("new-evaluation", evaluation);
+          io.to(evaluation.learnerId).emit("new-evaluation", evaluation);
+          io.to(evaluation.learnerId).emit("new-evaluation-notice", evaluation);
+        });
+      }
     }
     // Then add the performance
     return Performance.query()
