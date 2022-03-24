@@ -1,5 +1,6 @@
 import { countBy, flow, isEmpty, values } from "lodash/fp";
 import { useContext } from "react";
+import IndicatorDeferred from "../components/IndicatorDeferred";
 import IndicatorQuestion from "../components/IndicatorQuestion";
 import IndicatorSubmissionAccepted from "../components/IndicatorSubmissionAccepted";
 import IndicatorSubmissionPending from "../components/IndicatorSubmissionPending";
@@ -26,6 +27,7 @@ const getSubmissionIndicator = (
     rejected: <IndicatorSubmissionRejected />,
     pending: <IndicatorSubmissionPending />,
     accepted: <IndicatorSubmissionAccepted />,
+    deferred: <IndicatorDeferred />,
   } as const;
 
   const status =
@@ -33,7 +35,19 @@ const getSubmissionIndicator = (
   return indicators[status || "pending"];
 };
 
-const getQuestionIndicator = (
+const getQuestionIndicator = (performance: evaluatedQuestionPerformance) => {
+  const indicators = {
+    rejected: <IndicatorSubmissionRejected />,
+    pending: <IndicatorSubmissionPending />,
+    accepted: <IndicatorSubmissionAccepted />,
+    deferred: <IndicatorDeferred />,
+  } as const;
+
+  const status = performance?.evaluation?.status || "pending";
+  return indicators[status];
+};
+
+const getQuestionIndicators = (
   performance: postedPerformance,
   performances: Record<string, postedQuestionPerformance>
 ) => {
@@ -75,13 +89,7 @@ export default function useIndicator() {
     question: (performance: postedPerformance) => {
       return isEmpty(lastQuestionPerformancesBySlugByLearnerByQuestion)
         ? null
-        : getQuestionIndicator(
-            performance as evaluatedQuestionPerformance,
-            lastQuestionPerformancesBySlugByLearnerByQuestion?.[
-              (performance as postedQuestionPerformance)?.payload
-                ?.originalPostSlug
-            ]?.[performance.userId] || ""
-          );
+        : getQuestionIndicator(performance as evaluatedQuestionPerformance);
     },
     questions: (performance: postedPerformance) => {
       const { postSlug } = performance as postedQuestionPerformance;
@@ -89,7 +97,7 @@ export default function useIndicator() {
         lastQuestionPerformancesBySlugByLearnerByQuestion[postSlug]?.[
           performance.userId
         ];
-      return getQuestionIndicator(
+      return getQuestionIndicators(
         performance as evaluatedQuestionPerformance,
         questionPerformances
       );

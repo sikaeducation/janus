@@ -32,6 +32,7 @@ export default function AppEvaluator() {
 
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner?.[selectedSlug] || {};
+
   const currentPerformances = Object.entries(currentQuestion).map(
     ([learnerId, performances]) => {
       return [

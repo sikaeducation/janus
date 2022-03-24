@@ -4,9 +4,6 @@
 
 .QuestionForm {
   margin-bottom: sizes.$s6;
-  .ButtonFormSubmission {
-    margin-left: auto;
-  }
   .toggle-response-submission-form {
     display: inline-block;
     background-color: colors.$grey-9;
@@ -35,53 +32,17 @@
       color: colors.$grey-5;
     }
   }
-}
-
-.PreviousQuestionResponses {
-  margin-bottom: sizes.$s4;
-  .previous-response-control {
-    color: colors.$grey-2;
-    cursor: pointer;
-    svg {
-      color: colors.$grey-5;
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    .ButtonFormSubmission {
+      margin-left: sizes.$s4;
     }
-  }
-  .previous-content {
-    display: grid;
-    grid-template-columns: 75px 1fr;
-    margin-bottom: sizes.$s4;
-    .meta {
-      grid-column: 1 / span 2;
-      padding: sizes.$s3;
-      padding-bottom: 0;
-      display: flex;
-      justify-content: space-between;
-      time {
-        color: colors.$grey-6;
-      }
-      .accepted {
-        color: colors.$success-5;
-      }
-      .rejected {
-        color: colors.$failure-5;
-      }
-      .pending {
-        color: colors.$grey-5;
-      }
-    }
-    .evaluator-avatar {
-      grid-column: 1 / span 1;
-      margin-left: auto;
-      margin-right: sizes.$s2;
-    }
-    .previous-response-content {
-      grid-column: 1 / span 2;
-      padding: sizes.$s3;
-    }
-    .previous-feedback-content {
-      grid-column: 2 / span 1;
-      background-color: colors.$grey-10;
-      padding: sizes.$s3;
+    .cancel {
+      border: none;
+      text-decoration: underline;
+      background-color: inherit;
+      cursor: pointer;
     }
   }
 }
