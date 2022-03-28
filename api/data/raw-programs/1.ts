@@ -99,14 +99,12 @@ const program: rawProgram = {
       slug: "unit-problem-solving",
       isHidden: true,
       children: [
+        "section-javascript-2",
         "section-testing-1",
         "section-typescript-1",
         "section-polya",
         "section-testing-2",
         "section-typescript-2",
-        "section-ts-refactoring",
-        "section-oop",
-        "interview-battery-questions",
       ],
     },
     {
@@ -1304,24 +1302,6 @@ const program: rawProgram = {
         full: "TypeScript 2",
       },
       slug: "section-typescript-2",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "TypeScript Refactoring",
-        short: "TS Refactoring",
-      },
-      slug: "section-ts-refactoring",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "TypeScript OOP",
-        short: "TS OOP",
-      },
-      slug: "section-oop",
       children: [],
     },
     {
@@ -2733,14 +2713,6 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "questions",
-      label: {
-        full: "Interview Trivia",
-      },
-      slug: "interview-battery-questions",
-      children: [],
-    },
-    {
       type: "guide",
       label: {
         full: "Window Management Shortcuts",
@@ -2802,6 +2774,168 @@ const program: rawProgram = {
         full: "Programming Concepts",
       },
       slug: "js-programming-concepts-review",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Programming Concepts",
+      },
+      slug: "section-javascript-2",
+      children: [
+        "js-procedural-programming",
+        "js-procedural-programming-questions",
+        "js-modern-style",
+        "js-modern-style-exercises",
+        "js-spread-exercises",
+        "js-function-syntax-exercises",
+        "js-short-circuit-exercises",
+        "js-modules",
+        "js-modules-exercises",
+        "node-intro",
+        "node-intro-questions",
+        "npm",
+        "npm-questions",
+        "js-modules-browser",
+        "js-modules-browser-exercise",
+        "modern-javascript-refactoring-exercise",
+        "js-vocabulary-2",
+      ],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-procedural-programming",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-procedural-programming-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modern-style",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modern-style-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-spread-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-function-syntax-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-short-circuit-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modules",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modules-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "node-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "node-intro-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "npm",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "npm-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modules-browser",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-modules-browser-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "modern-javascript-refactoring-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "js-vocabulary-2",
       children: [],
     },
   ],
