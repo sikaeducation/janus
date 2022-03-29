@@ -713,7 +713,12 @@ const program: rawProgram = {
         full: "Habits of Excellence",
       },
       slug: "habits-of-excellence",
-      children: ["habits-learn-your-tools", "habits-work-together"],
+      children: [
+        "habits-learn-your-tools",
+        "habits-clean-workspace",
+        "habits-work-small",
+        "habits-work-together",
+      ],
     },
     {
       type: "meta",
@@ -2936,6 +2941,22 @@ const program: rawProgram = {
         full: "",
       },
       slug: "js-vocabulary-2",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "",
+      },
+      slug: "habits-work-small",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "",
+      },
+      slug: "habits-clean-workspace",
       children: [],
     },
   ],
