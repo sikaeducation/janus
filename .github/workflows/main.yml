@@ -28,7 +28,7 @@ jobs:
         uses: actions/setup-node@v2.5.1
       - name: Build app
         working-directory: frontend
-        run: npm ci && npm run build
+        run: npm ci && npm run build --profile
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2.3
         with:
