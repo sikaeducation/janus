@@ -82,27 +82,31 @@ export default function AppEvaluator() {
       return fromPairs(newState);
     });
   };
-  const updateFeedback =
+  const updateFeedback = useCallback(
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEvaluations({
+      setEvaluations((evaluations) => ({
         ...evaluations,
         [learnerId]: {
           ...evaluations[learnerId],
           feedback: event.target.value,
         },
-      });
-    };
+      }));
+    },
+    []
+  );
 
-  const updateStatus =
+  const updateStatus = useCallback(
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEvaluations({
+      setEvaluations((evaluations) => ({
         ...evaluations,
         [learnerId]: {
           ...evaluations[learnerId],
           status: event.target.value,
         },
-      });
-    };
+      }));
+    },
+    []
+  );
 
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
