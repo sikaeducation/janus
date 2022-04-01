@@ -129,7 +129,7 @@ export default function AppEvaluator() {
       });
     Promise.all(requests)
       .then(() => {
-        setSelectedSlug(slugs.length > 1 ? slugs[1] : "");
+        setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
         getInitialEvaluations();
       })
       .catch((error) => {
