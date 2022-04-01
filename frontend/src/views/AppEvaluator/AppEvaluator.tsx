@@ -19,7 +19,7 @@ export default function AppEvaluator() {
     useContext(performanceContext);
   const { user } = useAuth0();
   const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
-  const [selectedSlug, setSelectedSlug] = useState<string>();
+  const [selectedSlug, setSelectedSlug] = useState("");
   useEffect(() => {
     setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
   }, [slugs]);
