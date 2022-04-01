@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { useAuth0 } from "@auth0/auth0-react";
 import { maxBy, fromPairs } from "lodash/fp";
-import { useEffect, useContext, useState } from "react";
+import { useEffect, useContext, useState, useCallback } from "react";
 import AppContent from "../../components/AppContent";
 import { programContext } from "../../contexts/program";
 import { performanceContext } from "../../contexts/performance";
