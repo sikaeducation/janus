@@ -25,5 +25,8 @@
 
       margin-top: sizes.$s4;
     }
+    [type=submit][disabled] {
+      background-color: colors.$grey-10;
+    }
   }
 }
