@@ -9,78 +9,21 @@
   h2 {
     @include typography.heading-font-2;
   }
-  > form {
-    text-align: right;
-    select {
-      padding: sizes.$s2;
-      border-radius: sizes.$border-radius;
-      border: 1px solid colors.$grey-5;
-      width: 400px;
-    }
-  }
   .evaluator-performances {
     width: 100%;
-    th {
-      font-weight: 700;
-      text-align: left;
-      padding: sizes.$s4;
-    }
-    .evaluate-all {
-      button {
-        @include buttons.button-shadow-small;
-        border-radius: sizes.$border-radius;
-        border: none;
-        cursor: pointer;
-        background-color: colors.$grey-10;
-        color: colors.$grey-1;
-        padding: sizes.$s1;
-      }
-    }
     tr {
       &:nth-child(even) {
         background-color: colors.$grey-10;
       }
     }
-    .evaluator-performance {
-      text-align: center;
-      td {
-        padding: sizes.$s4;
-        vertical-align: middle;
-      }
-      .avatar {
-        width: 75px;
-      }
-      .submission-time {
-        width: 75px;
-        font-size: sizes.$f4;
-      }
-      .has-previous-feedback {
-        width: 75px;
-      }
-      .evaluation-accept, .evaluation-reject {
-        width: 75px;
-        input {
-          margin: 0 auto;
-        }
-      }
-      .submission {
-        min-width: 400px;
-        height: auto;
-        overflow-y: auto;
-        text-align: left;
-      }
-      .feedback {
-        min-width: 250px;
-        input {
-          width: 100%;
-        }
-      }
-    }
   }
-  [type=submit] {
-    @include buttons.button-shadow-small;
-    @include buttons.button-primary;
+  > form {
+    text-align: right;
+    [type=submit] {
+      @include buttons.button-shadow-small;
+      @include buttons.button-primary;
 
-    margin-top: sizes.$s4;
+      margin-top: sizes.$s4;
+    }
   }
 }

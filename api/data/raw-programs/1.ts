@@ -1185,8 +1185,6 @@ const program: rawProgram = {
       slug: "section-api-integration-1",
       children: [
         "api-intro",
-        "http-intro",
-        "http-intro-questions",
         "insomnia",
         "js-fetch-1",
         "js-fetch-questions",
@@ -2354,14 +2352,6 @@ const program: rawProgram = {
       slug: "html-forms-vocab",
       children: [],
       isRequired: true,
-    },
-    {
-      type: "questions",
-      label: {
-        full: "HTTP Questions",
-      },
-      slug: "http-intro-questions",
-      children: [],
     },
     {
       type: "topic",

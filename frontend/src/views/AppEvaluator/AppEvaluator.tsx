@@ -1,48 +1,33 @@
 // eslint-disable-next-line
 // @ts-nocheck
 import { useAuth0 } from "@auth0/auth0-react";
-import { faRedo } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { maxBy, fromPairs } from "lodash/fp";
 import { useEffect, useContext, useState } from "react";
-import { Link } from "react-router-dom";
-import { format } from "date-fns";
-import Gravatar from "react-gravatar";
 import AppContent from "../../components/AppContent";
-import { performanceContext } from "../../contexts/performance";
 import { programContext } from "../../contexts/program";
+import { performanceContext } from "../../contexts/performance";
 import "./AppEvaluator.scss";
+import EvaluatorPerformance from "../../components/EvaluatorPerformance";
+import EvaluatorPerformanceHeader from "../../components/EvaluatorPerformanceHeader";
+import EvaluatorQuestionSelector from "../../components/EvaluatorQuestionSelector";
 
-const formatDateTime = (dateTime: string) => {
-  return format(new Date(dateTime), "M/d/yy p");
-};
+type performanceTuple = [string, evaluatedQuestionPerformance];
 
 export default function AppEvaluator() {
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
     useContext(performanceContext);
-  const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
-  const [selectedSlug, setSelectedSlug] = useState(
-    slugs.length > 0 ? slugs[0] : ""
-  );
   const { user } = useAuth0();
-  const { postsBySlug } = useContext(programContext);
-  const getPath = (slug) => {
-    return postsBySlug[slug].path ?? "";
-  };
-
+  const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
+  const [selectedSlug, setSelectedSlug] = useState<string>();
+  useEffect(() => {
+    setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
+  }, [slugs]);
   const currentQuestion =
-    unevaluatedQuestionPerformancesBySlugByLearner?.[selectedSlug] || {};
-
+    unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
   const currentPerformances = Object.entries(currentQuestion).map(
-    ([learnerId, performances]) => {
-      return [
-        learnerId,
-        maxBy("createdAt", performances),
-        performances.length > 1,
-      ] as const;
-    }
+    ([learnerId, performances]) =>
+      [learnerId, maxBy("createdAt", performances)] as const
   );
-  const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
 
   const getInitialEvaluations = () =>
     currentPerformances.reduce((initialState, [learnerId, performance]) => {
@@ -59,6 +44,7 @@ export default function AppEvaluator() {
     setEvaluations(getInitialEvaluations());
     // eslint-disable-next-line
   }, [selectedSlug]);
+
   const [evaluations, setEvaluations] = useState<
     Record<
       string,
@@ -70,35 +56,15 @@ export default function AppEvaluator() {
     >
   >(getInitialEvaluations());
 
+  const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
+  const { postsBySlug } = useContext(programContext);
+  const getPath = (slug: string) => postsBySlug[slug].path ?? "";
   const getFeedback = (learnerId: string) => {
     return evaluations[learnerId]?.feedback || "";
   };
-
   const getStatus = (learnerId: string) => {
     return evaluations[learnerId]?.status || "";
   };
-
-  const updateFeedback =
-    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEvaluations({
-        ...evaluations,
-        [learnerId]: {
-          ...evaluations[learnerId],
-          feedback: event.target.value,
-        },
-      });
-    };
-  const updateStatus =
-    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-      setEvaluations({
-        ...evaluations,
-        [learnerId]: {
-          ...evaluations[learnerId],
-          status: event.target.value,
-        },
-      });
-    };
-  type performanceTuple = [string, evaluatedQuestionPerformance, boolean];
 
   const setAll = (status: string) => {
     setEvaluations((previousState) => {
@@ -116,14 +82,33 @@ export default function AppEvaluator() {
       return fromPairs(newState);
     });
   };
+  const updateFeedback =
+    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEvaluations({
+        ...evaluations,
+        [learnerId]: {
+          ...evaluations[learnerId],
+          feedback: event.target.value,
+        },
+      });
+    };
+
+  const updateStatus =
+    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+      setEvaluations({
+        ...evaluations,
+        [learnerId]: {
+          ...evaluations[learnerId],
+          status: event.target.value,
+        },
+      });
+    };
 
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const requests = Object.entries(evaluations)
       // eslint-disable-next-line
-      .filter(([learnerId, evaluation]) => {
-        return evaluation.status !== "pending";
-      })
+      .filter(([learnerId, evaluation]) => evaluation.status !== "pending")
       .map(([learnerId, evaluation]) => {
         const learnerPerformance = currentPerformances.find(
           ([performanceLearnerId]: performanceTuple) =>
@@ -152,19 +137,11 @@ export default function AppEvaluator() {
   return (
     <div className="AppEvaluator">
       <h2>Evaluator</h2>
-      <form>
-        <select
-          value={selectedSlug}
-          onChange={(event) => setSelectedSlug(event.target.value)}
-        >
-          <option disabled>Select an activity to evaluate</option>
-          {slugs.map((slug) => (
-            <option key={slug} value={slug}>
-              {slug}
-            </option>
-          ))}
-        </select>
-      </form>
+      <EvaluatorQuestionSelector
+        slugs={slugs}
+        selectedSlug={selectedSlug}
+        setSelectedSlug={setSelectedSlug}
+      />
       {selectedSlug && (
         <>
           <div className="question-details">
@@ -173,89 +150,19 @@ export default function AppEvaluator() {
           </div>
           <form onSubmit={submitAll}>
             <table className="evaluator-performances">
-              <thead>
-                <tr>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                  <th>&nbsp;</th>
-                  <th className="evaluate-all">
-                    <button
-                      className="rejected"
-                      type="button"
-                      onClick={() => setAll("rejected")}
-                    >
-                      Reject
-                    </button>
-                  </th>
-                  <th className="evaluate-all">
-                    <button
-                      className="accepted"
-                      type="button"
-                      onClick={() => setAll("accepted")}
-                    >
-                      Accept
-                    </button>
-                  </th>
-                </tr>
-              </thead>
+              <EvaluatorPerformanceHeader setAll={setAll} />
               <tbody>
-                {currentPerformances.map(
-                  ([learnerId, performance, hasMultiple]) => (
-                    <tr key={learnerId} className="evaluator-performance">
-                      <td className="avatar">
-                        <Gravatar
-                          email={performance?.userId}
-                          size={60}
-                          title={performance?.userId}
-                        />
-                      </td>
-                      <td className="submission-time">
-                        <time>
-                          <Link
-                            to={getPath(performance?.payload.originalPostSlug)}
-                          >
-                            {formatDateTime(performance?.createdAt)}
-                          </Link>
-                        </time>
-                      </td>
-                      <td className="submission">
-                        <AppContent
-                          isContained
-                          content={performance?.payload.response || ""}
-                        />
-                      </td>
-                      <td className="has-previous-feedback">
-                        {hasMultiple && <FontAwesomeIcon icon={faRedo} />}
-                      </td>
-                      <td className="feedback">
-                        <input
-                          onChange={updateFeedback(learnerId)}
-                          value={getFeedback(learnerId)}
-                        />
-                      </td>
-                      <td className="evaluation-reject">
-                        <input
-                          type="radio"
-                          name={learnerId}
-                          checked={getStatus(learnerId) === "rejected"}
-                          value="rejected"
-                          onChange={updateStatus(learnerId)}
-                        />
-                      </td>
-                      <td className="evaluation-accept">
-                        <input
-                          type="radio"
-                          name={learnerId}
-                          checked={getStatus(learnerId) === "accepted"}
-                          value="accepted"
-                          onChange={updateStatus(learnerId)}
-                        />
-                      </td>
-                    </tr>
-                  )
-                )}
+                {currentPerformances.map(([learnerId, performance]) => (
+                  <EvaluatorPerformance
+                    key={learnerId}
+                    performance={performance}
+                    path={getPath(performance.payload.originalPostSlug)}
+                    status={getStatus(learnerId)}
+                    updateStatus={updateStatus}
+                    feedback={getFeedback(learnerId)}
+                    updateFeedback={updateFeedback}
+                  />
+                ))}
               </tbody>
             </table>
             <button type="submit">Submit All</button>

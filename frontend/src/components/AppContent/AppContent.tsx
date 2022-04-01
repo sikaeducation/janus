@@ -7,7 +7,7 @@ import gfm from "remark-gfm";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 import { Link } from "react-router-dom";
-import { ComponentPropsWithoutRef, useContext } from "react";
+import { ComponentPropsWithoutRef, memo, useContext } from "react";
 import remarkUnwrapImages from "remark-unwrap-images";
 import { last } from "lodash/fp";
 import classNames from "classnames";
@@ -24,7 +24,7 @@ type props = {
   className?: string;
 };
 
-export default function AppContent({
+export default memo(function AppContent({
   content,
   isContained,
   className = "",
@@ -137,4 +137,4 @@ export default function AppContent({
       />
     </article>
   );
-}
+});

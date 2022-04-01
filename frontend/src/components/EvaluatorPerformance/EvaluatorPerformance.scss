@@ -1,0 +1,34 @@
+@use "../../styles/sizes";
+
+.EvaluatorPerformance {
+  text-align: center;
+  td {
+    padding: sizes.$s4;
+    vertical-align: middle;
+  }
+  .avatar {
+    width: 75px;
+  }
+  .submission-time {
+    width: 75px;
+    font-size: sizes.$f4;
+  }
+  .evaluation-accept, .evaluation-reject {
+    width: 75px;
+    input {
+      margin: 0 auto;
+    }
+  }
+  .submission {
+    min-width: 400px;
+    height: auto;
+    overflow-y: auto;
+    text-align: left;
+  }
+  .feedback {
+    min-width: 250px;
+    input {
+      width: 100%;
+    }
+  }
+}
