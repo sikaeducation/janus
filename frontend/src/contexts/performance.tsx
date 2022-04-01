@@ -22,6 +22,9 @@ import { SocketContext } from "./socket";
 const onlyQuestions = filter(
   (performance: evaluatedPerformance) => performance.type === "question"
 );
+const onlyUnevaluated = filter((performance: evaluatedSubmissionPerformance) =>
+  isEmpty(performance.evaluation)
+);
 const addPostSlugToQuestionPayload = map(
   (performance: evaluatedQuestionPerformance) => ({
     ...performance,
@@ -143,19 +146,19 @@ export function PerformanceProvider({ children }: props) {
     new Set(performances.map((performance) => performance.userId))
   );
 
-  const lastPerformanceBySlugByLearner = flow([
+  const sortedPerformancesBySlug = flow([
     groupBy("postSlug"),
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
-    mapValues(flow([groupBy("userId"), mapValues(head)])),
   ])(performancesWithEvaluations);
 
-  const performancesBySlugByLearner = flow([
-    groupBy("postSlug"),
-    mapValues(sortBy("createdAt")),
-    mapValues(reverse),
-    mapValues(groupBy("userId")),
-  ])(performancesWithEvaluations);
+  const lastPerformanceBySlugByLearner = flow([
+    mapValues(flow([groupBy("userId"), mapValues(head)])),
+  ])(sortedPerformancesBySlug);
+
+  const performancesBySlugByLearner = flow([mapValues(groupBy("userId"))])(
+    sortedPerformancesBySlug
+  );
 
   const sortByMostFrequent = (
     questionPerformances: evaluatedQuestionPerformance[]
@@ -180,28 +183,21 @@ export function PerformanceProvider({ children }: props) {
   };
 
   const unevaluatedQuestionPerformancesBySlugByLearner = flow([
-    filter((performance: evaluatedSubmissionPerformance) =>
-      isEmpty(performance.evaluation)
-    ),
-    filter(
-      (performance: evaluatedQuestionPerformance) =>
-        performance.type === "question"
-    ),
+    onlyUnevaluated,
+    onlyQuestions,
     sortByMostFrequent,
     mapValues(sortBy("createdAt")),
     mapValues(reverse),
     mapValues(groupBy("userId")),
   ])(performancesWithEvaluations);
 
+  const performancesByQuestion = flow([
+    onlyQuestions,
+    addPostSlugToQuestionPayload,
+    groupByQuestion,
+  ])(performancesWithEvaluations);
+
   const lastQuestionPerformancesBySlug = flow([
-    filter(
-      (performance: evaluatedPerformance) => performance.type === "question"
-    ),
-    map((performance: evaluatedQuestionPerformance) => ({
-      ...performance,
-      originalPostSlug: performance.payload.originalPostSlug,
-    })),
-    groupBy("originalPostSlug"),
     mapValues(groupBy("postSlug")),
     mapValues(
       mapValues(
@@ -210,36 +206,33 @@ export function PerformanceProvider({ children }: props) {
         })
       )
     ),
-  ])(performancesWithEvaluations);
+  ])(performancesByQuestion);
 
   const lastQuestionPerformancesBySlugByLearnerByQuestion = flow([
-    onlyQuestions,
-    addPostSlugToQuestionPayload,
-    groupByQuestion,
     mapValues(
       flow([
         groupByLearner,
         mapValues(flow([groupByPost, lastPerformanceBySlugByQuestion])),
       ])
     ),
-  ])(performancesWithEvaluations);
+  ])(performancesByQuestion);
 
   return (
     <performanceContext.Provider
       value={{
+        performances,
+        evaluations,
         lastQuestionPerformancesBySlug,
         lastQuestionPerformancesBySlugByLearnerByQuestion,
         performancesBySlugByLearner,
-        learners,
-        performances,
         performancesWithEvaluations,
         unevaluatedQuestionPerformancesBySlugByLearner,
-        performancesByDay,
         lastPerformanceBySlugByLearner,
+        performancesByDay,
+        learners,
         postPerformance,
         postEvaluation,
         getPreviousEvaluations,
-        evaluations,
       }}
     >
       {children}
