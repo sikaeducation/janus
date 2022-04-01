@@ -14,6 +14,7 @@ import EvaluatorQuestionSelector from "../../components/EvaluatorQuestionSelecto
 type performanceTuple = [string, evaluatedQuestionPerformance];
 
 export default function AppEvaluator() {
+  const [submitDisabled, setSubmitDisabled] = useState(false);
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
     useContext(performanceContext);
   const { user } = useAuth0();
@@ -110,6 +111,7 @@ export default function AppEvaluator() {
 
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+    setSubmitDisabled(true);
     const requests = Object.entries(evaluations)
       // eslint-disable-next-line
       .filter(([learnerId, evaluation]) => evaluation.status !== "pending")
@@ -131,6 +133,7 @@ export default function AppEvaluator() {
       .then(() => {
         setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
         getInitialEvaluations();
+        setSubmitDisabled(false);
       })
       .catch((error) => {
         // eslint-disable-next-line
@@ -169,7 +172,9 @@ export default function AppEvaluator() {
                 ))}
               </tbody>
             </table>
-            <button type="submit">Submit All</button>
+            <button disabled={submitDisabled} type="submit">
+              Submit All
+            </button>
           </form>
         </>
       )}
