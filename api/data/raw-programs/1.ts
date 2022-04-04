@@ -2939,7 +2939,7 @@ const program: rawProgram = {
         full: "",
       },
       slug: "habits-work-small",
-      children: [],
+      children: ["agile-user-stories"],
     },
     {
       type: "section",
@@ -2947,6 +2947,14 @@ const program: rawProgram = {
         full: "",
       },
       slug: "habits-clean-workspace",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "User Stories",
+      },
+      slug: "agile-user-stories",
       children: [],
     },
   ],
