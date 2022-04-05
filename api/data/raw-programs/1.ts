@@ -2156,6 +2156,7 @@ const program: rawProgram = {
         full: "DOM Calculator",
       },
       slug: "dom-calculator-exercise",
+      isRequired: true,
       children: [],
     },
     {
