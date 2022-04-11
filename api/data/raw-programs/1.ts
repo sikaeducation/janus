@@ -3488,7 +3488,7 @@ const program: rawProgram = {
     {
       type: "guide",
       label: {
-        full: "",
+        full: "Guide to Using Jest TypeScript",
       },
       slug: "ts-jest",
       children: [],
