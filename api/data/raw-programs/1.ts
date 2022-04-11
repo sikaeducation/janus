@@ -3500,7 +3500,15 @@ const program: rawProgram = {
         full: "Automate",
       },
       slug: "habits-automate",
-      children: ["eslint"],
+      children: ["linting", "eslint"],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Linting",
+      },
+      slug: "linting",
+      children: [],
     },
     {
       type: "guide",
