@@ -2972,7 +2972,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
         full: "Intermediate JavaScript Vocabulary",
       },
