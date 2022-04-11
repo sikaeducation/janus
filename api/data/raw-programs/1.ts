@@ -3024,7 +3024,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
         full: "Understanding the Problem Questions",
       },
