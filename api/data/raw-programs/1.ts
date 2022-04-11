@@ -1342,7 +1342,6 @@ const program: rawProgram = {
         "problem-simplification-exercises",
         "solution-enumeration-exercises",
         "polya-work-the-problem",
-        "polya-work-the-problem-questions",
         "pseudocode",
         "pseudocode-exercises",
         "polya-reflect",
@@ -3117,14 +3116,6 @@ const program: rawProgram = {
         full: "Work the Problem",
       },
       slug: "polya-work-the-problem",
-      children: [],
-    },
-    {
-      type: "questions",
-      label: {
-        full: "Work the Problem Questions",
-      },
-      slug: "polya-work-the-problem-questions",
       children: [],
     },
     {
