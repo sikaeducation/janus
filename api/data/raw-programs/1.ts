@@ -1266,10 +1266,35 @@ const program: rawProgram = {
     {
       type: "section",
       label: {
-        full: "Testing 1",
+        full: "Unit Testing with Jest",
       },
       slug: "section-testing-1",
-      children: [],
+      children: [
+        "testing-intro",
+        "testing-questions",
+        "test-haters-advocate",
+        "jest-intro",
+        "testing-jest-questions",
+        "jest-setup-build-and-burn",
+        "simple-testing-jest",
+        "simple-testing-jest-questions",
+        "jest-matchers",
+        "jest-matchers-questions",
+        "jest-matchers-exercises",
+        "test-naming",
+        "test-naming-questions",
+        "test-naming-exercise-factorial",
+        "test-organization",
+        "test-organization-questions",
+        "jest-spies",
+        "jest-spies-questions",
+        "test-spy-practice",
+        "equivalence-partitioning",
+        "equivalence-partitioning-questions",
+        "guide-jest-browser-js",
+        "simple-unit-testing-exercise",
+        "testing-jest-vocabulary-1",
+      ],
     },
     {
       type: "section",
@@ -3138,6 +3163,198 @@ const program: rawProgram = {
         full: "Problem Solving Vocabulary",
       },
       slug: "problem-solving-vocabulary",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Testing",
+      },
+      slug: "testing-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Testing Questions",
+      },
+      slug: "testing-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Test Hater's Advocate",
+      },
+      slug: "test-haters-advocate",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Jest",
+      },
+      slug: "jest-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Jest Questions",
+      },
+      slug: "testing-jest-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Jest Setup: Build & Burn",
+      },
+      slug: "jest-setup-build-and-burn",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Simple Testing with Jest",
+      },
+      slug: "simple-testing-jest",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Simple Testing with Jest Questions",
+      },
+      slug: "simple-testing-jest-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Jest Matchers",
+      },
+      slug: "jest-matchers",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Jest Matchers Questions",
+      },
+      slug: "jest-matchers-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Jest Matchers Exercises",
+      },
+      slug: "jest-matchers-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Test Naming",
+      },
+      slug: "test-naming",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Test Naming Questions",
+      },
+      slug: "test-naming-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Factorial Test Naming Exercise",
+      },
+      slug: "test-naming-exercise-factorial",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Test Organization Questions",
+      },
+      slug: "test-organization",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Jest Spies",
+      },
+      slug: "test-organization-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Jest Spies",
+      },
+      slug: "jest-spies",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Jest Spies Questions",
+      },
+      slug: "jest-spies-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Test Spy Practice",
+      },
+      slug: "test-spy-practice",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Equivalence Partitioning",
+      },
+      slug: "equivalence-partitioning",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Equivalence Partitioning Questions",
+      },
+      slug: "equivalence-partitioning-questions",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Using Jest in the Browser",
+      },
+      slug: "guide-jest-browser-js",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Simple Unit Testing Exercise",
+      },
+      slug: "simple-unit-testing-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Testing Vocabulary",
+      },
+      slug: "testing-jest-vocabulary-1",
       children: [],
     },
   ],
