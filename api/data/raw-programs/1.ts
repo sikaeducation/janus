@@ -3486,7 +3486,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "questions",
+      type: "guide",
       label: {
         full: "",
       },
