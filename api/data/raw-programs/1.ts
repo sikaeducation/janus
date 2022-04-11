@@ -1302,7 +1302,23 @@ const program: rawProgram = {
         full: "TypeScript 1",
       },
       slug: "section-typescript-1",
-      children: [],
+      children: [
+        "ts-intro",
+        "ts-questions",
+        "ts-configuration",
+        "ts-configuration-questions",
+        "ts-basic-types",
+        "ts-types-questions-1",
+        "ts-functions",
+        "ts-functions-questions",
+        "ts-object-types",
+        "ts-object-types-questions",
+        "ts-dom",
+        "ts-dom-questions",
+        "pokemon-library-exercise-2",
+        "ts-vocabulary-1",
+        "ts-jest",
+      ],
     },
     {
       type: "section",
@@ -2953,6 +2969,7 @@ const program: rawProgram = {
         full: "Modern JavaScript Refactoring Exercise",
       },
       slug: "modern-javascript-refactoring-exercise",
+      isRequired: true,
       children: [],
     },
     {
@@ -2961,6 +2978,7 @@ const program: rawProgram = {
         full: "Intermediate JavaScript Vocabulary",
       },
       slug: "js-vocabulary-2",
+      isRequired: true,
       children: [],
     },
     {
@@ -3123,6 +3141,7 @@ const program: rawProgram = {
         full: "Pseudocode Exercises",
       },
       slug: "pseudocode-exercises",
+      isRequired: true,
       children: [],
     },
     {
@@ -3155,6 +3174,7 @@ const program: rawProgram = {
         full: "Store Inventory Manager Exercise",
       },
       slug: "store-inventory-manager-exercise",
+      isRequired: true,
       children: [],
     },
     {
@@ -3163,6 +3183,7 @@ const program: rawProgram = {
         full: "Problem Solving Vocabulary",
       },
       slug: "problem-solving-vocabulary",
+      isRequired: true,
       children: [],
     },
     {
@@ -3347,6 +3368,7 @@ const program: rawProgram = {
         full: "Simple Unit Testing Exercise",
       },
       slug: "simple-unit-testing-exercise",
+      isRequired: true,
       children: [],
     },
     {
@@ -3355,6 +3377,129 @@ const program: rawProgram = {
         full: "Testing Vocabulary",
       },
       slug: "testing-jest-vocabulary-1",
+      isRequired: true,
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to TypeScript",
+      },
+      slug: "ts-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript Questions",
+      },
+      slug: "ts-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Configuring TypeScript",
+      },
+      slug: "ts-configuration",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript Configuration Questions",
+      },
+      slug: "ts-configuration-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Basic TypeScript Types",
+      },
+      slug: "ts-basic-types",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Basic TypeScript Types Questions",
+      },
+      slug: "ts-types-questions-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "TypeScript Functions",
+      },
+      slug: "ts-functions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript Functions Questions",
+      },
+      slug: "ts-functions-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "TypeScript Object Types",
+      },
+      slug: "ts-object-types",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript Object Types Questions",
+      },
+      slug: "ts-object-types-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "TypeScript DOM",
+      },
+      slug: "ts-dom",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript DOM Questions",
+      },
+      slug: "ts-dom-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Pokemon Library (TS Edition)",
+      },
+      slug: "pokemon-library-exercise-2",
+      isRequired: true,
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "TypeScript Vocabulary",
+      },
+      slug: "ts-vocabulary-1",
+      isRequired: true,
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "",
+      },
+      slug: "ts-jest",
       children: [],
     },
   ],
