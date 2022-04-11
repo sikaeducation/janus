@@ -3290,17 +3290,17 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "questions",
+      type: "topic",
       label: {
-        full: "Test Organization Questions",
+        full: "Test Organization",
       },
       slug: "test-organization",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "Jest Spies",
+        full: "Test Organization Questions",
       },
       slug: "test-organization-questions",
       children: [],
