@@ -2805,15 +2805,15 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "Procedural Programming in JavaScript",
       },
       slug: "js-procedural-programming",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "Procedural Programming Questions",
       },
       slug: "js-procedural-programming-questions",
       children: [],
@@ -2821,39 +2821,39 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "Modern JavaScript Style",
       },
       slug: "js-modern-style",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "Modern JavaScript Style Exercises",
       },
       slug: "js-modern-style-exercises",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "JavaScript Spread Exercises",
       },
       slug: "js-spread-exercises",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "JavaScript Function Syntax Exercises",
       },
       slug: "js-function-syntax-exercises",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "JavaScript Short Circuit Exercises",
       },
       slug: "js-short-circuit-exercises",
       children: [],
@@ -2861,15 +2861,15 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "JavaScript Modules",
       },
       slug: "js-modules",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "JavaScript Modules Exercises",
       },
       slug: "js-modules-exercises",
       children: [],
@@ -2877,15 +2877,15 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "Intro to Node",
       },
       slug: "node-intro",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "Node Questions",
       },
       slug: "node-intro-questions",
       children: [],
@@ -2893,15 +2893,15 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "npm",
       },
       slug: "npm",
       children: [],
     },
     {
-      type: "topic",
+      type: "questions",
       label: {
-        full: "",
+        full: "npm Questions",
       },
       slug: "npm-questions",
       children: [],
@@ -2909,23 +2909,23 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "JavaScript Modules in the Browser",
       },
       slug: "js-modules-browser",
       children: [],
     },
     {
-      type: "topic",
+      type: "exercise",
       label: {
-        full: "",
+        full: "JavaScript Modules in the Browser Exercises",
       },
       slug: "js-modules-browser-exercise",
       children: [],
     },
     {
-      type: "topic",
+      type: "exercise",
       label: {
-        full: "",
+        full: "Modern JavaScript Refactoring Exercise",
       },
       slug: "modern-javascript-refactoring-exercise",
       children: [],
@@ -2933,7 +2933,7 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "Intermediate JavaScript Vocabulary",
       },
       slug: "js-vocabulary-2",
       children: [],
@@ -2941,7 +2941,8 @@ const program: rawProgram = {
     {
       type: "section",
       label: {
-        full: "",
+        full: "Habits of Excellence: Work Small",
+        short: "Work Small",
       },
       slug: "habits-work-small",
       children: ["agile-user-stories"],
@@ -2949,7 +2950,8 @@ const program: rawProgram = {
     {
       type: "section",
       label: {
-        full: "",
+        full: "Habits of Excellence: Clean Your Workspace",
+        short: "Clean Your Workspace",
       },
       slug: "habits-clean-workspace",
       children: [],
@@ -2965,7 +2967,7 @@ const program: rawProgram = {
     {
       type: "topic",
       label: {
-        full: "",
+        full: "Intro to Problem Analysis",
       },
       slug: "problem-analysis-intro",
       children: [],
@@ -2973,7 +2975,7 @@ const program: rawProgram = {
     {
       type: "questions",
       label: {
-        full: "",
+        full: "Understanding the Problem",
       },
       slug: "polya-understanding-the-problem",
       children: [],
