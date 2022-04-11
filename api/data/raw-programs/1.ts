@@ -97,14 +97,11 @@ const program: rawProgram = {
         tiny: "3",
       },
       slug: "unit-problem-solving",
-      isHidden: true,
       children: [
+        "section-polya",
         "section-javascript-2",
         "section-testing-1",
         "section-typescript-1",
-        "section-polya",
-        "section-testing-2",
-        "section-typescript-2",
       ],
     },
     {
@@ -1289,23 +1286,30 @@ const program: rawProgram = {
         short: "Polya",
       },
       slug: "section-polya",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "Testing 2",
-      },
-      slug: "section-testing-2",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "TypeScript 2",
-      },
-      slug: "section-typescript-2",
-      children: [],
+      children: [
+        "problem-analysis-intro",
+        "polya-understanding-the-problem",
+        "polya-understanding-the-problem-questions",
+        "parts-of-the-problem-exercises",
+        "unsolvable-problems-exercises",
+        "problem-visualization-exercises",
+        "problem-sequence-exercises",
+        "veracity-exercises",
+        "polya-enumerating-solutions",
+        "polya-enumerating-solutions-questions",
+        "solution-visualization-exercises",
+        "problem-simplification-exercises",
+        "solution-enumeration-exercises",
+        "polya-work-the-problem",
+        "polya-work-the-problem-questions",
+        "pseudocode",
+        "pseudocode-exercises",
+        "polya-reflect",
+        "polya-reflect-questions",
+        "spot-the-error-exercise",
+        "store-inventory-manager-exercise",
+        "problem-solving-vocabulary",
+      ],
     },
     {
       type: "section",
@@ -2956,6 +2960,182 @@ const program: rawProgram = {
         full: "User Stories",
       },
       slug: "agile-user-stories",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "",
+      },
+      slug: "problem-analysis-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "",
+      },
+      slug: "polya-understanding-the-problem",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Understanding the Problem Questions",
+      },
+      slug: "polya-understanding-the-problem-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Parts of the Problem Exercises",
+      },
+      slug: "parts-of-the-problem-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Unsolvable Problems Exercises",
+      },
+      slug: "unsolvable-problems-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Problem Visualization Exercises",
+      },
+      slug: "problem-visualization-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Problem Sequence Exercises",
+      },
+      slug: "problem-sequence-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Veracity Exercises",
+      },
+      slug: "veracity-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Enumerating Solutions",
+      },
+      slug: "polya-enumerating-solutions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Enumerating Solutions Questions",
+      },
+      slug: "polya-enumerating-solutions-questions",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Solution Visualization Exercises",
+      },
+      slug: "solution-visualization-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Problem Simplification Exercises",
+      },
+      slug: "problem-simplification-exercises",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Solution Enumeration Exercises",
+      },
+      slug: "solution-enumeration-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Work the Problem",
+      },
+      slug: "polya-work-the-problem",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Work the Problem Questions",
+      },
+      slug: "polya-work-the-problem-questions",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide to Pseudocode",
+      },
+      slug: "pseudocode",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Pseudocode Exercises",
+      },
+      slug: "pseudocode-exercises",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Reflect",
+      },
+      slug: "polya-reflect",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Reflect Questions",
+      },
+      slug: "polya-reflect-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Spot the Error",
+      },
+      slug: "spot-the-error-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Store Inventory Manager Exercise",
+      },
+      slug: "store-inventory-manager-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Problem Solving Vocabulary",
+      },
+      slug: "problem-solving-vocabulary",
       children: [],
     },
   ],
