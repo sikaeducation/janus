@@ -715,6 +715,7 @@ const program: rawProgram = {
         "habits-clean-workspace",
         "habits-work-small",
         "habits-work-together",
+        "habits-automate",
       ],
     },
     {
@@ -3491,6 +3492,22 @@ const program: rawProgram = {
         full: "Guide to Using Jest TypeScript",
       },
       slug: "ts-jest",
+      children: [],
+    },
+    {
+      type: "section",
+      label: {
+        full: "Automate",
+      },
+      slug: "habits-automate",
+      children: ["eslint"],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "ESLint",
+      },
+      slug: "eslint",
       children: [],
     },
   ],
