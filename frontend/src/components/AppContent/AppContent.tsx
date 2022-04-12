@@ -30,8 +30,8 @@ export default memo(function AppContent({
   className = "",
 }: props) {
   const {
-    performancesWithEvaluations,
     lastQuestionPerformancesBySlugByLearnerByQuestion,
+    lastPerformanceBySlugByLearner,
   } = useContext(performanceContext);
   const { postsBySlug } = useContext(programContext);
   const { user } = useAuth0();
@@ -84,11 +84,12 @@ export default memo(function AppContent({
 
             const slug = last(href?.split("/")) || "";
             const post = postsBySlug[slug || ""];
-            const lastStandardQuestionPerformance = last(
-              performancesWithEvaluations
-                .filter((performance) => performance.postSlug === slug)
-                .filter((performance) => performance.userId === user?.email)
-            );
+
+            const lastNonQuestionPerformance =
+              slug &&
+              user?.email &&
+              lastPerformanceBySlugByLearner[slug]?.[user?.email || ""];
+
             const lastQuestionPerformances =
               lastQuestionPerformancesBySlugByLearnerByQuestion[slug]?.[
                 user?.email || ""
@@ -100,7 +101,7 @@ export default memo(function AppContent({
                     postSlug: slug,
                     userId: user?.email || "",
                   }
-                : lastStandardQuestionPerformance;
+                : lastNonQuestionPerformance;
 
             return (
               <>
