@@ -8,18 +8,18 @@ import ActivityInteractionQuestions from "../ActivityInteractionQuestions";
 
 type props = {
   postType: postType;
-  performances: postedPerformance[];
   userId: string;
   postSlug: string;
 };
 
 export default function ActivityInteraction({
   postType,
-  performances,
   userId,
   postSlug,
 }: props) {
-  const { postPerformance } = useContext(performanceContext);
+  const { postPerformance, performancesBySlugByLearner } =
+    useContext(performanceContext);
+  const performances = performancesBySlugByLearner?.[postSlug]?.[userId] ?? [];
   const interactions = {
     topic: (
       <ActivityInteractionView
