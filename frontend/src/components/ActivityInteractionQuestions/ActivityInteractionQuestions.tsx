@@ -34,7 +34,7 @@ export default function ActivityInteractionQuestions({
     );
     setResponses(formQuestions);
     // eslint-disable-next-line
-  }, []);
+  }, [postSlug]);
   const updateResponse = (id: string) => (response: string) => {
     setResponses({
       ...responses,
