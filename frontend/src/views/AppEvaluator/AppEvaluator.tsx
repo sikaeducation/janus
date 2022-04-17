@@ -24,7 +24,7 @@ export default function AppEvaluator() {
   const [selectedSlug, setSelectedSlug] = useState("");
   useEffect(() => {
     setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
-  }, []);
+  }, [slugs]);
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
   const currentPerformances = Object.entries(currentQuestion).map(
@@ -43,10 +43,6 @@ export default function AppEvaluator() {
         },
       };
     }, {});
-  useEffect(() => {
-    setEvaluations(getInitialEvaluations());
-    // eslint-disable-next-line
-  }, [selectedSlug]);
 
   const [evaluations, setEvaluations] = useState<
     Record<
