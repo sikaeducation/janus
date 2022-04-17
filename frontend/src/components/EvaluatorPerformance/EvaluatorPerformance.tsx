@@ -2,7 +2,6 @@ import "./EvaluatorPerformance.scss";
 import { Link } from "react-router-dom";
 import { format } from "date-fns";
 import Gravatar from "react-gravatar";
-import { memo } from "react";
 import AppContent from "../AppContent";
 
 const formatDateTime = (dateTime: string) => {
@@ -22,7 +21,7 @@ type props = {
   ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
-export default memo(function EvaluatorPerformance({
+export default function EvaluatorPerformance({
   path,
   performance,
   feedback,
@@ -70,4 +69,4 @@ export default memo(function EvaluatorPerformance({
       </td>
     </tr>
   );
-});
+}

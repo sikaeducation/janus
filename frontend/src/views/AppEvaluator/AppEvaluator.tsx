@@ -25,14 +25,12 @@ export default function AppEvaluator() {
   const [selectedSlug, setSelectedSlug] = useState("");
   useEffect(() => {
     setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
-  }, [slugs]);
+  }, []);
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
-  const currentPerformances = useCallback(
-    Object.entries(currentQuestion).map(
-      ([learnerId, performances]) =>
-        [learnerId, maxBy("createdAt", performances)] as const
-    )
+  const currentPerformances = Object.entries(currentQuestion).map(
+    ([learnerId, performances]) =>
+      [learnerId, maxBy("createdAt", performances)] as const
   );
 
   const getInitialEvaluations = () =>
@@ -72,22 +70,25 @@ export default function AppEvaluator() {
     return evaluations[learnerId]?.status || "";
   });
 
-  const setAll = (status: string) => {
-    setEvaluations((previousState) => {
-      const newState = Object.entries(previousState).map(
-        ([learnerId, evaluation]) => {
-          return [
-            learnerId,
-            {
-              ...evaluation,
-              status,
-            },
-          ];
-        }
-      );
-      return fromPairs(newState);
-    });
-  };
+  const setAll = useCallback(
+    (status: string) => {
+      setEvaluations((previousState) => {
+        const newState = Object.entries(previousState).map(
+          ([learnerId, evaluation]) => {
+            return [
+              learnerId,
+              {
+                ...evaluation,
+                status,
+              },
+            ];
+          }
+        );
+        return fromPairs(newState);
+      });
+    },
+    [selectedSlug]
+  );
   const updateFeedback = useCallback(
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setEvaluations((evaluations) => ({
