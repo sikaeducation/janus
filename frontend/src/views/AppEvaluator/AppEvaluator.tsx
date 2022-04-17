@@ -2,7 +2,7 @@
 // @ts-nocheck
 import { useAuth0 } from "@auth0/auth0-react";
 import { maxBy, fromPairs } from "lodash/fp";
-import { useEffect, useContext, useState, useCallback } from "react";
+import { useEffect, useContext, useState, useCallback, useMemo } from "react";
 import AppContent from "../../components/AppContent";
 import { programContext } from "../../contexts/program";
 import { performanceContext } from "../../contexts/performance";
@@ -18,16 +18,21 @@ export default function AppEvaluator() {
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
     useContext(performanceContext);
   const { user } = useAuth0();
-  const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
+  const slugs = useMemo(
+    () => Object.keys(unevaluatedQuestionPerformancesBySlugByLearner),
+    [unevaluatedQuestionPerformancesBySlugByLearner]
+  );
   const [selectedSlug, setSelectedSlug] = useState("");
   useEffect(() => {
     setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
   }, [slugs]);
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
-  const currentPerformances = Object.entries(currentQuestion).map(
-    ([learnerId, performances]) =>
-      [learnerId, maxBy("createdAt", performances)] as const
+  const currentPerformances = useCallback(
+    Object.entries(currentQuestion).map(
+      ([learnerId, performances]) =>
+        [learnerId, maxBy("createdAt", performances)] as const
+    )
   );
 
   const getInitialEvaluations = () =>
@@ -59,13 +64,13 @@ export default function AppEvaluator() {
 
   const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
   const { postsBySlug } = useContext(programContext);
-  const getPath = (slug: string) => postsBySlug[slug].path ?? "";
-  const getFeedback = (learnerId: string) => {
+  const getPath = useCallback((slug: string) => postsBySlug[slug].path ?? "");
+  const getFeedback = useCallback((learnerId: string) => {
     return evaluations[learnerId]?.feedback || "";
-  };
-  const getStatus = (learnerId: string) => {
+  });
+  const getStatus = useCallback((learnerId: string) => {
     return evaluations[learnerId]?.status || "";
-  };
+  });
 
   const setAll = (status: string) => {
     setEvaluations((previousState) => {

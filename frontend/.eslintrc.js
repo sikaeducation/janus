@@ -43,7 +43,7 @@ module.exports = {
     "no-use-before-define": "off",
     "@typescript-eslint/no-shadow": ["off"],
     "react-hooks/rules-of-hooks": "error",
-    "react-hooks/exhaustive-deps": "warn",
+    "react-hooks/exhaustive-deps": "off",
     "jsx-a11y/label-has-associated-control": [
       "error",
       {
