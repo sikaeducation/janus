@@ -137,9 +137,7 @@ export default function AppEvaluator() {
       });
     Promise.all(requests)
       .then(() => {
-        setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
-        getInitialEvaluations();
-        setSubmitDisabled(false);
+        setSelectedSlug(slugs.length > 1 ? slugs[1] : ""); // index 0 will still be there while waiting for sockets to come back
       })
       .catch((error) => {
         // eslint-disable-next-line
