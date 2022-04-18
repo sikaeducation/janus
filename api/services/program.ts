@@ -14,6 +14,7 @@ const currentProgram: {
     contents: null,
   },
 };
+buildProgram(1);
 
 export async function buildAllPrograms() {
   return fs
