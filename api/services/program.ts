@@ -45,7 +45,7 @@ export function checkProgram(programId: number) {
 }
 
 export function readProgram(programId: number) {
-  return programId === 1 ? currentProgram[programId] : "";
+  return programId === 1 ? currentProgram[programId].contents : "";
 }
 
 function writeProgram(program: hydratedProgram) {
