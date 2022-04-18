@@ -8,16 +8,15 @@ import {
   buildAllPrograms,
 } from "../services/program";
 import { verifyWebHook } from "../services/github";
-import getProgram from "../fixtures/program";
 
 const router = express.Router();
 
 router.get(
   "/:programId/current-version",
-  async (request: Request, response: Response) => {
+  (request: Request, response: Response) => {
     const { programId } = request.params;
     try {
-      const version = await getProgramVersion(+programId);
+      const version = getProgramVersion(+programId);
       response.json({ version });
     } catch {
       response.status(400).json({});
@@ -29,10 +28,10 @@ router.get("/:programId", async (request: Request, response: Response) => {
   // response.json({ program: getProgram() });
   const { programId } = request.params;
   try {
-    const programExists = await checkProgram(+programId);
+    const programExists = checkProgram(+programId);
 
     const program = programExists
-      ? await readProgram(+programId)
+      ? readProgram(+programId)
       : await buildProgram(+programId);
 
     response.json({ program });

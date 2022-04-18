@@ -3,6 +3,13 @@ import objectHash from "object-hash";
 import { map } from "lodash/fp";
 import { getPostContent } from "./github";
 
+const currentProgram = {
+  1: {
+    id: "",
+    contents: "",
+  },
+};
+
 export async function buildAllPrograms() {
   return fs
     .readdir(`data/raw-programs`)
@@ -19,56 +26,31 @@ export async function buildProgram(id: number) {
     posts
   );
 
-  await writeProgram(hydratedProgram);
+  writeProgram(hydratedProgram);
 
   return hydratedProgram;
 }
 
 export function getProgramVersion(programId: number) {
-  return fs
-    .readdir(`data/hydrated-programs/${programId}`)
-    .then((files) => {
-      return files[0];
-    })
-    .catch((error) => {
-      // eslint-disable-next-line
-      console.error(error.message);
-      return "";
-    });
+  return programId === 1 ? currentProgram[`${programId}`].id : "";
 }
 
-export async function checkProgram(programId: number) {
-  return fs
-    .readdir(`data/hydrated-programs/${programId}`)
-    .then((files) => files?.length > 0)
-    .catch((error) => {
-      // eslint-disable-next-line
-      console.error(error.message);
-      return false;
-    });
+export function checkProgram(programId: number) {
+  return programId === 1 ? !!currentProgram[programId].id : false;
 }
 
 export function readProgram(programId: number) {
-  return getProgramVersion(programId).then((version) => {
-    return fs.readJSON(
-      `data/hydrated-programs/${programId}/${version}`,
-      "utf8"
-    );
-  });
+  return programId === 1 ? currentProgram[programId] : "";
 }
 
 function writeProgram(program: hydratedProgram) {
   const hash = objectHash(program);
-  return fs
-    .emptyDir(`data/hydrated-programs/${program.id}`)
-    .then(() => fs.ensureDir(`data/hydrated-programs/${program.id}`))
-    .then(() => {
-      return fs.writeJSON(
-        `data/hydrated-programs/${program.id}/${hash}`,
-        program
-      );
-    })
-    .then(() => program);
+  if (program.id === 1) {
+    currentProgram[program.id].id = hash;
+    currentProgram[program.id].contents = JSON.stringify(program);
+    return program;
+  }
+  return "";
 }
 
 function readDehydratedProgram(id: number) {
