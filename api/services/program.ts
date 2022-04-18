@@ -3,10 +3,15 @@ import objectHash from "object-hash";
 import { map } from "lodash/fp";
 import { getPostContent } from "./github";
 
-const currentProgram = {
+const currentProgram: {
+  1: {
+    id: string;
+    contents: hydratedProgram | null;
+  };
+} = {
   1: {
     id: "",
-    contents: "",
+    contents: null,
   },
 };
 
@@ -47,7 +52,7 @@ function writeProgram(program: hydratedProgram) {
   const hash = objectHash(program);
   if (program.id === 1) {
     currentProgram[program.id].id = hash;
-    currentProgram[program.id].contents = JSON.stringify(program);
+    currentProgram[program.id].contents = program;
     return program;
   }
   return "";
