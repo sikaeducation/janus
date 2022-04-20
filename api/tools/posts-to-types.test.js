@@ -17,7 +17,7 @@ const posts_to_types_1 = __importDefault(require("./posts-to-types"));
 jest.mock("fs-extra");
 const mockReaddir = fs_extra_1.readdir;
 const mockWriteFile = fs_extra_1.writeFile;
-test("#postsToTypes Convert a list of folders to a union type", () => __awaiter(void 0, void 0, void 0, function* () {
+test.skip("#postsToTypes Convert a list of folders to a union type", () => __awaiter(void 0, void 0, void 0, function* () {
     mockReaddir.mockResolvedValueOnce(["a", "b", "c"]);
     process.env.SLUGS_LOCATION = "../slug.d.ts";
     process.env.POSTS_DIRECTORY = "dummy";
