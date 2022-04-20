@@ -10,7 +10,7 @@
     "isolatedModules": true,
     "module": "commonjs",
     "moduleResolution": "node",
-    "noEmit": true,
+    "noEmit": false,
     "skipLibCheck": true,
     "sourceMap": true,
     "strict": true,
