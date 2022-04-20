@@ -1,3 +1,5 @@
+// eslint-disable-next-line
+// @ts-nocheck
 export default function getProgram(): hydratedProgram {
   const hydratedProgram: hydratedProgram = {
     id: 1,
@@ -103,4 +105,3 @@ export default function getProgram(): hydratedProgram {
   };
   return hydratedProgram;
 }
-
