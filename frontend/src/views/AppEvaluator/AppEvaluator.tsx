@@ -65,25 +65,22 @@ export default function AppEvaluator() {
     return evaluations[learnerId]?.status || "";
   });
 
-  const setAll = useCallback(
-    (status: string) => {
-      return setEvaluations((previousState) => {
-        const newState = Object.entries(previousState).map(
-          ([learnerId, evaluation]) => {
-            return [
-              learnerId,
-              {
-                ...evaluation,
-                status,
-              },
-            ];
-          }
-        );
-        return fromPairs(newState);
-      });
-    },
-    [selectedSlug]
-  );
+  const setAll = (status: string) => {
+    return setEvaluations((previousState) => {
+      const newState = Object.entries(previousState).map(
+        ([learnerId, evaluation]) => {
+          return [
+            learnerId,
+            {
+              ...evaluation,
+              status,
+            },
+          ];
+        }
+      );
+      return fromPairs(newState);
+    });
+  };
   const updateFeedback = useCallback(
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setEvaluations((evaluations) => ({
