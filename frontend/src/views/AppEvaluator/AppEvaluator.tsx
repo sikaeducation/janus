@@ -19,7 +19,7 @@ export default function AppEvaluator() {
   const { user } = useAuth0();
   const slugs = useMemo(
     () => Object.keys(unevaluatedQuestionPerformancesBySlugByLearner),
-    [unevaluatedQuestionPerformancesBySlugByLearner]
+    []
   );
   const [selectedSlug, setSelectedSlug] = useState("");
   useEffect(() => {
