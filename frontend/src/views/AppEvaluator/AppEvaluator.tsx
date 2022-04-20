@@ -67,7 +67,7 @@ export default function AppEvaluator() {
 
   const setAll = useCallback(
     (status: string) => {
-      setEvaluations((previousState) => {
+      return setEvaluations((previousState) => {
         const newState = Object.entries(previousState).map(
           ([learnerId, evaluation]) => {
             return [
