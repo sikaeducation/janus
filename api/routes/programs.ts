@@ -38,9 +38,7 @@ router.get("/:programId", async (request: Request, response: Response) => {
   } catch (error) {
     // eslint-disable-next-line
       if (error instanceof Error) console.error(error.message);
-    response
-      .status(500)
-      .json({ error: "There was an error retrieving this program" });
+    response.status(500).json({ error: `Couldn't get program ${programId}` });
   }
 });
 
