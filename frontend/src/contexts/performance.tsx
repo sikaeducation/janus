@@ -182,14 +182,16 @@ export function PerformanceProvider({ children }: props) {
     ])(questionPerformances);
   };
 
-  const unevaluatedQuestionPerformancesBySlugByLearner = flow([
-    onlyUnevaluated,
-    onlyQuestions,
-    sortByMostFrequent,
-    mapValues(sortBy("createdAt")),
-    mapValues(reverse),
-    mapValues(groupBy("userId")),
-  ])(performancesWithEvaluations);
+  const unevaluatedQuestionPerformancesBySlugByLearner = evaluations.length
+    ? flow([
+        onlyUnevaluated,
+        onlyQuestions,
+        sortByMostFrequent,
+        mapValues(sortBy("createdAt")),
+        mapValues(reverse),
+        mapValues(groupBy("userId")),
+      ])(performancesWithEvaluations)
+    : {};
 
   const performancesByQuestion = flow([
     onlyQuestions,

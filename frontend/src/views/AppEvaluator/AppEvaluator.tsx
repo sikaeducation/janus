@@ -1,8 +1,8 @@
 // eslint-disable-next-line
 // @ts-nocheck
-import { useAuth0 } from "@auth0/auth0-react";
 import { maxBy, fromPairs } from "lodash/fp";
-import { useEffect, useContext, useState, useCallback, useMemo } from "react";
+import { User } from "@auth0/auth0-react";
+import { useEffect, useContext, useState, useCallback, useRef } from "react";
 import AppContent from "../../components/AppContent";
 import { programContext } from "../../contexts/program";
 import { performanceContext } from "../../contexts/performance";
@@ -13,18 +13,25 @@ import EvaluatorQuestionSelector from "../../components/EvaluatorQuestionSelecto
 
 type performanceTuple = [string, evaluatedQuestionPerformance];
 
-export default function AppEvaluator() {
+type props = {
+  user?: User;
+};
+
+export default function AppEvaluator({ user }: props) {
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
     useContext(performanceContext);
-  const { user } = useAuth0();
-  const slugs = useMemo(
-    () => Object.keys(unevaluatedQuestionPerformancesBySlugByLearner),
-    []
-  );
   const [selectedSlug, setSelectedSlug] = useState("");
-  useEffect(() => {
-    setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
-  }, [slugs]);
+  const [evaluations, setEvaluations] = useState<
+    Record<
+      string,
+      {
+        feedback: string;
+        status: string;
+        performance: evaluatedQuestionPerformance;
+      }
+    >
+  >({});
+  const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
   const currentQuestion =
     unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
   const currentPerformances = Object.entries(currentQuestion).map(
@@ -43,17 +50,6 @@ export default function AppEvaluator() {
         },
       };
     }, {});
-
-  const [evaluations, setEvaluations] = useState<
-    Record<
-      string,
-      {
-        feedback: string;
-        status: string;
-        performance: evaluatedQuestionPerformance;
-      }
-    >
-  >(getInitialEvaluations());
 
   const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
   const { postsBySlug } = useContext(programContext);
@@ -135,6 +131,17 @@ export default function AppEvaluator() {
         console.error(error.message);
       });
   };
+
+  const isInitialized = useRef(false);
+  useEffect(() => {
+    if (slugs.length > 0 && !isInitialized.current) {
+      setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
+      isInitialized.current = true;
+    }
+  }, [unevaluatedQuestionPerformancesBySlugByLearner]);
+  useEffect(() => {
+    setEvaluations(getInitialEvaluations());
+  }, [selectedSlug]);
 
   return (
     <div className="AppEvaluator">

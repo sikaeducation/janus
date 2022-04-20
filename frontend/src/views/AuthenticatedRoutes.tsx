@@ -1,5 +1,6 @@
 import { Routes, Route } from "react-router-dom";
 import { useContext } from "react";
+import { useAuth0 } from "@auth0/auth0-react";
 import CurriculumViewer from "./CurriculumViewer";
 import ProgramViewer from "./ProgramViewer";
 import AppMissing from "./AppMissing";
@@ -18,6 +19,7 @@ import EvaluationViewer from "./EvaluationViewer";
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
   const { program, isError, isLoading } = useContext(programContext);
+  const { user } = useAuth0();
   const showToastNotification = toasts.length > 0;
 
   return (
@@ -35,7 +37,7 @@ export default function AuthenticatedRoutes() {
               <Route path="/inbox" element={<AppInbox />} />
               <Route path="/progress" element={<ProgressViewer />} />
               <Route path="/activity" element={<PerformanceViewer />} />
-              <Route path="/evaluator" element={<AppEvaluator />} />
+              <Route path="/evaluator" element={<AppEvaluator user={user} />} />
               <Route path="/evaluations" element={<EvaluationViewer />} />
               <Route
                 path="/program-viewer"
