@@ -5,10 +5,10 @@
   "main": "index.js",
   "scripts": {
     "build": "tsc",
-    "start": "nodemon index.js",
+    "start": "node index.js",
     "test:ci": "NODE_ENV=test jest",
     "test:watch": "NODE_ENV=test jest --watchAll",
-    "dev": "knex --knexfile='data/knexfile.ts' migrate:latest && node index.ts",
+    "dev": "knex --knexfile='data/knexfile.ts' migrate:latest && nodemon index.ts",
     "knex": "knex --knexfile='data/knexfile.ts'"
   },
   "keywords": [],
