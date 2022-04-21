@@ -2969,7 +2969,6 @@ const program: rawProgram = {
         full: "Modern JavaScript Refactoring Exercise",
       },
       slug: "modern-javascript-refactoring-exercise",
-      isRequired: true,
       children: [],
     },
     {
@@ -3360,7 +3359,6 @@ const program: rawProgram = {
         full: "Simple Unit Testing Exercise",
       },
       slug: "simple-unit-testing-exercise",
-      isRequired: true,
       children: [],
     },
     {
