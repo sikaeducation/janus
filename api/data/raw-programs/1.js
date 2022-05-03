@@ -116,10 +116,9 @@ const program = {
             slug: "unit-spas-angular",
             isHidden: true,
             children: [
+                "section-oop",
                 "section-static-angular",
                 "section-dynamic-angular",
-                "section-angular-components-1",
-                "section-angular-components-2",
             ],
         },
         {
@@ -2971,7 +2970,6 @@ const program = {
                 full: "Modern JavaScript Refactoring Exercise",
             },
             slug: "modern-javascript-refactoring-exercise",
-            isRequired: true,
             children: [],
         },
         {
@@ -3362,7 +3360,6 @@ const program = {
                 full: "Simple Unit Testing Exercise",
             },
             slug: "simple-unit-testing-exercise",
-            isRequired: true,
             children: [],
         },
         {
@@ -3518,6 +3515,107 @@ const program = {
                 full: "ESLint",
             },
             slug: "eslint",
+            children: [],
+        },
+        {
+            type: "section",
+            label: {
+                full: "Object-Oriented Programming with TypeScript",
+                short: "OOP",
+            },
+            slug: "section-oop",
+            children: [
+                "oop-intro",
+                "oop-questions",
+                "js-classes",
+                "js-classes-questions",
+                "ts-classes",
+                "triangle-exercise-ts",
+                "robot-name-ts",
+                "dnd-character-ts",
+                "ts-decorators",
+                "oop-vocabulary",
+            ],
+        },
+        {
+            type: "topic",
+            label: {
+                full: "Intro to OOP",
+            },
+            slug: "oop-intro",
+            children: [],
+        },
+        {
+            type: "questions",
+            label: {
+                full: "OOP Questions",
+            },
+            slug: "oop-questions",
+            children: [],
+        },
+        {
+            type: "topic",
+            label: {
+                full: "JavaScript Classes",
+            },
+            slug: "js-classes",
+            children: [],
+        },
+        {
+            type: "questions",
+            label: {
+                full: "JavaScript Classes Questions",
+            },
+            slug: "js-classes-questions",
+            children: [],
+        },
+        {
+            type: "topic",
+            label: {
+                full: "TypeScript Classes",
+            },
+            slug: "ts-classes",
+            children: [],
+        },
+        {
+            type: "exercise",
+            label: {
+                full: "Triangle",
+            },
+            slug: "triangle-exercise-ts",
+            children: [],
+        },
+        {
+            type: "exercise",
+            label: {
+                full: "Robot Name",
+            },
+            slug: "robot-name-ts",
+            children: [],
+        },
+        {
+            type: "exercise",
+            label: {
+                full: "Dungeons and Dragons Characters",
+                short: "DnD Characters",
+            },
+            slug: "dnd-character-ts",
+            children: [],
+        },
+        {
+            type: "topic",
+            label: {
+                full: "TypeScript Decorators",
+            },
+            slug: "ts-decorators",
+            children: [],
+        },
+        {
+            type: "questions",
+            label: {
+                full: "OOP Vocabulary",
+            },
+            slug: "oop-vocabulary",
             children: [],
         },
     ],
