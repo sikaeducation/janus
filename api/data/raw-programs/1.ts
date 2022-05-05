@@ -112,7 +112,6 @@ const program: rawProgram = {
         tiny: "4",
       },
       slug: "unit-spas-angular",
-      isHidden: true,
       children: [
         "section-oop",
         "section-static-angular",
@@ -1357,7 +1356,20 @@ const program: rawProgram = {
         full: "Static Angular",
       },
       slug: "section-static-angular",
-      children: [],
+      children: [
+        "angular-intro",
+        "angular-getting-started",
+        "angular-tutorial",
+        "angular-templates",
+        "angular-templates-questions",
+        "angular-components",
+        "angular-components-questions",
+        "angular-forms",
+        "deployment-spa-netlify",
+        "naming-conventions-angular",
+        "wineflix-ng",
+        "angular-vocabulary-1",
+      ],
     },
     {
       type: "section",
@@ -1365,22 +1377,6 @@ const program: rawProgram = {
         full: "Dynamic Angular",
       },
       slug: "section-dynamic-angular",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "Angular Components 1",
-      },
-      slug: "section-angular-components-1",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "Angular Components 2",
-      },
-      slug: "section-angular-components-2",
       children: [],
     },
     {
@@ -3614,6 +3610,102 @@ const program: rawProgram = {
         full: "OOP Vocabulary",
       },
       slug: "oop-vocabulary",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Angular",
+      },
+      slug: "angular-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Getting Started With Angular",
+      },
+      slug: "angular-getting-started",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Tutorial",
+      },
+      slug: "angular-tutorial",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Templates",
+      },
+      slug: "angular-templates",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Template Questions",
+      },
+      slug: "angular-templates-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Components",
+      },
+      slug: "angular-components",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Components Questions",
+      },
+      slug: "angular-components-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Forms",
+      },
+      slug: "angular-forms",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Deployment SPA Angular",
+      },
+      slug: "deployment-spa-netlify",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Naming Conventions in Angular",
+      },
+      slug: "naming-conventions-angular",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Wineflix",
+      },
+      slug: "wineflix-ng",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Vocabulary",
+      },
+      slug: "angular-vocabulary-1",
       children: [],
     },
   ],
