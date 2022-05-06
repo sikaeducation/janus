@@ -85,7 +85,7 @@ const postEvaluation =
         }
       });
   };
-const cutoff = "1651123188"; // Temporary, speeds up grading
+const cutoff = "2022-04-29"; // Temporary, speeds up grading
 const listPerformances = (socket: SikaSocket) => () => {
   Performance.query()
     .select()
