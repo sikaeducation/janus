@@ -1365,6 +1365,7 @@ const program: rawProgram = {
         "angular-components",
         "angular-components-questions",
         "angular-forms",
+        "angular-tutorial-forms",
         "deployment-spa-netlify",
         "naming-conventions-angular",
         "wineflix-ng",
@@ -3706,6 +3707,14 @@ const program: rawProgram = {
         full: "Angular Vocabulary",
       },
       slug: "angular-vocabulary-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Form Tutorial",
+      },
+      slug: "angular-tutorial-forms",
       children: [],
     },
   ],
