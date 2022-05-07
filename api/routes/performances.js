@@ -85,11 +85,14 @@ const postEvaluation = (socket, io) => (evaluation) => {
         }
     });
 };
-const cutoff = "2022-04-29"; // Temporary, speeds up grading
+const cutoff = "2022-04-07"; // Temporary, speeds up grading
 const listPerformances = (socket) => () => {
     Performance_1.default.query()
         .select()
-        .where("createdAt", ">", cutoff)
+        .where((builder) => {
+        // eslint-disable-next-line
+        socket.role === "coach" && builder.where("createdAt", ">", cutoff);
+    })
         .where((builder) => {
         // eslint-disable-next-line
         socket.role !== "coach" && builder.where("userId", (socket === null || socket === void 0 ? void 0 : socket.email) || "");
