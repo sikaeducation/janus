@@ -1388,8 +1388,8 @@ const program: rawProgram = {
         "spa-routing-intro",
         "angular-router",
         "angular-router-tutorial",
-        "angular-vocabulary-2",
         "sika-shoes-ng",
+        "angular-vocabulary-2",
       ],
     },
     {
@@ -3711,6 +3711,7 @@ const program: rawProgram = {
         full: "Wineflix",
       },
       slug: "wineflix-ng",
+      isRequired: true,
       children: [],
     },
     {
@@ -3719,6 +3720,7 @@ const program: rawProgram = {
         full: "Angular Vocabulary",
       },
       slug: "angular-vocabulary-1",
+      isRequired: true,
       children: [],
     },
     {
@@ -3804,9 +3806,10 @@ const program: rawProgram = {
     {
       type: "questions",
       label: {
-        full: "Angular Vocbulary",
+        full: "Angular Vocabulary",
       },
       slug: "angular-vocabulary-2",
+      isRequired: true,
       children: [],
     },
     {
@@ -3814,6 +3817,7 @@ const program: rawProgram = {
       label: {
         full: "Sika Shoes",
       },
+      isRequired: true,
       slug: "sika-shoes-ng",
       children: [],
     },
