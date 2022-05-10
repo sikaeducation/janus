@@ -1378,7 +1378,19 @@ const program: rawProgram = {
         full: "Dynamic Angular",
       },
       slug: "section-dynamic-angular",
-      children: [],
+      children: [
+        "angular-event-emitters",
+        "light-switch-exercise-ng",
+        "angular-dependency-injection",
+        "angular-services",
+        "angular-api-integration",
+        "angular-http-guide-exercise",
+        "spa-routing-intro",
+        "angular-router",
+        "angular-router-tutorial",
+        "angular-vocabulary-2",
+        "sika-shoes-ng",
+      ],
     },
     {
       type: "section",
@@ -3715,6 +3727,94 @@ const program: rawProgram = {
         full: "Angular Form Tutorial",
       },
       slug: "angular-tutorial-forms",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Event Emitters",
+      },
+      slug: "angular-event-emitters",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Light Switch",
+      },
+      slug: "light-switch-exercise-ng",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Dependency Injection",
+      },
+      slug: "angular-dependency-injection",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Services",
+      },
+      slug: "angular-services",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular API Integration",
+      },
+      slug: "angular-api-integration",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular HTTP Guide",
+      },
+      slug: "angular-http-guide-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to SPA Routing",
+      },
+      slug: "spa-routing-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Angular Routing",
+      },
+      slug: "angular-router",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Angular Router Tutorial",
+      },
+      slug: "angular-router-tutorial",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Angular Vocbulary",
+      },
+      slug: "angular-vocabulary-2",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Sika Shoes",
+      },
+      slug: "sika-shoes-ng",
       children: [],
     },
   ],
