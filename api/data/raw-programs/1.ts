@@ -138,7 +138,12 @@ const program: rawProgram = {
       },
       slug: "unit-capstones-ford",
       isHidden: true,
-      children: [],
+      children: [
+        "full-stack-capstone-exercise",
+        "capstone-requirements-simple",
+        "capstone-ideas",
+        "capstone-presentations",
+      ],
     },
     {
       type: "section",
@@ -4181,6 +4186,39 @@ const program: rawProgram = {
       },
       isRequired: true,
       slug: "sql-full-quiz",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Capstone Requirements",
+      },
+      slug: "capstone-requirements-simple",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Capstone Ideas",
+      },
+      slug: "capstone-ideas",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Capstone Presentations",
+      },
+      slug: "capstone-presentations",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Capstones",
+      },
+      isRequired: true,
+      slug: "full-stack-capstone-exercise",
       children: [],
     },
   ],
