@@ -127,13 +127,7 @@ const program: rawProgram = {
       },
       slug: "unit-persistence-spring-boot",
       isHidden: true,
-      children: [
-        "section-java-1",
-        "section-spring-boot-1",
-        "section-sql-1",
-        "section-data-modeling",
-        "section-spring-boot-2",
-      ],
+      children: ["section-java-1", "section-spring-boot-1", "section-sql-1"],
     },
     {
       type: "unit",
@@ -1398,7 +1392,31 @@ const program: rawProgram = {
         full: "Intro to Java",
       },
       slug: "section-java-1",
-      children: [],
+      children: [
+        "java-intro",
+        "java-syntax",
+        "java-hello-world-exercise",
+        "java-basic-types",
+        "java-variable-practice-exercise",
+        "java-math-practice-exercise",
+        "java-flow-control",
+        "java-looping-practice-exercise",
+        "rental-car-estimator-exercise",
+        "java-arrays",
+        "java-calculate-averages-exercise",
+        "java-classes",
+        "java-list-technologies-exercise",
+        "java-dice-roll-exercise",
+        "java-packages",
+        "java-collections",
+        "java-arraylist",
+        "java-hashmap",
+        "java-lambdas",
+        "java-dealership-exercise",
+        "java-basics-quiz",
+        "java-fill-in-the-blank",
+        "java-vocabulary-1",
+      ],
     },
     {
       type: "section",
@@ -1414,23 +1432,27 @@ const program: rawProgram = {
         full: "Intro to SQL",
       },
       slug: "section-sql-1",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "Data Modeling",
-      },
-      slug: "section-data-modeling",
-      children: [],
-    },
-    {
-      type: "section",
-      label: {
-        full: "Spring Boot 2",
-      },
-      slug: "section-spring-boot-2",
-      children: [],
+      children: [
+        "databases-intro",
+        "database-questions-1",
+        "sql-intro",
+        "sql-questions-1",
+        "postgres-psql",
+        "psql-questions",
+        "sql-hair-and-eye-color",
+        "sql-select",
+        "sql-zoo-select-quiz",
+        "sql-where",
+        "sql-zoo-bbc-quiz",
+        "sql-zoo-nobel-quiz",
+        "sql-card-game",
+        "sql-inner-joins",
+        "sql-left-joins",
+        "sql-joins-questions",
+        "sql-join-quiz",
+        "sql-full-quiz",
+        "sql-vocabulary-1",
+      ],
     },
     {
       type: "exercise",
@@ -3819,6 +3841,346 @@ const program: rawProgram = {
       },
       isRequired: true,
       slug: "sika-shoes-ng",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Java",
+      },
+      slug: "java-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Syntax",
+      },
+      slug: "java-syntax",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Hello World",
+      },
+      slug: "java-hello-world-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java: Basic Types",
+      },
+      slug: "java-basic-types",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Java Variable Practice",
+      },
+      slug: "java-variable-practice-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Java Math Practice",
+      },
+      slug: "java-math-practice-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java: Flow Control",
+      },
+      slug: "java-flow-control",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Looping",
+      },
+      slug: "java-looping-practice-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Rental Car Estimator",
+      },
+      slug: "rental-car-estimator-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Arrays",
+      },
+      slug: "java-arrays",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Calculate Averages",
+      },
+      slug: "java-calculate-averages-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Classes",
+      },
+      slug: "java-classes",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "List Technologies",
+      },
+      slug: "java-list-technologies-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Dice Roll",
+      },
+      slug: "java-dice-roll-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Packages",
+      },
+      slug: "java-packages",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Collections",
+      },
+      slug: "java-collections",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java `ArrayList`s",
+      },
+      slug: "java-arraylist",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java `HashMap`s",
+      },
+      slug: "java-hashmap",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Java Lambdas",
+      },
+      slug: "java-lambdas",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Java Basics",
+      },
+      isRequired: true,
+      slug: "java-basics-quiz",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Java Dealership",
+      },
+      slug: "java-dealership-exercise",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Fill In The Blank",
+      },
+      slug: "java-fill-in-the-blank",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Java Vocabulary",
+      },
+      isRequired: true,
+      slug: "java-vocabulary-1",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "SQL Vocabulary",
+      },
+      isRequired: true,
+      slug: "sql-vocabulary-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Database",
+      },
+      slug: "databases-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Database Questions",
+      },
+      slug: "database-questions-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to SQL",
+      },
+      slug: "sql-intro",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "SQL Questions",
+      },
+      slug: "sql-questions-1",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`psql`",
+      },
+      slug: "postgres-psql",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "`psql` Questions",
+      },
+      slug: "psql-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL: Hair and Eye Color",
+      },
+      slug: "sql-hair-and-eye-color",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "SQL Select",
+      },
+      slug: "sql-select",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "SQL Zoo: `SELECT` Quiz",
+      },
+      slug: "sql-zoo-select-quiz",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "SQL `WHERE`",
+      },
+      slug: "sql-where",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL Zoo: BBC Quiz",
+      },
+      slug: "sql-zoo-bbc-quiz",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL Zoo: Nobel Quiz",
+      },
+      slug: "sql-zoo-nobel-quiz",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL Card Game",
+      },
+      slug: "sql-card-game",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "SQL Inner Joins",
+      },
+      slug: "sql-inner-joins",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "SQL Left Joins",
+      },
+      slug: "sql-left-joins",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "SQL Joins Questions",
+      },
+      slug: "sql-joins-questions",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL Join Quiz",
+      },
+      slug: "sql-join-quiz",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "SQL Full Quiz",
+      },
+      isRequired: true,
+      slug: "sql-full-quiz",
       children: [],
     },
   ],
