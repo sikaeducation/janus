@@ -85,7 +85,7 @@ const postEvaluation = (socket, io) => (evaluation) => {
         }
     });
 };
-const cutoff = "2022-01-01"; // Temporary, speeds up grading
+const cutoff = "2022-05-07"; // Temporary, speeds up grading
 const listPerformances = (socket) => () => {
     Performance_1.default.query()
         .select()
