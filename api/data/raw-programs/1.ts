@@ -126,8 +126,7 @@ const program: rawProgram = {
         tiny: "5",
       },
       slug: "unit-persistence-spring-boot",
-      isHidden: true,
-      children: ["section-java-1", "section-spring-boot-1", "section-sql-1"],
+      children: ["section-java-1", "section-sql-1", "section-spring-boot-1"],
     },
     {
       type: "unit",
@@ -137,7 +136,6 @@ const program: rawProgram = {
         tiny: "6",
       },
       slug: "unit-capstones-ford",
-      isHidden: true,
       children: [
         "full-stack-capstone-exercise",
         "capstone-requirements-simple",
@@ -1429,7 +1427,26 @@ const program: rawProgram = {
         full: "Intro to Spring Boot",
       },
       slug: "section-spring-boot-1",
-      children: [],
+      children: [
+        "http-rest",
+        "spring-boot-intro",
+        "spring-boot-cli",
+        "spring-boot-basics",
+        "spring-boot-basics-exercise",
+        "spring-boot-basics-questions",
+        "spring-boot-models",
+        "spring-boot-repositories",
+        "spring-boot-services",
+        "spring-boot-controllers",
+        "environment-variables",
+        "environment-variables-dotenv-java",
+        "cloud-deployment-heroku",
+        "spring-boot-deployment",
+        "spring-boot-deployment-exercise",
+        "spring-boot-guide-to-simple-apis",
+        "pokemon-api-exercise",
+        "spring-boot-vocab",
+      ],
     },
     {
       type: "section",
@@ -4219,6 +4236,152 @@ const program: rawProgram = {
       },
       isRequired: true,
       slug: "full-stack-capstone-exercise",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "REST",
+      },
+      slug: "http-rest",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Spring Boot",
+      },
+      slug: "spring-boot-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot CLI",
+      },
+      slug: "spring-boot-cli",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Basics",
+      },
+      slug: "spring-boot-basics",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Spring Boot Basics Exercise",
+      },
+      slug: "spring-boot-basics-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Spring Boot Basics Questions",
+      },
+      slug: "spring-boot-basics-questions",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Models",
+      },
+      slug: "spring-boot-models",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Repositories",
+      },
+      slug: "spring-boot-repositories",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Services",
+      },
+      slug: "spring-boot-services",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Controllers",
+      },
+      slug: "spring-boot-controllers",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Environment Variables",
+      },
+      slug: "environment-variables",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "`dotenv`",
+      },
+      slug: "environment-variables-dotenv-java",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Cloud Deployment With Heroku",
+      },
+      slug: "cloud-deployment-heroku",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Spring Boot Deployment",
+      },
+      slug: "spring-boot-deployment",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Spring Boot Deployment Exercise",
+      },
+      slug: "spring-boot-deployment-exercise",
+      children: [],
+    },
+    {
+      type: "guide",
+      label: {
+        full: "Guide To Building Simple APIs With Spring Boot",
+      },
+      slug: "spring-boot-guide-to-simple-apis",
+      children: [],
+    },
+    {
+      type: "exercise",
+      label: {
+        full: "Pokemon API",
+      },
+      isRequired: true,
+      slug: "pokemon-api-exercise",
+      children: [],
+    },
+    {
+      type: "questions",
+      label: {
+        full: "Spring Boot Vocabulary",
+      },
+      isRequired: true,
+      slug: "spring-boot-vocab",
       children: [],
     },
   ],
