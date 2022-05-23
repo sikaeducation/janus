@@ -1440,6 +1440,7 @@ const program: rawProgram = {
         "spring-boot-controllers",
         "environment-variables",
         "environment-variables-dotenv-java",
+        "cloud-deployment-intro",
         "cloud-deployment-heroku",
         "spring-boot-deployment",
         "spring-boot-deployment-exercise",
@@ -4382,6 +4383,14 @@ const program: rawProgram = {
       },
       isRequired: true,
       slug: "spring-boot-vocab",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Intro to Cloud Deployment",
+      },
+      slug: "cloud-deployment-intro",
       children: [],
     },
   ],
