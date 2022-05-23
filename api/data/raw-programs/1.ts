@@ -137,10 +137,10 @@ const program: rawProgram = {
       },
       slug: "unit-capstones-ford",
       children: [
-        "full-stack-capstone-exercise",
         "capstone-requirements-simple",
         "capstone-ideas",
         "capstone-presentations",
+        "full-stack-capstone-exercise",
       ],
     },
     {
@@ -4109,7 +4109,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "exercise",
+      type: "questions",
       label: {
         full: "SQL: Hair and Eye Color",
       },
@@ -4125,7 +4125,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "questions",
+      type: "exercise",
       label: {
         full: "SQL Zoo: `SELECT` Quiz",
       },
