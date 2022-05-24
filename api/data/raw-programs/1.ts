@@ -3923,7 +3923,7 @@ const program: rawProgram = {
       children: [],
     },
     {
-      type: "topic",
+      type: "exercise",
       label: {
         full: "Java Looping",
       },
