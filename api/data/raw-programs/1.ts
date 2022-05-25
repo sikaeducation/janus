@@ -1458,6 +1458,7 @@ const program: rawProgram = {
       children: [
         "databases-intro",
         "database-questions-1",
+        "postgres-installation",
         "sql-intro",
         "sql-questions-1",
         "postgres-psql",
@@ -4391,6 +4392,14 @@ const program: rawProgram = {
         full: "Intro to Cloud Deployment",
       },
       slug: "cloud-deployment-intro",
+      children: [],
+    },
+    {
+      type: "topic",
+      label: {
+        full: "Installing PostgreSQL",
+      },
+      slug: "postgres-installation",
       children: [],
     },
   ],
