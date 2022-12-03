@@ -38,6 +38,7 @@ module.exports = {
     "no-shadow": "off",
     "default-case": "off",
     "consistent-return": "off",
+    "no-underscore-dangle": "off",
     "react/require-default-props": "off",
     "react/jsx-no-constructed-context-values": "off",
     "no-use-before-define": "off",
