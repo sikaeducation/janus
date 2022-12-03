@@ -1,0 +1,22 @@
+@use "../../styles/typography";
+@use "../../styles/colors";
+@use "../../styles/sizes";
+
+.ActivityManagerView {
+  @include sizes.fill;
+  h1 {
+    @include typography.heading-font-2;
+  }
+  .data-table {
+    width: 100%;
+    .table-headers {
+      text-align: left;
+      color: colors.$grey-6;
+    }
+    .table-row {
+      display: grid;
+      grid-template-columns: 10% 30% 50% 10%;
+      margin: sizes.$s2 0;
+    }
+  }
+}

@@ -6,6 +6,7 @@ import AppError from "./AppError";
 import { toastContext } from "../contexts/toast";
 
 import ToastNotification from "../components/ToastNotification";
+import ActivityManagerView from "./ActivityManagerView";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
@@ -17,7 +18,7 @@ export default function AuthenticatedRoutes() {
         <Route path="/loading" element={<AppLoading />} />
         <Route path="/error" element={<AppError />} />
         <Route path="/404" element={<AppMissing />} />
-        <Route path="/activity-manager" element={<p>Activity manager</p>} />
+        <Route path="/activity-manager" element={<ActivityManagerView />} />
         <Route path="*" element={<p>Home page</p>} />
       </Routes>
       {showToastNotification ? <ToastNotification /> : null}

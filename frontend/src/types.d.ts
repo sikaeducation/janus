@@ -1,3 +1,26 @@
+// New Types
+type ActivityType = "Article";
+
+type MongoDocument = {
+  _id?: string;
+  created_at?: string;
+  updated_at?: string;
+};
+
+type Activity = {
+  _type: ActivityType;
+  title: string;
+  published: boolean;
+  tags?: string[];
+  notes?: string;
+  description?: string;
+} & MongoDocument;
+
+type ActivityResponse = {
+  activities: Record<string, Activity>;
+};
+
+// Old Types
 type Clobber<
   T extends Record<string, unknown>,
   U extends Record<string, unknown>
