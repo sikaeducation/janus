@@ -1,0 +1,5 @@
+@use "../../styles/typography";
+
+.SecondaryHeading {
+  @include typography.heading-font-2;
+}

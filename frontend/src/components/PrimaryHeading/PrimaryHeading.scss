@@ -1,0 +1,5 @@
+@use "../../styles/typography";
+
+.PrimaryHeading {
+  @include typography.heading-font-1;
+}
