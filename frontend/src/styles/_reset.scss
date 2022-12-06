@@ -58,7 +58,7 @@ body {
 a {
   color: inherit;
 }
-input, select, label, button {
+input, select, label, button, textarea {
   display: block;
   @include typography.body-font;
 }

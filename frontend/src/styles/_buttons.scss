@@ -10,7 +10,6 @@
 
 @mixin button-primary {
   width: fit-content;
-  display: inline-block;
   background-color: colors.$primary-3;
   color: colors.$primary-10;
   font-weight: 700;

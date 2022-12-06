@@ -1,0 +1,45 @@
+@use "../../styles/colors";
+@use "../../styles/forms";
+@use "../../styles/sizes";
+@use "../../styles/buttons";
+
+.NewActivityForm {
+  background-color: colors.$white;
+  @include forms.form;
+
+  label {
+    color: colors.$grey-6;
+  }
+  textarea, input {
+    @include forms.form-control;
+  }
+  [type="text"] {
+    width: sizes.$input-length;
+  }
+  .checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    [type="checkbox"], [for="published"] {
+      display: inline-block;
+    }
+    [type="checkbox"] {
+      margin: 0 sizes.$s2;
+      position: relative;
+      top: 1px;
+    }
+  }
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: sizes.$s4;
+    button {
+      margin-left: sizes.$s4;
+      @include buttons.button-primary;
+    }
+  }
+  textarea {
+    width: 100%;
+  }
+}

@@ -16,6 +16,10 @@ type Activity = {
   description?: string;
 } & MongoDocument;
 
+type ActivityArticle = Activity & {
+  post_slug: string;
+};
+
 type ActivityResponse = {
   activities: Record<string, Activity>;
 };

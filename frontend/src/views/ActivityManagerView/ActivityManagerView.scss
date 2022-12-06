@@ -1,21 +1,40 @@
 @use "../../styles/typography";
 @use "../../styles/colors";
 @use "../../styles/sizes";
+@use "../../styles/buttons";
 
 .ActivityManagerView {
-  @include sizes.fill;
-  h1 {
-    @include typography.heading-font-2;
+  width: sizes.$content-width-xl;
+  header {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    h1 {
+      @include typography.heading-font-2;
+      margin-top: 0;
+      .activities-count {
+        position: relative;
+        color: colors.$grey-9;
+        font-size: sizes.$f4;
+        bottom: 2px;
+      }
+    }
+    button {
+      @include buttons.button-primary;
+      height: auto;
+    }
   }
   .data-table {
     width: 100%;
     .table-headers {
       text-align: left;
       color: colors.$grey-6;
+      padding-bottom: sizes.$s3;
     }
     .table-row {
       display: grid;
-      grid-template-columns: 10% 30% 50% 10%;
+      grid-template-columns: 5% 30% 50% 15%;
       margin: sizes.$s2 0;
     }
   }

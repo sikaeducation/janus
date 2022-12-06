@@ -2,16 +2,11 @@
 @use "./colors";
 @use "./typography";
 
-$max-form-width: 400px;
-
 @mixin form {
   display: flex;
-  margin-bottom: sizes.$xxxxl;
-  max-width: $max-form-width;
   flex-flow: column nowrap;
-  .form-input {
-    width: 100%;
-  }
+  padding: sizes.$s5;
+  width: 100%;
   .form-submit {
     align-self: flex-end;
   }
@@ -22,19 +17,18 @@ $max-form-width: 400px;
 
 @mixin form-control {
   display: block;
-  padding: sizes.$xs;
-  margin-bottom: sizes.$xs;
+  padding: sizes.$s1 0;
+  font-size: sizes.$f3;
   border: none;
   border-bottom: 1px solid colors.$primary-7;
   background-color: colors.$white;
-  width: 100%;
-  @include typography.body-font;
   &:focus {
-    border-bottom: 2px solid colors.$primary-7;
+    border-bottom: 3px solid colors.$primary-5;
+    outline: none;
   }
 }
 
 @mixin form-error {
   color: colors.$failure-5;
-  margin-top: sizes.$large;
+  margin-top: sizes.$s6;
 }

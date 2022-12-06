@@ -24,7 +24,7 @@
 @mixin body-font {
   font-family: "Gill Sans", sans-serif;
   color: colors.$grey-1;
-  font-size: sizes.$f5;
+  font-size: sizes.$f3;
   font-weight: 400;
   line-height: 1.5;
   @media (max-width: sizes.$small-breakpoint){

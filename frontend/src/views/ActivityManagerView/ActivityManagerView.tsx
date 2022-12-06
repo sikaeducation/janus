@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import "./ActivityManagerView.scss";
 import { useAuth0 } from "@auth0/auth0-react";
 import ActivityIcon from "../../components/ActivityIcon";
+import ModalView from "../ModalView";
+import NewActivityForm from "../NewActivityForm";
 
 const getActivities = (token: string) => {
   const url = `${process.env.REACT_APP_ACTIVITY_SERVICE_BASE_URL}/activities`;
@@ -19,6 +21,8 @@ const activityTypes = {
 
 export default function ActivityManagerView() {
   const [activities, setActivities] = useState<Activity[]>([]);
+  const activitiesCount = activities.length;
+  const [newActivityOpen, setNewActivityOpen] = useState<boolean>(false);
   const { getAccessTokenSilently } = useAuth0();
 
   useEffect(() => {
@@ -35,9 +39,61 @@ export default function ActivityManagerView() {
       });
   }, []);
 
+  const handleNewClick = () => {
+    setNewActivityOpen(true);
+  };
+  const closeModal = () => {
+    setNewActivityOpen(false);
+  };
+  const saveNewActivity = (newActivity: ActivityArticle) => {
+    getAccessTokenSilently({
+      audience: process.env.REACT_APP_API_AUTH_URI,
+    })
+      .then((token: string) => {
+        return fetch(
+          `${process.env.REACT_APP_ACTIVITY_SERVICE_BASE_URL}/activities`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: token,
+            },
+            body: JSON.stringify(newActivity),
+          }
+        );
+      })
+      .then((response) => {
+        if (!response.ok)
+          response.text().then((text) => {
+            throw new Error(text);
+          });
+        return response.json();
+      })
+      .then((activity) => {
+        setActivities([...activities, activity]);
+        closeModal();
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  };
+
   return (
     <div className="ActivityManagerView">
-      <h1>Activities</h1>
+      {newActivityOpen && (
+        <ModalView close={closeModal}>
+          <NewActivityForm save={saveNewActivity} />
+        </ModalView>
+      )}
+      <header>
+        <h1>
+          Activities{" "}
+          <span className="activities-count">({activitiesCount})</span>
+        </h1>
+        <button type="button" onClick={handleNewClick}>
+          New
+        </button>
+      </header>
       <div className="data-table" role="grid">
         <div role="row" className="table-row table-headers">
           <span className="type">Type</span>
