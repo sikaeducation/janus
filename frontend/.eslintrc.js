@@ -9,6 +9,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
+    "plugin:storybook/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -63,9 +64,21 @@ module.exports = {
       },
     ],
   },
+  overrides: [
+    {
+      files: ["**/*.stories.*"],
+      rules: {
+        "import/no-anonymous-default-export": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-extraneous-dependencies": "off",
+      },
+    },
+  ],
   settings: {
     "import/resolver": {
       typescript: {},
     },
   },
 };
+
