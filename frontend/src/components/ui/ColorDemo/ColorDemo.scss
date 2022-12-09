@@ -1,0 +1,161 @@
+@use "../../../styles/colors";
+
+.ColorDemo {
+  width: 100%;
+  ol {
+    display: grid;
+    grid-template-columns: repeat(9, 30px);
+  }
+  li {
+    height: 30px;
+    width: 30px;
+  }
+  .tones {
+    display: grid;
+    grid-template-columns: repeat(2, 30px);
+    > div {
+      border: 1px dashed #333;
+    }
+  }
+  .black {
+    background-color: colors.$black;
+  }
+  .white {
+    background-color: colors.$white;
+  }
+  .grey-1 {
+    background-color: colors.$grey-1;
+  }
+  .grey-2 {
+    background-color: colors.$grey-2;
+  }
+  .grey-3 {
+    background-color: colors.$grey-3;
+  }
+  .grey-4 {
+    background-color: colors.$grey-4;
+  }
+  .grey-5 {
+    background-color: colors.$grey-5;
+  }
+  .grey-6 {
+    background-color: colors.$grey-6;
+  }
+  .grey-7 {
+    background-color: colors.$grey-7;
+  }
+  .grey-8 {
+    background-color: colors.$grey-8;
+  }
+  .grey-9 {
+    background-color: colors.$grey-9;
+  }
+  .primary-1 {
+    background-color: colors.$primary-1;
+  }
+  .primary-2 {
+    background-color: colors.$primary-2;
+  }
+  .primary-3 {
+    background-color: colors.$primary-3;
+  }
+  .primary-4 {
+    background-color: colors.$primary-4;
+  }
+  .primary-5 {
+    background-color: colors.$primary-5;
+  }
+  .primary-6 {
+    background-color: colors.$primary-6;
+  }
+  .primary-7 {
+    background-color: colors.$primary-7;
+  }
+  .primary-8 {
+    background-color: colors.$primary-8;
+  }
+  .primary-9 {
+    background-color: colors.$primary-9;
+  }
+  .success-1 {
+    background-color: colors.$success-1;
+  }
+  .success-2 {
+    background-color: colors.$success-2;
+  }
+  .success-3 {
+    background-color: colors.$success-3;
+  }
+  .success-4 {
+    background-color: colors.$success-4;
+  }
+  .success-5 {
+    background-color: colors.$success-5;
+  }
+  .success-6 {
+    background-color: colors.$success-6;
+  }
+  .success-7 {
+    background-color: colors.$success-7;
+  }
+  .success-8 {
+    background-color: colors.$success-8;
+  }
+  .success-9 {
+    background-color: colors.$success-9;
+  }
+  .warning-1 {
+    background-color: colors.$warning-1;
+  }
+  .warning-2 {
+    background-color: colors.$warning-2;
+  }
+  .warning-3 {
+    background-color: colors.$warning-3;
+  }
+  .warning-4 {
+    background-color: colors.$warning-4;
+  }
+  .warning-5 {
+    background-color: colors.$warning-5;
+  }
+  .warning-6 {
+    background-color: colors.$warning-6;
+  }
+  .warning-7 {
+    background-color: colors.$warning-7;
+  }
+  .warning-8 {
+    background-color: colors.$warning-8;
+  }
+  .warning-9 {
+    background-color: colors.$warning-9;
+  }
+  .failure-1 {
+    background-color: colors.$failure-1;
+  }
+  .failure-2 {
+    background-color: colors.$failure-2;
+  }
+  .failure-3 {
+    background-color: colors.$failure-3;
+  }
+  .failure-4 {
+    background-color: colors.$failure-4;
+  }
+  .failure-5 {
+    background-color: colors.$failure-5;
+  }
+  .failure-6 {
+    background-color: colors.$failure-6;
+  }
+  .failure-7 {
+    background-color: colors.$failure-7;
+  }
+  .failure-8 {
+    background-color: colors.$failure-8;
+  }
+  .failure-9 {
+    background-color: colors.$failure-9;
+  }
+}
