@@ -1,6 +1,7 @@
 @use "../../styles/sizes";
 @use "../../styles/colors";
 @use "../../styles/buttons";
+@use "../../styles/borders";
 @use "../../styles/typography";
 
 .ActivityInteractionSubmission {
@@ -22,7 +23,7 @@
     box-shadow: none;
   }
   input {
-    border-radius: sizes.$border-radius 0 0 sizes.$border-radius;
+    border-radius: borders.$radius 0 0 borders.$radius;
     border-right: none;
   }
   h2 {
@@ -35,7 +36,7 @@
       margin-bottom: sizes.$s5;
       padding: sizes.$s7;
       width: 100%;
-      border-radius: sizes.$border-radius;
+      border-radius: borders.$radius;
       &.pending {
         border: 4px solid colors.$grey-8;
         svg {

@@ -1,4 +1,5 @@
 @use "../../../styles/sizes";
+@use "../../../styles/borders";
 @use "../../../styles/colors";
 
 .ToastNotification {
@@ -8,7 +9,7 @@
   color: colors.$primary-1;
   background-color: colors.$primary-10;
   padding: sizes.$s5;
-  border-radius: sizes.$border-radius;
+border-radius: borders.$radius;
   align-self: flex-end;
   animation: toast sizes.$toast-duration;
   z-index: 10;

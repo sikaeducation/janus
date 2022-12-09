@@ -1,4 +1,5 @@
 @use "../../styles/sizes";
+@use "../../styles/borders";
 @use "../../styles/colors";
 @use "../../styles/typography";
 @use "../../styles/buttons";
@@ -20,7 +21,7 @@
     background-color: colors.$grey-9;
     padding: 0 sizes.$s4;
     @include typography.breadcrumb-font;
-    border-radius: sizes.$border-radius;
+    border-radius: borders.$radius;
     & + .tag {
       margin-left: sizes.$s2;
     }
@@ -31,7 +32,7 @@
       display: inline-block;
       cursor: pointer;
       border: none;
-      border-radius: sizes.$border-radius;
+      border-radius: borders.$radius;
       background-color: colors.$failure-9;
       color: colors.$failure-1;
       @include buttons.button-shadow-small;

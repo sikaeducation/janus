@@ -1,0 +1,19 @@
+@use "./colors";
+
+@mixin small {
+  box-shadow: 0 1px 0 colors.$grey-6;
+  &:active {
+    box-shadow: 0 -1px 0 colors.$grey-8;
+  }
+}
+
+@mixin large {
+  box-shadow: 0 2px 50px colors.$grey-6;
+  &:active {
+    box-shadow: 0 -1px 50px colors.$grey-8;
+  }
+}
+
+@mixin underlay {
+  background-color: hsla(0, 0%, 0%, 0.85);
+}

@@ -1,4 +1,5 @@
 @use "../../styles/sizes";
+@use "../../styles/borders";
 @use "../../styles/colors";
 @use "../../styles/buttons";
 @use "../../styles/typography";
@@ -9,8 +10,8 @@
   }
   .question-prompt {
     @include typography.code-font;
-    border-radius: sizes.$border-radius;
-    border-radius: sizes.$border-radius;
+    border-radius: borders.$radius;
+    border-radius: borders.$radius;
     border: 1px solid colors.$grey-6;
     height: sizes.$s11;
     margin-bottom: sizes.$s4;
@@ -21,7 +22,7 @@
   }
   input {
     padding: sizes.$s2 sizes.$s4;
-    border-radius: sizes.$border-radius;
+    border-radius: borders.$radius;
     border: 1px solid colors.$grey-6;
     margin-bottom: sizes.$s4;
   }
@@ -31,7 +32,7 @@
       display: inline-block;
       cursor: pointer;
       border: none;
-      border-radius: sizes.$border-radius;
+      border-radius: borders.$radius;
       background-color: colors.$grey-9;
       @include buttons.button-shadow-small;
     }

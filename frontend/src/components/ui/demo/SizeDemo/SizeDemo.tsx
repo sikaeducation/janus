@@ -51,10 +51,6 @@ export default function SizeDemo() {
           </div>
         </div>
       </div>
-      <hr />
-      <section>
-        <div className="border-radius">Border Radius</div>
-      </section>
     </div>
   );
 }

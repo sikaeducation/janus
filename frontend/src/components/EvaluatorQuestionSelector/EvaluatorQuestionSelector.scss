@@ -1,10 +1,11 @@
 @use "../../styles/sizes";
+@use "../../styles/borders";
 @use "../../styles/colors";
 
 .EvaluatorQuestionSelector {
   select {
     padding: sizes.$s2;
-    border-radius: sizes.$border-radius;
+    border-radius: borders.$radius;
     border: 1px solid colors.$grey-5;
     width: 400px;
   }
