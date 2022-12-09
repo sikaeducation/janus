@@ -1,0 +1,75 @@
+@use "../../../styles/typography";
+@use "../../../styles/sizes";
+
+.TypographyDemo {
+  .heading-typeface {
+    font-family: "Gill Sans Condensed";
+    font-size: 24px;
+  }
+  .primary-typeface {
+    font-family: "Gill Sans";
+    font-size: 24px;
+  }
+  section {
+    padding-bottom: 24px;
+    border-bottom: 1px solid #ccc;
+    margin-bottom: 24px;
+  }
+  h1 {
+    @include typography.heading-font-1;
+  }
+  h2 {
+    @include typography.heading-font-2;
+  }
+  h3 {
+    @include typography.heading-font-3;
+  }
+  h4 {
+    @include typography.heading-font-4;
+  }
+  .logo-font {
+    @include typography.logo-font;
+  }
+  p {
+    @include typography.body-font;
+  }
+  code {
+    @include typography.code-font;
+  }
+  small {
+    @include typography.legal-font;
+  }
+  .size-1 {
+    font-size: sizes.$f1;
+  }
+  .size-2 {
+    font-size: sizes.$f2;
+  }
+  .size-3 {
+    font-size: sizes.$f3;
+  }
+  .size-4 {
+    font-size: sizes.$f4;
+  }
+  .size-5 {
+    font-size: sizes.$f5;
+  }
+  .size-6 {
+    font-size: sizes.$f6;
+  }
+  .size-7 {
+    font-size: sizes.$f7;
+  }
+  .size-8 {
+    font-size: sizes.$f8;
+  }
+  .size-9 {
+    font-size: sizes.$f9;
+  }
+  .size-10 {
+    font-size: sizes.$f10;
+  }
+  .size-11 {
+    font-size: sizes.$f11;
+  }
+}
