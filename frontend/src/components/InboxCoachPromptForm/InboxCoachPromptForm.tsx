@@ -1,4 +1,4 @@
-import TextAreaResponse from "../TextAreaResponse";
+import TextAreaResponse from "../ui/TextAreaResponse";
 import "./InboxCoachPromptForm.scss";
 
 type props = {

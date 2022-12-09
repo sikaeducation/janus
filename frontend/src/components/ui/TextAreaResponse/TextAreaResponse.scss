@@ -1,0 +1,21 @@
+@use "../../../styles/sizes";
+@use "../../../styles/typography";
+@use "../../../styles/colors";
+
+.TextAreaResponse {
+  label {
+    @include typography.breadcrumb-font;
+    margin-bottom: sizes.$s2;
+  }
+  textarea {
+    @include typography.code-font;
+    border-radius: sizes.$border-radius;
+    border: 1px solid colors.$grey-6;
+    height: sizes.$s9;
+    margin-bottom: sizes.$s4;
+    padding: sizes.$s4;
+    resize: vertical;
+    width: 100%;
+    overflow-y: auto;
+  }
+}

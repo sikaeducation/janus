@@ -1,0 +1,32 @@
+@use "../../../styles/sizes";
+@use "../../../styles/colors";
+
+.ToastNotification {
+  position: fixed;
+  right: sizes.$s4;
+  bottom: -300px;
+  color: colors.$primary-1;
+  background-color: colors.$primary-10;
+  padding: sizes.$s5;
+  border-radius: sizes.$border-radius;
+  align-self: flex-end;
+  animation: toast sizes.$toast-duration;
+  z-index: 10;
+  box-shadow: 2px 2px 22px colors.$grey-8;
+}
+
+@keyframes toast {
+  0% {
+    bottom: -300px;
+  }
+  10% {
+    bottom: sizes.$s5;
+  }
+  90% {
+    bottom: sizes.$s5;
+  }
+  100% {
+    bottom: -300px;
+  }
+}
+

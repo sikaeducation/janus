@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./ActivityManagerView.scss";
 import { useAuth0 } from "@auth0/auth0-react";
-import ActivityIcon from "../../components/ActivityIcon";
+import ActivityIcon from "../../components/ui/ActivityIcon";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
 

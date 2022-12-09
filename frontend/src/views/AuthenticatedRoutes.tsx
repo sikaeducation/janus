@@ -5,7 +5,7 @@ import AppLoading from "./AppLoading";
 import AppError from "./AppError";
 import { toastContext } from "../contexts/toast";
 
-import ToastNotification from "../components/ToastNotification";
+import ToastNotification from "../components/ui/ToastNotification";
 import ActivityManagerView from "./ActivityManagerView";
 
 export default function AuthenticatedRoutes() {

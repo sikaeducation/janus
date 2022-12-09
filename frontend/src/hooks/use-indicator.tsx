@@ -1,13 +1,13 @@
 import { countBy, flow, isEmpty, values } from "lodash/fp";
 import { useContext } from "react";
-import IndicatorDeferred from "../components/IndicatorDeferred";
-import IndicatorQuestion from "../components/IndicatorQuestion";
-import IndicatorSubmissionAccepted from "../components/IndicatorSubmissionAccepted";
-import IndicatorSubmissionPending from "../components/IndicatorSubmissionPending";
-import IndicatorSubmissionRejected from "../components/IndicatorSubmissionRejected";
-import IndicatorViewClear from "../components/IndicatorViewClear";
-import IndicatorViewConfident from "../components/IndicatorViewConfident";
-import IndicatorViewUnclear from "../components/IndicatorViewUnclear";
+import IndicatorDeferred from "../components/ui/IndicatorDeferred";
+import IndicatorQuestion from "../components/ui/IndicatorQuestion";
+import IndicatorSubmissionAccepted from "../components/ui/IndicatorSubmissionAccepted";
+import IndicatorSubmissionPending from "../components/ui/IndicatorSubmissionPending";
+import IndicatorSubmissionRejected from "../components/ui/IndicatorSubmissionRejected";
+import IndicatorViewClear from "../components/ui/IndicatorViewClear";
+import IndicatorViewConfident from "../components/ui/IndicatorViewConfident";
+import IndicatorViewUnclear from "../components/ui/IndicatorViewUnclear";
 import { performanceContext } from "../contexts/performance";
 
 const getViewIndicator = (performance: postedViewPerformance) => {

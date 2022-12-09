@@ -1,0 +1,5 @@
+@use "../../../styles/typography";
+
+.QuaternaryHeading {
+  @include typography.heading-font-4;
+}

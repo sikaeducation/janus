@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import AppContent from "../AppContent";
-import ButtonFormSubmission from "../ButtonFormSubmission";
+import ButtonFormSubmission from "../ui/ButtonFormSubmission";
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
