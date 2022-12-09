@@ -1,5 +1,10 @@
+import { ReactNode } from "react";
 import "./QuaternaryHeading.scss";
 
-export default function QuaternaryHeading() {
-	return <p>QuaternaryHeading</p>;
+type props = {
+  children: ReactNode;
+};
+
+export default function QuaternaryHeading({ children }: props) {
+  return <p>{children}</p>;
 }
