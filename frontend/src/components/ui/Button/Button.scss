@@ -1,0 +1,43 @@
+@use "../../../styles/sizes";
+@use "../../../styles/borders";
+@use "../../../styles/colors";
+@use "../../../styles/shadows";
+
+.Button {
+  &.primary-button {
+    background-color: colors.$primary-5;
+    color: colors.$white;
+    font-weight: 700;
+    font-size: sizes.$f4;
+    border-radius: borders.$radius;
+    border: none;
+    cursor: pointer;
+    padding: sizes.$s2 sizes.$s6;
+    transition: background-color sizes.$transition;
+    @include shadows.small;
+    &:hover {
+      background-color: darken(colors.$primary-5, 10%);
+    }
+  }
+  &.secondary-button {
+    background-color: colors.$grey-9;
+    color: colors.$grey-2;
+    border-radius: borders.$radius;
+    border: none;
+    cursor: pointer;
+    padding: sizes.$s2 sizes.$s3;
+    transition: background-color sizes.$transition;
+    @include shadows.small;
+    &:hover {
+      background-color: darken(colors.$grey-9, 5%);
+    }
+  }
+  &.tertiary-button {
+    background-color: colors.$white;
+    color: colors.$grey-2;
+    border: none;
+    cursor: pointer;
+    text-decoration: underline;
+    padding: sizes.$s2 sizes.$s3;
+  }
+}

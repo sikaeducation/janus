@@ -6,7 +6,7 @@ import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
 import AppContent from "../AppContent";
-import ButtonFormSubmission from "../ui/ButtonFormSubmission";
+import Button from "../ui/Button";
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
@@ -107,9 +107,9 @@ export default function ActivityInteractionSubmission({
           onChange={(event) => setUrl(event.target.value)}
           required
         />
-        <ButtonFormSubmission
-          label={`Submit${performances.length > 0 ? " another" : ""}`}
-        />
+        <Button submit type="primary">{`Submit${
+          performances.length > 0 ? " another" : ""
+        }`}</Button>
       </form>
     </div>
   );

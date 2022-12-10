@@ -2,11 +2,11 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
-import ButtonFormSubmission from "../ui/ButtonFormSubmission";
 import TextAreaResponse from "../ui/TextAreaResponse";
 import "./QuestionForm.scss";
 import useIndicator from "../../hooks/use-indicator";
 import PreviousQuestionResponses from "../PreviousQuestionResponses";
+import Button from "../ui/Button";
 
 type props = {
   id: string;
@@ -102,7 +102,9 @@ export default function QuestionForm({
                 Cancel
               </button>
             )}
-            <ButtonFormSubmission label="Submit response" />
+            <Button type="primary" submit>
+              Submit response
+            </Button>
           </div>
         </form>
       )}
