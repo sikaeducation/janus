@@ -1,14 +1,39 @@
 @use "../../../styles/typography";
+@use "../../../styles/sizes";
 
 .primary-heading {
   @include typography.heading-font-1;
+  &.margin {
+    margin-top: sizes.$f4;
+    margin-bottom: sizes.$f6;
+    @media (max-width: sizes.$small-breakpoint){
+      margin-bottom: sizes.$f4;
+    }
+  }
 }
 .secondary-heading {
   @include typography.heading-font-2;
+  &.margin {
+    margin-top: sizes.$f7;
+    margin-bottom: sizes.$f2;
+    @media (max-width: sizes.$small-breakpoint){
+      margin-top: sizes.$f4;
+      margin-bottom: sizes.$f1;
+    }
+  }
 }
 .tertiary-heading {
   @include typography.heading-font-3;
+  &.margin {
+    margin-bottom: sizes.$f1;
+    @media (max-width: sizes.$small-breakpoint){
+      margin-bottom: sizes.$f1;
+    }
+  }
 }
 .quaternary-heading {
   @include typography.heading-font-4;
+  &.margin {
+    margin-bottom: sizes.$s4;
+  }
 }
