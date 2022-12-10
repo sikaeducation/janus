@@ -4,7 +4,7 @@
 @use "../../styles/buttons";
 
 .ActivityManagerView {
-  width: sizes.$content-width-xl;
+  width: 100%;
   header {
     display: flex;
     flex-flow: row wrap;
@@ -23,19 +23,6 @@
     button {
       @include buttons.button-primary;
       height: auto;
-    }
-  }
-  .data-table {
-    width: 100%;
-    .table-headers {
-      text-align: left;
-      color: colors.$grey-6;
-      padding-bottom: sizes.$s3;
-    }
-    .table-row {
-      display: grid;
-      grid-template-columns: 5% 30% 50% 15%;
-      margin: sizes.$s2 0;
     }
   }
 }
