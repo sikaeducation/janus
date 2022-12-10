@@ -4,15 +4,21 @@
 @use "../../../styles/shadows";
 
 .Button {
+  .small {
+    padding: sizes.$s1 sizes.$s3;
+    height: auto;
+  }
+  .large {
+    padding: sizes.$s2 sizes.$s6;
+    font-size: sizes.$f4;
+  }
   &.primary-button {
     background-color: colors.$primary-5;
     color: colors.$white;
     font-weight: 700;
-    font-size: sizes.$f4;
     border-radius: borders.$radius;
     border: none;
     cursor: pointer;
-    padding: sizes.$s2 sizes.$s6;
     transition: background-color sizes.$transition;
     @include shadows.small;
     &:hover {
