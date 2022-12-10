@@ -31,7 +31,7 @@ export default function Typography() {
           I urge you to <strong>boldly</strong> reconsider your position.
         </p>
         <p>
-          Are you sure that's what you <em>actually</em> want to do?
+          Are you sure that&apos;s what you <em>actually</em> want to do?
         </p>
         <p>
           <pre>

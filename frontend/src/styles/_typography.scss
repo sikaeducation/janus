@@ -37,11 +37,8 @@
   font-weight: 700;
   font-size: sizes.$f8;
   color: colors.$primary-3;
-  margin-top: sizes.$f4;
-  margin-bottom: sizes.$f6;
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f6;
-    margin-bottom: sizes.$f4;
   }
 }
 
@@ -51,12 +48,8 @@
   font-size: sizes.$f7;
   color: colors.$grey-4;
   line-height: sizes.$f8;
-  margin-top: sizes.$f7;
-  margin-bottom: sizes.$f2;
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f6;
-    margin-top: sizes.$f4;
-    margin-bottom: sizes.$f1;
   }
 }
 
@@ -66,10 +59,8 @@
   font-size: sizes.$f6;
   color: colors.$grey-5;
   line-height: sizes.$f7;
-  margin-bottom: sizes.$f1;
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f5;
-    margin-bottom: sizes.$f1;
   }
 }
 
