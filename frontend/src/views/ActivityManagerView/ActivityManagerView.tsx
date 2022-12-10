@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useState } from "react";
 import "./ActivityManagerView.scss";
 import { useAuth0 } from "@auth0/auth0-react";
+import { Skeleton } from "@material-ui/lab";
 import ActivityIcon from "../../components/ui/ActivityIcon";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
@@ -55,6 +56,15 @@ const fields = [
   },
 ];
 
+const skeletonRow = {
+  type: <Skeleton />,
+  publishedIcon: <Skeleton />,
+  title: <Skeleton />,
+  description: <Skeleton />,
+};
+
+const skeletonRows = Array(10).fill(skeletonRow);
+
 type FormattedActivity = Activity & {
   id: string;
   type: NonNullable<ReactNode>;
@@ -63,9 +73,10 @@ type FormattedActivity = Activity & {
 
 export default function ActivityManagerView() {
   const [activities, setActivities] = useState<Activity[]>([]);
-  const activitiesCount = activities.length;
+  const [loading, setLoading] = useState(false);
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const { getAccessTokenSilently } = useAuth0();
+  const activitiesCount = activities.length;
 
   const formattedActivities: FormattedActivity[] = activities.map(
     (activity) => {
@@ -79,6 +90,7 @@ export default function ActivityManagerView() {
   );
 
   useEffect(() => {
+    setLoading(true);
     getAccessTokenSilently({
       audience: process.env.REACT_APP_API_AUTH_URI,
     })
@@ -89,6 +101,9 @@ export default function ActivityManagerView() {
       })
       .catch((error) => {
         console.error(error);
+      })
+      .finally(() => {
+        setLoading(false);
       });
   }, []);
 
@@ -147,10 +162,17 @@ export default function ActivityManagerView() {
           New
         </Button>
       </header>
-      <DataTable<FormattedActivity>
-        fields={fields}
-        tableData={formattedActivities}
-      />
+      {loading ? (
+        <DataTable<FormattedActivity>
+          fields={fields}
+          tableData={skeletonRows}
+        />
+      ) : (
+        <DataTable<FormattedActivity>
+          fields={fields}
+          tableData={formattedActivities}
+        />
+      )}
     </div>
   );
 }
