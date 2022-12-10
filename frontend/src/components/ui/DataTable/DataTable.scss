@@ -1,0 +1,20 @@
+@use "../../../styles/sizes";
+@use "../../../styles/colors";
+
+.DataTable {
+  .table-headers {
+    text-align: left;
+    color: colors.$grey-6;
+    padding-bottom: sizes.$s3;
+  }
+  .table-row {
+    display: grid;
+    margin: sizes.$s2 0;
+  }
+  .field {
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    align-content: start;
+  }
+}
