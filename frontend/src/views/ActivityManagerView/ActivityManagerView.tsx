@@ -1,7 +1,6 @@
 import { ReactNode, useEffect, useState } from "react";
 import "./ActivityManagerView.scss";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Skeleton } from "@material-ui/lab";
 import ActivityIcon from "../../components/ui/ActivityIcon";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
@@ -9,6 +8,7 @@ import DataTable from "../../components/ui/DataTable";
 import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";
 import Icon from "../../components/ui/Icon";
+import { fields, skeletonRows } from "./table";
 
 const getActivities = (token: string) => {
   const url = `${process.env.REACT_APP_ACTIVITY_SERVICE_BASE_URL}/activities`;
@@ -23,47 +23,6 @@ const getActivities = (token: string) => {
 const activityTypes = {
   Article: <ActivityIcon activityType="Article" />,
 };
-
-const fields = [
-  {
-    header: "Type",
-    key: "type",
-    proportion: {
-      large: "5%",
-    },
-  },
-  {
-    header: "Live",
-    key: "publishedIcon",
-    proportion: {
-      large: "5%",
-    },
-  },
-  {
-    header: "Name",
-    key: "title",
-    proportion: {
-      large: "40%",
-      small: "100%",
-    },
-  },
-  {
-    header: "Description",
-    key: "description",
-    proportion: {
-      large: "50%",
-    },
-  },
-];
-
-const skeletonRow = {
-  type: <Skeleton />,
-  publishedIcon: <Skeleton />,
-  title: <Skeleton />,
-  description: <Skeleton />,
-};
-
-const skeletonRows = Array(10).fill(skeletonRow);
 
 type FormattedActivity = Activity & {
   id: string;
