@@ -6,6 +6,7 @@ services:
       REACT_APP_AUTH_ZERO_DOMAIN: "dev-6vs4dnoj.us.auth0.com"
       REACT_APP_CLIENT_ID: "xtd3nBAGVaVGHnhH7047XC87o1nMS3dX"
       REACT_APP_ACTIVITY_SERVICE_BASE_URL: "https://divine-snow-6176.fly.dev"
+      REACT_APP_AUTH_ZERO_AUDIENCE: "https://dev-6vs4dnoj.us.auth0.com/api/v2/"
     ports:
       - 3000:3000
     build:

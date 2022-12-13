@@ -4,12 +4,16 @@ import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
 import "./App.scss";
+import tokenAccessors from "./slices/security";
 
 import ToastProvider from "./contexts/toast";
 import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 
+const { setTokenFetcher } = tokenAccessors;
+
 function App() {
-  const { isLoading, isAuthenticated } = useAuth0();
+  const { isLoading, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  setTokenFetcher(getAccessTokenSilently);
 
   return (
     <div className="App">

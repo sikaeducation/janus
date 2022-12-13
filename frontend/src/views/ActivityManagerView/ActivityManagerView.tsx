@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useState } from "react";
 import "./ActivityManagerView.scss";
-import { useAuth0 } from "@auth0/auth0-react";
 import ActivityIcon from "../../components/ui/ActivityIcon";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
@@ -9,16 +8,7 @@ import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";
 import Icon from "../../components/ui/Icon";
 import { fields, skeletonRows } from "./table";
-
-const getActivities = (token: string) => {
-  const url = `${process.env.REACT_APP_ACTIVITY_SERVICE_BASE_URL}/activities`;
-  const options = {
-    headers: {
-      Authorization: token,
-    },
-  };
-  return fetch(url, options).then((response) => response.json());
-};
+import { useGetActivitiesQuery } from "../../slices/apiSlice";
 
 const activityTypes = {
   Article: <ActivityIcon activityType="Article" />,
@@ -31,40 +21,9 @@ type FormattedActivity = Activity & {
 };
 
 export default function ActivityManagerView() {
-  const [activities, setActivities] = useState<Activity[]>([]);
-  const [loading, setLoading] = useState(false);
+  const { data: activities, isLoading } = useGetActivitiesQuery();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
-  const { getAccessTokenSilently } = useAuth0();
-  const activitiesCount = activities.length;
-
-  const formattedActivities: FormattedActivity[] = activities.map(
-    (activity) => {
-      return {
-        ...activity,
-        id: activity._id || "",
-        type: activityTypes[activity._type],
-        publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
-      };
-    }
-  );
-
-  useEffect(() => {
-    setLoading(true);
-    getAccessTokenSilently({
-      audience: process.env.REACT_APP_API_AUTH_URI,
-    })
-      .then(getActivities)
-      .then((response: ActivityResponse) => {
-        const activityRows = Object.values(response.activities);
-        setActivities(activityRows);
-      })
-      .catch((error) => {
-        console.error(error);
-      })
-      .finally(() => {
-        setLoading(false);
-      });
-  }, []);
+  const activitiesCount = activities?.length || 0;
 
   const handleNewClick = () => {
     setNewActivityOpen(true);
@@ -72,44 +31,34 @@ export default function ActivityManagerView() {
   const closeModal = () => {
     setNewActivityOpen(false);
   };
-  const saveNewActivity = (newActivity: ActivityArticle) => {
-    getAccessTokenSilently({
-      audience: process.env.REACT_APP_API_AUTH_URI,
-    })
-      .then((token: string) => {
-        return fetch(
-          `${process.env.REACT_APP_ACTIVITY_SERVICE_BASE_URL}/activities`,
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: token,
-            },
-            body: JSON.stringify(newActivity),
-          }
-        );
-      })
-      .then((response) => {
-        if (!response.ok)
-          response.text().then((text) => {
-            throw new Error(text);
-          });
-        return response.json();
-      })
-      .then((activity) => {
-        setActivities([...activities, activity]);
-        closeModal();
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  };
+  let tableToDisplay: ReactNode;
+  if (!isLoading) {
+    const formattedActivities: FormattedActivity[] =
+      activities?.map((activity) => {
+        return {
+          ...activity,
+          id: activity._id || "",
+          type: activityTypes[activity._type],
+          publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+        };
+      }) || [];
+    tableToDisplay = (
+      <DataTable<FormattedActivity>
+        fields={fields}
+        tableData={formattedActivities}
+      />
+    );
+  } else {
+    tableToDisplay = (
+      <DataTable<FormattedActivity> fields={fields} tableData={skeletonRows} />
+    );
+  }
 
   return (
     <div className="ActivityManagerView">
       {newActivityOpen && (
         <ModalView close={closeModal}>
-          <NewActivityForm save={saveNewActivity} />
+          <NewActivityForm save={() => ({})} />
         </ModalView>
       )}
       <header>
@@ -121,17 +70,7 @@ export default function ActivityManagerView() {
           New
         </Button>
       </header>
-      {loading ? (
-        <DataTable<FormattedActivity>
-          fields={fields}
-          tableData={skeletonRows}
-        />
-      ) : (
-        <DataTable<FormattedActivity>
-          fields={fields}
-          tableData={formattedActivities}
-        />
-      )}
+      <div>{tableToDisplay}</div>
     </div>
   );
 }
