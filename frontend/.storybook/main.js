@@ -10,6 +10,7 @@ module.exports = {
     "@storybook/preset-create-react-app",
     "@storybook/addon-viewport",
     "storybook-addon-react-router-v6",
+    "@storybook/addon-a11y",
   ],
   "framework": "@storybook/react",
   "core": {
