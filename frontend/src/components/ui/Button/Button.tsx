@@ -4,12 +4,15 @@ import "./Button.scss";
 
 type ButtonType = "primary" | "secondary" | "ghost";
 type Size = "small" | "large";
+type ActionType = "normal" | "failure";
 type Props = {
   children: ReactNode;
   type: ButtonType;
   action?: () => void;
   submit?: boolean;
   size?: Size;
+  disabled?: boolean;
+  actionType?: ActionType;
 };
 
 const buttonClasses: Record<ButtonType, string> = {
@@ -24,6 +27,8 @@ export default function ButtonFormSubmission({
   type,
   submit = false,
   size = "small",
+  actionType = "normal",
+  disabled = false,
 }: Props) {
   const buttonClass = buttonClasses[type];
   return (
@@ -33,6 +38,8 @@ export default function ButtonFormSubmission({
       className={classNames({
         Button: true,
         [buttonClass]: true,
+        disabled,
+        failure: actionType === "failure",
         small: size === "small",
         large: size === "large",
       })}

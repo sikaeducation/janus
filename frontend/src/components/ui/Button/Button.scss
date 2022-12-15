@@ -4,16 +4,17 @@
 @use "../../../styles/shadows";
 
 .Button {
-  .small {
+  &.small {
     padding: sizes.$s1 sizes.$s3;
+    font-size: sizes.$f3;
     height: auto;
   }
-  .large {
+  &.large {
     padding: sizes.$s2 sizes.$s6;
     font-size: sizes.$f4;
   }
   &.primary-button {
-    background-color: colors.$primary-5;
+    background-color: colors.$primary-4;
     color: colors.$white;
     font-weight: 700;
     border-radius: borders.$radius;
@@ -23,6 +24,12 @@
     @include shadows.small;
     &:hover {
       background-color: darken(colors.$primary-5, 10%);
+    }
+    &.failure {
+      background-color: colors.$failure-4;
+      &:hover {
+        background-color: darken(colors.$failure-4, 10%);
+      }
     }
   }
   &.secondary-button {
@@ -45,5 +52,9 @@
     cursor: pointer;
     text-decoration: underline;
     padding: sizes.$s2 sizes.$s3;
+  }
+  &.disabled {
+    background-color: colors.$grey-9;
+    color: colors.$grey-6;
   }
 }

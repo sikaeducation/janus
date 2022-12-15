@@ -9,11 +9,37 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
-export const Primary = Template.bind({});
-Primary.args = {
+export const PrimarySmall = Template.bind({});
+PrimarySmall.args = {
   type: "primary",
   children: "Do it!",
 };
+PrimarySmall.storyName = "Primary - Small";
+
+export const PrimarySmallFailure = Template.bind({});
+PrimarySmallFailure.args = {
+  type: "primary",
+  children: "Do it!",
+  actionType: "failure",
+};
+PrimarySmallFailure.storyName = "Primary - Failure - Small";
+
+export const PrimaryLarge = Template.bind({});
+PrimaryLarge.args = {
+  type: "primary",
+  size: "large",
+  children: "Do it!",
+};
+PrimaryLarge.storyName = "Primary - Large";
+
+export const PrimaryLargeFailure = Template.bind({});
+PrimaryLargeFailure.args = {
+  type: "primary",
+  size: "large",
+  children: "Do it!",
+  actionType: "failure",
+};
+PrimaryLargeFailure.storyName = "Primary - Failure - Large";
 
 export const Secondary = Template.bind({});
 Secondary.args = {
