@@ -1,5 +1,5 @@
 import { format } from "date-fns";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import "./LearnerPrompt.scss";
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
@@ -18,12 +18,12 @@ export default function LearnerPrompt({
         </li>
       </ul>
       <div className="prompt-response">
-        <AppContent
+        <Markdown
           className="prompt"
           isContained
           content={performance.payload.prompt || ""}
         />
-        <AppContent
+        <Markdown
           className="response"
           isContained
           content={performance.payload.response || ""}

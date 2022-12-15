@@ -5,7 +5,7 @@ import { filter, flow, reverse, sortBy, take } from "lodash/fp";
 import { performanceContext } from "../../contexts/performance";
 import "./EvaluationViewer.scss";
 import useIndicator from "../../hooks/use-indicator";
-import AppContent from "../../components/AppContent";
+import Markdown from "../../components/ui/Markdown";
 import { programContext } from "../../contexts/program";
 
 const formatDateTime = (dateTime: string) => {
@@ -82,7 +82,7 @@ export default function EvaluationViewer() {
                     <span>{getIndicator(performance)}</span>
                   </div>
                   {performance.evaluation?.feedback ? (
-                    <AppContent
+                    <Markdown
                       className="feedback"
                       isContained
                       content={performance.evaluation.feedback}
@@ -92,12 +92,12 @@ export default function EvaluationViewer() {
                   )}
                   {performance.type === "question" && (
                     <div>
-                      <AppContent
+                      <Markdown
                         className="prompt"
                         isContained
                         content={performance.payload.prompt}
                       />
-                      <AppContent
+                      <Markdown
                         className="response"
                         isContained
                         content={performance.payload.response}

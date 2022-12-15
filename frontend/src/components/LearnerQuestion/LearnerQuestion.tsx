@@ -5,7 +5,7 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
 import useIndicator from "../../hooks/use-indicator";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import LearnerQuestionEvaluable from "../LearnerQuestionEvaluable";
 import "./LearnerQuestion.scss";
 
@@ -39,13 +39,13 @@ export default function LearnerQuestion({ performance }: props) {
         </li>
       </ul>
       <div className="question-prompt-response">
-        <AppContent
+        <Markdown
           className="prompt"
           isContained
           content={performance.payload.prompt}
         />
         {performance.evaluation && (
-          <AppContent
+          <Markdown
             className="response"
             isContained
             content={performance.payload.response}
@@ -64,7 +64,7 @@ export default function LearnerQuestion({ performance }: props) {
             email={performance.evaluation.evaluatorId}
             size={40}
           />
-          <AppContent
+          <Markdown
             className="evaluation-feedback"
             isContained
             content={performance.evaluation.feedback || ""}

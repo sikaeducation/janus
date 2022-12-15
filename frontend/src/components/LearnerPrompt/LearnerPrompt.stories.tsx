@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import LearnerPrompt from ".";
 
 export default {
-  title: "Forms/LearnerPrompt",
+  title: "Inbox/LearnerPrompt",
   component: LearnerPrompt,
 } as ComponentMeta<typeof LearnerPrompt>;
 

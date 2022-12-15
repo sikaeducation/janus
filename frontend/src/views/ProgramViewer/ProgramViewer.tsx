@@ -1,6 +1,6 @@
 import "./ProgramViewer.scss";
 import { KeyboardEvent, useState } from "react";
-import AppContent from "../../components/AppContent";
+import Markdown from "../../components/ui/Markdown";
 import PostListing from "../../components/PostListing";
 
 type props = {
@@ -92,7 +92,7 @@ export default function ProgramViewer({ program }: props) {
           {tree}
         </ul>
         {currentPost ? (
-          <AppContent
+          <Markdown
             className="post-content"
             isContained
             content={currentPost.content}

@@ -5,7 +5,7 @@ import Gravatar from "react-gravatar";
 import { Link } from "react-router-dom";
 import { programContext } from "../../contexts/program";
 import useIndicator from "../../hooks/use-indicator";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import LearnerSubmissionEvaluable from "../LearnerSubmissionEvaluable";
 import "./LearnerSubmission.scss";
 
@@ -57,7 +57,7 @@ export default function LearnerSubmission({ performance }: props) {
             email={performance.evaluation.evaluatorId}
             size={40}
           />
-          <AppContent
+          <Markdown
             isContained
             content={performance?.evaluation?.feedback || ""}
             className="evaluation-feedback"

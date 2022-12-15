@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useEffect } from "react";
-import InboxCoach from "../../components/InboxCoach";
-import InboxLearner from "../../components/InboxLearner";
+import InboxCoach from "../../components/inbox/InboxCoach";
+import InboxLearner from "../../components/inbox/InboxLearner";
 import { promptContext } from "../../contexts/prompt";
 import "./AppInbox.scss";
 

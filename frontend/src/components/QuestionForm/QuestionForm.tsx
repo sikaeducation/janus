@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import TextArea from "../ui/TextArea";
 import "./QuestionForm.scss";
 import useIndicator from "../../hooks/use-indicator";
@@ -60,13 +60,13 @@ export default function QuestionForm({
   return (
     <div className="QuestionForm">
       <div className="prompt-container">
-        <AppContent className="prompt" isContained content={prompt} />
+        <Markdown className="prompt" isContained content={prompt} />
         {lastPerformance && getIndicator(lastPerformance)}
       </div>
       {!displayResponseForm &&
         !responsesShouldDisplay &&
         lastPerformance?.evaluation?.status === "accepted" && (
-          <AppContent content={lastPerformance.payload.response} />
+          <Markdown content={lastPerformance.payload.response} />
         )}
       {!displayResponseForm && typedPreviousPerformances.length > 0 && (
         <PreviousQuestionResponses

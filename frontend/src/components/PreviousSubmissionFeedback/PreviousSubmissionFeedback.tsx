@@ -1,6 +1,6 @@
 import { format } from "date-fns";
 import useIndicator from "../../hooks/use-indicator";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import "./PreviousSubmissionFeedback.scss";
 
 const formatDateTime = (dateTime: string) => {
@@ -32,7 +32,7 @@ export default function PreviousSubmissionFeedback({ performances }: props) {
               {getIndicator(performance)}
             </div>
             {performance.evaluation?.feedback ? (
-              <AppContent
+              <Markdown
                 className="feedback"
                 isContained
                 content={performance.evaluation?.feedback}

@@ -7,7 +7,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
 import "./QuestionEvaluationForm.scss";
 
@@ -57,7 +57,7 @@ export default function QuestionEvaluationForm({
       {performance.payload.answer && (
         <div className="answer-wrapper">
           <strong>Answer: </strong>
-          <AppContent
+          <Markdown
             className="answer"
             isContained
             content={performance.payload.answer}
@@ -65,7 +65,7 @@ export default function QuestionEvaluationForm({
         </div>
       )}
       {performance.payload.response && (
-        <AppContent
+        <Markdown
           isContained
           className="response"
           content={performance.payload.response}

@@ -3,7 +3,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { format } from "date-fns";
 import Gravatar from "react-gravatar";
 import useIndicator from "../../hooks/use-indicator";
-import AppContent from "../AppContent";
+import Markdown from "../ui/Markdown";
 import "./PreviousQuestionResponses.scss";
 
 type Props = {
@@ -48,7 +48,7 @@ export default function PreviousQuestionResponses({
                     <time>{formatDateTime(performance.createdAt)}</time>
                     {getIndicator(performance)}
                   </div>
-                  <AppContent
+                  <Markdown
                     isContained
                     content={performance.payload.response}
                     className="previous-response-content"
@@ -59,7 +59,7 @@ export default function PreviousQuestionResponses({
                         email={performance.evaluation.evaluatorId}
                         className="evaluator-avatar"
                       />
-                      <AppContent
+                      <Markdown
                         isContained
                         content={performance.evaluation.feedback}
                         className="previous-feedback-content"
