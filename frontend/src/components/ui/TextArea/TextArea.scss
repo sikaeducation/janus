@@ -3,7 +3,7 @@
 @use "../../../styles/typography";
 @use "../../../styles/colors";
 
-.TextAreaResponse {
+.TextArea {
   label {
     @include typography.breadcrumb-font;
     margin-bottom: sizes.$s2;

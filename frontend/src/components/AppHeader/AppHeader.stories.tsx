@@ -11,4 +11,4 @@ export default {
 
 const Template: ComponentStory<typeof AppHeader> = () => <AppHeader />;
 
-export const Default = Template.bind({});
+export const LoggedOut = Template.bind({});
