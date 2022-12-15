@@ -23,15 +23,8 @@
   }
   .submission-section {
     text-align: right;
-    button {
+    .Button {
       display: inline-block;
-      cursor: pointer;
-      border: none;
-      border-radius: borders.$radius;
-      background-color: colors.$failure-9;
-      color: colors.$failure-1;
-      @include buttons.button-shadow-small;
-      padding: sizes.$s2 sizes.$s4;
     }
   }
 }
