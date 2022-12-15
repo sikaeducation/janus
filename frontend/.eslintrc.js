@@ -10,6 +10,7 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
+    "plugin:jsx-a11y/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -19,7 +20,13 @@ module.exports = {
     ecmaVersion: 13,
     sourceType: "module",
   },
-  plugins: ["react", "@typescript-eslint", "react-hooks", "prettier"],
+  plugins: [
+    "react",
+    "@typescript-eslint",
+    "react-hooks",
+    "prettier",
+    "jsx-a11y",
+  ],
   rules: {
     "react/jsx-filename-extension": [
       1,
