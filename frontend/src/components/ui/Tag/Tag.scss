@@ -1,0 +1,12 @@
+@use "../../../styles/sizes";
+@use "../../../styles/borders";
+@use "../../../styles/colors";
+@use "../../../styles/typography";
+
+.Tag {
+  color: colors.$grey-3;
+  font-size: sizes.$f3;
+  background-color: colors.$grey-9;
+  padding: 0 sizes.$s3 sizes.$s1 sizes.$s3;
+  border-radius: borders.$radius;
+}
