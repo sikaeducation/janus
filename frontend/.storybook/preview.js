@@ -8,4 +8,12 @@ export const parameters = {
       date: /Date$/,
     },
   },
+  a11y: {
+    config: {
+      rules: [{
+        id: "color-contrast",
+        selector: "*:not(.Button.primary-button)",
+      }]
+    }
+  }
 }
