@@ -3,6 +3,10 @@
 @use "../../styles/colors";
 
 .EvaluatorQuestionSelector {
+  label {
+    color: colors.$grey-4;
+    margin-bottom: sizes.$s2;
+  }
   select {
     padding: sizes.$s2;
     border-radius: borders.$radius;

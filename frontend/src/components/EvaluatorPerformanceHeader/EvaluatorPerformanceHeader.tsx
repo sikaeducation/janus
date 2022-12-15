@@ -11,10 +11,11 @@ export default function EvaluatorPerformanceHeader({ setAll }: props) {
         <th>&nbsp;</th>
         <th>&nbsp;</th>
         <th>&nbsp;</th>
-        <th>&nbsp;</th>
+        <th id="feedback-label">Feedback</th>
         <th className="evaluate-all">
           <button
             className="rejected"
+            id="rejected"
             type="button"
             onClick={() => setAll("rejected")}
           >
@@ -24,6 +25,7 @@ export default function EvaluatorPerformanceHeader({ setAll }: props) {
         <th className="evaluate-all">
           <button
             className="accepted"
+            id="accepted"
             type="button"
             onClick={() => setAll("accepted")}
           >

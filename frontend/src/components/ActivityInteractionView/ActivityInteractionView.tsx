@@ -1,5 +1,6 @@
 import "./ActivityInteractionView.scss";
 import { last } from "lodash/fp";
+import Button from "../ui/Button";
 
 type props = {
   postPerformance: (performance: rawPerformance) => void;
@@ -44,17 +45,14 @@ export default function ActivityInteractionView({
       <p>After reading this, I feel:</p>
       <ul>
         {buttons.map(({ label, confidenceLevel }) => (
-          <li key={confidenceLevel}>
-            <button
-              type="button"
-              onClick={handleClick(confidenceLevel)}
-              data-confidence-level={confidenceLevel}
-              className={
-                confidenceLevel === currentConfidenceLevel ? "active" : ""
-              }
+          <li key={confidenceLevel} data-confidence-level={confidenceLevel}>
+            <Button
+              type="secondary"
+              action={handleClick(confidenceLevel)}
+              disabled={confidenceLevel === currentConfidenceLevel}
             >
               {label}
-            </button>
+            </Button>
           </li>
         ))}
       </ul>

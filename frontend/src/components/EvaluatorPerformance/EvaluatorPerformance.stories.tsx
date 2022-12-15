@@ -39,3 +39,16 @@ Default.args = {
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) =>
       console.log({ learnerId, event }),
 };
+
+Default.parameters = {
+  a11y: {
+    config: {
+      rules: [
+        {
+          id: "label",
+          selector: "*:not(select, input)",
+        },
+      ],
+    },
+  },
+};

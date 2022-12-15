@@ -30,21 +30,21 @@ export default function DataTable<
 
   return (
     <div className="DataTable" role="grid">
-      <div
-        role="row"
-        style={{ gridTemplateColumns: columnWidths }}
-        className="table-row table-headers"
-      >
-        {headers.length
-          ? headers.map((header) => (
-              <span key={header} className="table-header">
-                {header}
-              </span>
-            ))
-          : null}
-      </div>
+      {headers.length ? (
+        <div
+          role="row"
+          style={{ gridTemplateColumns: columnWidths }}
+          className="table-row table-headers"
+        >
+          {headers.map((header) => (
+            <span key={header} className="table-header" role="cell">
+              {header}
+            </span>
+          ))}
+        </div>
+      ) : null}
 
-      {tableData.length
+      {tableData.length > 0
         ? tableData.map((row) => (
             <div
               key={row.id}
@@ -58,6 +58,7 @@ export default function DataTable<
                       title={row[key] === "string" ? `${row[key]}` : undefined}
                       className="field"
                       key={key}
+                      role="cell"
                     >
                       {row[key || ""] ? row[key] : null}
                     </span>

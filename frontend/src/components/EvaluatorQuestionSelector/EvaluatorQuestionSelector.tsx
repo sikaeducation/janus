@@ -13,7 +13,9 @@ export default function EvaluatorQuestionSelector({
 }: props) {
   return (
     <form className="EvaluatorQuestionSelector">
+      <label htmlFor="slug-selector">Slug</label>
       <select
+        id="slug-selector"
         value={selectedSlug}
         onChange={(event) => setSelectedSlug(event.target.value)}
       >

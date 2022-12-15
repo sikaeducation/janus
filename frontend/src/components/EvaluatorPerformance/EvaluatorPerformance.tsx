@@ -47,6 +47,7 @@ export default function EvaluatorPerformance({
         <input
           onChange={updateFeedback(performance?.userId)}
           value={feedback}
+          aria-labelledby="feedback-label"
         />
       </td>
       <td className="evaluation-reject">
@@ -56,6 +57,7 @@ export default function EvaluatorPerformance({
           checked={status === "rejected"}
           value="rejected"
           onChange={updateStatus(learnerId)}
+          aria-labelledby="rejected"
         />
       </td>
       <td className="evaluation-accept">
@@ -65,6 +67,7 @@ export default function EvaluatorPerformance({
           checked={status === "accepted"}
           value="accepted"
           onChange={updateStatus(learnerId)}
+          aria-labelledby="accepted"
         />
       </td>
     </tr>

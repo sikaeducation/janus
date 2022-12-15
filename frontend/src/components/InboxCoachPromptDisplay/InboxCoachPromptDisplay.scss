@@ -7,7 +7,7 @@
 .InboxCoachPromptDisplay {
   .slug {
     @include typography.breadcrumb-font;
-    color: colors.$grey-8;
+    color: colors.$grey-4;
     margin-bottom: sizes.$s4;
   }
   .existing-prompt {
@@ -15,15 +15,10 @@
     margin-bottom: sizes.$s4;
     padding: sizes.$s4;
   }
-  .tag {
-    color: colors.$grey-6;
+  .tags > li {
     display: inline-block;
-    background-color: colors.$grey-9;
-    padding: 0 sizes.$s4;
-    @include typography.breadcrumb-font;
-    border-radius: borders.$radius;
-    & + .tag {
-      margin-left: sizes.$s2;
+    &+li {
+      margin-left: sizes.$s1;
     }
   }
   .submission-section {

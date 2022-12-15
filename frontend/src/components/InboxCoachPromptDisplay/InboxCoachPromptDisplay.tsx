@@ -2,6 +2,8 @@ import { useContext } from "react";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
 import InboxResponses from "../InboxResponses";
+import Button from "../ui/Button";
+import Tag from "../ui/Tag";
 import "./InboxCoachPromptDisplay.scss";
 
 type props = {
@@ -31,8 +33,8 @@ export default function CoachInboxPromptDisplay({
       {tags.length > 0 && (
         <ul className="tags">
           {tags.map((tag) => (
-            <li className="tag" key={tag}>
-              {tag}
+            <li key={tag}>
+              <Tag>{tag}</Tag>
             </li>
           ))}
         </ul>
@@ -40,9 +42,9 @@ export default function CoachInboxPromptDisplay({
       {slug && <div className="slug">{slug}</div>}
       <AppContent className="existing-prompt" isContained content={prompt} />
       <div className="submission-section">
-        <button onClick={handleEndPrompt} type="button">
+        <Button type="primary" actionType="failure" action={handleEndPrompt}>
           End Prompt
-        </button>
+        </Button>
       </div>
       {promptPerformances.length > 0 && (
         <InboxResponses performances={promptPerformances} />
