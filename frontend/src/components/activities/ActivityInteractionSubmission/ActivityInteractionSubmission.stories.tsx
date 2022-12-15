@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ActivityInteractionSubmission from ".";
 
 export default {
-  title: "Content/ActivityInteractionSubmission",
+  title: "Activities/ActivityInteractionSubmission",
   component: ActivityInteractionSubmission,
 } as ComponentMeta<typeof ActivityInteractionSubmission>;
 

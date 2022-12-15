@@ -4,7 +4,7 @@ import { withRouter } from "storybook-addon-react-router-v6";
 import AppHeader from ".";
 
 export default {
-  title: "Landmarks/AppHeader",
+  title: "App/AppHeader",
   component: AppHeader,
   decorators: [withRouter],
 } as ComponentMeta<typeof AppHeader>;

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import ActivityInteractionView from ".";
 
 export default {
-  title: "Content/ActivityInteractionView",
+  title: "Activities/ActivityInteractionView",
   component: ActivityInteractionView,
 } as ComponentMeta<typeof ActivityInteractionView>;
 

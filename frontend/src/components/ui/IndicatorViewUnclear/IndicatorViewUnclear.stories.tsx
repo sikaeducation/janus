@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorViewUnclear from ".";
 
 export default {
-  title: "Icons/IndicatorViewUnclear",
+  title: "Activities/Indicators/IndicatorViewUnclear",
   component: IndicatorViewUnclear,
 } as ComponentMeta<typeof IndicatorViewUnclear>;
 

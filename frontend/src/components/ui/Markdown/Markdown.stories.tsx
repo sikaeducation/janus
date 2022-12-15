@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Markdown from ".";
 
 export default {
-  title: "Content/AppContent",
+  title: "UI/Markdown",
   component: Markdown,
 } as ComponentMeta<typeof Markdown>;
 

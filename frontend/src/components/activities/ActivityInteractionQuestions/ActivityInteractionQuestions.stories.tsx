@@ -5,7 +5,7 @@ import ActivityInteractionQuestions from ".";
 import { programContext } from "../../../contexts/program";
 
 export default {
-  title: "Content/ActivityInteractionQuestions",
+  title: "Activities/ActivityInteractionQuestions",
   component: ActivityInteractionQuestions,
   decorators: [
     withReactContext({

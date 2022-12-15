@@ -4,7 +4,7 @@ import { withRouter } from "storybook-addon-react-router-v6";
 import ActivityNavigation from ".";
 
 export default {
-  title: "Content/ActivityNavigation",
+  title: "Activities/ActivityNavigation",
   component: ActivityNavigation,
   decorators: [withRouter],
 } as ComponentMeta<typeof ActivityNavigation>;

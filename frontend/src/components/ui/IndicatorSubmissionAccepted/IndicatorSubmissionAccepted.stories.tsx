@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorSubmissionAccepted from ".";
 
 export default {
-  title: "Icons/IndicatorSubmissionAccepted",
+  title: "Activities/Indicators/IndicatorSubmissionAccepted",
   component: IndicatorSubmissionAccepted,
 } as ComponentMeta<typeof IndicatorSubmissionAccepted>;
 

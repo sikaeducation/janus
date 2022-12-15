@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import AppFooter from ".";
 
 export default {
-  title: "Landmarks/AppFooter",
+  title: "App/AppFooter",
   component: AppFooter,
 } as ComponentMeta<typeof AppFooter>;
 

@@ -1,8 +1,8 @@
-@use "../../styles/typography";
-@use "../../styles/sizes";
-@use "../../styles/colors";
+@use "../../../styles/typography";
+@use "../../../styles/sizes";
+@use "../../../styles/colors";
 
-.CrumbNavigation {
+.Breadcrumbs {
   @include typography.breadcrumb-font;
   margin-bottom: sizes.$s6;
   @media (max-width: sizes.$small-breakpoint){

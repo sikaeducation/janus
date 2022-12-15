@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorQuestion from ".";
 
 export default {
-  title: "Icons/IndicatorQuestion",
+  title: "Activities/Indicators/IndicatorQuestion",
   component: IndicatorQuestion,
 } as ComponentMeta<typeof IndicatorQuestion>;
 

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorDeferred from ".";
 
 export default {
-  title: "Icons/IndicatorDeferred",
+  title: "Activities/Indicators/IndicatorDeferred",
   component: IndicatorDeferred,
 } as ComponentMeta<typeof IndicatorDeferred>;
 

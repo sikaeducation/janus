@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorViewConfident from ".";
 
 export default {
-  title: "Icons/IndicatorViewConfident",
+  title: "Activities/Indicators/IndicatorViewConfident",
   component: IndicatorViewConfident,
 } as ComponentMeta<typeof IndicatorViewConfident>;
 

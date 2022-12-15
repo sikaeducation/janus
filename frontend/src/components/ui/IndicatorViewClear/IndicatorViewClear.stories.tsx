@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import IndicatorViewClear from ".";
 
 export default {
-  title: "Icons/IndicatorViewClear",
+  title: "Activities/Indicators/IndicatorViewClear",
   component: IndicatorViewClear,
 } as ComponentMeta<typeof IndicatorViewClear>;
 

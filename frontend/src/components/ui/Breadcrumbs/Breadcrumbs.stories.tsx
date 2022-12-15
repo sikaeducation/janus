@@ -1,16 +1,16 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { withRouter } from "storybook-addon-react-router-v6";
 
-import CrumbNavigation from ".";
+import Breadcrumbs from ".";
 
 export default {
-  title: "Links/CrumbNavigation",
-  component: CrumbNavigation,
+  title: "UI/Breadcrumbs",
+  component: Breadcrumbs,
   decorators: [withRouter],
-} as ComponentMeta<typeof CrumbNavigation>;
+} as ComponentMeta<typeof Breadcrumbs>;
 
-const Template: ComponentStory<typeof CrumbNavigation> = (args) => (
-  <CrumbNavigation {...args} />
+const Template: ComponentStory<typeof Breadcrumbs> = (args) => (
+  <Breadcrumbs {...args} />
 );
 
 export const NoLinks = Template.bind({});
