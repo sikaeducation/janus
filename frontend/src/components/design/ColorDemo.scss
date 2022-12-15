@@ -1,14 +1,17 @@
-@use "../../../../styles/colors";
+@use "../../styles/colors";
 
 .ColorDemo {
   width: 100%;
   ol {
+    list-style-type: none;
+    padding-left: 0;
     display: grid;
     grid-template-columns: repeat(9, 30px);
   }
   li {
     height: 30px;
     width: 30px;
+    margin: 0 !important;
   }
   .tones {
     display: grid;

@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useContext, useState } from "react";
 import { performanceContext } from "../../contexts/performance";
 import AppContent from "../AppContent";
-import TextAreaResponse from "../ui/TextAreaResponse";
+import TextArea from "../ui/TextArea";
 import "./QuestionForm.scss";
 import useIndicator from "../../hooks/use-indicator";
 import PreviousQuestionResponses from "../PreviousQuestionResponses";
@@ -86,7 +86,7 @@ export default function QuestionForm({
       )}
       {(displayResponseForm || !lastPerformance) && (
         <form onSubmit={handleSubmit}>
-          <TextAreaResponse
+          <TextArea
             id={id}
             label="Response"
             content={response}

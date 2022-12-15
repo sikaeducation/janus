@@ -1,0 +1,63 @@
+import { Meta, IconGallery, IconItem } from "@storybook/addon-docs/";
+import { Default as IndicatorDeferred } from "../ui/IndicatorDeferred/IndicatorDeferred.stories";
+import { RejectedPendingAccepted as IndicatorQuestion } from "../ui/IndicatorQuestion/IndicatorQuestion.stories";
+import { Default as IndicatorSubmissionAccepted } from "../ui/IndicatorSubmissionAccepted/IndicatorSubmissionAccepted.stories";
+import { Default as IndicatorSubmissionPending } from "../ui/IndicatorSubmissionPending/IndicatorSubmissionPending.stories";
+import { Default as IndicatorSubmissionRejected } from "../ui/IndicatorSubmissionRejected/IndicatorSubmissionRejected.stories";
+import { Default as IndicatorViewClear } from "../ui/IndicatorViewClear/IndicatorViewClear.stories";
+import { Default as IndicatorViewConfident } from "../ui/IndicatorViewConfident/IndicatorViewConfident.stories";
+import { Default as IndicatorViewUnclear } from "../ui/IndicatorViewUnclear/IndicatorViewUnclear.stories";
+import { Checkmark, Article } from "../ui/Icon/Icon.stories";
+
+<Meta title="Design/Iconography" />
+
+# Iconography
+
+<IconGallery>
+  {[
+    {
+      label: "Article",
+      Component: Article,
+    },
+    {
+      label: "Checkmark",
+      Component: Checkmark,
+    },
+    {
+      label: "Deferred",
+      Component: IndicatorDeferred,
+    },
+    {
+      label: "Question",
+      Component: IndicatorQuestion,
+    },
+    {
+      label: "Submission Accepted",
+      Component: IndicatorSubmissionAccepted,
+    },
+    {
+      label: "Submission Pending",
+      Component: IndicatorSubmissionPending,
+    },
+    {
+      label: "Submission Rejected",
+      Component: IndicatorSubmissionRejected,
+    },
+    {
+      label: "Clear",
+      Component: IndicatorViewClear,
+    },
+    {
+      label: "Confident",
+      Component: IndicatorViewConfident,
+    },
+    {
+      label: "Unclear",
+      Component: IndicatorViewUnclear,
+    },
+  ].map(({ label, Component }) => (
+    <IconItem name={label}>
+      <Component {...Component.args} />
+    </IconItem>
+  ))}
+</IconGallery>

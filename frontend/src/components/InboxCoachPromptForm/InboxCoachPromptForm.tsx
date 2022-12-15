@@ -1,4 +1,4 @@
-import TextAreaResponse from "../ui/TextAreaResponse";
+import TextArea from "../ui/TextArea";
 import "./InboxCoachPromptForm.scss";
 
 type props = {
@@ -41,7 +41,7 @@ export default function InboxCoachPromptForm({
         }}
         value={tagString}
       />
-      <TextAreaResponse
+      <TextArea
         id="question-prompt"
         label="Question prompt"
         content={prompt}

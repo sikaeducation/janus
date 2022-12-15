@@ -1,17 +1,16 @@
 import { ReactNode, useState } from "react";
 import "./ActivityManagerView.scss";
-import ActivityIcon from "../../components/ui/ActivityIcon";
+import Icon from "../../components/ui/Icon";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
 import DataTable from "../../components/ui/DataTable";
 import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";
-import Icon from "../../components/ui/Icon";
 import { fields, skeletonRows } from "./table";
 import { useGetActivitiesQuery } from "../../slices/apiSlice";
 
 const activityTypes = {
-  Article: <ActivityIcon activityType="Article" />,
+  Article: <Icon type="article" />,
 };
 
 type FormattedActivity = Activity & {

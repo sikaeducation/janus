@@ -73,7 +73,7 @@ module.exports = {
   },
   overrides: [
     {
-      files: ["**/*.stories.*"],
+      files: ["**/*.stories.*", "**/ui/demo/**/*"],
       rules: {
         "import/no-anonymous-default-export": "off",
         "react/function-component-definition": "off",
@@ -81,6 +81,7 @@ module.exports = {
         "import/no-extraneous-dependencies": "off",
         "@typescript-eslint/no-empty-function": "off",
         "no-console": "off",
+        "react/jsx-filename-extension": "off",
       },
     },
   ],

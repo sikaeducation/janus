@@ -1,5 +1,4 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import "./TextAreaResponse.scss";
+import "./TextArea.scss";
 
 type props = {
   content: string;
@@ -9,16 +8,15 @@ type props = {
   isRequired?: boolean;
 };
 
-export default function TextAreaResponse({
+export default function TextArea({
   id,
   label,
   content,
   action,
   isRequired,
-  ...props
 }: props) {
   return (
-    <div className="TextAreaResponse">
+    <div className="TextArea">
       <label htmlFor={id}>{label}</label>
       <textarea
         id={id}
@@ -27,7 +25,6 @@ export default function TextAreaResponse({
         onChange={(event) => {
           action(event.target.value);
         }}
-        {...props}
       />
     </div>
   );

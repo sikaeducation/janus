@@ -1,24 +1,26 @@
 import "./Icon.scss";
-import { faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faBookOpen, faCheck } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
 
-type IconType = "checkmark";
+type IconType = "checkmark" | "article";
 
 type Props = {
   type: IconType;
 };
 
 const classes = {
-  checkmark: faCheck,
+  checkmark: { title: "Checkmark", Component: faCheck },
+  article: { title: "Article", Component: faBookOpen },
 } as const;
 
 export default function Icon({ type }: Props) {
+  const { Component, title } = classes[type];
   return (
     <FontAwesomeIcon
-      icon={classes[type]}
+      icon={Component}
       className={classNames({ Icon: true, [type]: true })}
-      title="Checkmark"
+      title={title ?? type}
     />
   );
 }

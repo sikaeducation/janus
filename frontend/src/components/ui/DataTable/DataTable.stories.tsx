@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import DataTable from ".";
 
 export default {
-  title: "Tables/DataTable",
+  title: "UI/DataTable",
   component: DataTable,
 } as ComponentMeta<typeof DataTable>;
 
