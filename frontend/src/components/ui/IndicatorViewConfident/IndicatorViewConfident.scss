@@ -5,10 +5,9 @@
 .IndicatorViewConfident {
   font-weight: 700;
   font-size: sizes.$f4;
-  padding: 0 sizes.$s1;
+  padding: 2px;
   border-radius: borders.$radius;
   background-color: colors.$success-5;
   color: colors.$white;
-  margin-left: sizes.$f4;
   width: initial!important; // Override FA default
 }

@@ -8,13 +8,11 @@
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  border-radius: borders.$radius;
-  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre {
+  padding: 0 sizes.$s2;
+  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre, pre > code {
     width: 100%;
   }
-  h1, h2, h3, h4, h5, h6, p, blockquote, li, th, td {
-  }
-  img, blockquote {
+  img, blockquote, code, pre {
     border-radius: borders.$radius;
   }
 
@@ -70,17 +68,9 @@
   }
 
   // Images
-  img, figure {
+  img {
     margin-bottom: sizes.$f4;
-  }
-  .image-container {
-    text-align: center;
-  }
-  img[src$="#small"] {
-    width: 30%;
-    @media (max-width: sizes.$small-breakpoint){
-      width: 50%;
-    }
+    max-width: 100%;
   }
   img[src$="#medium"] {
     width: 50%;
@@ -88,9 +78,17 @@
       width: 100%;
     }
   }
+  img[src$="#small"] {
+    width: 30%;
+    @media (max-width: sizes.$small-breakpoint){
+      width: 50%;
+    }
+  }
+  .image-container {
+    text-align: center;
+  }
 
-  // Code
-    // Code Block
+  // Code Block
   pre {
     margin-bottom: sizes.$f4;
     display: flex;
@@ -107,13 +105,17 @@
     }
     code {
       @include typography.code-font;
-      margin: sizes.$f7 0;
       font-size: sizes.$f4 !important; // Overrides inheritance
       white-space: pre-wrap !important; // Needed to override syntax highlighter
+      box-sizing: content-box;
+      &:not([class^="language-"]) {
+        padding: sizes.$s4;
+      }
     }
   }
-    // Inline
+  // Inline Code
   code {
+    @include typography.code-font;
     display: inline-block;
     padding: 0 4px;
     background-color: colors.$grey-10;

@@ -4,6 +4,7 @@
 @use "../../../styles/colors";
 
 .TextArea {
+  max-width: sizes.$s14;
   label {
     @include typography.breadcrumb-font;
     margin-bottom: sizes.$s2;

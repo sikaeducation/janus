@@ -175,3 +175,8 @@ MobileFields.args = {
     },
   ],
 };
+MobileFields.parameters = {
+  viewport: {
+    defaultViewport: "mobile1",
+  },
+};

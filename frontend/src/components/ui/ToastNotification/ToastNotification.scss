@@ -14,6 +14,9 @@ border-radius: borders.$radius;
   animation: toast sizes.$toast-duration;
   z-index: 10;
   box-shadow: 2px 2px 22px colors.$grey-8;
+  > p {
+    margin: 0;
+  }
 }
 
 @keyframes toast {
