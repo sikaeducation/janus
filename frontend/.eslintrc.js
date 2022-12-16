@@ -11,6 +11,7 @@ module.exports = {
     "plugin:prettier/recommended",
     "plugin:storybook/recommended",
     "plugin:jsx-a11y/recommended",
+    "plugin:jest-dom/recommended",
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -22,6 +23,7 @@ module.exports = {
   },
   plugins: [
     "react",
+    "jest-dom",
     "@typescript-eslint",
     "react-hooks",
     "prettier",
