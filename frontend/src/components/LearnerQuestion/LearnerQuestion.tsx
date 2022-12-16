@@ -39,15 +39,10 @@ export default function LearnerQuestion({ performance }: props) {
         </li>
       </ul>
       <div className="question-prompt-response">
-        <Markdown
-          className="prompt"
-          isContained
-          content={performance.payload.prompt}
-        />
+        <Markdown className="prompt" content={performance.payload.prompt} />
         {performance.evaluation && (
           <Markdown
             className="response"
-            isContained
             content={performance.payload.response}
           />
         )}
@@ -66,7 +61,6 @@ export default function LearnerQuestion({ performance }: props) {
           />
           <Markdown
             className="evaluation-feedback"
-            isContained
             content={performance.evaluation.feedback || ""}
           />
         </>

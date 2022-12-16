@@ -41,7 +41,7 @@ export default function EvaluatorPerformance({
         </time>
       </td>
       <td className="submission">
-        <Markdown isContained content={performance?.payload.response || ""} />
+        <Markdown content={performance?.payload.response || ""} />
       </td>
       <td className="feedback">
         <input

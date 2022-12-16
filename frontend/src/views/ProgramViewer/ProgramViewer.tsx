@@ -92,11 +92,7 @@ export default function ProgramViewer({ program }: props) {
           {tree}
         </ul>
         {currentPost ? (
-          <Markdown
-            className="post-content"
-            isContained
-            content={currentPost.content}
-          />
+          <Markdown className="post-content" content={currentPost.content} />
         ) : null}
       </div>
     </div>

@@ -20,15 +20,10 @@ import { programContext } from "../../../contexts/program";
 
 type props = {
   content: string;
-  isContained?: boolean;
   className?: string;
 };
 
-export default function AppContent({
-  content,
-  isContained,
-  className = "",
-}: props) {
+export default function AppContent({ content, className = "" }: props) {
   const {
     lastQuestionPerformancesBySlugByLearnerByQuestion,
     lastPerformanceBySlugByLearner,
@@ -40,7 +35,6 @@ export default function AppContent({
     <article
       className={classNames({
         AppContent: true,
-        contained: isContained,
         [className]: true,
       })}
     >
@@ -103,7 +97,7 @@ export default function AppContent({
                   }
                 : lastNonQuestionPerformance;
 
-            return (
+            return href ? (
               <>
                 <Link className="internal-link" to={href || ""}>
                   {children}
@@ -111,6 +105,8 @@ export default function AppContent({
                 {lastPerformance &&
                   getIndicator(lastPerformance as postedPerformance)}
               </>
+            ) : (
+              <a href="https://sikaeducation.com">{children}</a>
             );
           },
           code: ({

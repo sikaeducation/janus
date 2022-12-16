@@ -84,7 +84,6 @@ export default function EvaluationViewer() {
                   {performance.evaluation?.feedback ? (
                     <Markdown
                       className="feedback"
-                      isContained
                       content={performance.evaluation.feedback}
                     />
                   ) : (
@@ -94,12 +93,10 @@ export default function EvaluationViewer() {
                     <div>
                       <Markdown
                         className="prompt"
-                        isContained
                         content={performance.payload.prompt}
                       />
                       <Markdown
                         className="response"
-                        isContained
                         content={performance.payload.response}
                       />
                     </div>

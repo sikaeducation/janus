@@ -31,12 +31,10 @@ export default function PreviousQuestionFeedback({ performances }: props) {
             </div>
             <Markdown
               className="response"
-              isContained
               content={performance.payload.response}
             />
             {performance.evaluation?.feedback && (
               <Markdown
-                isContained
                 className="feedback"
                 content={performance.evaluation.feedback}
               />

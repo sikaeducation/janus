@@ -9,27 +9,36 @@
   flex-flow: column nowrap;
   align-items: center;
   border-radius: borders.$radius;
-  @media (max-width: sizes.$small-breakpoint){
-    width: 100%;
-  }
-  &:not(.contained){
-    pre {
-      > div {
-        box-sizing: content-box;
-      }
-    }
-  }
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre {
     width: 100%;
   }
-  h1, h2, h3, h4, h5, h6, blockquote, li, p, th, td {
-    code {
-      display: inline-block;
-      padding: 0 4px;
-      background-color: colors.$grey-10;
-      font-size: sizes.$f4;
-    }
+  h1, h2, h3, h4, h5, h6, p, blockquote, li, th, td {
   }
+  img, blockquote {
+    border-radius: borders.$radius;
+  }
+
+  // Typography
+  h1 {
+    @include typography.heading-font-1;
+  }
+  h2 {
+    @include typography.heading-font-2;
+  }
+  h3 {
+    @include typography.heading-font-3;
+  }
+  h4, h5, h6 {
+    @include typography.heading-font-4;
+  }
+  strong {
+    font-weight: 700;
+  }
+  em {
+    font-style: italic;
+  }
+
+  // Links
   .internal-link {
     & + em {
       display: none;
@@ -43,34 +52,26 @@
     font-size: sizes.$f2;
     color: colors.$grey-5;
   }
-  pre {
-    margin-bottom: sizes.$f4;
-    display: flex;
-    flex-flow: column nowrap;
-    align-items: center;
-    white-space: pre-wrap;
-    > div {
-      width: 100%;
-      border-radius: borders.$radius !important;
-    }
-    code {
-      margin: sizes.$f7 0;
-      font-size: sizes.$f4 !important; // Overrides inheritance
-      white-space: pre-wrap !important; // Needed to override syntax highlighter
-    }
-  }
-  img, figure {
-    width: 110%;
-    margin-bottom: sizes.$f4;
+
+  // Lists
+  ul, ol {
+    padding-left: sizes.$s5;
+    margin-bottom: 0;
     @media (max-width: sizes.$small-breakpoint){
-      width: 100%;
+      padding-left: sizes.$s5;
     }
   }
-  &.contained {
-    padding: 0;
-    pre, img, figure {
-      width: 100%;
-    }
+  ul {
+    list-style: square;
+  }
+  ol {
+    list-style: number;
+    list-style-position: outside;
+  }
+
+  // Images
+  img, figure {
+    margin-bottom: sizes.$f4;
   }
   .image-container {
     text-align: center;
@@ -87,64 +88,39 @@
       width: 100%;
     }
   }
-  img, blockquote {
-    border-radius: borders.$radius;
-  }
-  h1 {
-    @include typography.heading-font-1;
-  }
-  h2 {
-    @include typography.heading-font-2;
-  }
-  h3 {
-    @include typography.heading-font-3;
-  }
-  h4, h5, h6 {
-    @include typography.heading-font-4;
-  }
-  blockquote {
-    background-color: colors.$grey-9;
-    padding: sizes.$f5;
-    > p {
-      padding: 0;
-      margin: 0;
-    }
-  }
-  code {
-    @include typography.code-font;
-  }
-  strong {
-    font-weight: 700;
-  }
-  em {
-    font-style: italic;
-  }
-  ul {
-    list-style: square;
-  }
-  ol {
-    list-style: none;
-    list-style-position: outside;
-    > li {
-      counter-increment: ordered-list-item;
-      &::before {
-        content: counter(ordered-list-item) ". ";
-        margin-left: -1em;
-        font-weight: 700;
+
+  // Code
+    // Code Block
+  pre {
+    margin-bottom: sizes.$f4;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    white-space: pre-wrap;
+    > div {
+      width: 100%;
+      border-radius: borders.$radius !important;
+      box-sizing: content-box;
+      @media (max-width: sizes.$small-breakpoint){
+        box-sizing: border-box;
       }
     }
-  }
-  ul ul, ol ol, ul ol, ol ul, li ol, li ul {
-    padding-left: sizes.$s6;
-    margin-bottom: 0;
-    @media (max-width: sizes.$small-breakpoint){
-      margin-left: sizes.$s5;
+    code {
+      @include typography.code-font;
+      margin: sizes.$f7 0;
+      font-size: sizes.$f4 !important; // Overrides inheritance
+      white-space: pre-wrap !important; // Needed to override syntax highlighter
     }
   }
-  hr {
-    width: 66%;
-    border: 0.5px solid colors.$grey-8;
+    // Inline
+  code {
+    display: inline-block;
+    padding: 0 4px;
+    background-color: colors.$grey-10;
+    font-size: sizes.$f4;
   }
+
+  // Tables
   table {
     margin-bottom: sizes.$s5;
     border-collapse: separate;
@@ -164,6 +140,8 @@
       background-color: colors.$grey-10;
     }
   }
+
+  // Task list
   .contains-task-list {
     margin: sizes.$s5 0;
     .task-list-item {
@@ -175,5 +153,19 @@
         margin-right: sizes.$s3;
       }
     }
+  }
+
+  // Other
+  blockquote {
+    background-color: colors.$grey-9;
+    padding: sizes.$f5;
+    > p {
+      padding: 0;
+      margin: 0;
+    }
+  }
+  hr {
+    width: 66%;
+    border: 0.5px solid colors.$grey-8;
   }
 }

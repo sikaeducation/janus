@@ -34,7 +34,6 @@ export default function PreviousSubmissionFeedback({ performances }: props) {
             {performance.evaluation?.feedback ? (
               <Markdown
                 className="feedback"
-                isContained
                 content={performance.evaluation?.feedback}
               />
             ) : (

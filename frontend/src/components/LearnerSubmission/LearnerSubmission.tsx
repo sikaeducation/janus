@@ -58,7 +58,6 @@ export default function LearnerSubmission({ performance }: props) {
             size={40}
           />
           <Markdown
-            isContained
             content={performance?.evaluation?.feedback || ""}
             className="evaluation-feedback"
           />

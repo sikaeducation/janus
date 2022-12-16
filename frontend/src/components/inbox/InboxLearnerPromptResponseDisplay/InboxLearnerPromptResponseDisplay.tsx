@@ -13,7 +13,7 @@ export default function InboxLearnerPromptResponseDisplay({
   const { prompt } = currentBroadcast;
   return (
     <>
-      <AppContent className="prompt" isContained content={prompt} />
+      <AppContent className="prompt" content={prompt} />
       <AppContent className="response" content={response} />
     </>
   );

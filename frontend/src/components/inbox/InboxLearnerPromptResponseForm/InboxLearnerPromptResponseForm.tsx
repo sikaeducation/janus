@@ -22,7 +22,7 @@ export default function InboxLearnerPromptResponseForm({
 
   return (
     <div className="InboxLearnerPromptResponseForm">
-      <Markdown className="prompt" isContained content={prompt} />
+      <Markdown className="prompt" content={prompt} />
       <div className="submission-section">
         <form onSubmit={handleSubmit}>
           <label htmlFor="response">Response</label>

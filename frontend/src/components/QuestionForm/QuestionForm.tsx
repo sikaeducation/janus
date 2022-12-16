@@ -60,7 +60,7 @@ export default function QuestionForm({
   return (
     <div className="QuestionForm">
       <div className="prompt-container">
-        <Markdown className="prompt" isContained content={prompt} />
+        <Markdown className="prompt" content={prompt} />
         {lastPerformance && getIndicator(lastPerformance)}
       </div>
       {!displayResponseForm &&

@@ -24,7 +24,6 @@ export default function InboxResponses({ performances }: props) {
               <div>
                 <div className="username">{performance.userId}:</div>
                 <Markdown
-                  isContained
                   className="response-content"
                   content={performance.payload.response || ""}
                 />

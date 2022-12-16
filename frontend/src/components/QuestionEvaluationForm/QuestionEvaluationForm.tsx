@@ -57,19 +57,11 @@ export default function QuestionEvaluationForm({
       {performance.payload.answer && (
         <div className="answer-wrapper">
           <strong>Answer: </strong>
-          <Markdown
-            className="answer"
-            isContained
-            content={performance.payload.answer}
-          />
+          <Markdown className="answer" content={performance.payload.answer} />
         </div>
       )}
       {performance.payload.response && (
-        <Markdown
-          isContained
-          className="response"
-          content={performance.payload.response}
-        />
+        <Markdown className="response" content={performance.payload.response} />
       )}
       <label htmlFor="feedback">Feedback:</label>
       <textarea

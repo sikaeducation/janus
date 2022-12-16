@@ -20,12 +20,10 @@ export default function LearnerPrompt({
       <div className="prompt-response">
         <Markdown
           className="prompt"
-          isContained
           content={performance.payload.prompt || ""}
         />
         <Markdown
           className="response"
-          isContained
           content={performance.payload.response || ""}
         />
       </div>

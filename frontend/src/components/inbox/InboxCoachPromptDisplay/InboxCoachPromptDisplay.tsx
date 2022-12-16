@@ -40,7 +40,7 @@ export default function CoachInboxPromptDisplay({
         </ul>
       )}
       {slug && <div className="slug">{slug}</div>}
-      <AppContent className="existing-prompt" isContained content={prompt} />
+      <AppContent className="existing-prompt" content={prompt} />
       <div className="submission-section">
         <Button type="primary" actionType="failure" action={handleEndPrompt}>
           End Prompt

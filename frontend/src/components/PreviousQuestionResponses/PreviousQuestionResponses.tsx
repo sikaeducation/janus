@@ -49,7 +49,6 @@ export default function PreviousQuestionResponses({
                     {getIndicator(performance)}
                   </div>
                   <Markdown
-                    isContained
                     content={performance.payload.response}
                     className="previous-response-content"
                   />
@@ -60,7 +59,6 @@ export default function PreviousQuestionResponses({
                         className="evaluator-avatar"
                       />
                       <Markdown
-                        isContained
                         content={performance.evaluation.feedback}
                         className="previous-feedback-content"
                       />
