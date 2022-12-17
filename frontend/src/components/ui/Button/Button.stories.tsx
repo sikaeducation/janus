@@ -1,4 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { jest, expect } from "@storybook/jest";
+import { within, userEvent } from "@storybook/testing-library";
 
 import Button from ".";
 
@@ -9,10 +11,28 @@ export default {
 
 const Template: ComponentStory<typeof Button> = (args) => <Button {...args} />;
 
+export const Action = Template.bind({});
+const action = jest.fn();
+Action.args = {
+  type: "primary",
+  children: "Do it!",
+  action,
+};
+Action.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  expect(action).not.toHaveBeenCalled();
+
+  const button = await canvas.findByRole("button");
+  userEvent.click(button);
+
+  expect(action).toHaveBeenCalled();
+};
+
 export const PrimarySmall = Template.bind({});
 PrimarySmall.args = {
   type: "primary",
   children: "Do it!",
+  action,
 };
 PrimarySmall.storyName = "Primary - Small";
 
