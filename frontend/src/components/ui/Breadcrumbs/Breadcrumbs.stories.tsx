@@ -1,4 +1,6 @@
 import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { expect } from "@storybook/jest";
+import { within } from "@storybook/testing-library";
 import { withRouter } from "storybook-addon-react-router-v6";
 
 import Breadcrumbs from ".";
@@ -17,6 +19,13 @@ export const NoLinks = Template.bind({});
 NoLinks.args = {
   links: [],
 };
+NoLinks.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const elements = await canvas.queryByRole("listitem");
+
+  expect(elements).not.toBeInTheDocument();
+};
 
 export const OneLink = Template.bind({});
 OneLink.args = {
@@ -27,6 +36,13 @@ OneLink.args = {
       slug: "some-slug",
     },
   ],
+};
+OneLink.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const elements = await canvas.queryByRole("listitem");
+
+  expect(elements).not.toBeInTheDocument();
 };
 
 export const TwoLinks = Template.bind({});
@@ -43,6 +59,13 @@ TwoLinks.args = {
       slug: "some-other-slug",
     },
   ],
+};
+TwoLinks.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const elements = await canvas.findAllByRole("listitem");
+
+  expect(elements).toHaveLength(2);
 };
 
 export const MultipleLinks = Template.bind({});
@@ -64,4 +87,11 @@ MultipleLinks.args = {
       slug: "yet-another-slug",
     },
   ],
+};
+MultipleLinks.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+
+  const elements = await canvas.findAllByRole("listitem");
+
+  expect(elements).toHaveLength(4);
 };
