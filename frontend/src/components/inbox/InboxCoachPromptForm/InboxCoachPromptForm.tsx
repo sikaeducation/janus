@@ -44,7 +44,7 @@ export default function InboxCoachPromptForm({
       <TextArea
         id="question-prompt"
         label="Question prompt"
-        content={prompt}
+        value={prompt}
         action={setPrompt}
         isRequired
       />

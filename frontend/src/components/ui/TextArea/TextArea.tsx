@@ -1,7 +1,7 @@
 import "./TextArea.scss";
 
 type props = {
-  content: string;
+  value: string;
   action: (payload: string) => void;
   id: string;
   label: string;
@@ -11,7 +11,7 @@ type props = {
 export default function TextArea({
   id,
   label,
-  content,
+  value,
   action,
   isRequired,
 }: props) {
@@ -20,7 +20,7 @@ export default function TextArea({
       <label htmlFor={id}>{label}</label>
       <textarea
         id={id}
-        value={content}
+        value={value}
         required={isRequired}
         onChange={(event) => {
           action(event.target.value);

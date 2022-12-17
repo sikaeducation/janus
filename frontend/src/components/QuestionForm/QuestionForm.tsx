@@ -89,7 +89,7 @@ export default function QuestionForm({
           <TextArea
             id={id}
             label="Response"
-            content={response}
+            value={response}
             action={setResponse}
           />
           <div className="actions">
