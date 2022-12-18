@@ -9,6 +9,9 @@ import App from "./App";
 import store from "./store";
 import reportWebVitals from "./reportWebVitals";
 
+// eslint-disable-next-line
+console.log("Environment:");
+// eslint-disable-next-line
 console.table(process.env);
 
 ReactDOM.render(

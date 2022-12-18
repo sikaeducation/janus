@@ -17,14 +17,12 @@
 
 @mixin form-control {
   display: block;
-  padding: sizes.$s1 0;
+  max-width: sizes.$s14;
   font-size: sizes.$f3;
-  border: none;
-  border-bottom: 1px solid colors.$primary-7;
   background-color: colors.$white;
-  &:focus {
-    border-bottom: 3px solid colors.$primary-5;
-    outline: none;
+  label {
+    color: colors.$grey-4;
+    margin-bottom: sizes.$s1;
   }
 }
 

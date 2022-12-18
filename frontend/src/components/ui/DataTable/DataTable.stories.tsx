@@ -114,17 +114,17 @@ LongField.args = {
   fields: [
     {
       header: "Header 1",
-      proportion: "30%",
+      proportion: "auto",
       key: "header_1",
     },
     {
       header: "Header 2",
-      proportion: "40%",
+      proportion: "1fr",
       key: "header_2",
     },
     {
       header: "Header 3",
-      proportion: "30%",
+      proportion: "20%",
       key: "header_3",
     },
   ],

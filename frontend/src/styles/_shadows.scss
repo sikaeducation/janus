@@ -5,7 +5,7 @@
   &:active {
     box-shadow: 0 -1px 0 colors.$grey-8;
     position: relative;
-    top: 20px;
+    top: 1px;
   }
   &.failure {
     box-shadow: 0 1px 0 colors.$failure-6;

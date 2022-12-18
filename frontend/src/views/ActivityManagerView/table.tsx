@@ -5,21 +5,21 @@ export const fields = [
     header: "Type",
     key: "type",
     proportion: {
-      large: "5%",
+      large: "2em",
     },
   },
   {
     header: "Live",
     key: "publishedIcon",
     proportion: {
-      large: "5%",
+      large: "2em",
     },
   },
   {
     header: "Name",
     key: "title",
     proportion: {
-      large: "40%",
+      large: "20em",
       small: "100%",
     },
   },
@@ -27,7 +27,7 @@ export const fields = [
     header: "Description",
     key: "description",
     proportion: {
-      large: "50%",
+      large: "1fr",
     },
   },
 ];
@@ -39,4 +39,6 @@ const skeletonRow = {
   description: <Skeleton />,
 };
 
-export const skeletonRows = Array(10).fill(skeletonRow);
+export const skeletonRows = Array(10)
+  .fill(skeletonRow)
+  .map((row, index) => ({ ...row, id: index }));

@@ -2,22 +2,18 @@
 @use "../../../styles/borders";
 @use "../../../styles/typography";
 @use "../../../styles/colors";
+@use "../../../styles/forms";
 
 .TextArea {
-  max-width: sizes.$s14;
-  label {
-    @include typography.breadcrumb-font;
-    margin-bottom: sizes.$s2;
-  }
+  @include forms.form-control;
   textarea {
     @include typography.code-font;
-    border-radius: borders.$radius;
-    border: 1px solid colors.$grey-6;
+    @include borders.trace;
+    font-size: sizes.$f2;
     height: sizes.$s9;
-    margin-bottom: sizes.$s4;
-    padding: sizes.$s4;
     resize: vertical;
     width: 100%;
+    padding: sizes.$s1 sizes.$s2;
     overflow-y: auto;
   }
 }

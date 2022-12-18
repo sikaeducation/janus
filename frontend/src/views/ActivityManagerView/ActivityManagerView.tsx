@@ -31,9 +31,9 @@ export default function ActivityManagerView() {
     setNewActivityOpen(false);
   };
   let tableToDisplay: ReactNode;
-  if (!isLoading) {
+  if (!isLoading && activities) {
     const formattedActivities: FormattedActivity[] =
-      activities?.map((activity) => {
+      activities.map((activity) => {
         return {
           ...activity,
           id: activity._id || "",
@@ -61,7 +61,7 @@ export default function ActivityManagerView() {
         </ModalView>
       )}
       <header>
-        <Heading level={1} margin={false}>
+        <Heading level={2} margin={false}>
           Activities{" "}
           <span className="activities-count">({activitiesCount})</span>
         </Heading>
@@ -69,7 +69,7 @@ export default function ActivityManagerView() {
           New
         </Button>
       </header>
-      <div>{tableToDisplay}</div>
+      {tableToDisplay}
     </div>
   );
 }

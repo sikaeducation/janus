@@ -2,6 +2,8 @@
 @use "../../../styles/colors";
 
 .DataTable {
+  max-width: sizes.$s17;
+  margin: 0 auto;
   .table-headers {
     text-align: left;
     color: colors.$grey-4;
@@ -9,7 +11,7 @@
   }
   .table-row {
     display: grid;
-    margin: sizes.$s2 0;
+    gap: sizes.$s2;
   }
   .field {
     overflow: hidden;

@@ -19,7 +19,7 @@ type Props<RowType> = {
 };
 
 export default function DataTable<
-  RowType extends { id: string; [key: string]: any }
+  RowType extends { id: string; [key: string]: unknown }
 >({ tableData, fields }: Props<RowType>) {
   const size = useWindowSize();
   const normalizedFields =
@@ -55,7 +55,7 @@ export default function DataTable<
               {normalizedFields.length
                 ? normalizedFields.map(({ key }) => (
                     <span
-                      title={row[key] === "string" ? `${row[key]}` : undefined}
+                      title={String(row[key])}
                       className="field"
                       key={key}
                       role="cell"
