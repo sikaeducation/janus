@@ -1,0 +1,19 @@
+@use "../../../styles/colors";
+@use "../../../styles/forms";
+@use "../../../styles/sizes";
+@use "../../../styles/borders";
+
+.TextInput {
+  @include forms.form-control;
+  input {
+    width: 100%;
+    padding-top: 0;
+    padding-bottom: sizes.$s2;
+    border: none;
+    border-bottom: 1px solid colors.$primary-5;
+    &:focus {
+      border-bottom: 3px solid colors.$primary-5;
+      outline: none;
+    }
+  }
+}
