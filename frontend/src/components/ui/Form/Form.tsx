@@ -6,7 +6,7 @@ type Field = {
   id: string;
   label: string;
   Component: any;
-  type: undefined;
+  type?: string;
 };
 
 type Props = {
