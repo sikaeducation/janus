@@ -1,11 +1,13 @@
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
+@use "../../../styles/borders";
 
 .Form {
   background-color: colors.$white;
   display: flex;
   flex-flow: column nowrap;
   padding: sizes.$s7 sizes.$s8;
+  border-radius: borders.$radius;
   width: 100%;
   .Heading {
     margin-bottom: sizes.$s5;
