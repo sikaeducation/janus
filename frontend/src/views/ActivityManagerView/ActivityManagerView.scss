@@ -3,7 +3,7 @@
 @use "../../styles/sizes";
 
 .ActivityManagerView {
-  width: 100%;
+  width: sizes.$s17;
   header {
     display: flex;
     flex-flow: row wrap;
