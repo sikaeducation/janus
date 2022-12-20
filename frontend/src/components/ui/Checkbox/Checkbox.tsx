@@ -4,7 +4,7 @@ import { Checkbox as MaterialCheckbox } from "@material-ui/core";
 type Props = {
   id: string;
   label: string;
-  value: boolean;
+  value: boolean | string;
   updateValue: (newValue: boolean) => void;
   required?: boolean;
   type?: "primary" | "secondary";
@@ -22,7 +22,7 @@ export default function Checkbox({
     <div className="Checkbox">
       <label htmlFor={id}>{label}</label>
       <MaterialCheckbox
-        checked={value}
+        checked={!!value}
         id={id}
         required={required}
         name={id}

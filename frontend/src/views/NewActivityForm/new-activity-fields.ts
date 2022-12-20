@@ -25,10 +25,4 @@ export default [
     label: "Notes",
     Component: TextArea,
   },
-  {
-    id: "published",
-    label: "Published",
-    Component: Checkbox,
-    type: "secondary",
-  },
 ];

@@ -54,11 +54,25 @@ export default function ActivityManagerView() {
     );
   }
 
+  const save = (newActivity: Activity) => {
+    console.log(newActivity);
+  };
+  const saveAndPublish = (newActivity: Activity) => {
+    save({
+      ...newActivity,
+      published: true,
+    });
+  };
+
   return (
     <div className="ActivityManagerView">
       {newActivityOpen && (
         <ModalView close={closeModal}>
-          <NewActivityForm save={(newActivity) => console.log(newActivity)} />
+          <NewActivityForm
+            save={save}
+            saveAndPublish={saveAndPublish}
+            cancel={closeModal}
+          />
         </ModalView>
       )}
       <header>

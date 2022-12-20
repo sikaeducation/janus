@@ -6,10 +6,16 @@ import "./NewActivityForm.scss";
 import newActivityFields from "./new-activity-fields";
 
 type Props = {
+  cancel: () => void;
   save: (newActivity: Activity) => void;
+  saveAndPublish: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({ save }: Props) {
+export default function NewActivityForm({
+  save,
+  saveAndPublish,
+  cancel,
+}: Props) {
   const [newItem, setNewItem] = useState<ActivityArticle>({
     _type: "Article",
     title: "",
@@ -19,25 +25,38 @@ export default function NewActivityForm({ save }: Props) {
     published: false,
   } as const);
 
+  const actions = [
+    {
+      label: "Cancel",
+      Component: Button,
+      action: () => cancel(),
+      type: "ghost",
+    },
+    {
+      label: "Save",
+      Component: Button,
+      action: () => save(newItem),
+      size: "large",
+      type: "secondary",
+    },
+    {
+      label: "Save and Publish",
+      Component: Button,
+      action: () => saveAndPublish(newItem),
+      size: "large",
+      type: "primary",
+    },
+  ];
+
   return (
     <div className="NewActivityForm">
       <Form
         heading="Create Activity"
         fields={newActivityFields}
+        actions={actions}
         newItem={newItem}
         setNewItem={setNewItem}
-      >
-        <fieldset className="actions">
-          <Button
-            type="primary"
-            size="large"
-            submit
-            action={() => save(newItem)}
-          >
-            Save
-          </Button>
-        </fieldset>
-      </Form>
+      />
     </div>
   );
 }
