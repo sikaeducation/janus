@@ -1,32 +1,33 @@
-import "./TextInput.scss";
+import "./Checkbox.scss";
+import { Checkbox as MaterialCheckbox } from "@material-ui/core";
 
 type Props = {
   id: string;
   label: string;
-  value: string;
-  type?: "text" | "url" | "email" | "password";
-  updateValue: (newValue: string) => void;
+  value: boolean;
+  updateValue: (newValue: boolean) => void;
   required?: boolean;
+  type?: "primary" | "secondary";
 };
 
-export default function Form({
+export default function Checkbox({
   id,
   label,
   value,
   updateValue,
-  type = "text",
   required = false,
+  type = "primary",
 }: Props) {
   return (
-    <div className="TextInput">
+    <div className="Checkbox">
       <label htmlFor={id}>{label}</label>
-      <input
+      <MaterialCheckbox
+        checked={value}
         id={id}
-        name={id}
-        type={type}
-        value={value}
-        onChange={(event) => updateValue(event.target.value)}
         required={required}
+        name={id}
+        color={type}
+        onChange={() => updateValue(!value)}
       />
     </div>
   );

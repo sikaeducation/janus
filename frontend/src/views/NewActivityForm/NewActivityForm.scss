@@ -7,6 +7,10 @@
   background-color: colors.$white;
   @include forms.form;
 
+  h2 {
+    margin-bottom: sizes.$s4;
+  }
+
   .checkbox-container {
     display: flex;
     justify-content: center;

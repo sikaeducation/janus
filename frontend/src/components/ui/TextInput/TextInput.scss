@@ -5,6 +5,7 @@
 
 .TextInput {
   @include forms.form-control;
+  display: block;
   input {
     width: 100%;
     padding-top: 0;

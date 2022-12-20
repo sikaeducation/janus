@@ -1,5 +1,6 @@
 @use "../../styles/colors";
 @use "../../styles/sizes";
+@use "../../styles/borders";
 
 #modal-wrapper {
   position: absolute;
@@ -18,12 +19,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 10% 10%;
+  padding: 5% 10%;
 }
 
 #modal-content {
   z-index: 20;
-  width: sizes.$content-width-large;
+  width: sizes.$s15;
+  border-radius: borders.$radius;
 }
 
 #modal-shadow {

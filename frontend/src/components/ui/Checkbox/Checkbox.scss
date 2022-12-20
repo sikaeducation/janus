@@ -3,8 +3,21 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
 
-.TextInput {
+.Checkbox {
   @include forms.form-control;
+  display: inline-block;
+  label {
+    display: inline-block;
+  }
+  .MuiCheckbox-colorPrimary {
+    color: colors.$primary-3 !important;
+  }
+  .MuiCheckbox-colorSecondary {
+    color: colors.$grey-4 !important;
+  }
+}
+
+.xCheckbox {
   input {
     width: 100%;
     padding-top: 0;

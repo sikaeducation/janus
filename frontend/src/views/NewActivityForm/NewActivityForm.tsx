@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
 import { ChangeEvent, useState } from "react";
 import Button from "../../components/ui/Button";
+import Heading from "../../components/ui/Heading";
 import TextArea from "../../components/ui/TextArea";
 import TextInput from "../../components/ui/TextInput";
 import "./NewActivityForm.scss";
@@ -34,6 +35,7 @@ export default function NewActivityForm({ save }: Props) {
 
   return (
     <div className="NewActivityForm">
+      <Heading level={2}>Create Activity</Heading>
       <form>
         <TextInput
           id="title"

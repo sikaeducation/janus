@@ -6,6 +6,7 @@
 
 .TextArea {
   @include forms.form-control;
+  display: block;
   textarea {
     @include typography.code-font;
     @include borders.trace;
