@@ -29,7 +29,22 @@ Default.args = {
       id: "some-other-field",
       label: "Some Other Field",
       Component: TextArea,
-      type: undefined,
+    },
+  ],
+  actions: [
+    {
+      label: "Some Action",
+      Component: Button,
+      type: "secondary",
+      size: "large",
+      action: () => console.log("Hello, world!"),
+    },
+    {
+      label: "Some Other Action",
+      Component: Button,
+      type: "primary",
+      size: "large",
+      action: () => console.log("Hello, world!"),
     },
   ],
 };
@@ -37,9 +52,5 @@ Default.args = {
 export const WithChildren = Template.bind({});
 WithChildren.args = {
   ...Default.args,
-  children: (
-    <div>
-      <Button type="primary">Submit</Button>
-    </div>
-  ),
+  children: <p>Some free text here</p>,
 };

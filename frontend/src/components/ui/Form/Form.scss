@@ -8,12 +8,18 @@
   flex-flow: column nowrap;
   padding: sizes.$s7 sizes.$s8;
   border-radius: borders.$radius;
-  width: 100%;
+  max-width: sizes.$s15;
   .Heading {
     margin-bottom: sizes.$s5;
   }
-  .form-submit {
-    align-self: flex-end;
+  .actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-top: sizes.$s4;
+    .Button {
+      margin-left: sizes.$s4;
+    }
   }
   .error {
     color: colors.$failure-5;

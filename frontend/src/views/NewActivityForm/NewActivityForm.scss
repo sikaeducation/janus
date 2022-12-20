@@ -1,13 +1,2 @@
-@use "../../styles/sizes";
-
 .NewActivityForm {
-  .actions {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    margin-top: sizes.$s4;
-    button {
-      margin-left: sizes.$s4;
-    }
-  }
 }
