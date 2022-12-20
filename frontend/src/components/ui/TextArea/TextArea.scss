@@ -7,6 +7,7 @@
 .TextArea {
   @include forms.form-control;
   display: block;
+  margin-bottom: sizes.$s3;
   textarea {
     @include typography.code-font;
     @include borders.trace;

@@ -1,32 +1,19 @@
 @use "../../../styles/colors";
 @use "../../../styles/forms";
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
 
 .Checkbox {
   @include forms.form-control;
   display: inline-block;
+  margin-bottom: 0;
   label {
     display: inline-block;
+    position: relative;
+    top: 2px; // Visual alignment
   }
   .MuiCheckbox-colorPrimary {
     color: colors.$primary-3 !important;
   }
   .MuiCheckbox-colorSecondary {
     color: colors.$grey-4 !important;
-  }
-}
-
-.xCheckbox {
-  input {
-    width: 100%;
-    padding-top: 0;
-    padding-bottom: sizes.$s2;
-    border: none;
-    border-bottom: 1px solid colors.$primary-5;
-    &:focus {
-      border-bottom: 3px solid colors.$primary-5;
-      outline: none;
-    }
   }
 }

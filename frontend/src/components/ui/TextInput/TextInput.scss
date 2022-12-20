@@ -6,6 +6,7 @@
 .TextInput {
   @include forms.form-control;
   display: block;
+  margin-bottom: sizes.$s3;
   input {
     width: 100%;
     padding-top: 0;

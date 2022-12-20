@@ -1,6 +1,7 @@
 /* eslint-disable camelcase */
-import { ChangeEvent, useState } from "react";
+import { useState } from "react";
 import Button from "../../components/ui/Button";
+import Checkbox from "../../components/ui/Checkbox";
 import Heading from "../../components/ui/Heading";
 import TextArea from "../../components/ui/TextArea";
 import TextInput from "../../components/ui/TextInput";
@@ -72,14 +73,13 @@ export default function NewActivityForm({ save }: Props) {
         />
 
         <fieldset className="actions">
-          <div className="checkbox-container">
-            <label htmlFor="published">Published</label>
-            <input
-              type="checkbox"
-              checked={published}
-              onChange={() => updateActivityProperty("published", !published)}
-            />
-          </div>
+          <Checkbox
+            id="published"
+            label="Published"
+            value={published}
+            updateValue={() => updateActivityProperty("published", !published)}
+            type="secondary"
+          />
 
           <Button type="primary" submit action={() => save(newActivity)}>
             Save
