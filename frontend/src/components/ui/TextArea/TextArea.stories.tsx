@@ -17,7 +17,7 @@ export default {
 
 const Template: ComponentStory<typeof TextArea> = (args) => {
   const [currentContent, setContent] = useState(args.value ?? "");
-  return <TextArea {...args} action={setContent} value={currentContent} />;
+  return <TextArea {...args} updateValue={setContent} value={currentContent} />;
 };
 
 export const Default = Template.bind({});

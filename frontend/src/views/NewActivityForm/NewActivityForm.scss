@@ -7,15 +7,6 @@
   background-color: colors.$white;
   @include forms.form;
 
-  label {
-    color: colors.$grey-6;
-  }
-  textarea, input {
-    @include forms.form-control;
-  }
-  [type="text"] {
-    width: sizes.$input-length;
-  }
   .checkbox-container {
     display: flex;
     justify-content: center;
@@ -38,8 +29,5 @@
       margin-left: sizes.$s4;
       @include buttons.button-primary;
     }
-  }
-  textarea {
-    width: 100%;
   }
 }

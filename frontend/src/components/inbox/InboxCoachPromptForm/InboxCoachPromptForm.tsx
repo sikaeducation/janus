@@ -45,7 +45,7 @@ export default function InboxCoachPromptForm({
         id="question-prompt"
         label="Question prompt"
         value={prompt}
-        action={setPrompt}
+        updateValue={setPrompt}
         isRequired
       />
       <div className="submission-section">

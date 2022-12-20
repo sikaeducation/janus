@@ -5,7 +5,7 @@
 @mixin form {
   display: flex;
   flex-flow: column nowrap;
-  padding: sizes.$s5;
+  padding: sizes.$s8;
   width: 100%;
   .form-submit {
     align-self: flex-end;
@@ -20,6 +20,7 @@
   max-width: sizes.$s14;
   font-size: sizes.$f3;
   background-color: colors.$white;
+  margin-bottom: sizes.$s3;
   label {
     color: colors.$grey-4;
     margin-bottom: sizes.$s1;

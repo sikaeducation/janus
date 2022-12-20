@@ -90,7 +90,7 @@ export default function QuestionForm({
             id={id}
             label="Response"
             value={response}
-            action={setResponse}
+            updateValue={setResponse}
           />
           <div className="actions">
             {displayResponseForm && (

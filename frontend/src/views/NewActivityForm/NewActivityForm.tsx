@@ -1,5 +1,8 @@
 /* eslint-disable camelcase */
 import { ChangeEvent, useState } from "react";
+import Button from "../../components/ui/Button";
+import TextArea from "../../components/ui/TextArea";
+import TextInput from "../../components/ui/TextInput";
 import "./NewActivityForm.scss";
 
 type Props = {
@@ -14,70 +17,56 @@ export default function NewActivityForm({ save }: Props) {
     description: "",
     notes: "",
     published: false,
-  });
+  } as const);
 
   const { title, post_slug, description, notes, published } = newActivity;
 
-  const updateInputValues = (event: ChangeEvent<HTMLInputElement>) => {
-    if (event.target) {
-      const { value, name } = event.target;
-      setNewActivity({
-        ...newActivity,
-        [name]: value,
-      });
-    }
-  };
-  const updateTextAreaValues = (event: ChangeEvent<HTMLTextAreaElement>) => {
-    if (event.target) {
-      const { value, name } = event.target;
-      setNewActivity({
-        ...newActivity,
-        [name]: value,
-      });
-    }
-  };
-  const togglePublished = () => {
+  type ActivityKeys = keyof typeof newActivity;
+  const updateActivityProperty = (
+    name: string,
+    newValue: typeof newActivity[ActivityKeys]
+  ) => {
     setNewActivity({
       ...newActivity,
-      published: !newActivity.published,
+      [name]: newValue,
     });
   };
 
   return (
     <div className="NewActivityForm">
       <form>
-        <label htmlFor="title">Title</label>
-        <input
+        <TextInput
           id="title"
-          name="title"
+          label="Title"
           type="text"
           value={title}
-          onInput={updateInputValues}
+          updateValue={(newValue) => updateActivityProperty("title", newValue)}
         />
 
-        <label htmlFor="slug">Slug</label>
-        <input
+        <TextInput
           id="slug"
-          name="post_slug"
+          label="Slug"
           type="text"
           value={post_slug}
-          onInput={updateInputValues}
+          updateValue={(newValue) =>
+            updateActivityProperty("post_slug", newValue)
+          }
         />
 
-        <label htmlFor="description">Description</label>
-        <textarea
+        <TextArea
           id="description"
-          name="description"
-          onInput={updateTextAreaValues}
-          value={description}
+          label="Description"
+          updateValue={(newValue) =>
+            updateActivityProperty("description", newValue)
+          }
+          value={description ?? ""}
         />
 
-        <label htmlFor="notes">Notes</label>
-        <textarea
+        <TextArea
           id="notes"
-          name="notes"
-          onInput={updateTextAreaValues}
-          value={notes}
+          label="Notes"
+          updateValue={(newValue) => updateActivityProperty("notes", newValue)}
+          value={notes ?? ""}
         />
 
         <fieldset className="actions">
@@ -86,13 +75,13 @@ export default function NewActivityForm({ save }: Props) {
             <input
               type="checkbox"
               checked={published}
-              onChange={togglePublished}
+              onChange={() => updateActivityProperty("published", !published)}
             />
           </div>
 
-          <button type="button" onClick={() => save(newActivity)}>
+          <Button type="primary" submit action={() => save(newActivity)}>
             Save
-          </button>
+          </Button>
         </fieldset>
       </form>
     </div>

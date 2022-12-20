@@ -12,8 +12,13 @@
     font-size: sizes.$f2;
     height: sizes.$s9;
     resize: vertical;
-    width: 100%;
-    padding: sizes.$s1 sizes.$s2;
+    width: calc(100% + 16px);
+    padding: sizes.$s2 sizes.$s2;
     overflow-y: auto;
+    margin-left: -6px; // Visually adjust to align with input
+    &:focus {
+      border-bottom: 3px solid colors.$primary-5;
+      outline: none;
+    }
   }
 }
