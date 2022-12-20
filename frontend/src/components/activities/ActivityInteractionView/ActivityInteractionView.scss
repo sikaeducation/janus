@@ -1,7 +1,6 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
 @use "../../../styles/colors";
-@use "../../../styles/buttons";
 
 .ActivityInteractionView {
     display: flex;
@@ -16,7 +15,6 @@
     flex-flow: row wrap;
     margin-bottom: sizes.$s6;
     button {
-      @include buttons.button-shadow-small;
       margin-left: sizes.$s4;
       border-radius: borders.$radius;
       font-size: sizes.$f3;

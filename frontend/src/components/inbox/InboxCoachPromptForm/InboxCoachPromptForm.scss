@@ -1,7 +1,6 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
 @use "../../../styles/colors";
-@use "../../../styles/buttons";
 @use "../../../styles/typography";
 
 .InboxCoachPromptForm {
@@ -34,7 +33,6 @@
       border: none;
       border-radius: borders.$radius;
       background-color: colors.$grey-9;
-      @include buttons.button-shadow-small;
     }
   }
 }

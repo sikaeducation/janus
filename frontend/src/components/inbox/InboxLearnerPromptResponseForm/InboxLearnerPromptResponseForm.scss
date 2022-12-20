@@ -2,7 +2,6 @@
 @use "../../../styles/borders";
 @use "../../../styles/typography";
 @use "../../../styles/colors";
-@use "../../../styles/buttons";
 
 .InboxLearnerPromptResponseForm {
   .prompt {
@@ -39,7 +38,6 @@
         border: none;
         border-radius: borders.$radius;
         background-color: colors.$grey-9;
-        @include buttons.button-shadow-small;
       }
     }
   }

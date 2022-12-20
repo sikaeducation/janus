@@ -8,80 +8,91 @@ import TextInput from "../../components/ui/TextInput";
 import "./NewActivityForm.scss";
 
 type Props = {
-  save: (newActivity: ActivityArticle) => void;
+  save: (newItem: ActivityArticle) => void;
 };
 
+const heading = "Create Activity";
+const controls = [
+  {
+    id: "title",
+    label: "Title",
+    Component: TextInput,
+    type: undefined,
+  } as const,
+  {
+    id: "post_slug",
+    label: "Slug",
+    Component: TextInput,
+    type: undefined,
+    required: true,
+  } as const,
+  {
+    id: "description",
+    label: "Description",
+    Component: TextArea,
+    type: undefined,
+  } as const,
+  {
+    id: "notes",
+    label: "Notes",
+    Component: TextArea,
+    type: undefined,
+  } as const,
+] as const;
+
+const emptyNewItem = {
+  _type: "Article",
+  title: "",
+  post_slug: "",
+  description: "",
+  notes: "",
+  published: false,
+} as const;
+
 export default function NewActivityForm({ save }: Props) {
-  const [newActivity, setNewActivity] = useState<ActivityArticle>({
-    _type: "Article",
-    title: "",
-    post_slug: "",
-    description: "",
-    notes: "",
-    published: false,
-  } as const);
+  const [newItem, setNewItem] = useState<ActivityArticle>(emptyNewItem);
 
-  const { title, post_slug, description, notes, published } = newActivity;
-
-  type ActivityKeys = keyof typeof newActivity;
-  const updateActivityProperty = (
-    name: string,
-    newValue: typeof newActivity[ActivityKeys]
-  ) => {
-    setNewActivity({
-      ...newActivity,
-      [name]: newValue,
-    });
-  };
+  const Controls = controls.map(({ id, label, Component, type }) => (
+    <Component
+      id={id}
+      label={label}
+      value={newItem[id] || ""}
+      updateValue={(newValue: unknown) =>
+        setNewItem({
+          ...newItem,
+          [id]: newValue,
+        })
+      }
+      type={type}
+    />
+  ));
 
   return (
     <div className="NewActivityForm">
-      <Heading level={2}>Create Activity</Heading>
+      <Heading level={2}>{heading}</Heading>
       <form>
-        <TextInput
-          id="title"
-          label="Title"
-          type="text"
-          value={title}
-          updateValue={(newValue) => updateActivityProperty("title", newValue)}
-        />
-
-        <TextInput
-          id="slug"
-          label="Slug"
-          type="text"
-          value={post_slug}
-          updateValue={(newValue) =>
-            updateActivityProperty("post_slug", newValue)
-          }
-        />
-
-        <TextArea
-          id="description"
-          label="Description"
-          updateValue={(newValue) =>
-            updateActivityProperty("description", newValue)
-          }
-          value={description ?? ""}
-        />
-
-        <TextArea
-          id="notes"
-          label="Notes"
-          updateValue={(newValue) => updateActivityProperty("notes", newValue)}
-          value={notes ?? ""}
-        />
+        {Controls}
 
         <fieldset className="actions">
           <Checkbox
             id="published"
             label="Published"
-            value={published}
-            updateValue={() => updateActivityProperty("published", !published)}
+            value={newItem.published}
+            updateValue={() =>
+              setNewItem({
+                ...newItem,
+                published: !newItem.published,
+              })
+            }
             type="secondary"
           />
 
-          <Button type="primary" submit action={() => save(newActivity)}>
+          <Button
+            type="primary"
+            size="large"
+            submit
+            action={() => save(newItem)}
+          >
             Save
           </Button>
         </fieldset>

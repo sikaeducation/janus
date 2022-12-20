@@ -1,7 +1,6 @@
 @use "../../styles/sizes";
 @use "../../styles/borders";
 @use "../../styles/colors";
-@use "../../styles/buttons";
 
 .QuestionForm {
   margin-bottom: sizes.$s6;
@@ -12,7 +11,6 @@
     border: none;
     padding: sizes.$s1 sizes.$s4;
     border-radius: borders.$radius;
-    @include buttons.button-shadow-small;
     font-size: sizes.$f3;
     cursor: pointer;
 }

@@ -1,6 +1,5 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
-@use "../../../styles/buttons";
 @use "../../../styles/colors";
 
 .EvaluatorPerformanceHeader {
@@ -11,7 +10,6 @@
   }
   .evaluate-all {
     button {
-      @include buttons.button-shadow-small;
       border-radius: borders.$radius;
       border: none;
       cursor: pointer;

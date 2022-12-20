@@ -2,7 +2,6 @@
 @use "../../../styles/borders";
 @use "../../../styles/colors";
 @use "../../../styles/sizes";
-@use "../../../styles/buttons";
 
 .ActivityNavigation {
   display: flex;
@@ -12,7 +11,5 @@
     padding: sizes.$s2 sizes.$s4;
     border-radius: borders.$radius;
     @include typography.primary-action-button-font;
-    @include buttons.button-shadow-small;
-    @include buttons.button-active-primary;
   }
 }
