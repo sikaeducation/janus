@@ -1,18 +1,12 @@
-/* eslint-disable camelcase */
 import { useState } from "react";
 import Button from "../../components/ui/Button";
 import Checkbox from "../../components/ui/Checkbox";
-import Heading from "../../components/ui/Heading";
+import Form from "../../components/ui/Form";
 import TextArea from "../../components/ui/TextArea";
 import TextInput from "../../components/ui/TextInput";
 import "./NewActivityForm.scss";
 
-type Props = {
-  save: (newItem: ActivityArticle) => void;
-};
-
-const heading = "Create Activity";
-const controls = [
+const newActivityFields = [
   {
     id: "title",
     label: "Title",
@@ -38,41 +32,30 @@ const controls = [
     Component: TextArea,
     type: undefined,
   } as const,
-] as const;
+];
 
-const emptyNewItem = {
-  _type: "Article",
-  title: "",
-  post_slug: "",
-  description: "",
-  notes: "",
-  published: false,
-} as const;
+type Props = {
+  save: (newActivity: Activity) => void;
+};
 
 export default function NewActivityForm({ save }: Props) {
-  const [newItem, setNewItem] = useState<ActivityArticle>(emptyNewItem);
-
-  const Controls = controls.map(({ id, label, Component, type }) => (
-    <Component
-      id={id}
-      label={label}
-      value={newItem[id] || ""}
-      updateValue={(newValue: unknown) =>
-        setNewItem({
-          ...newItem,
-          [id]: newValue,
-        })
-      }
-      type={type}
-    />
-  ));
+  const [newItem, setNewItem] = useState<ActivityArticle>({
+    _type: "Article",
+    title: "",
+    post_slug: "",
+    description: "",
+    notes: "",
+    published: false,
+  } as const);
 
   return (
     <div className="NewActivityForm">
-      <Heading level={2}>{heading}</Heading>
-      <form>
-        {Controls}
-
+      <Form
+        heading="Create Activity"
+        fields={newActivityFields}
+        newItem={newItem}
+        setNewItem={setNewItem}
+      >
         <fieldset className="actions">
           <Checkbox
             id="published"
@@ -96,7 +79,7 @@ export default function NewActivityForm({ save }: Props) {
             Save
           </Button>
         </fieldset>
-      </form>
+      </Form>
     </div>
   );
 }

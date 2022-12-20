@@ -14,17 +14,49 @@ export default function Heading({ children, margin = true, level }: Props) {
   switch (level) {
     case 1:
       return (
-        <h1 className={classNames({ "primary-heading": true, margin })}>
+        <h1
+          className={classNames({
+            Heading: true,
+            "primary-heading": true,
+            margin,
+          })}
+        >
           {children}
         </h1>
       );
     case 2:
-      return <h2 className="secondary-heading">{children}</h2>;
+      return (
+        <h2
+          className={classNames({ Heading: true, "secondary-heading": true })}
+        >
+          {children}
+        </h2>
+      );
     case 3:
-      return <h3 className="tertiary-heading">{children}</h3>;
+      return (
+        <h3 className={classNames({ Heading: true, "tertiary-heading": true })}>
+          {children}
+        </h3>
+      );
     case 4:
-      return <h4 className="quaternary-heading">{children}</h4>;
+      return (
+        <h4
+          className={classNames({ Heading: true, "quaternary-heading": true })}
+        >
+          {children}
+        </h4>
+      );
     default:
-      return <h1 className="primary-heading">{children}</h1>;
+      return (
+        <h1
+          className={classNames({
+            Heading: true,
+            "primary-heading": true,
+            margin,
+          })}
+        >
+          {children}
+        </h1>
+      );
   }
 }

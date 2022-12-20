@@ -1,28 +1,6 @@
-@use "../../styles/colors";
-@use "../../styles/forms";
 @use "../../styles/sizes";
 
 .NewActivityForm {
-  background-color: colors.$white;
-  @include forms.form;
-
-  h2 {
-    margin-bottom: sizes.$s5;
-  }
-
-  .checkbox-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    [type="checkbox"], [for="published"] {
-      display: inline-block;
-    }
-    [type="checkbox"] {
-      margin: 0 sizes.$s2;
-      position: relative;
-      top: 1px;
-    }
-  }
   .actions {
     display: flex;
     justify-content: flex-end;

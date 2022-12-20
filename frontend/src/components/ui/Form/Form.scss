@@ -1,5 +1,20 @@
-@use "../../../styles/forms";
+@use "../../../styles/sizes";
+@use "../../../styles/colors";
 
 .Form {
-  @include forms.form;
+  background-color: colors.$white;
+  display: flex;
+  flex-flow: column nowrap;
+  padding: sizes.$s5 sizes.$s8;
+  width: 100%;
+  .Heading {
+    margin-bottom: sizes.$s5;
+  }
+  .form-submit {
+    align-self: flex-end;
+  }
+  .error {
+    color: colors.$failure-5;
+    margin-top: sizes.$s6;
+  }
 }

@@ -1,19 +1,5 @@
 @use "./sizes";
 @use "./colors";
-@use "./typography";
-
-@mixin form {
-  display: flex;
-  flex-flow: column nowrap;
-  padding: sizes.$s5 sizes.$s8;
-  width: 100%;
-  .form-submit {
-    align-self: flex-end;
-  }
-  .error {
-    @include form-error;
-  }
-}
 
 @mixin form-control {
   max-width: sizes.$s14;
@@ -23,9 +9,4 @@
     color: colors.$grey-4;
     margin-bottom: sizes.$s1;
   }
-}
-
-@mixin form-error {
-  color: colors.$failure-5;
-  margin-top: sizes.$s6;
 }

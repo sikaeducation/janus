@@ -1,13 +1,14 @@
 import { ReactNode, useState } from "react";
-import "./ActivityManagerView.scss";
 import Icon from "../../components/ui/Icon";
 import ModalView from "../ModalView";
-import NewActivityForm from "../NewActivityForm";
 import DataTable from "../../components/ui/DataTable";
 import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";
 import { fields, skeletonRows } from "./table";
 import { useGetActivitiesQuery } from "../../slices/apiSlice";
+import NewActivityForm from "../NewActivityForm";
+
+import "./ActivityManagerView.scss";
 
 const activityTypes = {
   Article: <Icon type="article" />,
@@ -57,7 +58,7 @@ export default function ActivityManagerView() {
     <div className="ActivityManagerView">
       {newActivityOpen && (
         <ModalView close={closeModal}>
-          <NewActivityForm save={() => ({})} />
+          <NewActivityForm save={(newActivity) => console.log(newActivity)} />
         </ModalView>
       )}
       <header>
