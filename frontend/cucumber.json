@@ -1,0 +1,8 @@
+{
+  "default": {
+    "requireModules": ["ts-node/register"],
+    "require": ["specs/**/*.js"],
+    "paths": ["specs"],
+    "publishQuiet": true
+  }
+}
