@@ -45,9 +45,8 @@
       width: sizes.$s7;
       border-radius: borders.$radius;
     }
-    button {
-      text-align: right;
-      padding: 0;
+    .Button.tertiary-button {
+      padding-right: 0;
     }
   }
 }

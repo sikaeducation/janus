@@ -2,11 +2,11 @@ import "./AppHeader.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
-import LoginButton from "../LoginButton";
-import LogoutButton from "../LogoutButton";
+import Button from "../ui/Button";
 
 function AppHeader() {
-  const { user, isAuthenticated, isLoading } = useAuth0();
+  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } =
+    useAuth0();
   const role = (user && user["https://sikaeducation.com/role"]) || "";
 
   const links = [
@@ -29,11 +29,28 @@ function AppHeader() {
         {user && <ul className="links">{links}</ul>}
       </nav>
       <div className="user-info">
-        {!isLoading && !isAuthenticated && <LoginButton />}
+        {!isLoading && !isAuthenticated && (
+          <Button
+            type="primary"
+            action={() =>
+              loginWithRedirect({
+                scope: "openid profile email",
+              })
+            }
+          >
+            Login
+          </Button>
+        )}
         {user && (
-          <LogoutButton>
+          <>
             <img className="avatar" src={user.picture} alt={user.name} />
-          </LogoutButton>
+            <Button
+              type="ghost"
+              action={() => logout({ returnTo: window.location.origin })}
+            >
+              Logout
+            </Button>
+          </>
         )}
         {isLoading && (
           <img

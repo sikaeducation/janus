@@ -3,7 +3,7 @@
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
 
-.AppContent {
+.Markdown {
   width: 100%;
   display: flex;
   flex-flow: column nowrap;
@@ -105,7 +105,7 @@
     }
     code {
       @include typography.code-font;
-      font-size: sizes.$f4 !important; // Overrides inheritance
+      font-size: sizes.$f3 !important; // Overrides inheritance
       white-space: pre-wrap !important; // Needed to override syntax highlighter
       box-sizing: content-box;
       &:not([class^="language-"]) {
@@ -119,7 +119,7 @@
     display: inline-block;
     padding: 0 4px;
     background-color: colors.$grey-10;
-    font-size: sizes.$f4;
+    font-size: sizes.$f3;
   }
 
   // Tables

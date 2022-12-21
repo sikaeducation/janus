@@ -27,7 +27,7 @@ export default function AppContent({ content, className = "" }: props) {
   return (
     <article
       className={classNames({
-        AppContent: true,
+        Markdown: true,
         [className]: true,
       })}
     >
