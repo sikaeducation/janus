@@ -1,5 +1,0 @@
-services:
-  frontend:
-    depends_on:
-      - storybook
-    command: ["npm", "run", "test-storybook"]

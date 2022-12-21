@@ -1,14 +1,14 @@
-const { When, Then, Given } = require("@cucumber/cucumber");
+const { Then, Given } = require("@cucumber/cucumber");
 const { expect } = require("expect");
 
-Given("I go out", async function () {
-  this.navigateTo("https://google.com");
+Given("I'm a coach", async function () {
+  await this.navigateTo("https://google.com");
 });
 
-When("I play in the street", async function () {
-  console.log("Got here");
+Given("I'm on the activity manager page", async function () {
+  expect(true).toBe(true);
 });
 
-Then("I make mashed potatoes", async function () {
+Then("I see these activities listed:", async function (dataTable) {
   expect(true).toBe(true);
 });
