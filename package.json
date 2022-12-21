@@ -19,9 +19,9 @@
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@cucumber/cucumber": "^8.9.1",
-    "@fortawesome/fontawesome-svg-core": "^1.2.36",
-    "@fortawesome/free-solid-svg-icons": "^5.15.4",
-    "@fortawesome/react-fontawesome": "^0.1.16",
+    "@fortawesome/fontawesome-svg-core": "^6.1.1",
+    "@fortawesome/free-solid-svg-icons": "^6.1.1",
+    "@fortawesome/react-fontawesome": "^0.1.18",
     "@material-ui/core": "^4.12.4",
     "@material-ui/lab": "^4.0.0-alpha.61",
     "@reduxjs/toolkit": "^1.9.1",
@@ -92,8 +92,6 @@
     "eslint-plugin-react": "^7.28.0",
     "eslint-plugin-react-hooks": "^4.3.0",
     "eslint-plugin-storybook": "^0.6.8",
-    "jest-environment-node": "^29.3.1",
-    "jest-runner": "^29.3.1",
     "msw": "^0.36.3",
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
@@ -110,5 +108,9 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  }
+  },
+  "main": "index.js",
+  "repository": "git@github.com:sikaeducation/janus.git",
+  "author": "Kyle Coberly <kyle.coberly@gmail.com>",
+  "license": "MIT"
 }
