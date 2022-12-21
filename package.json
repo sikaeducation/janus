@@ -97,7 +97,8 @@
     "webpack": "^5.52.0"
   },
   "overrides": {
-    "webpack": "^5.52.0"
+    "webpack": "^5.52.0",
+    "postcss": "8.4.19"
   },
   "browserslist": {
     "production": [
