@@ -1,5 +1,0 @@
-services:
-  tests:
-    command: ["./ci.sh"]
-    environment:
-      CI: 1

@@ -1,0 +1,17 @@
+FROM node:19.1.0-bullseye
+WORKDIR /app
+USER root
+
+COPY .npmrc ./
+COPY package*.json ./
+RUN npm install
+RUN npx playwright install --with-deps
+RUN npm install concurrently http-server wait-on
+
+COPY . .
+
+RUN npm run build-storybook --quiet
+
+ENTRYPOINT npm run test:unit && npx concurrently -k -s first -n "SB,TEST" -c "magenta,blue" \
+  "npx http-server storybook-static --port 6006 --silent" \
+  "npx wait-on tcp:6006 && npm run test:components" && npm run test:features

@@ -1,3 +1,0 @@
-services:
-  frontend:
-    command: ["npm", "test"]

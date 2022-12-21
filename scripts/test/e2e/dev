@@ -1,4 +1,0 @@
-#!/bin/bash
-PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cd $PARENT_PATH/../../../tests
-BASE_URL=http://localhost:3000 npm run test

@@ -1,7 +1,0 @@
-#!/bin/bash
-echo "Running Docker Compose with this configuration:"
-PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cd $PARENT_PATH/../../..
-docker-compose -f .docker/docker-compose.yml config
-docker-compose -f .docker/docker-compose.yml run frontend npm test
-docker-compose -f .docker/docker-compose.yml run api npm run test:watch --abort-on-container-exit

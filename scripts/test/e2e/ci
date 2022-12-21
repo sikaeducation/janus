@@ -1,6 +1,0 @@
-#!/bin/bash
-echo "Running Docker Compose with this configuration:"
-PARENT_PATH=$( cd "$(dirname "${BASH_SOURCE[0]}")" ; pwd -P )
-cd $PARENT_PATH/../../..
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml -f .docker/docker-compose.e2e.ci.yml config
-docker-compose -f .docker/docker-compose.yml -f .docker/docker-compose.e2e.base.yml -f .docker/docker-compose.e2e.ci.yml up --abort-on-container-exit

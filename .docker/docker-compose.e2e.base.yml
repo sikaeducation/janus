@@ -1,5 +1,0 @@
-services:
-  tests:
-    image: mcr.microsoft.com/playwright:v1.18.0-focal
-    # build:
-    #   context: ../tests/

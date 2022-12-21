@@ -7,15 +7,15 @@ on:
     branches: [ master ]
   workflow_dispatch:
 jobs:
-  unit_test:
+  test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - name: Run unit tests
-        run: ./scripts/test/unit/ci
-  build_deploy_frontend:
+      - name: Run tests
+        run: ./scripts/test
+  build:
     needs:
-      - unit_test
+      - test
     runs-on: ubuntu-latest
     env:
       REACT_APP_API_BASE_URL: ${{ secrets.API_BASE_URL }}
@@ -27,25 +27,24 @@ jobs:
       - name: Setup Node.js environment
         uses: actions/setup-node@v2.5.1
       - name: Build app
-        working-directory: frontend
         run: npm ci && npm run build
+      - uses: actions/upload-artifact@v2
+        with:
+          name: build
+          path: build
+  deploy:
+    needs:
+      - build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/download-artifact@v2
+        with:
+          name: build
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@v1.2.3
         with:
-          publish-dir: frontend/build
+          publish-dir: build
           production-branch: master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
-  build_deploy_api:
-    needs:
-      - unit_test
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: akhileshns/heroku-deploy@v3.12.12
-        with:
-          heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
-          heroku_app_name: ${{ secrets.HEROKU_APP_NAME }}
-          heroku_email: ${{ secrets.HEROKU_EMAIL }}
-          appdir: api
