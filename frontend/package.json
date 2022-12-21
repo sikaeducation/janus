@@ -63,18 +63,6 @@
     "web-vitals": "^2.1.2",
     "yaml": "^1.10.2"
   },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
-  },
   "devDependencies": {
     "@babel/plugin-transform-modules-commonjs": "^7.16.7",
     "@storybook/addon-actions": "^6.5.14",
@@ -110,5 +98,17 @@
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
     "webpack": "^5.75.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
