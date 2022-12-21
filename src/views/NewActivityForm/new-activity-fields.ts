@@ -1,4 +1,3 @@
-import Checkbox from "../../components/ui/Checkbox";
 import TextArea from "../../components/ui/TextArea";
 import TextInput from "../../components/ui/TextInput";
 

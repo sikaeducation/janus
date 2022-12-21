@@ -55,6 +55,7 @@ export default function ActivityManagerView() {
   }
 
   const save = (newActivity: Activity) => {
+    // eslint-disable-next-line no-console
     console.log(newActivity);
   };
   const saveAndPublish = (newActivity: Activity) => {

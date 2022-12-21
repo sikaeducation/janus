@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { createPortal } from "react-dom";
 import "./ModalView.scss";
 import type { ReactNode } from "react";

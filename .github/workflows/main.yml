@@ -10,7 +10,9 @@ jobs:
   test:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
+      - name: Setup Node.js environment
+        uses: actions/setup-node@v3
       - name: Run tests
         run: ./scripts/test
   build:
@@ -23,9 +25,11 @@ jobs:
       REACT_APP_AUTH_ZERO_DOMAIN: ${{ secrets.AUTH_ZERO_DOMAIN }} 
       REACT_APP_CLIENT_ID: ${{ secrets.AUTH_ZERO_CLIENT_ID }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Setup Node.js environment
-        uses: actions/setup-node@v2.5.1
+        uses: actions/setup-node@v3
+        with:
+          cache: "npm"
       - name: Build app
         run: npm ci && npm run build
       - uses: actions/upload-artifact@v2
