@@ -93,5 +93,5 @@ MultipleLinks.play = async ({ canvasElement }) => {
 
   const elements = await canvas.findAllByRole("listitem");
 
-  expect(elements).toHaveLength(4);
+  expect(elements).toHaveLength(3);
 };

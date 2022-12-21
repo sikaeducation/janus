@@ -8,11 +8,13 @@
     "eject": "react-scripts eject",
     "storybook": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public",
-    "test": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
-    "test:ci": "react-scripts test --watchAll=false --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
-    "test:ui": "test-storybook",
-    "test:ui:watch": "test-storybook --watch",
-    "test:features": "cucumber-js"
+    "test": "npm run test:unit && npm run test:components && npm run test:features",
+    "test:unit": "react-scripts test --watchAll=false --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
+    "test:unit:watch": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
+    "test:components": "test-storybook",
+    "test:components:watch": "test-storybook --watch",
+    "test:features": "cucumber-js --exit",
+    "test:features:watch": "cucumber-js"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
