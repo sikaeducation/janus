@@ -12,5 +12,5 @@ services:
     build:
       target: base
     volumes:
-      - ../frontend:/app
+      - ..:/app
     command: [npm, start]

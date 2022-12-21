@@ -1,4 +1,4 @@
-FROM node:17.2.0-bullseye as base
+FROM node:19.1.0-bullseye AS base
 WORKDIR /app
 
 COPY package*.json ./
@@ -8,3 +8,7 @@ COPY . .
 
 EXPOSE 3000
 CMD ["npm", "start"]
+
+FROM base AS production
+
+CMD ["npm", "run", "build"]

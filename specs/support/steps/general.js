@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-var-requires */
 const { When, Then, Given } = require("@cucumber/cucumber");
 const { expect } = require("expect");
 

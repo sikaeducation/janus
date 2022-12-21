@@ -87,6 +87,12 @@ module.exports = {
         "react/destructuring-assignment": "off",
       },
     },
+    {
+      files: ["specs/**/*.js"],
+      rules: {
+        "@typescript-eslint/no-var-requires": "off",
+      },
+    },
   ],
   settings: {
     "import/resolver": {

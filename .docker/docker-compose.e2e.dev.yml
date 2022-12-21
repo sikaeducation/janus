@@ -1,11 +1,11 @@
 services:
   frontend:
     volumes:
-      - "../frontend:/app"
+      - "..:/app"
   api:
     volumes:
-      - "../api:/app"
+      - "..:/app"
   tests:
     volumes:
-      - "../tests:/app"
+      - "..:/app"
     command: ["./dev.sh"]
