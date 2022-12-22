@@ -14,12 +14,29 @@ import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 const { setTokenFetcher } = tokenAccessors;
 
 function App() {
-  const { user, isLoading, isAuthenticated, getAccessTokenSilently } =
-    useAuth0();
+  const {
+    user,
+    isLoading,
+    isAuthenticated,
+    getAccessTokenSilently,
+    logout,
+    loginWithRedirect,
+  } = useAuth0();
   const dispatch = useDispatch();
-  if (user) {
-    dispatch(setUser(user));
-  }
+  dispatch(
+    setUser(
+      isAuthenticated
+        ? {
+            ...user,
+            isAuthenticated,
+            logout,
+            getAccessTokenSilently,
+            isLoading,
+            loginWithRedirect,
+          }
+        : {}
+    )
+  );
 
   setTokenFetcher(getAccessTokenSilently);
 

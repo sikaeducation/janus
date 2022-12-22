@@ -1,6 +1,5 @@
 import "./AppHeader.scss";
 import { Link } from "react-router-dom";
-import { useAuth0 } from "@auth0/auth0-react";
 
 import { useSelector } from "react-redux";
 import Button from "../ui/Button";
@@ -10,9 +9,16 @@ import Avatar from "../ui/Avatar";
 import { RootState } from "../../store";
 
 function AppHeader() {
-  const { isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0();
-  const user = useSelector((state: RootState) => state.user);
-  const role = user?.["https://sikaeducation.com/role"] ?? "";
+  const {
+    "https://sikaeducation.com/role": role,
+    email,
+    name,
+    picture,
+    logout,
+    isAuthenticated,
+    isLoading,
+    loginWithRedirect,
+  } = useSelector((state: RootState) => state.user);
 
   return (
     <header className="AppHeader">
@@ -20,7 +26,7 @@ function AppHeader() {
         <Link to="/">
           <Logo />
         </Link>
-        {user && (
+        {email && (
           <ul className="links">
             <li key="1">
               <Link to="/">Curriculum</Link>
@@ -47,9 +53,9 @@ function AppHeader() {
             Login
           </Button>
         )}
-        {user && user.picture && user.name && (
+        {picture && name && (
           <>
-            <Avatar imageUrl={user.picture} altText={user.name} />
+            <Avatar imageUrl={picture} altText={name} />
             <Button
               type="ghost"
               action={() => logout({ returnTo: window.location.origin })}
