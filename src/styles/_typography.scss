@@ -29,12 +29,3 @@
     font-size: sizes.$f3;
   }
 }
-
-@mixin program-label-font {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 400;
-  font-size: sizes.$f5;
-  color: colors.$grey-6;
-  line-height: sizes.$f7;
-  margin-bottom: sizes.$f1;
-}

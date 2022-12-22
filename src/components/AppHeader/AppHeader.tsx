@@ -4,6 +4,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 
 import Button from "../ui/Button";
 import Logo from "../Logo";
+import Avatar from "../ui/Avatar";
 
 function AppHeader() {
   const { user, isAuthenticated, isLoading, logout, loginWithRedirect } =
@@ -43,9 +44,9 @@ function AppHeader() {
             Login
           </Button>
         )}
-        {user && (
+        {user && user.picture && user.name && (
           <>
-            <img className="avatar" src={user.picture} alt={user.name} />
+            <Avatar imageUrl={user.picture} altText={user.name} />
             <Button
               type="ghost"
               action={() => logout({ returnTo: window.location.origin })}
@@ -55,10 +56,9 @@ function AppHeader() {
           </>
         )}
         {isLoading && (
-          <img
-            className="avatar"
-            src="/user-avatar-placeholder.png"
-            alt="user avatar placeholder"
+          <Avatar
+            imageUrl="/user-avatar-placeholder.png"
+            altText="user avatar placeholder"
           />
         )}
       </div>

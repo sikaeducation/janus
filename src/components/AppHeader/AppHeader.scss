@@ -1,6 +1,4 @@
 @use "../../styles/sizes";
-@use "../../styles/borders";
-@use "../../styles/typography";
 @use "../../styles/colors";
 
 .AppHeader {
@@ -23,7 +21,12 @@
       }
     }
     .program-label {
-      @include typography.program-label-font;
+      font-family: "Gill Sans", sans-serif;
+      font-weight: 400;
+      font-size: sizes.$f5;
+      color: colors.$grey-6;
+      line-height: sizes.$f7;
+      margin-bottom: sizes.$f1;
       @media (max-width: sizes.$small-breakpoint){
         display: none;
       }
@@ -34,15 +37,8 @@
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: flex-end;
-    .avatar {
-      width: sizes.$s7;
-      border-radius: borders.$radius;
-    }
     .Button.tertiary-button {
       padding-right: 0;
     }
-  }
-  .react-gravatar {
-    display: inline-block;
   }
 }

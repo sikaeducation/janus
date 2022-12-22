@@ -1,0 +1,10 @@
+@use "../../../styles/sizes";
+@use "../../../styles/borders";
+
+.Avatar {
+  width: sizes.$s7;
+  border-radius: borders.$radius;
+}
+.react-gravatar {
+  display: inline-block;
+}
