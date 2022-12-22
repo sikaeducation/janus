@@ -1,4 +1,6 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useDispatch } from "react-redux";
+import { setUser } from "./slices/userSlice";
 import AppLoading from "./views/AppLoading";
 import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
@@ -12,7 +14,13 @@ import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 const { setTokenFetcher } = tokenAccessors;
 
 function App() {
-  const { isLoading, isAuthenticated, getAccessTokenSilently } = useAuth0();
+  const { user, isLoading, isAuthenticated, getAccessTokenSilently } =
+    useAuth0();
+  const dispatch = useDispatch();
+  if (user) {
+    dispatch(setUser(user));
+  }
+
   setTokenFetcher(getAccessTokenSilently);
 
   return (

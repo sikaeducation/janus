@@ -93,6 +93,12 @@ module.exports = {
         "@typescript-eslint/no-var-requires": "off",
       },
     },
+    {
+      files: ["src/slices/*.ts"],
+      rules: {
+        "no-param-reassign": "off",
+      },
+    },
   ],
   settings: {
     "import/resolver": {

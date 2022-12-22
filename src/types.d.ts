@@ -24,6 +24,13 @@ type ActivityResponse = {
   activities: Record<string, Activity>;
 };
 
+type User = {
+  email: string;
+  "https://sikaeducation.com/role"?: "coach";
+  name: string;
+  picture: string;
+};
+
 // Old Types
 type Clobber<
   T extends Record<string, unknown>,

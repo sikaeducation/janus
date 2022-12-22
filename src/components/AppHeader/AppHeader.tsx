@@ -2,14 +2,17 @@ import "./AppHeader.scss";
 import { Link } from "react-router-dom";
 import { useAuth0 } from "@auth0/auth0-react";
 
+import { useSelector } from "react-redux";
 import Button from "../ui/Button";
 import Logo from "../Logo";
 import Avatar from "../ui/Avatar";
 
+import { RootState } from "../../store";
+
 function AppHeader() {
-  const { user, isAuthenticated, isLoading, logout, loginWithRedirect } =
-    useAuth0();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
+  const { isAuthenticated, isLoading, logout, loginWithRedirect } = useAuth0();
+  const user = useSelector((state: RootState) => state.user);
+  const role = user?.["https://sikaeducation.com/role"] ?? "";
 
   return (
     <header className="AppHeader">
