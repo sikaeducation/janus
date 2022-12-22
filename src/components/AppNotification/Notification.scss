@@ -1,13 +1,16 @@
 @use "../../styles/sizes";
 @use "../../styles/borders";
+@use "../../styles/shadows";
 @use "../../styles/colors";
 
 .Notification {
   color: colors.$primary-1;
   background-color: colors.$primary-10;
-  padding: sizes.$s5;
+  padding: sizes.$s2;
   border-radius: borders.$radius;
-  box-shadow: 2px 2px 22px colors.$grey-8;
+  @include shadows.large;
+  max-width: sizes.$s11;
+  text-align: center;
   > p {
     margin: 0;
   }

@@ -3,7 +3,7 @@ import { ComponentStory, ComponentMeta } from "@storybook/react";
 import Notification from ".";
 
 export default {
-  title: "App/Notification",
+  title: "UI/Notification",
   component: Notification,
 } as ComponentMeta<typeof Notification>;
 
