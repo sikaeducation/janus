@@ -22,20 +22,6 @@
         }
       }
     }
-    .logo {
-      font-family: "Gill Sans Condensed", sans-serif;
-      color: colors.$primary-3;
-      font-size: sizes.$f9;
-      letter-spacing: -2px;
-      @media (max-width: sizes.$small-breakpoint){
-        font-size: sizes.$f8;
-      }
-      display: inline-block;
-      margin-top: -12px; // Visual alignment with user avatar
-      a {
-        text-decoration: none;
-      }
-    }
     .program-label {
       @include typography.program-label-font;
       @media (max-width: sizes.$small-breakpoint){

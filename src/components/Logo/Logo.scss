@@ -1,0 +1,17 @@
+@use "../../styles/sizes";
+@use "../../styles/colors";
+
+.Logo {
+  color: colors.$primary-3;
+  display: inline-block;
+  font-family: "Gill Sans Condensed", sans-serif;
+  font-size: sizes.$f9;
+  letter-spacing: -2px;
+  margin-top: -12px; // Visual alignment with user avatar
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f8;
+  }
+  a {
+    text-decoration: none;
+  }
+}
