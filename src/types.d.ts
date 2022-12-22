@@ -29,11 +29,8 @@ type User = {
   "https://sikaeducation.com/role"?: "coach";
   name: string;
   picture: string;
-  logout: (options: { returnTo: string }) => void;
   isAuthenticated: boolean;
-  getAccessTokenSilently: () => void;
   isLoading: boolean;
-  loginWithRedirect: (options: { scope: "openid profile email" }) => void;
 };
 
 // Old Types

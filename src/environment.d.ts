@@ -4,6 +4,9 @@ declare global {
       NODE_ENV: "development" | "production";
     }
   }
+  interface Window {
+    store: any;
+  }
 }
 
 export {};

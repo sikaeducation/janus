@@ -2,6 +2,7 @@ import "./AppHeader.scss";
 import { Link } from "react-router-dom";
 
 import { useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
 import Button from "../ui/Button";
 import Logo from "../Logo";
 import Avatar from "../ui/Avatar";
@@ -14,11 +15,10 @@ function AppHeader() {
     email,
     name,
     picture,
-    logout,
     isAuthenticated,
     isLoading,
-    loginWithRedirect,
   } = useSelector((state: RootState) => state.user);
+  const { logout, loginWithRedirect } = useAuth0();
 
   return (
     <header className="AppHeader">
