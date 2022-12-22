@@ -11,16 +11,6 @@
   src: url("../assets/gsc.woff") format("woff");
 }
 
-@mixin logo-font {
-  font-family: "Gill Sans Condensed", sans-serif;
-  color: colors.$primary-3;
-  font-size: sizes.$f9;
-  letter-spacing: -2px;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f8;
-  }
-}
-
 @mixin body-font {
   font-family: "Gill Sans", sans-serif;
   color: colors.$grey-1;
@@ -32,63 +22,11 @@
   }
 }
 
-@mixin heading-font-1 {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 700;
-  font-size: sizes.$f8;
-  color: colors.$primary-3;
+@mixin code-font {
+  font-family: "Fira Mono", monospace;
+  font-size: inherit;
   @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f6;
-  }
-}
-
-@mixin heading-font-2 {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 400;
-  font-size: sizes.$f7;
-  color: colors.$grey-4;
-  line-height: sizes.$f8;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f6;
-  }
-}
-
-@mixin heading-font-3 {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 400;
-  font-size: sizes.$f6;
-  color: colors.$grey-5;
-  line-height: sizes.$f7;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f5;
-  }
-}
-
-@mixin heading-font-4 {
-  font-family: "Gill Sans", sans-serif;
-  font-weight: 400;
-  font-size: sizes.$f4;
-  color: colors.$grey-4;
-  margin-bottom: sizes.$s4;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f4;
-  }
-}
-
-@mixin breadcrumb-font {
-  font-family: "Gill Sans", sans-serif;
-  font-size: sizes.$f3;
-  font-weight: 400;
-  color: colors.$grey-4;
-}
-
-@mixin legal-font {
-  font-family: "Gill Sans", sans-serif;
-  color: colors.$grey-4;
-  font-size: sizes.$f3;
-  font-weight: 400;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f2;
+    font-size: sizes.$f3;
   }
 }
 
@@ -99,21 +37,4 @@
   color: colors.$grey-6;
   line-height: sizes.$f7;
   margin-bottom: sizes.$f1;
-}
-
-@mixin code-font {
-  font-family: "Fira Mono", monospace;
-  font-size: inherit;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f3;
-  }
-}
-
-@mixin primary-action-button-font {
-  font-family: "Gill Sans", sans-serif;
-  font-size: sizes.$f5;
-  font-weight: 700;
-  @media (max-width: sizes.$small-breakpoint){
-    font-size: sizes.$f4;
-  }
 }

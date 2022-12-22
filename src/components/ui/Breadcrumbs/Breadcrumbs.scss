@@ -3,7 +3,10 @@
 @use "../../../styles/colors";
 
 .Breadcrumbs {
-  @include typography.breadcrumb-font;
+  font-family: "Gill Sans", sans-serif;
+  font-size: sizes.$f3;
+  font-weight: 400;
+  color: colors.$grey-4;
   margin-bottom: sizes.$s6;
   @media (max-width: sizes.$small-breakpoint){
     margin-bottom: sizes.$s3;

@@ -1,10 +1,5 @@
-@use "../../styles/typography";
-
 .AppError {
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
-  h1 {
-    @include typography.heading-font-1;
-  }
 }

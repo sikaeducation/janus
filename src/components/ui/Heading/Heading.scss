@@ -1,8 +1,15 @@
 @use "../../../styles/typography";
 @use "../../../styles/sizes";
+@use "../../../styles/colors";
 
 .primary-heading {
-  @include typography.heading-font-1;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 700;
+  font-size: sizes.$f8;
+  color: colors.$primary-3;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f6;
+  }
   &.margin {
     margin-top: sizes.$f4;
     margin-bottom: sizes.$f6;
@@ -12,7 +19,14 @@
   }
 }
 .secondary-heading {
-  @include typography.heading-font-2;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f7;
+  color: colors.$grey-4;
+  line-height: sizes.$f8;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f6;
+  }
   &.margin {
     margin-top: sizes.$f7;
     margin-bottom: sizes.$f2;
@@ -23,7 +37,14 @@
   }
 }
 .tertiary-heading {
-  @include typography.heading-font-3;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f6;
+  color: colors.$grey-5;
+  line-height: sizes.$f7;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f5;
+  }
   &.margin {
     margin-bottom: sizes.$f1;
     @media (max-width: sizes.$small-breakpoint){
@@ -32,7 +53,14 @@
   }
 }
 .quaternary-heading {
-  @include typography.heading-font-4;
+  font-family: "Gill Sans", sans-serif;
+  font-weight: 400;
+  font-size: sizes.$f4;
+  color: colors.$grey-4;
+  margin-bottom: sizes.$s4;
+  @media (max-width: sizes.$small-breakpoint){
+    font-size: sizes.$f4;
+  }
   &.margin {
     margin-bottom: sizes.$s4;
   }
