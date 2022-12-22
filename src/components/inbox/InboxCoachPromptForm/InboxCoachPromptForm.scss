@@ -1,14 +1,9 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
 @use "../../../styles/colors";
-@use "../../../styles/typography";
 
 .InboxCoachPromptForm {
-  label {
-    @include typography.breadcrumb-font;
-  }
   .question-prompt {
-    @include typography.code-font;
     border-radius: borders.$radius;
     border-radius: borders.$radius;
     border: 1px solid colors.$grey-6;

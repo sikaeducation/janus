@@ -1,10 +1,8 @@
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
-@use "../../../styles/typography";
 
 .InboxResponses {
   h2 {
-    @include typography.heading-font-2;
     margin-bottom: sizes.$s5;
   }
   .response-count {

@@ -5,7 +5,8 @@ import AppLoading from "./AppLoading";
 import AppError from "./AppError";
 import { toastContext } from "../contexts/toast";
 
-import ToastNotification from "../components/ui/ToastNotification";
+import Toast from "../components/ui/Toast";
+import Notification from "../components/AppNotification";
 import ActivityManagerView from "./ActivityManagerView";
 
 export default function AuthenticatedRoutes() {
@@ -21,7 +22,11 @@ export default function AuthenticatedRoutes() {
         <Route path="/activity-manager" element={<ActivityManagerView />} />
         <Route path="*" element={<p>Home page</p>} />
       </Routes>
-      {showToastNotification ? <ToastNotification /> : null}
+      {showToastNotification ? (
+        <Toast>
+          <Notification />
+        </Toast>
+      ) : null}
     </>
   );
 }

@@ -1,4 +1,3 @@
-@use "../../../styles/typography";
 @use "../../../styles/borders";
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
@@ -18,16 +17,12 @@
 
   // Typography
   h1 {
-    @include typography.heading-font-1;
   }
   h2 {
-    @include typography.heading-font-2;
   }
   h3 {
-    @include typography.heading-font-3;
   }
   h4, h5, h6 {
-    @include typography.heading-font-4;
   }
   strong {
     font-weight: 700;
@@ -104,7 +99,6 @@
       }
     }
     code {
-      @include typography.code-font;
       font-size: sizes.$f3 !important; // Overrides inheritance
       white-space: pre-wrap !important; // Needed to override syntax highlighter
       box-sizing: content-box;
@@ -115,7 +109,6 @@
   }
   // Inline Code
   code {
-    @include typography.code-font;
     display: inline-block;
     padding: 0 4px;
     background-color: colors.$grey-10;
@@ -131,7 +124,6 @@
       border-bottom: 1px solid colors.$grey-7;
     }
     th {
-      @include typography.heading-font-3;
       text-align: left;
       padding-bottom: sizes.$s2;
     }

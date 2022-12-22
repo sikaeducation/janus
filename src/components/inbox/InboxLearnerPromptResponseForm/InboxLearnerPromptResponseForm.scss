@@ -1,6 +1,5 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
-@use "../../../styles/typography";
 @use "../../../styles/colors";
 
 .InboxLearnerPromptResponseForm {
@@ -8,11 +7,7 @@
     padding: 0;
   }
   form {
-    label {
-      @include typography.breadcrumb-font;
-    }
     .response {
-      @include typography.code-font;
       border-radius: borders.$radius;
       border-radius: borders.$radius;
       border: 1px solid colors.$grey-6;

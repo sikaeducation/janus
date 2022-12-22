@@ -1,22 +1,12 @@
 @use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
 
-.ToastNotification {
+.Toast {
   position: fixed;
   right: sizes.$s4;
   bottom: -300px;
-  color: colors.$primary-1;
-  background-color: colors.$primary-10;
-  padding: sizes.$s5;
-border-radius: borders.$radius;
   align-self: flex-end;
   animation: toast sizes.$toast-duration;
   z-index: 10;
-  box-shadow: 2px 2px 22px colors.$grey-8;
-  > p {
-    margin: 0;
-  }
 }
 
 @keyframes toast {
@@ -33,4 +23,3 @@ border-radius: borders.$radius;
     bottom: -300px;
   }
 }
-

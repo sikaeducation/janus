@@ -71,3 +71,6 @@ strong {
 em {
   font-style: italic;
 }
+code {
+  @include typography.code-font;
+}

@@ -1,11 +1,9 @@
 @use "../../../styles/sizes";
 @use "../../../styles/borders";
 @use "../../../styles/colors";
-@use "../../../styles/typography";
 
 .InboxCoachPromptDisplay {
   .slug {
-    @include typography.breadcrumb-font;
     color: colors.$grey-4;
     margin-bottom: sizes.$s4;
   }

@@ -1,5 +1,4 @@
-@use "../../styles/typography";
-@use "../../styles/sizes";
+@use "../../../styles/sizes";
 
 .TypographyDemo {
   .heading-typeface {
@@ -14,30 +13,6 @@
     padding-bottom: 24px;
     border-bottom: 1px solid #ccc;
     margin-bottom: 24px;
-  }
-  h1 {
-    @include typography.heading-font-1;
-  }
-  h2 {
-    @include typography.heading-font-2;
-  }
-  h3 {
-    @include typography.heading-font-3;
-  }
-  h4 {
-    @include typography.heading-font-4;
-  }
-  .logo-font {
-    @include typography.logo-font;
-  }
-  p {
-    @include typography.body-font;
-  }
-  code {
-    @include typography.code-font;
-  }
-  small {
-    @include typography.legal-font;
   }
   .size-1 {
     font-size: sizes.$f1;

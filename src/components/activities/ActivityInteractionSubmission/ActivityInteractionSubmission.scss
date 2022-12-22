@@ -1,16 +1,12 @@
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
 @use "../../../styles/borders";
-@use "../../../styles/typography";
 
 .ActivityInteractionSubmission {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
   margin-bottom: sizes.$s6;
-  label {
-    @include typography.breadcrumb-font;
-  }
   input, button {
     display: inline-block;
     border: 1px solid colors.$grey-8;
@@ -27,7 +23,6 @@
   }
   h2 {
     align-self: flex-start;
-    @include typography.heading-font-2;
   }
   .submissions {
     width: 100%;
