@@ -88,9 +88,10 @@ module.exports = {
       },
     },
     {
-      files: ["specs/**/*.js"],
+      files: ["features/**/*.ts"],
       rules: {
-        "@typescript-eslint/no-var-requires": "off",
+        "func-names": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
       },
     },
     {

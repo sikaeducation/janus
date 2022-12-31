@@ -14,8 +14,8 @@
     "test:unit:watch": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
     "test:components": "test-storybook",
     "test:components:watch": "test-storybook --watch",
-    "test:features": "cucumber-js --exit --tags \"not @skip\"",
-    "test:features:watch": "cucumber-js --tags \"not @skip\""
+    "test:features": "NODE_ENV=test cucumber-js --require-module 'ts-node/register'",
+    "test:features:watch": "nodemon -L -x 'npm run test:features' -e ts,feature"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
@@ -72,6 +72,7 @@
     "expect": "^29.3.1",
     "lodash": "^4.17.21",
     "msw": "^0.36.3",
+    "nodemon": "^2.0.20",
     "playwright": "^1.29.0",
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",

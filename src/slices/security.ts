@@ -4,7 +4,8 @@ type TokenGetter = (options?: GetTokenSilentlyOptions) => Promise<string>;
 let getAccessTokenSilently: TokenGetter;
 
 export const accessors = {
-  getToken: () => getAccessTokenSilently(),
+  getToken: () =>
+    process.env.NODE_ENV === "test" ? getAccessTokenSilently() : "Fake Token",
   setTokenFetcher: (accessTokenSetter: TokenGetter) => {
     getAccessTokenSilently = accessTokenSetter;
   },

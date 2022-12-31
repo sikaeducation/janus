@@ -1,8 +1,10 @@
 {
   "default": {
-    "requireModules": ["ts-node/register"],
-    "require": ["specs/**/*.js"],
-    "paths": ["specs"],
-    "publishQuiet": true
+    "require": ["features/support/**/*.ts"],
+    "paths": ["features"],
+    "publishQuiet": true,
+    "forceExit": true,
+    "failFast": true,
+    "tags": "not @skip"
   }
 }

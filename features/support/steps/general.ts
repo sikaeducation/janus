@@ -1,7 +1,5 @@
-/* eslint-disable func-names */
-/* eslint-disable no-param-reassign */
-const { When, Then, Given } = require("@cucumber/cucumber");
-const { expect } = require("@playwright/test");
+import { When, Then, Given, DataTable } from "@cucumber/cucumber";
+import { expect, Route } from "@playwright/test";
 
 Given("I'm on the activity manager page", async function () {
   await this.navigateTo("http://localhost:3000/activity-manager");
@@ -9,20 +7,17 @@ Given("I'm on the activity manager page", async function () {
 
 Given("these activities are saved:", async function (dataTable) {
   const activities = dataTable.hashes();
-  await this.page.route("**/activities*", (route) => {
-    console.log("Route fired");
+  await this.page.route("**/activities", (route: Route) => {
     route.fulfill({
-      body: activities,
+      body: JSON.stringify(activities),
     });
-  });
-  this.page.on("request", (request) => {
-    console.log(request.method(), request.url());
   });
 });
 
 Given("I'm a coach", async function () {
   await this.navigateTo("http://localhost:3000");
   await this.page.evaluate(() => {
+    // @ts-ignore
     window.store.dispatch({
       type: "user/setUser",
       payload: {
@@ -37,10 +32,10 @@ Given("I'm a coach", async function () {
 
 When("I navigate to the activity manager page", async function () {
   await this.page.getByText("Activity Manager").click();
+  await this.page.getByText("Activities").waitFor();
 });
 
-Then("I see these activities listed:", async function (dataTable) {
-  const activities = dataTable.hashes();
-  this.page.screenshot({ path: "screenshot.png" });
+Then("I see these activities listed:", async function (dataTable: DataTable) {
+  const activities = dataTable.rows();
   await expect(this.page.getByRole("row")).toHaveCount(4);
 });

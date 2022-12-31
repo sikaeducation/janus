@@ -16,7 +16,7 @@ export const apiSlice = createApi({
   }),
   endpoints: (builder) => ({
     getActivities: builder.query<Activity[], void>({
-      query: () => "/activities",
+      query: () => "activities",
     }),
   }),
 });
