@@ -9,8 +9,13 @@ function CustomWorld() {
     const browser = await playwright.chromium.launch({
       headless: true,
     });
-    const context = await browser.newContext();
-    this.page = await context.newPage();
+    this.context = await browser.newContext();
+    this.page = await this.context.newPage();
+    await this.context.route("**/authorize*", (route) => {
+      route.fulfill({
+        status: 200,
+      });
+    });
     await this.page.goto(url);
   };
 }

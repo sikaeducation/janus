@@ -1,35 +1,20 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useDispatch } from "react-redux";
-import { setUser } from "./slices/userSlice";
+import { useSelector } from "react-redux";
 import AppLoading from "./views/AppLoading";
 import AppHeader from "./components/AppHeader";
 import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
 import "./App.scss";
-import tokenAccessors from "./slices/security";
 
 import ToastProvider from "./contexts/toast";
 import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
-
-const { setTokenFetcher } = tokenAccessors;
+import { RootState } from "./store";
+import useAuth from "./hooks/use-auth";
 
 function App() {
-  const { user, isLoading, isAuthenticated, logout, getAccessTokenSilently } =
-    useAuth0();
-  const dispatch = useDispatch();
-  dispatch(
-    setUser(
-      isAuthenticated
-        ? {
-            ...user,
-            isAuthenticated,
-            isLoading,
-          }
-        : {}
-    )
+  useAuth();
+  const { isLoading, isAuthenticated } = useSelector(
+    (state: RootState) => state.user
   );
-
-  setTokenFetcher(getAccessTokenSilently);
 
   return (
     <div className="App">
