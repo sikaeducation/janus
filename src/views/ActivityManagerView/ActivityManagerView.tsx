@@ -21,9 +21,7 @@ type FormattedActivity = Activity & {
 };
 
 export default function ActivityManagerView() {
-  console.log("activity view rendered");
-  const { data: activities, isLoading, error } = useGetActivitiesQuery();
-  console.log("activity view query done", activities, isLoading, error);
+  const { data: activities, isLoading } = useGetActivitiesQuery();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const activitiesCount = activities?.length || 0;
 

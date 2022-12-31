@@ -7,7 +7,7 @@ Feature: Listing features
       | 1       | Article | Some title  | true      |
       | 2       | Article | Some title  | true      |
       | 3       | Article | Some title  | true      |
-    When I navigate to the activity manager page
+    When I go to the activity manager page
     Then I see these activities listed:
       | _id     | _type   | title       | published |
       | 1       | Article | Some title  | true      |

@@ -13,7 +13,7 @@ COPY . .
 RUN npm run build-storybook --quiet
 RUN npm run build
 
-ENV baseURL="http://localhost:3000"
+ENV BASE_URL="http://localhost:3000"
 
 ENTRYPOINT npm run test:unit \
   && npx concurrently -k -s first -n "Storybook,Tests" -c "magenta,blue" \

@@ -10,7 +10,8 @@ function CustomWorld(
   }
 ) {
   this.navigateTo = async (path: string) => {
-    await this.page.goto(`${process.env.baseURL}${path}`);
+    const baseURL = process.env.BASE_URL || "http://localhost:3000";
+    await this.page.goto(`${baseURL}${path}`);
   };
 }
 
@@ -27,4 +28,5 @@ Before(async function () {
       status: 200,
     });
   });
+  await this.navigateTo("/");
 });

@@ -2,7 +2,7 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setUser } from "../slices/userSlice";
-import tokenAccessors from "../slices/security";
+import tokenAccessors from "../utilities/security";
 
 const { setTokenFetcher } = tokenAccessors;
 
