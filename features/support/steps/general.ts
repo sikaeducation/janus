@@ -2,7 +2,7 @@ import { When, Then, Given, DataTable } from "@cucumber/cucumber";
 import { expect, Route } from "@playwright/test";
 
 Given("I'm on the activity manager page", async function () {
-  await this.navigateTo("http://localhost:3000/activity-manager");
+  await this.navigateTo("/activity-manager");
 });
 
 Given("these activities are saved:", async function (dataTable) {
@@ -15,7 +15,7 @@ Given("these activities are saved:", async function (dataTable) {
 });
 
 Given("I'm a coach", async function () {
-  await this.navigateTo("http://localhost:3000");
+  await this.navigateTo("/");
   await this.page.evaluate(() => {
     // @ts-ignore
     window.store.dispatch({

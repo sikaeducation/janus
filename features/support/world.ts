@@ -4,13 +4,13 @@ import { chromium } from "playwright";
 
 function CustomWorld(
   this: World & {
-    navigateTo: (url: string) => void;
+    navigateTo: (path: string) => void;
     page: Page;
     context: BrowserContext;
   }
 ) {
-  this.navigateTo = async (url: string) => {
-    await this.page.goto(url);
+  this.navigateTo = async (path: string) => {
+    await this.page.goto(`${process.env.baseURL}${path}`);
   };
 }
 
