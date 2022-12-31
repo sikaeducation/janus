@@ -14,7 +14,7 @@
     "test:unit:watch": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
     "test:components": "test-storybook",
     "test:components:watch": "test-storybook --watch",
-    "test:features": "NODE_ENV=test cucumber-js --require-module 'ts-node/register'",
+    "test:features": "cucumber-js --require-module 'ts-node/register'",
     "test:features:watch": "nodemon -L -x 'npm run test:features' -e ts,feature"
   },
   "dependencies": {

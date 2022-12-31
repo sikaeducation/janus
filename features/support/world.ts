@@ -29,4 +29,8 @@ Before(async function () {
     });
   });
   await this.navigateTo("/");
+  await this.page.evaluate(() => {
+    // @ts-ignore
+    window.env = "test";
+  });
 });
