@@ -11,4 +11,16 @@
     align-items: center;
     margin-bottom: sizes.$s4;
   }
+  .DataTable {
+    .table-row {
+      .field:nth-child(1), .field:nth-child(2) {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        & > span {
+          width: 100%; // stretch skeleton
+        }
+      }
+    }
+  }
 }

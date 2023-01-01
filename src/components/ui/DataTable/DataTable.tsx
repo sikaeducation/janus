@@ -1,6 +1,6 @@
 import "./DataTable.scss";
 import { pluck } from "lodash/fp";
-import useWindowSize from "../../../hooks/use-window-size";
+import useWindowSize, { Size } from "../../../hooks/use-window-size";
 
 type Field = {
   header: string;
@@ -22,8 +22,7 @@ export default function DataTable<
   RowType extends { id: string; [key: string]: unknown }
 >({ tableData, fields }: Props<RowType>) {
   const size = useWindowSize();
-  const normalizedFields =
-    size.breakpoint === "small" ? fields.filter(hasSmallProportion) : fields;
+  const normalizedFields = normalizeFields(size, fields);
   const proportions = normalizedFields.map(getProportion(size));
   const headers = pluck("header")(normalizedFields);
   const columnWidths = proportions.join(" ");
@@ -53,13 +52,8 @@ export default function DataTable<
               className="table-row"
             >
               {normalizedFields.length
-                ? normalizedFields.map(({ key }) => (
-                    <span
-                      title={String(row[key])}
-                      className="field"
-                      key={key}
-                      role="cell"
-                    >
+                ? normalizedFields.map(({ key, title }) => (
+                    <span title={title} className="field" key={key} role="cell">
                       {row[key || ""] ? row[key] : null}
                     </span>
                   ))
@@ -81,4 +75,13 @@ function getProportion(size: ReturnType<typeof useWindowSize>) {
       ? field.proportion
       : field.proportion[size.breakpoint || "large"];
   };
+}
+
+function normalizeFields(size: Size, fields: Field[]) {
+  return (
+    size.breakpoint === "small" ? fields.filter(hasSmallProportion) : fields
+  ).map((field) => ({
+    ...field,
+    title: typeof field.key === "string" ? field.key : "icon",
+  }));
 }

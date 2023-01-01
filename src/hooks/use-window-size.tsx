@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 type Breakpoint = "small" | "large";
 
-type Size = {
+export type Size = {
   width: number | undefined;
   height: number | undefined;
   breakpoint: Breakpoint | undefined;
