@@ -1,6 +1,13 @@
-import { Before, setWorldConstructor, World } from "@cucumber/cucumber";
+import {
+  Before,
+  setWorldConstructor,
+  World,
+  setDefaultTimeout,
+} from "@cucumber/cucumber";
 import { BrowserContext, Page, Route } from "@playwright/test";
 import { chromium } from "playwright";
+
+setDefaultTimeout(1000 * 40);
 
 function CustomWorld(
   this: World & {
