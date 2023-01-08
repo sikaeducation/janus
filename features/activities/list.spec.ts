@@ -3,7 +3,6 @@ import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
 test("listing activities", async ({ page }) => {
-  await asCoach(page);
   const activities = [
     {
       _id: 1,
@@ -31,6 +30,7 @@ test("listing activities", async ({ page }) => {
     });
   });
 
+  await asCoach(page);
   await page.getByText("Activity Manager").click();
   await expect(page.getByRole("row")).toHaveCount(activities.length + 1);
 });

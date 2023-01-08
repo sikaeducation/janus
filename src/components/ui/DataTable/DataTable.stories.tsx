@@ -56,6 +56,7 @@ OneRow.args = {
       header: "Header 3",
       proportion: "30%",
       key: "header_3",
+      action: (id) => console.log("I got clicked", id),
     },
   ],
   tableData: [

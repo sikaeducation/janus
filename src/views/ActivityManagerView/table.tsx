@@ -1,6 +1,7 @@
 import { Skeleton } from "@material-ui/lab";
+import { Field } from "../../components/ui/DataTable/DataTable";
 
-export const fields = [
+export const fields: Field[] = [
   {
     header: "Type",
     key: "type",
@@ -14,6 +15,7 @@ export const fields = [
     proportion: {
       large: "2em",
     },
+    action: () => console.log("Toggle publishing"),
   },
   {
     header: "Name",

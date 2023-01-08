@@ -14,11 +14,21 @@ export const apiSlice = createApi({
       return headers;
     },
   }),
+  tagTypes: ["Activity"],
   endpoints: (builder) => ({
     getActivities: builder.query<Activity[], void>({
       query: () => "activities",
+      providesTags: ["Activity"],
+    }),
+    createActivity: builder.mutation<Activity, Activity>({
+      query: (activity) => ({
+        url: "activities",
+        method: "POST",
+        body: activity,
+      }),
+      invalidatesTags: ["Activity"],
     }),
   }),
 });
 
-export const { useGetActivitiesQuery } = apiSlice;
+export const { useGetActivitiesQuery, useCreateActivityMutation } = apiSlice;

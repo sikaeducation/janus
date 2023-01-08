@@ -1,8 +1,9 @@
 import "./DataTable.scss";
 import { pluck } from "lodash/fp";
+import { KeyboardEvent } from "react";
 import useWindowSize, { Size } from "../../../hooks/use-window-size";
 
-type Field = {
+export type Field = {
   header: string;
   key: string;
   proportion:
@@ -11,6 +12,7 @@ type Field = {
         small?: string;
         large: string;
       };
+  action?: (id?: string) => void;
 };
 
 type Props<RowType> = {
@@ -26,6 +28,13 @@ export default function DataTable<
   const proportions = normalizedFields.map(getProportion(size));
   const headers = pluck("header")(normalizedFields);
   const columnWidths = proportions.join(" ");
+  const handleKey =
+    (action?: (id?: string) => void, id?: string) =>
+    (event: KeyboardEvent<HTMLSpanElement>) => {
+      if (event.code === "Enter" && action) {
+        action(id);
+      }
+    };
 
   return (
     <div className="DataTable" role="grid">
@@ -52,8 +61,18 @@ export default function DataTable<
               className="table-row"
             >
               {normalizedFields.length
-                ? normalizedFields.map(({ key, title }) => (
-                    <span title={title} className="field" key={key} role="cell">
+                ? normalizedFields.map(({ key, title, action }) => (
+                    <span
+                      onClick={() => action && action(row.id)}
+                      onKeyDown={(event) =>
+                        action && handleKey(action, row.id)(event)
+                      }
+                      title={title}
+                      className="field"
+                      key={key}
+                      tabIndex={0}
+                      role="gridcell"
+                    >
                       {row[key || ""] ? row[key] : null}
                     </span>
                   ))

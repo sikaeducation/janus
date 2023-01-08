@@ -5,10 +5,14 @@ import DataTable from "../../components/ui/DataTable";
 import Button from "../../components/ui/Button";
 import Heading from "../../components/ui/Heading";
 import { fields, skeletonRows } from "./table";
-import { useGetActivitiesQuery } from "../../slices/apiSlice";
+import {
+  useCreateActivityMutation,
+  useGetActivitiesQuery,
+} from "../../slices/apiSlice";
 import NewActivityForm from "../NewActivityForm";
 
 import "./ActivityManagerView.scss";
+import Drawer from "../../components/ui/Drawer";
 
 const activityTypes = {
   Article: <Icon type="article" />,
@@ -22,7 +26,11 @@ type FormattedActivity = Activity & {
 
 export default function ActivityManagerView() {
   const { data: activities, isLoading } = useGetActivitiesQuery();
+  const [createActivity, { status, error }] = useCreateActivityMutation();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
+  const [selectedActivity, setSelectedActivity] = useState<
+    Activity | undefined
+  >(undefined);
   const activitiesCount = activities?.length || 0;
 
   const handleNewClick = () => {
@@ -31,6 +39,20 @@ export default function ActivityManagerView() {
   const closeModal = () => {
     setNewActivityOpen(false);
   };
+  const fieldActions = {
+    publishedIcon: () => console.log("toggle publishing"),
+    title: (id?: string) =>
+      setSelectedActivity(activities?.find((activity) => activity._id === id)),
+    description: (id?: string) =>
+      setSelectedActivity(activities?.find((activity) => activity._id === id)),
+  } as const;
+  const fieldsWithActions = fields.map((field) => {
+    if (field.key in fieldActions) {
+      // eslint-disable-next-line no-param-reassign
+      field.action = fieldActions[field.key as keyof typeof fieldActions];
+    }
+    return field;
+  });
   let tableToDisplay: ReactNode;
   if (!isLoading && activities) {
     const formattedActivities: FormattedActivity[] =
@@ -44,7 +66,7 @@ export default function ActivityManagerView() {
       }) || [];
     tableToDisplay = (
       <DataTable<FormattedActivity>
-        fields={fields}
+        fields={fieldsWithActions}
         tableData={formattedActivities}
       />
     );
@@ -55,8 +77,8 @@ export default function ActivityManagerView() {
   }
 
   const save = (newActivity: Activity) => {
-    // eslint-disable-next-line no-console
-    console.log(newActivity);
+    createActivity(newActivity);
+    setNewActivityOpen(false);
   };
   const saveAndPublish = (newActivity: Activity) => {
     save({
@@ -86,6 +108,13 @@ export default function ActivityManagerView() {
         </Button>
       </header>
       {tableToDisplay}
+      {selectedActivity ? (
+        <Drawer close={() => setSelectedActivity(undefined)}>
+          <Heading level={2}>{selectedActivity.title}</Heading>
+          <p>{selectedActivity.description}</p>
+          <p>{selectedActivity.notes}</p>
+        </Drawer>
+      ) : null}
     </div>
   );
 }

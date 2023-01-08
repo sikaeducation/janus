@@ -1,5 +1,6 @@
 @use "../../../styles/sizes";
 @use "../../../styles/colors";
+@use "../../../styles/borders";
 
 .DataTable {
   max-width: sizes.$s17;
@@ -18,5 +19,8 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     align-content: start;
+    &:focus {
+      @include borders.trace;
+    }
   }
 }
