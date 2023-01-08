@@ -14,13 +14,12 @@
     "test:unit:watch": "react-scripts test --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
     "test:components": "test-storybook",
     "test:components:watch": "test-storybook --watch",
-    "test:features": "cucumber-js --require-module 'ts-node/register'",
-    "test:features:watch": "nodemon -L -x 'npm run test:features' -e ts,feature"
+    "test:features": "npx playwright test features/",
+    "test:features:watch": "nodemon -L -x 'npm run test:features' -e ts"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
     "@babel/plugin-transform-modules-commonjs": "^7.16.7",
-    "@cucumber/cucumber": "^8.9.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.1",
     "@fortawesome/free-solid-svg-icons": "^6.1.1",
     "@fortawesome/react-fontawesome": "^0.1.18",
@@ -73,7 +72,6 @@
     "lodash": "^4.17.21",
     "msw": "^0.36.3",
     "nodemon": "^2.0.20",
-    "playwright": "^1.29.0",
     "prettier": "^2.5.1",
     "prop-types": "^15.8.1",
     "react": "^17.0.2",

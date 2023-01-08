@@ -19,6 +19,6 @@ ENTRYPOINT npm run test:unit \
   && npx concurrently -k -s first -n "Storybook,Tests" -c "magenta,blue" \
   "npx http-server storybook-static --port 6006 --silent" \
   "npx wait-on tcp:6006 && npm run test:components" \
-  && npx concurrently -k -s first -n "React,Cucumber" -c "magenta,blue" \
+  && npx concurrently -k -s first -n "App,Playwright" -c "magenta,blue" \
   "npx http-server build --port 3000 --silent" \
   "npx wait-on tcp:3000 && npm run test:features"

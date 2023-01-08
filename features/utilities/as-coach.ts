@@ -1,7 +1,7 @@
-import { Given } from "@cucumber/cucumber";
+import { Page } from "@playwright/test";
 
-Given("I'm a coach", async function () {
-  await this.page.evaluate(() => {
+async function asCoach(page: Page) {
+  await page.evaluate(() => {
     // @ts-ignore
     window.store.dispatch({
       type: "user/setUser",
@@ -13,4 +13,6 @@ Given("I'm a coach", async function () {
       },
     });
   });
-});
+}
+
+export default asCoach;
