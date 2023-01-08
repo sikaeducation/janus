@@ -7,7 +7,7 @@ const test = base.extend({
         status: 200,
       });
     });
-    await page.goto(baseURL ?? "http://localhost:8000");
+    await page.goto(baseURL ?? "http://localhost:3000");
     await page.evaluate(() => {
       // @ts-ignore
       window.env = "test";
