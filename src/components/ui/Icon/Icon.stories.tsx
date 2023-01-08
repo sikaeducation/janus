@@ -18,3 +18,8 @@ export const Article = Template.bind({});
 Article.args = {
   type: "article",
 };
+
+export const Close = Template.bind({});
+Close.args = {
+  type: "close",
+};
