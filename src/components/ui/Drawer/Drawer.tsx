@@ -28,6 +28,7 @@ export default function Drawer({ children, close, modal = false }: Props) {
       role="dialog"
       aria-modal={modal}
       aria-describedby="drawer-content"
+      aria-label={`${modal && "modal "}drawer`}
       className={classNames({ Drawer: true, modal })}
       onClick={handleClick}
       onKeyDown={handleKey}
