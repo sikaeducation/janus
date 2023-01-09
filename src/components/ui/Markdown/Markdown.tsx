@@ -9,7 +9,12 @@ import { useAuth0 } from "@auth0/auth0-react";
 import { performanceContext } from "../../../contexts/performance";
 import useIndicator from "../../../hooks/use-indicator";
 import { programContext } from "../../../contexts/program";
-import { addLinkToImage, formatCode, formatLinks } from "./markdown-utilities";
+import {
+  addLinkToImage,
+  formatCode,
+  formatHeading,
+  formatLinks,
+} from "./markdown-utilities";
 
 type props = {
   content: string;
@@ -47,6 +52,12 @@ export default function AppContent({ content, className = "" }: props) {
             getIndicator,
           }),
           code: formatCode,
+          h1: formatHeading(1),
+          h2: formatHeading(2),
+          h3: formatHeading(3),
+          h4: formatHeading(4),
+          h5: formatHeading(4),
+          h6: formatHeading(4),
         }}
       >
         {content}

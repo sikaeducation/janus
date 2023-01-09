@@ -1,5 +1,6 @@
 @use "./typography";
 @use "./sizes";
+@use "./borders";
 
 /* http://meyerweb.com/eric/tools/css/reset/ 
 v2.0 | 20110126
@@ -73,4 +74,7 @@ em {
 }
 code {
   @include typography.code-font;
+}
+img, blockquote, code, pre {
+  border-radius: borders.$radius;
 }

@@ -1,6 +1,11 @@
 import { render, screen, within } from "@testing-library/react";
 import { MemoryRouter } from "react-router-dom";
-import { addLinkToImage, formatLinks, formatCode } from "./markdown-utilities";
+import {
+  addLinkToImage,
+  formatLinks,
+  formatCode,
+  formatHeading,
+} from "./markdown-utilities";
 
 describe("#addLinkToImage", () => {
   it("adds a link to an image", async () => {
@@ -101,5 +106,59 @@ describe("#formatCode", () => {
     const $code = await screen.findByText(codeExample);
 
     expect($code).toHaveClass("ts");
+  });
+});
+
+describe("#formatHeading", () => {
+  it("formats h1s", async () => {
+    const h1 = formatHeading(1)({
+      children: "Some Heading",
+    });
+
+    render(h1);
+
+    const $h1 = await screen.findByText("Some Heading");
+
+    expect($h1).toHaveClass("Heading");
+    expect($h1).toHaveClass("primary-heading");
+  });
+
+  it("formats h2s", async () => {
+    const h2 = formatHeading(2)({
+      children: "Some Heading",
+    });
+
+    render(h2);
+
+    const $h2 = await screen.findByText("Some Heading");
+
+    expect($h2).toHaveClass("Heading");
+    expect($h2).toHaveClass("secondary-heading");
+  });
+
+  it("formats h3s", async () => {
+    const h3 = formatHeading(3)({
+      children: "Some Heading",
+    });
+
+    render(h3);
+
+    const $h3 = await screen.findByText("Some Heading");
+
+    expect($h3).toHaveClass("Heading");
+    expect($h3).toHaveClass("tertiary-heading");
+  });
+
+  it("formats h4s", async () => {
+    const h4 = formatHeading(4)({
+      children: "Some Heading",
+    });
+
+    render(h4);
+
+    const $h4 = await screen.findByText("Some Heading");
+
+    expect($h4).toHaveClass("Heading");
+    expect($h4).toHaveClass("quaternary-heading");
   });
 });

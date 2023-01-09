@@ -11,25 +11,6 @@
   h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre, pre > code {
     width: 100%;
   }
-  img, blockquote, code, pre {
-    border-radius: borders.$radius;
-  }
-
-  // Typography
-  h1 {
-  }
-  h2 {
-  }
-  h3 {
-  }
-  h4, h5, h6 {
-  }
-  strong {
-    font-weight: 700;
-  }
-  em {
-    font-style: italic;
-  }
 
   // Links
   .internal-link {

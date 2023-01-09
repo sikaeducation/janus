@@ -3,11 +3,12 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { last } from "lodash/fp";
-import { ComponentPropsWithoutRef } from "react";
+import { ComponentPropsWithoutRef, ReactElement, ReactNode } from "react";
 import { Link } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
+import Heading from "../Heading";
 
 export function addLinkToImage({ src, alt }: ComponentPropsWithoutRef<"img">) {
   return (
@@ -92,4 +93,21 @@ export function formatCode({
   ) : (
     <code className={elementClassName}>{children}</code>
   );
+}
+
+export function formatHeading(level: number) {
+  return function _formatHeading({ children }: any) {
+    switch (level) {
+      case 1:
+        return <Heading level={1}>{children}</Heading>;
+      case 2:
+        return <Heading level={2}>{children}</Heading>;
+      case 3:
+        return <Heading level={3}>{children}</Heading>;
+      case 4:
+        return <Heading level={4}>{children}</Heading>;
+      default:
+        return <Heading level={1}>{children}</Heading>;
+    }
+  };
 }
