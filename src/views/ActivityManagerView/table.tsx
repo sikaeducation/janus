@@ -15,7 +15,6 @@ export const fields: Field[] = [
     proportion: {
       large: "2em",
     },
-    action: () => console.log("Toggle publishing"),
   },
   {
     header: "Name",

@@ -8,14 +8,9 @@ import newActivityFields from "./new-activity-fields";
 type Props = {
   cancel: () => void;
   save: (newActivity: Activity) => void;
-  saveAndPublish: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({
-  save,
-  saveAndPublish,
-  cancel,
-}: Props) {
+export default function NewActivityForm({ save, cancel }: Props) {
   const [newItem, setNewItem] = useState<ActivityArticle>({
     _type: "Article",
     title: "",
@@ -24,6 +19,13 @@ export default function NewActivityForm({
     notes: "",
     published: false,
   } as const);
+
+  const saveAndPublish = (newActivity: Activity) => {
+    save({
+      ...newActivity,
+      published: true,
+    });
+  };
 
   const actions = [
     {
