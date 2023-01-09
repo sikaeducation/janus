@@ -3,7 +3,7 @@
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { last } from "lodash/fp";
-import { ComponentPropsWithoutRef, ReactElement, ReactNode } from "react";
+import { ComponentPropsWithoutRef } from "react";
 import { Link } from "react-router-dom";
 import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
