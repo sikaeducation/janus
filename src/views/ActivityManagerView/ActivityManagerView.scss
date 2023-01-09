@@ -1,6 +1,7 @@
 @use "../../styles/typography";
 @use "../../styles/colors";
 @use "../../styles/sizes";
+@use "../../styles/borders";
 
 .ActivityManagerView {
   width: sizes.$s17;
@@ -19,6 +20,15 @@
         align-items: center;
         & > span {
           width: 100%; // stretch skeleton
+        }
+      }
+      &.active {
+        .field:nth-child(3), .field:nth-child(4) {
+          background-color: colors.$primary-9;
+          width: calc(100% + (sizes.$s2 * 2));
+          margin-left: calc(sizes.$s2 * -1);
+          padding-left: sizes.$s2;
+          border-radius: borders.$radius;
         }
       }
     }

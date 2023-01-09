@@ -30,6 +30,7 @@
     padding: sizes.$s5;
     animation: slide-open sizes.$transition;
     z-index: 20;
+    overflow-y: auto;
     .close-button {
       align-self: flex-end;
       margin-left: auto;

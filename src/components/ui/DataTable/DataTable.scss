@@ -14,9 +14,6 @@
     display: grid;
     gap: sizes.$s2;
     border-radius: borders.$radius;
-    &.active {
-      background-color: colors.$primary-9;
-    }
   }
   .field {
     overflow: hidden;

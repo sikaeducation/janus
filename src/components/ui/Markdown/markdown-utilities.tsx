@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { faExternalLinkAlt } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { last } from "lodash/fp";
@@ -81,8 +83,7 @@ export function formatCode({
   inline,
   className: elementClassName,
   children,
-}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
-any) {
+}: any) {
   const match = /language-(\w+)/.exec(elementClassName || "");
   return !inline && match ? (
     <SyntaxHighlighter style={style} language={match[1]} PreTag="div">
