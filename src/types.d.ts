@@ -18,6 +18,7 @@ type Activity = {
 
 type ActivityArticle = Activity & {
   post_slug: string;
+  content?: string;
 };
 
 type ActivityResponse = {

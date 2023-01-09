@@ -18,16 +18,16 @@ CMD ["npm", "start"]
 FROM base AS production
 COPY --from=base /app .
 RUN npm run build
+RUN npm run build-storybook --quiet
 
 # Test
-FROM dev AS test
-COPY --from=base /app .
+FROM production AS test
+COPY --from=base /app/build ./build
+COPY --from=base /app/storybook-static ./storybook-static
 
 USER root
 RUN npx playwright install --with-deps
 RUN npm install concurrently http-server wait-on
-RUN npm run build
-RUN npm run build-storybook --quiet
 
 ENTRYPOINT npm run test:unit \
   && npx concurrently -k -s first -n "Storybook,Component Tests" -c "bgGray.white,auto" \

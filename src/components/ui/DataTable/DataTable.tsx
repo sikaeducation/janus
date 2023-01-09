@@ -1,6 +1,7 @@
 import "./DataTable.scss";
 import { pluck } from "lodash/fp";
 import { KeyboardEvent } from "react";
+import classNames from "classnames";
 import useWindowSize, { Size } from "../../../hooks/use-window-size";
 
 export type Field = {
@@ -18,11 +19,12 @@ export type Field = {
 type Props<RowType> = {
   fields: Field[];
   tableData: RowType[];
+  activeId?: string;
 };
 
 export default function DataTable<
   RowType extends { id: string; [key: string]: unknown }
->({ tableData, fields }: Props<RowType>) {
+>({ tableData, fields, activeId }: Props<RowType>) {
   const size = useWindowSize();
   const normalizedFields = normalizeFields(size, fields);
   const proportions = normalizedFields.map(getProportion(size));
@@ -58,7 +60,10 @@ export default function DataTable<
               key={row.id}
               role="row"
               style={{ gridTemplateColumns: columnWidths }}
-              className="table-row"
+              className={classNames({
+                "table-row": true,
+                active: row.id === activeId,
+              })}
             >
               {normalizedFields.length
                 ? normalizedFields.map(({ key, title, action }) => (

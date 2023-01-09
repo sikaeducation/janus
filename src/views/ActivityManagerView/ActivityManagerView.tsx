@@ -14,6 +14,7 @@ import {
   useCreateActivityMutation,
   useGetActivitiesQuery,
 } from "../../slices/apiSlice";
+import ArticleDetail from "../ArticleDetail";
 
 type FormattedActivity = Activity & {
   id: string;
@@ -27,7 +28,7 @@ const activityTypes = {
 
 export default function ActivityManagerView() {
   const { data: activities } = useGetActivitiesQuery();
-  const [createActivity, { status, error }] = useCreateActivityMutation();
+  const [createActivity] = useCreateActivityMutation();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<
     Activity | undefined
@@ -41,6 +42,7 @@ export default function ActivityManagerView() {
   };
 
   const fieldActions: Record<string, (id?: string) => void> = {
+    // eslint-disable-next-line no-console
     publishedIcon: () => console.log("toggle publishing"),
     title: (id?: string) =>
       setSelectedActivity(activities?.find((activity) => activity._id === id)),
@@ -81,12 +83,11 @@ export default function ActivityManagerView() {
       <DataTable<FormattedActivity>
         fields={fieldsWithActions}
         tableData={formattedActivities || skeletonRows}
+        activeId={selectedActivity?._id}
       />
       {selectedActivity ? (
         <Drawer close={() => setSelectedActivity(undefined)}>
-          <Heading level={2}>{selectedActivity.title}</Heading>
-          <p>{selectedActivity.description}</p>
-          <p>{selectedActivity.notes}</p>
+          <ArticleDetail activity={selectedActivity as ActivityArticle} />
         </Drawer>
       ) : null}
     </div>
