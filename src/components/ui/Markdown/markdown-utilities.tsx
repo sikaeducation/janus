@@ -81,7 +81,8 @@ export function formatCode({
   inline,
   className: elementClassName,
   children,
-}: any) {
+}: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+any) {
   const match = /language-(\w+)/.exec(elementClassName || "");
   return !inline && match ? (
     <SyntaxHighlighter style={style} language={match[1]} PreTag="div">
