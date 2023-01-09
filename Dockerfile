@@ -22,8 +22,8 @@ RUN npm run build-storybook --quiet
 
 # Test
 FROM production AS test
-COPY --from=base /app/build ./build
-COPY --from=base /app/storybook-static ./storybook-static
+COPY --from=production /app/build ./build
+COPY --from=production /app/storybook-static ./storybook-static
 
 USER root
 RUN npx playwright install --with-deps
