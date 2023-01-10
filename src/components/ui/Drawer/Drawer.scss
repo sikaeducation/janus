@@ -37,7 +37,7 @@
       cursor: pointer;
       z-index: 30;
       border: none;
-      padding-right: 0;
+      padding: 0;
       background-color: transparent;
       &:focus {
         @include borders.trace;
