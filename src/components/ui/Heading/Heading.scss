@@ -13,7 +13,7 @@
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f6;
     code {
-      font-size: sizes.$f4 + 0.1rem; // Visual match
+      font-size: sizes.$f4 + 0.2rem; // Visual match
     }
   }
   &.margin {
@@ -56,6 +56,7 @@
   line-height: sizes.$f7;
   code {
     font-size: sizes.$f4 + 0.2rem; // Visual match
+    background-color: inherit;
   }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f5;

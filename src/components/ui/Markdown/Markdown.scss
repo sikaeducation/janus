@@ -95,10 +95,12 @@
     }
   }
   // Inline Code
-  code {
-    display: inline-block;
-    padding: 0 4px;
-    background-color: colors.$grey-10;
+  p {
+    code {
+      display: inline-block;
+      padding: 0 4px;
+      background-color: colors.$grey-10;
+    }
   }
 
   // Tables
