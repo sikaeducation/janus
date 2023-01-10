@@ -5,12 +5,18 @@ import "./Heading.scss";
 type HeadingLevels = 1 | 2 | 3 | 4;
 
 type Props = {
+  className?: string;
   children: ReactNode;
   margin?: boolean;
   level: HeadingLevels;
 };
 
-export default function Heading({ children, margin = true, level }: Props) {
+export default function Heading({
+  children,
+  margin = true,
+  level,
+  className = "",
+}: Props) {
   switch (level) {
     case 1:
       return (
@@ -19,6 +25,7 @@ export default function Heading({ children, margin = true, level }: Props) {
             Heading: true,
             "primary-heading": true,
             margin,
+            [className]: true,
           })}
         >
           {children}
@@ -31,6 +38,7 @@ export default function Heading({ children, margin = true, level }: Props) {
             Heading: true,
             "secondary-heading": true,
             margin,
+            [className]: true,
           })}
         >
           {children}
@@ -43,6 +51,7 @@ export default function Heading({ children, margin = true, level }: Props) {
             Heading: true,
             "tertiary-heading": true,
             margin,
+            [className]: true,
           })}
         >
           {children}
@@ -55,6 +64,7 @@ export default function Heading({ children, margin = true, level }: Props) {
             Heading: true,
             "quaternary-heading": true,
             margin,
+            [className]: true,
           })}
         >
           {children}
@@ -67,6 +77,7 @@ export default function Heading({ children, margin = true, level }: Props) {
             Heading: true,
             "primary-heading": true,
             margin,
+            [className]: true,
           })}
         >
           {children}
