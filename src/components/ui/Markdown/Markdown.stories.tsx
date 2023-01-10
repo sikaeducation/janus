@@ -13,6 +13,7 @@ import {
 
 import Markdown from ".";
 import { performanceContext } from "../../../contexts/performance";
+import cssSyntaxSample from "./css-syntax-sample";
 
 export default {
   title: "UI/Markdown",
@@ -67,4 +68,9 @@ Tables.args = {
 export const Formatted = Template.bind({});
 Formatted.args = {
   content: formatted,
+};
+
+export const Article = Template.bind({});
+Article.args = {
+  content: cssSyntaxSample,
 };

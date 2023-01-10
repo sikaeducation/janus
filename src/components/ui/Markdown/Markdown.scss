@@ -3,12 +3,12 @@
 @use "../../../styles/colors";
 
 .Markdown {
-  width: 100%;
+  max-width: sizes.$s15;
   display: flex;
   flex-flow: column nowrap;
   align-items: center;
   padding: 0 sizes.$s2;
-  h1, h2, h3, h4, h5, h6, p, blockquote, ul, ol, table, pre, pre > code {
+  h1, h2, h3, h4, p, blockquote, ul, ol, table, pre, pre > code {
     width: 100%;
   }
 
@@ -29,9 +29,12 @@
 
   // Lists
   ul, ol {
-    padding-left: sizes.$s5;
+    padding-left: 0;
     margin-bottom: 0;
     @media (max-width: sizes.$small-breakpoint){
+      padding-left: sizes.$s5;
+    }
+    ul, ol {
       padding-left: sizes.$s5;
     }
   }
@@ -41,6 +44,9 @@
   ol {
     list-style: number;
     list-style-position: outside;
+  }
+  li {
+    margin-bottom: sizes.$s1;
   }
 
   // Images
@@ -93,11 +99,11 @@
     display: inline-block;
     padding: 0 4px;
     background-color: colors.$grey-10;
-    font-size: sizes.$f3;
   }
 
   // Tables
   table {
+    margin-left: -1 * sizes.$s5; // Alignment hack
     margin-bottom: sizes.$s5;
     border-collapse: separate;
     border-spacing: 1px; // Force newline
@@ -107,8 +113,9 @@
     th {
       text-align: left;
       padding-bottom: sizes.$s2;
+      font-style: italic;
     }
-    td {
+    td, th {
       padding: sizes.$s2;
     }
     tr:nth-child(even) {
@@ -138,9 +145,5 @@
       padding: 0;
       margin: 0;
     }
-  }
-  hr {
-    width: 66%;
-    border: 0.5px solid colors.$grey-8;
   }
 }

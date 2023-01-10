@@ -5,6 +5,7 @@ import {
   formatLinks,
   formatCode,
   formatHeading,
+  getSeparator,
 } from "./markdown-utilities";
 
 describe("#addLinkToImage", () => {
@@ -160,5 +161,13 @@ describe("#formatHeading", () => {
 
     expect($h4).toHaveClass("Heading");
     expect($h4).toHaveClass("quaternary-heading");
+  });
+});
+
+describe("#getSeparator", () => {
+  it("gets a separator", async () => {
+    const separator = getSeparator();
+    render(separator);
+    await screen.findByRole("separator");
   });
 });

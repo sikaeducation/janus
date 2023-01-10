@@ -14,7 +14,9 @@ import {
   formatCode,
   formatHeading,
   formatLinks,
+  getSeparator,
 } from "./markdown-utilities";
+import Separator from "../Separator";
 
 type props = {
   content: string;
@@ -58,6 +60,7 @@ export default function AppContent({ content, className = "" }: props) {
           h4: formatHeading(4),
           h5: formatHeading(4),
           h6: formatHeading(4),
+          hr: getSeparator,
         }}
       >
         {content}

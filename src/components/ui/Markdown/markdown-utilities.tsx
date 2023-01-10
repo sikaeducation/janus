@@ -9,6 +9,7 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 
 import { dracula as style } from "react-syntax-highlighter/dist/esm/styles/prism";
 import Heading from "../Heading";
+import Separator from "../Separator";
 
 export function addLinkToImage({ src, alt }: ComponentPropsWithoutRef<"img">) {
   return (
@@ -110,4 +111,8 @@ export function formatHeading(level: number) {
         return <Heading level={1}>{children}</Heading>;
     }
   };
+}
+
+export function getSeparator() {
+  return <Separator />;
 }
