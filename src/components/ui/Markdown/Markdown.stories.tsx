@@ -5,6 +5,7 @@ import { programContext } from "../../../contexts/program";
 import {
   inline,
   headers,
+  lineHeight,
   lists,
   images,
   formatted,
@@ -43,6 +44,11 @@ const Template: ComponentStory<typeof Markdown> = (args) => (
 export const Headers = Template.bind({});
 Headers.args = {
   content: headers,
+};
+
+export const LineHeight = Template.bind({});
+LineHeight.args = {
+  content: lineHeight,
 };
 
 export const Inline = Template.bind({});
