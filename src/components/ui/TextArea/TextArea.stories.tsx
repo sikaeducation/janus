@@ -27,3 +27,9 @@ Default.args = {
   label: "Some label",
   isRequired: true,
 };
+
+export const Disabled = Template.bind({});
+Disabled.args = {
+  ...Default.args,
+  editable: true,
+};

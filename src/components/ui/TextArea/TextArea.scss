@@ -8,11 +8,17 @@
   @include forms.form-control;
   display: block;
   margin-bottom: sizes.$s3;
+  position: relative;
+  .click-trap {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
   textarea {
-    @include typography.code-font;
     @include borders.trace;
-    font-size: sizes.$f2;
-    height: sizes.$s9;
+    min-height: sizes.$s9;
     resize: vertical;
     width: calc(100% + 16px);
     padding: sizes.$s2 sizes.$s2;
@@ -21,6 +27,14 @@
     &:focus {
       border-bottom: 3px solid colors.$primary-5;
       outline: none;
+    }
+    &:disabled {
+      background-color: inherit;
+      border: none;
+      resize: none;
+      font-family: inherit;
+      font-size: inherit;
+      cursor: default;
     }
   }
 }
