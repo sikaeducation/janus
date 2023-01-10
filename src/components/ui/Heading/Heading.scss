@@ -52,11 +52,10 @@
   font-family: "Gill Sans", sans-serif;
   font-weight: 400;
   font-size: sizes.$f6;
-  color: colors.$grey-5;
+  color: colors.$grey-4;
   line-height: sizes.$f7;
   code {
     font-size: sizes.$f4 + 0.2rem; // Visual match
-    background-color: inherit;
   }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f5;
