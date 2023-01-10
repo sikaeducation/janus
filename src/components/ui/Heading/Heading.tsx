@@ -27,21 +27,35 @@ export default function Heading({ children, margin = true, level }: Props) {
     case 2:
       return (
         <h2
-          className={classNames({ Heading: true, "secondary-heading": true })}
+          className={classNames({
+            Heading: true,
+            "secondary-heading": true,
+            margin,
+          })}
         >
           {children}
         </h2>
       );
     case 3:
       return (
-        <h3 className={classNames({ Heading: true, "tertiary-heading": true })}>
+        <h3
+          className={classNames({
+            Heading: true,
+            "tertiary-heading": true,
+            margin,
+          })}
+        >
           {children}
         </h3>
       );
     case 4:
       return (
         <h4
-          className={classNames({ Heading: true, "quaternary-heading": true })}
+          className={classNames({
+            Heading: true,
+            "quaternary-heading": true,
+            margin,
+          })}
         >
           {children}
         </h4>

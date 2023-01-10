@@ -7,14 +7,20 @@
   font-weight: 700;
   font-size: sizes.$f8;
   color: colors.$primary-3;
+  code {
+    font-size: sizes.$f7 + 0.2rem; // Visual match
+  }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f6;
+    code {
+      font-size: sizes.$f4 + 0.1rem; // Visual match
+    }
   }
   &.margin {
-    margin-top: sizes.$f4;
-    margin-bottom: sizes.$f6;
+    margin-top: sizes.$s4;
+    margin-bottom: sizes.$s5;
     @media (max-width: sizes.$small-breakpoint){
-      margin-bottom: sizes.$f4;
+      margin-bottom: sizes.$s4;
     }
   }
 }
@@ -24,15 +30,21 @@
   font-size: sizes.$f7;
   color: colors.$grey-4;
   line-height: sizes.$f8;
+  code {
+    font-size: sizes.$f6 + 0.2rem; // Visual match
+  }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f6;
+    code {
+      font-size: sizes.$f5 + 0.1rem; // Visual match
+    }
   }
   &.margin {
-    margin-top: sizes.$f7;
-    margin-bottom: sizes.$f2;
+    margin-top: sizes.$s2;
+    margin-bottom: sizes.$s3;
     @media (max-width: sizes.$small-breakpoint){
-      margin-top: sizes.$f4;
-      margin-bottom: sizes.$f1;
+      margin-top: sizes.$s1;
+      margin-bottom: sizes.$s2;
     }
   }
 }
@@ -42,13 +54,19 @@
   font-size: sizes.$f6;
   color: colors.$grey-5;
   line-height: sizes.$f7;
+  code {
+    font-size: sizes.$f4 + 0.2rem; // Visual match
+  }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f5;
+    code {
+      font-size: sizes.$f3 + 0.1rem; // Visual match
+    }
   }
   &.margin {
-    margin-bottom: sizes.$f1;
+    margin-bottom: sizes.$s1;
     @media (max-width: sizes.$small-breakpoint){
-      margin-bottom: sizes.$f1;
+      margin-bottom: sizes.$s1;
     }
   }
 }
@@ -58,10 +76,13 @@
   font-size: sizes.$f4;
   color: colors.$grey-4;
   margin-bottom: sizes.$s4;
+  code {
+    font-size: sizes.$f2 + 0.1rem; // Visual match
+  }
   @media (max-width: sizes.$small-breakpoint){
     font-size: sizes.$f4;
   }
   &.margin {
-    margin-bottom: sizes.$s4;
+    margin-bottom: sizes.$s1;
   }
 }
