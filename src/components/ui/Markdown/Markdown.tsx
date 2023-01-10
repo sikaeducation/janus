@@ -16,7 +16,6 @@ import {
   formatLinks,
   getSeparator,
 } from "./markdown-utilities";
-import Separator from "../Separator";
 
 type props = {
   content: string;
