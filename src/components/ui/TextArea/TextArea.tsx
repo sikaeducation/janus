@@ -1,3 +1,4 @@
+import classNames from "classnames";
 import { useEffect, useRef, useState } from "react";
 import "./TextArea.scss";
 
@@ -25,11 +26,6 @@ export default function TextArea({
       textAreaRef.current.focus();
     }
   }, [editing]);
-  const handleDoubleClick = () => {
-    if (!editing && editable) {
-      setEditing(true);
-    }
-  };
   const handleBlur = () => {
     if (editing && editable) {
       setEditing(false);
@@ -39,20 +35,11 @@ export default function TextArea({
   return (
     <div className="TextArea">
       <label htmlFor={id}>{label}</label>
-      {editable && !editing ? (
-        <div
-          role="presentation"
-          className="click-trap"
-          onDoubleClick={handleDoubleClick}
-        >
-          &nbsp;
-        </div>
-      ) : null}
       <textarea
         id={id}
         value={value}
         required={isRequired}
-        disabled={editable && !editing}
+        className={classNames({ editable })}
         onBlur={handleBlur}
         onChange={(event) => {
           updateValue(event.target.value);

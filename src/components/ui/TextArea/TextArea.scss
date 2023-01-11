@@ -9,32 +9,29 @@
   display: block;
   margin-bottom: sizes.$s3;
   position: relative;
-  .click-trap {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-  }
   textarea {
+    border: none;
     @include borders.trace;
     min-height: sizes.$s9;
-    resize: vertical;
     width: calc(100% + 16px);
     padding: sizes.$s2 sizes.$s2;
     overflow-y: auto;
-    margin-left: -6px; // Visually adjust to align with input
+    margin-left: -8px; // Visually adjust to align with input
+    resize: vertical;
+    &.editable {
+      outline: none;
+      resize: none;
+      cursor: pointer;
+      min-height: auto;
+      &:focus {
+        @include borders.trace;
+        cursor: text;
+        min-height: sizes.$s9;
+        resize: vertical;
+      }
+    }
     &:focus {
       border-bottom: 3px solid colors.$primary-5;
-      outline: none;
-    }
-    &:disabled {
-      background-color: inherit;
-      border: none;
-      resize: none;
-      font-family: inherit;
-      font-size: inherit;
-      cursor: default;
     }
   }
 }

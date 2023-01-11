@@ -28,8 +28,8 @@ Default.args = {
   isRequired: true,
 };
 
-export const Disabled = Template.bind({});
-Disabled.args = {
+export const Editable = Template.bind({});
+Editable.args = {
   ...Default.args,
   editable: true,
 };
