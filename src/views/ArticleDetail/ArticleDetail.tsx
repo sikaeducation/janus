@@ -1,6 +1,6 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-import Heading from "../../components/ui/Heading";
+import EditableField from "../../components/ui/EditableField";
 import Markdown from "../../components/ui/Markdown";
 import Separator from "../../components/ui/Separator";
 import TextArea from "../../components/ui/TextArea";
@@ -24,16 +24,26 @@ export default function ArticleDetail({ activity }: Props) {
     <div className="ArticleDetail">
       <form>
         <header>
-          <Heading className="title" level={3} margin={false}>
-            {title}
-          </Heading>
+          <EditableField
+            id="title"
+            label="Title"
+            value={title}
+            updateValue={() => console.log("hi")}
+            className="title Heading tertiary-heading"
+          />
           <Toggle
             id="published"
             label="Live"
             updateValue={updateValue}
             value={published}
           />
-          <code className="post-slug">{post_slug}</code>
+          <EditableField
+            id="code"
+            label="Code"
+            value={post_slug}
+            updateValue={() => console.log("hi")}
+            className="post-slug"
+          />
         </header>
         <TextArea
           value={description}

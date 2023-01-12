@@ -10,8 +10,9 @@
   margin-bottom: sizes.$s3;
   position: relative;
   textarea {
-    border: none;
     @include borders.trace;
+    @include borders.underline-on-focus;
+    border: none;
     min-height: sizes.$s9;
     width: calc(100% + 16px);
     padding: sizes.$s2 sizes.$s2;
@@ -19,19 +20,15 @@
     margin-left: -8px; // Visually adjust to align with input
     resize: vertical;
     &.editable {
-      outline: none;
       resize: none;
       cursor: pointer;
       min-height: auto;
+      @include borders.underline-on-focus;
       &:focus {
-        @include borders.trace;
         cursor: text;
         min-height: sizes.$s9;
         resize: vertical;
       }
-    }
-    &:focus {
-      border-bottom: 3px solid colors.$primary-5;
     }
   }
 }

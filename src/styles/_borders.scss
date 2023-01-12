@@ -1,8 +1,19 @@
 @use "./colors";
+@use "./sizes";
 
 $radius: 4px;
 
 @mixin trace {
   outline: 1px solid colors.$grey-9;
   border-radius: $radius;
+}
+
+@mixin underline-on-focus {
+  // border-top: calc(3px + 2px) solid transparentize(colors.$primary-5, 1);
+  border-bottom: 3px solid white;
+  transition: border-bottom sizes.$transition;
+  &:focus {
+    @include trace;
+    border-bottom: 3px solid colors.$primary-5;
+  }
 }

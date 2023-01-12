@@ -7,6 +7,7 @@ type Props = {
   type?: "text" | "url" | "email" | "password";
   updateValue: (newValue: string) => void;
   required?: boolean;
+  className?: string;
 };
 
 export default function Form({
@@ -16,6 +17,7 @@ export default function Form({
   updateValue,
   type = "text",
   required = false,
+  className = "",
 }: Props) {
   return (
     <div className="TextInput">
@@ -27,6 +29,7 @@ export default function Form({
         value={value}
         onChange={(event) => updateValue(event.target.value)}
         required={required}
+        className={className}
       />
     </div>
   );

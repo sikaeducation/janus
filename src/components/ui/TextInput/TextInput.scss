@@ -8,14 +8,11 @@
   display: block;
   margin-bottom: sizes.$s3;
   input {
-    width: 100%;
-    padding-top: 0;
-    padding-bottom: sizes.$s2;
     border: none;
-    border-bottom: 1px solid colors.$primary-5;
-    &:focus {
-      border-bottom: 3px solid colors.$primary-5;
-      outline: none;
-    }
+    @include borders.trace;
+    @include borders.underline-on-focus;
+    width: calc(100% + sizes.$s2 + sizes.$s2);
+    padding: sizes.$s1 sizes.$s2;
+    margin-left: -1 * sizes.$s2;
   }
 }

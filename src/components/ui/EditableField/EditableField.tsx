@@ -1,5 +1,4 @@
-import classNames from "classnames";
-import "./TextArea.scss";
+import "./EditableField.scss";
 
 type props = {
   value?: string;
@@ -7,28 +6,28 @@ type props = {
   id: string;
   label: string;
   isRequired?: boolean;
-  editable?: boolean;
+  className?: string;
 };
 
-export default function TextArea({
+export default function EditableField({
   id,
   label,
   value = "",
   updateValue,
   isRequired,
-  editable = false,
+  className = "",
 }: props) {
   return (
-    <div className="TextArea">
+    <div className="EditableField">
       <label htmlFor={id}>{label}</label>
-      <textarea
+      <input
+        type="text"
         id={id}
         value={value}
+        title={label}
         required={isRequired}
-        className={classNames({ editable })}
-        onChange={(event) => {
-          updateValue(event.target.value);
-        }}
+        onChange={(event) => updateValue(event.target.value)}
+        className={className}
       />
     </div>
   );
