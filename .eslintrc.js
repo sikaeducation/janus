@@ -45,6 +45,7 @@ module.exports = {
       },
     ],
     'no-shadow': 'off',
+    'max-len': 'warn',
     'default-case': 'off',
     'consistent-return': 'off',
     'no-underscore-dangle': 'off',

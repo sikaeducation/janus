@@ -44,9 +44,7 @@ function AppHeader() {
         {!isLoading && !isAuthenticated && (
         <Button
           type="primary"
-          action={() => loginWithRedirect({
-						    scope: 'openid profile email',
-						  })}
+          action={() => loginWithRedirect({ scope: 'openid profile email' })}
         >
           Login
         </Button>
