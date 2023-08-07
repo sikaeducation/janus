@@ -1,6 +1,6 @@
-import { faQuestion } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./IndicatorSubmissionPending.scss";
+import { faQuestion } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './IndicatorSubmissionPending.scss';
 
 export default function IndicatorSubmissionPending() {
   return (

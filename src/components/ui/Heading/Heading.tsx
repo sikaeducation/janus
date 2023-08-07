@@ -1,6 +1,6 @@
-import classNames from "classnames";
-import { ReactNode } from "react";
-import "./Heading.scss";
+import classNames from 'classnames';
+import { ReactNode } from 'react';
+import './Heading.scss';
 
 type HeadingLevels = 1 | 2 | 3 | 4;
 
@@ -15,7 +15,7 @@ export default function Heading({
   children,
   margin = true,
   level,
-  className = "",
+  className = '',
 }: Props) {
   switch (level) {
     case 1:
@@ -23,7 +23,7 @@ export default function Heading({
         <h1
           className={classNames({
             Heading: true,
-            "primary-heading": true,
+            'primary-heading': true,
             margin,
             [className]: true,
           })}
@@ -36,7 +36,7 @@ export default function Heading({
         <h2
           className={classNames({
             Heading: true,
-            "secondary-heading": true,
+            'secondary-heading': true,
             margin,
             [className]: true,
           })}
@@ -49,7 +49,7 @@ export default function Heading({
         <h3
           className={classNames({
             Heading: true,
-            "tertiary-heading": true,
+            'tertiary-heading': true,
             margin,
             [className]: true,
           })}
@@ -62,7 +62,7 @@ export default function Heading({
         <h4
           className={classNames({
             Heading: true,
-            "quaternary-heading": true,
+            'quaternary-heading': true,
             margin,
             [className]: true,
           })}
@@ -75,7 +75,7 @@ export default function Heading({
         <h1
           className={classNames({
             Heading: true,
-            "primary-heading": true,
+            'primary-heading': true,
             margin,
             [className]: true,
           })}

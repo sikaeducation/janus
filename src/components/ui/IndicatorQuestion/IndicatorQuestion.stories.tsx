@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorQuestion from ".";
+import IndicatorQuestion from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorQuestion",
+  title: 'Activities/Indicators/IndicatorQuestion',
   component: IndicatorQuestion,
 } as ComponentMeta<typeof IndicatorQuestion>;
 

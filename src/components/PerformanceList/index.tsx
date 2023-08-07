@@ -1,3 +1,3 @@
-import PerformanceList from "./PerformanceList";
+import PerformanceList from './PerformanceList';
 
 export default PerformanceList;

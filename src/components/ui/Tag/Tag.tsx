@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import "./Tag.scss";
+import { ReactNode } from 'react';
+import './Tag.scss';
 
 type Props = {
   children: ReactNode;

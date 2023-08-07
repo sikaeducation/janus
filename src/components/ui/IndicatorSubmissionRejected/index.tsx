@@ -1,3 +1,3 @@
-import IndicatorSubmissionRejected from "./IndicatorSubmissionRejected";
+import IndicatorSubmissionRejected from './IndicatorSubmissionRejected';
 
 export default IndicatorSubmissionRejected;

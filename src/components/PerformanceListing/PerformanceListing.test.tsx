@@ -1,4 +1,4 @@
-test("PerformanceListing", () => {
+test('PerformanceListing', () => {
   expect(true).toBe(true);
 });
 

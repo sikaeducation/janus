@@ -1,7 +1,7 @@
-import { useContext, useState } from "react";
-import { performanceContext } from "../../contexts/performance";
-import SubmissionEvaluationForm from "../SubmissionEvaluationForm";
-import "./LearnerSubmissionEvaluable.scss";
+import { useContext, useState } from 'react';
+import { performanceContext } from '../../contexts/performance';
+import SubmissionEvaluationForm from '../SubmissionEvaluationForm';
+import './LearnerSubmissionEvaluable.scss';
 
 type props = {
   performance: evaluatedPerformance;

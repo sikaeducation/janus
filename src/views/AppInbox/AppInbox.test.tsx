@@ -1,4 +1,4 @@
-test("AppInbox", () => {
+test('AppInbox', () => {
   expect(true).toBe(true);
 });
 

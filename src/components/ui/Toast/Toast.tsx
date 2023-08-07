@@ -1,5 +1,5 @@
-import { ReactNode } from "react";
-import "./Toast.scss";
+import { ReactNode } from 'react';
+import './Toast.scss';
 
 type Props = {
   children: ReactNode | ReactNode[];

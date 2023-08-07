@@ -1,11 +1,9 @@
-import { format } from "date-fns";
-import useIndicator from "../../hooks/use-indicator";
-import Markdown from "../ui/Markdown";
-import "./PreviousSubmissionFeedback.scss";
+import { format } from 'date-fns';
+import useIndicator from '../../hooks/use-indicator';
+import Markdown from '../ui/Markdown';
+import './PreviousSubmissionFeedback.scss';
 
-const formatDateTime = (dateTime: string) => {
-  return format(new Date(dateTime), "M/d/yy p");
-};
+const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy p');
 
 type props = {
   performances: evaluatedSubmissionPerformance[];
@@ -14,7 +12,7 @@ type props = {
 export default function PreviousSubmissionFeedback({ performances }: props) {
   const getIndicator = useIndicator();
   const performancesWithEvaluations = performances.filter(
-    (performance) => performance.evaluation
+    (performance) => performance.evaluation,
   );
 
   return (
@@ -25,8 +23,8 @@ export default function PreviousSubmissionFeedback({ performances }: props) {
             <div className="meta">
               <a href={performance.payload.url}>
                 <time>
-                  {performance.evaluation?.createdAt &&
-                    formatDateTime(performance.evaluation?.createdAt)}
+                  {performance.evaluation?.createdAt
+                    && formatDateTime(performance.evaluation?.createdAt)}
                 </time>
               </a>
               {getIndicator(performance)}

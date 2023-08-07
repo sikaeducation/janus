@@ -1,10 +1,10 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Drawer from ".";
-import Heading from "../Heading";
+import Drawer from '.';
+import Heading from '../Heading';
 
 export default {
-  title: "UI/Drawer",
+  title: 'UI/Drawer',
   component: Drawer,
 } as ComponentMeta<typeof Drawer>;
 

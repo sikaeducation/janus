@@ -1,12 +1,12 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useContext, useState } from "react";
-import { performanceContext } from "../../contexts/performance";
-import Markdown from "../ui/Markdown";
-import TextArea from "../ui/TextArea";
-import "./QuestionForm.scss";
-import useIndicator from "../../hooks/use-indicator";
-import PreviousQuestionResponses from "../PreviousQuestionResponses";
-import Button from "../ui/Button";
+import { useAuth0 } from '@auth0/auth0-react';
+import { useContext, useState } from 'react';
+import { performanceContext } from '../../contexts/performance';
+import Markdown from '../ui/Markdown';
+import TextArea from '../ui/TextArea';
+import './QuestionForm.scss';
+import useIndicator from '../../hooks/use-indicator';
+import PreviousQuestionResponses from '../PreviousQuestionResponses';
+import Button from '../ui/Button';
 
 type props = {
   id: string;
@@ -35,21 +35,17 @@ export default function QuestionForm({
   const getIndicator = useIndicator();
   const [displayResponseForm, setDisplayResponseForm] = useState(false);
   const [responsesShouldDisplay, setResponsesShouldDisplay] = useState(false);
-  const { performancesBySlugByLearner, lastPerformanceBySlugByLearner } =
-    useContext(performanceContext);
+  const { performancesBySlugByLearner, lastPerformanceBySlugByLearner } = useContext(performanceContext);
   const { user } = useAuth0();
-  const previousPerformances =
-    performancesBySlugByLearner?.[id]?.[user?.email || ""] ?? [];
+  const previousPerformances = performancesBySlugByLearner?.[id]?.[user?.email || ''] ?? [];
   const typedPreviousPerformances = previousPerformances.filter(
     (
-      performance: evaluatedPerformance
-    ): performance is evaluatedQuestionPerformance =>
-      performance.type === "question"
+      performance: evaluatedPerformance,
+    ): performance is evaluatedQuestionPerformance => performance.type === 'question',
   );
-  const lastPerformance =
-    (lastPerformanceBySlugByLearner?.[id]?.[
-      user?.email || ""
-    ] as evaluatedQuestionPerformance) || null;
+  const lastPerformance = (lastPerformanceBySlugByLearner?.[id]?.[
+    user?.email || ''
+  ] as evaluatedQuestionPerformance) || null;
 
   const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
     event.preventDefault();
@@ -63,11 +59,11 @@ export default function QuestionForm({
         <Markdown className="prompt" content={prompt} />
         {lastPerformance && getIndicator(lastPerformance)}
       </div>
-      {!displayResponseForm &&
-        !responsesShouldDisplay &&
-        lastPerformance?.evaluation?.status === "accepted" && (
+      {!displayResponseForm
+        && !responsesShouldDisplay
+        && lastPerformance?.evaluation?.status === 'accepted' && (
           <Markdown content={lastPerformance.payload.response} />
-        )}
+      )}
       {!displayResponseForm && typedPreviousPerformances.length > 0 && (
         <PreviousQuestionResponses
           shouldDisplay={responsesShouldDisplay}

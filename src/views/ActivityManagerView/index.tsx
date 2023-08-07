@@ -1,3 +1,3 @@
-import ActivityManagerView from "./ActivityManagerView";
+import ActivityManagerView from './ActivityManagerView';
 
 export default ActivityManagerView;

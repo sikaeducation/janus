@@ -1,7 +1,7 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { withReactContext } from "storybook-react-context";
-import { withRouter } from "storybook-addon-react-router-v6";
-import { programContext } from "../../../contexts/program";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { withReactContext } from 'storybook-react-context';
+import { withRouter } from 'storybook-addon-react-router-v6';
+import { programContext } from '../../../contexts/program';
 import {
   inline,
   headers,
@@ -10,20 +10,20 @@ import {
   images,
   formatted,
   tables,
-} from "./sample-content";
+} from './sample-content';
 
-import Markdown from ".";
-import { performanceContext } from "../../../contexts/performance";
-import cssSyntaxSample from "./css-syntax-sample";
+import Markdown from '.';
+import { performanceContext } from '../../../contexts/performance';
+import cssSyntaxSample from './css-syntax-sample';
 
 export default {
-  title: "UI/Markdown",
+  title: 'UI/Markdown',
   component: Markdown,
   decorators: [
     withReactContext({
       Context: programContext,
       initialState: {
-        postsBySlug: { "some-slug": { content: "Some post" } },
+        postsBySlug: { 'some-slug': { content: 'Some post' } },
       },
     }),
     withReactContext({

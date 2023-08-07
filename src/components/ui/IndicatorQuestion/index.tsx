@@ -1,3 +1,3 @@
-import IndicatorQuestion from "./IndicatorQuestion";
+import IndicatorQuestion from './IndicatorQuestion';
 
 export default IndicatorQuestion;

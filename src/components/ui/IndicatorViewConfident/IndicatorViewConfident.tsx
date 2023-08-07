@@ -1,6 +1,6 @@
-import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./IndicatorViewConfident.scss";
+import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './IndicatorViewConfident.scss';
 
 export default function IndicatorViewConfident() {
   return (

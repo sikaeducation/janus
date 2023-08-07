@@ -1,12 +1,10 @@
-import "./EvaluatorPerformance.scss";
-import { Link } from "react-router-dom";
-import { format } from "date-fns";
-import Gravatar from "react-gravatar";
-import Markdown from "../../ui/Markdown";
+import './EvaluatorPerformance.scss';
+import { Link } from 'react-router-dom';
+import { format } from 'date-fns';
+import Gravatar from 'react-gravatar';
+import Markdown from '../../ui/Markdown';
 
-const formatDateTime = (dateTime: string) => {
-  return format(new Date(dateTime), "M/d/yy p");
-};
+const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy p');
 
 type props = {
   path: string;
@@ -29,7 +27,7 @@ export default function EvaluatorPerformance({
   status,
   updateStatus,
 }: props) {
-  const learnerId = performance?.userId ?? "";
+  const learnerId = performance?.userId ?? '';
   return (
     <tr className="EvaluatorPerformance">
       <td className="avatar">
@@ -41,7 +39,7 @@ export default function EvaluatorPerformance({
         </time>
       </td>
       <td className="submission">
-        <Markdown content={performance?.payload.response || ""} />
+        <Markdown content={performance?.payload.response || ''} />
       </td>
       <td className="feedback">
         <input
@@ -54,7 +52,7 @@ export default function EvaluatorPerformance({
         <input
           type="radio"
           name={learnerId}
-          checked={status === "rejected"}
+          checked={status === 'rejected'}
           value="rejected"
           onChange={updateStatus(learnerId)}
           aria-labelledby="rejected"
@@ -64,7 +62,7 @@ export default function EvaluatorPerformance({
         <input
           type="radio"
           name={learnerId}
-          checked={status === "accepted"}
+          checked={status === 'accepted'}
           value="accepted"
           onChange={updateStatus(learnerId)}
           aria-labelledby="accepted"

@@ -1,5 +1,5 @@
-test("<PerformanceFilters />", () => {
-	expect(true).toBe(true);
+test('<PerformanceFilters />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

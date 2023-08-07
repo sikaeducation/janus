@@ -1,9 +1,9 @@
-import Gravatar from "react-gravatar";
-import LearnerPrompt from "../LearnerPrompt";
-import LearnerQuestion from "../LearnerQuestion";
-import LearnerSubmission from "../LearnerSubmission";
-import LearnerViewing from "../LearnerViewing";
-import "./PerformanceListing.scss";
+import Gravatar from 'react-gravatar';
+import LearnerPrompt from '../LearnerPrompt';
+import LearnerQuestion from '../LearnerQuestion';
+import LearnerSubmission from '../LearnerSubmission';
+import LearnerViewing from '../LearnerViewing';
+import './PerformanceListing.scss';
 
 type props = {
   performance: postedPerformance;

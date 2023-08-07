@@ -1,15 +1,15 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import { useAuth0 } from '@auth0/auth0-react';
 import {
   faCheckCircle,
   faTimesCircle,
-} from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import classNames from "classnames";
-import { useContext, useState } from "react";
-import { performanceContext } from "../../contexts/performance";
-import Markdown from "../ui/Markdown";
-import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
-import "./QuestionEvaluationForm.scss";
+} from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import classNames from 'classnames';
+import { useContext, useState } from 'react';
+import { performanceContext } from '../../contexts/performance';
+import Markdown from '../ui/Markdown';
+import PreviousQuestionFeedback from '../PreviousQuestionFeedback';
+import './QuestionEvaluationForm.scss';
 
 type props = {
   previousPerformances: evaluatedQuestionPerformance[];
@@ -23,8 +23,8 @@ export default function QuestionEvaluationForm({
   cancel,
 }: props) {
   const { user } = useAuth0();
-  const [feedback, setFeedback] = useState("");
-  const [evaluationStatus, setEvaluationStatus] = useState("");
+  const [feedback, setFeedback] = useState('');
+  const [evaluationStatus, setEvaluationStatus] = useState('');
   const { postEvaluation } = useContext(performanceContext);
   const canSubmit = !!evaluationStatus;
 
@@ -33,17 +33,17 @@ export default function QuestionEvaluationForm({
     const evaluation = {
       performanceId: performance.id,
       learnerId: performance.userId,
-      evaluatorId: user?.email || "",
+      evaluatorId: user?.email || '',
       feedback,
-      status: evaluationStatus as "accepted" | "rejected",
+      status: evaluationStatus as 'accepted' | 'rejected',
     };
     postEvaluation(evaluation);
-    setFeedback("");
-    setEvaluationStatus("");
+    setFeedback('');
+    setEvaluationStatus('');
     cancel();
   };
   const previousPerformancesWithEvaluations = previousPerformances.filter(
-    (previousPerformance) => previousPerformance.evaluation
+    (previousPerformance) => previousPerformance.evaluation,
   );
 
   return (
@@ -74,18 +74,18 @@ export default function QuestionEvaluationForm({
         <button
           type="button"
           className={classNames({
-            active: evaluationStatus === "rejected",
+            active: evaluationStatus === 'rejected',
             failure: true,
           })}
-          onClick={() => setEvaluationStatus("rejected")}
+          onClick={() => setEvaluationStatus('rejected')}
         >
           <FontAwesomeIcon icon={faTimesCircle} />
         </button>
         <button
           type="button"
-          onClick={() => setEvaluationStatus("accepted")}
+          onClick={() => setEvaluationStatus('accepted')}
           className={classNames({
-            active: evaluationStatus === "accepted",
+            active: evaluationStatus === 'accepted',
             success: true,
           })}
         >

@@ -1,3 +1,3 @@
-import InboxCoachPromptForm from "./InboxCoachPromptForm";
+import InboxCoachPromptForm from './InboxCoachPromptForm';
 
 export default InboxCoachPromptForm;

@@ -1,4 +1,4 @@
-import "./EditableField.scss";
+import './EditableField.scss';
 
 type props = {
   value?: string;
@@ -12,10 +12,10 @@ type props = {
 export default function EditableField({
   id,
   label,
-  value = "",
+  value = '',
   updateValue,
   isRequired,
-  className = "",
+  className = '',
 }: props) {
   return (
     <div className="EditableField">

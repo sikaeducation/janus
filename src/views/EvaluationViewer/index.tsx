@@ -1,3 +1,3 @@
-import EvaluationViewer from "./EvaluationViewer";
+import EvaluationViewer from './EvaluationViewer';
 
 export default EvaluationViewer;

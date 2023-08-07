@@ -1,3 +1,3 @@
-import PreviousSubmissionFeedback from "./PreviousSubmissionFeedback";
+import PreviousSubmissionFeedback from './PreviousSubmissionFeedback';
 
 export default PreviousSubmissionFeedback;

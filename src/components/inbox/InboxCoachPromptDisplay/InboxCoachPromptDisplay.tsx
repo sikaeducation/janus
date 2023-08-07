@@ -1,10 +1,10 @@
-import { useContext } from "react";
-import { performanceContext } from "../../../contexts/performance";
-import AppContent from "../../ui/Markdown";
-import InboxResponses from "../InboxResponses";
-import Button from "../../ui/Button";
-import Tag from "../../ui/Tag";
-import "./InboxCoachPromptDisplay.scss";
+import { useContext } from 'react';
+import { performanceContext } from '../../../contexts/performance';
+import AppContent from '../../ui/Markdown';
+import InboxResponses from '../InboxResponses';
+import Button from '../../ui/Button';
+import Tag from '../../ui/Tag';
+import './InboxCoachPromptDisplay.scss';
 
 type props = {
   tags: string[];
@@ -21,8 +21,7 @@ export default function CoachInboxPromptDisplay({
 }: props) {
   const { performances } = useContext(performanceContext);
   const promptPerformances = performances.filter(
-    (performance): performance is postedPromptPerformance =>
-      performance.postSlug === slug
+    (performance): performance is postedPromptPerformance => performance.postSlug === slug,
   );
 
   const handleEndPrompt = () => {

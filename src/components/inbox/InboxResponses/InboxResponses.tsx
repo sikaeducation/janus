@@ -1,6 +1,6 @@
-import Gravatar from "react-gravatar";
-import Markdown from "../../ui/Markdown";
-import "./InboxResponses.scss";
+import Gravatar from 'react-gravatar';
+import Markdown from '../../ui/Markdown';
+import './InboxResponses.scss';
 
 type props = {
   performances: postedPromptPerformance[];
@@ -8,13 +8,16 @@ type props = {
 
 export default function InboxResponses({ performances }: props) {
   const promptPerformances = performances.filter(
-    (performance) => performance.type === "prompt"
+    (performance) => performance.type === 'prompt',
   );
   return (
     <div className="InboxResponses">
       <h2>Responses</h2>
       {promptPerformances.length && (
-        <p className="response-count">Count: {promptPerformances.length}</p>
+        <p className="response-count">
+          Count:
+          {promptPerformances.length}
+        </p>
       )}
       <ul>
         {promptPerformances.map((performance) => (
@@ -22,10 +25,13 @@ export default function InboxResponses({ performances }: props) {
             <div className="learner-response">
               <Gravatar email={performance.userId} size={60} />
               <div>
-                <div className="username">{performance.userId}:</div>
+                <div className="username">
+                  {performance.userId}
+                  :
+                </div>
                 <Markdown
                   className="response-content"
-                  content={performance.payload.response || ""}
+                  content={performance.payload.response || ''}
                 />
               </div>
             </div>

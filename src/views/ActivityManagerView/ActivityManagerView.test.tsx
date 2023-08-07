@@ -1,5 +1,5 @@
-test("<ActivityManagerView />", () => {
-	expect(true).toBe(true);
+test('<ActivityManagerView />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

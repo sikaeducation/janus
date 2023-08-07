@@ -1,5 +1,5 @@
-import Markdown from "../../ui/Markdown";
-import "./InboxLearnerPromptResponseForm.scss";
+import Markdown from '../../ui/Markdown';
+import './InboxLearnerPromptResponseForm.scss';
 
 type props = {
   currentBroadcast: rawBroadcast;

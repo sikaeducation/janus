@@ -1,14 +1,16 @@
-import { identity } from "lodash/fp";
-import { useContext, useEffect, useRef, useState } from "react";
-import { promptContext } from "../../../contexts/prompt";
-import generateSlug from "../../../utilities/generate-slug";
-import InboxCoachPromptDisplay from "../InboxCoachPromptDisplay";
-import InboxCoachPromptForm from "../InboxCoachPromptForm";
-import "./InboxCoach.scss";
+import { identity } from 'lodash/fp';
+import {
+  useContext, useEffect, useRef, useState,
+} from 'react';
+import { promptContext } from '../../../contexts/prompt';
+import generateSlug from '../../../utilities/generate-slug';
+import InboxCoachPromptDisplay from '../InboxCoachPromptDisplay';
+import InboxCoachPromptForm from '../InboxCoachPromptForm';
+import './InboxCoach.scss';
 
 export default function CoachInbox() {
-  const [prompt, setPrompt] = useState<string>("");
-  const [tagString, setTagString] = useState<string>("");
+  const [prompt, setPrompt] = useState<string>('');
+  const [tagString, setTagString] = useState<string>('');
 
   const {
     currentBroadcast,
@@ -41,9 +43,9 @@ export default function CoachInbox() {
     <div className="InboxCoach">
       {currentBroadcast ? (
         <InboxCoachPromptDisplay
-          slug={currentBroadcast.slug || ""}
+          slug={currentBroadcast.slug || ''}
           endPrompt={handleEndPrompt}
-          tags={currentBroadcast.tags?.split(",").filter(identity) || []}
+          tags={currentBroadcast.tags?.split(',').filter(identity) || []}
           prompt={currentBroadcast.prompt}
         />
       ) : (

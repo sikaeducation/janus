@@ -1,15 +1,15 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { format } from "date-fns";
-import { useContext } from "react";
-import Gravatar from "react-gravatar";
-import { Link } from "react-router-dom";
-import { programContext } from "../../contexts/program";
-import useIndicator from "../../hooks/use-indicator";
-import Markdown from "../ui/Markdown";
-import LearnerQuestionEvaluable from "../LearnerQuestionEvaluable";
-import "./LearnerQuestion.scss";
+import { useAuth0 } from '@auth0/auth0-react';
+import { format } from 'date-fns';
+import { useContext } from 'react';
+import Gravatar from 'react-gravatar';
+import { Link } from 'react-router-dom';
+import { programContext } from '../../contexts/program';
+import useIndicator from '../../hooks/use-indicator';
+import Markdown from '../ui/Markdown';
+import LearnerQuestionEvaluable from '../LearnerQuestionEvaluable';
+import './LearnerQuestion.scss';
 
-const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
+const formatTime = (dateTime: string) => format(new Date(dateTime), 'p');
 
 type props = {
   performance: evaluatedQuestionPerformance;
@@ -18,11 +18,11 @@ type props = {
 export default function LearnerQuestion({ performance }: props) {
   const { user } = useAuth0();
   const getIndicator = useIndicator();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
+  const role = (user && user['https://sikaeducation.com/role']) || '';
 
   const { postsBySlug } = useContext(programContext);
   const post = postsBySlug[performance.payload?.originalPostSlug];
-  const title = post.label?.short || post.label?.full || "";
+  const title = post.label?.short || post.label?.full || '';
   const { path } = post;
 
   const indicator = getIndicator(performance);
@@ -30,7 +30,10 @@ export default function LearnerQuestion({ performance }: props) {
   return (
     <div className="LearnerQuestion">
       <p className="description">
-        {performance.userId} submitted a question response from{" "}
+        {performance.userId}
+        {' '}
+        submitted a question response from
+        {' '}
         <Link to={path}>{title}</Link>
       </p>
       <ul className="meta">
@@ -48,7 +51,7 @@ export default function LearnerQuestion({ performance }: props) {
         )}
       </div>
       <span className="evaluation-status">{indicator}</span>
-      {role === "coach" && !performance.evaluation && (
+      {role === 'coach' && !performance.evaluation && (
         <LearnerQuestionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
@@ -61,7 +64,7 @@ export default function LearnerQuestion({ performance }: props) {
           />
           <Markdown
             className="evaluation-feedback"
-            content={performance.evaluation.feedback || ""}
+            content={performance.evaluation.feedback || ''}
           />
         </>
       )}

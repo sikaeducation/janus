@@ -1,3 +1,3 @@
-import NewActivityForm from "./NewActivityForm";
+import NewActivityForm from './NewActivityForm';
 
 export default NewActivityForm;

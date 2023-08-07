@@ -1,3 +1,3 @@
-import IndicatorSubmissionPending from "./IndicatorSubmissionPending";
+import IndicatorSubmissionPending from './IndicatorSubmissionPending';
 
 export default IndicatorSubmissionPending;

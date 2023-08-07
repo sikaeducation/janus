@@ -1,3 +1,3 @@
-import IndicatorDeferred from "./IndicatorDeferred";
+import IndicatorDeferred from './IndicatorDeferred';
 
 export default IndicatorDeferred;

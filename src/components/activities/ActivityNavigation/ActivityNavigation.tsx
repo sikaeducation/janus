@@ -1,6 +1,6 @@
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
-import "./ActivityNavigation.scss";
+import './ActivityNavigation.scss';
 
 type props = {
   nextSlug: string;

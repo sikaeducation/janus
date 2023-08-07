@@ -1,3 +1,3 @@
-import AppEvaluator from "./AppEvaluator";
+import AppEvaluator from './AppEvaluator';
 
 export default AppEvaluator;

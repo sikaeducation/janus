@@ -1,12 +1,12 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState } from 'react';
 
 type toastContextType = {
   toasts: string[];
   setToasts: (toasts: string[]) => void;
 };
 export const toastContext = createContext<toastContextType>(
-  {} as unknown as toastContextType
+  {} as unknown as toastContextType,
 );
 
 type props = {

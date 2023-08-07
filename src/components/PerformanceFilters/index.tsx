@@ -1,3 +1,3 @@
-import PerformanceFilters from "./PerformanceFilters";
+import PerformanceFilters from './PerformanceFilters';
 
 export default PerformanceFilters;

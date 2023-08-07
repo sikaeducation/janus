@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorSubmissionPending from ".";
+import IndicatorSubmissionPending from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorSubmissionPending",
+  title: 'Activities/Indicators/IndicatorSubmissionPending',
   component: IndicatorSubmissionPending,
 } as ComponentMeta<typeof IndicatorSubmissionPending>;
 

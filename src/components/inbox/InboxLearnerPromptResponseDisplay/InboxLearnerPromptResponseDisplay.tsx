@@ -1,5 +1,5 @@
-import AppContent from "../../ui/Markdown";
-import "./InboxLearnerPromptResponseDisplay.scss";
+import AppContent from '../../ui/Markdown';
+import './InboxLearnerPromptResponseDisplay.scss';
 
 type props = {
   currentBroadcast: rawBroadcast;

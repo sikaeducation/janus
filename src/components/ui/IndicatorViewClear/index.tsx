@@ -1,3 +1,3 @@
-import IndicatorViewClear from "./IndicatorViewClear";
+import IndicatorViewClear from './IndicatorViewClear';
 
 export default IndicatorViewClear;

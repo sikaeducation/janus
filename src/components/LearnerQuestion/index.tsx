@@ -1,3 +1,3 @@
-import LearnerQuestion from "./LearnerQuestion";
+import LearnerQuestion from './LearnerQuestion';
 
 export default LearnerQuestion;

@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { ReactNode } from "react";
-import Heading from "../Heading";
-import "./Form.scss";
+import { ReactNode } from 'react';
+import Heading from '../Heading';
+import './Form.scss';
 
 type Field = {
   id: string;
@@ -39,24 +39,26 @@ export default function Form({
     <div className="Form">
       <Heading level={2}>{heading}</Heading>
       <form>
-        {fields.map(({ id, label, Component, type }) => (
+        {fields.map(({
+          id, label, Component, type,
+        }) => (
           <Component
             key={id}
             id={id}
             label={label}
-            value={newItem[id] || ""}
-            updateValue={(newValue: unknown) =>
-              setNewItem({
-                ...newItem,
-                [id]: newValue,
-              })
-            }
+            value={newItem[id] || ''}
+            updateValue={(newValue: unknown) => setNewItem({
+              ...newItem,
+              [id]: newValue,
+            })}
             type={type}
           />
         ))}
         {children}
         <fieldset className="actions">
-          {actions.map(({ label, Component, type, action, size }) => (
+          {actions.map(({
+            label, Component, type, action, size,
+          }) => (
             <Component
               key={label}
               label={label}

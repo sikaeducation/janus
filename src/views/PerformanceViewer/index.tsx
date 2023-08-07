@@ -1,3 +1,3 @@
-import PerformanceViewer from "./PerformanceViewer";
+import PerformanceViewer from './PerformanceViewer';
 
 export default PerformanceViewer;

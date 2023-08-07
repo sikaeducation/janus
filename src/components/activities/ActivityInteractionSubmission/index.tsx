@@ -1,3 +1,3 @@
-import ActivityInteractionSubmission from "./ActivityInteractionSubmission";
+import ActivityInteractionSubmission from './ActivityInteractionSubmission';
 
 export default ActivityInteractionSubmission;

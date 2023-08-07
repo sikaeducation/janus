@@ -1,4 +1,4 @@
-import "./Avatar.scss";
+import './Avatar.scss';
 
 type Props = {
   imageUrl: string;

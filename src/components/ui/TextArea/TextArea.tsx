@@ -1,5 +1,5 @@
-import classNames from "classnames";
-import "./TextArea.scss";
+import classNames from 'classnames';
+import './TextArea.scss';
 
 type props = {
   value?: string;
@@ -13,7 +13,7 @@ type props = {
 export default function TextArea({
   id,
   label,
-  value = "",
+  value = '',
   updateValue,
   isRequired,
   editable = false,

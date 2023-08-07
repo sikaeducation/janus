@@ -1,15 +1,15 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { format } from "date-fns";
-import { useContext } from "react";
-import Gravatar from "react-gravatar";
-import { Link } from "react-router-dom";
-import { programContext } from "../../contexts/program";
-import useIndicator from "../../hooks/use-indicator";
-import Markdown from "../ui/Markdown";
-import LearnerSubmissionEvaluable from "../LearnerSubmissionEvaluable";
-import "./LearnerSubmission.scss";
+import { useAuth0 } from '@auth0/auth0-react';
+import { format } from 'date-fns';
+import { useContext } from 'react';
+import Gravatar from 'react-gravatar';
+import { Link } from 'react-router-dom';
+import { programContext } from '../../contexts/program';
+import useIndicator from '../../hooks/use-indicator';
+import Markdown from '../ui/Markdown';
+import LearnerSubmissionEvaluable from '../LearnerSubmissionEvaluable';
+import './LearnerSubmission.scss';
 
-const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
+const formatTime = (dateTime: string) => format(new Date(dateTime), 'p');
 
 type props = {
   performance: evaluatedSubmissionPerformance;
@@ -18,20 +18,23 @@ type props = {
 export default function LearnerSubmission({ performance }: props) {
   const { user } = useAuth0();
   const getIndicator = useIndicator();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
+  const role = (user && user['https://sikaeducation.com/role']) || '';
 
   const { postsBySlug } = useContext(programContext);
   const post = postsBySlug[performance.postSlug];
-  const path = post?.path || "";
+  const path = post?.path || '';
 
   const indicator = getIndicator(performance);
 
-  const title = post.label?.short || post.label?.full || "";
+  const title = post.label?.short || post.label?.full || '';
 
   return (
     <div className="LearnerSubmission">
       <p className="description">
-        {performance.userId} submitted{" "}
+        {performance.userId}
+        {' '}
+        submitted
+        {' '}
         <a href={performance.payload.url} target="_BLANK" rel="noreferrer">
           {title}
         </a>
@@ -46,7 +49,7 @@ export default function LearnerSubmission({ performance }: props) {
         </li>
       </ul>
       <span className="evaluation-status">{indicator}</span>
-      {role === "coach" && !performance.evaluation && (
+      {role === 'coach' && !performance.evaluation && (
         <LearnerSubmissionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
@@ -58,7 +61,7 @@ export default function LearnerSubmission({ performance }: props) {
             size={40}
           />
           <Markdown
-            content={performance?.evaluation?.feedback || ""}
+            content={performance?.evaluation?.feedback || ''}
             className="evaluation-feedback"
           />
         </>

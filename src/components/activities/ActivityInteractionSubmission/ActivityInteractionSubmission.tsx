@@ -1,12 +1,12 @@
 /* eslint react/destructuring-assignment: "off", react/no-unstable-nested-components: "off", react/no-children-prop: "off", react/jsx-props-no-spreading: "off" */
-import { useState } from "react";
-import { format } from "date-fns";
-import "./ActivityInteractionSubmission.scss";
-import classNames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
-import Markdown from "../../ui/Markdown";
-import Button from "../../ui/Button";
+import { useState } from 'react';
+import { format } from 'date-fns';
+import './ActivityInteractionSubmission.scss';
+import classNames from 'classnames';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
+import Markdown from '../../ui/Markdown';
+import Button from '../../ui/Button';
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
@@ -21,26 +21,26 @@ export default function ActivityInteractionSubmission({
   performances,
   postPerformance,
 }: props) {
-  const [url, setUrl] = useState<string>("");
+  const [url, setUrl] = useState<string>('');
   const handleSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();
     postPerformance({
       userId,
       postSlug,
-      type: "submission",
+      type: 'submission',
       payload: {
         url,
       },
     });
-    setUrl("");
+    setUrl('');
   };
-  const formatDateTime = (dateTime: string) =>
-    format(new Date(dateTime), "M/d/yy: p");
+  const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy: p');
   const getMessage = (status: string) => {
     const statuses: Record<string, JSX.Element> = {
       accepted: (
         <span>
-          was accepted{" "}
+          was accepted
+          {' '}
           <FontAwesomeIcon
             icon={faClipboardCheck}
             className="indicator success"
@@ -49,21 +49,25 @@ export default function ActivityInteractionSubmission({
       ),
       rejected: (
         <span>
-          was not accepted{" "}
+          was not accepted
+          {' '}
           <FontAwesomeIcon
             icon={faClipboardCheck}
             className="indicator failure"
-          />{" "}
+          />
+          {' '}
         </span>
       ),
       submitted: (
         <span>
-          has not been evaluated yet{" "}
-          <FontAwesomeIcon icon={faClipboardCheck} className="indicator" />{" "}
+          has not been evaluated yet
+          {' '}
+          <FontAwesomeIcon icon={faClipboardCheck} className="indicator" />
+          {' '}
         </span>
       ),
     };
-    return statuses[status || "submitted"];
+    return statuses[status || 'submitted'];
   };
   return (
     <div className="ActivityInteractionSubmission">
@@ -75,9 +79,9 @@ export default function ActivityInteractionSubmission({
               <li key={performance.id}>
                 <div
                   className={classNames({
-                    "previous-submission ": true,
-                    rejected: performance.evaluation?.status === "rejected",
-                    accepted: performance.evaluation?.status === "accepted",
+                    'previous-submission ': true,
+                    rejected: performance.evaluation?.status === 'rejected',
+                    accepted: performance.evaluation?.status === 'accepted',
                     pending: !performance.evaluation?.status,
                   })}
                 >
@@ -85,8 +89,9 @@ export default function ActivityInteractionSubmission({
                     {formatDateTime(performance.createdAt)}
                   </a>
                   <p>
-                    This submission{" "}
-                    {getMessage(performance.evaluation?.status || "")}
+                    This submission
+                    {' '}
+                    {getMessage(performance.evaluation?.status || '')}
                   </p>
                   {performance.evaluation?.feedback ? (
                     <Markdown content={performance.evaluation?.feedback} />
@@ -107,9 +112,11 @@ export default function ActivityInteractionSubmission({
           onChange={(event) => setUrl(event.target.value)}
           required
         />
-        <Button submit type="primary">{`Submit${
-          performances.length > 0 ? " another" : ""
-        }`}</Button>
+        <Button submit type="primary">
+          {`Submit${
+            performances.length > 0 ? ' another' : ''
+          }`}
+        </Button>
       </form>
     </div>
   );

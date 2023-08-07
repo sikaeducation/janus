@@ -1,26 +1,24 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
 function getNextLink(
   posts: hydratedPost[],
-  currentPost: hydratedPost
+  currentPost: hydratedPost,
 ): internalLink | null {
   // Has children
   if (currentPost.children.length > 0) {
     const firstChild = posts.find(
-      (post) => post.slug === currentPost.children[0]
+      (post) => post.slug === currentPost.children[0],
     );
     return firstChild
       ? {
-          slug: firstChild.slug,
-          label: `Next: ${firstChild.label.short ?? firstChild.label.full}`,
-          path: firstChild.path,
-        }
+        slug: firstChild.slug,
+        label: `Next: ${firstChild.label.short ?? firstChild.label.full}`,
+        path: firstChild.path,
+      }
       : null;
   }
 
   // Is last
-  const parent = posts.find((post) =>
-    post.children.includes(currentPost.slug)
-  )!;
+  const parent = posts.find((post) => post.children.includes(currentPost.slug))!;
   if (!parent) return null;
   const currentIndex = parent.children.indexOf(currentPost.slug);
   if (currentIndex === parent.children.length - 1) {
@@ -36,21 +34,21 @@ function getNextLink(
   const nextSibling = posts.find((post) => post.slug === nextSiblingId);
   return nextSibling
     ? {
-        slug: nextSibling.slug,
-        label: `Next: ${nextSibling.label.short ?? nextSibling.label.full}`,
-        path: nextSibling.path,
-      }
+      slug: nextSibling.slug,
+      label: `Next: ${nextSibling.label.short ?? nextSibling.label.full}`,
+      path: nextSibling.path,
+    }
     : null;
 }
 
 function getUnitLinks(
   posts: hydratedPost[],
   unitSlugs: string[],
-  currentPath: string
+  currentPath: string,
 ) {
   return posts
     .filter((post) => unitSlugs.includes(post.slug))
-    .filter((post) => process.env.NODE_ENV !== "production" || !post.isHidden)
+    .filter((post) => process.env.NODE_ENV !== 'production' || !post.isHidden)
     .map((unit) => ({
       slug: unit.slug,
       path: unit.path,
@@ -64,7 +62,7 @@ function getCrumbLinks(posts: hydratedPost[], currentPath: string) {
   if (!normalizedPath) return [];
   const sections = normalizedPath
     .trim()
-    .split("/")
+    .split('/')
     .map((section) => section.trim());
   return sections.map((section) => {
     const matchingPost = posts.find((post) => post.slug === section)!;
@@ -80,9 +78,9 @@ export function getLinks(program: hydratedProgram, currentPost: hydratedPost) {
   const unitLinks = getUnitLinks(
     program.posts,
     program.root.children,
-    currentPost.path
+    currentPost.path,
   );
-  const crumbLinks = ["root", "unit"].includes(currentPost.type)
+  const crumbLinks = ['root', 'unit'].includes(currentPost.type)
     ? []
     : getCrumbLinks(program.posts, currentPost.path);
   const nextLink = getNextLink(program.posts, currentPost);

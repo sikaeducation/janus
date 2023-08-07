@@ -1,5 +1,5 @@
-test("<PreviousQuestionResponses />", () => {
-	expect(true).toBe(true);
+test('<PreviousQuestionResponses />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

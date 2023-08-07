@@ -1,4 +1,4 @@
-test("AppError", () => {
+test('AppError', () => {
   expect(true).toBe(true);
 });
 

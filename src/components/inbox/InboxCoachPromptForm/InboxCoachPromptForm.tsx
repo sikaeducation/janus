@@ -1,5 +1,5 @@
-import TextArea from "../../ui/TextArea";
-import "./InboxCoachPromptForm.scss";
+import TextArea from '../../ui/TextArea';
+import './InboxCoachPromptForm.scss';
 
 type props = {
   startPrompt: (broadcast: rawBroadcast) => void;
@@ -20,12 +20,12 @@ export default function InboxCoachPromptForm({
     event.preventDefault();
     const tagsArray = tagString
       .trim()
-      .split(",")
+      .split(',')
       .map((string) => string.trim());
     const broadcast = {
       prompt,
-      tags: tagsArray.join(","),
-      responseType: "markdown",
+      tags: tagsArray.join(','),
+      responseType: 'markdown',
     } as const;
     startPrompt(broadcast);
   };

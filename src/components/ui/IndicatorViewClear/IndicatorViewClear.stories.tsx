@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorViewClear from ".";
+import IndicatorViewClear from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorViewClear",
+  title: 'Activities/Indicators/IndicatorViewClear',
   component: IndicatorViewClear,
 } as ComponentMeta<typeof IndicatorViewClear>;
 

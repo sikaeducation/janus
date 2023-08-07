@@ -1,4 +1,4 @@
-test("#getSequence", () => {
+test('#getSequence', () => {
   expect(true).toBe(true);
 });
 

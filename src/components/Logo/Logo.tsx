@@ -1,4 +1,4 @@
-import "./Logo.scss";
+import './Logo.scss';
 
 function Logo() {
   return <span className="Logo">Sika</span>;

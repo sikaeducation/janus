@@ -1,3 +1,3 @@
-import InboxLearner from "./InboxLearner";
+import InboxLearner from './InboxLearner';
 
 export default InboxLearner;

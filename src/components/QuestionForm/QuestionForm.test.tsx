@@ -1,5 +1,5 @@
-test("<QuestionForm />", () => {
-	expect(true).toBe(true);
+test('<QuestionForm />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

@@ -1,3 +1,3 @@
-import PreviousQuestionFeedback from "./PreviousQuestionFeedback";
+import PreviousQuestionFeedback from './PreviousQuestionFeedback';
 
 export default PreviousQuestionFeedback;

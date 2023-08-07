@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorViewConfident from ".";
+import IndicatorViewConfident from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorViewConfident",
+  title: 'Activities/Indicators/IndicatorViewConfident',
   component: IndicatorViewConfident,
 } as ComponentMeta<typeof IndicatorViewConfident>;
 

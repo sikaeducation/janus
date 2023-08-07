@@ -1,5 +1,5 @@
-import "./Checkbox.scss";
-import { Checkbox as MaterialCheckbox } from "@material-ui/core";
+import './Checkbox.scss';
+import { Checkbox as MaterialCheckbox } from '@material-ui/core';
 
 type Props = {
   id: string;
@@ -7,7 +7,7 @@ type Props = {
   value: boolean | string;
   updateValue: (newValue: boolean) => void;
   required?: boolean;
-  type?: "primary" | "secondary";
+  type?: 'primary' | 'secondary';
 };
 
 export default function Checkbox({
@@ -16,7 +16,7 @@ export default function Checkbox({
   value,
   updateValue,
   required = false,
-  type = "primary",
+  type = 'primary',
 }: Props) {
   return (
     <div className="Checkbox">

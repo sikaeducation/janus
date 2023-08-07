@@ -1,25 +1,27 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-import EditableField from "../../components/ui/EditableField";
-import Markdown from "../../components/ui/Markdown";
-import Separator from "../../components/ui/Separator";
-import TextArea from "../../components/ui/TextArea";
-import Toggle from "../../components/ui/Toggle";
-import "./ArticleDetail.scss";
+import EditableField from '../../components/ui/EditableField';
+import Markdown from '../../components/ui/Markdown';
+import Separator from '../../components/ui/Separator';
+import TextArea from '../../components/ui/TextArea';
+import Toggle from '../../components/ui/Toggle';
+import './ArticleDetail.scss';
 
 type Props = {
   activity: ActivityArticle;
 };
 
 export default function ArticleDetail({ activity }: Props) {
-  const { title, description, notes, content, published, post_slug } = activity;
+  const {
+    title, description, notes, content, published, post_slug,
+  } = activity;
   const updateDescription = () => {
-    console.log("Update description");
+    console.log('Update description');
   };
   const updateNotes = () => {
-    console.log("Update notes");
+    console.log('Update notes');
   };
-  const updateValue = () => console.log("toggle published");
+  const updateValue = () => console.log('toggle published');
   return (
     <div className="ArticleDetail">
       <form>
@@ -28,7 +30,7 @@ export default function ArticleDetail({ activity }: Props) {
             id="title"
             label="Title"
             value={title}
-            updateValue={() => console.log("hi")}
+            updateValue={() => console.log('hi')}
             className="title Heading tertiary-heading"
           />
           <Toggle
@@ -41,7 +43,7 @@ export default function ArticleDetail({ activity }: Props) {
             id="code"
             label="Code"
             value={post_slug}
-            updateValue={() => console.log("hi")}
+            updateValue={() => console.log('hi')}
             className="post-slug"
           />
         </header>

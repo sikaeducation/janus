@@ -1,15 +1,17 @@
 // eslint-disable-next-line
 // @ts-nocheck
-import { maxBy, fromPairs } from "lodash/fp";
-import { User } from "@auth0/auth0-react";
-import { useEffect, useContext, useState, useCallback, useRef } from "react";
-import AppContent from "../../components/AppContent";
-import { programContext } from "../../contexts/program";
-import { performanceContext } from "../../contexts/performance";
-import "./AppEvaluator.scss";
-import EvaluatorPerformance from "../../components/EvaluatorPerformance";
-import EvaluatorPerformanceHeader from "../../components/EvaluatorPerformanceHeader";
-import EvaluatorQuestionSelector from "../../components/EvaluatorQuestionSelector";
+import { maxBy, fromPairs } from 'lodash/fp';
+import { User } from '@auth0/auth0-react';
+import {
+  useEffect, useContext, useState, useCallback, useRef,
+} from 'react';
+import AppContent from '../../components/AppContent';
+import { programContext } from '../../contexts/program';
+import { performanceContext } from '../../contexts/performance';
+import './AppEvaluator.scss';
+import EvaluatorPerformance from '../../components/EvaluatorPerformance';
+import EvaluatorPerformanceHeader from '../../components/EvaluatorPerformanceHeader';
+import EvaluatorQuestionSelector from '../../components/EvaluatorQuestionSelector';
 
 type performanceTuple = [string, evaluatedQuestionPerformance];
 
@@ -18,9 +20,8 @@ type props = {
 };
 
 export default function AppEvaluator({ user }: props) {
-  const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } =
-    useContext(performanceContext);
-  const [selectedSlug, setSelectedSlug] = useState("");
+  const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } = useContext(performanceContext);
+  const [selectedSlug, setSelectedSlug] = useState('');
   const [evaluations, setEvaluations] = useState<
     Record<
       string,
@@ -32,51 +33,38 @@ export default function AppEvaluator({ user }: props) {
     >
   >({});
   const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
-  const currentQuestion =
-    unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
+  const currentQuestion = unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
   const currentPerformances = Object.entries(currentQuestion).map(
-    ([learnerId, performances]) =>
-      [learnerId, maxBy("createdAt", performances)] as const
+    ([learnerId, performances]) => [learnerId, maxBy('createdAt', performances)] as const,
   );
 
-  const getInitialEvaluations = () =>
-    currentPerformances.reduce((initialState, [learnerId, performance]) => {
-      return {
-        ...initialState,
-        [learnerId]: {
-          feedback: "",
-          status: "pending",
-          performance,
-        },
-      };
-    }, {});
+  const getInitialEvaluations = () => currentPerformances.reduce((initialState, [learnerId, performance]) => ({
+    ...initialState,
+    [learnerId]: {
+      feedback: '',
+      status: 'pending',
+      performance,
+    },
+  }), {});
 
   const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
   const { postsBySlug } = useContext(programContext);
-  const getPath = useCallback((slug: string) => postsBySlug[slug].path ?? "");
-  const getFeedback = useCallback((learnerId: string) => {
-    return evaluations[learnerId]?.feedback || "";
-  });
-  const getStatus = useCallback((learnerId: string) => {
-    return evaluations[learnerId]?.status || "";
-  });
+  const getPath = useCallback((slug: string) => postsBySlug[slug].path ?? '');
+  const getFeedback = useCallback((learnerId: string) => evaluations[learnerId]?.feedback || '');
+  const getStatus = useCallback((learnerId: string) => evaluations[learnerId]?.status || '');
 
-  const setAll = (status: string) => {
-    return setEvaluations((previousState) => {
-      const newState = Object.entries(previousState).map(
-        ([learnerId, evaluation]) => {
-          return [
-            learnerId,
-            {
-              ...evaluation,
-              status,
-            },
-          ];
-        }
-      );
-      return fromPairs(newState);
-    });
-  };
+  const setAll = (status: string) => setEvaluations((previousState) => {
+    const newState = Object.entries(previousState).map(
+      ([learnerId, evaluation]) => [
+        learnerId,
+        {
+          ...evaluation,
+          status,
+        },
+      ],
+    );
+    return fromPairs(newState);
+  });
   const updateFeedback = useCallback(
     (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
       setEvaluations((evaluations) => ({
@@ -87,7 +75,7 @@ export default function AppEvaluator({ user }: props) {
         },
       }));
     },
-    []
+    [],
   );
 
   const updateStatus = useCallback(
@@ -100,7 +88,7 @@ export default function AppEvaluator({ user }: props) {
         },
       }));
     },
-    []
+    [],
   );
 
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
@@ -110,21 +98,20 @@ export default function AppEvaluator({ user }: props) {
       .filter(([learnerId, evaluation]) => evaluation.status !== "pending")
       .map(([learnerId, evaluation]) => {
         const learnerPerformance = currentPerformances.find(
-          ([performanceLearnerId]: performanceTuple) =>
-            performanceLearnerId === learnerId
+          ([performanceLearnerId]: performanceTuple) => performanceLearnerId === learnerId,
         );
         const evaluationToPost = {
           performanceId: learnerPerformance[1].id,
           learnerId,
-          evaluatorId: user?.email || "",
+          evaluatorId: user?.email || '',
           feedback: evaluation.feedback,
-          status: evaluation.status as "accepted" | "rejected",
+          status: evaluation.status as 'accepted' | 'rejected',
         };
         return postEvaluation(evaluationToPost);
       });
     Promise.all(requests)
       .then(() => {
-        setSelectedSlug(slugs.length > 1 ? slugs[1] : ""); // index 0 will still be there while waiting for sockets to come back
+        setSelectedSlug(slugs.length > 1 ? slugs[1] : ''); // index 0 will still be there while waiting for sockets to come back
       })
       .catch((error) => {
         // eslint-disable-next-line
@@ -135,7 +122,7 @@ export default function AppEvaluator({ user }: props) {
   const isInitialized = useRef(false);
   useEffect(() => {
     if (slugs.length > 0 && !isInitialized.current) {
-      setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
+      setSelectedSlug(slugs.length > 0 ? slugs[0] : '');
       isInitialized.current = true;
     }
   }, [unevaluatedQuestionPerformancesBySlugByLearner]);
@@ -154,7 +141,7 @@ export default function AppEvaluator({ user }: props) {
       {selectedSlug && (
         <>
           <div className="question-details">
-            <AppContent className="prompt" content={prompt || ""} />
+            <AppContent className="prompt" content={prompt || ''} />
             {answer && <AppContent className="answer" content={`${answer}`} />}
           </div>
           <form onSubmit={submitAll}>

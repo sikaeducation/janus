@@ -1,3 +1,3 @@
-import IndicatorViewUnclear from "./IndicatorViewUnclear";
+import IndicatorViewUnclear from './IndicatorViewUnclear';
 
 export default IndicatorViewUnclear;

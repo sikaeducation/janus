@@ -1,20 +1,20 @@
-import "./ActivityManagerView.scss";
-import { ReactNode, useState } from "react";
+import './ActivityManagerView.scss';
+import { ReactNode, useState } from 'react';
 
-import ModalView from "../ModalView";
-import NewActivityForm from "../NewActivityForm";
-import Button from "../../components/ui/Button";
-import Heading from "../../components/ui/Heading";
-import Drawer from "../../components/ui/Drawer";
-import DataTable from "../../components/ui/DataTable";
-import Icon from "../../components/ui/Icon";
+import ModalView from '../ModalView';
+import NewActivityForm from '../NewActivityForm';
+import Button from '../../components/ui/Button';
+import Heading from '../../components/ui/Heading';
+import Drawer from '../../components/ui/Drawer';
+import DataTable from '../../components/ui/DataTable';
+import Icon from '../../components/ui/Icon';
 
-import { fields, skeletonRows } from "./table";
+import { fields, skeletonRows } from './table';
 import {
   useCreateActivityMutation,
   useGetActivitiesQuery,
-} from "../../slices/apiSlice";
-import ArticleDetail from "../ArticleDetail";
+} from '../../slices/apiSlice';
+import ArticleDetail from '../ArticleDetail';
 
 type FormattedActivity = Activity & {
   id: string;
@@ -43,26 +43,21 @@ export default function ActivityManagerView() {
 
   const fieldActions: Record<string, (id?: string) => void> = {
     // eslint-disable-next-line no-console
-    publishedIcon: () => console.log("toggle publishing"),
-    title: (id?: string) =>
-      setSelectedActivity(activities?.find((activity) => activity._id === id)),
-    description: (id?: string) =>
-      setSelectedActivity(activities?.find((activity) => activity._id === id)),
+    publishedIcon: () => console.log('toggle publishing'),
+    title: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
+    description: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
   };
   const fieldsWithActions = fields.map((field) => ({
     ...field,
     action: fieldActions[field.key],
   }));
 
-  const formattedActivities: FormattedActivity[] =
-    activities?.map((activity) => {
-      return {
-        ...activity,
-        id: activity._id || "",
-        type: activityTypes[activity._type],
-        publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
-      };
-    }) || [];
+  const formattedActivities: FormattedActivity[] = activities?.map((activity) => ({
+    ...activity,
+    id: activity._id || '',
+    type: activityTypes[activity._type],
+    publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+  })) || [];
 
   return (
     <div className="ActivityManagerView">
@@ -73,8 +68,13 @@ export default function ActivityManagerView() {
       )}
       <header>
         <Heading level={2} margin={false}>
-          Activities{" "}
-          <span className="activities-count">({activitiesCount})</span>
+          Activities
+          {' '}
+          <span className="activities-count">
+            (
+            {activitiesCount}
+            )
+          </span>
         </Heading>
         <Button type="primary" action={handleNewClick}>
           New

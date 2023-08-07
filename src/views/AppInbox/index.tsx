@@ -1,3 +1,3 @@
-import AppInbox from "./AppInbox";
+import AppInbox from './AppInbox';
 
 export default AppInbox;

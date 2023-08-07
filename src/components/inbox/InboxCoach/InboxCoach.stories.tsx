@@ -1,20 +1,20 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { withReactContext } from "storybook-react-context";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { withReactContext } from 'storybook-react-context';
 
-import InboxCoach from ".";
-import { promptContext } from "../../../contexts/prompt";
+import InboxCoach from '.';
+import { promptContext } from '../../../contexts/prompt';
 
 export default {
-  title: "Inbox/InboxCoach",
+  title: 'Inbox/InboxCoach',
   component: InboxCoach,
   decorators: [
     withReactContext({
       Context: promptContext,
       initialState: {
-        currentBroadcast: "",
+        currentBroadcast: '',
         startInboxPrompt: () => {},
         endInboxPrompt: () => {},
-        getCurrentPrompt: () => "Hey",
+        getCurrentPrompt: () => 'Hey',
       },
     }),
   ],

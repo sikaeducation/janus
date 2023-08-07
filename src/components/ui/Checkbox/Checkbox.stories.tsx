@@ -1,14 +1,14 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
-import { expect } from "@storybook/jest";
-import { within, userEvent } from "@storybook/testing-library";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { expect } from '@storybook/jest';
+import { within, userEvent } from '@storybook/testing-library';
 
-import { useState } from "react";
-import Checkbox from ".";
+import { useState } from 'react';
+import Checkbox from '.';
 
 const { click } = userEvent;
 
 export default {
-  title: "UI/Checkbox",
+  title: 'UI/Checkbox',
   component: Checkbox,
 } as ComponentMeta<typeof Checkbox>;
 
@@ -19,14 +19,14 @@ const Template: ComponentStory<typeof Checkbox> = (args) => {
 
 export const Primary = Template.bind({});
 Primary.args = {
-  label: "Some Input",
-  id: "some-id",
+  label: 'Some Input',
+  id: 'some-id',
   value: true,
 };
 Primary.play = async ({ canvasElement }) => {
   const canvas = within(canvasElement);
 
-  const checkbox = await canvas.findByRole("checkbox");
+  const checkbox = await canvas.findByRole('checkbox');
   expect(checkbox).toBeChecked();
   click(checkbox);
   expect(checkbox).not.toBeChecked();
@@ -37,5 +37,5 @@ Primary.play = async ({ canvasElement }) => {
 export const Secondary = Template.bind({});
 Secondary.args = {
   ...Primary.args,
-  type: "secondary",
+  type: 'secondary',
 };

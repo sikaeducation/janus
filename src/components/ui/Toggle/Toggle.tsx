@@ -1,5 +1,5 @@
-import "./Toggle.scss";
-import { Switch as MaterialSwitch } from "@material-ui/core";
+import './Toggle.scss';
+import { Switch as MaterialSwitch } from '@material-ui/core';
 
 type Props = {
   id: string;

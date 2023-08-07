@@ -1,5 +1,5 @@
-test("<EvaluationViewer />", () => {
-	expect(true).toBe(true);
+test('<EvaluationViewer />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

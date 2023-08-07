@@ -1,34 +1,34 @@
-import { Skeleton } from "@material-ui/lab";
-import { Field } from "../../components/ui/DataTable/DataTable";
+import { Skeleton } from '@material-ui/lab';
+import { Field } from '../../components/ui/DataTable/DataTable';
 
 export const fields: Field[] = [
   {
-    header: "Type",
-    key: "type",
+    header: 'Type',
+    key: 'type',
     proportion: {
-      large: "2em",
+      large: '2em',
     },
   },
   {
-    header: "Live",
-    key: "publishedIcon",
+    header: 'Live',
+    key: 'publishedIcon',
     proportion: {
-      large: "2em",
+      large: '2em',
     },
   },
   {
-    header: "Name",
-    key: "title",
+    header: 'Name',
+    key: 'title',
     proportion: {
-      large: "20em",
-      small: "100%",
+      large: '20em',
+      small: '100%',
     },
   },
   {
-    header: "Description",
-    key: "description",
+    header: 'Description',
+    key: 'description',
     proportion: {
-      large: "1fr",
+      large: '1fr',
     },
   },
 ];

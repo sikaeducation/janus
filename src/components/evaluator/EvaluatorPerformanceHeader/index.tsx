@@ -1,3 +1,3 @@
-import EvaluatorPerformanceHeader from "./EvaluatorPerformanceHeader";
+import EvaluatorPerformanceHeader from './EvaluatorPerformanceHeader';
 
 export default EvaluatorPerformanceHeader;

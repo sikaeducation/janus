@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorViewUnclear from ".";
+import IndicatorViewUnclear from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorViewUnclear",
+  title: 'Activities/Indicators/IndicatorViewUnclear',
   component: IndicatorViewUnclear,
 } as ComponentMeta<typeof IndicatorViewUnclear>;
 

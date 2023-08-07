@@ -1,4 +1,4 @@
-import "./EvaluatorPerformanceHeader.scss";
+import './EvaluatorPerformanceHeader.scss';
 
 type props = {
   setAll: (status: string) => void;
@@ -17,7 +17,7 @@ export default function EvaluatorPerformanceHeader({ setAll }: props) {
             className="rejected"
             id="rejected"
             type="button"
-            onClick={() => setAll("rejected")}
+            onClick={() => setAll('rejected')}
           >
             Reject
           </button>
@@ -27,7 +27,7 @@ export default function EvaluatorPerformanceHeader({ setAll }: props) {
             className="accepted"
             id="accepted"
             type="button"
-            onClick={() => setAll("accepted")}
+            onClick={() => setAll('accepted')}
           >
             Accept
           </button>

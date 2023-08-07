@@ -1,5 +1,5 @@
-test("<ModalView />", () => {
-	expect(true).toBe(true);
+test('<ModalView />', () => {
+  expect(true).toBe(true);
 });
 
 export default {};

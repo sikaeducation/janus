@@ -1,6 +1,6 @@
-import "./ActivityInteractionView.scss";
-import { last } from "lodash/fp";
-import Button from "../../ui/Button";
+import './ActivityInteractionView.scss';
+import { last } from 'lodash/fp';
+import Button from '../../ui/Button';
 
 type props = {
   postPerformance: (performance: rawPerformance) => void;
@@ -19,22 +19,22 @@ export default function ActivityInteractionView({
   const buttons = [
     {
       confidenceLevel: 1,
-      label: "Unclear",
+      label: 'Unclear',
     },
     {
       confidenceLevel: 2,
-      label: "Clear",
+      label: 'Clear',
     },
     {
       confidenceLevel: 3,
-      label: "Confident",
+      label: 'Confident',
     },
   ] as const;
   const handleClick = (confidenceLevel: confidenceLevel) => () => {
     postPerformance({
       userId,
       postSlug,
-      type: "view",
+      type: 'view',
       payload: {
         confidenceLevel,
       },

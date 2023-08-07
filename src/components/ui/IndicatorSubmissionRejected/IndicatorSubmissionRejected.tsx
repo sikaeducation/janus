@@ -1,6 +1,6 @@
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import "./IndicatorSubmissionRejected.scss";
+import { faTimes } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import './IndicatorSubmissionRejected.scss';
 
 export default function IndicatorSubmissionRejected() {
   return (

@@ -1,10 +1,10 @@
-import "./TextInput.scss";
+import './TextInput.scss';
 
 type Props = {
   id: string;
   label: string;
   value: string;
-  type?: "text" | "url" | "email" | "password";
+  type?: 'text' | 'url' | 'email' | 'password';
   updateValue: (newValue: string) => void;
   required?: boolean;
   className?: string;
@@ -15,9 +15,9 @@ export default function Form({
   label,
   value,
   updateValue,
-  type = "text",
+  type = 'text',
   required = false,
-  className = "",
+  className = '',
 }: Props) {
   return (
     <div className="TextInput">

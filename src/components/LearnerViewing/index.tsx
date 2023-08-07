@@ -1,3 +1,3 @@
-import LearnerViewing from "./LearnerViewing";
+import LearnerViewing from './LearnerViewing';
 
 export default LearnerViewing;

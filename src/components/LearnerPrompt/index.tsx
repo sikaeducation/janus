@@ -1,3 +1,3 @@
-import LearnerPrompt from "./LearnerPrompt";
+import LearnerPrompt from './LearnerPrompt';
 
 export default LearnerPrompt;

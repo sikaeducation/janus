@@ -1,5 +1,5 @@
-import { useState } from "react";
-import "./TimingDemo.scss";
+import { useState } from 'react';
+import './TimingDemo.scss';
 
 export default function TimingDemo() {
   const [showing, setShowing] = useState<boolean>(false);
@@ -12,7 +12,9 @@ export default function TimingDemo() {
       <hr />
       <p>Notification duration</p>
       <button type="button" onClick={toggleShowing}>
-        {showing ? "Hide" : "Show"} notification
+        {showing ? 'Hide' : 'Show'}
+        {' '}
+        notification
       </button>
       <div className="notification-container">
         &nbsp;

@@ -1,3 +1,3 @@
-import IndicatorViewConfident from "./IndicatorViewConfident";
+import IndicatorViewConfident from './IndicatorViewConfident';
 
 export default IndicatorViewConfident;

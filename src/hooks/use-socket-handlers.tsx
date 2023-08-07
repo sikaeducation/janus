@@ -1,9 +1,9 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import { useContext, useEffect, useRef } from "react";
-import { SocketContext } from "../contexts/socket";
+import { useContext, useEffect, useRef } from 'react';
+import { SocketContext } from '../contexts/socket';
 
 export default function useSocketHandlers<
-  Handlers extends { [Key: string]: (...args: any[]) => void }
+  Handlers extends { [Key: string]:(...args: any[]) => void }
 >(handlers: Handlers) {
   const socket = useContext(SocketContext);
   const deps = useRef({

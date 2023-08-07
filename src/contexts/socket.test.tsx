@@ -1,4 +1,4 @@
-test("sockets", async () => {
+test('sockets', async () => {
   expect(true).toBe(true);
 });
 

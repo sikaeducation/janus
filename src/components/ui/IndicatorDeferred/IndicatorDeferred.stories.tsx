@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import IndicatorDeferred from ".";
+import IndicatorDeferred from '.';
 
 export default {
-  title: "Activities/Indicators/IndicatorDeferred",
+  title: 'Activities/Indicators/IndicatorDeferred',
   component: IndicatorDeferred,
 } as ComponentMeta<typeof IndicatorDeferred>;
 

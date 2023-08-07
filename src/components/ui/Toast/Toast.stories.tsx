@@ -1,11 +1,11 @@
-import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { ComponentStory, ComponentMeta } from '@storybook/react';
 
-import Toast from ".";
+import Toast from '.';
 
-import Notification from "../../AppNotification";
+import Notification from '../../AppNotification';
 
 export default {
-  title: "App/Toast",
+  title: 'App/Toast',
   component: Toast,
 } as ComponentMeta<typeof Toast>;
 

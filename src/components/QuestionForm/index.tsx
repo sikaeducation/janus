@@ -1,3 +1,3 @@
-import QuestionForm from "./QuestionForm";
+import QuestionForm from './QuestionForm';
 
 export default QuestionForm;
