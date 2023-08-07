@@ -2,21 +2,21 @@ import './EvaluatorPerformance.scss';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
 import Gravatar from 'react-gravatar';
-import Markdown from '../../ui/Markdown';
+import { Markdown } from '@sikaeducation/ui';
 
 const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy p');
 
 type props = {
-  path: string;
-  performance: evaluatedQuestionPerformance;
-  feedback: string;
-  updateFeedback: (
-    learnerId: string
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
-  status: string;
-  updateStatus: (
-    learnerId: string
-  ) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+	path: string;
+	performance: evaluatedQuestionPerformance;
+	feedback: string;
+	updateFeedback: (
+		learnerId: string
+	) => (event: React.ChangeEvent<HTMLInputElement>) => void;
+	status: string;
+	updateStatus: (
+		learnerId: string
+	) => (event: React.ChangeEvent<HTMLInputElement>) => void;
 };
 
 export default function EvaluatorPerformance({

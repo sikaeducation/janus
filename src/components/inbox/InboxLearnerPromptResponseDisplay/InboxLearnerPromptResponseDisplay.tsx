@@ -1,9 +1,9 @@
-import AppContent from '../../ui/Markdown';
+import { Markdown } from '@sikaeducation/ui';
 import './InboxLearnerPromptResponseDisplay.scss';
 
 type props = {
-  currentBroadcast: rawBroadcast;
-  response: string;
+	currentBroadcast: rawBroadcast;
+	response: string;
 };
 
 export default function InboxLearnerPromptResponseDisplay({
@@ -13,8 +13,8 @@ export default function InboxLearnerPromptResponseDisplay({
   const { prompt } = currentBroadcast;
   return (
     <>
-      <AppContent className="prompt" content={prompt} />
-      <AppContent className="response" content={response} />
+      <Markdown className="prompt" content={prompt} />
+      <Markdown className="response" content={response} />
     </>
   );
 }

@@ -2,14 +2,14 @@ import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { format } from 'date-fns';
 import Gravatar from 'react-gravatar';
+import { Markdown } from '@sikaeducation/ui';
 import useIndicator from '../../hooks/use-indicator';
-import Markdown from '../ui/Markdown';
 import './PreviousQuestionResponses.scss';
 
 type Props = {
-  performances: evaluatedQuestionPerformance[];
-  shouldDisplay: boolean;
-  setShouldDisplay: (newState: boolean) => void;
+	performances: evaluatedQuestionPerformance[];
+	shouldDisplay: boolean;
+	setShouldDisplay: (newState: boolean) => void;
 };
 
 const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy: p');
@@ -53,16 +53,16 @@ export default function PreviousQuestionResponses({
                     className="previous-response-content"
                   />
                   {performance.evaluation?.feedback && (
-                    <>
-                      <Gravatar
-                        email={performance.evaluation.evaluatorId}
-                        className="evaluator-avatar"
-                      />
-                      <Markdown
-                        content={performance.evaluation.feedback}
-                        className="previous-feedback-content"
-                      />
-                    </>
+                  <>
+                    <Gravatar
+                    email={performance.evaluation.evaluatorId}
+                    className="evaluator-avatar"
+                  />
+                    <Markdown
+                    content={performance.evaluation.feedback}
+                    className="previous-feedback-content"
+                  />
+                  </>
                   )}
                 </div>
               </li>

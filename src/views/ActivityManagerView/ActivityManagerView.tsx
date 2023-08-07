@@ -1,13 +1,11 @@
 import './ActivityManagerView.scss';
 import { ReactNode, useState } from 'react';
 
+import {
+  Button, Heading, Drawer, DataTable, Icon,
+} from '@sikaeducation/ui';
 import ModalView from '../ModalView';
 import NewActivityForm from '../NewActivityForm';
-import Button from '../../components/ui/Button';
-import Heading from '../../components/ui/Heading';
-import Drawer from '../../components/ui/Drawer';
-import DataTable from '../../components/ui/DataTable';
-import Icon from '../../components/ui/Icon';
 
 import { fields, skeletonRows } from './table';
 import {
@@ -17,9 +15,9 @@ import {
 import ArticleDetail from '../ArticleDetail';
 
 type FormattedActivity = Activity & {
-  id: string;
-  type: NonNullable<ReactNode>;
-  publishedIcon?: ReactNode;
+	id: string;
+	type: NonNullable<ReactNode>;
+	publishedIcon?: ReactNode;
 };
 
 const activityTypes = {
@@ -31,8 +29,8 @@ export default function ActivityManagerView() {
   const [createActivity] = useCreateActivityMutation();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<
-    Activity | undefined
-  >(undefined);
+		Activity | undefined
+	>(undefined);
   const activitiesCount = activities?.length || 0;
   const handleNewClick = () => setNewActivityOpen(true);
   const closeModal = () => setNewActivityOpen(false);
@@ -62,9 +60,9 @@ export default function ActivityManagerView() {
   return (
     <div className="ActivityManagerView">
       {newActivityOpen && (
-        <ModalView close={closeModal}>
-          <NewActivityForm save={save} cancel={closeModal} />
-        </ModalView>
+      <ModalView close={closeModal}>
+        <NewActivityForm save={save} cancel={closeModal} />
+      </ModalView>
       )}
       <header>
         <Heading level={2} margin={false}>

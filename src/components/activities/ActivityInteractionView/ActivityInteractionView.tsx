@@ -1,12 +1,12 @@
 import './ActivityInteractionView.scss';
 import { last } from 'lodash/fp';
-import Button from '../../ui/Button';
+import { Button } from '@sikaeducation/ui';
 
 type props = {
-  postPerformance: (performance: rawPerformance) => void;
-  userId: string;
-  postSlug: string;
-  performances: postedViewPerformance[];
+	postPerformance: (performance: rawPerformance) => void;
+	userId: string;
+	postSlug: string;
+	performances: postedViewPerformance[];
 };
 
 export default function ActivityInteractionView({

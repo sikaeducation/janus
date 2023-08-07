@@ -3,9 +3,7 @@ import { Link } from 'react-router-dom';
 
 import { useSelector } from 'react-redux';
 import { useAuth0 } from '@auth0/auth0-react';
-import { Button } from '@sikaeducation/ui';
-import Logo from '../Logo';
-import Avatar from '../ui/Avatar';
+import { Button, Logo, Avatar } from '@sikaeducation/ui';
 
 import { RootState } from '../../store';
 

@@ -1,11 +1,11 @@
-import Markdown from '../../ui/Markdown';
+import { Markdown } from '@sikaeducation/ui';
 import './InboxLearnerPromptResponseForm.scss';
 
 type props = {
-  currentBroadcast: rawBroadcast;
-  postResponse: (response: string) => void;
-  response: string;
-  setResponse: (response: string) => void;
+	currentBroadcast: rawBroadcast;
+	postResponse: (response: string) => void;
+	response: string;
+	setResponse: (response: string) => void;
 };
 
 export default function InboxLearnerPromptResponseForm({
@@ -32,7 +32,7 @@ export default function InboxLearnerPromptResponseForm({
             value={response}
             required
             onChange={(event) => {
-              setResponse(event.target.value);
+						  setResponse(event.target.value);
             }}
           />
           <div className="submission-section">

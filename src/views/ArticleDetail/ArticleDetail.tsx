@@ -1,14 +1,12 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
-import EditableField from '../../components/ui/EditableField';
-import Markdown from '../../components/ui/Markdown';
-import Separator from '../../components/ui/Separator';
-import TextArea from '../../components/ui/TextArea';
-import Toggle from '../../components/ui/Toggle';
+import {
+  EditableField, Markdown, Separator, TextArea, Toggle,
+} from '@sikaeducation/ui';
 import './ArticleDetail.scss';
 
 type Props = {
-  activity: ActivityArticle;
+	activity: ActivityArticle;
 };
 
 export default function ArticleDetail({ activity }: Props) {

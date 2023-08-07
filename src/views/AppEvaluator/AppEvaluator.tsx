@@ -5,33 +5,33 @@ import { User } from '@auth0/auth0-react';
 import {
   useEffect, useContext, useState, useCallback, useRef,
 } from 'react';
-import AppContent from '../../components/AppContent';
+import { Markdown } from '@sikaeducation/ui';
 import { programContext } from '../../contexts/program';
 import { performanceContext } from '../../contexts/performance';
 import './AppEvaluator.scss';
-import EvaluatorPerformance from '../../components/EvaluatorPerformance';
-import EvaluatorPerformanceHeader from '../../components/EvaluatorPerformanceHeader';
-import EvaluatorQuestionSelector from '../../components/EvaluatorQuestionSelector';
+import EvaluatorPerformance from '../../components/evaluator/EvaluatorPerformance';
+import EvaluatorPerformanceHeader from '../../components/evaluator/EvaluatorPerformanceHeader';
+import EvaluatorQuestionSelector from '../../components/evaluator/EvaluatorQuestionSelector';
 
 type performanceTuple = [string, evaluatedQuestionPerformance];
 
 type props = {
-  user?: User;
+	user?: User;
 };
 
 export default function AppEvaluator({ user }: props) {
   const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation } = useContext(performanceContext);
   const [selectedSlug, setSelectedSlug] = useState('');
   const [evaluations, setEvaluations] = useState<
-    Record<
-      string,
-      {
-        feedback: string;
-        status: string;
-        performance: evaluatedQuestionPerformance;
-      }
-    >
-  >({});
+		Record<
+			string,
+			{
+				feedback: string;
+				status: string;
+				performance: evaluatedQuestionPerformance;
+			}
+		>
+	>({});
   const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
   const currentQuestion = unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
   const currentPerformances = Object.entries(currentQuestion).map(
@@ -94,8 +94,8 @@ export default function AppEvaluator({ user }: props) {
   const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const requests = Object.entries(evaluations)
-      // eslint-disable-next-line
-      .filter(([learnerId, evaluation]) => evaluation.status !== "pending")
+    // eslint-disable-next-line
+			.filter(([learnerId, evaluation]) => evaluation.status !== "pending")
       .map(([learnerId, evaluation]) => {
         const learnerPerformance = currentPerformances.find(
           ([performanceLearnerId]: performanceTuple) => performanceLearnerId === learnerId,
@@ -115,7 +115,7 @@ export default function AppEvaluator({ user }: props) {
       })
       .catch((error) => {
         // eslint-disable-next-line
-        console.error(error.message);
+				console.error(error.message);
       });
   };
 
@@ -139,31 +139,31 @@ export default function AppEvaluator({ user }: props) {
         setSelectedSlug={setSelectedSlug}
       />
       {selectedSlug && (
-        <>
-          <div className="question-details">
-            <AppContent className="prompt" content={prompt || ''} />
-            {answer && <AppContent className="answer" content={`${answer}`} />}
-          </div>
-          <form onSubmit={submitAll}>
-            <table className="evaluator-performances">
-              <EvaluatorPerformanceHeader setAll={setAll} />
-              <tbody>
-                {currentPerformances.map(([learnerId, performance]) => (
-                  <EvaluatorPerformance
-                    key={learnerId}
-                    performance={performance}
-                    path={getPath(performance.payload.originalPostSlug)}
-                    status={getStatus(learnerId)}
-                    updateStatus={updateStatus}
-                    feedback={getFeedback(learnerId)}
-                    updateFeedback={updateFeedback}
-                  />
-                ))}
-              </tbody>
-            </table>
-            <button type="submit">Submit All</button>
-          </form>
-        </>
+      <>
+        <div className="question-details">
+          <Markdown className="prompt" content={prompt || ''} />
+          {answer && <Markdown className="answer" content={`${answer}`} />}
+        </div>
+        <form onSubmit={submitAll}>
+          <table className="evaluator-performances">
+            <EvaluatorPerformanceHeader setAll={setAll} />
+            <tbody>
+              {currentPerformances.map(([learnerId, performance]) => (
+                <EvaluatorPerformance
+                  key={learnerId}
+                  performance={performance}
+                  path={getPath(performance.payload.originalPostSlug)}
+                  status={getStatus(learnerId)}
+                  updateStatus={updateStatus}
+                  feedback={getFeedback(learnerId)}
+                  updateFeedback={updateFeedback}
+                />
+              ))}
+            </tbody>
+          </table>
+          <button type="submit">Submit All</button>
+        </form>
+      </>
       )}
     </div>
   );

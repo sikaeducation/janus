@@ -1,9 +1,9 @@
 import Gravatar from 'react-gravatar';
-import Markdown from '../../ui/Markdown';
+import { Markdown } from '@sikaeducation/ui';
 import './InboxResponses.scss';
 
 type props = {
-  performances: postedPromptPerformance[];
+	performances: postedPromptPerformance[];
 };
 
 export default function InboxResponses({ performances }: props) {
@@ -14,10 +14,10 @@ export default function InboxResponses({ performances }: props) {
     <div className="InboxResponses">
       <h2>Responses</h2>
       {promptPerformances.length && (
-        <p className="response-count">
-          Count:
-          {promptPerformances.length}
-        </p>
+      <p className="response-count">
+        Count:
+        {promptPerformances.length}
+      </p>
       )}
       <ul>
         {promptPerformances.map((performance) => (

@@ -1,5 +1,13 @@
-import { Skeleton } from '@material-ui/lab';
-import { Field } from '../../components/ui/DataTable/DataTable';
+import { Skeleton } from '@sikaeducation/ui';
+
+type Field = {
+	header: string;
+	key: string;
+	proportion: {
+		large: string;
+		small?: string;
+	},
+}
 
 export const fields: Field[] = [
   {

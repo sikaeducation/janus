@@ -5,14 +5,13 @@ import './ActivityInteractionSubmission.scss';
 import classNames from 'classnames';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faClipboardCheck } from '@fortawesome/free-solid-svg-icons';
-import Markdown from '../../ui/Markdown';
-import Button from '../../ui/Button';
+import { Markdown, Button } from '@sikaeducation/ui';
 
 type props = {
-  postPerformance: (performance: rawSubmissionPerformance) => void;
-  userId: string;
-  postSlug: string;
-  performances: evaluatedSubmissionPerformance[];
+	postPerformance: (performance: rawSubmissionPerformance) => void;
+	userId: string;
+	postSlug: string;
+	performances: evaluatedSubmissionPerformance[];
 };
 
 export default function ActivityInteractionSubmission({
@@ -79,10 +78,10 @@ export default function ActivityInteractionSubmission({
               <li key={performance.id}>
                 <div
                   className={classNames({
-                    'previous-submission ': true,
-                    rejected: performance.evaluation?.status === 'rejected',
-                    accepted: performance.evaluation?.status === 'accepted',
-                    pending: !performance.evaluation?.status,
+									  'previous-submission ': true,
+									  rejected: performance.evaluation?.status === 'rejected',
+									  accepted: performance.evaluation?.status === 'accepted',
+									  pending: !performance.evaluation?.status,
                   })}
                 >
                   <a href={performance.payload.url}>
@@ -113,8 +112,7 @@ export default function ActivityInteractionSubmission({
           required
         />
         <Button submit type="primary">
-          {`Submit${
-            performances.length > 0 ? ' another' : ''
+          {`Submit${performances.length > 0 ? ' another' : ''
           }`}
         </Button>
       </form>

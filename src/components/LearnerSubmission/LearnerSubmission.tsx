@@ -3,16 +3,16 @@ import { format } from 'date-fns';
 import { useContext } from 'react';
 import Gravatar from 'react-gravatar';
 import { Link } from 'react-router-dom';
+import { Markdown } from '@sikaeducation/ui';
 import { programContext } from '../../contexts/program';
 import useIndicator from '../../hooks/use-indicator';
-import Markdown from '../ui/Markdown';
 import LearnerSubmissionEvaluable from '../LearnerSubmissionEvaluable';
 import './LearnerSubmission.scss';
 
 const formatTime = (dateTime: string) => format(new Date(dateTime), 'p');
 
 type props = {
-  performance: evaluatedSubmissionPerformance;
+	performance: evaluatedSubmissionPerformance;
 };
 
 export default function LearnerSubmission({ performance }: props) {
@@ -50,21 +50,21 @@ export default function LearnerSubmission({ performance }: props) {
       </ul>
       <span className="evaluation-status">{indicator}</span>
       {role === 'coach' && !performance.evaluation && (
-        <LearnerSubmissionEvaluable performance={performance} />
+      <LearnerSubmissionEvaluable performance={performance} />
       )}
       {performance.evaluation?.feedback && (
-        <>
-          <Gravatar
-            className="evaluator-avatar"
-            default="identicon"
-            email={performance.evaluation.evaluatorId}
-            size={40}
-          />
-          <Markdown
-            content={performance?.evaluation?.feedback || ''}
-            className="evaluation-feedback"
-          />
-        </>
+      <>
+        <Gravatar
+          className="evaluator-avatar"
+          default="identicon"
+          email={performance.evaluation.evaluatorId}
+          size={40}
+        />
+        <Markdown
+          content={performance?.evaluation?.feedback || ''}
+          className="evaluation-feedback"
+        />
+      </>
       )}
     </div>
   );

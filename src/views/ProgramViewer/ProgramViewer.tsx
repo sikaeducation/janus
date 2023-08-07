@@ -1,10 +1,10 @@
 import './ProgramViewer.scss';
 import { KeyboardEvent, useState } from 'react';
-import Markdown from '../../components/ui/Markdown';
+import { Markdown } from '@sikaeducation/ui';
 import PostListing from '../../components/PostListing';
 
 type props = {
-  program: hydratedProgram;
+	program: hydratedProgram;
 };
 
 const buildTree = (
@@ -16,7 +16,7 @@ const buildTree = (
 ): JSX.Element[] => (
   slugs
   // eslint-disable-next-line
-    .map((slugId) => posts.find((post) => post.slug === slugId)!)
+		.map((slugId) => posts.find((post) => post.slug === slugId)!)
     .filter((post) => !!post)
     .flatMap((post: hydratedPost) => {
       const postListing = (
@@ -25,8 +25,8 @@ const buildTree = (
             post={post}
             isActive={currentPost?.path === post.path}
             handlers={{
-              click: handleClick(post),
-              keyboard: handleEnter(post),
+						  click: handleClick(post),
+						  keyboard: handleEnter(post),
             }}
           />
         </li>
@@ -38,11 +38,11 @@ const buildTree = (
           <li key={`${post.slug}--menu`}>
             <ul>
               {buildTree(
-                posts,
-                post.children,
-                currentPost,
-                handleClick,
-                handleEnter,
+							  posts,
+							  post.children,
+							  currentPost,
+							  handleClick,
+							  handleEnter,
               )}
             </ul>
           </li>,
@@ -78,8 +78,8 @@ export default function ProgramViewer({ program }: props) {
               post={program.root}
               isActive={currentPost?.path === program.root.path}
               handlers={{
-                click: handleClick(program.root),
-                keyboard: handleEnter(program.root),
+							  click: handleClick(program.root),
+							  keyboard: handleEnter(program.root),
               }}
             />
           </li>

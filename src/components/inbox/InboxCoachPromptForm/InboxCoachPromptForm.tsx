@@ -1,12 +1,12 @@
-import TextArea from '../../ui/TextArea';
+import { TextArea } from '@sikaeducation/ui';
 import './InboxCoachPromptForm.scss';
 
 type props = {
-  startPrompt: (broadcast: rawBroadcast) => void;
-  prompt: string;
-  setPrompt: (prompt: string) => void;
-  tagString: string;
-  setTagString: (tagString: string) => void;
+	startPrompt: (broadcast: rawBroadcast) => void;
+	prompt: string;
+	setPrompt: (prompt: string) => void;
+	tagString: string;
+	setTagString: (tagString: string) => void;
 };
 
 export default function InboxCoachPromptForm({
@@ -37,7 +37,7 @@ export default function InboxCoachPromptForm({
         id="tags"
         className="tags"
         onChange={(event) => {
-          setTagString(event.target.value);
+				  setTagString(event.target.value);
         }}
         value={tagString}
       />

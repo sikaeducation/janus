@@ -1,13 +1,12 @@
 import { useState } from 'react';
-import Button from '../../components/ui/Button';
-import Form from '../../components/ui/Form';
+import { Button, Form } from '@sikaeducation/ui';
 import './NewActivityForm.scss';
 
 import newActivityFields from './new-activity-fields';
 
 type Props = {
-  cancel: () => void;
-  save: (newActivity: Activity) => void;
+	cancel: () => void;
+	save: (newActivity: Activity) => void;
 };
 
 export default function NewActivityForm({ save, cancel }: Props) {
