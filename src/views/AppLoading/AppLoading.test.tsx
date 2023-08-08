@@ -1,4 +1,4 @@
-test('AppLoading', () => {
+test("AppLoading", () => {
   expect(true).toBe(true);
 });
 

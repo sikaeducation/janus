@@ -1,3 +1,3 @@
-import ActivityNavigation from './ActivityNavigation';
+import ActivityNavigation from "./ActivityNavigation";
 
 export default ActivityNavigation;

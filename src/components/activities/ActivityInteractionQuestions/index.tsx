@@ -1,3 +1,3 @@
-import ActivityInteractionQuestions from './ActivityInteractionQuestions';
+import ActivityInteractionQuestions from "./ActivityInteractionQuestions";
 
 export default ActivityInteractionQuestions;

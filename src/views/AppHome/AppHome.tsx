@@ -1,5 +1,5 @@
-import { useAuth0 } from '@auth0/auth0-react';
-import './AppHome.scss';
+import { useAuth0 } from "@auth0/auth0-react";
+import "./AppHome.scss";
 
 export default function AppHome() {
   const { loginWithRedirect } = useAuth0();
@@ -10,9 +10,11 @@ export default function AppHome() {
         <button
           className="login"
           type="button"
-          onClick={() => loginWithRedirect({
-            scope: 'openid profile email',
-          })}
+          onClick={() =>
+            loginWithRedirect({
+              scope: "openid profile email",
+            })
+          }
         >
           Login
         </button>

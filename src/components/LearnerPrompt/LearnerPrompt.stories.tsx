@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import LearnerPrompt from '.';
+import LearnerPrompt from ".";
 
 export default {
-  title: 'Inbox/LearnerPrompt',
+  title: "Inbox/LearnerPrompt",
   component: LearnerPrompt,
 } as ComponentMeta<typeof LearnerPrompt>;
 
@@ -15,14 +15,14 @@ export const Default = Template.bind({});
 Default.args = {
   performance: {
     id: 1,
-    type: 'prompt',
-    userId: 'abcdefg',
-    postSlug: 'some-slug',
+    type: "prompt",
+    userId: "abcdefg",
+    postSlug: "some-slug",
     payload: {
-      response: 'Some response',
-      prompt: 'Some prompt',
+      response: "Some response",
+      prompt: "Some prompt",
     },
-    createdAt: '2022-01-01',
-    updatedAt: '2022-01-01',
+    createdAt: "2022-01-01",
+    updatedAt: "2022-01-01",
   },
 };

@@ -1,4 +1,4 @@
-import './AppLoading.scss';
+import "./AppLoading.scss";
 
 export default function AppLoading() {
   return (

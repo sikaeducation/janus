@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import EvaluatorPerformanceHeader from '.';
+import EvaluatorPerformanceHeader from ".";
 
 export default {
-  title: 'Evaluator/EvaluatorPerformanceHeader',
+  title: "Evaluator/EvaluatorPerformanceHeader",
   component: EvaluatorPerformanceHeader,
 } as ComponentMeta<typeof EvaluatorPerformanceHeader>;
 

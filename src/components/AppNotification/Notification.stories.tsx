@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import Notification from '.';
+import Notification from ".";
 
 export default {
-  title: 'UI/Notification',
+  title: "UI/Notification",
   component: Notification,
 } as ComponentMeta<typeof Notification>;
 

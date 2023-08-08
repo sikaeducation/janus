@@ -1,21 +1,21 @@
-import { useState } from 'react';
-import { Button, Form } from '@sikaeducation/ui';
-import './NewActivityForm.scss';
+import { useState } from "react";
+import { Button, Form } from "@sikaeducation/ui";
+import "./NewActivityForm.scss";
 
-import newActivityFields from './new-activity-fields';
+import newActivityFields from "./new-activity-fields";
 
 type Props = {
-	cancel: () => void;
-	save: (newActivity: Activity) => void;
+  cancel: () => void;
+  save: (newActivity: Activity) => void;
 };
 
 export default function NewActivityForm({ save, cancel }: Props) {
   const [newItem, setNewItem] = useState<ActivityArticle>({
-    _type: 'Article',
-    title: '',
-    post_slug: '',
-    description: '',
-    notes: '',
+    _type: "Article",
+    title: "",
+    post_slug: "",
+    description: "",
+    notes: "",
     published: false,
   } as const);
 
@@ -28,24 +28,24 @@ export default function NewActivityForm({ save, cancel }: Props) {
 
   const actions = [
     {
-      label: 'Cancel',
+      label: "Cancel",
       Component: Button,
       action: () => cancel(),
-      type: 'ghost',
+      type: "ghost",
     },
     {
-      label: 'Save',
+      label: "Save",
       Component: Button,
       action: () => save(newItem),
-      size: 'large',
-      type: 'secondary',
+      size: "large",
+      type: "secondary",
     },
     {
-      label: 'Save and Publish',
+      label: "Save and Publish",
       Component: Button,
       action: () => saveAndPublish(newItem),
-      size: 'large',
-      type: 'primary',
+      size: "large",
+      type: "primary",
     },
   ];
 

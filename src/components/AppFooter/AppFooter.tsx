@@ -1,4 +1,4 @@
-import './AppFooter.scss';
+import "./AppFooter.scss";
 
 function AppFooter() {
   return (

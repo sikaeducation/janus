@@ -1,4 +1,4 @@
-test('<LearnerViewing />', () => {
+test("<LearnerViewing />", () => {
   expect(true).toBeTruthy();
 });
 

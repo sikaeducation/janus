@@ -1,3 +1,3 @@
-import AppMissing from './AppMissing';
+import AppMissing from "./AppMissing";
 
 export default AppMissing;

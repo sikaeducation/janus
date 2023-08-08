@@ -1,20 +1,20 @@
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
   faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import { useContext, useState } from 'react';
-import { Markdown } from '@sikaeducation/ui';
-import { performanceContext } from '../../contexts/performance';
-import PreviousQuestionFeedback from '../PreviousQuestionFeedback';
-import './QuestionEvaluationForm.scss';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import { useContext, useState } from "react";
+import { Markdown } from "@sikaeducation/ui";
+import { performanceContext } from "../../contexts/performance";
+import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
+import "./QuestionEvaluationForm.scss";
 
 type props = {
-	previousPerformances: evaluatedQuestionPerformance[];
-	performance: evaluatedQuestionPerformance;
-	cancel: () => void;
+  previousPerformances: evaluatedQuestionPerformance[];
+  performance: evaluatedQuestionPerformance;
+  cancel: () => void;
 };
 
 export default function QuestionEvaluationForm({
@@ -23,8 +23,8 @@ export default function QuestionEvaluationForm({
   cancel,
 }: props) {
   const { user } = useAuth0();
-  const [feedback, setFeedback] = useState('');
-  const [evaluationStatus, setEvaluationStatus] = useState('');
+  const [feedback, setFeedback] = useState("");
+  const [evaluationStatus, setEvaluationStatus] = useState("");
   const { postEvaluation } = useContext(performanceContext);
   const canSubmit = !!evaluationStatus;
 
@@ -33,13 +33,13 @@ export default function QuestionEvaluationForm({
     const evaluation = {
       performanceId: performance.id,
       learnerId: performance.userId,
-      evaluatorId: user?.email || '',
+      evaluatorId: user?.email || "",
       feedback,
-      status: evaluationStatus as 'accepted' | 'rejected',
+      status: evaluationStatus as "accepted" | "rejected",
     };
     postEvaluation(evaluation);
-    setFeedback('');
-    setEvaluationStatus('');
+    setFeedback("");
+    setEvaluationStatus("");
     cancel();
   };
   const previousPerformancesWithEvaluations = previousPerformances.filter(
@@ -49,19 +49,19 @@ export default function QuestionEvaluationForm({
   return (
     <form onSubmit={handleSubmit} className="QuestionEvaluationForm">
       {previousPerformancesWithEvaluations.length > 0 && (
-      <>
-        <h2>Previous feedback:</h2>
-        <PreviousQuestionFeedback performances={previousPerformances} />
-      </>
+        <>
+          <h2>Previous feedback:</h2>
+          <PreviousQuestionFeedback performances={previousPerformances} />
+        </>
       )}
       {performance.payload.answer && (
-      <div className="answer-wrapper">
-        <strong>Answer: </strong>
-        <Markdown className="answer" content={performance.payload.answer} />
-      </div>
+        <div className="answer-wrapper">
+          <strong>Answer: </strong>
+          <Markdown className="answer" content={performance.payload.answer} />
+        </div>
       )}
       {performance.payload.response && (
-      <Markdown className="response" content={performance.payload.response} />
+        <Markdown className="response" content={performance.payload.response} />
       )}
       <label htmlFor="feedback">Feedback:</label>
       <textarea
@@ -74,19 +74,19 @@ export default function QuestionEvaluationForm({
         <button
           type="button"
           className={classNames({
-					  active: evaluationStatus === 'rejected',
-					  failure: true,
+            active: evaluationStatus === "rejected",
+            failure: true,
           })}
-          onClick={() => setEvaluationStatus('rejected')}
+          onClick={() => setEvaluationStatus("rejected")}
         >
           <FontAwesomeIcon icon={faTimesCircle} />
         </button>
         <button
           type="button"
-          onClick={() => setEvaluationStatus('accepted')}
+          onClick={() => setEvaluationStatus("accepted")}
           className={classNames({
-					  active: evaluationStatus === 'accepted',
-					  success: true,
+            active: evaluationStatus === "accepted",
+            success: true,
           })}
         >
           <FontAwesomeIcon icon={faCheckCircle} className="accepted" />

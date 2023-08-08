@@ -1,10 +1,10 @@
-import './ActivityInteraction.scss';
-import { useContext } from 'react';
-import { performanceContext } from '../../../contexts/performance';
+import "./ActivityInteraction.scss";
+import { useContext } from "react";
+import { performanceContext } from "../../../contexts/performance";
 
-import ActivityInteractionView from '../ActivityInteractionView';
-import ActivityInteractionSubmission from '../ActivityInteractionSubmission';
-import ActivityInteractionQuestions from '../ActivityInteractionQuestions';
+import ActivityInteractionView from "../ActivityInteractionView";
+import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
+import ActivityInteractionQuestions from "../ActivityInteractionQuestions";
 
 type props = {
   postType: postType;
@@ -17,7 +17,8 @@ export default function ActivityInteraction({
   userId,
   postSlug,
 }: props) {
-  const { postPerformance, performancesBySlugByLearner } = useContext(performanceContext);
+  const { postPerformance, performancesBySlugByLearner } =
+    useContext(performanceContext);
   const performances = performancesBySlugByLearner?.[postSlug]?.[userId] ?? [];
   const interactions = {
     topic: (

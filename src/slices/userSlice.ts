@@ -1,11 +1,11 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const userSlice = createSlice({
-  name: 'user',
+  name: "user",
   initialState: {
-    email: '',
-    name: '',
-    picture: '',
+    email: "",
+    name: "",
+    picture: "",
     isAuthenticated: false,
     isLoading: false,
   } as User,

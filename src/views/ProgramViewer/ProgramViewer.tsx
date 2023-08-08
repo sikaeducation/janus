@@ -1,10 +1,10 @@
-import './ProgramViewer.scss';
-import { KeyboardEvent, useState } from 'react';
-import { Markdown } from '@sikaeducation/ui';
-import PostListing from '../../components/PostListing';
+import "./ProgramViewer.scss";
+import { KeyboardEvent, useState } from "react";
+import { Markdown } from "@sikaeducation/ui";
+import PostListing from "../../components/PostListing";
 
 type props = {
-	program: hydratedProgram;
+  program: hydratedProgram;
 };
 
 const buildTree = (
@@ -13,9 +13,9 @@ const buildTree = (
   currentPost: hydratedPost,
   handleClick: (post: hydratedPost) => () => void,
   handleEnter: (post: hydratedPost) => (event: KeyboardEvent) => void,
-): JSX.Element[] => (
+): JSX.Element[] =>
   slugs
-  // eslint-disable-next-line
+    // eslint-disable-next-line
 		.map((slugId) => posts.find((post) => post.slug === slugId)!)
     .filter((post) => !!post)
     .flatMap((post: hydratedPost) => {
@@ -25,8 +25,8 @@ const buildTree = (
             post={post}
             isActive={currentPost?.path === post.path}
             handlers={{
-						  click: handleClick(post),
-						  keyboard: handleEnter(post),
+              click: handleClick(post),
+              keyboard: handleEnter(post),
             }}
           />
         </li>
@@ -34,21 +34,20 @@ const buildTree = (
       return post.children.length === 0
         ? postListing
         : [
-          postListing,
-          <li key={`${post.slug}--menu`}>
-            <ul>
-              {buildTree(
-							  posts,
-							  post.children,
-							  currentPost,
-							  handleClick,
-							  handleEnter,
-              )}
-            </ul>
-          </li>,
-        ];
-    })
-);
+            postListing,
+            <li key={`${post.slug}--menu`}>
+              <ul>
+                {buildTree(
+                  posts,
+                  post.children,
+                  currentPost,
+                  handleClick,
+                  handleEnter,
+                )}
+              </ul>
+            </li>,
+          ];
+    });
 
 export default function ProgramViewer({ program }: props) {
   const [currentPost, setCurrentPost] = useState<hydratedPost>(program.root);
@@ -58,7 +57,7 @@ export default function ProgramViewer({ program }: props) {
     setCurrentPost(post);
   };
   const handleEnter = (post: hydratedPost) => (event: KeyboardEvent) => {
-    if (event.key === 'enter') setCurrentPost(post);
+    if (event.key === "enter") setCurrentPost(post);
   };
 
   const tree = buildTree(
@@ -78,8 +77,8 @@ export default function ProgramViewer({ program }: props) {
               post={program.root}
               isActive={currentPost?.path === program.root.path}
               handlers={{
-							  click: handleClick(program.root),
-							  keyboard: handleEnter(program.root),
+                click: handleClick(program.root),
+                keyboard: handleEnter(program.root),
               }}
             />
           </li>

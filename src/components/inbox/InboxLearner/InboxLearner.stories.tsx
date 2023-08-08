@@ -1,12 +1,12 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withReactContext } from 'storybook-react-context';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { withReactContext } from "storybook-react-context";
 
-import InboxLearner from '.';
-import { performanceContext } from '../../../contexts/performance';
-import { promptContext } from '../../../contexts/prompt';
+import InboxLearner from ".";
+import { performanceContext } from "../../../contexts/performance";
+import { promptContext } from "../../../contexts/prompt";
 
 export default {
-  title: 'Inbox/InboxLearner',
+  title: "Inbox/InboxLearner",
   component: InboxLearner,
   decorators: [
     withReactContext({
@@ -17,7 +17,7 @@ export default {
       Context: promptContext,
       initialState: {
         currentBroadcast: {
-          prompt: 'Some Prompt',
+          prompt: "Some Prompt",
         },
       },
     }),

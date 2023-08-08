@@ -1,4 +1,4 @@
-test('<SubmissionEvaluationForm />', () => {
+test("<SubmissionEvaluationForm />", () => {
   expect(true).toBe(true);
 });
 

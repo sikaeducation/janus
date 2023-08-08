@@ -1,4 +1,4 @@
-test('<PerformanceFilters />', () => {
+test("<PerformanceFilters />", () => {
   expect(true).toBe(true);
 });
 

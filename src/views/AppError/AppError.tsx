@@ -1,5 +1,5 @@
-import './AppError.scss';
-import { Link } from 'react-router-dom';
+import "./AppError.scss";
+import { Link } from "react-router-dom";
 
 export default function AppError() {
   return (

@@ -1,10 +1,10 @@
-import classNames from 'classnames';
-import './PostListing.scss';
-import { MouseEventHandler, KeyboardEventHandler, useContext } from 'react';
-import useClipboard from 'react-use-clipboard';
-import { programContext } from '../../contexts/program';
+import classNames from "classnames";
+import "./PostListing.scss";
+import { MouseEventHandler, KeyboardEventHandler, useContext } from "react";
+import useClipboard from "react-use-clipboard";
+import { programContext } from "../../contexts/program";
 
-declare module 'react-use-clipboard' {
+declare module "react-use-clipboard" {
   export default interface useClipboard {
     (textToCopy: string): [boolean, () => void];
   }
@@ -21,13 +21,13 @@ type props = {
 
 export default function PostListing({ post, isActive, handlers }: props) {
   const { program } = useContext(programContext);
-  let linksMarkdown = '';
+  let linksMarkdown = "";
   if (program) {
     const { posts } = program;
     linksMarkdown = posts
       .filter((eachPost) => post.children.includes(eachPost.slug))
       .map((childPost) => `* [${childPost.label.full}](${childPost.path})`)
-      .join('\n');
+      .join("\n");
   }
   const setCopied = useClipboard(linksMarkdown)[1];
   return (
@@ -42,7 +42,7 @@ export default function PostListing({ post, isActive, handlers }: props) {
       {post.label.short ?? post.label.full}
       <div
         className={classNames({
-          'post-details': true,
+          "post-details": true,
           active: isActive,
         })}
       >

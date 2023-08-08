@@ -1,18 +1,19 @@
-import { faCaretDown, faCaretRight } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { format } from 'date-fns';
-import Gravatar from 'react-gravatar';
-import { Markdown } from '@sikaeducation/ui';
-import useIndicator from '../../hooks/use-indicator';
-import './PreviousQuestionResponses.scss';
+import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { format } from "date-fns";
+import Gravatar from "react-gravatar";
+import { Markdown } from "@sikaeducation/ui";
+import useIndicator from "../../hooks/use-indicator";
+import "./PreviousQuestionResponses.scss";
 
 type Props = {
-	performances: evaluatedQuestionPerformance[];
-	shouldDisplay: boolean;
-	setShouldDisplay: (newState: boolean) => void;
+  performances: evaluatedQuestionPerformance[];
+  shouldDisplay: boolean;
+  setShouldDisplay: (newState: boolean) => void;
 };
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy: p');
+const formatDateTime = (dateTime: string) =>
+  format(new Date(dateTime), "M/d/yy: p");
 
 export default function PreviousQuestionResponses({
   performances,
@@ -20,11 +21,12 @@ export default function PreviousQuestionResponses({
   setShouldDisplay,
 }: Props) {
   const getIndicator = useIndicator();
-  const handleKeyboard = (state: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
-    if (event.keyCode === 13) {
-      setShouldDisplay(state);
-    }
-  };
+  const handleKeyboard =
+    (state: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
+      if (event.keyCode === 13) {
+        setShouldDisplay(state);
+      }
+    };
   return (
     <div className="PreviousQuestionResponses">
       {shouldDisplay ? (
@@ -36,9 +38,7 @@ export default function PreviousQuestionResponses({
             onKeyDown={handleKeyboard(false)}
             className="previous-response-control"
           >
-            <FontAwesomeIcon icon={faCaretDown} />
-            {' '}
-            Previous Responses
+            <FontAwesomeIcon icon={faCaretDown} /> Previous Responses
           </div>
           <ul>
             {performances.map((performance) => (
@@ -53,16 +53,16 @@ export default function PreviousQuestionResponses({
                     className="previous-response-content"
                   />
                   {performance.evaluation?.feedback && (
-                  <>
-                    <Gravatar
-                    email={performance.evaluation.evaluatorId}
-                    className="evaluator-avatar"
-                  />
-                    <Markdown
-                    content={performance.evaluation.feedback}
-                    className="previous-feedback-content"
-                  />
-                  </>
+                    <>
+                      <Gravatar
+                        email={performance.evaluation.evaluatorId}
+                        className="evaluator-avatar"
+                      />
+                      <Markdown
+                        content={performance.evaluation.feedback}
+                        className="previous-feedback-content"
+                      />
+                    </>
                   )}
                 </div>
               </li>
@@ -77,9 +77,7 @@ export default function PreviousQuestionResponses({
           onKeyDown={handleKeyboard(true)}
           className="previous-response-control"
         >
-          <FontAwesomeIcon icon={faCaretRight} />
-          {' '}
-          Previous Responses
+          <FontAwesomeIcon icon={faCaretRight} /> Previous Responses
         </div>
       )}
     </div>

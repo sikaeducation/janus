@@ -1,4 +1,4 @@
-test('<ModalView />', () => {
+test("<ModalView />", () => {
   expect(true).toBe(true);
 });
 

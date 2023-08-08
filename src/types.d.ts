@@ -1,5 +1,5 @@
 // New Types
-type ActivityType = 'Article';
+type ActivityType = "Article";
 
 type MongoDocument = {
   _id?: string;
@@ -27,7 +27,7 @@ type ActivityResponse = {
 
 type User = {
   email: string;
-  'https://sikaeducation.com/role'?: 'coach';
+  "https://sikaeducation.com/role"?: "coach";
   name: string;
   picture: string;
   isAuthenticated: boolean;
@@ -37,7 +37,7 @@ type User = {
 // Old Types
 type Clobber<
   T extends Record<string, unknown>,
-  U extends Record<string, unknown>
+  U extends Record<string, unknown>,
 > = {
   [K in keyof T | keyof U]: K extends keyof U
     ? U[K]
@@ -46,15 +46,15 @@ type Clobber<
     : never;
 };
 type postType =
-  | 'root'
-  | 'meta'
-  | 'unit'
-  | 'section'
-  | 'topic'
-  | 'exercise'
-  | 'guide'
-  | 'concept'
-  | 'questions';
+  | "root"
+  | "meta"
+  | "unit"
+  | "section"
+  | "topic"
+  | "exercise"
+  | "guide"
+  | "concept"
+  | "questions";
 type rawPost = {
   type: postType;
   label: {
@@ -99,7 +99,7 @@ type getPostedPerformance<RawPerformance> = RawPerformance & {
 
 type rawEvaluation = {
   performanceId: number;
-  status: 'accepted' | 'rejected';
+  status: "accepted" | "rejected";
   feedback?: string;
   evaluatorId: string;
   learnerId: string;
@@ -110,11 +110,11 @@ type postedEvaluation = rawEvaluation & {
   updatedAt: string;
 };
 
-type performanceType = 'view' | 'submission' | 'prompt' | 'question';
+type performanceType = "view" | "submission" | "prompt" | "question";
 
 type confidenceLevel = 1 | 2 | 3;
 type rawViewPerformance = getRawPerformance<
-  'view',
+  "view",
   {
     confidenceLevel: confidenceLevel;
   }
@@ -122,7 +122,7 @@ type rawViewPerformance = getRawPerformance<
 type postedViewPerformance = getPostedPerformance<rawViewPerformance>;
 
 type rawSubmissionPerformance = getRawPerformance<
-  'submission',
+  "submission",
   { url: string }
 >;
 type postedSubmissionPerformance =
@@ -132,13 +132,13 @@ type evaluatedSubmissionPerformance = postedSubmissionPerformance & {
 };
 
 type rawPromptPerformance = getRawPerformance<
-  'prompt',
+  "prompt",
   { response: string; prompt: string }
 >;
 type postedPromptPerformance = getPostedPerformance<rawPromptPerformance>;
 
 type rawQuestionPerformance = getRawPerformance<
-  'question',
+  "question",
   {
     response: string;
     prompt: string;
@@ -170,5 +170,5 @@ type rawBroadcast = {
   slug?: string;
   prompt: string;
   tags?: string;
-  responseType: 'markdown';
+  responseType: "markdown";
 };

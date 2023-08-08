@@ -1,26 +1,26 @@
-import { TextArea, TextInput } from '@sikaeducation/ui';
+import { TextArea, TextInput } from "@sikaeducation/ui";
 
 export default [
   {
-    id: 'title',
-    label: 'Title',
+    id: "title",
+    label: "Title",
     Component: TextInput,
     required: true,
   },
   {
-    id: 'post_slug',
-    label: 'Slug',
+    id: "post_slug",
+    label: "Slug",
     Component: TextInput,
     required: true,
   },
   {
-    id: 'description',
-    label: 'Description',
+    id: "description",
+    label: "Description",
     Component: TextArea,
   },
   {
-    id: 'notes',
-    label: 'Notes',
+    id: "notes",
+    label: "Notes",
     Component: TextArea,
   },
 ];

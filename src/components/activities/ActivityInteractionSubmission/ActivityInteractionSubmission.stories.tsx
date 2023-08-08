@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import ActivityInteractionSubmission from '.';
+import ActivityInteractionSubmission from ".";
 
 export default {
-  title: 'Activities/ActivityInteractionSubmission',
+  title: "Activities/ActivityInteractionSubmission",
   component: ActivityInteractionSubmission,
 } as ComponentMeta<typeof ActivityInteractionSubmission>;
 
@@ -13,8 +13,9 @@ const Template: ComponentStory<typeof ActivityInteractionSubmission> = (
 
 export const Basic = Template.bind({});
 Basic.args = {
-  postPerformance: (performance: rawSubmissionPerformance) => console.log(performance),
-  userId: 'abcdefg',
-  postSlug: 'some-slug',
+  postPerformance: (performance: rawSubmissionPerformance) =>
+    console.log(performance),
+  userId: "abcdefg",
+  postSlug: "some-slug",
   performances: [],
 };

@@ -1,18 +1,18 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withReactContext } from 'storybook-react-context';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { withReactContext } from "storybook-react-context";
 
-import ActivityInteractionQuestions from '.';
-import { programContext } from '../../../contexts/program';
+import ActivityInteractionQuestions from ".";
+import { programContext } from "../../../contexts/program";
 
 export default {
-  title: 'Activities/ActivityInteractionQuestions',
+  title: "Activities/ActivityInteractionQuestions",
   component: ActivityInteractionQuestions,
   decorators: [
     withReactContext({
       Context: programContext,
       initialState: {
         postsBySlug: {
-          'some-slug': {
+          "some-slug": {
             content: `---
 questions:
   - id: 1
@@ -38,7 +38,8 @@ const Template: ComponentStory<typeof ActivityInteractionQuestions> = (
 
 export const MultipleQuestions = Template.bind({});
 MultipleQuestions.args = {
-  userId: 'abcdefg',
-  postPerformance: (performance: rawPerformance) => console.log({ performance }),
-  postSlug: 'some-slug',
+  userId: "abcdefg",
+  postPerformance: (performance: rawPerformance) =>
+    console.log({ performance }),
+  postSlug: "some-slug",
 };

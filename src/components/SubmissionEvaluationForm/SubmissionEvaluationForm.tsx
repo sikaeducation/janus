@@ -1,15 +1,15 @@
 /* eslint react/jsx-props-no-spreading: "off" */
-import { useAuth0 } from '@auth0/auth0-react';
+import { useAuth0 } from "@auth0/auth0-react";
 import {
   faCheckCircle,
   faTimesCircle,
-} from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import classNames from 'classnames';
-import { useContext, useState } from 'react';
-import { performanceContext } from '../../contexts/performance';
-import PreviousSubmissionFeedback from '../PreviousSubmissionFeedback';
-import './SubmissionEvaluationForm.scss';
+} from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import classNames from "classnames";
+import { useContext, useState } from "react";
+import { performanceContext } from "../../contexts/performance";
+import PreviousSubmissionFeedback from "../PreviousSubmissionFeedback";
+import "./SubmissionEvaluationForm.scss";
 
 type props = {
   previousPerformances: evaluatedSubmissionPerformance[];
@@ -23,8 +23,8 @@ export default function SubmissionEvaluationForm({
   cancel,
 }: props) {
   const { user } = useAuth0();
-  const [feedback, setFeedback] = useState('');
-  const [evaluationStatus, setEvaluationStatus] = useState('');
+  const [feedback, setFeedback] = useState("");
+  const [evaluationStatus, setEvaluationStatus] = useState("");
   const { postEvaluation } = useContext(performanceContext);
   const canSubmit = !!evaluationStatus;
 
@@ -33,13 +33,13 @@ export default function SubmissionEvaluationForm({
     const evaluation = {
       performanceId: performance.id,
       learnerId: performance.userId,
-      evaluatorId: user?.email || '',
+      evaluatorId: user?.email || "",
       feedback,
-      status: evaluationStatus as 'accepted' | 'rejected',
+      status: evaluationStatus as "accepted" | "rejected",
     };
     postEvaluation(evaluation);
-    setFeedback('');
-    setEvaluationStatus('');
+    setFeedback("");
+    setEvaluationStatus("");
     cancel();
   };
 
@@ -62,18 +62,18 @@ export default function SubmissionEvaluationForm({
         <button
           type="button"
           className={classNames({
-            active: evaluationStatus === 'rejected',
+            active: evaluationStatus === "rejected",
             failure: true,
           })}
-          onClick={() => setEvaluationStatus('rejected')}
+          onClick={() => setEvaluationStatus("rejected")}
         >
           <FontAwesomeIcon icon={faTimesCircle} />
         </button>
         <button
           type="button"
-          onClick={() => setEvaluationStatus('accepted')}
+          onClick={() => setEvaluationStatus("accepted")}
           className={classNames({
-            active: evaluationStatus === 'accepted',
+            active: evaluationStatus === "accepted",
             success: true,
           })}
         >

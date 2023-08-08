@@ -1,4 +1,4 @@
-test('<EvaluationViewer />', () => {
+test("<EvaluationViewer />", () => {
   expect(true).toBe(true);
 });
 

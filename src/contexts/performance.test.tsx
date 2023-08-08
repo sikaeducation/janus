@@ -1,4 +1,4 @@
-test('activity service posts activities', async () => {
+test("activity service posts activities", async () => {
   expect(true).toBe(true);
 });
 

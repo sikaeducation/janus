@@ -1,9 +1,9 @@
-import { Markdown } from '@sikaeducation/ui';
-import './InboxLearnerPromptResponseDisplay.scss';
+import { Markdown } from "@sikaeducation/ui";
+import "./InboxLearnerPromptResponseDisplay.scss";
 
 type props = {
-	currentBroadcast: rawBroadcast;
-	response: string;
+  currentBroadcast: rawBroadcast;
+  response: string;
 };
 
 export default function InboxLearnerPromptResponseDisplay({

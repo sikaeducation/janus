@@ -1,3 +1,3 @@
-import ModalView from './ModalView';
+import ModalView from "./ModalView";
 
 export default ModalView;

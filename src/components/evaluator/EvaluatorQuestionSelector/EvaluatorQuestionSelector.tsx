@@ -1,4 +1,4 @@
-import './EvaluatorQuestionSelector.scss';
+import "./EvaluatorQuestionSelector.scss";
 
 type props = {
   selectedSlug: string;

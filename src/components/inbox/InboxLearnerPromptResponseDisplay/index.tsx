@@ -1,3 +1,3 @@
-import InboxLearnerPromptResponseDisplay from './InboxLearnerPromptResponseDisplay';
+import InboxLearnerPromptResponseDisplay from "./InboxLearnerPromptResponseDisplay";
 
 export default InboxLearnerPromptResponseDisplay;

@@ -1,3 +1,3 @@
-import LearnerQuestionEvaluable from './LearnerQuestionEvaluable';
+import LearnerQuestionEvaluable from "./LearnerQuestionEvaluable";
 
 export default LearnerQuestionEvaluable;

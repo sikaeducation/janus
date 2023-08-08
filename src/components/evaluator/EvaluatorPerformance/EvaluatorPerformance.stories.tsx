@@ -1,10 +1,10 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
-import { withRouter } from 'storybook-addon-react-router-v6';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
+import { withRouter } from "storybook-addon-react-router-v6";
 
-import EvaluatorPerformance from '.';
+import EvaluatorPerformance from ".";
 
 export default {
-  title: 'Evaluator/EvaluatorPerformance',
+  title: "Evaluator/EvaluatorPerformance",
   component: EvaluatorPerformance,
   decorators: [withRouter],
 } as ComponentMeta<typeof EvaluatorPerformance>;
@@ -15,27 +15,29 @@ const Template: ComponentStory<typeof EvaluatorPerformance> = (args) => (
 
 export const Default = Template.bind({});
 Default.args = {
-  path: ',',
+  path: ",",
   performance: {
     id: 1,
-    type: 'question',
-    userId: 'user@email.com',
-    postSlug: 'some-slug',
+    type: "question",
+    userId: "user@email.com",
+    postSlug: "some-slug",
     payload: {
-      prompt: 'Some prompt',
-      response: 'Some response',
-      originalPostSlug: 'some-other-slug',
-      answer: 'Some answer',
+      prompt: "Some prompt",
+      response: "Some response",
+      originalPostSlug: "some-other-slug",
+      answer: "Some answer",
     },
-    createdAt: '2022-01-01',
-    updatedAt: '2022-01-01',
+    createdAt: "2022-01-01",
+    updatedAt: "2022-01-01",
   },
-  feedback: 'Some feedback',
+  feedback: "Some feedback",
   updateFeedback:
-    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => console.log({ learnerId, event }),
-  status: 'Some status',
+    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) =>
+      console.log({ learnerId, event }),
+  status: "Some status",
   updateStatus:
-    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => console.log({ learnerId, event }),
+    (learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) =>
+      console.log({ learnerId, event }),
 };
 
 Default.parameters = {
@@ -43,8 +45,8 @@ Default.parameters = {
     config: {
       rules: [
         {
-          id: 'label',
-          selector: '*:not(select, input)',
+          id: "label",
+          selector: "*:not(select, input)",
         },
       ],
     },

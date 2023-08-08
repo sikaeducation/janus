@@ -1,3 +1,3 @@
-import PerformanceListing from './PerformanceListing';
+import PerformanceListing from "./PerformanceListing";
 
 export default PerformanceListing;

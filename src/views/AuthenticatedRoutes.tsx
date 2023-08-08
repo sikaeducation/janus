@@ -1,13 +1,13 @@
-import { Routes, Route } from 'react-router-dom';
-import { useContext } from 'react';
+import { Routes, Route } from "react-router-dom";
+import { useContext } from "react";
 // import { Toast } from '@sikaeducation/ui';
-import AppMissing from './AppMissing';
-import AppLoading from './AppLoading';
-import AppError from './AppError';
-import { toastContext } from '../contexts/toast';
+import AppMissing from "./AppMissing";
+import AppLoading from "./AppLoading";
+import AppError from "./AppError";
+import { toastContext } from "../contexts/toast";
 
-import Notification from '../components/AppNotification';
-import ActivityManagerView from './ActivityManagerView';
+import Notification from "../components/AppNotification";
+import ActivityManagerView from "./ActivityManagerView";
 
 export default function AuthenticatedRoutes() {
   const { toasts } = useContext(toastContext);
@@ -22,10 +22,10 @@ export default function AuthenticatedRoutes() {
         <Route path="/activity-manager" element={<ActivityManagerView />} />
         <Route path="*" element={<p>Home page</p>} />
       </Routes>
-      { /* Make this a toast */}
+      {/* Make this a toast */}
       {showToastNotification ? (
         <p>
-          {' '}
+          {" "}
           <Notification />
         </p>
       ) : null}

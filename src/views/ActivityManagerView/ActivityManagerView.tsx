@@ -1,23 +1,21 @@
-import './ActivityManagerView.scss';
-import { ReactNode, useState } from 'react';
+import "./ActivityManagerView.scss";
+import { ReactNode, useState } from "react";
 
-import {
-  Button, Heading, Drawer, DataTable, Icon,
-} from '@sikaeducation/ui';
-import ModalView from '../ModalView';
-import NewActivityForm from '../NewActivityForm';
+import { Button, Heading, Drawer, DataTable, Icon } from "@sikaeducation/ui";
+import ModalView from "../ModalView";
+import NewActivityForm from "../NewActivityForm";
 
-import { fields, skeletonRows } from './table';
+import { fields, skeletonRows } from "./table";
 import {
   useCreateActivityMutation,
   useGetActivitiesQuery,
-} from '../../slices/apiSlice';
-import ArticleDetail from '../ArticleDetail';
+} from "../../slices/apiSlice";
+import ArticleDetail from "../ArticleDetail";
 
 type FormattedActivity = Activity & {
-	id: string;
-	type: NonNullable<ReactNode>;
-	publishedIcon?: ReactNode;
+  id: string;
+  type: NonNullable<ReactNode>;
+  publishedIcon?: ReactNode;
 };
 
 const activityTypes = {
@@ -29,8 +27,8 @@ export default function ActivityManagerView() {
   const [createActivity] = useCreateActivityMutation();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<
-		Activity | undefined
-	>(undefined);
+    Activity | undefined
+  >(undefined);
   const activitiesCount = activities?.length || 0;
   const handleNewClick = () => setNewActivityOpen(true);
   const closeModal = () => setNewActivityOpen(false);
@@ -41,38 +39,36 @@ export default function ActivityManagerView() {
 
   const fieldActions: Record<string, (id?: string) => void> = {
     // eslint-disable-next-line no-console
-    publishedIcon: () => console.log('toggle publishing'),
-    title: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
-    description: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
+    publishedIcon: () => console.log("toggle publishing"),
+    title: (id?: string) =>
+      setSelectedActivity(activities?.find((activity) => activity._id === id)),
+    description: (id?: string) =>
+      setSelectedActivity(activities?.find((activity) => activity._id === id)),
   };
   const fieldsWithActions = fields.map((field) => ({
     ...field,
     action: fieldActions[field.key],
   }));
 
-  const formattedActivities: FormattedActivity[] = activities?.map((activity) => ({
-    ...activity,
-    id: activity._id || '',
-    type: activityTypes[activity._type],
-    publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
-  })) || [];
+  const formattedActivities: FormattedActivity[] =
+    activities?.map((activity) => ({
+      ...activity,
+      id: activity._id || "",
+      type: activityTypes[activity._type],
+      publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+    })) || [];
 
   return (
     <div className="ActivityManagerView">
       {newActivityOpen && (
-      <ModalView close={closeModal}>
-        <NewActivityForm save={save} cancel={closeModal} />
-      </ModalView>
+        <ModalView close={closeModal}>
+          <NewActivityForm save={save} cancel={closeModal} />
+        </ModalView>
       )}
       <header>
         <Heading level={2} margin={false}>
-          Activities
-          {' '}
-          <span className="activities-count">
-            (
-            {activitiesCount}
-            )
-          </span>
+          Activities{" "}
+          <span className="activities-count">({activitiesCount})</span>
         </Heading>
         <Button type="primary" action={handleNewClick}>
           New

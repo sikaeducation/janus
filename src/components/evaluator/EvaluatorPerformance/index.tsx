@@ -1,3 +1,3 @@
-import EvaluatorPerformance from './EvaluatorPerformance';
+import EvaluatorPerformance from "./EvaluatorPerformance";
 
 export default EvaluatorPerformance;

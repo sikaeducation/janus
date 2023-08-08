@@ -1,14 +1,14 @@
-import { useContext } from 'react';
-import { Tag, Button, Markdown } from '@sikaeducation/ui';
-import { performanceContext } from '../../../contexts/performance';
-import InboxResponses from '../InboxResponses';
-import './InboxCoachPromptDisplay.scss';
+import { useContext } from "react";
+import { Tag, Button, Markdown } from "@sikaeducation/ui";
+import { performanceContext } from "../../../contexts/performance";
+import InboxResponses from "../InboxResponses";
+import "./InboxCoachPromptDisplay.scss";
 
 type props = {
-	tags: string[];
-	prompt: string;
-	endPrompt: () => void;
-	slug: string;
+  tags: string[];
+  prompt: string;
+  endPrompt: () => void;
+  slug: string;
 };
 
 export default function CoachInboxPromptDisplay({
@@ -19,7 +19,8 @@ export default function CoachInboxPromptDisplay({
 }: props) {
   const { performances } = useContext(performanceContext);
   const promptPerformances = performances.filter(
-    (performance): performance is postedPromptPerformance => performance.postSlug === slug,
+    (performance): performance is postedPromptPerformance =>
+      performance.postSlug === slug,
   );
 
   const handleEndPrompt = () => {
@@ -28,13 +29,13 @@ export default function CoachInboxPromptDisplay({
   return (
     <div className="InboxCoachPromptDisplay">
       {tags.length > 0 && (
-      <ul className="tags">
-        {tags.map((tag) => (
-          <li key={tag}>
-            <Tag>{tag}</Tag>
-          </li>
-        ))}
-      </ul>
+        <ul className="tags">
+          {tags.map((tag) => (
+            <li key={tag}>
+              <Tag>{tag}</Tag>
+            </li>
+          ))}
+        </ul>
       )}
       {slug && <div className="slug">{slug}</div>}
       <Markdown className="existing-prompt" content={prompt} />
@@ -44,7 +45,7 @@ export default function CoachInboxPromptDisplay({
         </Button>
       </div>
       {promptPerformances.length > 0 && (
-      <InboxResponses performances={promptPerformances} />
+        <InboxResponses performances={promptPerformances} />
       )}
     </div>
   );

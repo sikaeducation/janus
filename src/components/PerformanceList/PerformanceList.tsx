@@ -1,14 +1,14 @@
-import { format } from 'date-fns';
-import { useEffect, useRef } from 'react';
-import './PerformanceList.scss';
-import PerformanceListing from '../PerformanceListing';
+import { format } from "date-fns";
+import { useEffect, useRef } from "react";
+import "./PerformanceList.scss";
+import PerformanceListing from "../PerformanceListing";
 
 type props = {
   performances: Record<string, evaluatedSubmissionPerformance[]>;
   lastMessageRef: React.RefObject<HTMLLIElement>;
 };
 
-const formatDate = (date: string) => format(new Date(date), 'eeee, LLLL do');
+const formatDate = (date: string) => format(new Date(date), "eeee, LLLL do");
 
 export default function PerformanceList({
   performances,
@@ -20,7 +20,7 @@ export default function PerformanceList({
     if (!isInitialized.current) {
       isInitialized.current = true;
       lastMessageRef.current?.scrollIntoView({
-        behavior: 'smooth',
+        behavior: "smooth",
       });
     }
   }, [performances, isInitialized, lastMessageRef]);

@@ -1,12 +1,12 @@
-import './ActivityInteractionView.scss';
-import { last } from 'lodash/fp';
-import { Button } from '@sikaeducation/ui';
+import "./ActivityInteractionView.scss";
+import { last } from "lodash/fp";
+import { Button } from "@sikaeducation/ui";
 
 type props = {
-	postPerformance: (performance: rawPerformance) => void;
-	userId: string;
-	postSlug: string;
-	performances: postedViewPerformance[];
+  postPerformance: (performance: rawPerformance) => void;
+  userId: string;
+  postSlug: string;
+  performances: postedViewPerformance[];
 };
 
 export default function ActivityInteractionView({
@@ -19,22 +19,22 @@ export default function ActivityInteractionView({
   const buttons = [
     {
       confidenceLevel: 1,
-      label: 'Unclear',
+      label: "Unclear",
     },
     {
       confidenceLevel: 2,
-      label: 'Clear',
+      label: "Clear",
     },
     {
       confidenceLevel: 3,
-      label: 'Confident',
+      label: "Confident",
     },
   ] as const;
   const handleClick = (confidenceLevel: confidenceLevel) => () => {
     postPerformance({
       userId,
       postSlug,
-      type: 'view',
+      type: "view",
       payload: {
         confidenceLevel,
       },

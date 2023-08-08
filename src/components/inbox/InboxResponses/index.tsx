@@ -1,3 +1,3 @@
-import InboxResponses from './InboxResponses';
+import InboxResponses from "./InboxResponses";
 
 export default InboxResponses;

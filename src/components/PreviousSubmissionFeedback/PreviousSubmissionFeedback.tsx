@@ -1,12 +1,13 @@
-import { format } from 'date-fns';
-import { Markdown } from '@sikaeducation/ui';
-import useIndicator from '../../hooks/use-indicator';
-import './PreviousSubmissionFeedback.scss';
+import { format } from "date-fns";
+import { Markdown } from "@sikaeducation/ui";
+import useIndicator from "../../hooks/use-indicator";
+import "./PreviousSubmissionFeedback.scss";
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), 'M/d/yy p');
+const formatDateTime = (dateTime: string) =>
+  format(new Date(dateTime), "M/d/yy p");
 
 type props = {
-	performances: evaluatedSubmissionPerformance[];
+  performances: evaluatedSubmissionPerformance[];
 };
 
 export default function PreviousSubmissionFeedback({ performances }: props) {
@@ -23,8 +24,8 @@ export default function PreviousSubmissionFeedback({ performances }: props) {
             <div className="meta">
               <a href={performance.payload.url}>
                 <time>
-                  {performance.evaluation?.createdAt
-										&& formatDateTime(performance.evaluation?.createdAt)}
+                  {performance.evaluation?.createdAt &&
+                    formatDateTime(performance.evaluation?.createdAt)}
                 </time>
               </a>
               {getIndicator(performance)}

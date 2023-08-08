@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import InboxLearnerPromptResponseDisplay from '.';
+import InboxLearnerPromptResponseDisplay from ".";
 
 export default {
-  title: 'Inbox/InboxLearnerPromptResponseDisplay',
+  title: "Inbox/InboxLearnerPromptResponseDisplay",
   component: InboxLearnerPromptResponseDisplay,
 } as ComponentMeta<typeof InboxLearnerPromptResponseDisplay>;
 
@@ -13,6 +13,6 @@ const Template: ComponentStory<typeof InboxLearnerPromptResponseDisplay> = (
 
 export const Default = Template.bind({});
 Default.args = {
-  currentBroadcast: { responseType: 'markdown', prompt: 'Some prompt' },
-  response: 'Some response',
+  currentBroadcast: { responseType: "markdown", prompt: "Some prompt" },
+  response: "Some response",
 };

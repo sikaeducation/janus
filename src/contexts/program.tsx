@@ -1,5 +1,5 @@
-import { keyBy } from 'lodash/fp';
-import { useState, createContext, useEffect } from 'react';
+import { keyBy } from "lodash/fp";
+import { useState, createContext, useEffect } from "react";
 
 export const programContext = createContext(
   {} as unknown as {
@@ -17,22 +17,22 @@ export function ProgramProvider({ children }: props) {
   const [isLoading, setIsLoading] = useState(false);
   const [program, setProgram] = useState<hydratedProgram>({
     id: 0,
-    label: '',
+    label: "",
     root: {
-      type: 'root',
+      type: "root",
       label: {
-        full: '',
+        full: "",
       },
-      slug: '',
+      slug: "",
       children: [],
-      path: '',
-      content: '',
+      path: "",
+      content: "",
     },
     posts: [],
   });
   const id = 1; // Hard-coded
   const posts = [program.root, ...program.posts];
-  const postsBySlug = keyBy<hydratedPost>('slug')(posts);
+  const postsBySlug = keyBy<hydratedPost>("slug")(posts);
   useEffect(() => {
     const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
     setIsLoading(true);

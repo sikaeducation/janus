@@ -1,4 +1,4 @@
-test('<ActivityManagerView />', () => {
+test("<ActivityManagerView />", () => {
   expect(true).toBe(true);
 });
 

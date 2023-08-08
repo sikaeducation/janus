@@ -1,4 +1,4 @@
-test('<NewActivityForm />', () => {
+test("<NewActivityForm />", () => {
   expect(true).toBe(true);
 });
 

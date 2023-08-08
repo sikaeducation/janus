@@ -1,9 +1,9 @@
-import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { ComponentStory, ComponentMeta } from "@storybook/react";
 
-import InboxResponses from '.';
+import InboxResponses from ".";
 
 export default {
-  title: 'Inbox/InboxResponses',
+  title: "Inbox/InboxResponses",
   component: InboxResponses,
 } as ComponentMeta<typeof InboxResponses>;
 

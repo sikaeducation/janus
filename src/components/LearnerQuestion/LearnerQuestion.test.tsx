@@ -1,4 +1,4 @@
-test('<LearnerQuestion />', () => {
+test("<LearnerQuestion />", () => {
   expect(true).toBe(true);
 });
 

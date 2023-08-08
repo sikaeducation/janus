@@ -1,109 +1,103 @@
 module.exports = {
+  root: true,
+  parser: "@typescript-eslint/parser",
   env: {
     browser: true,
-    es2021: true,
+    node: true,
+    es2022: true,
   },
-  extends: [
-    'plugin:react/recommended',
-    'airbnb',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-    'plugin:storybook/recommended',
-    'plugin:jsx-a11y/recommended',
-    'plugin:jest-dom/recommended',
-  ],
-  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaFeatures: {
       jsx: true,
     },
-    ecmaVersion: 13,
-    sourceType: 'module',
+    sourceType: "module",
+    project: ["./tsconfig.json"],
+    ecmaVersion: "latest",
   },
-  plugins: [
-    'react',
-    'jest-dom',
-    '@typescript-eslint',
-    'react-hooks',
-    'prettier',
-    'jsx-a11y',
+  settings: {
+    "import/resolver": {
+      typescript: {},
+    },
+  },
+  plugins: ["prettier", "react", "react-hooks", "jsx-a11y", "storybook"],
+  extends: [
+    "eslint:recommended",
+    "react-app",
+    "react-app/jest",
+    "plugin:storybook/recommended",
+    "plugin:prettier/recommended",
   ],
   rules: {
-    'react/jsx-filename-extension': [
+    "react/jsx-filename-extension": [
       1,
       {
-        extensions: ['.tsx'],
+        extensions: [".tsx"],
       },
     ],
-    'react/react-in-jsx-scope': 'off',
-    'import/extensions': [
-      'error',
-      'ignorePackages',
+    "react/react-in-jsx-scope": "off",
+    "import/extensions": [
+      "error",
+      "ignorePackages",
       {
-        ts: 'never',
-        tsx: 'never',
+        ts: "never",
+        tsx: "never",
       },
     ],
-    'no-shadow': 'off',
-    'max-len': 'warn',
-    'default-case': 'off',
-    'consistent-return': 'off',
-    'no-underscore-dangle': 'off',
-    'react/require-default-props': 'off',
-    'react/jsx-no-constructed-context-values': 'off',
-    'no-use-before-define': 'off',
-    '@typescript-eslint/no-shadow': ['off'],
-    'react-hooks/rules-of-hooks': 'error',
-    'react-hooks/exhaustive-deps': 'off',
-    'jsx-a11y/label-has-associated-control': [
-      'error',
+    "no-shadow": "off",
+    "max-len": "warn",
+    "default-case": "off",
+    "consistent-return": "off",
+    "no-underscore-dangle": "off",
+    "react/require-default-props": "off",
+    "react/jsx-no-constructed-context-values": "off",
+    "no-use-before-define": "off",
+    "@typescript-eslint/no-shadow": ["off"],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "off",
+    "jsx-a11y/label-has-associated-control": [
+      "error",
       {
-        assert: 'htmlFor',
+        assert: "htmlFor",
       },
     ],
-    'import/no-extraneous-dependencies': [
-      'error',
+    "import/no-extraneous-dependencies": [
+      "error",
       {
         devDependencies: [
-          '**/*.test.ts',
-          '**/*.spec.ts',
-          '**/*.test.tsx',
-          '**/*.spec.tsx',
+          "**/*.test.ts",
+          "**/*.spec.ts",
+          "**/*.test.tsx",
+          "**/*.spec.tsx",
         ],
       },
     ],
   },
   overrides: [
     {
-      files: ['**/*.stories.*', '**/*.mdx'],
+      files: ["**/*.stories.*", "**/*.mdx"],
       rules: {
-        'import/no-anonymous-default-export': 'off',
-        'react/function-component-definition': 'off',
-        'react/jsx-props-no-spreading': 'off',
-        'import/no-extraneous-dependencies': 'off',
-        '@typescript-eslint/no-empty-function': 'off',
-        'no-console': 'off',
-        'react/jsx-filename-extension': 'off',
-        'react/destructuring-assignment': 'off',
+        "import/no-anonymous-default-export": "off",
+        "react/function-component-definition": "off",
+        "react/jsx-props-no-spreading": "off",
+        "import/no-extraneous-dependencies": "off",
+        "@typescript-eslint/no-empty-function": "off",
+        "no-console": "off",
+        "react/jsx-filename-extension": "off",
+        "react/destructuring-assignment": "off",
       },
     },
     {
-      files: ['features/**/*.ts'],
+      files: ["features/**/*.ts"],
       rules: {
-        'func-names': 'off',
-        '@typescript-eslint/ban-ts-comment': 'off',
+        "func-names": "off",
+        "@typescript-eslint/ban-ts-comment": "off",
       },
     },
     {
-      files: ['src/slices/*.ts'],
+      files: ["src/slices/*.ts"],
       rules: {
-        'no-param-reassign': 'off',
+        "no-param-reassign": "off",
       },
     },
   ],
-  settings: {
-    'import/resolver': {
-      typescript: {},
-    },
-  },
 };

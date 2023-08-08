@@ -1,3 +1,3 @@
-import EvaluatorQuestionSelector from './EvaluatorQuestionSelector';
+import EvaluatorQuestionSelector from "./EvaluatorQuestionSelector";
 
 export default EvaluatorQuestionSelector;

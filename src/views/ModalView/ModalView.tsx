@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { createPortal } from 'react-dom';
-import './ModalView.scss';
-import type { ReactNode } from 'react';
+import { createPortal } from "react-dom";
+import "./ModalView.scss";
+import type { ReactNode } from "react";
 
 type props = {
   close: () => void;
@@ -18,6 +18,6 @@ export default function ModalView({ close, children }: props) {
         <div id="modal-content">{children}</div>
       </div>
     </div>,
-    document.querySelector('#modal-container')!,
+    document.querySelector("#modal-container")!,
   );
 }

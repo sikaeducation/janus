@@ -1,15 +1,15 @@
-import './AppHeader.scss';
-import { Link } from 'react-router-dom';
+import "./AppHeader.scss";
+import { Link } from "react-router-dom";
 
-import { useSelector } from 'react-redux';
-import { useAuth0 } from '@auth0/auth0-react';
-import { Button, Logo, Avatar } from '@sikaeducation/ui';
+import { useSelector } from "react-redux";
+import { useAuth0 } from "@auth0/auth0-react";
+import { Button, Logo, Avatar } from "@sikaeducation/ui";
 
-import { RootState } from '../../store';
+import { RootState } from "../../store";
 
 function AppHeader() {
   const {
-    'https://sikaeducation.com/role': role,
+    "https://sikaeducation.com/role": role,
     email,
     name,
     picture,
@@ -25,44 +25,44 @@ function AppHeader() {
           <Logo />
         </Link>
         {email && (
-        <ul className="links">
-          <li key="1">
-            <Link to="/">Curriculum</Link>
-          </li>
-          {role === 'coach' && (
-          <li key="2">
-            <Link to="/activity-manager">Activity Manager</Link>
-          </li>
-          )}
-        </ul>
+          <ul className="links">
+            <li key="1">
+              <Link to="/">Curriculum</Link>
+            </li>
+            {role === "coach" && (
+              <li key="2">
+                <Link to="/activity-manager">Activity Manager</Link>
+              </li>
+            )}
+          </ul>
         )}
       </nav>
 
       <div className="user-info">
         {!isLoading && !isAuthenticated && (
-        <Button
-          type="primary"
-          action={() => loginWithRedirect({ scope: 'openid profile email' })}
-        >
-          Login
-        </Button>
+          <Button
+            type="primary"
+            action={() => loginWithRedirect({ scope: "openid profile email" })}
+          >
+            Login
+          </Button>
         )}
         {picture && name && (
-        <>
-          <Avatar imageUrl={picture} altText={name} />
-          <Button
-            type="ghost"
-            action={() => logout({ returnTo: window.location.origin })}
-          >
-            Logout
-          </Button>
-        </>
+          <>
+            <Avatar imageUrl={picture} altText={name} />
+            <Button
+              type="ghost"
+              action={() => logout({ returnTo: window.location.origin })}
+            >
+              Logout
+            </Button>
+          </>
         )}
         {isLoading && (
-        <Avatar
-          imageUrl="/user-avatar-placeholder.png"
-          altText="user avatar placeholder"
-        />
+          <Avatar
+            imageUrl="/user-avatar-placeholder.png"
+            altText="user avatar placeholder"
+          />
         )}
       </div>
     </header>
