@@ -42,27 +42,19 @@ export default function AppEvaluator({ user }: props) {
       [learnerId, maxBy("createdAt", performances)] as const,
   );
 
-  const getInitialEvaluations = () =>
-    currentPerformances.reduce(
-      (initialState, [learnerId, performance]) => ({
-        ...initialState,
-        [learnerId]: {
-          feedback: "",
-          status: "pending",
-          performance,
-        },
-      }),
-      {},
-    );
-
   const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
   const { postsBySlug } = useContext(programContext);
-  const getPath = useCallback((slug: string) => postsBySlug[slug].path ?? "");
+  const getPath = useCallback(
+    (slug: string) => postsBySlug[slug].path ?? "",
+    [postsBySlug],
+  );
   const getFeedback = useCallback(
     (learnerId: string) => evaluations[learnerId]?.feedback || "",
+    [evaluations],
   );
   const getStatus = useCallback(
     (learnerId: string) => evaluations[learnerId]?.status || "",
+    [evaluations],
   );
 
   const setAll = (status: string) =>
@@ -140,10 +132,23 @@ export default function AppEvaluator({ user }: props) {
       setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
       isInitialized.current = true;
     }
-  }, [unevaluatedQuestionPerformancesBySlugByLearner]);
+  }, [unevaluatedQuestionPerformancesBySlugByLearner, slugs]);
   useEffect(() => {
+    const getInitialEvaluations = () =>
+      currentPerformances.reduce(
+        (initialState, [learnerId, performance]) => ({
+          ...initialState,
+          [learnerId]: {
+            feedback: "",
+            status: "pending",
+            performance,
+          },
+        }),
+        {},
+      );
+
     setEvaluations(getInitialEvaluations());
-  }, [selectedSlug]);
+  }, [selectedSlug, currentPerformances]);
 
   return (
     <div className="AppEvaluator">

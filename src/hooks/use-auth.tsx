@@ -22,7 +22,7 @@ export default function useAuth() {
           : {},
       ),
     );
-  }, [isAuthenticated, isLoading, user]);
+  }, [isAuthenticated, isLoading, user, dispatch]);
 
   setTokenFetcher(getAccessTokenSilently);
 }

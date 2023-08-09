@@ -30,54 +30,6 @@ module.exports = {
   ],
   overrides: [
     {
-      files: ["**/*.{js,jsx,ts,tsx}"],
-      rules: {
-        "react/jsx-filename-extension": [
-          1,
-          {
-            extensions: [".tsx"],
-          },
-        ],
-        "react/react-in-jsx-scope": "off",
-        "import/extensions": [
-          "error",
-          "ignorePackages",
-          {
-            ts: "never",
-            tsx: "never",
-          },
-        ],
-        "no-shadow": "off",
-        "max-len": "off",
-        "default-case": "off",
-        "consistent-return": "off",
-        "no-underscore-dangle": "off",
-        "react/require-default-props": "off",
-        "react/jsx-no-constructed-context-values": "off",
-        "no-use-before-define": "off",
-        "@typescript-eslint/no-shadow": ["off"],
-        "react-hooks/rules-of-hooks": "error",
-        "react-hooks/exhaustive-deps": "off",
-        "jsx-a11y/label-has-associated-control": [
-          "error",
-          {
-            assert: "htmlFor",
-          },
-        ],
-        "import/no-extraneous-dependencies": [
-          "error",
-          {
-            devDependencies: [
-              "**/*.test.ts",
-              "**/*.spec.ts",
-              "**/*.test.tsx",
-              "**/*.spec.tsx",
-            ],
-          },
-        ],
-      },
-    },
-    {
       files: ["**/*.stories.*", "**/*.mdx"],
       rules: {
         "import/no-anonymous-default-export": "off",
