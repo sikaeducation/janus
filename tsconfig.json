@@ -22,6 +22,8 @@
 		"features",
 		"./jest-setup.ts",
 		"./.eslintrc.js",
-		"src/types.d.ts"
+		"src/types.d.ts",
+		"playwright.config.ts",
+		"jest.config.js"
 	]
 }

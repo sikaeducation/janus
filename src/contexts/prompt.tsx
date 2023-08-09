@@ -2,13 +2,13 @@ import { useState, createContext, useContext } from "react";
 import useSocketHandlers from "../hooks/use-socket-handlers";
 import { SocketContext } from "./socket";
 
-type promptContext = {
+type PromptContext = {
   startInboxPrompt: (broadcast: rawBroadcast) => void;
   endInboxPrompt: () => void;
   currentBroadcast: rawBroadcast | null;
   getCurrentPrompt: () => void;
 };
-export const promptContext = createContext<promptContext>({} as promptContext);
+export const promptContext = createContext<PromptContext>({} as PromptContext);
 
 type props = {
   children: JSX.Element;

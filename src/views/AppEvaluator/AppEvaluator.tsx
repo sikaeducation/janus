@@ -7,8 +7,11 @@ import { Markdown } from "@sikaeducation/ui";
 import { programContext } from "../../contexts/program";
 import { performanceContext } from "../../contexts/performance";
 import "./AppEvaluator.scss";
+// eslint-disable-next-line max-len
 import EvaluatorPerformance from "../../components/evaluator/EvaluatorPerformance";
+// eslint-disable-next-line max-len
 import EvaluatorPerformanceHeader from "../../components/evaluator/EvaluatorPerformanceHeader";
+// eslint-disable-next-line max-len
 import EvaluatorQuestionSelector from "../../components/evaluator/EvaluatorQuestionSelector";
 
 type performanceTuple = [string, evaluatedQuestionPerformance];
@@ -122,7 +125,8 @@ export default function AppEvaluator({ user }: props) {
       });
     Promise.all(requests)
       .then(() => {
-        setSelectedSlug(slugs.length > 1 ? slugs[1] : ""); // index 0 will still be there while waiting for sockets to come back
+        // index 0 will still be there while waiting for sockets to come back
+        setSelectedSlug(slugs.length > 1 ? slugs[1] : "");
       })
       .catch((error) => {
         // eslint-disable-next-line

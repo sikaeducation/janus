@@ -1,6 +1,6 @@
 import { TextArea, TextInput } from "@sikaeducation/ui";
 
-export default [
+const newActivityFields = [
   {
     id: "title",
     label: "Title",
@@ -24,3 +24,5 @@ export default [
     Component: TextArea,
   },
 ];
+
+export default newActivityFields;

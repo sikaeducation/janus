@@ -38,7 +38,7 @@ const groupByPost = groupBy("postSlug");
 const groupByLearner = groupBy("userId");
 const groupByQuestion = groupBy("originalPostSlug");
 
-type performanceContext = {
+type PerformanceContext = {
   learners: string[];
   lastQuestionPerformancesBySlug: Record<
     string,
@@ -70,8 +70,8 @@ type performanceContext = {
     Record<string, evaluatedQuestionPerformance[]>
   >;
 };
-export const performanceContext = createContext<performanceContext>(
-  {} as performanceContext,
+export const performanceContext = createContext<PerformanceContext>(
+  {} as PerformanceContext,
 );
 
 type props = {
@@ -106,7 +106,7 @@ export function PerformanceProvider({ children }: props) {
     socket.emit("list-performances");
     socket.emit("list-evaluations");
     // eslint-disable-next-line
-  }, []);
+	}, []);
 
   const postPerformance = (performance: rawPerformance) =>
     socket.emit("post-performance", performance);

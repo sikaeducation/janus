@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test("listing activities", async ({ page }) => {
+test("listing activities", async ({ screen }) => {
   const activities = [
     {
       _id: 1,
@@ -24,13 +24,13 @@ test("listing activities", async ({ page }) => {
     },
   ];
 
-  await page.route("**/activities", (route: Route) => {
+  await screen.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify(activities),
     });
   });
 
-  await asCoach(page);
-  await page.getByText("Activity Manager").click();
-  await expect(page.getByRole("row")).toHaveCount(activities.length + 1);
+  await asCoach(screen);
+  await screen.getByText("Activity Manager").click();
+  await expect(screen.getByRole("row")).toHaveCount(activities.length + 1);
 });

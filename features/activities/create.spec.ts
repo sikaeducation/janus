@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test("create an activity", async ({ page }) => {
+test("create an activity", async ({ screen }) => {
   const activities = [
     {
       _id: 1,
@@ -28,23 +28,23 @@ test("create an activity", async ({ page }) => {
   };
   const { title, postSlug, description, notes } = activity;
 
-  await page.route("**/activities", (route: Route) => {
+  await screen.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify(activities),
     });
   });
 
-  await asCoach(page);
-  await page.getByText("Activity Manager").click();
+  await asCoach(screen);
+  await screen.getByText("Activity Manager").click();
 
-  await page.getByRole("button", { name: "New" }).click({ force: true });
+  await screen.getByRole("button", { name: "New" }).click({ force: true });
 
-  await page.getByLabel("Title").fill(title);
-  await page.getByLabel("Slug").fill(postSlug);
-  await page.getByLabel("Description").fill(description);
-  await page.getByLabel("Notes").fill(notes);
+  await screen.getByLabel("Title").fill(title);
+  await screen.getByLabel("Slug").fill(postSlug);
+  await screen.getByLabel("Description").fill(description);
+  await screen.getByLabel("Notes").fill(notes);
 
-  await page.getByRole("button", { name: "Save and Publish" }).click();
+  await screen.getByRole("button", { name: "Save and Publish" }).click();
 
-  await expect(page.getByRole("row")).toHaveCount(activities.length + 1);
+  await expect(screen.getByRole("row")).toHaveCount(activities.length + 1);
 });
