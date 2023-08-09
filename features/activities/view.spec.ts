@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test.skip("view activity", async ({ screen }) => {
+test.skip("view activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
@@ -15,27 +15,27 @@ test.skip("view activity", async ({ screen }) => {
     },
   ];
 
-  await screen.route("**/activities", (route: Route) => {
+  await page.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify(activities),
     });
   });
 
-  await asCoach(screen);
-  await screen.getByText("Activity Manager").click();
+  await asCoach(page);
+  await page.getByText("Activity Manager").click();
 
-  await expect(screen.getByText("slug_3")).toHaveCount(0);
-  await expect(screen.getByText("Note 3")).toHaveCount(0);
+  await expect(page.getByText("slug_3")).toHaveCount(0);
+  await expect(page.getByText("Note 3")).toHaveCount(0);
 
-  await screen.getByText("Some title 1").click();
-  await expect(screen.getByText("slug_3")).toHaveCount(1);
-  await expect(screen.getByText("Note 3")).toHaveCount(1);
-  await expect(
-    screen.getByRole("heading", { name: "Some heading" }),
-  ).toHaveCount(1);
+  await page.getByText("Some title 1").click();
+  await expect(page.getByText("slug_3")).toHaveCount(1);
+  await expect(page.getByText("Note 3")).toHaveCount(1);
+  await expect(page.getByRole("heading", { name: "Some heading" })).toHaveCount(
+    1,
+  );
 
-  await screen.getByTitle("Close").click();
+  await page.getByTitle("Close").click();
 
-  await expect(screen.getByText("slug_3")).toHaveCount(0);
-  await expect(screen.getByText("Note 3")).not.toHaveCount(0);
+  await expect(page.getByText("slug_3")).toHaveCount(0);
+  await expect(page.getByText("Note 3")).not.toHaveCount(0);
 });
