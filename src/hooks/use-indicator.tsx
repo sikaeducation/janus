@@ -1,22 +1,13 @@
 import { countBy, flow, isEmpty, values } from "lodash/fp";
 import { useContext } from "react";
-import {
-  IndicatorSubmissionAccepted,
-  IndicatorSubmissionPending,
-  IndicatorSubmissionRejected,
-  IndicatorViewClear,
-  IndicatorViewConfident,
-  IndicatorViewUnclear,
-  IndicatorQuestion,
-  IndicatorDeferred,
-} from "@sikaeducation/ui";
+import { Icon, Question } from "@sikaeducation/ui";
 import { performanceContext } from "../contexts/performance";
 
 const getViewIndicator = (performance: postedViewPerformance) => {
   const indicators = {
-    1: <IndicatorViewUnclear />,
-    2: <IndicatorViewClear />,
-    3: <IndicatorViewConfident />,
+    1: <Icon type="unclear" />,
+    2: <Icon type="clear" />,
+    3: <Icon type="confident" />,
   };
   const { confidenceLevel } = performance.payload;
   return indicators[confidenceLevel];
@@ -26,10 +17,10 @@ const getSubmissionIndicator = (
   performance: evaluatedSubmissionPerformance,
 ) => {
   const indicators = {
-    rejected: <IndicatorSubmissionRejected />,
-    pending: <IndicatorSubmissionPending />,
-    accepted: <IndicatorSubmissionAccepted />,
-    deferred: <IndicatorDeferred />,
+    rejected: <Icon type="rejected" />,
+    pending: <Icon type="pending" />,
+    accepted: <Icon type="accepted" />,
+    deferred: <Icon type="deferred" />,
   } as const;
 
   const status =
@@ -39,10 +30,10 @@ const getSubmissionIndicator = (
 
 const getQuestionIndicator = (performance: evaluatedQuestionPerformance) => {
   const indicators = {
-    rejected: <IndicatorSubmissionRejected />,
-    pending: <IndicatorSubmissionPending />,
-    accepted: <IndicatorSubmissionAccepted />,
-    deferred: <IndicatorDeferred />,
+    rejected: <Icon type="rejected" />,
+    pending: <Icon type="pending" />,
+    accepted: <Icon type="accepted" />,
+    deferred: <Icon type="deferred" />,
   } as const;
 
   const status = performance?.evaluation?.status || "pending";
@@ -62,13 +53,7 @@ const getQuestionIndicators = (
     ),
   ])(performances);
 
-  return (
-    <IndicatorQuestion
-      pending={pending}
-      rejected={rejected}
-      accepted={accepted}
-    />
-  );
+  return <Question pending={pending} rejected={rejected} accepted={accepted} />;
 };
 
 export default function useIndicator() {
