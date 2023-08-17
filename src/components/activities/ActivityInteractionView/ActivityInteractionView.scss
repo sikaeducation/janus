@@ -23,7 +23,7 @@
       border: none;
       &.active[data-confidence-level="1"] {
         background-color: $colors-failure-9;
-        color: $colors-$failure-1;
+        color: $colors-failure-1;
       }
       &.active[data-confidence-level="2"] {
         background-color: $colors-grey-8;

@@ -5,7 +5,7 @@ USER root
 
 COPY . .
 
-RUN npm install
+RUN npm ci
 
 # Dev
 FROM base AS dev
@@ -27,12 +27,5 @@ COPY --from=production /app/storybook-static ./storybook-static
 
 USER root
 RUN npx playwright install --with-deps
-RUN npm install concurrently http-server wait-on
 
-ENTRYPOINT npm run test:unit \
-  && npx concurrently -k -s first -n "Storybook,Component Tests" -c "bgGray.white,auto" \
-    "npx http-server storybook-static --port 6006 --silent" \
-    "npx wait-on tcp:6006 && npm run test:components" \
-  && npx concurrently -k -s first -n "App,Feature Tests" -c "bgGray.white,auto" \
-    "npx http-server build --port 3000 --silent" \
-    "npx wait-on tcp:3000 && npm run test:features"
+ENTRYPOINT ["npm", "run", "test:ci"]
