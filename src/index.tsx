@@ -7,7 +7,7 @@ import ScrollToTop from "./utilities/scroll-to-top";
 import App from "./App";
 import store from "./store";
 import reportWebVitals from "./reportWebVitals";
-import "@sikaeducation/ui/styles.scss";
+import "@sikaeducation/ui/styles.css";
 import "@sikaeducation/ui/reset";
 
 if (process.env.NODE_ENV !== "production") {
