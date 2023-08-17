@@ -1,3 +1,1 @@
-import InboxResponses from "./InboxResponses";
-
-export default InboxResponses;
+export { default } from "./InboxResponses";

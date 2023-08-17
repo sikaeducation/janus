@@ -1,3 +1,1 @@
-import AppFooter from "./AppFooter";
-
-export default AppFooter;
+export { default } from "./AppFooter";

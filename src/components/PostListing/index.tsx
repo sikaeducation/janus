@@ -1,3 +1,1 @@
-import PostListing from "./PostListing";
-
-export default PostListing;
+export { default } from "./PostListing";

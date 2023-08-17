@@ -1,3 +1,1 @@
-import PreviousSubmissionFeedback from "./PreviousSubmissionFeedback";
-
-export default PreviousSubmissionFeedback;
+export { default } from "./PreviousSubmissionFeedback";

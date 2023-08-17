@@ -1,3 +1,1 @@
-import ActivityInteraction from "./ActivityInteraction";
-
-export default ActivityInteraction;
+export { default } from "./ActivityInteraction";

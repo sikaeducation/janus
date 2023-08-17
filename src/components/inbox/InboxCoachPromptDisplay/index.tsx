@@ -1,3 +1,1 @@
-import InboxCoachPromptDisplay from "./InboxCoachPromptDisplay";
-
-export default InboxCoachPromptDisplay;
+export { default } from "./InboxCoachPromptDisplay";

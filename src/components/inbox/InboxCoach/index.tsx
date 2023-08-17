@@ -1,3 +1,1 @@
-import InboxCoach from "./InboxCoach";
-
-export default InboxCoach;
+export { default } from "./InboxCoach";

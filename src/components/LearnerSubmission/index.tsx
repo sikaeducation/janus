@@ -1,3 +1,1 @@
-import LearnerSubmission from "./LearnerSubmission";
-
-export default LearnerSubmission;
+export { default } from "./LearnerSubmission";

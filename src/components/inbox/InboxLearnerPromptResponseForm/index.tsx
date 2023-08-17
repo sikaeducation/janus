@@ -1,3 +1,1 @@
-import InboxLearnerPromptResponseForm from "./InboxLearnerPromptResponseForm";
-
-export default InboxLearnerPromptResponseForm;
+export { default } from "./InboxLearnerPromptResponseForm";

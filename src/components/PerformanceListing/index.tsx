@@ -1,3 +1,1 @@
-import PerformanceListing from "./PerformanceListing";
-
-export default PerformanceListing;
+export { default } from "./PerformanceListing";

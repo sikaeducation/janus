@@ -1,3 +1,1 @@
-import PreviousQuestionFeedback from "./PreviousQuestionFeedback";
-
-export default PreviousQuestionFeedback;
+export { default } from "./PreviousQuestionFeedback";

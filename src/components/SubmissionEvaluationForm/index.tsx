@@ -1,3 +1,1 @@
-import SubmissionEvaluationForm from "./SubmissionEvaluationForm";
-
-export default SubmissionEvaluationForm;
+export { default } from "./SubmissionEvaluationForm";

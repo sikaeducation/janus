@@ -1,3 +1,1 @@
-import LearnerSubmissionEvaluable from "./LearnerSubmissionEvaluable";
-
-export default LearnerSubmissionEvaluable;
+export { default } from "./LearnerSubmissionEvaluable";

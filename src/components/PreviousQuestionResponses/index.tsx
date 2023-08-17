@@ -1,3 +1,1 @@
-import PreviousQuestionResponses from "./PreviousQuestionResponses";
-
-export default PreviousQuestionResponses;
+export { default } from "./PreviousQuestionResponses";

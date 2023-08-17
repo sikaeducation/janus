@@ -1,3 +1,1 @@
-import QuestionEvaluationForm from "./QuestionEvaluationForm";
-
-export default QuestionEvaluationForm;
+export { default } from "./QuestionEvaluationForm";
