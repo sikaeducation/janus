@@ -5,7 +5,7 @@
   background-color: $colors-primary-10;
   padding: $sizes-s2;
   border-radius: $borders-radius;
-  @include large;
+  @include shadows-large;
   max-width: $sizes-s11;
   text-align: center;
   > p {
