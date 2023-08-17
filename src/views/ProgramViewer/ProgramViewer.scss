@@ -1,9 +1,7 @@
-@use "../../styles/sizes";
-@use "../../styles/typography";
-@use "../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ProgramViewer {
-  padding: sizes.$s4 0;
+  padding: $sizes-s4 0;
   display: flex;
   justify-content: center;
   .ProgramViewer-wrapper {
@@ -15,12 +13,12 @@
       overflow-y: auto;
       grid-column: 1 / span 1;
       & ul {
-        margin-left: sizes.$s6;
+        margin-left: $sizes-s6;
       }
     }
     .post-content {
       grid-column: 2 / span 1;
-      margin-left: sizes.$s6;
+      margin-left: $sizes-s6;
     }
   }
   ul {

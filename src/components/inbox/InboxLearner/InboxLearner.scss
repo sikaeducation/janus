@@ -1,12 +1,11 @@
-@use "../../../styles/sizes";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .InboxLearner {
   .prompt {
     box-sizing: content-box;
-    background-color: colors.$grey-10;
-    padding: sizes.$s4;
+    background-color: $colors-grey-10;
+    padding: $sizes-s4;
     padding-bottom: 0;
-    margin-bottom: sizes.$s4;
+    margin-bottom: $sizes-s4;
   }
 }

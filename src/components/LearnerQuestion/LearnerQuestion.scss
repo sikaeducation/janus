@@ -1,7 +1,4 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
-@use "../../styles/buttons";
-@use "../../styles/typography";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .LearnerQuestion {
   display: grid;
@@ -12,13 +9,13 @@
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
     margin-bottom: 0;
-    color: colors.$grey-4;
+    color: $colors-grey-4;
   }
   .meta {
     grid-row: 2 / span 1;
     grid-column: 2 / span 2;
-    @include typography.breadcrumb-font;
-    color: colors.$grey-6;
+    @include typography-breadcrumb-font;
+    color: $colors-grey-6;
     li {
       display: inline-block;
     }
@@ -29,13 +26,13 @@
     text-align: right;
     button {
       display: inline-block;
-      background-color: colors.$grey-9;
-      color: colors.$grey-3;
+      background-color: $colors-grey-9;
+      color: $colors-grey-3;
       border: none;
-      padding: sizes.$s1 sizes.$s4;
-      border-radius: sizes.$border-radius;
-      @include buttons.button-shadow-small;
-      font-size: sizes.$f3;
+      padding: $sizes-s1 $sizes-s4;
+      border-radius: $sizes-border-radius;
+      @include shadows-small;
+      font-size: $sizes-f3;
       cursor: pointer;
     }
   }
@@ -47,20 +44,20 @@
     grid-row: 3 / span 1;
     grid-column: 2 / span 2;
     .prompt {
-      background-color: colors.$grey-10;
+      background-color: $colors-grey-10;
     }
     .prompt, .response {
-      margin-top: sizes.$s4;
-      margin-bottom: sizes.$s4;
-      padding: sizes.$s2;
+      margin-top: $sizes-s4;
+      margin-bottom: $sizes-s4;
+      padding: $sizes-s2;
     }
   }
   .evaluation-feedback {
     grid-row: 5 / span 1;
     grid-column: 2 / span 2;
-    background-color: colors.$grey-10;
-    border-radius: sizes.$border-radius;
-    padding: sizes.$s2;
+    background-color: $colors-grey-10;
+    border-radius: $sizes-border-radius;
+    padding: $sizes-s2;
     padding-bottom: 0;
   }
   .evaluator-avatar {
@@ -68,14 +65,14 @@
     grid-column: 1 / span 1;
     align-self: flex-start;
     justify-self: flex-end;
-    margin-top: sizes.$s2;
-    margin-right: sizes.$s2;
+    margin-top: $sizes-s2;
+    margin-right: $sizes-s2;
   }
   .evaluation-status {
     grid-row: 1 / span 2;
     grid-column: 3 / span 1;
-    margin-right: sizes.$s6;
-    margin-left: sizes.$s2;
-    margin-bottom: sizes.$s4;
+    margin-right: $sizes-s6;
+    margin-left: $sizes-s2;
+    margin-bottom: $sizes-s4;
   }
 }

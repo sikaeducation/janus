@@ -1,41 +1,39 @@
-@use "../../styles/sizes";
-@use "../../styles/borders";
-@use "../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .QuestionForm {
-  margin-bottom: sizes.$s6;
+  margin-bottom: $sizes-s6;
   .toggle-response-submission-form {
     display: inline-block;
-    background-color: colors.$grey-9;
-    color: colors.$grey-3;
+    background-color: $colors-grey-9;
+    color: $colors-grey-3;
     border: none;
-    padding: sizes.$s1 sizes.$s4;
-    border-radius: borders.$radius;
-    font-size: sizes.$f3;
+    padding: $sizes-s1 $sizes-s4;
+    border-radius: $borders-radius;
+    font-size: $sizes-f3;
     cursor: pointer;
 }
   .prompt-container {
     display: flex;
     flex-flow: row nowrap;
     > svg {
-      margin-top: sizes.$s2;
-      margin-right: sizes.$s4;
+      margin-top: $sizes-s2;
+      margin-right: $sizes-s4;
     }
     .accepted {
-      color: colors.$success-5;
+      color: $colors-success-5;
     }
     .rejected {
-      color: colors.$failure-5;
+      color: $colors-failure-5;
     }
     .pending {
-      color: colors.$grey-5;
+      color: $colors-grey-5;
     }
   }
   .actions {
     display: flex;
     justify-content: flex-end;
     .ButtonFormSubmission {
-      margin-left: sizes.$s4;
+      margin-left: $sizes-s4;
     }
     .cancel {
       border: none;

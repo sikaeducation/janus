@@ -1,16 +1,13 @@
-@use "../../styles/typography";
-@use "../../styles/colors";
-@use "../../styles/sizes";
-@use "../../styles/borders";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ActivityManagerView {
-  width: sizes.$s17;
+  width: $sizes-s17;
   header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: sizes.$s4;
+    margin-bottom: $sizes-s4;
   }
   .DataTable {
     .table-row {
@@ -27,11 +24,11 @@
       }
       &.active {
         .field:nth-child(3), .field:nth-child(4) {
-          background-color: colors.$primary-9;
-          width: calc(100% + (sizes.$s2 * 2));
-          margin-left: calc(sizes.$s2 * -1);
-          padding-left: sizes.$s2;
-          border-radius: borders.$radius;
+          background-color: $colors-primary-9;
+          width: calc(100% + ($sizes-s2 * 2));
+          margin-left: calc($sizes-s2 * -1);
+          padding-left: $sizes-s2;
+          border-radius: $borders-radius;
         }
       }
     }

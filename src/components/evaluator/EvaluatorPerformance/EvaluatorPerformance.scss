@@ -1,9 +1,9 @@
-@use "../../../styles/sizes";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .EvaluatorPerformance {
   text-align: center;
   td {
-    padding: sizes.$s4;
+    padding: $sizes-s4;
     vertical-align: middle;
   }
   .avatar {
@@ -11,7 +11,7 @@
   }
   .submission-time {
     width: 75px;
-    font-size: sizes.$f4;
+    font-size: $sizes-f4;
   }
   .evaluation-accept, .evaluation-reject {
     width: 75px;

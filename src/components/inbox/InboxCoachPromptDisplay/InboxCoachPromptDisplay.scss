@@ -1,21 +1,19 @@
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .InboxCoachPromptDisplay {
   .slug {
-    color: colors.$grey-4;
-    margin-bottom: sizes.$s4;
+    color: $colors-grey-4;
+    margin-bottom: $sizes-s4;
   }
   .existing-prompt {
-    background-color: colors.$grey-10;
-    margin-bottom: sizes.$s4;
-    padding: sizes.$s4;
+    background-color: $colors-grey-10;
+    margin-bottom: $sizes-s4;
+    padding: $sizes-s4;
   }
   .tags > li {
     display: inline-block;
     &+li {
-      margin-left: sizes.$s1;
+      margin-left: $sizes-s1;
     }
   }
   .submission-section {

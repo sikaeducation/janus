@@ -1,14 +1,13 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .PreviousSubmissionFeedback {
   grid-row: 3 / span 1;
   grid-column: 1 / span 2;
-  background-color: colors.$grey-10;
-  border-radius: sizes.$border-radius;
-  padding: sizes.$s4; 
+  background-color: $colors-grey-10;
+  border-radius: $sizes-border-radius;
+  padding: $sizes-s4; 
   > li > div > .feedback {
-    padding: sizes.$s2;
+    padding: $sizes-s2;
     padding-bottom: 0;
   }
   .meta {
@@ -17,7 +16,7 @@
     time {
       display: inline-block;
       font-weight: 700;
-      margin-bottom: sizes.$s2;
+      margin-bottom: $sizes-s2;
     }
   }
 }

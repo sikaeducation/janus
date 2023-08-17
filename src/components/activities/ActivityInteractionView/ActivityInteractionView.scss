@@ -1,6 +1,4 @@
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ActivityInteractionView {
     display: flex;
@@ -8,32 +6,32 @@
     justify-content: flex-end;
   > p {
     text-align: right;
-    margin-bottom: sizes.$s2;
+    margin-bottom: $sizes-s2;
   }
   > ul {
     display: flex;
     flex-flow: row wrap;
-    margin-bottom: sizes.$s6;
+    margin-bottom: $sizes-s6;
     button {
-      margin-left: sizes.$s4;
-      border-radius: borders.$radius;
-      font-size: sizes.$f3;
-      background-color: colors.$grey-9;
-      color: colors.$grey-6;
-      padding: sizes.$s1 sizes.$s3;
+      margin-left: $sizes-s4;
+      border-radius: $borders-radius;
+      font-size: $sizes-f3;
+      background-color: $colors-grey-9;
+      color: $colors-grey-6;
+      padding: $sizes-s1 $sizes-s3;
       cursor: pointer;
       border: none;
       &.active[data-confidence-level="1"] {
-        background-color: colors.$failure-9;
-        color: colors.$failure-1;
+        background-color: $colors-failure-9;
+        color: $colors-$failure-1;
       }
       &.active[data-confidence-level="2"] {
-        background-color: colors.$grey-8;
-        color: colors.$grey-1;
+        background-color: $colors-grey-8;
+        color: $colors-grey-1;
       }
       &.active[data-confidence-level="3"] {
-        background-color: colors.$success-9;
-        color: colors.$success-1;
+        background-color: $colors-success-9;
+        color: $colors-success-1;
       }
     }
   }

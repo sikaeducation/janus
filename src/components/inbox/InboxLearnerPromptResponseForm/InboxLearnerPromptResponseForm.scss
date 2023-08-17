@@ -1,6 +1,4 @@
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .InboxLearnerPromptResponseForm {
   .prompt {
@@ -8,31 +6,31 @@
   }
   form {
     .response {
-      border-radius: borders.$radius;
-      border-radius: borders.$radius;
-      border: 1px solid colors.$grey-6;
-      height: sizes.$s11;
-      margin-bottom: sizes.$s4;
-      padding: sizes.$s4;
+      border-radius: $borders-radius;
+      border-radius: $borders-radius;
+      border: 1px solid $colors-grey-6;
+      height: $sizes-s11;
+      margin-bottom: $sizes-s4;
+      padding: $sizes-s4;
       resize: vertical;
       width: 100%;
       overflow-y: auto;
     }
     input {
-      padding: sizes.$s2 sizes.$s4;
-      border-radius: borders.$radius;
-      border: 1px solid colors.$grey-6;
-      margin-bottom: sizes.$s4;
+      padding: $sizes-s2 $sizes-s4;
+      border-radius: $borders-radius;
+      border: 1px solid $colors-grey-6;
+      margin-bottom: $sizes-s4;
     }
     .submission-section {
       text-align: right;
-      margin-bottom: sizes.$s6;
+      margin-bottom: $sizes-s6;
       [type=submit]{
         display: inline-block;
         cursor: pointer;
         border: none;
-        border-radius: borders.$radius;
-        background-color: colors.$grey-9;
+        border-radius: $borders-radius;
+        background-color: $colors-grey-9;
       }
     }
   }

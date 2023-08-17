@@ -1,9 +1,8 @@
-@use "../../../styles/sizes";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .InboxResponses {
   h2 {
-    margin-bottom: sizes.$s5;
+    margin-bottom: $sizes-s5;
   }
   .response-count {
     font-style: italic;
@@ -11,15 +10,15 @@
   .learner-response {
     display: grid;
     grid-template-columns: 84px 1fr;
-    margin-bottom: sizes.$s4;
+    margin-bottom: $sizes-s4;
     > img {
-      margin-top: sizes.$s3;
+      margin-top: $sizes-s3;
     }
     .username {
       font-weight: 700;
-      padding: sizes.$s1 sizes.$s2;
+      padding: $sizes-s1 $sizes-s2;
       margin-left: -8px; // Visual offset
-      margin-bottom: sizes.$s2;
+      margin-bottom: $sizes-s2;
     }
     .response-content {
       padding: 0;

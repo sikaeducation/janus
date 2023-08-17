@@ -1,53 +1,51 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
-@use "../../styles/typography";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ProgressViewer {
   width: 100%;
   h1 {
-    @include typography.heading-font-1;
+    @include typography-heading-font-1;
   }
   table {
     position: relative;
     .topic {
-      background-color: colors.$grey-10;
+      background-color: $colors-grey-10;
       th, td {
-        font-size: sizes.$f1;
-        color: colors.$grey-3;
+        font-size: $sizes-f1;
+        color: $colors-grey-3;
       }
     }
     .required {
-      border: 2px solid colors.$success-8;
+      border: 2px solid $colors-success-8;
     }
     th {
       font-weight: 700;
       position: sticky;
     }
     td {
-      color: colors.$grey-6;
+      color: $colors-grey-6;
     }
     th, td {
-      padding: sizes.$s1;
+      padding: $sizes-s1;
     }
     th {
       text-align: left;
     }
     td {
       text-align: center;
-      border: 1px solid colors.$grey-10;
+      border: 1px solid $colors-grey-10;
     }
     tbody {
       th {
         left: 0;
-        @include typography.body-font;
+        @include typography-body-font;
         text-align: right;
-        color: colors.$grey-3;
+        color: $colors-grey-3;
       }
     }
     thead {
       th {
         top: 0;
-        background-color: colors.$white;
+        background-color: $colors-white;
       }
     }
   }

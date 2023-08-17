@@ -1,6 +1,4 @@
-@use "../../styles/colors";
-@use "../../styles/sizes";
-@use "../../styles/borders";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 #modal-wrapper {
   position: absolute;
@@ -24,8 +22,8 @@
 
 #modal-content {
   z-index: 20;
-  width: sizes.$s15;
-  border-radius: borders.$radius;
+  width: $sizes-s15;
+  border-radius: $borders-radius;
 }
 
 #modal-shadow {
@@ -34,6 +32,6 @@
   bottom: 0;
   right: 0;
   left: 0;
-  background-color: transparentize(colors.$black, 0.1);
+  background-color: transparentize($colors-black, 0.1);
   z-index: 10;
 }

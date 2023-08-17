@@ -1,16 +1,14 @@
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .EvaluatorQuestionSelector {
   label {
-    color: colors.$grey-4;
-    margin-bottom: sizes.$s2;
+    color: $colors-grey-4;
+    margin-bottom: $sizes-s2;
   }
   select {
-    padding: sizes.$s2;
-    border-radius: borders.$radius;
-    border: 1px solid colors.$grey-5;
+    padding: $sizes-s2;
+    border-radius: $borders-radius;
+    border: 1px solid $colors-grey-5;
     width: 400px;
   }
 }

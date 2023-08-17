@@ -1,23 +1,21 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
-@use "../../styles/buttons";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .PostListing {
-  padding: sizes.$s1 sizes.$s3;
-  background-color: colors.$grey-10;
-  margin-bottom: sizes.$s1;
+  padding: $sizes-s1 $sizes-s3;
+  background-color: $colors-grey-10;
+  margin-bottom: $sizes-s1;
   width: 300px;
-  font-size: sizes.$f3;
+  font-size: $sizes-f3;
   text-overflow: ellipsis;
   cursor: pointer;
-  transition: background-color sizes.$transition;
+  transition: background-color $sizes-transition;
   &:hover, &.active {
-    background-color: darken(colors.$grey-10, 5%);
+    background-color: darken($colors-grey-10, 5%);
   }
   .post-details {
     height: 0;
     overflow: hidden;
-    color: colors.$grey-5;
+    color: $colors-grey-5;
     &.active {
       height: auto;
     }
@@ -25,18 +23,18 @@
       display: block;
       padding: 8px 0;
       font-weight: 700;
-      color: colors.$grey-3;
+      color: $colors-grey-3;
     }
     td {
-      padding-left: sizes.$s3;
+      padding-left: $sizes-s3;
     }
     .copy-links {
-      padding: sizes.$s1;
+      padding: $sizes-s1;
       border: none;
-      border-radius: sizes.$border-radius;
-      font-size: sizes.$f2;
-      margin-top: sizes.$s1;
-      @include buttons.button-shadow-small;
+      border-radius: $borders-radius;
+      font-size: $sizes-f2;
+      margin-top: $sizes-s1;
+      @include shadows-small;
     }
   }
 }

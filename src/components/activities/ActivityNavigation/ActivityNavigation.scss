@@ -1,13 +1,11 @@
-@use "../../../styles/borders";
-@use "../../../styles/colors";
-@use "../../../styles/sizes";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ActivityNavigation {
   display: flex;
   justify-content: flex-end;
   a {
     appearance: button;
-    padding: sizes.$s2 sizes.$s4;
-    border-radius: borders.$radius;
+    padding: $sizes-s2 $sizes-s4;
+    border-radius: $borders-radius;
   }
 }

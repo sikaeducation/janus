@@ -1,21 +1,19 @@
-@use "../../../styles/sizes";
-@use "../../../styles/borders";
-@use "../../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .EvaluatorPerformanceHeader {
   th {
     font-weight: 700;
     text-align: left;
-    padding: sizes.$s4;
+    padding: $sizes-s4;
   }
   .evaluate-all {
     button {
-      border-radius: borders.$radius;
+      border-radius: $borders-radius;
       border: none;
       cursor: pointer;
-      background-color: colors.$grey-10;
-      color: colors.$grey-1;
-      padding: sizes.$s1;
+      background-color: $colors-grey-10;
+      color: $colors-grey-1;
+      padding: $sizes-s1;
     }
   }
 }

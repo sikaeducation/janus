@@ -1,11 +1,10 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .AppFooter {
   display: flex;
   justify-content: flex-end;
   font-family: "Gill Sans", sans-serif;
-  color: colors.$grey-4;
-  font-size: sizes.$f2;
+  color: $colors-grey-4;
+  font-size: $sizes-f2;
   font-weight: 400;
 }

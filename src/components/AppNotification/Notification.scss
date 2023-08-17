@@ -1,12 +1,12 @@
-@import "../../ui";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .Notification {
-  color: $primary-1;
-  background-color: $primary-10;
-  padding: $s2;
-  border-radius: $radius;
+  color: $colors-primary-1;
+  background-color: $colors-primary-10;
+  padding: $sizes-s2;
+  border-radius: $borders-radius;
   @include large;
-  max-width: $s11;
+  max-width: $sizes-s11;
   text-align: center;
   > p {
     margin: 0;

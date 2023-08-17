@@ -1,26 +1,25 @@
-@use "../../styles/sizes";
-@use "../../styles/colors";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .PreviousQuestionFeedback {
-  border-radius: sizes.$border-radius;
-  padding: sizes.$s4; 
+  border-radius: $borders-radius;
+  padding: $sizes-s4; 
   .meta {
     display: flex;
     justify-content: space-between;
     time {
       display: inline-block;
       font-weight: 700;
-      margin-bottom: sizes.$s2;
+      margin-bottom: $sizes-s2;
     }
   }
   > li > div {
     > .response {
-      padding: sizes.$s2;
+      padding: $sizes-s2;
       padding-bottom: 0;
     }
     > .feedback {
-      background-color: colors.$grey-10;
-      padding: sizes.$s2;
+      background-color: $colors-grey-10;
+      padding: $sizes-s2;
       padding-bottom: 0;
     }
   }

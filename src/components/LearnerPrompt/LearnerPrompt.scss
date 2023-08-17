@@ -1,7 +1,4 @@
-@use "../../styles/sizes";
-@use "../../styles/borders";
-@use "../../styles/colors";
-@use "../../styles/typography";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .LearnerPrompt {
   display: grid;
@@ -12,19 +9,19 @@
     grid-row: 1 / span 1;
     grid-column: 2 / span 1;
     margin-bottom: 0;
-    color: colors.$grey-4;
+    color: $colors-grey-4;
   }
   .meta {
     grid-row: 2 / span 1;
     grid-column: 2 / span 2;
-    color: colors.$grey-4;
+    color: $colors-grey-4;
     li {
       display: inline-block;
       & + li {
-        margin-left: sizes.$s2;
+        margin-left: $sizes-s2;
         &::before {
           content: "·";
-          margin-right: sizes.$s2;
+          margin-right: $sizes-s2;
         }
       }
     }
@@ -33,17 +30,17 @@
     grid-row: 3 / span 1;
     grid-column: 2 / span 2;
     .prompt, .response {
-      padding-top: sizes.$s1; 
-      padding-bottom: sizes.$s1; 
-      border-radius: borders.$radius;
+      padding-top: $sizes-s1; 
+      padding-bottom: $sizes-s1; 
+      border-radius: $borders-radius;
     }
     .prompt {
-      background-color: colors.$grey-10;
-      margin-bottom: sizes.$s4;
-      padding: sizes.$s4;
+      background-color: $colors-grey-10;
+      margin-bottom: $sizes-s4;
+      padding: $sizes-s4;
     }
     .response {
-      padding: sizes.$s4;
+      padding: $sizes-s4;
     }
   }
 }

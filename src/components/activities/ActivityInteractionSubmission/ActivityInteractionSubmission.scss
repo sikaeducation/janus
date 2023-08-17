@@ -1,16 +1,14 @@
-@use "../../../styles/sizes";
-@use "../../../styles/colors";
-@use "../../../styles/borders";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .ActivityInteractionSubmission {
   display: flex;
   flex-flow: column nowrap;
   align-items: flex-end;
-  margin-bottom: sizes.$s6;
+  margin-bottom: $sizes-s6;
   input, button {
     display: inline-block;
-    border: 1px solid colors.$grey-8;
-    padding: sizes.$s2 sizes.$s4;
+    border: 1px solid $colors-grey-8;
+    padding: $sizes-s2 $sizes-s4;
   }
   .ButtonFormSubmission {
     border-top-left-radius: 0;
@@ -18,7 +16,7 @@
     box-shadow: none;
   }
   input {
-    border-radius: borders.$radius 0 0 borders.$radius;
+    border-radius: $borders-radius 0 0 $borders-radius;
     border-right: none;
   }
   h2 {
@@ -27,26 +25,26 @@
   .submissions {
     width: 100%;
     .previous-submission {
-      margin-bottom: sizes.$s5;
-      padding: sizes.$s7;
+      margin-bottom: $sizes-s5;
+      padding: $sizes-s7;
       width: 100%;
-      border-radius: borders.$radius;
+      border-radius: $borders-radius;
       &.pending {
-        border: 4px solid colors.$grey-8;
+        border: 4px solid $colors-grey-8;
         svg {
-          color: colors.$grey-6;
+          color: $colors-grey-6;
         }
       }
       &.accepted {
-        border: 4px solid colors.$success-8;
+        border: 4px solid $colors-success-8;
         svg {
-          color: colors.$success-5;
+          color: $colors-success-5;
         }
       }
       &.rejected {
-        border: 4px solid colors.$failure-9;
+        border: 4px solid $colors-failure-9;
         svg {
-          color: colors.$failure-5;
+          color: $colors-failure-5;
         }
       }
     }

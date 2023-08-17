@@ -1,25 +1,25 @@
-@import "./ui";
+@use "~@sikaeducation/ui/styles.scss" as *;
 
 .App {
   min-height: 100vh;
   display: grid;
   grid-template-rows: auto 1fr auto;
   font-family: "Gill Sans", sans-serif;
-  padding-top: $s5;
-  padding-bottom: $s5;
-  @media (max-width: $small-breakpoint){
-    padding-top: $s2;
-    padding-bottom: $s2;
+  padding-top: $sizes-s5;
+  padding-bottom: $sizes-s5;
+  @media (max-width: $sizes-small-breakpoint){
+    padding-top: $sizes-s2;
+    padding-bottom: $sizes-s2;
   }
 
   > header, > main, > footer {
-    padding: 0 $s5;
-    @media (max-width: $small-breakpoint){
-      padding: 0 $s3;
+    padding: 0 $sizes-s5;
+    @media (max-width: $sizes-small-breakpoint){
+      padding: 0 $sizes-s3;
     }
   }
   > header {
-    margin-bottom: $s5;
+    margin-bottom: $sizes-s5;
   }
   > main {
     display: flex;
@@ -27,11 +27,11 @@
     align-items: center;
     justify-content: flex-start;
     position: relative;
-    @media (max-width: $small-breakpoint){
+    @media (max-width: $sizes-small-breakpoint){
       display: block;
     }
   }
   > footer {
-    margin-top: $s5;
+    margin-top: $sizes-s5;
   }
 }
