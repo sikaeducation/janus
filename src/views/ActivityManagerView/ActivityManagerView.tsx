@@ -37,7 +37,7 @@ export default function ActivityManagerView() {
     setNewActivityOpen(false);
   };
 
-  const fieldActions: Record<string, (id?: string) => void> = {
+  const fieldActions: Record<string, () => void> = {
     // eslint-disable-next-line no-console
     publishedIcon: () => console.log("toggle publishing"),
     title: (id?: string) =>

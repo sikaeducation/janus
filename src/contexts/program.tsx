@@ -1,5 +1,5 @@
 import { keyBy } from "lodash/fp";
-import { useState, createContext, useEffect } from "react";
+import { useState, createContext, useEffect, useMemo } from "react";
 
 export const programContext = createContext(
   {} as unknown as {
@@ -45,7 +45,7 @@ export function ProgramProvider({ children }: props) {
       .catch((error) => {
         setIsError(true);
         // eslint-disable-next-line
-        console.error(error.message);
+				console.error(error.message);
       })
       .finally(() => {
         setIsLoading(false);
@@ -57,16 +57,19 @@ export function ProgramProvider({ children }: props) {
     };
   }, [id]);
 
+  const providerValue = useMemo(
+    () => ({
+      program,
+      setProgram,
+      postsBySlug,
+      isError,
+      isLoading,
+    }),
+    [isError, isLoading, program, postsBySlug],
+  );
+
   return (
-    <programContext.Provider
-      value={{
-        program,
-        setProgram,
-        postsBySlug,
-        isError,
-        isLoading,
-      }}
-    >
+    <programContext.Provider value={providerValue}>
       {children}
     </programContext.Provider>
   );

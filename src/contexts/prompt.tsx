@@ -1,4 +1,4 @@
-import { useState, createContext, useContext } from "react";
+import { useState, createContext, useContext, useMemo } from "react";
 import useSocketHandlers from "../hooks/use-socket-handlers";
 import { SocketContext } from "./socket";
 
@@ -26,25 +26,27 @@ export function PromptProvider({ children }: props) {
     "end-inbox-prompt": () => setCurrentBroadcast(null),
   });
 
-  const startInboxPrompt = (broadcast: rawBroadcast) => {
-    socket.emit("start-inbox-prompt", broadcast);
-  };
-  const endInboxPrompt = () => {
-    socket.emit("end-inbox-prompt");
-  };
-  const getCurrentPrompt = () => {
-    socket.emit("get-inbox-prompt");
-  };
+  const providerValue = useMemo(() => {
+    const startInboxPrompt = (broadcast: rawBroadcast) => {
+      socket.emit("start-inbox-prompt", broadcast);
+    };
+    const endInboxPrompt = () => {
+      socket.emit("end-inbox-prompt");
+    };
+    const getCurrentPrompt = () => {
+      socket.emit("get-inbox-prompt");
+    };
+
+    return {
+      startInboxPrompt,
+      endInboxPrompt,
+      currentBroadcast,
+      getCurrentPrompt,
+    };
+  }, [currentBroadcast, socket]);
 
   return (
-    <promptContext.Provider
-      value={{
-        startInboxPrompt,
-        endInboxPrompt,
-        currentBroadcast,
-        getCurrentPrompt,
-      }}
-    >
+    <promptContext.Provider value={providerValue}>
       {children}
     </promptContext.Provider>
   );

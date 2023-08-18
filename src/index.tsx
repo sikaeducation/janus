@@ -7,7 +7,10 @@ import ScrollToTop from "./utilities/scroll-to-top";
 import App from "./App";
 import store from "./store";
 import reportWebVitals from "./reportWebVitals";
+// These are blocked waiting for eslint to support the `exports` key in package.json
+// eslint-disable-next-line
 import "@sikaeducation/ui/styles.css";
+// eslint-disable-next-line
 import "@sikaeducation/ui/reset";
 
 if (process.env.NODE_ENV !== "production") {

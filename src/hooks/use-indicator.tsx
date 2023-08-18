@@ -41,7 +41,8 @@ const getQuestionIndicator = (performance: evaluatedQuestionPerformance) => {
 };
 
 const getQuestionIndicators = (
-  performance: postedPerformance,
+  // eslint-disable-next-line
+	performance: postedPerformance,
   performances: Record<string, postedQuestionPerformance>,
 ) => {
   if (!performances) return null;
@@ -85,7 +86,6 @@ export default function useIndicator() {
       );
     },
   } as const;
-
   return (performance: postedPerformance) => {
     const getIndicator = performanceTypes[performance.type];
     return getIndicator?.(performance) || null;

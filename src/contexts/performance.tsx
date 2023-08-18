@@ -1,4 +1,4 @@
-import { useState, createContext, useContext, useEffect } from "react";
+import { useState, createContext, useContext, useEffect, useMemo } from "react";
 import {
   countBy,
   filter,
@@ -108,10 +108,6 @@ export function PerformanceProvider({ children }: props) {
     // eslint-disable-next-line
 	}, []);
 
-  const postPerformance = (performance: rawPerformance) =>
-    socket.emit("post-performance", performance);
-  const postEvaluation = (evaluation: rawEvaluation) =>
-    socket.emit("post-evaluation", evaluation);
   const performancesWithEvaluations = performances.map((performance) => ({
     ...performance,
     ...{
@@ -124,15 +120,6 @@ export function PerformanceProvider({ children }: props) {
     (performance: evaluatedSubmissionPerformance) =>
       format(new Date(performance.createdAt), "yyyy/MM/dd"),
   )(performancesWithEvaluations);
-
-  function getPreviousEvaluations(performance: evaluatedPerformance) {
-    return performancesWithEvaluations.filter(
-      (evaluatedPerformance) =>
-        evaluatedPerformance.userId === performance.userId &&
-        evaluatedPerformance.postSlug === performance.postSlug &&
-        evaluatedPerformance.id !== performance.id,
-    );
-  }
 
   const learners = Array.from(
     new Set(performances.map((performance) => performance.userId)),
@@ -174,17 +161,6 @@ export function PerformanceProvider({ children }: props) {
       ),
     ])(questionPerformances);
 
-  const unevaluatedQuestionPerformancesBySlugByLearner = evaluations.length
-    ? flow([
-        onlyUnevaluated,
-        onlyQuestions,
-        sortByMostFrequent,
-        mapValues(sortBy("createdAt")),
-        mapValues(reverse),
-        mapValues(groupBy("userId")),
-      ])(performancesWithEvaluations)
-    : {};
-
   const performancesByQuestion = flow([
     onlyQuestions,
     addPostSlugToQuestionPayload,
@@ -211,24 +187,60 @@ export function PerformanceProvider({ children }: props) {
     ),
   ])(performancesByQuestion);
 
+  const providerValues = useMemo(() => {
+    const postPerformance = (performance: rawPerformance) =>
+      socket.emit("post-performance", performance);
+    const postEvaluation = (evaluation: rawEvaluation) =>
+      socket.emit("post-evaluation", evaluation);
+    function getPreviousEvaluations(performance: evaluatedPerformance) {
+      return performancesWithEvaluations.filter(
+        (evaluatedPerformance) =>
+          evaluatedPerformance.userId === performance.userId &&
+          evaluatedPerformance.postSlug === performance.postSlug &&
+          evaluatedPerformance.id !== performance.id,
+      );
+    }
+    const unevaluatedQuestionPerformancesBySlugByLearner = evaluations.length
+      ? flow([
+          onlyUnevaluated,
+          onlyQuestions,
+          sortByMostFrequent,
+          mapValues(sortBy("createdAt")),
+          mapValues(reverse),
+          mapValues(groupBy("userId")),
+        ])(performancesWithEvaluations)
+      : {};
+
+    return {
+      performances,
+      evaluations,
+      lastQuestionPerformancesBySlug,
+      lastQuestionPerformancesBySlugByLearnerByQuestion,
+      performancesBySlugByLearner,
+      performancesWithEvaluations,
+      unevaluatedQuestionPerformancesBySlugByLearner,
+      lastPerformanceBySlugByLearner,
+      performancesByDay,
+      learners,
+      postPerformance,
+      postEvaluation,
+      getPreviousEvaluations,
+    };
+  }, [
+    evaluations,
+    lastQuestionPerformancesBySlugByLearnerByQuestion,
+    lastPerformanceBySlugByLearner,
+    learners,
+    performances,
+    lastQuestionPerformancesBySlug,
+    performancesByDay,
+    performancesBySlugByLearner,
+    performancesWithEvaluations,
+    socket,
+  ]);
+
   return (
-    <performanceContext.Provider
-      value={{
-        performances,
-        evaluations,
-        lastQuestionPerformancesBySlug,
-        lastQuestionPerformancesBySlugByLearnerByQuestion,
-        performancesBySlugByLearner,
-        performancesWithEvaluations,
-        unevaluatedQuestionPerformancesBySlugByLearner,
-        lastPerformanceBySlugByLearner,
-        performancesByDay,
-        learners,
-        postPerformance,
-        postEvaluation,
-        getPreviousEvaluations,
-      }}
-    >
+    <performanceContext.Provider value={providerValues}>
       {children}
     </performanceContext.Provider>
   );

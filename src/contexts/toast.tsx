@@ -1,5 +1,4 @@
-/* eslint @typescript-eslint/no-explicit-any: "off" */
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 type toastContextType = {
   toasts: string[];
@@ -15,6 +14,7 @@ type props = {
 
 export default function ToastProvider({ children }: props) {
   const [toasts, setToasts] = useState<string[]>([]);
+  const state = useMemo(() => ({ toasts, setToasts }), [toasts]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,8 +26,6 @@ export default function ToastProvider({ children }: props) {
   }, [toasts]);
 
   return (
-    <toastContext.Provider value={{ toasts, setToasts }}>
-      {children}
-    </toastContext.Provider>
+    <toastContext.Provider value={state}>{children}</toastContext.Provider>
   );
 }

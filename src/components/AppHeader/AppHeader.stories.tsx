@@ -3,9 +3,21 @@ import { Provider } from "react-redux";
 import { ComponentStory, ComponentMeta } from "@storybook/react";
 import { withRouter } from "storybook-addon-react-router-v6";
 
+import { ReactNode } from "react";
 import AppHeader from ".";
 
-function Mockstore({ user, children }: any) {
+type MockStoreProps = {
+  user?: {
+    email: string;
+    name: string;
+    picture: string;
+    isAuthenticated: boolean;
+    isLoading: boolean;
+  };
+  children: ReactNode;
+};
+
+function Mockstore({ user, children }: MockStoreProps) {
   return (
     <Provider
       store={configureStore({

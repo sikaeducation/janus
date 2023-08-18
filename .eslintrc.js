@@ -19,16 +19,54 @@ module.exports = {
       typescript: {},
     },
   },
-  plugins: ["prettier", "react", "react-hooks", "jsx-a11y", "storybook"],
-  extends: [
-    "eslint:recommended",
-    "react-app",
-    "react-app/jest",
-    "plugin:storybook/recommended",
+  plugins: [
+    "react",
+    "jest-dom",
+    "@typescript-eslint",
+    "react-hooks",
     "prettier",
+    "jsx-a11y",
+  ],
+  extends: [
+    "airbnb",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:react/recommended",
+    "plugin:react-hooks/recommended",
+    "plugin:storybook/recommended",
+    "plugin:jsx-a11y/recommended",
+    "plugin:jest-dom/recommended",
     "plugin:prettier/recommended",
   ],
+  rules: {
+    quotes: ["error", "double"],
+    "no-shadow": "off",
+    "no-use-before-define": "off",
+    "no-underscore-dangle": "off",
+    "import/extensions": "off",
+    "no-restricted-exports": "off",
+  },
   overrides: [
+    {
+      files: [
+        "**/*.{test,spec}.{ts,tsx,js,jsx}",
+        "**/features/**/*.{ts,tsx}",
+        "**/setupTests.{js,ts}",
+        "**/reportWebVitals.{js,ts}",
+      ],
+      rules: {
+        "import/no-extraneous-dependencies": [
+          "error",
+          {
+            devDependencies: [
+              "**/*.{test,spec}.{ts,tsx,js,jsx}",
+              "**/features/**/*.{ts,tsx}",
+              "**/setupTests.{js,ts}",
+              "**/reportWebVitals.{js,ts}",
+            ],
+          },
+        ],
+      },
+    },
     {
       files: ["**/*.stories.*", "**/*.mdx"],
       rules: {
@@ -54,6 +92,25 @@ module.exports = {
       files: ["src/slices/*.ts"],
       rules: {
         "no-param-reassign": "off",
+      },
+    },
+    {
+      files: ["**/*.{tsx,jsx}"],
+      rules: {
+        "react/react-in-jsx-scope": "off",
+        "react/require-default-props": "off",
+        "react/jsx-filename-extension": [
+          "error",
+          {
+            extensions: [".tsx", ".jsx"],
+          },
+        ],
+        "jsx-a11y/label-has-associated-control": [
+          "error",
+          {
+            assert: "htmlFor",
+          },
+        ],
       },
     },
   ],

@@ -1,3 +1,5 @@
+import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
+
 declare global {
   namespace NodeJS {
     interface ProcessEnv {
@@ -5,7 +7,7 @@ declare global {
     }
   }
   interface Window {
-    store: any;
+    store: ToolkitStore;
     env?: "test";
   }
 }
