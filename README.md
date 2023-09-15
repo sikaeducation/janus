@@ -7,7 +7,7 @@ Sika's LMS
 ## Scripts
 
 * `scripts/build` - Rebuild Docker containers
-* `scripts/dev` - Runs a development environment (http://localhost:3000) and a Storybook server (http://localhost:6006)
+* `scripts/dev` - Runs a development environment (http://localhost:3000)
 * `scripts/test` - Run all tests
 
 ## Stack
@@ -20,5 +20,4 @@ Sika's LMS
 ## Tests
 
 * Feature testing: Cucumber & Playwright
-* Component testing: Storybook and Playwright
 * General TS testing: Jest
