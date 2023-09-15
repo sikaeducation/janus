@@ -15,19 +15,19 @@ type props = {
   performance: evaluatedQuestionPerformance;
 };
 
-export default function LearnerQuestion({ performance }: props) {
-  const { user } = useAuth0();
-  const getIndicator = useIndicator();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
+export default function LearnerQuestion({ performance }: props){
+	const { user } = useAuth0();
+	const getIndicator = useIndicator();
+	const role = (user && user["https://sikaeducation.com/role"]) || "";
 
-  const { postsBySlug } = useContext(programContext);
-  const post = postsBySlug[performance.payload?.originalPostSlug];
-  const title = post.label?.short || post.label?.full || "";
-  const { path } = post;
+	const { postsBySlug } = useContext(programContext);
+	const post = postsBySlug[performance.payload?.originalPostSlug];
+	const title = post.label?.short || post.label?.full || "";
+	const { path } = post;
 
-  const indicator = getIndicator(performance);
+	const indicator = getIndicator(performance);
 
-  return (
+	return (
     <div className="LearnerQuestion">
       <p className="description">
         {performance.userId} submitted a question response from{" "}
@@ -66,5 +66,5 @@ export default function LearnerQuestion({ performance }: props) {
         </>
       )}
     </div>
-  );
+	);
 }

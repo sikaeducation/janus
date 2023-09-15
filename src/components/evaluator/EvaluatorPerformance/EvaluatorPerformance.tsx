@@ -4,8 +4,7 @@ import { format } from "date-fns";
 import Gravatar from "react-gravatar";
 import { Markdown } from "@sikaeducation/ui";
 
-const formatDateTime = (dateTime: string) =>
-  format(new Date(dateTime), "M/d/yy p");
+const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy p");
 
 type props = {
   path: string;
@@ -21,15 +20,15 @@ type props = {
 };
 
 export default function EvaluatorPerformance({
-  path,
-  performance,
-  feedback,
-  updateFeedback,
-  status,
-  updateStatus,
-}: props) {
-  const learnerId = performance?.userId ?? "";
-  return (
+	path,
+	performance,
+	feedback,
+	updateFeedback,
+	status,
+	updateStatus,
+}: props){
+	const learnerId = performance?.userId ?? "";
+	return (
     <tr className="EvaluatorPerformance">
       <td className="avatar">
         <Gravatar email={learnerId} size={60} title={learnerId} />
@@ -70,5 +69,5 @@ export default function EvaluatorPerformance({
         />
       </td>
     </tr>
-  );
+	);
 }

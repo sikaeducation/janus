@@ -7,7 +7,7 @@ import { programContext } from "../../contexts/program";
 declare module "react-use-clipboard" {
   export default interface useClipboard {
     (textToCopy: string): [boolean, () => void];
-  }
+  };;;;;;;;;;
 }
 
 type props = {
@@ -19,18 +19,18 @@ type props = {
   };
 };
 
-export default function PostListing({ post, isActive, handlers }: props) {
-  const { program } = useContext(programContext);
-  let linksMarkdown = "";
-  if (program) {
-    const { posts } = program;
-    linksMarkdown = posts
-      .filter((eachPost) => post.children.includes(eachPost.slug))
-      .map((childPost) => `* [${childPost.label.full}](${childPost.path})`)
-      .join("\n");
-  }
-  const setCopied = useClipboard(linksMarkdown)[1];
-  return (
+export default function PostListing({ post, isActive, handlers }: props){
+	const { program } = useContext(programContext);
+	let linksMarkdown = "";
+	if (program){
+		const { posts } = program;
+		linksMarkdown = posts
+			.filter((eachPost) => post.children.includes(eachPost.slug))
+			.map((childPost) => `* [${childPost.label.full}](${childPost.path})`)
+			.join("\n");
+	}
+	const setCopied = useClipboard(linksMarkdown)[1];
+	return (
     <div
       role="button"
       tabIndex={0}
@@ -42,8 +42,8 @@ export default function PostListing({ post, isActive, handlers }: props) {
       {post.label.short ?? post.label.full}
       <div
         className={classNames({
-          "post-details": true,
-          active: isActive,
+        	"post-details": true,
+        	active: isActive,
         })}
       >
         <p>
@@ -53,11 +53,13 @@ export default function PostListing({ post, isActive, handlers }: props) {
           <span className="post-path" data-testid="path">
             {post?.path}
           </span>
-          {post.children.length > 0 ? (
+          {post.children.length > 0
+          	? (
             <button type="button" onClick={setCopied} className="copy-links">
               Copy Links
             </button>
-          ) : null}
+          	)
+          	: null}
         </p>
         <table>
           <tbody>
@@ -81,5 +83,5 @@ export default function PostListing({ post, isActive, handlers }: props) {
         </table>
       </div>
     </div>
-  );
+	);
 }

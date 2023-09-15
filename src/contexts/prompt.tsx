@@ -14,40 +14,43 @@ type props = {
   children: JSX.Element;
 };
 
-export function PromptProvider({ children }: props) {
-  const [currentBroadcast, setCurrentBroadcast] = useState<rawBroadcast | null>(
-    null,
-  );
-  const socket = useContext(SocketContext);
+export function PromptProvider({ children }: props){
+	const [
+		currentBroadcast,
+		setCurrentBroadcast,
+	] = useState<rawBroadcast | null>(null);
+	const socket = useContext(SocketContext);
 
-  useSocketHandlers({
-    "new-inbox-prompt": (broadcast: rawBroadcast) =>
-      setCurrentBroadcast(broadcast),
-    "end-inbox-prompt": () => setCurrentBroadcast(null),
-  });
+	useSocketHandlers({
+		"new-inbox-prompt": (broadcast: rawBroadcast) => setCurrentBroadcast(broadcast),
+		"end-inbox-prompt": () => setCurrentBroadcast(null),
+	});
 
-  const providerValue = useMemo(() => {
-    const startInboxPrompt = (broadcast: rawBroadcast) => {
-      socket.emit("start-inbox-prompt", broadcast);
-    };
-    const endInboxPrompt = () => {
-      socket.emit("end-inbox-prompt");
-    };
-    const getCurrentPrompt = () => {
-      socket.emit("get-inbox-prompt");
-    };
+	const providerValue = useMemo(() => {
+		const startInboxPrompt = (broadcast: rawBroadcast) => {
+			socket.emit("start-inbox-prompt", broadcast);
+		};
+		const endInboxPrompt = () => {
+			socket.emit("end-inbox-prompt");
+		};
+		const getCurrentPrompt = () => {
+			socket.emit("get-inbox-prompt");
+		};
 
-    return {
-      startInboxPrompt,
-      endInboxPrompt,
-      currentBroadcast,
-      getCurrentPrompt,
-    };
-  }, [currentBroadcast, socket]);
+		return {
+			startInboxPrompt,
+			endInboxPrompt,
+			currentBroadcast,
+			getCurrentPrompt,
+		};
+	}, [
+		currentBroadcast,
+		socket,
+	]);
 
-  return (
+	return (
     <promptContext.Provider value={providerValue}>
       {children}
     </promptContext.Provider>
-  );
+	);
 }

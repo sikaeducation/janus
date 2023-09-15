@@ -17,34 +17,34 @@ type MockStoreProps = {
   children: ReactNode;
 };
 
-function Mockstore({ user, children }: MockStoreProps) {
-  return (
+function Mockstore({ user, children }: MockStoreProps){
+	return (
     <Provider
       store={configureStore({
-        reducer: {
-          user: createSlice({
-            name: "user",
-            initialState: user ?? {
-              email: "",
-              name: "",
-              picture: "",
-              isAuthenticated: false,
-              isLoading: false,
-            },
-            reducers: {},
-          }).reducer,
-        },
+      	reducer: {
+      		user: createSlice({
+      			name: "user",
+      			initialState: user ?? {
+      				email: "",
+      				name: "",
+      				picture: "",
+      				isAuthenticated: false,
+      				isLoading: false,
+      			},
+      			reducers: {},
+      		}).reducer,
+      	},
       })}
     >
       {children}
     </Provider>
-  );
+	);
 }
 
 export default {
-  title: "App/AppHeader",
-  component: AppHeader,
-  decorators: [withRouter],
+	title: "App/AppHeader",
+	component: AppHeader,
+	decorators: [withRouter],
 } as ComponentMeta<typeof AppHeader>;
 
 const Template: ComponentStory<typeof AppHeader> = () => (

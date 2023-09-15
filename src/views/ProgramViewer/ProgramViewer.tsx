@@ -8,67 +8,69 @@ type props = {
 };
 
 const buildTree = (
-  posts: hydratedPost[],
-  slugs: string[], // Don't coerce to slug, client doesn't have list
-  currentPost: hydratedPost,
-  handleClick: (post: hydratedPost) => () => void,
-  handleEnter: (post: hydratedPost) => (event: KeyboardEvent) => void,
-): JSX.Element[] =>
-  slugs
-    // eslint-disable-next-line
+	posts: hydratedPost[],
+	slugs: string[], // Don't coerce to slug, client doesn't have list
+	currentPost: hydratedPost,
+	handleClick: (post: hydratedPost) => () => void,
+	handleEnter: (post: hydratedPost) => (event: KeyboardEvent) => void,
+): JSX.Element[] => slugs
+	// eslint-disable-next-line
 		.map((slugId) => posts.find((post) => post.slug === slugId)!)
-    .filter((post) => !!post)
-    .flatMap((post: hydratedPost) => {
-      const postListing = (
+	.filter((post) => !!post)
+	.flatMap((post: hydratedPost) => {
+		const postListing = (
         <li key={post.slug}>
           <PostListing
             post={post}
             isActive={currentPost?.path === post.path}
             handlers={{
-              click: handleClick(post),
-              keyboard: handleEnter(post),
+            	click: handleClick(post),
+            	keyboard: handleEnter(post),
             }}
           />
         </li>
-      );
-      return post.children.length === 0
-        ? postListing
-        : [
-            postListing,
+		);
+		return post.children.length === 0
+			? postListing
+			: [
+				postListing,
             <li key={`${post.slug}--menu`}>
               <ul>
                 {buildTree(
-                  posts,
-                  post.children,
-                  currentPost,
-                  handleClick,
-                  handleEnter,
+                	posts,
+                	post.children,
+                	currentPost,
+                	handleClick,
+                	handleEnter,
                 )}
               </ul>
             </li>,
-          ];
-    });
+			];
+	});
 
-export default function ProgramViewer({ program }: props) {
-  const [currentPost, setCurrentPost] = useState<hydratedPost>(program.root);
-  const units = program.root.children;
+export default function ProgramViewer({ program }: props){
+	const [
+		currentPost,
+		setCurrentPost,
+	] = useState<hydratedPost>(program.root);
+	const units = program.root.children;
 
-  const handleClick = (post: hydratedPost) => () => {
-    setCurrentPost(post);
-  };
-  const handleEnter = (post: hydratedPost) => (event: KeyboardEvent) => {
-    if (event.key === "enter") setCurrentPost(post);
-  };
+	const handleClick = (post: hydratedPost) => () => {
+		setCurrentPost(post);
+	};
+	const handleEnter = (post: hydratedPost) => (event: KeyboardEvent) => {
+		if (event.key === "enter") setCurrentPost(post);
+	};
 
-  const tree = buildTree(
-    program.posts,
-    units,
-    currentPost,
-    handleClick,
-    handleEnter,
-  );
+	const tree = buildTree(
+		program.posts,
+		units,
+		currentPost,
+		handleClick,
+		handleEnter,
+	);
 
-  return (
+	return (
     <div className="ProgramViewer">
       <div className="ProgramViewer-wrapper">
         <ul className="post-listings">
@@ -77,17 +79,19 @@ export default function ProgramViewer({ program }: props) {
               post={program.root}
               isActive={currentPost?.path === program.root.path}
               handlers={{
-                click: handleClick(program.root),
-                keyboard: handleEnter(program.root),
+              	click: handleClick(program.root),
+              	keyboard: handleEnter(program.root),
               }}
             />
           </li>
           {tree}
         </ul>
-        {currentPost ? (
+        {currentPost
+        	? (
           <Markdown className="post-content" content={currentPost.content} />
-        ) : null}
+        	)
+        	: null}
       </div>
     </div>
-  );
+	);
 }

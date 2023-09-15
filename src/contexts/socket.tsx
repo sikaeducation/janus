@@ -9,19 +9,19 @@ type props = {
   children: JSX.Element;
 };
 
-export function SocketProvider({ children }: props) {
-  const { getAccessTokenSilently } = useAuth0();
-  const socket = io(process.env.REACT_APP_API_BASE_URL || "", {
-    auth: (callback: (params: { token: string }) => void) => {
-      getAccessTokenSilently({
-        audience: process.env.REACT_APP_API_AUTH_URI,
-      }).then((token) => {
-        callback({ token });
-      });
-    },
-  });
+export function SocketProvider({ children }: props){
+	const { getAccessTokenSilently } = useAuth0();
+	const socket = io(process.env.REACT_APP_API_BASE_URL || "", {
+		auth: (callback: (params: { token: string }) => void) => {
+			getAccessTokenSilently({
+				audience: process.env.REACT_APP_API_AUTH_URI,
+			}).then((token) => {
+				callback({ token });
+			});
+		},
+	});
 
-  return (
+	return (
     <SocketContext.Provider value={socket}>{children}</SocketContext.Provider>
-  );
+	);
 }

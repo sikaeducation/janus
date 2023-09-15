@@ -1,5 +1,5 @@
 test("PerformanceList", () => {
-  expect(true).toBe(true);
+	expect(true).toBeTrue();
 });
 
 export {};

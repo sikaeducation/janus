@@ -1,5 +1,5 @@
-test("Placeholder", async () => {
-  expect(true).toEqual(true);
+test("Placeholder", async() => {
+	expect(true).toBeTrue();
 });
 
 export {};

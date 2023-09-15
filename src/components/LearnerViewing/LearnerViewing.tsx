@@ -10,16 +10,16 @@ type props = {
 };
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
-export default function LearningViewing({ performance }: props) {
-  const { postsBySlug } = useContext(programContext);
-  const getIndicator = useIndicator();
-  const post = postsBySlug[performance.postSlug];
-  const path = post?.path || "";
-  const title = post.label?.short || post.label?.full || "";
+export default function LearningViewing({ performance }: props){
+	const { postsBySlug } = useContext(programContext);
+	const getIndicator = useIndicator();
+	const post = postsBySlug[performance.postSlug];
+	const path = post?.path || "";
+	const title = post.label?.short || post.label?.full || "";
 
-  const indicator = getIndicator(performance);
+	const indicator = getIndicator(performance);
 
-  return (
+	return (
     <div className="LearnerViewing">
       <p className="description">
         {" "}
@@ -33,5 +33,5 @@ export default function LearningViewing({ performance }: props) {
       </ul>
       <span className="evaluation-status">{indicator}</span>
     </div>
-  );
+	);
 }

@@ -1,11 +1,11 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 import {
-  EditableField,
-  Markdown,
-  Separator,
-  TextArea,
-  Toggle,
+	EditableField,
+	Markdown,
+	Separator,
+	TextArea,
+	Toggle,
 } from "@sikaeducation/ui";
 import "./ArticleDetail.scss";
 
@@ -13,16 +13,16 @@ type Props = {
   activity: ActivityArticle;
 };
 
-export default function ArticleDetail({ activity }: Props) {
-  const { title, description, notes, content, published, post_slug } = activity;
-  const updateDescription = () => {
-    console.log("Update description");
-  };
-  const updateNotes = () => {
-    console.log("Update notes");
-  };
-  const updateValue = () => console.log("toggle published");
-  return (
+export default function ArticleDetail({ activity }: Props){
+	const { title, description, notes, content, published, post_slug } = activity;
+	const updateDescription = () => {
+		console.log("Update description");
+	};
+	const updateNotes = () => {
+		console.log("Update notes");
+	};
+	const updateValue = () => console.log("toggle published");
+	return (
     <div className="ArticleDetail">
       <form>
         <header>
@@ -61,13 +61,15 @@ export default function ArticleDetail({ activity }: Props) {
           updateValue={updateNotes}
           editable
         />
-        {content ? (
+        {content
+        	? (
           <>
             <Separator />
             <Markdown content={content} />
           </>
-        ) : null}
+        	)
+        	: null}
       </form>
     </div>
-  );
+	);
 }

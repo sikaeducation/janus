@@ -10,34 +10,34 @@ type props = {
 };
 
 export default function InboxCoachPromptForm({
-  startPrompt,
-  prompt,
-  setPrompt,
-  tagString,
-  setTagString,
-}: props) {
-  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const tagsArray = tagString
-      .trim()
-      .split(",")
-      .map((string) => string.trim());
-    const broadcast = {
-      prompt,
-      tags: tagsArray.join(","),
-      responseType: "markdown",
-    } as const;
-    startPrompt(broadcast);
-  };
+	startPrompt,
+	prompt,
+	setPrompt,
+	tagString,
+	setTagString,
+}: props){
+	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+		event.preventDefault();
+		const tagsArray = tagString
+			.trim()
+			.split(",")
+			.map((string) => string.trim());
+		const broadcast = {
+			prompt,
+			tags: tagsArray.join(","),
+			responseType: "markdown",
+		} as const;
+		startPrompt(broadcast);
+	};
 
-  return (
+	return (
     <form className="InboxCoachPromptForm" onSubmit={handleSubmit}>
       <label htmlFor="tags">Tags</label>
       <input
         id="tags"
         className="tags"
         onChange={(event) => {
-          setTagString(event.target.value);
+        	setTagString(event.target.value);
         }}
         value={tagString}
       />
@@ -52,5 +52,5 @@ export default function InboxCoachPromptForm({
         <input type="submit" value="Post Prompt" />
       </div>
     </form>
-  );
+	);
 }

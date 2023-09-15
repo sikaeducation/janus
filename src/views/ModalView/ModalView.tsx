@@ -8,9 +8,8 @@ type props = {
   children: ReactNode;
 };
 
-export default function ModalView({ close, children }: props) {
-  return createPortal(
-    <div id="modal-wrapper">
+export default function ModalView({ close, children }: props){
+	return createPortal(<div id="modal-wrapper">
       <div id="modal">
         <div role="presentation" id="modal-shadow" onClick={close}>
           &nbsp;
@@ -18,6 +17,5 @@ export default function ModalView({ close, children }: props) {
         <div id="modal-content">{children}</div>
       </div>
     </div>,
-    document.querySelector("#modal-container")!,
-  );
+    document.querySelector("#modal-container")!);
 }

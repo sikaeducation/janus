@@ -5,19 +5,19 @@ import InboxCoach from ".";
 import { promptContext } from "../../../contexts/prompt";
 
 export default {
-  title: "Inbox/InboxCoach",
-  component: InboxCoach,
-  decorators: [
-    withReactContext({
-      Context: promptContext,
-      initialState: {
-        currentBroadcast: "",
-        startInboxPrompt: () => {},
-        endInboxPrompt: () => {},
-        getCurrentPrompt: () => "Hey",
-      },
-    }),
-  ],
+	title: "Inbox/InboxCoach",
+	component: InboxCoach,
+	decorators: [
+		withReactContext({
+			Context: promptContext,
+			initialState: {
+				currentBroadcast: "",
+				startInboxPrompt: () => {},
+				endInboxPrompt: () => {},
+				getCurrentPrompt: () => "Hey",
+			},
+		}),
+	],
 } as ComponentMeta<typeof InboxCoach>;
 
 const Template: ComponentStory<typeof InboxCoach> = () => <InboxCoach />;

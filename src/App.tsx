@@ -10,13 +10,11 @@ import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 import { RootState } from "./store";
 import useAuth from "./hooks/use-auth";
 
-function App() {
-  useAuth();
-  const { isLoading, isAuthenticated } = useSelector(
-    (state: RootState) => state.user,
-  );
+function App(){
+	useAuth();
+	const { isLoading, isAuthenticated } = useSelector((state: RootState) => state.user);
 
-  return (
+	return (
     <div className="App">
       <AppHeader />
       {isLoading && <AppLoading />}
@@ -30,7 +28,7 @@ function App() {
       )}
       <AppFooter />
     </div>
-  );
+	);
 }
 
 export default App;

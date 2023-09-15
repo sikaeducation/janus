@@ -5,19 +5,19 @@ import InboxLearner from "../../components/inbox/InboxLearner";
 import { promptContext } from "../../contexts/prompt";
 import "./AppInbox.scss";
 
-export default function AppInbox() {
-  const { user } = useAuth0();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
-  const { getCurrentPrompt } = useContext(promptContext);
+export default function AppInbox(){
+	const { user } = useAuth0();
+	const role = (user && user["https://sikaeducation.com/role"]) || "";
+	const { getCurrentPrompt } = useContext(promptContext);
 
-  useEffect(() => {
-    getCurrentPrompt();
-  });
+	useEffect(() => {
+		getCurrentPrompt();
+	});
 
-  return (
+	return (
     <div className="AppInbox">
       <h1>Inbox</h1>
       {role === "coach" ? <InboxCoach /> : <InboxLearner />}
     </div>
-  );
+	);
 }

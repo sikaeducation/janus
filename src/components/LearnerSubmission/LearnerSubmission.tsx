@@ -15,20 +15,20 @@ type props = {
   performance: evaluatedSubmissionPerformance;
 };
 
-export default function LearnerSubmission({ performance }: props) {
-  const { user } = useAuth0();
-  const getIndicator = useIndicator();
-  const role = (user && user["https://sikaeducation.com/role"]) || "";
+export default function LearnerSubmission({ performance }: props){
+	const { user } = useAuth0();
+	const getIndicator = useIndicator();
+	const role = (user && user["https://sikaeducation.com/role"]) || "";
 
-  const { postsBySlug } = useContext(programContext);
-  const post = postsBySlug[performance.postSlug];
-  const path = post?.path || "";
+	const { postsBySlug } = useContext(programContext);
+	const post = postsBySlug[performance.postSlug];
+	const path = post?.path || "";
 
-  const indicator = getIndicator(performance);
+	const indicator = getIndicator(performance);
 
-  const title = post.label?.short || post.label?.full || "";
+	const title = post.label?.short || post.label?.full || "";
 
-  return (
+	return (
     <div className="LearnerSubmission">
       <p className="description">
         {performance.userId} submitted{" "}
@@ -64,5 +64,5 @@ export default function LearnerSubmission({ performance }: props) {
         </>
       )}
     </div>
-  );
+	);
 }

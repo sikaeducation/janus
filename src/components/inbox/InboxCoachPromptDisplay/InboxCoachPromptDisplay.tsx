@@ -12,21 +12,18 @@ type props = {
 };
 
 export default function CoachInboxPromptDisplay({
-  slug,
-  tags,
-  prompt,
-  endPrompt,
-}: props) {
-  const { performances } = useContext(performanceContext);
-  const promptPerformances = performances.filter(
-    (performance): performance is postedPromptPerformance =>
-      performance.postSlug === slug,
-  );
+	slug,
+	tags,
+	prompt,
+	endPrompt,
+}: props){
+	const { performances } = useContext(performanceContext);
+	const promptPerformances = performances.filter((performance): performance is postedPromptPerformance => performance.postSlug === slug);
 
-  const handleEndPrompt = () => {
-    endPrompt();
-  };
-  return (
+	const handleEndPrompt = () => {
+		endPrompt();
+	};
+	return (
     <div className="InboxCoachPromptDisplay">
       {tags.length > 0 && (
         <ul className="tags">
@@ -48,5 +45,5 @@ export default function CoachInboxPromptDisplay({
         <InboxResponses performances={promptPerformances} />
       )}
     </div>
-  );
+	);
 }

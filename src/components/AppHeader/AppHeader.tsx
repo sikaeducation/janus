@@ -7,18 +7,18 @@ import { Button, Logo, Avatar } from "@sikaeducation/ui";
 
 import { RootState } from "../../store";
 
-function AppHeader() {
-  const {
-    "https://sikaeducation.com/role": role,
-    email,
-    name,
-    picture,
-    isAuthenticated,
-    isLoading,
-  } = useSelector((state: RootState) => state.user);
-  const { logout, loginWithRedirect } = useAuth0();
+function AppHeader(){
+	const {
+		"https://sikaeducation.com/role": role,
+		email,
+		name,
+		picture,
+		isAuthenticated,
+		isLoading,
+	} = useSelector((state: RootState) => state.user);
+	const { logout, loginWithRedirect } = useAuth0();
 
-  return (
+	return (
     <header className="AppHeader">
       <nav className="primary-navigation">
         <Link to="/">
@@ -66,7 +66,7 @@ function AppHeader() {
         )}
       </div>
     </header>
-  );
+	);
 }
 
 export default AppHeader;

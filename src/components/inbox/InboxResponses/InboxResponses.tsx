@@ -6,11 +6,9 @@ type props = {
   performances: postedPromptPerformance[];
 };
 
-export default function InboxResponses({ performances }: props) {
-  const promptPerformances = performances.filter(
-    (performance) => performance.type === "prompt",
-  );
-  return (
+export default function InboxResponses({ performances }: props){
+	const promptPerformances = performances.filter((performance) => performance.type === "prompt");
+	return (
     <div className="InboxResponses">
       <h2>Responses</h2>
       {promptPerformances.length && (
@@ -36,5 +34,5 @@ export default function InboxResponses({ performances }: props) {
         ))}
       </ul>
     </div>
-  );
+	);
 }

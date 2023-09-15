@@ -6,22 +6,22 @@ import { performanceContext } from "../../../contexts/performance";
 import { promptContext } from "../../../contexts/prompt";
 
 export default {
-  title: "Inbox/InboxLearner",
-  component: InboxLearner,
-  decorators: [
-    withReactContext({
-      Context: performanceContext,
-      initialState: { postPerformance: () => {}, performances: [] },
-    }),
-    withReactContext({
-      Context: promptContext,
-      initialState: {
-        currentBroadcast: {
-          prompt: "Some Prompt",
-        },
-      },
-    }),
-  ],
+	title: "Inbox/InboxLearner",
+	component: InboxLearner,
+	decorators: [
+		withReactContext({
+			Context: performanceContext,
+			initialState: { postPerformance: () => {}, performances: [] },
+		}),
+		withReactContext({
+			Context: promptContext,
+			initialState: {
+				currentBroadcast: {
+					prompt: "Some Prompt",
+				},
+			},
+		}),
+	],
 } as ComponentMeta<typeof InboxLearner>;
 
 const Template: ComponentStory<typeof InboxLearner> = () => <InboxLearner />;

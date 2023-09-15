@@ -5,11 +5,11 @@ import "./LearnerPrompt.scss";
 const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
 
 export default function LearnerPrompt({
-  performance,
+	performance,
 }: {
   performance: postedPromptPerformance;
-}) {
-  return (
+}){
+	return (
     <div className="LearnerPrompt">
       <p className="description">{performance.userId} answered a prompt.</p>
       <ul className="meta">
@@ -28,5 +28,5 @@ export default function LearnerPrompt({
         />
       </div>
     </div>
-  );
+	);
 }

@@ -15,29 +15,31 @@ type props = {
 };
 
 export default function ActivityInteractionSubmission({
-  userId,
-  postSlug,
-  performances,
-  postPerformance,
-}: props) {
-  const [url, setUrl] = useState<string>("");
-  const handleSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
-    postPerformance({
-      userId,
-      postSlug,
-      type: "submission",
-      payload: {
-        url,
-      },
-    });
-    setUrl("");
-  };
-  const formatDateTime = (dateTime: string) =>
-    format(new Date(dateTime), "M/d/yy: p");
-  const getMessage = (status: string) => {
-    const statuses: Record<string, JSX.Element> = {
-      accepted: (
+	userId,
+	postSlug,
+	performances,
+	postPerformance,
+}: props){
+	const [
+		url,
+		setUrl,
+	] = useState<string>("");
+	const handleSubmit = (event: React.SyntheticEvent) => {
+		event.preventDefault();
+		postPerformance({
+			userId,
+			postSlug,
+			type: "submission",
+			payload: {
+				url,
+			},
+		});
+		setUrl("");
+	};
+	const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy: p");
+	const getMessage = (status: string) => {
+		const statuses: Record<string, JSX.Element> = {
+			accepted: (
         <span>
           was accepted{" "}
           <FontAwesomeIcon
@@ -45,8 +47,8 @@ export default function ActivityInteractionSubmission({
             className="indicator success"
           />
         </span>
-      ),
-      rejected: (
+			),
+			rejected: (
         <span>
           was not accepted{" "}
           <FontAwesomeIcon
@@ -54,19 +56,20 @@ export default function ActivityInteractionSubmission({
             className="indicator failure"
           />{" "}
         </span>
-      ),
-      submitted: (
+			),
+			submitted: (
         <span>
           has not been evaluated yet{" "}
           <FontAwesomeIcon icon={faClipboardCheck} className="indicator" />{" "}
         </span>
-      ),
-    };
-    return statuses[status || "submitted"];
-  };
-  return (
+			),
+		};
+		return statuses[status || "submitted"];
+	};
+	return (
     <div className="ActivityInteractionSubmission">
-      {performances.length > 0 ? (
+      {performances.length > 0
+      	? (
         <>
           <h2>Previous Submissions:</h2>
           <ul className="submissions">
@@ -74,10 +77,10 @@ export default function ActivityInteractionSubmission({
               <li key={performance.id}>
                 <div
                   className={classNames({
-                    "previous-submission ": true,
-                    rejected: performance.evaluation?.status === "rejected",
-                    accepted: performance.evaluation?.status === "accepted",
-                    pending: !performance.evaluation?.status,
+                  	"previous-submission ": true,
+                  	rejected: performance.evaluation?.status === "rejected",
+                  	accepted: performance.evaluation?.status === "accepted",
+                  	pending: !performance.evaluation?.status,
                   })}
                 >
                   <a href={performance.payload.url}>
@@ -87,15 +90,18 @@ export default function ActivityInteractionSubmission({
                     This submission{" "}
                     {getMessage(performance.evaluation?.status || "")}
                   </p>
-                  {performance.evaluation?.feedback ? (
+                  {performance.evaluation?.feedback
+                  	? (
                     <Markdown content={performance.evaluation?.feedback} />
-                  ) : null}
+                  	)
+                  	: null}
                 </div>
               </li>
             ))}
           </ul>
         </>
-      ) : null}
+      	)
+      	: null}
       <form onSubmit={handleSubmit}>
         <label htmlFor="url-input">Submission URL</label>
         <input
@@ -111,5 +117,5 @@ export default function ActivityInteractionSubmission({
         </Button>
       </form>
     </div>
-  );
+	);
 }

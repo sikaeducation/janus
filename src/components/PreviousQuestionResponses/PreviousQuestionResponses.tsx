@@ -12,24 +12,24 @@ type Props = {
   setShouldDisplay: (newState: boolean) => void;
 };
 
-const formatDateTime = (dateTime: string) =>
-  format(new Date(dateTime), "M/d/yy: p");
+const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy: p");
 
 export default function PreviousQuestionResponses({
-  performances,
-  shouldDisplay,
-  setShouldDisplay,
-}: Props) {
-  const getIndicator = useIndicator();
-  const handleKeyboard =
-    (state: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
-      if (event.keyCode === 13) {
-        setShouldDisplay(state);
-      }
+	performances,
+	shouldDisplay,
+	setShouldDisplay,
+}: Props){
+	const getIndicator = useIndicator();
+	const handleKeyboard
+    = (state: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
+    	if (event.keyCode === 13){
+    		setShouldDisplay(state);
+    	}
     };
-  return (
+	return (
     <div className="PreviousQuestionResponses">
-      {shouldDisplay ? (
+      {shouldDisplay
+      	? (
         <>
           <div
             role="button"
@@ -69,7 +69,8 @@ export default function PreviousQuestionResponses({
             ))}
           </ul>
         </>
-      ) : (
+      	)
+      	: (
         <div
           role="button"
           tabIndex={0}
@@ -79,7 +80,7 @@ export default function PreviousQuestionResponses({
         >
           <FontAwesomeIcon icon={faCaretRight} /> Previous Responses
         </div>
-      )}
+      	)}
     </div>
-  );
+	);
 }

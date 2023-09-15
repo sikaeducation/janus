@@ -9,11 +9,11 @@ import { toastContext } from "../contexts/toast";
 import Notification from "../components/AppNotification";
 import ActivityManagerView from "./ActivityManagerView";
 
-export default function AuthenticatedRoutes() {
-  const { toasts } = useContext(toastContext);
-  const showToastNotification = toasts.length > 0;
+export default function AuthenticatedRoutes(){
+	const { toasts } = useContext(toastContext);
+	const showToastNotification = toasts.length > 0;
 
-  return (
+	return (
     <>
       <Routes>
         <Route path="/loading" element={<AppLoading />} />
@@ -23,12 +23,14 @@ export default function AuthenticatedRoutes() {
         <Route path="*" element={<p>Home page</p>} />
       </Routes>
       {/* Make this a toast */}
-      {showToastNotification ? (
+      {showToastNotification
+      	? (
         <p>
           {" "}
           <Notification />
         </p>
-      ) : null}
+      	)
+      	: null}
     </>
-  );
+	);
 }

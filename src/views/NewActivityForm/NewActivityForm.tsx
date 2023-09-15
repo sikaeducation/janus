@@ -9,47 +9,50 @@ type Props = {
   save: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({ save, cancel }: Props) {
-  const [newItem, setNewItem] = useState<ActivityArticle>({
-    _type: "Article",
-    title: "",
-    post_slug: "",
-    description: "",
-    notes: "",
-    published: false,
-  } as const);
+export default function NewActivityForm({ save, cancel }: Props){
+	const [
+		newItem,
+		setNewItem,
+	] = useState<ActivityArticle>({
+		_type: "Article",
+		title: "",
+		post_slug: "",
+		description: "",
+		notes: "",
+		published: false,
+	} as const);
 
-  const saveAndPublish = (newActivity: Activity) => {
-    save({
-      ...newActivity,
-      published: true,
-    });
-  };
+	const saveAndPublish = (newActivity: Activity) => {
+		save({
+			...newActivity,
+			published: true,
+		});
+	};
 
-  const actions = [
-    {
-      label: "Cancel",
-      Component: Button,
-      action: () => cancel(),
-      type: "ghost",
-    },
-    {
-      label: "Save",
-      Component: Button,
-      action: () => save(newItem),
-      size: "large",
-      type: "secondary",
-    },
-    {
-      label: "Save and Publish",
-      Component: Button,
-      action: () => saveAndPublish(newItem),
-      size: "large",
-      type: "primary",
-    },
-  ];
+	const actions = [
+		{
+			label: "Cancel",
+			Component: Button,
+			action: () => cancel(),
+			type: "ghost",
+		},
+		{
+			label: "Save",
+			Component: Button,
+			action: () => save(newItem),
+			size: "large",
+			type: "secondary",
+		},
+		{
+			label: "Save and Publish",
+			Component: Button,
+			action: () => saveAndPublish(newItem),
+			size: "large",
+			type: "primary",
+		},
+	];
 
-  return (
+	return (
     <div className="NewActivityForm">
       <Form
         heading="Create Activity"
@@ -59,5 +62,5 @@ export default function NewActivityForm({ save, cancel }: Props) {
         setNewItem={setNewItem}
       />
     </div>
-  );
+	);
 }

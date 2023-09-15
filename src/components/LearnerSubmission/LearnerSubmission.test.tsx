@@ -1,5 +1,5 @@
 test("<LearnerSubmission />", () => {
-  expect(true).toBeTruthy();
+	expect(true).toBeTruthy();
 });
 
 export {};

@@ -13,15 +13,14 @@ import "@sikaeducation/ui/styles.css";
 // eslint-disable-next-line
 import "@sikaeducation/ui/reset";
 
-if (process.env.NODE_ENV !== "production") {
-  // eslint-disable-next-line
+if (process.env.NODE_ENV !== "production"){
+	// eslint-disable-next-line
 	console.log("Environment:");
-  // eslint-disable-next-line
+	// eslint-disable-next-line
 	console.table(process.env);
 }
 
-ReactDOM.render(
-  <React.StrictMode>
+ReactDOM.render(<React.StrictMode>
     <Auth0Provider
       domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
       clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
@@ -37,8 +36,7 @@ ReactDOM.render(
       </ReduxProvider>
     </Auth0Provider>
   </React.StrictMode>,
-  document.getElementById("root"),
-);
+document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

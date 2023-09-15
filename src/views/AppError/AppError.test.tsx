@@ -1,5 +1,5 @@
 test("AppError", () => {
-  expect(true).toBe(true);
+	expect(true).toBeTrue();
 });
 
 export {};
