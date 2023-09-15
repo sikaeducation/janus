@@ -7,7 +7,7 @@ import { programContext } from "../../contexts/program";
 declare module "react-use-clipboard" {
   export default interface useClipboard {
     (textToCopy: string): [boolean, () => void];
-  };;;;;;;;;;
+  };;;;;;;;;;;;;;;;;;;;
 }
 
 type props = {
