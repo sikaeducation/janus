@@ -1,7 +1,10 @@
 module.exports = {
-	root: true,
-	parserOptions: {
-		project: ["./tsconfig.json"],
-	},
-	extends: ["@sikaeducation/sika-ts-react"],
+	overrides: [
+		require("@sikaeducation/eslint-config/ts"),
+		require("@sikaeducation/eslint-config/react-ts"),
+		require("@sikaeducation/eslint-config/jest-ts"),
+		require("@sikaeducation/eslint-config/playwright-test"),
+		require("@sikaeducation/eslint-config/playwright-jest"),
+		require("@sikaeducation/eslint-config/formatting"),
+	],
 };
