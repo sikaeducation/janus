@@ -10,18 +10,4 @@ services:
     working_dir: "/app"
     volumes:
       - .:/app
-    command: ["npm", "start"]
-  storybook:
-    env_file:
-      - .env
-    ports:
-      - 6006:6006
-    build:
-      context: .
-      target: base
-    working_dir: "/app"
-    depends_on:
-      - frontend
-    volumes:
-      - .:/app
-    command: ["npm", "run", "storybook"]
+    command: [ "npm", "start" ]
