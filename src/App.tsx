@@ -10,24 +10,25 @@ import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 import { RootState } from "./store";
 import useAuth from "./hooks/use-auth";
 
-function App(){
+function App() {
 	useAuth();
-	const { isLoading, isAuthenticated } = useSelector((state: RootState) => state.user);
+	const selector = (state: RootState) => state.user;
+	const { isLoading, isAuthenticated } = useSelector(selector);
 
 	return (
-    <div className="App">
-      <AppHeader />
-      {isLoading && <AppLoading />}
-      {!isAuthenticated && !isLoading && <AppHome />}
-      {isAuthenticated && (
-        <main>
-          <ToastProvider>
-            <AuthenticatedRoutes />
-          </ToastProvider>
-        </main>
-      )}
-      <AppFooter />
-    </div>
+		<div className="App">
+			<AppHeader />
+			{isLoading && <AppLoading />}
+			{!isAuthenticated && !isLoading && <AppHome />}
+			{isAuthenticated && (
+				<main>
+					<ToastProvider>
+						<AuthenticatedRoutes />
+					</ToastProvider>
+				</main>
+			)}
+			<AppFooter />
+		</div>
 	);
 }
 

@@ -11,7 +11,7 @@
 		"start": "react-scripts start",
 		"build": "react-scripts build",
 		"eject": "react-scripts eject",
-		"lint": "eslint --fix .",
+		"lint": "eslint --ext .ts --ext .tsx --fix .",
 		"test": "npm run test:unit && npm run test:features",
 		"test:ci": "./ci-test.sh",
 		"test:unit": "react-scripts test --watchAll=false --transformIgnorePatterns \"node_modules/(?!react-markdown)/\"",
@@ -62,7 +62,7 @@
 	},
 	"devDependencies": {
 		"@playwright/test": "^1.29.1",
-		"@sikaeducation/eslint-config": "^2.0.13",
+		"@sikaeducation/eslint-config": "^2.0.18",
 		"@testing-library/jest-dom": "^5.16.5",
 		"@testing-library/react": "^12.1.2",
 		"@testing-library/react-hooks": "^7.0.2",

@@ -13,16 +13,16 @@ import {
 import ArticleDetail from "../ArticleDetail";
 
 type FormattedActivity = Activity & {
-  id: string;
-  type: NonNullable<ReactNode>;
-  publishedIcon?: ReactNode;
+	id: string;
+	type: NonNullable<ReactNode>;
+	publishedIcon?: ReactNode;
 };
 
 const activityTypes = {
 	Article: <Icon type="article" />,
 };
 
-export default function ActivityManagerView(){
+export default function ActivityManagerView() {
 	const { data: activities } = useGetActivitiesQuery();
 	const [createActivity] = useCreateActivityMutation();
 	const [
@@ -33,8 +33,8 @@ export default function ActivityManagerView(){
 		selectedActivity,
 		setSelectedActivity,
 	] = useState<
-    Activity | undefined
-  >(undefined);
+		Activity | undefined
+	>(undefined);
 	const activitiesCount = activities?.length || 0;
 	const handleNewClick = () => setNewActivityOpen(true);
 	const closeModal = () => setNewActivityOpen(false);
@@ -46,7 +46,9 @@ export default function ActivityManagerView(){
 	const fieldActions: Record<string, () => void> = {
 		// eslint-disable-next-line no-console
 		publishedIcon: () => console.log("toggle publishing"),
-		title: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
+		title: (id?: string) => {
+			setSelectedActivity(activities?.find((activity) => activity._id === id));
+		},
 		description: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
 	};
 	const fieldsWithActions = fields.map((field) => ({
@@ -55,41 +57,41 @@ export default function ActivityManagerView(){
 	}));
 
 	const formattedActivities: FormattedActivity[]
-    = activities?.map((activity) => ({
-    	...activity,
-    	id: activity._id || "",
-    	type: activityTypes[activity._type],
-    	publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
-    })) || [];
+		= activities?.map((activity) => ({
+			...activity,
+			id: activity._id || "",
+			type: activityTypes[activity._type],
+			publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+		})) || [];
 
 	return (
-    <div className="ActivityManagerView">
-      {newActivityOpen && (
-        <ModalView close={closeModal}>
-          <NewActivityForm save={save} cancel={closeModal} />
-        </ModalView>
-      )}
-      <header>
-        <Heading level={2} margin={false}>
-          Activities{" "}
-          <span className="activities-count">({activitiesCount})</span>
-        </Heading>
-        <Button type="primary" action={handleNewClick}>
-          New
-        </Button>
-      </header>
-      <DataTable<FormattedActivity>
-        fields={fieldsWithActions}
-        tableData={formattedActivities || skeletonRows}
-        activeId={selectedActivity?._id}
-      />
-      {selectedActivity
-      	? (
-        <Drawer close={() => setSelectedActivity(undefined)}>
-          <ArticleDetail activity={selectedActivity as ActivityArticle} />
-        </Drawer>
-      	)
-      	: null}
-    </div>
+		<div className="ActivityManagerView">
+			{newActivityOpen && (
+				<ModalView close={closeModal}>
+					<NewActivityForm save={save} cancel={closeModal} />
+				</ModalView>
+			)}
+			<header>
+				<Heading level={2} margin={false}>
+					Activities{" "}
+					<span className="activities-count">({activitiesCount})</span>
+				</Heading>
+				<Button type="primary" action={handleNewClick}>
+					New
+				</Button>
+			</header>
+			<DataTable<FormattedActivity>
+				fields={fieldsWithActions}
+				tableData={formattedActivities || skeletonRows}
+				activeId={selectedActivity?._id}
+			/>
+			{selectedActivity
+				? (
+					<Drawer close={() => setSelectedActivity(undefined)}>
+						<ArticleDetail activity={selectedActivity as ActivityArticle} />
+					</Drawer>
+				)
+				: null}
+		</div>
 	);
 }
