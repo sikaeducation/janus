@@ -49,7 +49,9 @@ export default function ActivityManagerView() {
 		title: (id?: string) => {
 			setSelectedActivity(activities?.find((activity) => activity._id === id));
 		},
-		description: (id?: string) => setSelectedActivity(activities?.find((activity) => activity._id === id)),
+		description: (id?: string) => {
+			setSelectedActivity(activities?.find((activity) => activity._id === id));
+		},
 	};
 	const fieldsWithActions = fields.map((field) => ({
 		...field,
@@ -88,7 +90,9 @@ export default function ActivityManagerView() {
 			{selectedActivity
 				? (
 					<Drawer close={() => setSelectedActivity(undefined)}>
-						<ArticleDetail activity={selectedActivity as ActivityArticle} />
+						<ArticleDetail
+							activity={selectedActivity as ActivityArticle}
+						/>
 					</Drawer>
 				)
 				: null}

@@ -29,10 +29,10 @@ test.skip("<PostListing /> renders post data", () => {
 	const clickHandler = jest.fn();
 	const keyboardHandler = jest.fn();
 	render(<PostListing
-      post={post}
-      isActive
-      handlers={{ click: clickHandler, keyboard: keyboardHandler }}
-    />);
+		post={post}
+		isActive
+		handlers={{ click: clickHandler, keyboard: keyboardHandler }}
+	/>);
 	const path = screen.getByTestId("path");
 	expect(path).toHaveTextContent("/");
 
@@ -69,16 +69,16 @@ test.skip("<PostListing /> calls mouse handlers on click", () => {
 	const clickHandler = jest.fn();
 	const keyboardHandler = jest.fn();
 	render(<PostListing
-      post={post}
-      isActive
-      handlers={{ click: clickHandler, keyboard: keyboardHandler }}
-    />);
+		post={post}
+		isActive
+		handlers={{ click: clickHandler, keyboard: keyboardHandler }}
+	/>);
 	const postListing = screen.getByTestId("PostListing");
 	postListing.click();
 	expect(clickHandler).toHaveBeenCalled();
 });
 
-test.skip("<PostListing /> calls keyboard handlers on enter", () => {
+test.skip("<PostListing /> calls keyboard handlers on enter", async() => {
 	mockUseClipboard.mockReturnValue([
 		false,
 		jest.fn(),
@@ -98,10 +98,10 @@ test.skip("<PostListing /> calls keyboard handlers on enter", () => {
 	const clickHandler = jest.fn();
 	const keyboardHandler = jest.fn();
 	render(<PostListing
-      post={post}
-      isActive
-      handlers={{ click: clickHandler, keyboard: keyboardHandler }}
-    />);
+		post={post}
+		isActive
+		handlers={{ click: clickHandler, keyboard: keyboardHandler }}
+	/>);
 	const postListing = screen.getByTestId("PostListing");
 	tab();
 	await expect(postListing).toHaveFocus();
@@ -165,10 +165,10 @@ test.skip("<PostListing /> copies to clipboard", () => {
 	]);
 
 	render(<PostListing
-      post={post}
-      isActive
-      handlers={{ click: clickHandler, keyboard: keyboardHandler }}
-    />);
+		post={post}
+		isActive
+		handlers={{ click: clickHandler, keyboard: keyboardHandler }}
+	/>);
 	screen.getByText("Copy Links").click();
-	expect(clipboardSpy).toHaveBeenCalled();
+	expect(clipboardSpy).toHaveBeenCalledWith();
 });

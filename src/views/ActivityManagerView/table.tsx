@@ -1,12 +1,12 @@
 import { Skeleton } from "@sikaeducation/ui";
 
 type Field = {
-  header: string;
-  key: string;
-  proportion: {
-    large: string;
-    small?: string;
-  };
+	header: string;
+	key: string;
+	proportion: {
+		large: string;
+		small?: string;
+	};
 };
 
 export const fields: Field[] = [
@@ -50,4 +50,4 @@ const skeletonRow = {
 
 export const skeletonRows = Array(10)
 	.fill(skeletonRow)
-	.map((row, index) => ({ ...row, id: index }));
+	.map((row: typeof skeletonRow, index) => ({ ...row, id: index }));

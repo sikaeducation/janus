@@ -6,18 +6,20 @@ import tokenAccessors from "../utilities/security";
 
 const { setTokenFetcher } = tokenAccessors;
 
-export default function useAuth(){
+export default function useAuth() {
 	const { user, isLoading, isAuthenticated, getAccessTokenSilently }
-    = useAuth0();
+		= useAuth0();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(setUser(isAuthenticated
-			? {
-				...user,
+		if (user?.email && user?.name && user?.picture && isAuthenticated) {
+			dispatch(setUser({
+				email: user.email,
+				name: user.name,
+				picture: user.picture,
 				isAuthenticated,
 				isLoading,
-			}
-			: {}));
+			}));
+		}
 	}, [
 		isAuthenticated,
 		isLoading,
