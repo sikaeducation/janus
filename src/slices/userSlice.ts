@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
+	"https://sikaeducation.com/role": "",
 	email: "",
 	name: "",
 	picture: "",

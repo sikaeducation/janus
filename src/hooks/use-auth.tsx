@@ -8,11 +8,18 @@ const { setTokenFetcher } = tokenAccessors;
 
 export default function useAuth() {
 	const { user, isLoading, isAuthenticated, getAccessTokenSilently }
-		= useAuth0();
+		= useAuth0<User>();
 	const dispatch = useDispatch();
 	useEffect(() => {
-		if (user?.email && user?.name && user?.picture && isAuthenticated) {
+		if (
+			isAuthenticated
+			&& user?.email
+			&& user?.name
+			&& user?.picture
+			&& user?.["https://sikaeducation.com/role"]
+		) {
 			dispatch(setUser({
+				"https://sikaeducation.com/role": user["https://sikaeducation.com/role"] || "",
 				email: user.email,
 				name: user.name,
 				picture: user.picture,
