@@ -1,31 +1,28 @@
-import { TextArea, TextInput } from "@sikaeducation/ui";
+import { Form } from "@sikaeducation/ui";
+import { ComponentPropsWithoutRef } from "react";
 
-const newActivityFields = [
+const newActivityFields: ComponentPropsWithoutRef<typeof Form>["fields"] = [
 	{
 		id: "title",
 		label: "Title",
-		Component: TextInput,
+		controlType: "TextInput",
 		required: true,
-		value: "",
 	},
 	{
 		id: "post_slug",
 		label: "Slug",
-		Component: TextInput,
+		controlType: "TextInput",
 		required: true,
-		value: "",
 	},
 	{
 		id: "description",
 		label: "Description",
-		Component: TextArea,
-		value: "",
+		controlType: "TextArea",
 	},
 	{
 		id: "notes",
 		label: "Notes",
-		Component: TextArea,
-		value: "",
+		controlType: "TextArea",
 	},
 ];
 

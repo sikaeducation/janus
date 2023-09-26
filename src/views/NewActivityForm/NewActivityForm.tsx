@@ -1,15 +1,15 @@
-import { useState } from "react";
-import { Button, Form } from "@sikaeducation/ui";
+import { ComponentPropsWithoutRef, useState } from "react";
+import { Form } from "@sikaeducation/ui";
 import "./NewActivityForm.scss";
 
 import newActivityFields from "./new-activity-fields";
 
 type Props = {
-  cancel: () => void;
-  save: (newActivity: Activity) => void;
+	cancel: () => void;
+	save: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({ save, cancel }: Props){
+export default function NewActivityForm({ save, cancel }: Props) {
 	const [
 		newItem,
 		setNewItem,
@@ -29,23 +29,23 @@ export default function NewActivityForm({ save, cancel }: Props){
 		});
 	};
 
-	const actions = [
+	const actions: ComponentPropsWithoutRef<typeof Form>["actions"] = [
 		{
+			id: "cancel",
 			label: "Cancel",
-			Component: Button,
 			action: () => cancel(),
 			type: "ghost",
 		},
 		{
+			id: "save",
 			label: "Save",
-			Component: Button,
 			action: () => save(newItem),
 			size: "large",
 			type: "secondary",
 		},
 		{
+			id: "save-and-publish",
 			label: "Save and Publish",
-			Component: Button,
 			action: () => saveAndPublish(newItem),
 			size: "large",
 			type: "primary",
@@ -53,14 +53,14 @@ export default function NewActivityForm({ save, cancel }: Props){
 	];
 
 	return (
-    <div className="NewActivityForm">
-      <Form
-        heading="Create Activity"
-        fields={newActivityFields}
-        actions={actions}
-        newItem={newItem}
-        setNewItem={setNewItem}
-      />
-    </div>
+		<div className="NewActivityForm">
+			<Form
+				heading="Create Activity"
+				fields={newActivityFields}
+				actions={actions}
+				newItem={newItem}
+				setNewItem={setNewItem}
+			/>
+		</div>
 	);
 }
