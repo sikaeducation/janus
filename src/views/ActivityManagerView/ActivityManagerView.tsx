@@ -1,3 +1,4 @@
+/* eslint-disable */
 import "./ActivityManagerView.scss";
 import { ReactNode, useState } from "react";
 
@@ -68,6 +69,7 @@ export default function ActivityManagerView() {
 
 	return (
 		<div className="ActivityManagerView">
+			<h1>Hi!</h1>
 			{newActivityOpen && (
 				<ModalView close={closeModal}>
 					<NewActivityForm save={save} cancel={closeModal} />
@@ -82,11 +84,11 @@ export default function ActivityManagerView() {
 					New
 				</Button>
 			</header>
-			<DataTable<FormattedActivity>
-				fields={fieldsWithActions}
-				tableData={formattedActivities || skeletonRows}
-				activeId={selectedActivity?._id}
-			/>
+			{/* <DataTable<FormattedActivity> */}
+			{/* 	fields={fieldsWithActions} */}
+			{/* 	tableData={formattedActivities || skeletonRows} */}
+			{/* 	activeId={selectedActivity?._id} */}
+			{/* /> */}
 			{selectedActivity
 				? (
 					<Drawer close={() => setSelectedActivity(undefined)}>
