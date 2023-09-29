@@ -6,23 +6,25 @@ import newActivityFields from "./new-activity-fields";
 
 type Props = {
 	cancel: () => void;
-	save: (newActivity: Activity) => void;
+	save: (newActivity: NewData) => void;
 };
+type FormData = string | boolean | number | string[];
+type NewData = Record<string, FormData>
 
 export default function NewActivityForm({ save, cancel }: Props) {
 	const [
 		newItem,
 		setNewItem,
-	] = useState<ActivityArticle>({
+	] = useState<NewData>({
 		_type: "Article",
 		title: "",
 		post_slug: "",
 		description: "",
 		notes: "",
 		published: false,
-	} as const);
+	});
 
-	const saveAndPublish = (newActivity: Activity) => {
+	const saveAndPublish = (newActivity: NewData) => {
 		save({
 			...newActivity,
 			published: true,
@@ -59,7 +61,7 @@ export default function NewActivityForm({ save, cancel }: Props) {
 				fields={newActivityFields}
 				actions={actions}
 				newItem={newItem}
-				setNewItem={setNewItem}
+				setNewItem={(newItem) => setNewItem(newItem)}
 			/>
 		</div>
 	);
