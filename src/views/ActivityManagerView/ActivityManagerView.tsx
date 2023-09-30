@@ -1,7 +1,7 @@
 import "./ActivityManagerView.scss";
 import { ReactNode, useState } from "react";
 
-import { Button, Heading, Drawer, DataTable, Icon } from "@sikaeducation/ui";
+import { Button, Heading, Drawer, DataTable, Icon, StatusMessage } from "@sikaeducation/ui";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
 
@@ -23,7 +23,7 @@ const activityTypes = {
 };
 
 export default function ActivityManagerView() {
-	const { data: activities } = useGetActivitiesQuery();
+	const { data: activities, isLoading, isError, isSuccess } = useGetActivitiesQuery();
 	const [createActivity] = useCreateActivityMutation();
 	const [
 		newActivityOpen,
@@ -68,6 +68,8 @@ export default function ActivityManagerView() {
 
 	return (
 		<div className="ActivityManagerView">
+			{isError && <StatusMessage type="network-error" />}
+			{isSuccess && formattedActivities.length === 0 && <StatusMessage type="no-data" />}
 			{newActivityOpen && (
 				<ModalView close={closeModal}>
 					<NewActivityForm save={save} cancel={closeModal} />
@@ -82,20 +84,27 @@ export default function ActivityManagerView() {
 					New
 				</Button>
 			</header>
-			<DataTable<FormattedActivity>
-				fields={fieldsWithActions}
-				tableData={formattedActivities || skeletonRows}
-				activeId={selectedActivity?._id}
-			/>
-			{selectedActivity
-				? (
-					<Drawer close={() => setSelectedActivity(undefined)}>
-						<ArticleDetail
-							activity={selectedActivity as ActivityArticle}
+			{
+				!isLoading && formattedActivities.length > 0
+				&& (
+					<>
+						<DataTable<FormattedActivity>
+							fields={fieldsWithActions}
+							tableData={formattedActivities || skeletonRows}
+							activeId={selectedActivity?._id}
 						/>
-					</Drawer>
+						{selectedActivity
+							? (
+								<Drawer close={() => setSelectedActivity(undefined)}>
+									<ArticleDetail
+										activity={selectedActivity as ActivityArticle}
+									/>
+								</Drawer>
+							)
+							: null}
+					</>
 				)
-				: null}
+			}
 		</div>
 	);
 }

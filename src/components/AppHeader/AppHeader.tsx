@@ -1,5 +1,5 @@
 import "./AppHeader.scss";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 import { useSelector } from "react-redux";
 import { useAuth0 } from "@auth0/auth0-react";
@@ -21,17 +21,17 @@ function AppHeader() {
 	return (
 		<header className="AppHeader">
 			<nav className="primary-navigation">
-				<Link to="/">
+				<NavLink to="/">
 					<Logo />
-				</Link>
+				</NavLink>
 				{email && (
 					<ul className="links">
 						<li key="1">
-							<Link to="/">Curriculum</Link>
+							<NavLink to="/">Curriculum</NavLink>
 						</li>
 						{role === "coach" && (
 							<li key="2">
-								<Link to="/activity-manager">Activity Manager</Link>
+								<NavLink to="/activity-manager">Activity Manager</NavLink>
 							</li>
 						)}
 					</ul>
