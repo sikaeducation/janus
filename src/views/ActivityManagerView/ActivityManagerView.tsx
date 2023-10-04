@@ -71,7 +71,7 @@ export default function ActivityManagerView() {
 			{isError && <StatusMessage type="network-error" />}
 			{isSuccess && formattedActivities.length === 0 && <StatusMessage type="no-data" />}
 			{newActivityOpen && (
-				<ModalView close={closeModal}>
+				<ModalView onClose={closeModal}>
 					<NewActivityForm save={save} cancel={closeModal} />
 				</ModalView>
 			)}
@@ -98,6 +98,7 @@ export default function ActivityManagerView() {
 								<Drawer close={() => setSelectedActivity(undefined)}>
 									<ArticleDetail
 										activity={selectedActivity as ActivityArticle}
+										setActivity={(activity) => setSelectedActivity(activity)}
 									/>
 								</Drawer>
 							)

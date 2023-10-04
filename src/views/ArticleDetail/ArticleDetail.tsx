@@ -1,75 +1,55 @@
-/* eslint-disable no-console */
-/* eslint-disable camelcase */
-import {
-	EditableField,
-	Markdown,
-	Separator,
-	TextArea,
-	Toggle,
-} from "@sikaeducation/ui";
+import { Form } from "@sikaeducation/ui";
 import "./ArticleDetail.scss";
 
 type Props = {
 	activity: ActivityArticle;
+	setActivity: (article: ActivityArticle) => void;
 };
 
-export default function ArticleDetail({ activity }: Props) {
-	const { title, description, notes, content, published, post_slug } = activity;
-	const updateDescription = () => {
-		console.log("Update description");
-	};
-	const updateNotes = () => {
-		console.log("Update notes");
-	};
-	const updateValue = () => console.log("toggle published");
+type Mutable<T> = { -readonly [P in keyof T]: T[P] extends ReadonlyArray<infer U> ? U[] : T[P] };
+
+const fields = [{
+	id: "published",
+	label: "Published?",
+	controlType: "Toggle",
+}, {
+	id: "title",
+	label: "Title",
+	controlType: "TextInput",
+}, {
+	id: "post_slug",
+	label: "Slug",
+	controlType: "TextInput",
+}, {
+	id: "description",
+	label: "Description",
+	controlType: "TextInput",
+}, {
+	id: "notes",
+	label: "Notes",
+	controlType: "TextArea",
+}, {
+	id: "content",
+	label: "Content",
+	controlType: "MarkdownPreviewer",
+}] as const;
+const actions = [{
+	id: "save",
+	label: "Save",
+	type: "primary" as const,
+	action: () => console.log("Primary action fired"),
+}];
+
+export default function ArticleDetail({ activity, setActivity }: Props) {
 	return (
 		<div className="ArticleDetail">
-			<form>
-				<header>
-					<EditableField
-						id="title"
-						label="Title"
-						value={title}
-						updateValue={() => console.log("hi")}
-						className="title Heading tertiary-heading"
-					/>
-					<Toggle
-						id="published"
-						label="Live"
-						updateValue={updateValue}
-						value={published}
-					/>
-					<EditableField
-						id="code"
-						label="Code"
-						value={post_slug}
-						updateValue={() => console.log("hi")}
-						className="post-slug"
-					/>
-				</header>
-				<TextArea
-					value={description}
-					id="description"
-					label="Description"
-					updateValue={updateDescription}
-					editable
-				/>
-				<TextArea
-					value={notes}
-					id="notes"
-					label="Notes"
-					updateValue={updateNotes}
-					editable
-				/>
-				{content
-					? (
-						<>
-							<Separator />
-							<Markdown content={content} />
-						</>
-					)
-					: null}
-			</form>
+			<Form
+				heading={activity.title}
+				newItem={activity}
+				setNewItem={(newItem) => setActivity(newItem as ActivityArticle)}
+				fields={fields as Mutable<typeof fields>}
+				actions={actions}
+			/>
 		</div>
 	);
 }
