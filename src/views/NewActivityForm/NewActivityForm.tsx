@@ -15,7 +15,7 @@ type Props = {
 
 export default function NewActivityForm({
 	save, cancel,
-}: Props) {
+}: Props){
 	const [
 		newItem,
 		setNewItem,

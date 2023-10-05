@@ -8,7 +8,7 @@ import {
 import PostListing from "../../components/PostListing";
 
 type props = {
-  program: hydratedProgram;
+	program: hydratedProgram;
 };
 
 const buildTree = (
@@ -19,36 +19,36 @@ const buildTree = (
 	handleEnter: (post: hydratedPost) => (event: KeyboardEvent) => void,
 ): JSX.Element[] => slugs
 	// eslint-disable-next-line
-		.map((slugId) => posts.find((post) => post.slug === slugId)!)
+	.map((slugId) => posts.find((post) => post.slug === slugId)!)
 	.filter((post) => !!post)
 	.flatMap((post: hydratedPost) => {
 		const postListing = (
-        <li key={post.slug}>
-          <PostListing
-            post={post}
-            isActive={currentPost?.path === post.path}
-            handlers={{
-            	click: handleClick(post),
-            	keyboard: handleEnter(post),
-            }}
-          />
-        </li>
+			<li key={post.slug}>
+				<PostListing
+					post={post}
+					isActive={currentPost?.path === post.path}
+					handlers={{
+						click: handleClick(post),
+						keyboard: handleEnter(post),
+					}}
+				/>
+			</li>
 		);
 		return post.children.length === 0
 			? postListing
 			: [
 				postListing,
-            <li key={`${post.slug}--menu`}>
-              <ul>
-                {buildTree(
-                	posts,
-                	post.children,
-                	currentPost,
-                	handleClick,
-                	handleEnter,
-                )}
-              </ul>
-            </li>,
+				<li key={`${post.slug}--menu`}>
+					<ul>
+						{buildTree(
+							posts,
+							post.children,
+							currentPost,
+							handleClick,
+							handleEnter,
+						)}
+					</ul>
+				</li>,
 			];
 	});
 
@@ -77,27 +77,27 @@ export default function ProgramViewer({
 	);
 
 	return (
-    <div className="ProgramViewer">
-      <div className="ProgramViewer-wrapper">
-        <ul className="post-listings">
-          <li>
-            <PostListing
-              post={program.root}
-              isActive={currentPost?.path === program.root.path}
-              handlers={{
-              	click: handleClick(program.root),
-              	keyboard: handleEnter(program.root),
-              }}
-            />
-          </li>
-          {tree}
-        </ul>
-        {currentPost
-        	? (
-          <Markdown className="post-content" content={currentPost.content} />
-        	)
-        	: null}
-      </div>
-    </div>
+		<div className="ProgramViewer">
+			<div className="ProgramViewer-wrapper">
+				<ul className="post-listings">
+					<li>
+						<PostListing
+							post={program.root}
+							isActive={currentPost?.path === program.root.path}
+							handlers={{
+								click: handleClick(program.root),
+								keyboard: handleEnter(program.root),
+							}}
+						/>
+					</li>
+					{tree}
+				</ul>
+				{currentPost
+					? (
+						<Markdown className="post-content" content={currentPost.content} />
+					)
+					: null}
+			</div>
+		</div>
 	);
 }

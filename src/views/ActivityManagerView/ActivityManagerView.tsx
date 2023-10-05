@@ -28,7 +28,7 @@ const activityTypes = {
 	Article: <Icon type="article" />,
 };
 
-export default function ActivityManagerView() {
+export default function ActivityManagerView(){
 	const {
 		data: activities, isLoading, isError, isSuccess,
 	} = useGetActivitiesQuery();

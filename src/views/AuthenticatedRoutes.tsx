@@ -15,7 +15,7 @@ import {
 import Notification from "../components/AppNotification";
 import ActivityManagerView from "./ActivityManagerView";
 
-export default function AuthenticatedRoutes() {
+export default function AuthenticatedRoutes(){
 	const {
 		toasts,
 	} = useContext(toastContext);

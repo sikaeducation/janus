@@ -43,7 +43,7 @@ export default function CoachInbox(){
 
 	const currentBroadcastRequested = useRef<boolean>(false);
 	useEffect(() => {
-		if (!currentBroadcastRequested.current){
+		if (!currentBroadcastRequested.current) {
 			getCurrentPrompt();
 			currentBroadcastRequested.current = true;
 		}

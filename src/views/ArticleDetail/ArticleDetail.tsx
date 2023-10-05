@@ -53,7 +53,7 @@ const actions = [
 
 export default function ArticleDetail({
 	activity, setActivity,
-}: Props) {
+}: Props){
 	return (
 		<div className="ArticleDetail">
 			<Form

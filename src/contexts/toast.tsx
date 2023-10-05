@@ -15,7 +15,7 @@ type props = {
 
 export default function ToastProvider({
 	children,
-}: props) {
+}: props){
 	const [
 		toasts,
 		setToasts,

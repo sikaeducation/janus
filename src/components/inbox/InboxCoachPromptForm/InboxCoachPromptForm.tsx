@@ -17,7 +17,7 @@ export default function InboxCoachPromptForm({
 	setPrompt,
 	tagString,
 	setTagString,
-}: props) {
+}: props){
 	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		const tagsArray = tagString

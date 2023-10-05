@@ -4,7 +4,7 @@ function getNextLink(
 	currentPost: hydratedPost,
 ): internalLink | null{
 	// Has children
-	if (currentPost.children.length > 0){
+	if (currentPost.children.length > 0) {
 		const firstChild = posts.find((post) => post.slug === currentPost.children[0]);
 		return firstChild
 			? {
@@ -19,7 +19,7 @@ function getNextLink(
 	const parent = posts.find((post) => post.children.includes(currentPost.slug))!;
 	if (!parent) return null;
 	const currentIndex = parent.children.indexOf(currentPost.slug);
-	if (currentIndex === parent.children.length - 1){
+	if (currentIndex === parent.children.length - 1) {
 		return {
 			slug: parent.slug,
 			label: `Back to ${parent.label.short ?? parent.label.full}`,

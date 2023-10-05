@@ -16,7 +16,7 @@ const {
 	setTokenFetcher,
 } = tokenAccessors;
 
-export default function useAuth() {
+export default function useAuth(){
 	const {
 		user, isLoading, isAuthenticated, getAccessTokenSilently,
 	}

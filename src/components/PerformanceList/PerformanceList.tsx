@@ -25,7 +25,7 @@ export default function PerformanceList({
 
 	useEffect(
 		() => {
-			if (!isInitialized.current){
+			if (!isInitialized.current) {
 				isInitialized.current = true;
 				lastMessageRef.current?.scrollIntoView({
 					behavior: "smooth",

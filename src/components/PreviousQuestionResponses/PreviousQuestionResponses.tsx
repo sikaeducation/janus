@@ -33,7 +33,7 @@ export default function PreviousQuestionResponses({
 	const getIndicator = useIndicator();
 	const handleKeyboard
     = (state: boolean) => (event: React.KeyboardEvent<HTMLDivElement>) => {
-    	if (event.keyCode === 13){
+    	if (event.keyCode === 13) {
     		setShouldDisplay(state);
     	}
     };

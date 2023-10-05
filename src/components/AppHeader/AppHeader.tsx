@@ -17,7 +17,7 @@ import {
 	RootState,
 } from "../../store";
 
-function AppHeader() {
+function AppHeader(){
 	const {
 		"https://sikaeducation.com/role": role,
 		email,

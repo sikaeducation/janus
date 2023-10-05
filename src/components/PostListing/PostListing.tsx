@@ -19,7 +19,7 @@ type props = {
 
 export default function PostListing({
 	post, isActive, handlers,
-}: props) {
+}: props){
 	const {
 		program,
 	} = useContext(programContext);

@@ -176,7 +176,7 @@ performanceTuple) => performanceLearnerId === learnerId);
 	const isInitialized = useRef(false);
 	useEffect(
 		() => {
-			if (slugs.length > 0 && !isInitialized.current){
+			if (slugs.length > 0 && !isInitialized.current) {
 				setSelectedSlug(slugs.length > 0
 					? slugs[0]
 					: "");

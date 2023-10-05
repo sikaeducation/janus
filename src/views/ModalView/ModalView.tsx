@@ -13,7 +13,7 @@ type props = {
 
 export default function ModalView({
 	onClose, children,
-}: props) {
+}: props){
 	return createPortal(
 <div id="modal-wrapper">
 			<div id="modal">

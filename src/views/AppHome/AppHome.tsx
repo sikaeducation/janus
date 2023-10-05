@@ -3,7 +3,7 @@ import {
 } from "@auth0/auth0-react";
 import "./AppHome.scss";
 
-export default function AppHome() {
+export default function AppHome(){
 	const {
 		loginWithRedirect,
 	} = useAuth0();

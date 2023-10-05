@@ -14,7 +14,7 @@ import {
 } from "./store";
 import useAuth from "./hooks/use-auth";
 
-function App() {
+function App(){
 	useAuth();
 	const selector = (state: RootState) => state.user;
 	const {

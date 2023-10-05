@@ -36,7 +36,7 @@ export const getSequence = (
 		];
 };
 
-export default function ProgressViewer() {
+export default function ProgressViewer(){
 	const {
 		postsBySlug, program,
 	} = useContext(programContext);
