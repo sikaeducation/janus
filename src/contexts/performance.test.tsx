@@ -1,5 +1,9 @@
-test("activity service posts activities", async() => {
-	expect(true).toBeTrue();
-});
+test(
+	"activity service posts activities",
+	async() => {
+		expect(true)
+			.toBeTrue();
+	},
+);
 
 export {};

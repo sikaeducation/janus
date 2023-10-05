@@ -1,8 +1,16 @@
-import { faCaretDown, faCaretRight } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { format } from "date-fns";
+import {
+	faCaretDown, faCaretRight,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+	FontAwesomeIcon,
+} from "@fortawesome/react-fontawesome";
+import {
+	format,
+} from "date-fns";
 import Gravatar from "react-gravatar";
-import { Markdown } from "@sikaeducation/ui";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import useIndicator from "../../hooks/use-indicator";
 import "./PreviousQuestionResponses.scss";
 
@@ -12,7 +20,10 @@ type Props = {
   setShouldDisplay: (newState: boolean) => void;
 };
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy: p");
+const formatDateTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"M/d/yy: p",
+);
 
 export default function PreviousQuestionResponses({
 	performances,

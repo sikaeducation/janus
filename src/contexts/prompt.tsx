@@ -1,6 +1,10 @@
-import { useState, createContext, useContext, useMemo } from "react";
+import {
+	useState, createContext, useContext, useMemo,
+} from "react";
 import useSocketHandlers from "../hooks/use-socket-handlers";
-import { SocketContext } from "./socket";
+import {
+	SocketContext,
+} from "./socket";
 
 type PromptContext = {
   startInboxPrompt: (broadcast: rawBroadcast) => void;
@@ -8,13 +12,16 @@ type PromptContext = {
   currentBroadcast: rawBroadcast | null;
   getCurrentPrompt: () => void;
 };
-export const promptContext = createContext<PromptContext>({} as PromptContext);
+export const promptContext = createContext<PromptContext>({
+} as PromptContext);
 
 type props = {
   children: JSX.Element;
 };
 
-export function PromptProvider({ children }: props){
+export function PromptProvider({
+	children,
+}: props){
 	const [
 		currentBroadcast,
 		setCurrentBroadcast,
@@ -26,27 +33,33 @@ export function PromptProvider({ children }: props){
 		"end-inbox-prompt": () => setCurrentBroadcast(null),
 	});
 
-	const providerValue = useMemo(() => {
-		const startInboxPrompt = (broadcast: rawBroadcast) => {
-			socket.emit("start-inbox-prompt", broadcast);
-		};
-		const endInboxPrompt = () => {
-			socket.emit("end-inbox-prompt");
-		};
-		const getCurrentPrompt = () => {
-			socket.emit("get-inbox-prompt");
-		};
+	const providerValue = useMemo(
+		() => {
+			const startInboxPrompt = (broadcast: rawBroadcast) => {
+				socket.emit(
+					"start-inbox-prompt",
+					broadcast,
+				);
+			};
+			const endInboxPrompt = () => {
+				socket.emit("end-inbox-prompt");
+			};
+			const getCurrentPrompt = () => {
+				socket.emit("get-inbox-prompt");
+			};
 
-		return {
-			startInboxPrompt,
-			endInboxPrompt,
+			return {
+				startInboxPrompt,
+				endInboxPrompt,
+				currentBroadcast,
+				getCurrentPrompt,
+			};
+		},
+		[
 			currentBroadcast,
-			getCurrentPrompt,
-		};
-	}, [
-		currentBroadcast,
-		socket,
-	]);
+			socket,
+		],
+	);
 
 	return (
     <promptContext.Provider value={providerValue}>

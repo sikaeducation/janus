@@ -1,7 +1,12 @@
-import { keyBy } from "lodash/fp";
-import { useState, createContext, useEffect, useMemo } from "react";
+import {
+	keyBy,
+} from "lodash/fp";
+import {
+	useState, createContext, useEffect, useMemo,
+} from "react";
 
-export const programContext = createContext({} as unknown as {
+export const programContext = createContext({
+} as unknown as {
     isLoading: boolean;
     isError: boolean;
     program: hydratedProgram | null;
@@ -10,7 +15,9 @@ export const programContext = createContext({} as unknown as {
   });
 
 type props = { children: JSX.Element };
-export function ProgramProvider({ children }: props){
+export function ProgramProvider({
+	children,
+}: props){
 	const [
 		isError,
 		setIsError,
@@ -43,43 +50,50 @@ export function ProgramProvider({ children }: props){
 		...program.posts,
 	];
 	const postsBySlug = keyBy<hydratedPost>("slug")(posts);
-	useEffect(() => {
-		const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
-		setIsLoading(true);
-		fetch(`${apiBaseUrl}/programs/${id}`)
-			.then((response) => response.json())
-			.then((response) => {
-				setIsError(false);
-				setProgram(response.program);
-			})
-			.catch((error) => {
-				setIsError(true);
-				// eslint-disable-next-line
+	useEffect(
+		() => {
+			const apiBaseUrl = process.env.REACT_APP_API_BASE_URL;
+			setIsLoading(true);
+			fetch(`${apiBaseUrl}/programs/${id}`)
+				.then((response) => response.json())
+				.then((response) => {
+					setIsError(false);
+					setProgram(response.program);
+				})
+				.catch((error) => {
+					setIsError(true);
+					// eslint-disable-next-line
 				console.error(error.message);
-			})
-			.finally(() => {
+				})
+				.finally(() => {
+					setIsLoading(false);
+				});
+
+			return () => {
 				setIsLoading(false);
-			});
+				setIsError(false);
+			};
+		},
+		[
+			id,
+		],
+	);
 
-		return () => {
-			setIsLoading(false);
-			setIsError(false);
-		};
-	}, [id]);
-
-	const providerValue = useMemo(() => ({
-		program,
-		setProgram,
-		postsBySlug,
-		isError,
-		isLoading,
-	}),
-	[
-		isError,
-		isLoading,
-		program,
-		postsBySlug,
-	]);
+	const providerValue = useMemo(
+		() => ({
+			program,
+			setProgram,
+			postsBySlug,
+			isError,
+			isLoading,
+		}),
+		[
+			isError,
+			isLoading,
+			program,
+			postsBySlug,
+		],
+	);
 
 	return (
     <programContext.Provider value={providerValue}>

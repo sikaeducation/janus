@@ -1,4 +1,6 @@
-import { Page } from "@playwright/test";
+import {
+	Page,
+} from "@playwright/test";
 
 async function asCoach(page: Page){
 	await page.evaluate(() => {

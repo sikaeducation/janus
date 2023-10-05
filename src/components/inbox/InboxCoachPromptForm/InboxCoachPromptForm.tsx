@@ -1,4 +1,6 @@
-import { TextArea } from "@sikaeducation/ui";
+import {
+	TextArea,
+} from "@sikaeducation/ui";
 import "./InboxCoachPromptForm.scss";
 
 type props = {

@@ -1,4 +1,6 @@
-import { Markdown } from "@sikaeducation/ui";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import "./InboxLearnerPromptResponseDisplay.scss";
 
 type props = {
@@ -10,7 +12,9 @@ export default function InboxLearnerPromptResponseDisplay({
 	currentBroadcast,
 	response,
 }: props){
-	const { prompt } = currentBroadcast;
+	const {
+		prompt,
+	} = currentBroadcast;
 	return (
     <>
       <Markdown className="prompt" content={prompt} />

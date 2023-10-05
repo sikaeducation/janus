@@ -1,10 +1,19 @@
 import "./EvaluatorPerformance.scss";
-import { Link } from "react-router-dom";
-import { format } from "date-fns";
+import {
+	Link,
+} from "react-router-dom";
+import {
+	format,
+} from "date-fns";
 import Gravatar from "react-gravatar";
-import { Markdown } from "@sikaeducation/ui";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy p");
+const formatDateTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"M/d/yy p",
+);
 
 type props = {
   path: string;

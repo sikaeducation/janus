@@ -1,8 +1,12 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import {
+	useAuth0,
+} from "@auth0/auth0-react";
 import "./AppHome.scss";
 
 export default function AppHome() {
-	const { loginWithRedirect } = useAuth0();
+	const {
+		loginWithRedirect,
+	} = useAuth0();
 	return (
 		<div className="AppHome">
 			<h1>Welcome to Sika Education!</h1>

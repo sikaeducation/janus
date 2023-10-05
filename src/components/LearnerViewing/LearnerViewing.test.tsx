@@ -1,5 +1,9 @@
-test("<LearnerViewing />", () => {
-	expect(true).toBeTruthy();
-});
+test(
+	"<LearnerViewing />",
+	() => {
+		expect(true)
+			.toBeTruthy();
+	},
+);
 
 export {};

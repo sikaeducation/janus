@@ -1,11 +1,17 @@
 import "./ActivityManagerView.scss";
-import { ReactNode, useState } from "react";
+import {
+	ReactNode, useState,
+} from "react";
 
-import { Button, Heading, Drawer, DataTable, Icon, StatusMessage } from "@sikaeducation/ui";
+import {
+	Button, Heading, Drawer, DataTable, Icon, StatusMessage,
+} from "@sikaeducation/ui";
 import ModalView from "../ModalView";
 import NewActivityForm from "../NewActivityForm";
 
-import { fields, skeletonRows } from "./table";
+import {
+	fields, skeletonRows,
+} from "./table";
 import {
 	useCreateActivityMutation,
 	useGetActivitiesQuery,
@@ -23,8 +29,12 @@ const activityTypes = {
 };
 
 export default function ActivityManagerView() {
-	const { data: activities, isLoading, isError, isSuccess } = useGetActivitiesQuery();
-	const [createActivity] = useCreateActivityMutation();
+	const {
+		data: activities, isLoading, isError, isSuccess,
+	} = useGetActivitiesQuery();
+	const [
+		createActivity,
+	] = useCreateActivityMutation();
 	const [
 		newActivityOpen,
 		setNewActivityOpen,
@@ -63,7 +73,9 @@ export default function ActivityManagerView() {
 			...activity,
 			id: activity._id || "",
 			type: activityTypes[activity._type],
-			publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+			publishedIcon: activity.published
+				? <Icon type="checkmark" />
+				: null,
 		})) || [];
 
 	return (

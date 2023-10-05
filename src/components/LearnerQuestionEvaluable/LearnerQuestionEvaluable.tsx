@@ -1,5 +1,9 @@
-import { useContext, useState } from "react";
-import { performanceContext } from "../../contexts/performance";
+import {
+	useContext, useState,
+} from "react";
+import {
+	performanceContext,
+} from "../../contexts/performance";
 import QuestionEvaluationForm from "../QuestionEvaluationForm";
 import "./LearnerQuestionEvaluable.scss";
 
@@ -7,12 +11,16 @@ type props = {
   performance: evaluatedQuestionPerformance;
 };
 
-export default function LearnerQuestionEvaluable({ performance }: props){
+export default function LearnerQuestionEvaluable({
+	performance,
+}: props){
 	const [
 		showForm,
 		setShowForm,
 	] = useState(true);
-	const { getPreviousEvaluations } = useContext(performanceContext);
+	const {
+		getPreviousEvaluations,
+	} = useContext(performanceContext);
 
 	const previousPerformances = getPreviousEvaluations(performance) as unknown as evaluatedQuestionPerformance[];
 

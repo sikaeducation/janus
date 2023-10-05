@@ -1,1 +1,3 @@
-export { default } from "./EvaluatorQuestionSelector";
+export {
+	default,
+} from "./EvaluatorQuestionSelector";

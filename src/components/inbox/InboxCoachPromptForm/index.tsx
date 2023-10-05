@@ -1,1 +1,3 @@
-export { default } from "./InboxCoachPromptForm";
+export {
+	default,
+} from "./InboxCoachPromptForm";

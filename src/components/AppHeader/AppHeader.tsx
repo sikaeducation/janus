@@ -1,11 +1,21 @@
 import "./AppHeader.scss";
-import { NavLink } from "react-router-dom";
+import {
+	NavLink,
+} from "react-router-dom";
 
-import { useSelector } from "react-redux";
-import { useAuth0 } from "@auth0/auth0-react";
-import { Button, Logo, Avatar } from "@sikaeducation/ui";
+import {
+	useSelector,
+} from "react-redux";
+import {
+	useAuth0,
+} from "@auth0/auth0-react";
+import {
+	Button, Logo, Avatar,
+} from "@sikaeducation/ui";
 
-import { RootState } from "../../store";
+import {
+	RootState,
+} from "../../store";
 
 function AppHeader() {
 	const {
@@ -16,7 +26,9 @@ function AppHeader() {
 		isAuthenticated,
 		isLoading,
 	} = useSelector((state: RootState) => state.user);
-	const { logout, loginWithRedirect } = useAuth0();
+	const {
+		logout, loginWithRedirect,
+	} = useAuth0();
 
 	return (
 		<header className="AppHeader">

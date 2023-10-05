@@ -1,11 +1,23 @@
 // eslint-disable-next-line
 // @ts-nocheck
-import { maxBy, fromPairs } from "lodash/fp";
-import { User } from "@auth0/auth0-react";
-import { useEffect, useContext, useState, useCallback, useRef } from "react";
-import { Markdown } from "@sikaeducation/ui";
-import { programContext } from "../../contexts/program";
-import { performanceContext } from "../../contexts/performance";
+import {
+	maxBy, fromPairs,
+} from "lodash/fp";
+import {
+	User,
+} from "@auth0/auth0-react";
+import {
+	useEffect, useContext, useState, useCallback, useRef,
+} from "react";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
+import {
+	programContext,
+} from "../../contexts/program";
+import {
+	performanceContext,
+} from "../../contexts/performance";
 import "./AppEvaluator.scss";
 // eslint-disable-next-line max-len
 import EvaluatorPerformance from "../../components/evaluator/EvaluatorPerformance";
@@ -20,8 +32,12 @@ type props = {
   user?: User;
 };
 
-export default function AppEvaluator({ user }: props){
-	const { unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation }
+export default function AppEvaluator({
+	user,
+}: props){
+	const {
+		unevaluatedQuestionPerformancesBySlugByLearner, postEvaluation,
+	}
     = useContext(performanceContext);
 	const [
 		selectedSlug,
@@ -39,61 +55,89 @@ export default function AppEvaluator({ user }: props){
         performance: evaluatedQuestionPerformance;
       }
     >
-  >({});
+  >({
+  });
 	const slugs = Object.keys(unevaluatedQuestionPerformancesBySlugByLearner);
 	const currentQuestion
-    = unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {};
-	const currentPerformances = Object.entries(currentQuestion).map(([
-		learnerId,
-		performances,
-	]) => [
-		learnerId,
-		maxBy("createdAt", performances),
-	] as const);
-
-	const { prompt, answer } = currentPerformances?.[0]?.[1]?.payload || {};
-	const { postsBySlug } = useContext(programContext);
-	const getPath = useCallback((slug: string) => postsBySlug[slug].path ?? "",
-		[postsBySlug]);
-	const getFeedback = useCallback((learnerId: string) => evaluations[learnerId]?.feedback || "",
-		[evaluations]);
-	const getStatus = useCallback((learnerId: string) => evaluations[learnerId]?.status || "",
-		[evaluations]);
-
-	const setAll = (status: string) => setEvaluations((previousState) => {
-		const newState = Object.entries(previousState).map(([
+    = unevaluatedQuestionPerformancesBySlugByLearner[selectedSlug] || {
+    };
+	const currentPerformances = Object.entries(currentQuestion)
+		.map(([
 			learnerId,
-			evaluation,
+			performances,
 		]) => [
 			learnerId,
-			{
-				...evaluation,
-				status,
-			},
-		]);
+			maxBy(
+				"createdAt",
+				performances,
+			),
+		] as const);
+
+	const {
+		prompt, answer,
+	} = currentPerformances?.[0]?.[1]?.payload || {
+	};
+	const {
+		postsBySlug,
+	} = useContext(programContext);
+	const getPath = useCallback(
+		(slug: string) => postsBySlug[slug].path ?? "",
+		[
+			postsBySlug,
+		],
+	);
+	const getFeedback = useCallback(
+		(learnerId: string) => evaluations[learnerId]?.feedback || "",
+		[
+			evaluations,
+		],
+	);
+	const getStatus = useCallback(
+		(learnerId: string) => evaluations[learnerId]?.status || "",
+		[
+			evaluations,
+		],
+	);
+
+	const setAll = (status: string) => setEvaluations((previousState) => {
+		const newState = Object.entries(previousState)
+			.map(([
+				learnerId,
+				evaluation,
+			]) => [
+				learnerId,
+				{
+					...evaluation,
+					status,
+				},
+			]);
 		return fromPairs(newState);
 	});
-	const updateFeedback = useCallback((learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setEvaluations((evaluations) => ({
-			...evaluations,
-			[learnerId]: {
-				...evaluations[learnerId],
-				feedback: event.target.value,
-			},
-		}));
-	},
-	[]);
+	const updateFeedback = useCallback(
+		(learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+			setEvaluations((evaluations) => ({
+				...evaluations,
+				[learnerId]: {
+					...evaluations[learnerId],
+					feedback: event.target.value,
+				},
+			}));
+		},
+		[],
+	);
 
-	const updateStatus = useCallback((learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
-		setEvaluations((evaluations) => ({
-			...evaluations,
-			[learnerId]: {
-				...evaluations[learnerId],
-				status: event.target.value,
-			},
-		}));
-	},
-	[]);
+	const updateStatus = useCallback(
+		(learnerId: string) => (event: React.ChangeEvent<HTMLInputElement>) => {
+			setEvaluations((evaluations) => ({
+				...evaluations,
+				[learnerId]: {
+					...evaluations[learnerId],
+					status: event.target.value,
+				},
+			}));
+		},
+		[],
+	);
 
 	const submitAll = (event: React.FormEvent<HTMLFormElement>) => {
 		event.preventDefault();
@@ -104,7 +148,9 @@ export default function AppEvaluator({ user }: props){
 				learnerId,
 				evaluation,
 			]) => {
-				const learnerPerformance = currentPerformances.find(([performanceLearnerId]: performanceTuple) => performanceLearnerId === learnerId);
+				const learnerPerformance = currentPerformances.find(([
+					performanceLearnerId]:
+performanceTuple) => performanceLearnerId === learnerId);
 				const evaluationToPost = {
 					performanceId: learnerPerformance[1].id,
 					learnerId,
@@ -117,7 +163,9 @@ export default function AppEvaluator({ user }: props){
 		Promise.all(requests)
 			.then(() => {
 				// index 0 will still be there while waiting for sockets to come back
-				setSelectedSlug(slugs.length > 1 ? slugs[1] : "");
+				setSelectedSlug(slugs.length > 1
+					? slugs[1]
+					: "");
 			})
 			.catch((error) => {
 				// eslint-disable-next-line
@@ -126,34 +174,45 @@ export default function AppEvaluator({ user }: props){
 	};
 
 	const isInitialized = useRef(false);
-	useEffect(() => {
-		if (slugs.length > 0 && !isInitialized.current){
-			setSelectedSlug(slugs.length > 0 ? slugs[0] : "");
-			isInitialized.current = true;
-		}
-	}, [
-		unevaluatedQuestionPerformancesBySlugByLearner,
-		slugs,
-	]);
-	useEffect(() => {
-		const getInitialEvaluations = () => currentPerformances.reduce((initialState, [
-			learnerId,
-			performance,
-		]) => ({
-			...initialState,
-			[learnerId]: {
-				feedback: "",
-				status: "pending",
-				performance,
-			},
-		}),
-		{});
+	useEffect(
+		() => {
+			if (slugs.length > 0 && !isInitialized.current){
+				setSelectedSlug(slugs.length > 0
+					? slugs[0]
+					: "");
+				isInitialized.current = true;
+			}
+		},
+		[
+			unevaluatedQuestionPerformancesBySlugByLearner,
+			slugs,
+		],
+	);
+	useEffect(
+		() => {
+			const getInitialEvaluations = () => currentPerformances.reduce(
+				(initialState, [
+					learnerId,
+					performance,
+				]) => ({
+					...initialState,
+					[learnerId]: {
+						feedback: "",
+						status: "pending",
+						performance,
+					},
+				}),
+				{
+				},
+			);
 
-		setEvaluations(getInitialEvaluations());
-	}, [
-		selectedSlug,
-		currentPerformances,
-	]);
+			setEvaluations(getInitialEvaluations());
+		},
+		[
+			selectedSlug,
+			currentPerformances,
+		],
+	);
 
 	return (
     <div className="AppEvaluator">

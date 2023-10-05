@@ -1,7 +1,15 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { useContext, useState } from "react";
-import { Markdown, TextArea, Button } from "@sikaeducation/ui";
-import { performanceContext } from "../../contexts/performance";
+import {
+	useAuth0,
+} from "@auth0/auth0-react";
+import {
+	useContext, useState,
+} from "react";
+import {
+	Markdown, TextArea, Button,
+} from "@sikaeducation/ui";
+import {
+	performanceContext,
+} from "../../contexts/performance";
 import "./QuestionForm.scss";
 import useIndicator from "../../hooks/use-indicator";
 import PreviousQuestionResponses from "../PreviousQuestionResponses";
@@ -39,9 +47,13 @@ export default function QuestionForm({
 		responsesShouldDisplay,
 		setResponsesShouldDisplay,
 	] = useState(false);
-	const { performancesBySlugByLearner, lastPerformanceBySlugByLearner }
+	const {
+		performancesBySlugByLearner, lastPerformanceBySlugByLearner,
+	}
     = useContext(performanceContext);
-	const { user } = useAuth0();
+	const {
+		user,
+	} = useAuth0();
 	const previousPerformances
     = performancesBySlugByLearner?.[id]?.[user?.email || ""] ?? [];
 	const typedPreviousPerformances = previousPerformances.filter((performance: evaluatedPerformance): performance is evaluatedQuestionPerformance => performance.type === "question");
@@ -53,7 +65,11 @@ export default function QuestionForm({
 	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
 		event.preventDefault();
 		setDisplayResponseForm(false);
-		postResponse({ response, prompt, answer });
+		postResponse({
+			response,
+			prompt,
+			answer,
+		});
 	};
 
 	return (

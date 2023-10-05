@@ -1,26 +1,47 @@
-import { useAuth0 } from "@auth0/auth0-react";
-import { format } from "date-fns";
-import { useContext } from "react";
+import {
+	useAuth0,
+} from "@auth0/auth0-react";
+import {
+	format,
+} from "date-fns";
+import {
+	useContext,
+} from "react";
 import Gravatar from "react-gravatar";
-import { Link } from "react-router-dom";
-import { Markdown } from "@sikaeducation/ui";
-import { programContext } from "../../contexts/program";
+import {
+	Link,
+} from "react-router-dom";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
+import {
+	programContext,
+} from "../../contexts/program";
 import useIndicator from "../../hooks/use-indicator";
 import LearnerSubmissionEvaluable from "../LearnerSubmissionEvaluable";
 import "./LearnerSubmission.scss";
 
-const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
+const formatTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"p",
+);
 
 type props = {
   performance: evaluatedSubmissionPerformance;
 };
 
-export default function LearnerSubmission({ performance }: props){
-	const { user } = useAuth0();
+export default function LearnerSubmission({
+	performance,
+}: props){
+	const {
+		user,
+	} = useAuth0();
 	const getIndicator = useIndicator();
 	const role = (user && user["https://sikaeducation.com/role"]) || "";
 
-	const { postsBySlug } = useContext(programContext);
+	const {
+		postsBySlug,
+	} = useContext(programContext);
 	const post = postsBySlug[performance.postSlug];
 	const path = post?.path || "";
 

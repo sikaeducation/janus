@@ -1,18 +1,39 @@
-import { useContext } from "react";
-import { format } from "date-fns";
-import { Link } from "react-router-dom";
-import { filter, flow, reverse, sortBy, take } from "lodash/fp";
-import { Markdown } from "@sikaeducation/ui";
-import { performanceContext } from "../../contexts/performance";
+import {
+	useContext,
+} from "react";
+import {
+	format,
+} from "date-fns";
+import {
+	Link,
+} from "react-router-dom";
+import {
+	filter, flow, reverse, sortBy, take,
+} from "lodash/fp";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
+import {
+	performanceContext,
+} from "../../contexts/performance";
 import "./EvaluationViewer.scss";
 import useIndicator from "../../hooks/use-indicator";
-import { programContext } from "../../contexts/program";
+import {
+	programContext,
+} from "../../contexts/program";
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy p");
+const formatDateTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"M/d/yy p",
+);
 
 export default function EvaluationViewer(){
-	const { performancesWithEvaluations } = useContext(performanceContext);
-	const { postsBySlug } = useContext(programContext);
+	const {
+		performancesWithEvaluations,
+	} = useContext(performanceContext);
+	const {
+		postsBySlug,
+	} = useContext(programContext);
 
 	const getIndicator = useIndicator();
 	const sortedPerformances = flow([

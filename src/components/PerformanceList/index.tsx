@@ -1,1 +1,3 @@
-export { default } from "./PerformanceList";
+export {
+	default,
+} from "./PerformanceList";

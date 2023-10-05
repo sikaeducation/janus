@@ -1,6 +1,8 @@
 /* eslint @typescript-eslint/no-non-null-assertion: "off" */
-function getNextLink(posts: hydratedPost[],
-	currentPost: hydratedPost): internalLink | null{
+function getNextLink(
+	posts: hydratedPost[],
+	currentPost: hydratedPost,
+): internalLink | null{
 	// Has children
 	if (currentPost.children.length > 0){
 		const firstChild = posts.find((post) => post.slug === currentPost.children[0]);
@@ -81,8 +83,14 @@ export function getLinks(program: hydratedProgram, currentPost: hydratedPost){
 		"unit",
 	].includes(currentPost.type)
 		? []
-		: getCrumbLinks(program.posts, currentPost.path);
-	const nextLink = getNextLink(program.posts, currentPost);
+		: getCrumbLinks(
+			program.posts,
+			currentPost.path,
+		);
+	const nextLink = getNextLink(
+		program.posts,
+		currentPost,
+	);
 
 	return {
 		unitLinks,

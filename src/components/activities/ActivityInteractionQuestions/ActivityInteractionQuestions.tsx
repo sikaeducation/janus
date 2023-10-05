@@ -1,6 +1,10 @@
-import { useContext, useEffect, useState } from "react";
+import {
+	useContext, useEffect, useState,
+} from "react";
 import YAML from "yaml";
-import { programContext } from "../../../contexts/program";
+import {
+	programContext,
+} from "../../../contexts/program";
 import QuestionForm from "../../QuestionForm";
 import "./ActivityInteractionQuestions.scss";
 
@@ -18,19 +22,29 @@ export default function ActivityInteractionQuestions({
 	const [
 		responses,
 		setResponses,
-	] = useState<Record<string, string>>({});
-	const { postsBySlug } = useContext(programContext);
+	] = useState<Record<string, string>>({
+	});
+	const {
+		postsBySlug,
+	} = useContext(programContext);
 	const post = postsBySlug[postSlug];
 	const frontmatter = /^---\s([\s\S]*?)\s---/.exec(post.content);
 	const parsedFrontmatter = YAML.parse((frontmatter && frontmatter[1]) || "");
-	const { questions } = parsedFrontmatter;
+	const {
+		questions,
+	} = parsedFrontmatter;
 	useEffect(() => {
-		const formQuestions = questions.reduce((existingQuestions: Record<string, string>,
-			question: { id: string; prompt: string; answer?: string }) => ({
-			...existingQuestions,
-			[question.id]: "",
-		}),
-		{});
+		const formQuestions = questions.reduce(
+			(
+				existingQuestions: Record<string, string>,
+				question: { id: string; prompt: string; answer?: string },
+			) => ({
+				...existingQuestions,
+				[question.id]: "",
+			}),
+			{
+			},
+		);
 		setResponses(formQuestions);
 		// eslint-disable-next-line
   }, [postSlug]);

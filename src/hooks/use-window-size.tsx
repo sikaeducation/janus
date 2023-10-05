@@ -1,4 +1,6 @@
-import { useState, useEffect } from "react";
+import {
+	useState, useEffect,
+} from "react";
 
 type Breakpoint = "small" | "large";
 
@@ -22,18 +24,29 @@ export default function useWindowSize(): Size{
 		breakpoint: undefined,
 	});
 
-	useEffect(() => {
-		function handleResize(){
-			setWindowSize({
-				width: window.innerWidth,
-				height: window.innerHeight,
-				breakpoint: window.innerWidth > breakpoints.small ? "large" : "small",
-			});
-		}
-		window.addEventListener("resize", handleResize);
-		handleResize();
-		return () => window.removeEventListener("resize", handleResize);
-	}, []);
+	useEffect(
+		() => {
+			function handleResize(){
+				setWindowSize({
+					width: window.innerWidth,
+					height: window.innerHeight,
+					breakpoint: window.innerWidth > breakpoints.small
+						? "large"
+						: "small",
+				});
+			}
+			window.addEventListener(
+				"resize",
+				handleResize,
+			);
+			handleResize();
+			return () => window.removeEventListener(
+				"resize",
+				handleResize,
+			);
+		},
+		[],
+	);
 
 	return windowSize;
 }

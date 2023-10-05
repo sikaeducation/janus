@@ -1,1 +1,3 @@
-export { default } from "./InboxCoachPromptDisplay";
+export {
+	default,
+} from "./InboxCoachPromptDisplay";

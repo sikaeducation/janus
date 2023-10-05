@@ -1,5 +1,9 @@
-test("AppMissing", () => {
-	expect(true).toBeTrue();
-});
+test(
+	"AppMissing",
+	() => {
+		expect(true)
+			.toBeTrue();
+	},
+);
 
 export {};

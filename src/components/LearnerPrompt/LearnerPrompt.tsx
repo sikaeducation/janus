@@ -1,8 +1,15 @@
-import { format } from "date-fns";
-import { Markdown } from "@sikaeducation/ui";
+import {
+	format,
+} from "date-fns";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import "./LearnerPrompt.scss";
 
-const formatTime = (dateTime: string) => format(new Date(dateTime), "p");
+const formatTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"p",
+);
 
 export default function LearnerPrompt({
 	performance,

@@ -1,4 +1,6 @@
-import { Skeleton } from "@sikaeducation/ui";
+import {
+	Skeleton,
+} from "@sikaeducation/ui";
 
 type Field = {
 	header: string;
@@ -50,4 +52,7 @@ const skeletonRow = {
 
 export const skeletonRows = Array(10)
 	.fill(skeletonRow)
-	.map((row: typeof skeletonRow, index) => ({ ...row, id: index }));
+	.map((row: typeof skeletonRow, index) => ({
+		...row,
+		id: index,
+	}));

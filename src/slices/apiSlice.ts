@@ -1,7 +1,11 @@
-import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import {
+	createApi, fetchBaseQuery,
+} from "@reduxjs/toolkit/query/react";
 import tokenAccessors from "../utilities/security";
 
-const { getToken } = tokenAccessors;
+const {
+	getToken,
+} = tokenAccessors;
 
 export const apiSlice = createApi({
 	reducerPath: "api",
@@ -10,15 +14,22 @@ export const apiSlice = createApi({
 		prepareHeaders: async(headers) => {
 			const token = await getToken();
 
-			headers.set("Authorization", `Bearer ${token}`);
+			headers.set(
+				"Authorization",
+				`Bearer ${token}`,
+			);
 			return headers;
 		},
 	}),
-	tagTypes: ["Activity"],
+	tagTypes: [
+		"Activity",
+	],
 	endpoints: (builder) => ({
 		getActivities: builder.query<Activity[], void>({
 			query: () => "activities",
-			providesTags: ["Activity"],
+			providesTags: [
+				"Activity",
+			],
 		}),
 		createActivity: builder.mutation<Activity, Activity>({
 			query: (activity) => ({
@@ -26,9 +37,13 @@ export const apiSlice = createApi({
 				method: "POST",
 				body: activity,
 			}),
-			invalidatesTags: ["Activity"],
+			invalidatesTags: [
+				"Activity",
+			],
 		}),
 	}),
 });
 
-export const { useGetActivitiesQuery, useCreateActivityMutation } = apiSlice;
+export const {
+	useGetActivitiesQuery, useCreateActivityMutation,
+} = apiSlice;

@@ -1,1 +1,3 @@
-export { default } from "./ActivityInteractionQuestions";
+export {
+	default,
+} from "./ActivityInteractionQuestions";

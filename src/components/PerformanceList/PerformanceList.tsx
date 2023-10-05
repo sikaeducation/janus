@@ -1,5 +1,9 @@
-import { format } from "date-fns";
-import { useEffect, useRef } from "react";
+import {
+	format,
+} from "date-fns";
+import {
+	useEffect, useRef,
+} from "react";
 import "./PerformanceList.scss";
 import PerformanceListing from "../PerformanceListing";
 
@@ -8,7 +12,10 @@ type props = {
   lastMessageRef: React.RefObject<HTMLLIElement>;
 };
 
-const formatDate = (date: string) => format(new Date(date), "eeee, LLLL do");
+const formatDate = (date: string) => format(
+	new Date(date),
+	"eeee, LLLL do",
+);
 
 export default function PerformanceList({
 	performances,
@@ -16,25 +23,29 @@ export default function PerformanceList({
 }: props){
 	const isInitialized = useRef<boolean>(false);
 
-	useEffect(() => {
-		if (!isInitialized.current){
-			isInitialized.current = true;
-			lastMessageRef.current?.scrollIntoView({
-				behavior: "smooth",
-			});
-		}
-	}, [
-		performances,
-		isInitialized,
-		lastMessageRef,
-	]);
+	useEffect(
+		() => {
+			if (!isInitialized.current){
+				isInitialized.current = true;
+				lastMessageRef.current?.scrollIntoView({
+					behavior: "smooth",
+				});
+			}
+		},
+		[
+			performances,
+			isInitialized,
+			lastMessageRef,
+		],
+	);
 
 	return (
     <div className="PerformanceList">
-      {Object.entries(performances).map(([
+      {Object.entries(performances)
+      	.map(([
       	date,
       	performancesByDay,
-      ]) => (
+      	]) => (
         <div key={date}>
           <h2>{formatDate(date)}</h2>
           <ul>
@@ -46,7 +57,7 @@ export default function PerformanceList({
             <li className="dummy" ref={lastMessageRef} />
           </ul>
         </div>
-      ))}
+      	))}
     </div>
 	);
 }

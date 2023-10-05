@@ -1,5 +1,9 @@
-test("AppHome", () => {
-	expect(true).toBeTrue();
-});
+test(
+	"AppHome",
+	() => {
+		expect(true)
+			.toBeTrue();
+	},
+);
 
 export {};

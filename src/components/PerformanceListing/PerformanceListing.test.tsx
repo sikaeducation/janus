@@ -1,5 +1,9 @@
-test("PerformanceListing", () => {
-	expect(true).toBeTrue();
-});
+test(
+	"PerformanceListing",
+	() => {
+		expect(true)
+			.toBeTrue();
+	},
+);
 
 export {};

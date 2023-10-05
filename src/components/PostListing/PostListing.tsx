@@ -1,8 +1,12 @@
 import classNames from "classnames";
 import "./PostListing.scss";
-import { MouseEventHandler, KeyboardEventHandler, useContext } from "react";
+import {
+	MouseEventHandler, KeyboardEventHandler, useContext,
+} from "react";
 import useClipboard from "react-use-clipboard";
-import { programContext } from "../../contexts/program";
+import {
+	programContext,
+} from "../../contexts/program";
 
 type props = {
 	post: hydratedPost;
@@ -13,11 +17,17 @@ type props = {
 	};
 };
 
-export default function PostListing({ post, isActive, handlers }: props) {
-	const { program } = useContext(programContext);
+export default function PostListing({
+	post, isActive, handlers,
+}: props) {
+	const {
+		program,
+	} = useContext(programContext);
 	let linksMarkdown = "";
 	if (program) {
-		const { posts } = program;
+		const {
+			posts,
+		} = program;
 		linksMarkdown = posts
 			.filter((eachPost) => post.children.includes(eachPost.slug))
 			.map((childPost) => (
@@ -32,7 +42,10 @@ export default function PostListing({ post, isActive, handlers }: props) {
 			tabIndex={0}
 			onClick={handlers.click}
 			onKeyPress={handlers.keyboard}
-			className={classNames({ PostListing: true, active: isActive })}
+			className={classNames({
+				PostListing: true,
+				active: isActive,
+			})}
 			data-testid="PostListing"
 		>
 			{post.label.short ?? post.label.full}

@@ -1,13 +1,23 @@
-import { useAuth0 } from "@auth0/auth0-react";
+import {
+	useAuth0,
+} from "@auth0/auth0-react";
 import {
 	faCheckCircle,
 	faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+	FontAwesomeIcon,
+} from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import { useContext, useState } from "react";
-import { Markdown } from "@sikaeducation/ui";
-import { performanceContext } from "../../contexts/performance";
+import {
+	useContext, useState,
+} from "react";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
+import {
+	performanceContext,
+} from "../../contexts/performance";
 import PreviousQuestionFeedback from "../PreviousQuestionFeedback";
 import "./QuestionEvaluationForm.scss";
 
@@ -22,7 +32,9 @@ export default function QuestionEvaluationForm({
 	performance,
 	cancel,
 }: props){
-	const { user } = useAuth0();
+	const {
+		user,
+	} = useAuth0();
 	const [
 		feedback,
 		setFeedback,
@@ -31,7 +43,9 @@ export default function QuestionEvaluationForm({
 		evaluationStatus,
 		setEvaluationStatus,
 	] = useState("");
-	const { postEvaluation } = useContext(performanceContext);
+	const {
+		postEvaluation,
+	} = useContext(performanceContext);
 	const canSubmit = !!evaluationStatus;
 
 	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {

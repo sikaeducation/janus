@@ -9,7 +9,9 @@ type props = {
   performance: postedPerformance;
 };
 
-export default function PerformanceListing({ performance }: props){
+export default function PerformanceListing({
+	performance,
+}: props){
 	const performanceListingTypes = {
 		view: <LearnerViewing performance={performance as postedViewPerformance} />,
 		submission: (

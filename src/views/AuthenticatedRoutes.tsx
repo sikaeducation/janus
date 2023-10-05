@@ -1,16 +1,24 @@
-import { Routes, Route } from "react-router-dom";
-import { useContext } from "react";
+import {
+	Routes, Route,
+} from "react-router-dom";
+import {
+	useContext,
+} from "react";
 // import { Toast } from '@sikaeducation/ui';
 import AppMissing from "./AppMissing";
 import AppLoading from "./AppLoading";
 import AppError from "./AppError";
-import { toastContext } from "../contexts/toast";
+import {
+	toastContext,
+} from "../contexts/toast";
 
 import Notification from "../components/AppNotification";
 import ActivityManagerView from "./ActivityManagerView";
 
 export default function AuthenticatedRoutes() {
-	const { toasts } = useContext(toastContext);
+	const {
+		toasts,
+	} = useContext(toastContext);
 	const showToastNotification = toasts.length > 0;
 
 	return (

@@ -1,5 +1,9 @@
-import { ComponentPropsWithoutRef, useState } from "react";
-import { Form } from "@sikaeducation/ui";
+import {
+	ComponentPropsWithoutRef, useState,
+} from "react";
+import {
+	Form,
+} from "@sikaeducation/ui";
 import "./NewActivityForm.scss";
 
 import newActivityFields from "./new-activity-fields";
@@ -9,7 +13,9 @@ type Props = {
 	save: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({ save, cancel }: Props) {
+export default function NewActivityForm({
+	save, cancel,
+}: Props) {
 	const [
 		newItem,
 		setNewItem,

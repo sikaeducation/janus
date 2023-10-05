@@ -1,1 +1,3 @@
-export { default } from "./InboxCoach";
+export {
+	default,
+} from "./InboxCoach";

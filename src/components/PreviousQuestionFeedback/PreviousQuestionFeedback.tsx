@@ -1,15 +1,24 @@
-import { format } from "date-fns";
-import { Markdown } from "@sikaeducation/ui";
+import {
+	format,
+} from "date-fns";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import useIndicator from "../../hooks/use-indicator";
 import "./PreviousQuestionFeedback.scss";
 
-const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy p");
+const formatDateTime = (dateTime: string) => format(
+	new Date(dateTime),
+	"M/d/yy p",
+);
 
 type props = {
   performances: evaluatedQuestionPerformance[];
 };
 
-export default function PreviousQuestionFeedback({ performances }: props){
+export default function PreviousQuestionFeedback({
+	performances,
+}: props){
 	const getIndicator = useIndicator();
 	const performancesWithEvaluations = performances.filter((performance) => performance.evaluation);
 

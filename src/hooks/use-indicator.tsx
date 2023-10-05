@@ -1,7 +1,15 @@
-import { countBy, flow, isEmpty, values } from "lodash/fp";
-import { useContext } from "react";
-import { Icon, Question } from "@sikaeducation/ui";
-import { performanceContext } from "../contexts/performance";
+import {
+	countBy, flow, isEmpty, values,
+} from "lodash/fp";
+import {
+	useContext,
+} from "react";
+import {
+	Icon, Question,
+} from "@sikaeducation/ui";
+import {
+	performanceContext,
+} from "../contexts/performance";
 
 const getViewIndicator = (performance: postedViewPerformance) => {
 	const indicators = {
@@ -9,7 +17,9 @@ const getViewIndicator = (performance: postedViewPerformance) => {
 		2: <Icon type="clear" />,
 		3: <Icon type="confident" />,
 	};
-	const { confidenceLevel } = performance.payload;
+	const {
+		confidenceLevel,
+	} = performance.payload;
 	return indicators[confidenceLevel];
 };
 
@@ -41,19 +51,26 @@ const getQuestionIndicator = (performance: evaluatedQuestionPerformance) => {
 const getQuestionIndicators = (
 	// eslint-disable-next-line
 	performance: postedPerformance,
-	performances: Record<string, postedQuestionPerformance>) => {
+	performances: Record<string, postedQuestionPerformance>,
+) => {
 	if (!performances) return null;
 
-	const { rejected, pending, accepted } = flow([
+	const {
+		rejected, pending, accepted,
+	} = flow([
 		values,
-		countBy((p: evaluatedQuestionPerformance) => !p.evaluation ? "pending" : p.evaluation.status),
+		countBy((p: evaluatedQuestionPerformance) => !p.evaluation
+			? "pending"
+			: p.evaluation.status),
 	])(performances);
 
 	return <Question pending={pending} rejected={rejected} accepted={accepted} />;
 };
 
 export default function useIndicator(){
-	const { lastQuestionPerformancesBySlugByLearnerByQuestion }
+	const {
+		lastQuestionPerformancesBySlugByLearnerByQuestion,
+	}
     = useContext(performanceContext);
 
 	const performanceTypes = {
@@ -67,13 +84,17 @@ export default function useIndicator(){
 			? null
 			: getQuestionIndicator(performance as evaluatedQuestionPerformance),
 		questions: (performance: postedPerformance) => {
-			const { postSlug } = performance as postedQuestionPerformance;
+			const {
+				postSlug,
+			} = performance as postedQuestionPerformance;
 			const questionPerformances
         = lastQuestionPerformancesBySlugByLearnerByQuestion[postSlug]?.[
         	performance.userId
         ];
-			return getQuestionIndicators(performance as evaluatedQuestionPerformance,
-				questionPerformances);
+			return getQuestionIndicators(
+performance as evaluatedQuestionPerformance,
+questionPerformances,
+			);
 		},
 	} as const;
 	return (performance: postedPerformance) => {

@@ -1,6 +1,10 @@
 import "./ProgramViewer.scss";
-import { KeyboardEvent, useState } from "react";
-import { Markdown } from "@sikaeducation/ui";
+import {
+	KeyboardEvent, useState,
+} from "react";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import PostListing from "../../components/PostListing";
 
 type props = {
@@ -48,7 +52,9 @@ const buildTree = (
 			];
 	});
 
-export default function ProgramViewer({ program }: props){
+export default function ProgramViewer({
+	program,
+}: props){
 	const [
 		currentPost,
 		setCurrentPost,

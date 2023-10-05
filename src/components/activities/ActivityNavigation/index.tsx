@@ -1,1 +1,3 @@
-export { default } from "./ActivityNavigation";
+export {
+	default,
+} from "./ActivityNavigation";

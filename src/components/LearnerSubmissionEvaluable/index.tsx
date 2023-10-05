@@ -1,1 +1,3 @@
-export { default } from "./LearnerSubmissionEvaluable";
+export {
+	default,
+} from "./LearnerSubmissionEvaluable";

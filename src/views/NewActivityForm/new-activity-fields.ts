@@ -1,5 +1,9 @@
-import { Form } from "@sikaeducation/ui";
-import { ComponentPropsWithoutRef } from "react";
+import {
+	Form,
+} from "@sikaeducation/ui";
+import {
+	ComponentPropsWithoutRef,
+} from "react";
 
 const newActivityFields: ComponentPropsWithoutRef<typeof Form>["fields"] = [
 	{

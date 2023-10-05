@@ -1,4 +1,6 @@
-import { useState, createContext, useContext, useEffect, useMemo } from "react";
+import {
+	useState, createContext, useContext, useEffect, useMemo,
+} from "react";
 import {
 	countBy,
 	filter,
@@ -14,10 +16,16 @@ import {
 	sortBy,
 	toPairs,
 } from "lodash/fp";
-import { format } from "date-fns";
+import {
+	format,
+} from "date-fns";
 import useSocketHandlers from "../hooks/use-socket-handlers";
-import { toastContext } from "./toast";
-import { SocketContext } from "./socket";
+import {
+	toastContext,
+} from "./toast";
+import {
+	SocketContext,
+} from "./socket";
 
 const onlyQuestions = filter((performance: evaluatedPerformance) => performance.type === "question");
 const onlyUnevaluated = filter((performance: evaluatedSubmissionPerformance) => isEmpty(performance.evaluation));
@@ -62,13 +70,16 @@ type PerformanceContext = {
     Record<string, evaluatedQuestionPerformance[]>
   >;
 };
-export const performanceContext = createContext<PerformanceContext>({} as PerformanceContext);
+export const performanceContext = createContext<PerformanceContext>({
+} as PerformanceContext);
 
 type props = {
   children: JSX.Element;
 };
 
-export function PerformanceProvider({ children }: props){
+export function PerformanceProvider({
+	children,
+}: props){
 	const [
 		performances,
 		setPerformances,
@@ -80,7 +91,9 @@ export function PerformanceProvider({ children }: props){
 		setEvaluations,
 	] = useState<postedEvaluation[]>([]);
 	const socket = useContext(SocketContext);
-	const { toasts, setToasts } = useContext(toastContext);
+	const {
+		toasts, setToasts,
+	} = useContext(toastContext);
 
 	useSocketHandlers({
 		"list-performances": (retrievedPerformances: evaluatedSubmissionPerformance[]) => setPerformances(retrievedPerformances),
@@ -115,7 +128,10 @@ export function PerformanceProvider({ children }: props){
 			evaluation: evaluations.find((evaluation) => evaluation.performanceId === performance.id),
 		},
 	}));
-	const performancesByDay = groupBy((performance: evaluatedSubmissionPerformance) => format(new Date(performance.createdAt), "yyyy/MM/dd"))(performancesWithEvaluations);
+	const performancesByDay = groupBy((performance: evaluatedSubmissionPerformance) => format(
+		new Date(performance.createdAt),
+		"yyyy/MM/dd",
+	))(performancesWithEvaluations);
 
 	const learners = Array.from(new Set(performances.map((performance) => performance.userId)));
 
@@ -132,7 +148,9 @@ export function PerformanceProvider({ children }: props){
 		])),
 	])(sortedPerformancesBySlug);
 
-	const performancesBySlugByLearner = flow([mapValues(groupBy("userId"))])(sortedPerformancesBySlug);
+	const performancesBySlugByLearner = flow([
+		mapValues(groupBy("userId")),
+	])(sortedPerformancesBySlug);
 
 	const sortByMostFrequent = (questionPerformances: evaluatedQuestionPerformance[]) => flow([
 		countBy((performance: evaluatedQuestionPerformance) => performance.postSlug),
@@ -140,11 +158,14 @@ export function PerformanceProvider({ children }: props){
 		sortBy(1),
 		reverse,
 		map("0"),
-		reduce((group, slug: string) => ({
-			...group,
-			[slug]: filter((p: evaluatedQuestionPerformance) => p.postSlug === slug)(questionPerformances),
-		}),
-		{}),
+		reduce(
+			(group, slug: string) => ({
+				...group,
+				[slug]: filter((p: evaluatedQuestionPerformance) => p.postSlug === slug)(questionPerformances),
+			}),
+			{
+			},
+		),
 	])(questionPerformances);
 
 	const performancesByQuestion = flow([
@@ -168,52 +189,62 @@ export function PerformanceProvider({ children }: props){
 		])),
 	])(performancesByQuestion);
 
-	const providerValues = useMemo(() => {
-		const postPerformance = (performance: rawPerformance) => socket.emit("post-performance", performance);
-		const postEvaluation = (evaluation: rawEvaluation) => socket.emit("post-evaluation", evaluation);
-		function getPreviousEvaluations(performance: evaluatedPerformance){
-			return performancesWithEvaluations.filter((evaluatedPerformance) => evaluatedPerformance.userId === performance.userId
+	const providerValues = useMemo(
+		() => {
+			const postPerformance = (performance: rawPerformance) => socket.emit(
+				"post-performance",
+				performance,
+			);
+			const postEvaluation = (evaluation: rawEvaluation) => socket.emit(
+				"post-evaluation",
+				evaluation,
+			);
+			function getPreviousEvaluations(performance: evaluatedPerformance){
+				return performancesWithEvaluations.filter((evaluatedPerformance) => evaluatedPerformance.userId === performance.userId
           && evaluatedPerformance.postSlug === performance.postSlug
           && evaluatedPerformance.id !== performance.id);
-		}
-		const unevaluatedQuestionPerformancesBySlugByLearner = evaluations.length
-			? flow([
-				onlyUnevaluated,
-				onlyQuestions,
-				sortByMostFrequent,
-				mapValues(sortBy("createdAt")),
-				mapValues(reverse),
-				mapValues(groupBy("userId")),
-			])(performancesWithEvaluations)
-			: {};
+			}
+			const unevaluatedQuestionPerformancesBySlugByLearner = evaluations.length
+				? flow([
+					onlyUnevaluated,
+					onlyQuestions,
+					sortByMostFrequent,
+					mapValues(sortBy("createdAt")),
+					mapValues(reverse),
+					mapValues(groupBy("userId")),
+				])(performancesWithEvaluations)
+				: {
+				};
 
-		return {
-			performances,
+			return {
+				performances,
+				evaluations,
+				lastQuestionPerformancesBySlug,
+				lastQuestionPerformancesBySlugByLearnerByQuestion,
+				performancesBySlugByLearner,
+				performancesWithEvaluations,
+				unevaluatedQuestionPerformancesBySlugByLearner,
+				lastPerformanceBySlugByLearner,
+				performancesByDay,
+				learners,
+				postPerformance,
+				postEvaluation,
+				getPreviousEvaluations,
+			};
+		},
+		[
 			evaluations,
-			lastQuestionPerformancesBySlug,
 			lastQuestionPerformancesBySlugByLearnerByQuestion,
+			lastPerformanceBySlugByLearner,
+			learners,
+			performances,
+			lastQuestionPerformancesBySlug,
+			performancesByDay,
 			performancesBySlugByLearner,
 			performancesWithEvaluations,
-			unevaluatedQuestionPerformancesBySlugByLearner,
-			lastPerformanceBySlugByLearner,
-			performancesByDay,
-			learners,
-			postPerformance,
-			postEvaluation,
-			getPreviousEvaluations,
-		};
-	}, [
-		evaluations,
-		lastQuestionPerformancesBySlugByLearnerByQuestion,
-		lastPerformanceBySlugByLearner,
-		learners,
-		performances,
-		lastQuestionPerformancesBySlug,
-		performancesByDay,
-		performancesBySlugByLearner,
-		performancesWithEvaluations,
-		socket,
-	]);
+			socket,
+		],
+	);
 
 	return (
     <performanceContext.Provider value={providerValues}>

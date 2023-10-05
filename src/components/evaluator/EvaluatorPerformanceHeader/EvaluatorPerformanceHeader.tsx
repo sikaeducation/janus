@@ -4,7 +4,9 @@ type props = {
   setAll: (status: string) => void;
 };
 
-export default function EvaluatorPerformanceHeader({ setAll }: props){
+export default function EvaluatorPerformanceHeader({
+	setAll,
+}: props){
 	return (
     <thead className="EvaluatorPerformanceHeader">
       <tr>

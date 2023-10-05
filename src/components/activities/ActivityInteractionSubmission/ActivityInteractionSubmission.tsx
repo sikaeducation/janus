@@ -1,11 +1,21 @@
 /* eslint react/destructuring-assignment: "off", react/no-unstable-nested-components: "off", react/no-children-prop: "off", react/jsx-props-no-spreading: "off" */
-import { useState } from "react";
-import { format } from "date-fns";
+import {
+	useState,
+} from "react";
+import {
+	format,
+} from "date-fns";
 import "./ActivityInteractionSubmission.scss";
 import classNames from "classnames";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faClipboardCheck } from "@fortawesome/free-solid-svg-icons";
-import { Markdown, Button } from "@sikaeducation/ui";
+import {
+	FontAwesomeIcon,
+} from "@fortawesome/react-fontawesome";
+import {
+	faClipboardCheck,
+} from "@fortawesome/free-solid-svg-icons";
+import {
+	Markdown, Button,
+} from "@sikaeducation/ui";
 
 type props = {
   postPerformance: (performance: rawSubmissionPerformance) => void;
@@ -36,7 +46,10 @@ export default function ActivityInteractionSubmission({
 		});
 		setUrl("");
 	};
-	const formatDateTime = (dateTime: string) => format(new Date(dateTime), "M/d/yy: p");
+	const formatDateTime = (dateTime: string) => format(
+		new Date(dateTime),
+		"M/d/yy: p",
+	);
 	const getMessage = (status: string) => {
 		const statuses: Record<string, JSX.Element> = {
 			accepted: (
@@ -113,7 +126,9 @@ export default function ActivityInteractionSubmission({
           required
         />
         <Button submit type="primary">
-          {`Submit${performances.length > 0 ? " another" : ""}`}
+          {`Submit${performances.length > 0
+          	? " another"
+          	: ""}`}
         </Button>
       </form>
     </div>

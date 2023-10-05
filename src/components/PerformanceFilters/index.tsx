@@ -1,1 +1,3 @@
-export { default } from "./PerformanceFilters";
+export {
+	default,
+} from "./PerformanceFilters";

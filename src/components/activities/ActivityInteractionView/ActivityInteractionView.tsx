@@ -1,6 +1,10 @@
 import "./ActivityInteractionView.scss";
-import { last } from "lodash/fp";
-import { Button } from "@sikaeducation/ui";
+import {
+	last,
+} from "lodash/fp";
+import {
+	Button,
+} from "@sikaeducation/ui";
 
 type props = {
   postPerformance: (performance: rawPerformance) => void;
@@ -44,7 +48,9 @@ export default function ActivityInteractionView({
     <div className="ActivityInteractionView">
       <p>After reading this, I feel:</p>
       <ul>
-        {buttons.map(({ label, confidenceLevel }) => (
+        {buttons.map(({
+        	label, confidenceLevel,
+        }) => (
           <li key={confidenceLevel} data-confidence-level={confidenceLevel}>
             <Button
               type="secondary"

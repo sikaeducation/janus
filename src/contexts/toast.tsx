@@ -1,4 +1,6 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import {
+	createContext, useEffect, useMemo, useState,
+} from "react";
 
 type toastContextType = {
 	toasts: string[];
@@ -11,21 +13,39 @@ type props = {
 	children: JSX.Element;
 };
 
-export default function ToastProvider({ children }: props) {
+export default function ToastProvider({
+	children,
+}: props) {
 	const [
 		toasts,
 		setToasts,
 	] = useState<string[]>([]);
-	const state = useMemo(() => ({ toasts, setToasts }), [toasts]);
+	const state = useMemo(
+		() => ({
+			toasts,
+			setToasts,
+		}),
+		[
+			toasts,
+		],
+	);
 
-	useEffect(() => {
-		const timer = setTimeout(() => {
-			setToasts([]);
-		}, 7000);
-		return () => {
-			clearTimeout(timer);
-		};
-	}, [toasts]);
+	useEffect(
+		() => {
+			const timer = setTimeout(
+				() => {
+					setToasts([]);
+				},
+				7000,
+			);
+			return () => {
+				clearTimeout(timer);
+			};
+		},
+		[
+			toasts,
+		],
+	);
 
 	return (
 		<toastContext.Provider value={state}>{children}</toastContext.Provider>

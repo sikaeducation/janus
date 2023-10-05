@@ -1,4 +1,6 @@
-import { Markdown } from "@sikaeducation/ui";
+import {
+	Markdown,
+} from "@sikaeducation/ui";
 import "./InboxLearnerPromptResponseForm.scss";
 
 type props = {
@@ -18,7 +20,9 @@ export default function InboxLearnerPromptResponseForm({
 		event.preventDefault();
 		postResponse(response);
 	};
-	const { prompt } = currentBroadcast;
+	const {
+		prompt,
+	} = currentBroadcast;
 
 	return (
     <div className="InboxLearnerPromptResponseForm">
