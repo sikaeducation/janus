@@ -1,46 +1,28 @@
 /* eslint @typescript-eslint/no-explicit-any: "off" */
-import {
-	useContext, useEffect, useRef,
-} from "react";
-import {
-	SocketContext,
-} from "../contexts/socket";
+import { useContext, useEffect, useRef } from "react";
+import { SocketContext } from "../contexts/socket";
 
 export default function useSocketHandlers<
-  Handlers extends { [Key: string]:(...args: any[]) => void },
->(handlers: Handlers){
-	const socket = useContext(SocketContext);
-	const deps = useRef({
-		socket,
-		handlers,
-	}).current;
+  Handlers extends { [Key: string]: (...args: any[]) => void },
+>(handlers: Handlers) {
+  const socket = useContext(SocketContext);
+  const deps = useRef({
+    socket,
+    handlers,
+  }).current;
 
-	useEffect(
-		() => {
-			const handlersEntries = Object.entries(deps.handlers);
+  useEffect(() => {
+    const handlersEntries = Object.entries(deps.handlers);
 
-			handlersEntries.forEach(([
-				name,
-				handler,
-			]) => {
-				deps.socket.on(
-					name,
-					handler,
-				);
-			});
+    handlersEntries.forEach(([name, handler]) => {
+      deps.socket.on(name, handler);
+    });
 
-			return () => {
-				handlersEntries.forEach(([
-					name,
-					handler,
-				]) => {
-				// eslint-disable-next-line
+    return () => {
+      handlersEntries.forEach(([name, handler]) => {
+        // eslint-disable-next-line
         deps.socket.off(name, handler);
-				});
-			};
-		},
-		[
-			deps,
-		],
-	);
+      });
+    };
+  }, [deps]);
 }

@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./EvaluatorPerformance";
+export { default } from "./EvaluatorPerformance";

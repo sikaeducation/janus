@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./PostListing";
+export { default } from "./PostListing";

@@ -9,7 +9,8 @@
     position: relative;
     .topic {
       background-color: $colors-grey-10;
-      th, td {
+      th,
+      td {
         font-size: $sizes-f1;
         color: $colors-grey-3;
       }
@@ -24,7 +25,8 @@
     td {
       color: $colors-grey-6;
     }
-    th, td {
+    th,
+    td {
       padding: $sizes-s1;
     }
     th {
@@ -49,7 +51,13 @@
       }
     }
   }
-  .IndicatorQuestion, .IndicatorSubmissionPending, .IndicatorSubmissionAccepted, .IndicatorSubmissionRejected, .IndicatorViewClear, .IndicatorViewConfident, .IndicatorViewUnclear {
+  .IndicatorQuestion,
+  .IndicatorSubmissionPending,
+  .IndicatorSubmissionAccepted,
+  .IndicatorSubmissionRejected,
+  .IndicatorViewClear,
+  .IndicatorViewConfident,
+  .IndicatorViewUnclear {
     margin-left: 0;
   }
 }

@@ -1,28 +1,22 @@
-import {
-	format,
-} from "date-fns";
-import {
-	Markdown,
-} from "@sikaeducation/ui";
+import { format } from "date-fns";
+import { Markdown } from "@sikaeducation/ui";
 import useIndicator from "../../hooks/use-indicator";
 import "./PreviousSubmissionFeedback.scss";
 
-const formatDateTime = (dateTime: string) => format(
-	new Date(dateTime),
-	"M/d/yy p",
-);
+const formatDateTime = (dateTime: string) =>
+  format(new Date(dateTime), "M/d/yy p");
 
 type props = {
   performances: evaluatedSubmissionPerformance[];
 };
 
-export default function PreviousSubmissionFeedback({
-	performances,
-}: props){
-	const getIndicator = useIndicator();
-	const performancesWithEvaluations = performances.filter((performance) => performance.evaluation);
+export default function PreviousSubmissionFeedback({ performances }: props) {
+  const getIndicator = useIndicator();
+  const performancesWithEvaluations = performances.filter(
+    (performance) => performance.evaluation,
+  );
 
-	return (
+  return (
     <ul className="PreviousSubmissionFeedback">
       {performancesWithEvaluations.map((performance) => (
         <li key={performance.id}>
@@ -30,25 +24,23 @@ export default function PreviousSubmissionFeedback({
             <div className="meta">
               <a href={performance.payload.url}>
                 <time>
-                  {performance.evaluation?.createdAt
-                    && formatDateTime(performance.evaluation?.createdAt)}
+                  {performance.evaluation?.createdAt &&
+                    formatDateTime(performance.evaluation?.createdAt)}
                 </time>
               </a>
               {getIndicator(performance)}
             </div>
-            {performance.evaluation?.feedback
-            	? (
+            {performance.evaluation?.feedback ? (
               <Markdown
                 className="feedback"
                 content={performance.evaluation?.feedback}
               />
-            	)
-            	: (
+            ) : (
               <p>None</p>
-            	)}
+            )}
           </div>
         </li>
       ))}
     </ul>
-	);
+  );
 }

@@ -1,9 +1,9 @@
 @use "~@sikaeducation/ui/styles" as *;
 
 .ActivityInteractionView {
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: flex-end;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: flex-end;
   > p {
     text-align: right;
     margin-bottom: $sizes-s2;

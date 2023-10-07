@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./SubmissionEvaluationForm";
+export { default } from "./SubmissionEvaluationForm";

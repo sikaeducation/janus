@@ -12,7 +12,7 @@
     label {
       font-size: $sizes-f3;
       align-self: center;
-      &[data-disabled=true] {
+      &[data-disabled="true"] {
         color: $colors-grey-7;
       }
     }

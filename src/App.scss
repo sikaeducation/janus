@@ -8,15 +8,17 @@
   padding-block-start: $sizes-s5;
   padding-block-end: $sizes-s5;
 
-  @media (max-width: $sizes-small-breakpoint){
+  @media (max-width: $sizes-small-breakpoint) {
     padding-block-start: $sizes-s2;
     padding-block-end: $sizes-s2;
   }
 
-  > header, > main, > footer {
+  > header,
+  > main,
+  > footer {
     padding: 0 $sizes-s5;
 
-    @media (max-width: $sizes-small-breakpoint){
+    @media (max-width: $sizes-small-breakpoint) {
       padding: 0 $sizes-s3;
     }
   }
@@ -32,7 +34,7 @@
     justify-content: flex-start;
     align-items: center;
 
-    @media (max-width: $sizes-small-breakpoint){
+    @media (max-width: $sizes-small-breakpoint) {
       display: block;
     }
   }

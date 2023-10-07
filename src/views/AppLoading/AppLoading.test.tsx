@@ -1,9 +1,5 @@
-test(
-	"AppLoading",
-	() => {
-		expect(true)
-			.toBeTrue();
-	},
-);
+test("AppLoading", () => {
+  expect(true).toBeTrue();
+});
 
 export {};

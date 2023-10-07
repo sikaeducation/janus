@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./LearnerViewing";
+export { default } from "./LearnerViewing";

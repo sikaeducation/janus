@@ -1,53 +1,37 @@
-import {
-	createContext, useEffect, useMemo, useState,
-} from "react";
+import { createContext, useEffect, useMemo, useState } from "react";
 
 type toastContextType = {
-	toasts: string[];
-	setToasts: (toasts: string[]) => void;
+  toasts: string[];
+  setToasts: (toasts: string[]) => void;
 };
-export const toastContext = createContext<toastContextType>({
-} as unknown as toastContextType);
+export const toastContext = createContext<toastContextType>(
+  {} as unknown as toastContextType,
+);
 
 type props = {
-	children: JSX.Element;
+  children: JSX.Element;
 };
 
-export default function ToastProvider({
-	children,
-}: props){
-	const [
-		toasts,
-		setToasts,
-	] = useState<string[]>([]);
-	const state = useMemo(
-		() => ({
-			toasts,
-			setToasts,
-		}),
-		[
-			toasts,
-		],
-	);
+export default function ToastProvider({ children }: props) {
+  const [toasts, setToasts] = useState<string[]>([]);
+  const state = useMemo(
+    () => ({
+      toasts,
+      setToasts,
+    }),
+    [toasts],
+  );
 
-	useEffect(
-		() => {
-			const timer = setTimeout(
-				() => {
-					setToasts([]);
-				},
-				7000,
-			);
-			return () => {
-				clearTimeout(timer);
-			};
-		},
-		[
-			toasts,
-		],
-	);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setToasts([]);
+    }, 7000);
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [toasts]);
 
-	return (
-		<toastContext.Provider value={state}>{children}</toastContext.Provider>
-	);
+  return (
+    <toastContext.Provider value={state}>{children}</toastContext.Provider>
+  );
 }

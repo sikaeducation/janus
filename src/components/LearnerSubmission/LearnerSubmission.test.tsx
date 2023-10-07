@@ -1,9 +1,5 @@
-test(
-	"<LearnerSubmission />",
-	() => {
-		expect(true)
-			.toBeTruthy();
-	},
-);
+test("<LearnerSubmission />", () => {
+  expect(true).toBeTruthy();
+});
 
 export {};

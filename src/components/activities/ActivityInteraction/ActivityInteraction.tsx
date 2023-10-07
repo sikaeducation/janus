@@ -1,10 +1,6 @@
 import "./ActivityInteraction.scss";
-import {
-	useContext,
-} from "react";
-import {
-	performanceContext,
-} from "../../../contexts/performance";
+import { useContext } from "react";
+import { performanceContext } from "../../../contexts/performance";
 
 import ActivityInteractionView from "../ActivityInteractionView";
 import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
@@ -17,25 +13,23 @@ type props = {
 };
 
 export default function ActivityInteraction({
-	postType,
-	userId,
-	postSlug,
-}: props){
-	const {
-		postPerformance, performancesBySlugByLearner,
-	}
-    = useContext(performanceContext);
-	const performances = performancesBySlugByLearner?.[postSlug]?.[userId] ?? [];
-	const interactions = {
-		topic: (
+  postType,
+  userId,
+  postSlug,
+}: props) {
+  const { postPerformance, performancesBySlugByLearner } =
+    useContext(performanceContext);
+  const performances = performancesBySlugByLearner?.[postSlug]?.[userId] ?? [];
+  const interactions = {
+    topic: (
       <ActivityInteractionView
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
         performances={performances as unknown as postedViewPerformance[]}
       />
-		),
-		exercise: (
+    ),
+    exercise: (
       <ActivityInteractionSubmission
         userId={userId}
         postPerformance={postPerformance}
@@ -44,20 +38,20 @@ export default function ActivityInteraction({
           performances as unknown as evaluatedSubmissionPerformance[]
         }
       />
-		),
-		questions: (
+    ),
+    questions: (
       <ActivityInteractionQuestions
         userId={userId}
         postPerformance={postPerformance}
         postSlug={postSlug}
       />
-		),
-		root: null,
-		unit: null,
-		section: null,
-		guide: null,
-		concept: null,
-		meta: null,
-	} as const;
-	return interactions[postType];
+    ),
+    root: null,
+    unit: null,
+    section: null,
+    guide: null,
+    concept: null,
+    meta: null,
+  } as const;
+  return interactions[postType];
 }

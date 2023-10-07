@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./ActivityInteractionSubmission";
+export { default } from "./ActivityInteractionSubmission";

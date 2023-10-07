@@ -1,8 +1,8 @@
 @use "~@sikaeducation/ui/styles" as *;
 
 .AppInbox {
-	width: $sizes-content-width-xl;
-	h1 {
+  width: $sizes-content-width-xl;
+  h1 {
     @include typography-heading-font-1;
   }
 }

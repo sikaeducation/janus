@@ -1,6 +1,4 @@
-import {
-	ToolkitStore,
-} from "@reduxjs/toolkit/dist/configureStore";
+import { ToolkitStore } from "@reduxjs/toolkit/dist/configureStore";
 
 declare global {
   namespace NodeJS {

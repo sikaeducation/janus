@@ -1,9 +1,5 @@
-test(
-	"AppInbox",
-	() => {
-		expect(true)
-			.toBeTrue();
-	},
-);
+test("AppInbox", () => {
+  expect(true).toBeTrue();
+});
 
 export {};

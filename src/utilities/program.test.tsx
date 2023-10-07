@@ -1,9 +1,5 @@
-test(
-	"Placeholder",
-	async() => {
-		expect(true)
-			.toBeTrue();
-	},
-);
+test("Placeholder", async () => {
+  expect(true).toBeTrue();
+});
 
 export {};

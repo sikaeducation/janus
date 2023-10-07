@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./PreviousQuestionResponses";
+export { default } from "./PreviousQuestionResponses";

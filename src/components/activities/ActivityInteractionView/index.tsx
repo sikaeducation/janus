@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./ActivityInteractionView";
+export { default } from "./ActivityInteractionView";

@@ -16,12 +16,12 @@
   }
   > form {
     text-align: right;
-    [type=submit] {
+    [type="submit"] {
       @include shadow-small;
 
       margin-top: $sizes-s4;
     }
-    [type=submit][disabled] {
+    [type="submit"][disabled] {
       background-color: $colors-grey-10;
     }
   }

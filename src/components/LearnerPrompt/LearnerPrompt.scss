@@ -29,9 +29,10 @@
   .prompt-response {
     grid-row: 3 / span 1;
     grid-column: 2 / span 2;
-    .prompt, .response {
-      padding-top: $sizes-s1; 
-      padding-bottom: $sizes-s1; 
+    .prompt,
+    .response {
+      padding-top: $sizes-s1;
+      padding-bottom: $sizes-s1;
       border-radius: $borders-radius;
     }
     .prompt {

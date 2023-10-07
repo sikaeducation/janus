@@ -1,16 +1,9 @@
-import {
-	useAuth0,
-} from "@auth0/auth0-react";
+import { useAuth0 } from "@auth0/auth0-react";
 import classNames from "classnames";
-import {
-	format,
-} from "date-fns";
+import { format } from "date-fns";
 import "./PerformanceFilters.scss";
 
-const formatDate = (date: string) => format(
-	new Date(date),
-	"eeee, LLLL do",
-);
+const formatDate = (date: string) => format(new Date(date), "eeee, LLLL do");
 
 type props = {
   performances: evaluatedPerformance[];
@@ -29,44 +22,49 @@ type props = {
 };
 
 export default function PerformanceFilters({
-	performances,
-	filters,
-	toggleUnevaluated,
-	isEnabled,
-	setIsEnabled,
-	scrollToBottom,
-	unevalutedPerformanceCount,
-}: props){
-	const {
-		user,
-	} = useAuth0();
-	const role = (user && user["https://sikaeducation.com/role"]) || "";
-	const userIds = [
-		...Array.from(new Set<string>(performances.map((performance) => performance.userId))),
-	];
-	const performanceTypes = [
-		...Array.from(new Set<string>(performances.map((performance) => performance.type))),
-	];
-	const performanceTypesFormatted = {
-		view: "Views",
-		submission: "Submissions",
-		prompt: "Prompt Responses",
-		question: "Questions",
-	} as const;
+  performances,
+  filters,
+  toggleUnevaluated,
+  isEnabled,
+  setIsEnabled,
+  scrollToBottom,
+  unevalutedPerformanceCount,
+}: props) {
+  const { user } = useAuth0();
+  const role = (user && user["https://sikaeducation.com/role"]) || "";
+  const userIds = [
+    ...Array.from(
+      new Set<string>(performances.map((performance) => performance.userId)),
+    ),
+  ];
+  const performanceTypes = [
+    ...Array.from(
+      new Set<string>(performances.map((performance) => performance.type)),
+    ),
+  ];
+  const performanceTypesFormatted = {
+    view: "Views",
+    submission: "Submissions",
+    prompt: "Prompt Responses",
+    question: "Questions",
+  } as const;
 
-	const dates = [
-		...Array.from(new Set<string>(performances.map((performance) => formatDate(performance.createdAt)))),
-	];
+  const dates = [
+    ...Array.from(
+      new Set<string>(
+        performances.map((performance) => formatDate(performance.createdAt)),
+      ),
+    ),
+  ];
 
-	const clearFilters = () => {
-		Object.values(filters)
-			.forEach((filter) => {
-				filter.setState("all");
-			});
-		setIsEnabled(true);
-	};
+  const clearFilters = () => {
+    Object.values(filters).forEach((filter) => {
+      filter.setState("all");
+    });
+    setIsEnabled(true);
+  };
 
-	return (
+  return (
     <form className="PerformanceFilters">
       <h2>Filters</h2>
       <ul className="filters">
@@ -136,8 +134,8 @@ export default function PerformanceFilters({
       </ul>
       <button
         className={classNames({
-        	"filter-unevaluated": true,
-        	active: !isEnabled,
+          "filter-unevaluated": true,
+          active: !isEnabled,
         })}
         type="button"
         onClick={() => toggleUnevaluated()}
@@ -151,5 +149,5 @@ export default function PerformanceFilters({
         Clear filters
       </button>
     </form>
-	);
+  );
 }

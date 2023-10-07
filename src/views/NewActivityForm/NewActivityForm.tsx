@@ -1,9 +1,5 @@
-import {
-  ComponentPropsWithoutRef, useState,
-} from "react";
-import {
-  Form,
-} from "@sikaeducation/ui";
+import { ComponentPropsWithoutRef, useState } from "react";
+import { Form } from "@sikaeducation/ui";
 import "./NewActivityForm.scss";
 
 import newActivityFields from "./new-activity-fields";
@@ -13,13 +9,8 @@ type Props = {
   save: (newActivity: Activity) => void;
 };
 
-export default function NewActivityForm({
-  save, cancel,
-}: Props) {
-  const [
-    newItem,
-    setNewItem,
-  ] = useState<ActivityArticle>({
+export default function NewActivityForm({ save, cancel }: Props) {
+  const [newItem, setNewItem] = useState<ActivityArticle>({
     _type: "Article",
     title: "",
     post_slug: "",
@@ -58,10 +49,7 @@ export default function NewActivityForm({
     },
   ];
 
-  console.log(
-    "a",
-    JSON.stringify(newActivityFields),
-  );
+  console.log("a", JSON.stringify(newActivityFields));
 
   return (
     <div className="NewActivityForm">

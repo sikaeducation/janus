@@ -7,11 +7,11 @@ type props = {
 };
 
 export default function EvaluatorQuestionSelector({
-	selectedSlug,
-	setSelectedSlug,
-	slugs,
-}: props){
-	return (
+  selectedSlug,
+  setSelectedSlug,
+  slugs,
+}: props) {
+  return (
     <form className="EvaluatorQuestionSelector">
       <label htmlFor="slug-selector">Slug</label>
       <select
@@ -27,5 +27,5 @@ export default function EvaluatorQuestionSelector({
         ))}
       </select>
     </form>
-	);
+  );
 }

@@ -1,6 +1,4 @@
-import {
-	Markdown,
-} from "@sikaeducation/ui";
+import { Markdown } from "@sikaeducation/ui";
 import "./InboxLearnerPromptResponseForm.scss";
 
 type props = {
@@ -11,20 +9,18 @@ type props = {
 };
 
 export default function InboxLearnerPromptResponseForm({
-	currentBroadcast,
-	postResponse,
-	response,
-	setResponse,
-}: props){
-	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		postResponse(response);
-	};
-	const {
-		prompt,
-	} = currentBroadcast;
+  currentBroadcast,
+  postResponse,
+  response,
+  setResponse,
+}: props) {
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    postResponse(response);
+  };
+  const { prompt } = currentBroadcast;
 
-	return (
+  return (
     <div className="InboxLearnerPromptResponseForm">
       <Markdown className="prompt" content={prompt} />
       <div className="submission-section">
@@ -36,7 +32,7 @@ export default function InboxLearnerPromptResponseForm({
             value={response}
             required
             onChange={(event) => {
-            	setResponse(event.target.value);
+              setResponse(event.target.value);
             }}
           />
           <div className="submission-section">
@@ -45,5 +41,5 @@ export default function InboxLearnerPromptResponseForm({
         </form>
       </div>
     </div>
-	);
+  );
 }

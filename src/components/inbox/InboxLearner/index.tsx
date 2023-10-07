@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./InboxLearner";
+export { default } from "./InboxLearner";

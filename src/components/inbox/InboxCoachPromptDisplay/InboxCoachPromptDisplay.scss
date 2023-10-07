@@ -12,7 +12,7 @@
   }
   .tags > li {
     display: inline-block;
-    &+li {
+    & + li {
       margin-left: $sizes-s1;
     }
   }

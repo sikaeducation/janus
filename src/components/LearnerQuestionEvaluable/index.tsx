@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./LearnerQuestionEvaluable";
+export { default } from "./LearnerQuestionEvaluable";

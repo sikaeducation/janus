@@ -1,21 +1,13 @@
 /* eslint react/jsx-props-no-spreading: "off" */
+import { useAuth0 } from "@auth0/auth0-react";
 import {
-	useAuth0,
-} from "@auth0/auth0-react";
-import {
-	faCheckCircle,
-	faTimesCircle,
+  faCheckCircle,
+  faTimesCircle,
 } from "@fortawesome/free-solid-svg-icons";
-import {
-	FontAwesomeIcon,
-} from "@fortawesome/react-fontawesome";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import classNames from "classnames";
-import {
-	useContext, useState,
-} from "react";
-import {
-	performanceContext,
-} from "../../contexts/performance";
+import { useContext, useState } from "react";
+import { performanceContext } from "../../contexts/performance";
 import PreviousSubmissionFeedback from "../PreviousSubmissionFeedback";
 import "./SubmissionEvaluationForm.scss";
 
@@ -26,51 +18,39 @@ type props = {
 };
 
 export default function SubmissionEvaluationForm({
-	previousPerformances,
-	performance,
-	cancel,
-}: props){
-	const {
-		user,
-	} = useAuth0();
-	const [
-		feedback,
-		setFeedback,
-	] = useState("");
-	const [
-		evaluationStatus,
-		setEvaluationStatus,
-	] = useState("");
-	const {
-		postEvaluation,
-	} = useContext(performanceContext);
-	const canSubmit = !!evaluationStatus;
+  previousPerformances,
+  performance,
+  cancel,
+}: props) {
+  const { user } = useAuth0();
+  const [feedback, setFeedback] = useState("");
+  const [evaluationStatus, setEvaluationStatus] = useState("");
+  const { postEvaluation } = useContext(performanceContext);
+  const canSubmit = !!evaluationStatus;
 
-	const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
-		event.preventDefault();
-		const evaluation = {
-			performanceId: performance.id,
-			learnerId: performance.userId,
-			evaluatorId: user?.email || "",
-			feedback,
-			status: evaluationStatus as "accepted" | "rejected",
-		};
-		postEvaluation(evaluation);
-		setFeedback("");
-		setEvaluationStatus("");
-		cancel();
-	};
+  const handleSubmit = (event: React.SyntheticEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const evaluation = {
+      performanceId: performance.id,
+      learnerId: performance.userId,
+      evaluatorId: user?.email || "",
+      feedback,
+      status: evaluationStatus as "accepted" | "rejected",
+    };
+    postEvaluation(evaluation);
+    setFeedback("");
+    setEvaluationStatus("");
+    cancel();
+  };
 
-	return (
+  return (
     <form onSubmit={handleSubmit} className="SubmissionEvaluationForm">
-      {previousPerformances.length > 0
-      	? (
+      {previousPerformances.length > 0 ? (
         <>
           <h2>Previous feedback:</h2>
           <PreviousSubmissionFeedback performances={previousPerformances} />
         </>
-      	)
-      	: null}
+      ) : null}
       <label htmlFor="feedback">Feedback:</label>
       <textarea
         onChange={(event) => setFeedback(event.target.value)}
@@ -82,8 +62,8 @@ export default function SubmissionEvaluationForm({
         <button
           type="button"
           className={classNames({
-          	active: evaluationStatus === "rejected",
-          	failure: true,
+            active: evaluationStatus === "rejected",
+            failure: true,
           })}
           onClick={() => setEvaluationStatus("rejected")}
         >
@@ -93,8 +73,8 @@ export default function SubmissionEvaluationForm({
           type="button"
           onClick={() => setEvaluationStatus("accepted")}
           className={classNames({
-          	active: evaluationStatus === "accepted",
-          	success: true,
+            active: evaluationStatus === "accepted",
+            success: true,
           })}
         >
           <FontAwesomeIcon icon={faCheckCircle} className="accepted" />
@@ -107,5 +87,5 @@ export default function SubmissionEvaluationForm({
         <input type="submit" disabled={!canSubmit} value="Send Evaluation" />
       </div>
     </form>
-	);
+  );
 }

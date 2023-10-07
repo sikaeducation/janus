@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./LearnerPrompt";
+export { default } from "./LearnerPrompt";

@@ -1,12 +1,6 @@
-import {
-	useContext,
-} from "react";
-import {
-	Tag, Button, Markdown,
-} from "@sikaeducation/ui";
-import {
-	performanceContext,
-} from "../../../contexts/performance";
+import { useContext } from "react";
+import { Tag, Button, Markdown } from "@sikaeducation/ui";
+import { performanceContext } from "../../../contexts/performance";
 import InboxResponses from "../InboxResponses";
 import "./InboxCoachPromptDisplay.scss";
 
@@ -18,20 +12,21 @@ type props = {
 };
 
 export default function CoachInboxPromptDisplay({
-	slug,
-	tags,
-	prompt,
-	endPrompt,
-}: props){
-	const {
-		performances,
-	} = useContext(performanceContext);
-	const promptPerformances = performances.filter((performance): performance is postedPromptPerformance => performance.postSlug === slug);
+  slug,
+  tags,
+  prompt,
+  endPrompt,
+}: props) {
+  const { performances } = useContext(performanceContext);
+  const promptPerformances = performances.filter(
+    (performance): performance is postedPromptPerformance =>
+      performance.postSlug === slug,
+  );
 
-	const handleEndPrompt = () => {
-		endPrompt();
-	};
-	return (
+  const handleEndPrompt = () => {
+    endPrompt();
+  };
+  return (
     <div className="InboxCoachPromptDisplay">
       {tags.length > 0 && (
         <ul className="tags">
@@ -53,5 +48,5 @@ export default function CoachInboxPromptDisplay({
         <InboxResponses performances={promptPerformances} />
       )}
     </div>
-	);
+  );
 }

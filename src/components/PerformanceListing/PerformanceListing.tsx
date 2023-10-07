@@ -9,28 +9,26 @@ type props = {
   performance: postedPerformance;
 };
 
-export default function PerformanceListing({
-	performance,
-}: props){
-	const performanceListingTypes = {
-		view: <LearnerViewing performance={performance as postedViewPerformance} />,
-		submission: (
+export default function PerformanceListing({ performance }: props) {
+  const performanceListingTypes = {
+    view: <LearnerViewing performance={performance as postedViewPerformance} />,
+    submission: (
       <LearnerSubmission
         performance={performance as evaluatedSubmissionPerformance}
       />
-		),
-		prompt: (
+    ),
+    prompt: (
       <LearnerPrompt performance={performance as postedPromptPerformance} />
-		),
-		question: (
+    ),
+    question: (
       <LearnerQuestion
         performance={performance as evaluatedQuestionPerformance}
       />
-		),
-	} as const;
-	const performanceListingType = performanceListingTypes[performance.type];
+    ),
+  } as const;
+  const performanceListingType = performanceListingTypes[performance.type];
 
-	return (
+  return (
     <div className="PerformanceListing">
       <Gravatar
         className="avatar"
@@ -40,5 +38,5 @@ export default function PerformanceListing({
       />
       {performanceListingType}
     </div>
-	);
+  );
 }

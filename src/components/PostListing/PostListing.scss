@@ -9,7 +9,8 @@
   text-overflow: ellipsis;
   cursor: pointer;
   transition: background-color $sizes-transition;
-  &:hover, &.active {
+  &:hover,
+  &.active {
     background-color: darken($colors-grey-10, 5%);
   }
   .post-details {

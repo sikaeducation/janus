@@ -1,9 +1,5 @@
-test(
-	"sockets",
-	async() => {
-		expect(true)
-			.toBeTrue();
-	},
-);
+test("sockets", async () => {
+  expect(true).toBeTrue();
+});
 
 export {};

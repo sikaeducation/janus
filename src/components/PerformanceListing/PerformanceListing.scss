@@ -16,7 +16,7 @@
     overflow: hidden;
     margin-right: $sizes-s4;
   }
-  > div:nth-child(2){
+  > div:nth-child(2) {
     grid-row: 1 / span 1;
     grid-column: 1 / span 3;
   }

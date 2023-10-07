@@ -1,3 +1,1 @@
-export {
-	default,
-} from "./InboxResponses";
+export { default } from "./InboxResponses";

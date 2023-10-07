@@ -5,7 +5,8 @@
   flex-flow: column nowrap;
   align-items: flex-end;
   margin-bottom: $sizes-s6;
-  input, button {
+  input,
+  button {
     display: inline-block;
     border: 1px solid $colors-grey-8;
     padding: $sizes-s2 $sizes-s4;

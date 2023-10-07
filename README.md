@@ -6,18 +6,18 @@ Sika's LMS
 
 ## Scripts
 
-* `scripts/build` - Rebuild Docker containers
-* `scripts/dev` - Runs a development environment (http://localhost:3000)
-* `scripts/test` - Run all tests
+- `scripts/build` - Rebuild Docker containers
+- `scripts/dev` - Runs a development environment (http://localhost:3000)
+- `scripts/test` - Run all tests
 
 ## Stack
 
-* React
-* React Router
-* Redux & RTK
-* Auth0
+- React
+- React Router
+- Redux & RTK
+- Auth0
 
 ## Tests
 
-* Feature testing: Cucumber & Playwright
-* General TS testing: Jest
+- Feature testing: Cucumber & Playwright
+- General TS testing: Jest

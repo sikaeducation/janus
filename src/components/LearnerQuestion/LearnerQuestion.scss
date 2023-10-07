@@ -46,7 +46,8 @@
     .prompt {
       background-color: $colors-grey-10;
     }
-    .prompt, .response {
+    .prompt,
+    .response {
       margin-top: $sizes-s4;
       margin-bottom: $sizes-s4;
       padding: $sizes-s2;
