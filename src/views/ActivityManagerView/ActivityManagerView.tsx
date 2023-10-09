@@ -74,41 +74,49 @@ export default function ActivityManagerView() {
 
   return (
     <div className="ActivityManagerView">
-      {isError && <StatusMessage type="network-error" />}
-      {isSuccess && formattedActivities.length === 0 && (
-        <StatusMessage type="no-data" />
+      {isLoading && <>
+        <header>
+          <Heading level={2} margin={false}>Activities</Heading>
+        </header>
+        {skeletonRows}
+      </>}
+      {isError && (
+        <StatusMessage type="network-error" />
+      )}
+      {isSuccess && (
+        <>
+          <header>
+            <Heading level={2} margin={false}>
+              Activities{" "}
+              <span className="activities-count">({activitiesCount})</span>
+            </Heading>
+            <Button type="primary" action={handleNewClick}>
+              New
+            </Button>
+          </header>
+          {formattedActivities.length === 0
+            ? <StatusMessage type="no-data" />
+            : <DataTable<FormattedActivity>
+              fields={fieldsWithActions}
+              tableData={formattedActivities}
+              activeId={selectedActivity?._id}
+            />
+          }
+        </>
       )}
       {newActivityOpen && (
         <ModalView onClose={closeModal}>
           <NewActivityForm save={save} cancel={closeModal} />
         </ModalView>
       )}
-      <header>
-        <Heading level={2} margin={false}>
-          Activities{" "}
-          <span className="activities-count">({activitiesCount})</span>
-        </Heading>
-        <Button type="primary" action={handleNewClick}>
-          New
-        </Button>
-      </header>
-      {!isLoading && formattedActivities.length > 0 && (
-        <>
-          <DataTable<FormattedActivity>
-            fields={fieldsWithActions}
-            tableData={formattedActivities || skeletonRows}
-            activeId={selectedActivity?._id}
+      {selectedActivity ? (
+        <Drawer close={() => setSelectedActivity(undefined)}>
+          <ArticleDetail
+            activity={selectedActivity as ActivityArticle}
+            setActivity={(activity) => setSelectedActivity(activity)}
           />
-          {selectedActivity ? (
-            <Drawer close={() => setSelectedActivity(undefined)}>
-              <ArticleDetail
-                activity={selectedActivity as ActivityArticle}
-                setActivity={(activity) => setSelectedActivity(activity)}
-              />
-            </Drawer>
-          ) : null}
-        </>
-      )}
+        </Drawer>
+      ) : null}
     </div>
   );
 }
