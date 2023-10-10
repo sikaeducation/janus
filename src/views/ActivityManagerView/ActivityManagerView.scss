@@ -1,14 +1,16 @@
 @use "~@sikaeducation/ui/styles" as *;
 
 .ActivityManagerView {
-  width: $sizes-s17;
-  header {
+  inline-size: $sizes-s17;
+
+  > header {
     display: flex;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: $sizes-s4;
+    margin-block-end: $sizes-s4;
   }
+
   .DataTable {
     .table-row {
       .field:nth-child(1),
@@ -16,23 +18,26 @@
         display: flex;
         justify-content: center;
         align-items: center;
+
         & > span {
-          width: 100%; // stretch skeleton
+          inline-size: 100%; // stretch skeleton
         }
       }
+
       .field:nth-child(2),
       .field:nth-child(3),
       .field:nth-child(4) {
         cursor: pointer;
       }
+
       &.active {
         .field:nth-child(3),
         .field:nth-child(4) {
-          background-color: $colors-primary-9;
-          width: calc(100% + ($sizes-s2 * 2));
-          margin-left: calc($sizes-s2 * -1);
-          padding-left: $sizes-s2;
           border-radius: $borders-radius;
+          background-color: $colors-primary-9;
+          inline-size: calc(100% + ($sizes-s2 * 2));
+          margin-inline-start: calc($sizes-s2 * -1);
+          padding-inline-start: $sizes-s2;
         }
       }
     }

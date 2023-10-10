@@ -48,6 +48,7 @@ export default function ActivityManagerView() {
     createActivity(newActivity);
     setNewActivityOpen(false);
   };
+  console.log("hey", selectedActivity)
 
   const fieldActions: Record<string, () => void> = {
     // eslint-disable-next-line no-console
@@ -109,8 +110,9 @@ export default function ActivityManagerView() {
           <NewActivityForm save={save} cancel={closeModal} />
         </ModalView>
       )}
-      {selectedActivity ? (
+      {selectedActivity && selectedActivity._type === "Article" ? (
         <Drawer close={() => setSelectedActivity(undefined)}>
+          {console.log("grr", selectedActivity)}
           <ArticleDetail
             activity={selectedActivity as ActivityArticle}
             setActivity={(activity) => setSelectedActivity(activity)}

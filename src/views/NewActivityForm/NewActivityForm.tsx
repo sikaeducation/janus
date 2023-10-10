@@ -3,6 +3,7 @@ import { Form } from "@sikaeducation/ui";
 import "./NewActivityForm.scss";
 
 import newActivityFields from "./new-activity-fields";
+console.log("hey", newActivityFields)
 
 type Props = {
   cancel: () => void;
@@ -48,8 +49,6 @@ export default function NewActivityForm({ save, cancel }: Props) {
       type: "primary",
     },
   ];
-
-  console.log("a", JSON.stringify(newActivityFields));
 
   return (
     <div className="NewActivityForm">

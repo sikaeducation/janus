@@ -17,6 +17,7 @@ type Activity = {
 } & MongoDocument;
 
 type ActivityArticle = Activity & {
+  _type: "Article";
   post_slug: string;
   content?: string;
 };
@@ -39,12 +40,12 @@ type Clobber<
   T extends Record<string, unknown>,
   U extends Record<string, unknown>,
 > = {
-  [K in keyof T | keyof U]: K extends keyof U
+    [K in keyof T | keyof U]: K extends keyof U
     ? U[K]
     : K extends keyof T
     ? T[K]
     : never;
-};
+  };
 type postType =
   | "root"
   | "meta"

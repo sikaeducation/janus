@@ -6,42 +6,39 @@ type Props = {
   setActivity: (article: ActivityArticle) => void;
 };
 
-type Mutable<T> = {
-  -readonly [P in keyof T]: T[P] extends ReadonlyArray<infer U> ? U[] : T[P];
-};
-
 const fields = [
   {
     id: "published",
-    label: "Published?",
+    label: "Live",
     controlType: "Toggle",
-  },
+    side: "right",
+  } as const,
   {
     id: "title",
     label: "Title",
     controlType: "TextInput",
-  },
+  } as const,
   {
     id: "post_slug",
     label: "Slug",
     controlType: "TextInput",
-  },
+  } as const,
   {
     id: "description",
     label: "Description",
     controlType: "TextInput",
-  },
+  } as const,
   {
     id: "notes",
     label: "Notes",
     controlType: "TextArea",
-  },
+  } as const,
   {
     id: "content",
     label: "Content",
     controlType: "MarkdownPreviewer",
-  },
-] as const;
+  } as const,
+];
 const actions = [
   {
     id: "save",
@@ -52,13 +49,14 @@ const actions = [
 ];
 
 export default function ArticleDetail({ activity, setActivity }: Props) {
+  console.log("fields are", fields)
   return (
     <div className="ArticleDetail">
       <Form
         heading={activity.title}
         newItem={activity}
         setNewItem={(newItem) => setActivity(newItem as ActivityArticle)}
-        fields={fields as Mutable<typeof fields>}
+        fields={fields}
         actions={actions}
       />
     </div>
