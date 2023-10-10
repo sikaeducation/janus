@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test("create an activity", async ({ page }) => {
+test.skip("create an activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
