@@ -15,13 +15,5 @@
     "noUnusedLocals": false,
     "noUnusedParameters": false
   },
-  "include": [
-    "src",
-    "features",
-    "./jest-setup.ts",
-    "./.eslintrc.js",
-    "src/types.d.ts",
-    "playwright.config.ts",
-    "jest.config.js"
-  ]
+  "include": ["src", "features", "./.eslintrc.js", "playwright.config.ts"]
 }
