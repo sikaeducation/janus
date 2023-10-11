@@ -1,11 +1,12 @@
 import "./AppFooter.scss";
 
 function AppFooter() {
-	return (
-		<footer className="AppFooter">
-			<small>© 2022, Sika Education</small>
-		</footer>
-	);
+  const currentYear = new Date().getFullYear();
+  return (
+    <footer className="AppFooter">
+      <small>© {currentYear}, Sika Education</small>
+    </footer>
+  );
 }
 
 export default AppFooter;

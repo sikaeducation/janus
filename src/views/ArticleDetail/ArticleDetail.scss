@@ -1,37 +1,42 @@
 @use "~@sikaeducation/ui/styles" as *;
 
 .ArticleDetail {
-	max-inline-size: $sizes-s14;
+  max-inline-size: $sizes-s14;
 
-	.Toggle {
-		display: inline-block;
-		margin-inline-start: $sizes-s5;
-	}
+  .Toggle {
+    display: inline-block;
+    margin-inline-start: $sizes-s5;
+  }
 
-	> .Form {
-		padding: 0 $sizes-s4;
+  > .Form {
+    padding: 0 $sizes-s4;
 
-		> .Heading {
-			margin: 0;
-		}
+    > .Heading {
+      margin: 0;
+    }
 
-		.form-field {
-			&:nth-child(1) { // Published button
-				position: relative;
-				text-align: end;
-				inset-block-start: -25px; // Visual alignment
-				margin-block-start: -25px; // Compensation for ^^
-				inset-inline-start: 16px;
-			}
-		}
-	}
+    .form-field {
+      &:nth-child(1) {
+        // Published button
+        position: relative;
+        text-align: end;
+        inset-block-start: -25px; // Visual alignment
+        margin-block-start: -25px; // Compensation for ^^
+        inset-inline-start: 16px;
+      }
 
-	.post-slug {
-		@include typography-code-font;
+      .Markdown {
+        padding: $sizes-s4;
+      }
+    }
+  }
 
-		grid-row: 2 / 3;
-		grid-column: 1 / 3;
-		color: $colors-grey-4;
-		font-size: $sizes-f2;
-	}
+  .post-slug {
+    @include typography-code-font;
+
+    grid-row: 2 / 3;
+    grid-column: 1 / 3;
+    color: $colors-grey-4;
+    font-size: $sizes-f2;
+  }
 }
