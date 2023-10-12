@@ -5,6 +5,11 @@ import { performanceContext } from "../../../contexts/performance";
 import ActivityInteractionView from "../ActivityInteractionView";
 import ActivityInteractionSubmission from "../ActivityInteractionSubmission";
 import ActivityInteractionQuestions from "../ActivityInteractionQuestions";
+import {
+  evaluatedSubmissionPerformance,
+  postedViewPerformance,
+  postType,
+} from "../../../types";
 
 type props = {
   postType: postType;
