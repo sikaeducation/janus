@@ -50,7 +50,6 @@ const actions = [
 ];
 
 export default function ArticleDetail({ activity, setActivity }: Props) {
-  console.log("fields are", fields);
   return (
     <div className="ArticleDetail">
       <Form

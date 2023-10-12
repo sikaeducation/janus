@@ -5,7 +5,6 @@ import AppHome from "./views/AppHome";
 import AppFooter from "./components/AppFooter";
 import "./App.scss";
 
-import ToastProvider from "./contexts/toast";
 import AuthenticatedRoutes from "./views/AuthenticatedRoutes";
 import { RootState } from "./store";
 import useAuth from "./hooks/use-auth";
@@ -22,9 +21,7 @@ function App() {
       {!isAuthenticated && !isLoading && <AppHome />}
       {isAuthenticated && (
         <main>
-          <ToastProvider>
-            <AuthenticatedRoutes />
-          </ToastProvider>
+          <AuthenticatedRoutes />
         </main>
       )}
       <AppFooter />
