@@ -1,4 +1,4 @@
-import { createContext, useEffect, useMemo, useState } from "react";
+import { createContext, ReactNode, useEffect, useMemo, useState } from "react";
 
 type toastContextType = {
   toasts: string[];
@@ -9,7 +9,7 @@ export const toastContext = createContext<toastContextType>(
 );
 
 type props = {
-  children: JSX.Element;
+  children: ReactNode;
 };
 
 export default function ToastProvider({ children }: props) {

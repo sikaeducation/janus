@@ -3,6 +3,7 @@ import { useDispatch } from "react-redux";
 import { useEffect } from "react";
 import { setUser } from "../slices/userSlice";
 import tokenAccessors from "../utilities/security";
+import { User } from "../types";
 
 const { setTokenFetcher } = tokenAccessors;
 

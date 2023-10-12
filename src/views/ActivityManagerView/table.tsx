@@ -41,12 +41,19 @@ export const fields: Field[] = [
   },
 ];
 
-export const skeletonRows = Array(10)
-  .map((_, index) => (
-    <div key={index} aria-role="presentation">
-      <span className="type"><Skeleton /></span>
-      <span className="publishedIcon"><Skeleton /></span>
-      <span className="title"><Skeleton /></span>
-      <span className="description"><Skeleton /></span>
-    </div>
-  ));
+export const skeletonRows = Array(10).map((_, index) => (
+  <div key={index} role="presentation">
+    <span className="type">
+      <Skeleton />
+    </span>
+    <span className="publishedIcon">
+      <Skeleton />
+    </span>
+    <span className="title">
+      <Skeleton />
+    </span>
+    <span className="description">
+      <Skeleton />
+    </span>
+  </div>
+));

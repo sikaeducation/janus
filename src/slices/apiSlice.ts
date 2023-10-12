@@ -1,4 +1,5 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { Activity } from "../types";
 import tokenAccessors from "../utilities/security";
 
 const { getToken } = tokenAccessors;

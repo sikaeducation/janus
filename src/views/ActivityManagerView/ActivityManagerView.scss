@@ -9,6 +9,13 @@
     justify-content: space-between;
     align-items: center;
     margin-block-end: $sizes-s4;
+
+    .activities-count {
+      color: $colors-grey-7;
+      font-weight: 400;
+      font-size: $sizes-f3;
+      margin-inline-start: $sizes-s3;
+    }
   }
 
   .DataTable {
@@ -31,14 +38,11 @@
       }
 
       &.active {
-        .field:nth-child(3),
-        .field:nth-child(4) {
-          border-radius: $borders-radius;
-          background-color: $colors-primary-9;
-          inline-size: calc(100% + ($sizes-s2 * 2));
-          margin-inline-start: calc($sizes-s2 * -1);
-          padding-inline-start: $sizes-s2;
-        }
+        border-radius: $borders-radius;
+        background-color: $colors-primary-9;
+        inline-size: calc(100% + ($sizes-s2 * 2));
+        margin-inline-start: calc($sizes-s2 * -1);
+        padding-inline-start: $sizes-s2;
       }
     }
   }

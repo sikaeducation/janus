@@ -1,4 +1,5 @@
 import { Form } from "@sikaeducation/ui";
+import { ActivityArticle } from "../../types";
 import "./ArticleDetail.scss";
 
 type Props = {
@@ -49,7 +50,7 @@ const actions = [
 ];
 
 export default function ArticleDetail({ activity, setActivity }: Props) {
-  console.log("fields are", fields)
+  console.log("fields are", fields);
   return (
     <div className="ArticleDetail">
       <Form

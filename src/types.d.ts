@@ -1,13 +1,13 @@
 // New Types
-type ActivityType = "Article";
+export type ActivityType = "Article";
 
-type MongoDocument = {
+export type MongoDocument = {
   _id?: string;
   created_at?: string;
   updated_at?: string;
 };
 
-type Activity = {
+export type Activity = {
   _type: ActivityType;
   title: string;
   published: boolean;
@@ -16,17 +16,17 @@ type Activity = {
   description?: string;
 } & MongoDocument;
 
-type ActivityArticle = Activity & {
+export type ActivityArticle = Activity & {
   _type: "Article";
   post_slug: string;
   content?: string;
 };
 
-type ActivityResponse = {
+export type ActivityResponse = {
   activities: Record<string, Activity>;
 };
 
-type User = {
+export type User = {
   email: string;
   "https://sikaeducation.com/role"?: "coach";
   name: string;
@@ -40,12 +40,12 @@ type Clobber<
   T extends Record<string, unknown>,
   U extends Record<string, unknown>,
 > = {
-    [K in keyof T | keyof U]: K extends keyof U
+  [K in keyof T | keyof U]: K extends keyof U
     ? U[K]
     : K extends keyof T
     ? T[K]
     : never;
-  };
+};
 type postType =
   | "root"
   | "meta"

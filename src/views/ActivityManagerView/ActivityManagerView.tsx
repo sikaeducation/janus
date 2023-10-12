@@ -18,6 +18,7 @@ import {
   useGetActivitiesQuery,
 } from "../../slices/apiSlice";
 import ArticleDetail from "../ArticleDetail";
+import { Activity, ActivityArticle } from "../../types";
 
 type FormattedActivity = Activity & {
   id: string;
@@ -48,7 +49,6 @@ export default function ActivityManagerView() {
     createActivity(newActivity);
     setNewActivityOpen(false);
   };
-  console.log("hey", selectedActivity)
 
   const fieldActions: Record<string, () => void> = {
     // eslint-disable-next-line no-console
@@ -66,7 +66,7 @@ export default function ActivityManagerView() {
   }));
 
   const formattedActivities: FormattedActivity[] =
-    activities?.map((activity) => ({
+    activities?.map<FormattedActivity>((activity) => ({
       ...activity,
       id: activity._id || "",
       type: activityTypes[activity._type],
@@ -75,34 +75,37 @@ export default function ActivityManagerView() {
 
   return (
     <div className="ActivityManagerView">
-      {isLoading && <>
-        <header>
-          <Heading level={2} margin={false}>Activities</Heading>
-        </header>
-        {skeletonRows}
-      </>}
-      {isError && (
-        <StatusMessage type="network-error" />
+      {isLoading && (
+        <>
+          <header>
+            <Heading level={2} margin={false}>
+              Activities
+            </Heading>
+          </header>
+          {skeletonRows}
+        </>
       )}
+      {isError && <StatusMessage type="network-error" />}
       {isSuccess && (
         <>
           <header>
             <Heading level={2} margin={false}>
               Activities{" "}
-              <span className="activities-count">({activitiesCount})</span>
+              <span className="activities-count">{activitiesCount}</span>
             </Heading>
             <Button type="primary" action={handleNewClick}>
               New
             </Button>
           </header>
-          {formattedActivities.length === 0
-            ? <StatusMessage type="no-data" />
-            : <DataTable<FormattedActivity>
+          {formattedActivities.length === 0 ? (
+            <StatusMessage type="no-data" />
+          ) : (
+            <DataTable<FormattedActivity>
               fields={fieldsWithActions}
               tableData={formattedActivities}
               activeId={selectedActivity?._id}
             />
-          }
+          )}
         </>
       )}
       {newActivityOpen && (
@@ -112,10 +115,11 @@ export default function ActivityManagerView() {
       )}
       {selectedActivity && selectedActivity._type === "Article" ? (
         <Drawer close={() => setSelectedActivity(undefined)}>
-          {console.log("grr", selectedActivity)}
           <ArticleDetail
             activity={selectedActivity as ActivityArticle}
-            setActivity={(activity) => setSelectedActivity(activity)}
+            setActivity={(activity) =>
+              setSelectedActivity(activity as Activity)
+            }
           />
         </Drawer>
       ) : null}
