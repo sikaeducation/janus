@@ -1,8 +1,0 @@
-@use "~@sikaeducation/ui/styles" as *;
-
-.PerformanceViewer {
-  width: $sizes-content-width-xl;
-  h1 {
-    @include typography-heading-font-1;
-  }
-}
