@@ -1,0 +1,9 @@
+#!/bin/bash
+echo "Running Docker Compose with this configuration:"
+PARENT_PATH=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")"
+	pwd -P
+)
+cd $PARENT_PATH/..
+docker compose config
+docker compose up --abort-on-container-exit
