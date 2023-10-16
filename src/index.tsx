@@ -1,3 +1,5 @@
+/* eslint-disable @typescript-eslint/ban-ts-comment */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
 import React from "react";
 import ReactDOM from "react-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
@@ -8,35 +10,37 @@ import App from "./App";
 import store from "./store";
 import "@sikaeducation/ui/components.css";
 import "@sikaeducation/ui/reset";
+import "@sikaeducation/ui/styles";
 
-if (process.env.NODE_ENV !== "production") {
-	// eslint-disable-next-line
-	console.log("Environment:");
-	// eslint-disable-next-line
-	console.table(process.env);
+if (import.meta.env.NODE_ENV !== "production") {
+  console.log("Environment:");
+  console.table(import.meta.env);
+}
+
+interface ImportMeta {
+  env: {
+    VITE_AUTH_ZERO_DOMAIN: string;
+    VITE_CLIENT_ID: string;
+    VITE_AUTH_ZERO_AUDIENCE: string;
+  };
 }
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Auth0Provider
-			domain={process.env.REACT_APP_AUTH_ZERO_DOMAIN ?? ""}
-			clientId={process.env.REACT_APP_CLIENT_ID ?? ""}
-			redirectUri={window.location.origin}
-			audience={process.env.REACT_APP_AUTH_ZERO_AUDIENCE}
-			scope="openid"
-		>
-			<ReduxProvider store={store}>
-				<Router>
-					<ScrollToTop />
-					<App />
-				</Router>
-			</ReduxProvider>
-		</Auth0Provider>
-	</React.StrictMode>,
-	document.getElementById("root"),
+  <React.StrictMode>
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH_ZERO_DOMAIN ?? ""}
+      clientId={import.meta.env.VITE_CLIENT_ID ?? ""}
+      redirectUri={window.location.origin}
+      audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
+      scope="openid"
+    >
+      <ReduxProvider store={store}>
+        <Router>
+          <ScrollToTop />
+          <App />
+        </Router>
+      </ReduxProvider>
+    </Auth0Provider>
+  </React.StrictMode>,
+  document.getElementById("root"),
 );
-
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
