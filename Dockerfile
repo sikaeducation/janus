@@ -21,7 +21,7 @@ RUN npm run build
 
 # Test
 FROM production AS test
-COPY --from=production /app/build ./build
+COPY --from=production /app/dist ./dist
 
 USER root
 RUN npx playwright install --with-deps
