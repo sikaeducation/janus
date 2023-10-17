@@ -29,10 +29,10 @@ jobs:
       - name: Build app
         run: npm run build
         env:
-          REACT_APP_AUTH_ZERO_AUDIENCE: ${{ secrets.AUTH_ZERO_AUDIENCE }}
-          REACT_APP_AUTH_ZERO_DOMAIN: ${{ secrets.AUTH_ZERO_DOMAIN }}
-          REACT_APP_CLIENT_ID: ${{ secrets.AUTH_ZERO_CLIENT_ID }}
-          REACT_APP_ACTIVITY_SERVICE_BASE_URL: ${{ secrets.ACTIVITY_SERVICE_BASE_URL }}
+          VITE_AUTH_ZERO_AUDIENCE: ${{ secrets.AUTH_ZERO_AUDIENCE }}
+          VITE_AUTH_ZERO_DOMAIN: ${{ secrets.AUTH_ZERO_DOMAIN }}
+          VITE_CLIENT_ID: ${{ secrets.AUTH_ZERO_CLIENT_ID }}
+          VITE_ACTIVITY_SERVICE_BASE_URL: ${{ secrets.ACTIVITY_SERVICE_BASE_URL }}
       - name: Upload artifact
         uses: actions/upload-artifact@v3
         with:
