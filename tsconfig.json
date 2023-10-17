@@ -1,32 +1,26 @@
 {
-	"compilerOptions": {
-		"allowSyntheticDefaultImports": true,
-		"esModuleInterop": true,
-		"jsx": "preserve",
-		"forceConsistentCasingInFileNames": true,
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
-		"module": "esnext",
-		"moduleResolution": "node",
-		"noEmit": true,
-		"resolveJsonModule": true,
-		"skipLibCheck": true,
-		"strict": true,
-		"target": "ESNext",
-		"noUnusedLocals": false,
-		"noUnusedParameters": false,
-		"types": [
-			"vite/client"
-		]
-	},
-	"include": [
-		"src",
-		"features",
-		"src/types.d.ts",
-		"playwright.config.ts",
-		"vite.config.ts"
-	]
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "esModuleInterop": true,
+    "jsx": "preserve",
+    "forceConsistentCasingInFileNames": true,
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "module": "esnext",
+    "moduleResolution": "node",
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "ESNext",
+    "noUnusedLocals": false,
+    "noUnusedParameters": false,
+    "types": ["vite/client"]
+  },
+  "include": [
+    "src",
+    "features",
+    "src/types.d.ts",
+    "playwright.config.ts",
+    "vite.config.ts"
+  ]
 }

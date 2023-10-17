@@ -1,0 +1,15 @@
+#!/bin/bash
+PARENT_PATH=$(
+	cd "$(dirname "${BASH_SOURCE[0]}")"
+	pwd -P
+)
+
+cd $PARENT_PATH/src/pages
+mkdir $1
+cd $1
+touch $1.{scss,tsx,test.tsx} index.tsx
+
+echo -e "import $1 from \"./$1\";\n\nexport default $1;" >index.tsx
+echo -e "@use \"@sikaeducation/ui/styles\" as *;\n\n.$1 {\n}" >$1.scss
+echo -e "import \"./$1.scss\";\n\nexport default function $1() {\n\treturn <p>$1</p>;\n}" >$1.tsx
+echo -e "test(\"<$1 />\", () => {\n\texpect(true).toBe(true);\n});\n\nexport default {};" >$1.test.tsx

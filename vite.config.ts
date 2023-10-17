@@ -7,21 +7,21 @@ import postcssMergeRules from "postcss-merge-rules";
 import postcssDiscardDuplicates from "postcss-discard-duplicates";
 
 export default defineConfig({
-	assetsInclude: ["./public"],
-	plugins: [react(), splitVendorChunkPlugin()],
-	server: {
-		open: "/index.html",
-	},
-	define: {
-		"process.env": {},
-	},
-	test: {
-		include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
-		bail: 1,
-	},
-	css: {
-		postcss: {
-			plugins: [postcssNested, postcssMergeRules, postcssDiscardDuplicates],
-		},
-	},
+  assetsInclude: ["./public"],
+  plugins: [react(), splitVendorChunkPlugin()],
+  server: {
+    open: "/index.html",
+  },
+  define: {
+    "process.env": {},
+  },
+  test: {
+    include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
+    bail: 1,
+  },
+  css: {
+    postcss: {
+      plugins: [postcssNested, postcssMergeRules, postcssDiscardDuplicates],
+    },
+  },
 });

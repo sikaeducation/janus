@@ -51,7 +51,6 @@ export default function ActivityManagerView() {
   };
 
   const fieldActions: Record<string, () => void> = {
-    // eslint-disable-next-line no-console
     publishedIcon: () => console.log("toggle publishing"),
     title: (id?: string) => {
       setSelectedActivity(activities?.find((activity) => activity._id === id));

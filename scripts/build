@@ -1,9 +1,0 @@
-#!/bin/bash
-echo "Building containers..."
-PARENT_PATH=$(
-	cd "$(dirname "${BASH_SOURCE[0]}")"
-	pwd -P
-)
-cd $PARENT_PATH/..
-
-docker compose -f docker-compose.yml -f docker-compose.test.yml build
