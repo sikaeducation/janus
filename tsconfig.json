@@ -17,9 +17,10 @@
     "types": ["vite/client"]
   },
   "include": [
+    "src/types.d.ts",
+    "src/env.d.ts",
     "src",
     "features",
-    "src/types.d.ts",
     "playwright.config.ts",
     "vite.config.ts"
   ]

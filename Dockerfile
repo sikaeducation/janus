@@ -11,4 +11,4 @@ FROM base AS dev
 EXPOSE 3000
 USER node
 ENV NODE_ENV=production
-CMD ["npm", "start"]
+CMD ["npm", "dev"]

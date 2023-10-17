@@ -1,5 +1,7 @@
 services:
   frontend:
+    depends_on:
+      - api
     env_file:
       - .env
     ports:
@@ -10,4 +12,4 @@ services:
     working_dir: "/app"
     volumes:
       - .:/app
-    command: ["npm", "start"]
+    command: ["npm", "run", "_dev"]
