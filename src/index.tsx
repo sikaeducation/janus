@@ -11,6 +11,7 @@ import store from "./store";
 import "@sikaeducation/ui/components.css";
 import "@sikaeducation/ui/reset";
 import "@sikaeducation/ui/styles";
+import "@sikaeducation/ui/fonts";
 
 if (import.meta.env.NODE_ENV !== "production") {
   console.log("Environment:");
