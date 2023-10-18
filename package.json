@@ -20,7 +20,7 @@
     "build": "tsc && vite build",
     "build:docker": "docker compose -f docker-compose.yml -f ../activity-service/docker-compose.yml build",
     "test": "docker compose run frontend sh -c 'npm run _test:unit && npm run _test:features'",
-    "test:ci": "npm run test:_unit && ./scripts/static-server-test.sh",
+    "test:ci": "npm run _test:unit && ./scripts/static-server-test.sh",
     "test:unit": "docker compose run frontend npm run _test:unit",
     "_test:unit": "vitest --run",
     "test:unit:watch": "docker compose run frontend npm run _test:unit:watch",
