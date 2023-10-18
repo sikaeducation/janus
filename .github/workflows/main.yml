@@ -69,7 +69,7 @@ jobs:
           build_command: echo "Build exists, skipping npm run build"
           install_command: echo "Install exists, skipping npm install"
   create_release:
-    name: Create release
+    name: Create GitHub release
     runs-on: ubuntu-latest
     needs: test
     steps:
