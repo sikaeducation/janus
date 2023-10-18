@@ -11,7 +11,7 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Run tests
-        run: ./scripts/test
+        run: npm run test:ci
   build:
     name: Build app
     needs: test
