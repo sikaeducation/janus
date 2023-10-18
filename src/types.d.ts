@@ -1,4 +1,13 @@
 // New Types
+
+import type Store from "./store";
+
+declare global {
+  interface Window {
+    store: Store; // Stored for greybox testing
+  }
+}
+
 export type ActivityType = "Article";
 
 export type MongoDocument = {

@@ -5,7 +5,7 @@ let getAccessTokenSilently: TokenGetter;
 
 export const accessors = {
   getToken: () =>
-    window.env === "test" ? "Fake Token" : getAccessTokenSilently(),
+    !import.meta.env.PROD ? "Fake Token" : getAccessTokenSilently(),
   setTokenFetcher: (accessTokenSetter: TokenGetter) => {
     getAccessTokenSilently = accessTokenSetter;
   },

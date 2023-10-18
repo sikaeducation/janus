@@ -4,8 +4,18 @@ Sika's LMS
 
 [![CI](https://github.com/sikaeducation/janus/actions/workflows/main.yml/badge.svg)](https://github.com/sikaeducation/janus/actions/workflows/main.yml)
 
+## Development
+
 - Requires Docker/Docker Compose
-- API must be running locally on port 4000
+- [Activity Service](https://github.com/sikaeducation/activity-service) must be running locally on port 4000
+- Copy `.env.example` to `.env` and add values for:
+
+```env
+VITE_AUTH_ZERO_DOMAIN=xxxxxxxxxxxxxxxx.us.auth0.com
+VITE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VITE_ACTIVITY_SERVICE_BASE_URL=http://localhost:4000
+VITE_AUTH_ZERO_AUDIENCE=https://xxxxxxxxxxxx.us.auth0.com/api/v2/
+```
 
 ## Scripts
 

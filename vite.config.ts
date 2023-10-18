@@ -10,10 +10,10 @@ export default defineConfig({
   assetsInclude: ["./public"],
   plugins: [react(), splitVendorChunkPlugin()],
   server: {
-    open: "/index.html",
+    port: +process.env.PORT!, // From container
   },
   define: {
-    "process.env": {},
+    "process.env": {}, // Needed to hack import.meta into React
   },
   test: {
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
