@@ -1,6 +1,4 @@
 node_modules
 storybook-static
 Dockerfile
-Dockerfile.test
-build
-test-results
+dist
