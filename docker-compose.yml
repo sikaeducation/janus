@@ -4,7 +4,6 @@ services:
       - 3000:3000
     build:
       context: .
-    env_file: ".env"
     working_dir: "/app"
     volumes:
       - .:/app
