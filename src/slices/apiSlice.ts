@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import { Activity } from "../types";
 import tokenAccessors from "../utilities/security";
+import { Activity, Article } from "../types";
 
 const { getToken } = tokenAccessors;
 
@@ -22,9 +22,9 @@ export const apiSlice = createApi({
       providesTags: ["Activity"],
       transformResponse: (response: { data: Activity[] }) => response.data,
     }),
-    createActivity: builder.mutation<Activity, Activity>({
+    createArticle: builder.mutation<Article, Article>({
       query: (activity) => ({
-        url: "activities",
+        url: "articles",
         method: "POST",
         body: activity,
       }),
@@ -33,4 +33,4 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetActivitiesQuery, useCreateActivityMutation } = apiSlice;
+export const { useGetActivitiesQuery, useCreateArticleMutation } = apiSlice;
