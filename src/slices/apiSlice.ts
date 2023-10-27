@@ -20,7 +20,7 @@ export const apiSlice = createApi({
     getActivities: builder.query<Activity[], void>({
       query: () => "activities",
       providesTags: ["Activity"],
-      transformResponse: (response) => response.data,
+      transformResponse: (response: { data: Activity[] }) => response.data,
     }),
     createActivity: builder.mutation<Activity, Activity>({
       query: (activity) => ({
