@@ -8,7 +8,7 @@ declare global {
   }
 }
 
-export type ActivityType = "Article";
+export type ActivityType = "article";
 
 export type MongoDocument = {
   _id?: string;
@@ -26,7 +26,7 @@ export type Activity = {
 } & MongoDocument;
 
 export type ActivityArticle = Activity & {
-  _type: "Article";
+  _type: "article";
   post_slug: string;
   content?: string;
 };

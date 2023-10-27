@@ -6,13 +6,13 @@ test.skip("create an activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
-      _type: "Article",
+      _type: "article",
       title: "Some title 1",
       published: true,
     },
     {
       _id: 2,
-      _type: "Article",
+      _type: "article",
       title: "Some title 2",
       published: false,
     },
@@ -20,7 +20,7 @@ test.skip("create an activity", async ({ page }) => {
 
   const activity = {
     _id: 3,
-    _type: "Article",
+    _type: "article",
     title: "Some title 3",
     postSlug: "slug_3",
     description: "Some desc.",

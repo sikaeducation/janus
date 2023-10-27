@@ -12,7 +12,7 @@ type Props = {
 
 export default function NewActivityForm({ save, cancel }: Props) {
   const [newItem, setNewItem] = useState<ActivityArticle>({
-    _type: "Article",
+    _type: "article",
     title: "",
     post_slug: "",
     description: "",

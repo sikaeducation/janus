@@ -6,7 +6,7 @@ test.skip("view activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
-      _type: "Article",
+      _type: "article",
       title: "Some title 1",
       postSlug: "slug_3",
       description: "Some desc.",

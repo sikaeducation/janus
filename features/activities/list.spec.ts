@@ -6,19 +6,19 @@ test.skip("listing activities", async ({ page }) => {
   const activities = [
     {
       _id: 1,
-      _type: "Article",
+      _type: "article",
       title: "Some title 1",
       published: true,
     },
     {
       _id: 2,
-      _type: "Article",
+      _type: "article",
       title: "Some title 2",
       published: false,
     },
     {
       _id: 3,
-      _type: "Article",
+      _type: "article",
       title: "Some title 3",
       published: true,
     },

@@ -27,7 +27,7 @@ type FormattedActivity = Activity & {
 };
 
 const activityTypes = {
-  Article: <Icon type="article" />,
+  article: <Icon type="article" />,
 };
 
 export default function ActivityManagerView() {
@@ -112,7 +112,7 @@ export default function ActivityManagerView() {
           <NewActivityForm save={save} cancel={closeModal} />
         </ModalView>
       )}
-      {selectedActivity && selectedActivity._type === "Article" ? (
+      {selectedActivity && selectedActivity._type === "article" ? (
         <Drawer close={() => setSelectedActivity(undefined)}>
           <ArticleDetail
             activity={selectedActivity as ActivityArticle}
