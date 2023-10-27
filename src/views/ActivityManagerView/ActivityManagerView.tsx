@@ -46,7 +46,7 @@ export default function ActivityManagerView() {
 	const handleNewClick = () => setNewActivityOpen(true);
 	const closeModal = () => setNewActivityOpen(false);
 	const save = (newActivity: Activity) => {
-		createActivity(newActivity);
+		createActivity(newActivity as Article);
 		setNewActivityOpen(false);
 	};
 
