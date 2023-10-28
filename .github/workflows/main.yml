@@ -1,4 +1,4 @@
-name: Deploy
+name: CI
 on:
   push:
     tags: [v*]
@@ -6,7 +6,7 @@ env:
   FORCE_COLOR: 1
 jobs:
   build:
-    name: Build app
+    name: Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -24,19 +24,19 @@ jobs:
           VITE_AUTH_ZERO_DOMAIN: ${{ vars.AUTH_ZERO_DOMAIN }}
           VITE_CLIENT_ID: ${{ vars.AUTH_ZERO_CLIENT_ID }}
           VITE_ACTIVITY_SERVICE_BASE_URL: ${{ vars.ACTIVITY_SERVICE_BASE_URL }}
-      - name: Upload artifact
+      - name: Upload build
         uses: actions/upload-artifact@v3
         with:
           name: dist
           path: dist
   test:
-    name: Run unit and feature tests
+    name: Test
     runs-on: ubuntu-latest
     needs: build
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Download artifact
+      - name: Download build
         uses: actions/download-artifact@v3
         with:
           name: dist
@@ -50,10 +50,11 @@ jobs:
       - name: Run tests
         run: npm run test:ci
   deploy:
-    needs: test
+    name: Deploy
     runs-on: ubuntu-latest
+    needs: test
     steps:
-      - name: Download artifact
+      - name: Download build
         uses: actions/download-artifact@v3
         with:
           name: dist
@@ -69,7 +70,7 @@ jobs:
           build_command: echo "Build exists, skipping npm run build"
           install_command: echo "Install exists, skipping npm install"
   create_release:
-    name: Create GitHub release
+    name: Create release
     runs-on: ubuntu-latest
     needs: test
     steps:
