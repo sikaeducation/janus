@@ -20,7 +20,7 @@
     "build:docker": "docker compose build",
     "test": "npm run test:unit && npm run test:features",
     "test:ci": "npm run _test:unit && ./scripts/static-server-test.sh",
-    "test:unit": "docker compose run --rm test_frontend --rm npm run _test:unit",
+    "test:unit": "docker compose run --rm test_frontend npm run _test:unit",
     "test:unit:watch": "docker compose run --rm test_frontend npm run _test:unit:watch",
     "test:features": "docker compose run --rm tests npm run _test:features",
     "test:features:watch": "docker compose run --rm tests npm run _test:features:watch",
@@ -28,7 +28,7 @@
     "_test:unit": "vitest --run",
     "_test:unit:watch": "vitest --watch",
     "_test:features": "npx playwright test features/",
-    "_test:features:watch": "nodemon -L -x 'npm run test:features' -e ts"
+    "_test:features:watch": "nodemon -L -x 'npm run _test:features' -e ts"
   },
   "dependencies": {
     "@auth0/auth0-react": "^1.9.0",
@@ -59,7 +59,7 @@
     "expect": "^29.3.1",
     "http-server": "^14.1.1",
     "postcss": "^8.4.31",
-    "postcss-clean": "^1.2.2",
+    "postcss-clean": "^1.2.0",
     "postcss-discard-duplicates": "^6.0.0",
     "postcss-merge-rules": "^6.0.1",
     "postcss-nested": "^6.0.1",

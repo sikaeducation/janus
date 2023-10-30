@@ -2,7 +2,9 @@ services:
   frontend:
     ports:
       - 3000:5173
-    build: .
+    build:
+      context: .
+      target: dev
     volumes:
       - .:/app
     command: ["npm", "run", "_dev"]
@@ -15,7 +17,9 @@ services:
       start_period: 60s
     expose:
       - "5173"
-    build: .
+    build:
+      context: .
+      target: test
     volumes:
       - .:/app
     command: ["npm", "run", "_dev"]
