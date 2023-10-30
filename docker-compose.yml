@@ -23,7 +23,7 @@ services:
     volumes:
       - .:/app
     command: ["npm", "run", "_dev"]
-  tests:
+  tests_ci:
     depends_on:
       test_frontend:
         condition: service_healthy
@@ -31,11 +31,9 @@ services:
     ipc: host # Keeps chrome from OOMing
     environment:
       BASE_URL: "http://test_frontend:5173"
-      DISPLAY: "host.docker.internal:0"
     working_dir: /app # Default working dir is /
     volumes:
       - .:/app
-      - /tmp/.X11-unix:/tmp/.X11-unix
   tests_ui:
     depends_on:
       test_frontend:
@@ -43,11 +41,9 @@ services:
     image: mcr.microsoft.com/playwright:v1.39.0-jammy
     environment:
       BASE_URL: "http://localhost:5173"
-      DISPLAY: "${DISPLAY}"
     working_dir: /app # Default working dir is /
     ports:
       - "3001:3001"
     network_mode: host
     volumes:
       - ".:/app"
-      - "$HOME/.Xauthority:/root/.Xauthority:rw"

@@ -28,7 +28,7 @@
     "tu": "npm run test:unit",
     "test:unit:watch": "docker compose run --rm test_frontend npm run _test:unit:watch",
     "tuw": "npm run test:unit:watch",
-    "test:features": "docker compose run --rm tests npm run _test:features",
+    "test:features": "docker compose run --rm tests_ci npm run _test:features",
     "tf": "npm run test:features",
     "test:features:ui": "docker compose run --rm --service-ports tests_ui npm run _test:features:ui",
     "tfw": "npm run test:features:watch",
