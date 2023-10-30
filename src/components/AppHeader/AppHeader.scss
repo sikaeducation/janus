@@ -5,42 +5,51 @@
   flex-flow: row wrap;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: $sizes-s6;
+  margin-block-end: $sizes-s6;
+
   @media (max-width: $sizes-small-breakpoint) {
-    margin-bottom: $sizes-s4;
+    margin-block-end: $sizes-s4;
   }
+
   .primary-navigation {
     .links {
-      margin-bottom: $sizes-s2;
+      margin-block-end: $sizes-s2;
+
       li {
         display: inline-block;
+
         & + li {
-          margin-left: $sizes-s4;
+          margin-inline-start: $sizes-s4;
         }
       }
+
       .active {
         font-weight: 700;
       }
     }
+
     .program-label {
-      font-family: "Gill Sans", sans-serif;
+      color: $colors-grey-6;
       font-weight: 400;
       font-size: $sizes-f5;
-      color: $colors-grey-6;
+      font-family: "Gill Sans", sans-serif;
       line-height: $sizes-f7;
-      margin-bottom: $sizes-f1;
+      margin-block-end: $sizes-f1;
+
       @media (max-width: $sizes-small-breakpoint) {
         display: none;
       }
     }
   }
+
   .user-info {
     display: flex;
     flex-flow: column nowrap;
     justify-content: flex-end;
     align-items: flex-end;
+
     .Button.tertiary-button {
-      padding-right: 0;
+      padding-inline-end: 0;
     }
   }
 }

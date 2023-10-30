@@ -1,14 +1,15 @@
 .AppHome {
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 15%;
+  align-items: center;
+  margin-block-end: 15%;
+
   .login {
-    background-color: inherit;
-    text-decoration: underline;
     display: inline;
     border: none;
+    background-color: inherit;
+    text-decoration: underline;
     cursor: pointer;
   }
 }

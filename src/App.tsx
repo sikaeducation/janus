@@ -10,23 +10,23 @@ import { RootState } from "./store";
 import useAuth from "./hooks/use-auth";
 
 function App() {
-  useAuth();
-  const selector = (state: RootState) => state.user;
-  const { isLoading, isAuthenticated } = useSelector(selector);
+	useAuth();
+	const selector = (state: RootState) => state.user;
+	const { isLoading, isAuthenticated } = useSelector(selector);
 
-  return (
-    <div className="App">
-      <AppHeader />
-      {isLoading && <AppLoading />}
-      {!isAuthenticated && !isLoading && <AppHome />}
-      {isAuthenticated && (
-        <main>
-          <AuthenticatedRoutes />
-        </main>
-      )}
-      <AppFooter />
-    </div>
-  );
+	return (
+		<div className="App">
+			<AppHeader />
+			{isLoading && <AppLoading />}
+			{!isAuthenticated && !isLoading && <AppHome />}
+			{isAuthenticated && (
+				<main>
+					<AuthenticatedRoutes />
+				</main>
+			)}
+			<AppFooter />
+		</div>
+	);
 }
 
 export default App;

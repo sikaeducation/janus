@@ -3,35 +3,46 @@
 .AppLoading {
   display: flex;
   flex-flow: row wrap;
-  align-items: center;
   justify-content: center;
-  margin-bottom: 10%;
+  align-items: center;
+  margin-block-end: 10%;
 }
 
 .lds-circle {
   transform: translateZ(1px);
-}
-.lds-circle > div {
-  display: inline-block;
-  width: 64px;
-  height: 64px;
-  margin: 8px;
-  border-radius: 50%;
-  background-color: $colors-primary-3;
-  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
-}
-@keyframes lds-circle {
-  0%,
-  100% {
-    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+
+  & > div {
+    display: inline-block;
+    margin: 8px;
+    border-radius: 50%;
+    background-color: $colors-primary-3;
+    animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+    inline-size: 64px;
+    block-size: 64px;
+
+    @media screen and (prefers-reduced-motion: reduce) {
+      display: inline-block;
+      margin: 8px;
+      border-radius: 50%;
+      background-color: $colors-primary-3;
+      animation: none;
+      inline-size: 64px;
+      block-size: 64px;
+    }
   }
+}
+
+@keyframes lds-circle {
   0% {
     transform: rotateY(0deg);
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
   }
+
   50% {
     transform: rotateY(1800deg);
     animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
   }
+
   100% {
     transform: rotateY(3600deg);
   }

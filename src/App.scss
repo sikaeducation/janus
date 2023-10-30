@@ -3,9 +3,9 @@
 .App {
   display: grid;
   grid-template-rows: auto 1fr auto;
+  padding-block: $sizes-s5 $sizes-s5;
   font-family: "Gill Sans", sans-serif;
   min-block-size: 100vb;
-  padding-block: $sizes-s5 $sizes-s5;
 
   @media (max-width: $sizes-small-breakpoint) {
     padding-block: $sizes-s2 $sizes-s2;

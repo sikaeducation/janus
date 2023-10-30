@@ -2,126 +2,126 @@ import "./ActivityManagerView.scss";
 import { ReactNode, useState } from "react";
 
 import {
-  Button,
-  Heading,
-  Drawer,
-  DataTable,
-  Icon,
-  StatusMessage,
+	Button,
+	Heading,
+	Drawer,
+	DataTable,
+	Icon,
+	StatusMessage,
 } from "@sikaeducation/ui";
-import ModalView from "../ModalView";
-import NewActivityForm from "../NewActivityForm";
+import ModalView from "@/views/ModalView";
+import NewActivityForm from "@/views/NewActivityForm";
 
 import { fields, skeletonRows } from "./table";
 import {
-  useCreateArticleMutation,
-  useGetActivitiesQuery,
-} from "../../slices/apiSlice";
-import ArticleDetail from "../ArticleDetail";
-import { Activity, Article } from "../../declarations";
+	useCreateArticleMutation,
+	useGetActivitiesQuery,
+} from "@/slices/apiSlice";
+import ArticleDetail from "@/views/ArticleDetail";
+import type { Activity, Article } from "@/declarations";
 
 type FormattedActivity = Activity & {
-  id: string;
-  type: NonNullable<ReactNode>;
-  publishedIcon?: ReactNode;
+	id: string;
+	type: NonNullable<ReactNode>;
+	publishedIcon?: ReactNode;
 };
 
 const activityTypes = {
-  article: <Icon type="article" />,
+	article: <Icon type="article" />,
 };
 
 export default function ActivityManagerView() {
-  const {
-    data: activities,
-    isLoading,
-    isError,
-    isSuccess,
-  } = useGetActivitiesQuery();
-  const [createActivity] = useCreateArticleMutation();
-  const [newActivityOpen, setNewActivityOpen] = useState(false);
-  const [selectedActivity, setSelectedActivity] = useState<
-    Activity | undefined
-  >(undefined);
-  const activitiesCount = activities?.length || 0;
-  const handleNewClick = () => setNewActivityOpen(true);
-  const closeModal = () => setNewActivityOpen(false);
-  const save = (newActivity: Activity) => {
-    createActivity(newActivity as Article);
-    setNewActivityOpen(false);
-  };
+	const {
+		data: activities,
+		isLoading,
+		isError,
+		isSuccess,
+	} = useGetActivitiesQuery();
+	const [createActivity] = useCreateArticleMutation();
+	const [newActivityOpen, setNewActivityOpen] = useState(false);
+	const [selectedActivity, setSelectedActivity] = useState<
+		Activity | undefined
+	>(undefined);
+	const activitiesCount = activities?.length || 0;
+	const handleNewClick = () => setNewActivityOpen(true);
+	const closeModal = () => setNewActivityOpen(false);
+	const save = (newActivity: Activity) => {
+		createActivity(newActivity as Article);
+		setNewActivityOpen(false);
+	};
 
-  const fieldActions: Record<string, () => void> = {
-    publishedIcon: () => console.log("toggle publishing"),
-    title: (id?: string) => {
-      setSelectedActivity(activities?.find((activity) => activity._id === id));
-    },
-    description: (id?: string) => {
-      setSelectedActivity(activities?.find((activity) => activity._id === id));
-    },
-  };
-  const fieldsWithActions = fields.map((field) => ({
-    ...field,
-    action: fieldActions[field.key],
-  }));
+	const fieldActions: Record<string, () => void> = {
+		publishedIcon: () => console.log("toggle publishing"),
+		title: (id?: string) => {
+			setSelectedActivity(activities?.find((activity) => activity._id === id));
+		},
+		description: (id?: string) => {
+			setSelectedActivity(activities?.find((activity) => activity._id === id));
+		},
+	};
+	const fieldsWithActions = fields.map((field) => ({
+		...field,
+		action: fieldActions[field.key],
+	}));
 
-  const formattedActivities: FormattedActivity[] =
-    activities?.map<FormattedActivity>((activity) => ({
-      ...activity,
-      id: activity._id || "",
-      type: activityTypes[activity._type],
-      publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
-    })) || [];
+	const formattedActivities: FormattedActivity[] =
+		activities?.map<FormattedActivity>((activity) => ({
+			...activity,
+			id: activity._id || "",
+			type: activityTypes[activity._type],
+			publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
+		})) || [];
 
-  return (
-    <div className="ActivityManagerView">
-      {isLoading && (
-        <>
-          <header>
-            <Heading level={2} margin={false}>
-              Activities
-            </Heading>
-          </header>
-          {skeletonRows}
-        </>
-      )}
-      {isError && <StatusMessage type="network-error" />}
-      {isSuccess && (
-        <>
-          <header>
-            <Heading level={2} margin={false}>
-              Activities{" "}
-              <span className="activities-count">{activitiesCount}</span>
-            </Heading>
-            <Button type="primary" action={handleNewClick}>
-              New
-            </Button>
-          </header>
-          {formattedActivities.length === 0 ? (
-            <StatusMessage type="no-data" />
-          ) : (
-            <DataTable<FormattedActivity>
-              fields={fieldsWithActions}
-              tableData={formattedActivities}
-              activeId={selectedActivity?._id}
-            />
-          )}
-        </>
-      )}
-      {newActivityOpen && (
-        <ModalView onClose={closeModal}>
-          <NewActivityForm save={save} cancel={closeModal} />
-        </ModalView>
-      )}
-      {selectedActivity && selectedActivity._type === "article" ? (
-        <Drawer close={() => setSelectedActivity(undefined)}>
-          <ArticleDetail
-            activity={selectedActivity as Article}
-            setActivity={(activity) =>
-              setSelectedActivity(activity as Activity)
-            }
-          />
-        </Drawer>
-      ) : null}
-    </div>
-  );
+	return (
+		<div className="ActivityManagerView">
+			{isLoading && (
+				<>
+					<header>
+						<Heading level={2} margin={false}>
+							Activities
+						</Heading>
+					</header>
+					{skeletonRows}
+				</>
+			)}
+			{isError && <StatusMessage type="network-error" />}
+			{isSuccess && (
+				<>
+					<header>
+						<Heading level={2} margin={false}>
+							Activities{" "}
+							<span className="activities-count">{activitiesCount}</span>
+						</Heading>
+						<Button type="primary" action={handleNewClick}>
+							New
+						</Button>
+					</header>
+					{formattedActivities.length === 0 ? (
+						<StatusMessage type="no-data" />
+					) : (
+						<DataTable<FormattedActivity>
+							fields={fieldsWithActions}
+							tableData={formattedActivities}
+							activeId={selectedActivity?._id}
+						/>
+					)}
+				</>
+			)}
+			{newActivityOpen && (
+				<ModalView onClose={closeModal}>
+					<NewActivityForm save={save} cancel={closeModal} />
+				</ModalView>
+			)}
+			{selectedActivity && selectedActivity._type === "article" ? (
+				<Drawer close={() => setSelectedActivity(undefined)}>
+					<ArticleDetail
+						activity={selectedActivity as Article}
+						setActivity={(activity) =>
+							setSelectedActivity(activity as Activity)
+						}
+					/>
+				</Drawer>
+			) : null}
+		</div>
+	);
 }
