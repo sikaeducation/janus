@@ -2,7 +2,7 @@ import type { PlaywrightTestConfig } from "@playwright/test";
 
 const config: PlaywrightTestConfig = {
   use: {
-    baseURL: "http://localhost:3000",
+    baseURL: `http://localhost:${process.env.PORT}`,
     headless: true,
     viewport: {
       width: 1280,

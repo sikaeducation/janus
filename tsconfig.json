@@ -1,19 +1,15 @@
 {
+  "extends": "@tsconfig/vite-react/tsconfig.json",
   "compilerOptions": {
-    "allowSyntheticDefaultImports": true,
-    "esModuleInterop": true,
-    "jsx": "preserve",
-    "forceConsistentCasingInFileNames": true,
-    "lib": ["dom", "dom.iterable", "esnext"],
-    "module": "esnext",
-    "moduleResolution": "node",
-    "noEmit": true,
-    "resolveJsonModule": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "target": "ESNext",
-    "noUnusedLocals": false,
-    "noUnusedParameters": false,
+    "paths": {
+      "@/*": [
+        "./src/widgets/*",
+        "./src/components/*",
+        "./src/elements/*",
+        "./src/*"
+      ],
+      "$/*": ["./style-library/*"]
+    },
     "types": ["vite/client"]
   },
   "include": [

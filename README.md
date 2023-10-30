@@ -1,8 +1,8 @@
 # Janus
 
-Sika's LMS
-
 [![CI](https://github.com/sikaeducation/janus/actions/workflows/main.yml/badge.svg)](https://github.com/sikaeducation/janus/actions/workflows/main.yml)
+
+Sika's LMS
 
 ## Development
 
