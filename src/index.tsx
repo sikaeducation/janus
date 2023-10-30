@@ -11,35 +11,35 @@ import "@sikaeducation/ui/reset";
 import "@sikaeducation/ui/styles";
 
 if (import.meta.env.DEV) {
-	console.log("Environment:");
-	console.table(import.meta.env);
+  console.log("Environment:");
+  console.table(import.meta.env);
 }
 
 if (
-	!import.meta.env.VITE_AUTH_ZERO_DOMAIN ||
-	!import.meta.env.VITE_CLIENT_ID ||
-	!import.meta.env.VITE_AUTH_ZERO_AUDIENCE
+  !import.meta.env.VITE_AUTH_ZERO_DOMAIN ||
+  !import.meta.env.VITE_CLIENT_ID ||
+  !import.meta.env.VITE_AUTH_ZERO_AUDIENCE
 ) {
-	console.table(import.meta.env);
-	throw new Error("Required environment variables not set!");
+  console.table(import.meta.env);
+  throw new Error("Required environment variables not set!");
 }
 
 ReactDOM.render(
-	<React.StrictMode>
-		<Auth0Provider
-			domain={import.meta.env.VITE_AUTH_ZERO_DOMAIN}
-			clientId={import.meta.env.VITE_CLIENT_ID}
-			redirectUri={window.location.origin}
-			audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
-			scope="openid"
-		>
-			<ReduxProvider store={store}>
-				<Router>
-					<ScrollToTop />
-					<App />
-				</Router>
-			</ReduxProvider>
-		</Auth0Provider>
-	</React.StrictMode>,
-	document.getElementById("root"),
+  <React.StrictMode>
+    <Auth0Provider
+      domain={import.meta.env.VITE_AUTH_ZERO_DOMAIN}
+      clientId={import.meta.env.VITE_CLIENT_ID}
+      redirectUri={window.location.origin}
+      audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
+      scope="openid"
+    >
+      <ReduxProvider store={store}>
+        <Router>
+          <ScrollToTop />
+          <App />
+        </Router>
+      </ReduxProvider>
+    </Auth0Provider>
+  </React.StrictMode>,
+  document.getElementById("root"),
 );

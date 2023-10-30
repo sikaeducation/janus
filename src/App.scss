@@ -5,12 +5,10 @@
   grid-template-rows: auto 1fr auto;
   font-family: "Gill Sans", sans-serif;
   min-block-size: 100vb;
-  padding-block-start: $sizes-s5;
-  padding-block-end: $sizes-s5;
+  padding-block: $sizes-s5 $sizes-s5;
 
   @media (max-width: $sizes-small-breakpoint) {
-    padding-block-start: $sizes-s2;
-    padding-block-end: $sizes-s2;
+    padding-block: $sizes-s2 $sizes-s2;
   }
 
   > header,
