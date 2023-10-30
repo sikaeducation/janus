@@ -1,28 +1,32 @@
 services:
   frontend:
+    ports:
+      - 3000:5173
+    build: .
+    volumes:
+      - .:/app
+    command: ["npm", "run", "_dev"]
+  test_frontend:
     healthcheck:
-      # test: ["CMD-SHELL", "wget -O- http://localhost:5173 || exit 1"]
       test: ["CMD-SHELL", "curl -f http://localhost:5173 || exit 1"]
       interval: 5s
       timeout: 5s
       retries: 10
       start_period: 60s
-    ports:
-      - 3000:5173
-    build:
-      context: .
-      target: dev
+    expose:
+      - "5173"
+    build: .
     volumes:
       - .:/app
     command: ["npm", "run", "_dev"]
   tests:
     depends_on:
-      frontend:
+      test_frontend:
         condition: service_healthy
     image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    ipc: host
+    ipc: host # Keeps chrome from OOMing
     environment:
-      PORT: 5173
+      BASE_URL: "http://test_frontend:5173"
+    working_dir: /app # Default working dir is /
     volumes:
       - .:/app
-    command: ["npm", "run", "_test:features"]
