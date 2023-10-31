@@ -1,5 +1,4 @@
 import React, { ReactNode } from "react";
-import ReactDOM from "react-dom";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -9,11 +8,8 @@ import store from "@/store";
 import "@sikaeducation/ui/components.css";
 import "@sikaeducation/ui/reset";
 import "@sikaeducation/ui/styles";
-
-if (import.meta.env.DEV) {
-  console.log("Environment:");
-  console.table(import.meta.env);
-}
+import { createRoot } from "react-dom/client";
+import "@/sentry";
 
 if (
   !import.meta.env.VITE_AUTH_ZERO_DOMAIN ||
@@ -22,6 +18,11 @@ if (
 ) {
   console.table(import.meta.env);
   throw new Error("Required environment variables not set!");
+}
+
+if (import.meta.env.DEV) {
+  console.log("Environment:");
+  console.table(import.meta.env);
 }
 
 const AuthProvider =
@@ -39,7 +40,9 @@ const AuthProvider =
       )
     : ({ children }: { children: ReactNode }) => <>{children}</>;
 
-ReactDOM.render(
+const container = document.getElementById("root")!;
+const root = createRoot(container);
+root.render(
   <React.StrictMode>
     <AuthProvider>
       <ReduxProvider store={store}>
@@ -50,5 +53,4 @@ ReactDOM.render(
       </ReduxProvider>
     </AuthProvider>
   </React.StrictMode>,
-  document.getElementById("root"),
 );
