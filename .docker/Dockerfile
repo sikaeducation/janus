@@ -1,6 +1,6 @@
 FROM node:20.8.1-bookworm
 WORKDIR /app
-USER node
+USER root
 
 COPY ./package.json .
 COPY ./package-lock.json .
