@@ -25,7 +25,7 @@
     "db": "npm run docker:build",
     "dc": "npm run docker:clean",
     "test": "npm run test:unit && npm run test:features",
-    "test:ci": "npm run _test:unit && ./scripts/static-server-test.sh",
+    "test:ci": "./scripts/static-server-test.sh",
     "test:unit": "docker compose --project-directory .docker run --rm frontend_test npm run _test:unit",
     "tu": "npm run test:unit",
     "test:unit:watch": "docker compose --project-directory .docker run --rm frontend_test npm run _test:unit:watch",

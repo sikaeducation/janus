@@ -15,7 +15,7 @@ if (
   !import.meta.env.VITE_AUTH_ZERO_DOMAIN ||
   !import.meta.env.VITE_AUTH_ZERO_CLIENT_ID ||
   !import.meta.env.VITE_AUTH_ZERO_AUDIENCE ||
-  !import.meta.env.VITE_API_BASE_URL
+  !import.meta.env.VITE_ACTIVITY_API_BASE_URL
 ) {
   console.table(import.meta.env);
   throw new Error("Required environment variables not set!");
