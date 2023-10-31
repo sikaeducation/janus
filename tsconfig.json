@@ -1,23 +1,16 @@
 {
-  "extends": "@tsconfig/vite-react/tsconfig.json",
-  "compilerOptions": {
-    "paths": {
-      "@/*": [
-        "./src/widgets/*",
-        "./src/components/*",
-        "./src/elements/*",
-        "./src/*"
-      ],
-      "$/*": ["./style-library/*"]
-    },
-    "types": ["vite/client"]
-  },
-  "include": [
-    "src/types.d.ts",
-    "src/env.d.ts",
-    "src",
-    "features",
-    "playwright.config.ts",
-    "vite.config.ts"
-  ]
+	"extends": "@tsconfig/vite-react/tsconfig.json",
+	"compilerOptions": {
+		"paths": {
+			"@/*": [
+				"./src/*"
+			],
+			"$/*": [
+				"./features/*"
+			]
+		},
+		"types": [
+			"vite/client"
+		]
+	}
 }

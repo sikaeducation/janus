@@ -1,0 +1,32 @@
+services:
+  frontend_dev:
+    extends:
+      file: frontend.config.yml
+      service: frontend
+    build:
+      target: dev
+    ports:
+      - "3000:3000"
+  frontend_test:
+    extends:
+      file: frontend.config.yml
+      service: frontend
+    build:
+      target: test
+    ports:
+      - "5173:3000"
+  tests_ci:
+    extends:
+      file: tests.config.yml
+      service: tests
+    environment:
+      BASE_URL: "http://frontend_test:3000" # Internal frontend port
+  tests_ui:
+    extends:
+      file: tests.config.yml
+      service: tests
+    environment:
+      BASE_URL: "http://localhost:5173" # Public frontend port
+    ports:
+      - "3001:3001"
+    network_mode: host # Allows container access to public frontend

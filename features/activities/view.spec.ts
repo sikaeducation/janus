@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test.skip("view activity", async ({ page }) => {
+test("view activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
@@ -15,6 +15,14 @@ test.skip("view activity", async ({ page }) => {
     },
   ];
 
+  await page.route("**/oauth/token", (route: Route) => {
+    route.fulfill({
+      body: JSON.stringify({
+        access_token: "dummy",
+        id_token: "dummy",
+      }),
+    });
+  });
   await page.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify(activities),

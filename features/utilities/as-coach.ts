@@ -2,7 +2,6 @@ import { Page } from "@playwright/test";
 
 async function asCoach(page: Page) {
   await page.evaluate(() => {
-    // @ts-ignore
     window.store.dispatch({
       type: "user/setUser",
       payload: {

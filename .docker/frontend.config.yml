@@ -1,0 +1,16 @@
+services:
+  frontend:
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 60s
+    build:
+      context: ..
+      dockerfile: .docker/Dockerfile
+    environment:
+      PORT: 3000
+    command: ["npm", "run", "_dev"]
+    volumes:
+      - ..:/app

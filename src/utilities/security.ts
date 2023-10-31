@@ -4,7 +4,9 @@ type TokenGetter = (options?: GetTokenSilentlyOptions) => Promise<string>;
 let getAccessTokenSilently: TokenGetter;
 
 export const accessors = {
-  getToken: () => getAccessTokenSilently(),
+  getToken: () => {
+    return getAccessTokenSilently();
+  },
   setTokenFetcher: (accessTokenSetter: TokenGetter) => {
     getAccessTokenSilently = accessTokenSetter;
   },
