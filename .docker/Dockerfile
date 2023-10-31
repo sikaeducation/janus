@@ -12,5 +12,5 @@ USER node
 CMD ["npm", "run", "_dev"]
 
 FROM base as test
-USER root
+USER node
 CMD ["npm", "run", "_dev"]

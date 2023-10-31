@@ -17,18 +17,17 @@ services:
     ports:
       - "5173:3000"
     command: ["npm", "run", "_serve:test"]
-  tests_ci:
-    extends:
-      file: tests.config.yml
-      service: tests
-    environment:
-      BASE_URL: "http://frontend_test:3000" # Internal frontend port
-  tests_ui:
-    extends:
-      file: tests.config.yml
-      service: tests
+  tests:
+    depends_on:
+      frontend_test:
+        condition: service_healthy
+    image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    ipc: host # Keeps chrome from OOMing
+    working_dir: /app # Default working dir is /
+    network_mode: host # Allows container access to public frontend
     environment:
       BASE_URL: "http://localhost:5173" # Public frontend port
+    volumes:
+      - ..:/app
     ports:
       - "3001:3001"
-    network_mode: host # Allows container access to public frontend
