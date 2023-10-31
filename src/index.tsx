@@ -13,8 +13,9 @@ import "@/sentry";
 
 if (
   !import.meta.env.VITE_AUTH_ZERO_DOMAIN ||
-  !import.meta.env.VITE_CLIENT_ID ||
-  !import.meta.env.VITE_AUTH_ZERO_AUDIENCE
+  !import.meta.env.VITE_AUTH_ZERO_CLIENT_ID ||
+  !import.meta.env.VITE_AUTH_ZERO_AUDIENCE ||
+  !import.meta.env.VITE_API_BASE_URL
 ) {
   console.table(import.meta.env);
   throw new Error("Required environment variables not set!");
@@ -31,7 +32,7 @@ root.render(
   <React.StrictMode>
     <Auth0Provider
       domain={String(import.meta.env.VITE_AUTH_ZERO_DOMAIN)}
-      clientId={String(import.meta.env.VITE_CLIENT_ID)}
+      clientId={String(import.meta.env.VITE_AUTH_ZERO_CLIENT_ID)}
       redirectUri={window.location.origin}
       audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
       scope="openid"

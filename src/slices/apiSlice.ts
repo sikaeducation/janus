@@ -5,7 +5,7 @@ import type { Activity, Article } from "@/declarations";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_ACTIVITY_SERVICE_BASE_URL,
+    baseUrl: import.meta.env.VITE_ACTIVITY_API_BASE_URL,
     prepareHeaders: async (headers) => {
       const token = await getToken();
 

@@ -17,8 +17,8 @@ Sika's LMS
 
 ```env
 VITE_AUTH_ZERO_DOMAIN=xxxxxxxxxxxxxxxx.us.auth0.com
-VITE_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
-VITE_ACTIVITY_SERVICE_BASE_URL=http://localhost:4000
+VITE_AUTH_ZERO_CLIENT_ID=xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+VITE_ACTIVITY_API_BASE_URL=http://localhost:4000
 VITE_AUTH_ZERO_AUDIENCE=https://xxxxxxxxxxxx.us.auth0.com/api/v2/
 ```
 
