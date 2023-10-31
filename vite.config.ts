@@ -1,3 +1,4 @@
+import { sentryVitePlugin } from "@sentry/vite-plugin";
 /** @type {import('vite').UserConfig} */
 import { defineConfig, splitVendorChunkPlugin } from "vite";
 import react from "@vitejs/plugin-react";
@@ -10,28 +11,48 @@ import postcssDiscardDuplicates from "postcss-discard-duplicates";
 
 export default defineConfig({
   assetsInclude: ["./public"],
-  plugins: [react(), splitVendorChunkPlugin(), tsconfigPaths()],
+
+  plugins: [
+    react(),
+    splitVendorChunkPlugin(),
+    tsconfigPaths(),
+    process.env.NODE_ENV === "production"
+      ? sentryVitePlugin({
+          org: "sika-education",
+          project: "janus",
+        })
+      : undefined,
+  ].filter((x) => x),
+
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
       $: path.resolve(__dirname, "./features"),
     },
   },
+
   define: {
     "process.env": {}, // Needed to hack import.meta into React
   },
+
   server: {
     port: Number(process.env.PORT),
   },
+
   test: {
     include: ["src/**/*.test.ts", "src/**/*.test.tsx"],
     bail: 1,
     setupFiles: ["./features/setup-tests.ts"],
     mockReset: true,
   },
+
   css: {
     postcss: {
       plugins: [postcssNested, postcssMergeRules, postcssDiscardDuplicates],
     },
+  },
+
+  build: {
+    sourcemap: true,
   },
 });

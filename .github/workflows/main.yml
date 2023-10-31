@@ -24,6 +24,9 @@ jobs:
           VITE_AUTH_ZERO_DOMAIN: ${{ vars.AUTH_ZERO_DOMAIN }}
           VITE_CLIENT_ID: ${{ vars.AUTH_ZERO_CLIENT_ID }}
           VITE_ACTIVITY_SERVICE_BASE_URL: ${{ vars.ACTIVITY_SERVICE_BASE_URL }}
+          VITE_SENTRY_DSN: ${{ vars.SENTRY_DSN }}
+          VITE_SENTRY_API_REGEX: ${{ vars.SENTRY_API_REGEX }}
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
       - name: Upload build
         uses: actions/upload-artifact@v3
         with:
