@@ -1,16 +1,10 @@
-FROM node:20.8.1-bookworm as base
+FROM node:20.8.1-bookworm
 WORKDIR /app
-USER root
+USER node
 
 COPY ./package.json .
 COPY ./package-lock.json .
 RUN npm ci
 COPY . .
 
-FROM base as dev
-USER node
-CMD ["npm", "run", "_dev"]
-
-FROM base as test
-USER node
 CMD ["npm", "run", "_dev"]
