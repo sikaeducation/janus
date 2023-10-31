@@ -5,4 +5,3 @@ services:
     working_dir: /app # Default working dir is /
     volumes:
       - ..:/app
-    network_mode: host # Allows container access to public frontend

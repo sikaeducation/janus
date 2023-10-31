@@ -2,6 +2,8 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 import { getToken } from "@/utilities/security";
 import type { Activity, Article } from "@/declarations";
 
+console.log("activity base", import.meta.env.VITE_ACTIVITY_API_BASE_URL);
+
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
