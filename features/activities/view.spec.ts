@@ -8,44 +8,31 @@ test("view activity", async ({ page }) => {
       _id: 1,
       _type: "article",
       title: "Some title 1",
-      postSlug: "slug_3",
+      post_slug: "slug_3",
       description: "Some desc.",
       notes: "Note 3",
       content: "# Some Heading\n\nSome content",
     },
   ];
 
-  await page.route("**/oauth/token", (route: Route) => {
-    route.fulfill({
-      body: JSON.stringify({
-        access_token: "dummy",
-        id_token: "dummy",
-      }),
-    });
-  });
   await page.route("**/activities", (route: Route) => {
     route.fulfill({
-      body: JSON.stringify(activities),
+      body: JSON.stringify({ data: activities }),
     });
   });
 
   await asCoach(page);
   await page.getByText("Activity Manager").click();
 
-  await expect(page.getByText("slug_3")).toHaveCount(0);
-  await expect(page.getByText("Note 3")).toHaveCount(0);
+  await expect(page.getByLabel("Slug")).toHaveCount(0);
+  await expect(page.getByLabel("Notes")).toHaveCount(0);
 
   await page.getByText("Some title 1").click();
-  await expect(page.getByText("slug_3")).toHaveCount(1);
-  await expect(page.getByText("Note 3")).toHaveCount(1);
-  await expect(
-    page.getByRole("heading", {
-      name: "Some heading",
-    }),
-  ).toHaveCount(1);
+  await expect(page.getByLabel("Slug")).toHaveValue("slug_3");
+  await expect(page.getByLabel("Notes")).toHaveValue("Note 3");
 
-  await page.getByTitle("Close").click();
+  await page.getByRole("button", { name: "Close" }).click();
 
-  await expect(page.getByText("slug_3")).toHaveCount(0);
-  await expect(page.getByText("Note 3")).not.toHaveCount(0);
+  await expect(page.getByLabel("Slug")).toHaveCount(0);
+  await expect(page.getByLabel("Notes")).toHaveCount(0);
 });

@@ -2,7 +2,7 @@ import { expect, Route } from "@playwright/test";
 import test from "../utilities/test";
 import asCoach from "../utilities/as-coach";
 
-test.skip("create an activity", async ({ page }) => {
+test("create an activity", async ({ page }) => {
   const activities = [
     {
       _id: 1,
@@ -19,19 +19,47 @@ test.skip("create an activity", async ({ page }) => {
   ];
 
   const activity = {
-    _id: 3,
     _type: "article",
     title: "Some title 3",
-    postSlug: "slug_3",
+    post_slug: "slug_3",
     description: "Some desc.",
     notes: "Note 3",
   };
-  const { title, postSlug, description, notes } = activity;
+
+  const { title, post_slug, description, notes } = activity;
+
+  let posted = false;
 
   await page.route("**/activities", (route: Route) => {
-    route.fulfill({
-      body: JSON.stringify(activities),
-    });
+    if (route.request().method() === "GET") {
+      route.fulfill({
+        body: JSON.stringify({
+          data: [...activities, { _id: 3, ...activity }],
+        }),
+      });
+    }
+  });
+  await page.route("**/articles", (route: Route) => {
+    if (route.request().method() === "POST") {
+      // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+      const postedData = JSON.parse(route.request().postData());
+      expect(postedData).toMatchObject(activity);
+      posted = true;
+      route.fulfill({
+        body: JSON.stringify({ _id: 3, activity }),
+      });
+    }
+  });
+  await page.route("**/activities", (route: Route) => {
+    if (route.request().method() === "GET" && posted) {
+      route.fallback();
+    } else if (route.request().method() === "GET") {
+      route.fulfill({
+        body: JSON.stringify({ data: activities }),
+      });
+    } else {
+      route.continue();
+    }
   });
 
   await asCoach(page);
@@ -46,7 +74,7 @@ test.skip("create an activity", async ({ page }) => {
     });
 
   await page.getByLabel("Title").fill(title);
-  await page.getByLabel("Slug").fill(postSlug);
+  await page.getByLabel("Slug").fill(post_slug);
   await page.getByLabel("Description").fill(description);
   await page.getByLabel("Notes").fill(notes);
 
@@ -56,5 +84,13 @@ test.skip("create an activity", async ({ page }) => {
     })
     .click();
 
-  await expect(page.getByRole("row")).toHaveCount(activities.length + 1);
+  await expect(
+    page.getByRole("gridcell", { name: "Some title 1" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("gridcell", { name: "Some title 2" }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("gridcell", { name: "Some title 3" }),
+  ).toBeVisible();
 });

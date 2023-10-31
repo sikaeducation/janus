@@ -7,9 +7,7 @@ export const apiSlice = createApi({
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_ACTIVITY_SERVICE_BASE_URL,
     prepareHeaders: async (headers) => {
-      console.log("before");
       const token = await getToken();
-      console.log("other side");
 
       headers.set("Authorization", `Bearer ${token}`);
       return headers;
