@@ -11,6 +11,5 @@ services:
       dockerfile: .docker/Dockerfile
     environment:
       PORT: 3000
-    command: ["npm", "run", "_dev"]
     volumes:
       - ..:/app

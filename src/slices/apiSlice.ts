@@ -1,15 +1,15 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-import tokenAccessors from "@/utilities/security";
+import { getToken } from "@/utilities/security";
 import type { Activity, Article } from "@/declarations";
-
-const { getToken } = tokenAccessors;
 
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
     baseUrl: import.meta.env.VITE_ACTIVITY_SERVICE_BASE_URL,
     prepareHeaders: async (headers) => {
+      console.log("before");
       const token = await getToken();
+      console.log("other side");
 
       headers.set("Authorization", `Bearer ${token}`);
       return headers;

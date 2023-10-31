@@ -1,4 +1,4 @@
-import React, { ReactNode } from "react";
+import React from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -20,37 +20,28 @@ if (
   throw new Error("Required environment variables not set!");
 }
 
-if (import.meta.env.DEV) {
+if (import.meta.env.DEV || import.meta.env.MODE === "test") {
   console.log("Environment:");
   console.table(import.meta.env);
 }
-
-const AuthProvider =
-  import.meta.env.NODE_ENV === "test"
-    ? ({ children }: { children: ReactNode }) => (
-        <Auth0Provider
-          domain={import.meta.env.VITE_AUTH_ZERO_DOMAIN || ""}
-          clientId={import.meta.env.VITE_CLIENT_ID || ""}
-          redirectUri={window.location.origin}
-          audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
-          scope="openid"
-        >
-          {children}
-        </Auth0Provider>
-      )
-    : ({ children }: { children: ReactNode }) => <>{children}</>;
 
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 root.render(
   <React.StrictMode>
-    <AuthProvider>
+    <Auth0Provider
+      domain={String(import.meta.env.VITE_AUTH_ZERO_DOMAIN)}
+      clientId={String(import.meta.env.VITE_CLIENT_ID)}
+      redirectUri={window.location.origin}
+      audience={import.meta.env.VITE_AUTH_ZERO_AUDIENCE}
+      scope="openid"
+    >
       <ReduxProvider store={store}>
         <Router>
           <ScrollToTop />
           <App />
         </Router>
       </ReduxProvider>
-    </AuthProvider>
+    </Auth0Provider>
   </React.StrictMode>,
 );

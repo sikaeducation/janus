@@ -24,14 +24,6 @@ test("listing activities", async ({ page }) => {
     },
   ];
 
-  await page.route("**/oauth/token", (route: Route) => {
-    route.fulfill({
-      body: JSON.stringify({
-        access_token: "dummy",
-        id_token: "dummy",
-      }),
-    });
-  });
   await page.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify({ data: activities }),

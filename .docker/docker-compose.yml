@@ -7,6 +7,7 @@ services:
       target: dev
     ports:
       - "3000:3000"
+    command: ["npm", "run", "_dev"]
   frontend_test:
     extends:
       file: frontend.config.yml
@@ -15,6 +16,7 @@ services:
       target: test
     ports:
       - "5173:3000"
+    command: ["npm", "run", "_serve:test"]
   tests_ci:
     extends:
       file: tests.config.yml

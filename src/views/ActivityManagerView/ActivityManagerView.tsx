@@ -37,7 +37,6 @@ export default function ActivityManagerView() {
     isError,
     isSuccess,
   } = useGetActivitiesQuery();
-  console.log("this ran", activities, isLoading, isError, isSuccess);
   const [createActivity] = useCreateArticleMutation();
   const [newActivityOpen, setNewActivityOpen] = useState(false);
   const [selectedActivity, setSelectedActivity] = useState<

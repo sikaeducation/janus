@@ -1,7 +1,7 @@
 import { Route, test as base } from "@playwright/test";
 
 export default base.extend({
-  page: async ({ baseURL, page }, use) => {
+  page: async ({ baseURL, page, context }, use) => {
     await page.route("**/authorize*", (route: Route) => {
       route.fulfill({
         status: 200,
