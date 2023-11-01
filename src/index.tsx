@@ -1,4 +1,4 @@
-import React from "react";
+import { StrictMode } from "react";
 import { Auth0Provider } from "@auth0/auth0-react";
 import { Provider as ReduxProvider } from "react-redux";
 import { BrowserRouter as Router } from "react-router-dom";
@@ -29,7 +29,7 @@ if (import.meta.env.DEV || import.meta.env.MODE === "test") {
 const container = document.getElementById("root")!;
 const root = createRoot(container);
 root.render(
-  <React.StrictMode>
+  <StrictMode>
     <Auth0Provider
       domain={String(import.meta.env.VITE_AUTH_ZERO_DOMAIN)}
       clientId={String(import.meta.env.VITE_AUTH_ZERO_CLIENT_ID)}
@@ -44,5 +44,5 @@ root.render(
         </Router>
       </ReduxProvider>
     </Auth0Provider>
-  </React.StrictMode>,
+  </StrictMode>,
 );

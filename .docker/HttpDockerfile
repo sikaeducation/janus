@@ -1,0 +1,25 @@
+FROM node:20.8.1-bookworm
+WORKDIR /app
+USER root
+
+COPY ./package.json .
+COPY ./package-lock.json .
+RUN npm ci
+
+COPY . .
+RUN npm run build
+
+RUN ["npm", "install", "http-server"]
+
+EXPOSE 3000
+
+ENTRYPOINT ["npx", "http-server", "dist", "--port", "3000", "--silent"]
+
+# FROM nginx
+# WORKDIR /usr/share/nginx/html
+#
+# RUN apt-get update && apt-get install -y curl && apt-get clean
+#
+# COPY dist .
+#
+# EXPOSE 3000

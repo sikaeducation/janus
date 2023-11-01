@@ -7,11 +7,7 @@ export default base.extend({
 				status: 200,
 			});
 		});
-		console.log("baseURL is", baseURL);
 		await page.goto(baseURL || "");
-		await page.evaluate(() => {
-			window.env = "test";
-		});
 		await use(page);
 	},
 });

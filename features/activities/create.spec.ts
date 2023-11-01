@@ -42,7 +42,7 @@ test("create an activity", async ({ page }) => {
   await page.route("**/articles", (route: Route) => {
     if (route.request().method() === "POST") {
       // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-      const postedData = JSON.parse(route.request().postData());
+      const postedData = JSON.parse(String(route.request().postData()));
       expect(postedData).toMatchObject(activity);
       posted = true;
       route.fulfill({
