@@ -25,31 +25,3 @@ services:
     network_mode: host # Allows container access to public frontend
     environment:
       BASE_URL: "http://localhost:5173" # Public frontend port
-  frontend_ci:
-    build:
-      context: ..
-      dockerfile: .docker/HttpDockerfile
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:3000 || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 10s
-    environment:
-      VITE_AUTH_ZERO_DOMAIN: "${VITE_AUTH_ZERO_DOMAIN}"
-      VITE_AUTH_ZERO_CLIENT_ID: "${VITE_AUTH_ZERO_CLIENT_ID}"
-      VITE_AUTH_ZERO_AUDIENCE: "${VITE_AUTH_ZERO_AUDIENCE}"
-      VITE_ACTIVITY_API_BASE_URL: "${VITE_ACTIVITY_API_BASE_URL}"
-    expose:
-      - 3000
-  tests_ci:
-    image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    ipc: host # Keeps chrome from OOMing
-    working_dir: /app # Default working dir is /
-    volumes:
-      - ..:/app
-    depends_on:
-      frontend_ci:
-        condition: service_healthy
-    environment:
-      BASE_URL: "http://frontend_ci:3000"
