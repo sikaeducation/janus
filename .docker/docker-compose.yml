@@ -13,7 +13,7 @@ services:
     ports:
       - "5173:3000"
     command: ["npm", "run", "_serve:test"]
-  tests_dev:
+  tests:
     extends:
       file: test.config.yml
       service: tests
