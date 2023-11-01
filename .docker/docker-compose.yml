@@ -25,22 +25,3 @@ services:
     network_mode: host # Allows container access to public frontend
     environment:
       BASE_URL: "http://localhost:5173" # Public frontend port
-  frontend_ci:
-    build:
-      context: ..
-      dockerfile: .docker/http-Dockerfile
-    healthcheck:
-      test: ["CMD-SHELL", "curl -f http://localhost:80 || exit 1"]
-      interval: 5s
-      timeout: 5s
-      retries: 10
-      start_period: 60s
-  tests_ci:
-    extends:
-      file: test.config.yml
-      service: tests
-    depends_on:
-      frontend_ci:
-        condition: service_healthy
-    environment:
-      BASE_URL: "http://frontend_ci:80"
