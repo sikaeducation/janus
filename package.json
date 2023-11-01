@@ -26,6 +26,7 @@
     "dc": "npm run docker:clean",
     "test": "npm run test:unit && npm run test:features",
     "test:ci": "npm run test:unit && npm run test:features:ci",
+    "test:unit": "docker compose --project-directory .docker run --rm frontend_test npm run _test:unit",
     "test:unit:watch": "docker compose --project-directory .docker run --rm frontend_test npm run _test:unit:watch",
     "tuw": "npm run test:unit:watch",
     "test:features": "docker compose --project-directory .docker run --rm tests_dev npm run _test:features",
