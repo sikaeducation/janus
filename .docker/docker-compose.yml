@@ -35,7 +35,6 @@ services:
       timeout: 5s
       retries: 10
       start_period: 10s
-    env_file: "../.env"
     environment:
       VITE_AUTH_ZERO_DOMAIN: "${VITE_AUTH_ZERO_DOMAIN}"
       VITE_AUTH_ZERO_CLIENT_ID: "${VITE_AUTH_ZERO_CLIENT_ID}"
