@@ -9,21 +9,16 @@ export default function useAuth() {
   const { user, isLoading, isAuthenticated, getAccessTokenSilently } =
     useAuth0<User>();
   const dispatch = useDispatch();
+
   useEffect(() => {
-    if (
-      isAuthenticated &&
-      user?.email &&
-      user?.name &&
-      user?.picture &&
-      user?.["https://sikaeducation.com/role"]
-    ) {
+    if (isAuthenticated && user) {
       dispatch(
         setUser({
-          "https://sikaeducation.com/role":
-            user["https://sikaeducation.com/role"] || "",
-          email: user.email,
-          name: user.name,
-          picture: user.picture,
+          "https://sikaeducation.com/roles":
+            user?.["https://sikaeducation.com/roles"] || [],
+          email: String(user.email),
+          name: String(user.name),
+          picture: String(user.picture),
           isAuthenticated,
           isLoading,
         }),

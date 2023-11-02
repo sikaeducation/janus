@@ -35,7 +35,7 @@ export type ActivityResponse = {
 
 export type User = {
   email: string;
-  "https://sikaeducation.com/role"?: "coach";
+  "https://sikaeducation.com/roles"?: string[];
   name: string;
   picture: string;
   isAuthenticated: boolean;
