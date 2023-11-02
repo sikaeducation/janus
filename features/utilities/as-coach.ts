@@ -7,7 +7,7 @@ async function asCoach(page: Page) {
       payload: {
         email: "coach@sikaeducation.com",
         name: "Coach",
-        "https://sikaeducation.com/role": "coach",
+        "https://sikaeducation.com/roles": ["coach"],
         isAuthenticated: true,
       },
     });
