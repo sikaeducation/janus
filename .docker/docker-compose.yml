@@ -14,9 +14,11 @@ services:
       - "5173:3000"
     command: ["npm", "run", "_serve:test"]
   tests:
-    extends:
-      file: test.config.yml
-      service: tests
+    image: mcr.microsoft.com/playwright:v1.39.0-jammy
+    ipc: host # Keeps chrome from OOMing
+    working_dir: /app # Default working dir is /
+    volumes:
+      - ..:/app
     depends_on:
       frontend_test:
         condition: service_healthy

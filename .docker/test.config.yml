@@ -1,7 +1,0 @@
-services:
-  tests:
-    image: mcr.microsoft.com/playwright:v1.39.0-jammy
-    ipc: host # Keeps chrome from OOMing
-    working_dir: /app # Default working dir is /
-    volumes:
-      - ..:/app
