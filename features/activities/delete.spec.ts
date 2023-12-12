@@ -24,17 +24,20 @@ test("delete activity", async ({ page }) => {
     },
   ];
 
+  // Third
   await page.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify({ data: [activities[1]] }),
     });
   });
+  // Second
   await page.route("**/activities/1", (route: Route) => {
     const request = route.request();
     if (request.method() === "DELETE") {
       route.fulfill({ status: 204 });
     }
   });
+  // First
   await page.route("**/activities", (route: Route) => {
     route.fulfill({
       body: JSON.stringify({ data: activities }),
