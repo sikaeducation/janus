@@ -5,7 +5,7 @@ import type { Activity, Article } from "@/declarations";
 export const apiSlice = createApi({
   reducerPath: "api",
   baseQuery: fetchBaseQuery({
-    baseUrl: import.meta.env.VITE_ACTIVITY_API_BASE_URL,
+    baseUrl: String(import.meta.env.VITE_ACTIVITY_API_BASE_URL),
     prepareHeaders: async (headers) => {
       const token = await getToken();
 
@@ -20,6 +20,13 @@ export const apiSlice = createApi({
       providesTags: ["Activity"],
       transformResponse: (response: { data: Activity[] }) => response.data,
     }),
+    deleteActivity: builder.mutation<void, string>({
+      query: (id) => ({
+        url: `activities/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["Activity"],
+    }),
     createArticle: builder.mutation<Article, Article>({
       query: (activity) => ({
         url: "articles",
@@ -31,4 +38,8 @@ export const apiSlice = createApi({
   }),
 });
 
-export const { useGetActivitiesQuery, useCreateArticleMutation } = apiSlice;
+export const {
+  useGetActivitiesQuery,
+  useCreateArticleMutation,
+  useDeleteActivityMutation,
+} = apiSlice;

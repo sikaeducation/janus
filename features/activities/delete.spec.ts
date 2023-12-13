@@ -24,24 +24,28 @@ test("delete activity", async ({ page }) => {
     },
   ];
 
-  // Third
+  let requestNumber = 1;
   await page.route("**/activities", (route: Route) => {
-    route.fulfill({
-      body: JSON.stringify({ data: [activities[1]] }),
-    });
+    if (requestNumber === 1) {
+      route.fulfill({
+        body: JSON.stringify({ data: activities }),
+      });
+      requestNumber++;
+    } else if (requestNumber === 2) {
+      route.fulfill({
+        body: JSON.stringify({ data: [activities[1]] }),
+      });
+      requestNumber++;
+    } else {
+      throw new Error("Too many requests to /activities");
+    }
   });
-  // Second
+
   await page.route("**/activities/1", (route: Route) => {
     const request = route.request();
     if (request.method() === "DELETE") {
       route.fulfill({ status: 204 });
     }
-  });
-  // First
-  await page.route("**/activities", (route: Route) => {
-    route.fulfill({
-      body: JSON.stringify({ data: activities }),
-    });
   });
 
   await asCoach(page);
@@ -51,3 +55,5 @@ test("delete activity", async ({ page }) => {
   await page.getByRole("button", { name: "Delete it" }).click();
   await expect(page.getByText("Some title 1")).not.toBeVisible();
 });
+
+test.skip("failed delete", () => {});

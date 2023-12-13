@@ -8,6 +8,8 @@ import {
   DataTable,
   Icon,
   StatusMessage,
+  TextContent,
+  Panel,
 } from "@sikaeducation/ui";
 import ModalView from "@/views/ModalView";
 import NewActivityForm from "@/views/NewActivityForm";
@@ -15,6 +17,7 @@ import NewActivityForm from "@/views/NewActivityForm";
 import { fields, skeletonRows } from "./table";
 import {
   useCreateArticleMutation,
+  useDeleteActivityMutation,
   useGetActivitiesQuery,
 } from "@/slices/apiSlice";
 import ArticleDetail from "@/views/ArticleDetail";
@@ -72,6 +75,30 @@ export default function ActivityManagerView() {
       publishedIcon: activity.published ? <Icon type="checkmark" /> : null,
     })) || [];
 
+  const [
+    deleteActivity,
+    {
+      isLoading: isDeleteLoading,
+      isSuccess: isDeleteSuccess,
+      isError: isDeleteError,
+    },
+  ] = useDeleteActivityMutation();
+
+  const [confirmDeleteOpen, setConfirmDeleteOpen] = useState(false);
+  const confirmDeleteActivity = () => {
+    setConfirmDeleteOpen(true);
+  };
+  const deleteAndClose = () => {
+    deleteActivity(String(selectedActivity?._id))
+      .then(() => {
+        setSelectedActivity(undefined);
+        setConfirmDeleteOpen(false);
+      })
+      .catch((error: Error) => {
+        console.error(error.message);
+      });
+  };
+
   return (
     <div className="ActivityManagerView">
       {isLoading && (
@@ -112,6 +139,19 @@ export default function ActivityManagerView() {
           <NewActivityForm save={save} cancel={closeModal} />
         </ModalView>
       )}
+      {confirmDeleteOpen && (
+        <ModalView onClose={closeModal}>
+          <Panel height="floating" background="light">
+            <TextContent>Are sure you want to delete this?</TextContent>
+            <Button type="primary" actionType="failure" action={deleteAndClose}>
+              Delete It!
+            </Button>
+            {isDeleteError && <div className="ErrorBar">&nbsp;</div>}
+            {isDeleteSuccess && <div className="SuccessBar">&nbsp;</div>}
+            {isDeleteLoading && <div className="LoadingBar">&nbsp;</div>}
+          </Panel>
+        </ModalView>
+      )}
       {selectedActivity && selectedActivity._type === "article" ? (
         <Drawer close={() => setSelectedActivity(undefined)}>
           <ArticleDetail
@@ -119,6 +159,7 @@ export default function ActivityManagerView() {
             setActivity={(activity) =>
               setSelectedActivity(activity as Activity)
             }
+            deleteActivity={confirmDeleteActivity}
           />
         </Drawer>
       ) : null}

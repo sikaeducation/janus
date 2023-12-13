@@ -47,3 +47,35 @@
     }
   }
 }
+
+.LoadingBar {
+  background-color: $colors-primary-5;
+  animation: background-color pulse 1s alternate;
+  block-size: 5px;
+
+  @media screen and (prefers-reduced-motion: reduce) {
+    background-color: $colors-primary-5;
+    animation: none;
+    block-size: 5px;
+  }
+}
+
+.SuccessBar {
+  background-color: $colors-success-5;
+  block-size: 5px;
+}
+
+.ErrorBar {
+  background-color: $colors-failure-5;
+  block-size: 5px;
+}
+
+@keyframes pulse {
+  from {
+    background-color: $colors-primary-1;
+  }
+
+  to {
+    background-color: $colors-primary-10;
+  }
+}
